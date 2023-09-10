@@ -1,0 +1,99 @@
+---
+# ====== Page: Global Page ===================================
+id: 0
+identification: 
+  name: Global Page
+
+regions: 
+- # ====== Region: JS ==========================================
+  id: 64115224441482291
+  identification: 
+    title: JS
+    type: Static Content
+
+  source: 
+    html-code: |
+      <script>
+      </script>
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BEFORE_FOOTER
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 14002580469276968
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: CSS =========================================
+  id: 78515474754640563
+  identification: 
+    title: CSS
+    type: Static Content
+
+  source: 
+    html-code: |
+      <style>
+      </style>
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BEFORE_FOOTER
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 14002580469276968
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
