@@ -1,0 +1,72 @@
+---
+- # ====== Authorization: IS_USER ==============================
+  id: 43462402185717150
+  identification: 
+    name: IS_USER
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      --selct .... app_id = :APP_ID and user = :APP_USER
+      RETURN TRUE;
+
+  server-cache: 
+    evaluation-point: Once per Page View
+
+  error: 
+    error-message: ACCESS_DENIED|USER
+
+- # ====== Authorization: NOBODY ===============================
+  id: 55122406216768269
+  identification: 
+    name: NOBODY
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: RETURN FALSE;
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+- # ====== Authorization: IS_DEVELOPER =========================
+  id: 60089834032939902
+  identification: 
+    name: IS_DEVELOPER
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: RETURN core.is_developer();
+
+  server-cache: 
+    evaluation-point: Once per Session
+
+  error: 
+    error-message: ACCESS_DENIED
+
+- # ====== Authorization: IS_ADMIN =============================
+  id: 63924538900170215
+  identification: 
+    name: IS_ADMIN
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN LOWER(:APP_USER) IN (
+          'jan.k@remparsolutions.com',
+          'jank'
+      );
+
+  server-cache: 
+    evaluation-point: Once per Page View
+
+  error: 
+    error-message: ACCESS_DENIED|ADMIN
+

@@ -1,0 +1,149 @@
+---
+# ====== Application: Master =================================
+id: 800
+identification: 
+  name: Master
+  alias: MASTER
+  version: 2023-09-10
+  application-group: MASTER # 14521455008554600
+
+row-search: 
+  tokenize: true
+
+availability: 
+  status: Available with Developer Toolbar
+  build-status: Run and Build Application
+
+error-handling: 
+  default-display-location: Inline with Field and in Notification
+  error-handling-function: core.handle_apex_error
+
+report-printing: 
+  type: Native Printing
+
+advanced: 
+  friendly-urls: true
+  allow-feedback: false
+  logging: true
+  debugging: true
+  compatibility-mode: 21.2 / 22.1 / 22.2
+
+authentication: 
+  public-user: APEX_PUBLIC_USER
+  authentication-scheme: OPEN_DOOR (TESTING ONLY) # 63502441622441479
+
+authorization: 
+  source-for-role-or-group-schemes: Access Control User Role Assignments
+
+session-management: 
+  rejoin-sessions: Disabled
+  session-timeout-url: '#LOGOUT_URL#'
+  session-idle-timeout-url: '#LOGOUT_URL#'
+
+session-state-protection: 
+  enabled: true
+
+security: 
+  deep-linking: Enabled
+  browser-cache: Disabled
+  embed-in-frames: Deny
+  referrer-policy: strict-origin
+  html-escaping-mode: Extended
+
+advanced: 
+  pass-ecid: N
+
+database-session: 
+  parsing-schema: APPS
+
+globalization: 
+  primary-language: English (en)
+  document-direction: Left-To-Right
+  language-derived-from: Application Primary Language
+  automatic-time-zone: false
+  automatic-csv-encoding: true
+
+application-format-masks: 
+  date: DS
+  timestamp: DS
+  timestamp-time-zone: DS
+
+character-value-comparison: 
+  behavior: Database session NLS setting (default)
+
+logo: 
+  type: Text
+  text: '&APP_NAME.'
+
+progressive-web-app: 
+  enable: true
+  installable: false
+  display: Standalone
+  screen-orientation: Any
+  ios-status-bar-style: Default
+  enable-push-notifications: false
+
+navigation: 
+  home-url: 
+    url: 'f?p=&APP_ID.:HOME:&APP_SESSION.::&DEBUG.:::'
+    page: HOME
+
+  login-url: 
+    url: 'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
+    page: LOGIN
+
+navigation-menu: 
+  list-template: Top Navigation Menu # 63460188384439161
+  template-options: 
+  - '#DEFAULT#'
+  - js-tabLike
+  list-position: Top
+
+navigation-bar: 
+  implementation: List
+  list: NAVIGATION # 14517547161424323
+  list-template: Navigation Bar Q # 60837470868358458
+  template-options: 
+  - '#DEFAULT#'
+
+javascript: 
+  file-urls: 
+  - '#WORKSPACE_FILES#master_app#MIN#.js?version=#APP_VERSION#'
+  include-jquery-migrate: false
+
+css: 
+  file-urls: 
+  - '#WORKSPACE_FILES#master_fonts#MIN#.css?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_menu_top#MIN#.css?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_app#MIN#.css?version=#APP_VERSION#'
+
+attributes: 
+  theme: Universal Theme # 42
+  enable-end-users-to-choose-theme-style: false
+  add-"built-with-apex"-to-footer: false
+
+substitutions: 
+- # ====== Substitution: APP_NAME ==============================
+  id: 1
+  identification: 
+    name: APP_NAME
+
+  value: 
+    static-value: Master
+
+application-settings: 
+- # ====== Application Setting: APP_PREFIX =====================
+  id: 14513059611369287
+  identification: 
+    name: APP_PREFIX
+
+  value: 
+    value: APP_
+    required: true
+
+  advanced: 
+    on-upgrade-keep-value: true
+
+  comments: 
+    comments: Prefix for database objects relevant to this app
+

@@ -1,0 +1,35 @@
+---
+- # ====== List of Values: LOV_APPLICATIONS ====================
+  id: 35274887131559187
+  identification: 
+    name: LOV_APPLICATIONS
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: INT_P100_APPS_V
+
+  column-mapping: 
+    return: APP_ID
+    display: APPLICATION_NAME
+    default-sort: APPLICATION_NAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: LOV_USERS ===========================
+  id: 44168724960002617
+  identification: 
+    name: LOV_USERS
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: INT_USERS
+
+  column-mapping: 
+    return: USER_ID
+    display: USER_NAME
+    default-sort: USER_NAME
+    sort-direction: Ascending (Nulls Last)
+
