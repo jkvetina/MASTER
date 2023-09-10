@@ -2,8 +2,9 @@ CREATE OR REPLACE FORCE VIEW app_launchpad_v AS
 SELECT
     a.workspace,
     a.app_id,
-    a.app_name,
     a.app_alias,
+    a.app_prefix,
+    a.app_name,
     a.app_desc,
     --
     APEX_PAGE.GET_URL (
@@ -17,9 +18,9 @@ WHERE a.app_group       = 'LAUNCHPAD'
 GROUP BY
     a.workspace,
     a.app_id,
-    a.app_name,
-    a.app_group,
     a.app_alias,
+    a.app_prefix,
+    a.app_name,
     a.app_desc
 ORDER BY
     a.workspace,

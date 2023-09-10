@@ -145,8 +145,8 @@ regions:
       column: APP_NAME
 
     subtitle: 
-      advanced-formatting: false
-      column: APP_ALIAS
+      advanced-formatting: true
+      html-expression: '<span style="font-size: 85%;">&APP_ALIAS., &APP_PREFIX.</span>'
 
     body: 
       advanced-formatting: false
@@ -243,6 +243,67 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P100_START ===============================
+  id: 7476352905048515
+  identification: 
+    name: P100_START
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Applications # 7475275434048504
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: REFRESH_MV ==================================
+  id: 7476159161048513
+  identification: 
+    button-name: REFRESH_MV
+    label: Refresh MV
+
+  layout: 
+    sequence: 20
+    region: Applications # 7475275434048504
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 63463978601439167
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+  security: 
+    authorization-scheme: IS_DEVELOPER # 60089834032939902
+
 dynamic-actions: 
 - # ====== Dynamic Action: FILTERS_CHANGED =====================
   id: 7475819384048510
@@ -291,4 +352,34 @@ computations:
     type: Expression
     language: PL/SQL
     pl/sql-expression: core.get_app_workspace()
+
+processes: 
+- # ====== Process: REFRESH_MV =================================
+  id: 7476211481048514
+  identification: 
+    name: REFRESH_MV
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      :P100_START := TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS');
+      core.refresh_mviews('APP_NAV%_MV');
+      :P100_START := ROUND((SYSDATE - TO_DATE(:P100_START, 'YYYY-MM-DD HH24:MI:SS')) * 86400, 8);
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Refreshed in &P100_START. seconds
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: REFRESH_MV # 7476159161048513
 

@@ -33,14 +33,16 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   19:50 Neděle Září 10, 2023
+--   Date and Time:   20:18 Neděle Září 10, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      1
---       Items:                    1
+--       Items:                    2
 --       Computations:             1
+--       Processes:                1
 --       Regions:                  2
+--       Buttons:                  1
 --       Dynamic Actions:          1
 --     Shared Components:
 --       Logic:
@@ -18527,8 +18529,8 @@ wwv_flow_imp_page.create_card(
 ,p_grid_column_count=>5
 ,p_title_adv_formatting=>false
 ,p_title_column_name=>'APP_NAME'
-,p_sub_title_adv_formatting=>false
-,p_sub_title_column_name=>'APP_ALIAS'
+,p_sub_title_adv_formatting=>true
+,p_sub_title_html_expr=>'<span style="font-size: 85%;">&APP_ALIAS., &APP_PREFIX.</span>'
 ,p_body_adv_formatting=>false
 ,p_body_column_name=>'APP_DESC'
 ,p_second_body_adv_formatting=>false
@@ -18543,6 +18545,18 @@ wwv_flow_imp_page.create_card_action(
 ,p_display_sequence=>10
 ,p_link_target_type=>'REDIRECT_URL'
 ,p_link_target=>'&APP_LINK.'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(7476159161048513)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_imp.id(7475275434048504)
+,p_button_name=>'REFRESH_MV'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(63463978601439167)
+,p_button_image_alt=>'Refresh MV'
+,p_button_position=>'RIGHT_OF_TITLE'
+,p_security_scheme=>wwv_flow_imp.id(60089834032939902)  -- IS_DEVELOPER
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(7475718742048509)
@@ -18559,6 +18573,14 @@ wwv_flow_imp_page.create_page_item(
 ,p_lov_display_extra=>'NO'
 ,p_attribute_01=>'NONE'
 ,p_attribute_02=>'N'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(7476352905048515)
+,p_name=>'P100_START'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(7475275434048504)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_computation(
  p_id=>wwv_flow_imp.id(7476064344048512)
@@ -18587,6 +18609,22 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_SUBMIT_PAGE'
 ,p_attribute_02=>'Y'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(7476211481048514)
+,p_process_sequence=>10
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'REFRESH_MV'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+':P100_START := TO_CHAR(SYSDATE, ''YYYY-MM-DD HH24:MI:SS'');',
+'core.refresh_mviews(''APP_NAV%_MV'');',
+':P100_START := ROUND((SYSDATE - TO_DATE(:P100_START, ''YYYY-MM-DD HH24:MI:SS'')) * 86400, 8);'))
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when_button_id=>wwv_flow_imp.id(7476159161048513)
+,p_process_success_message=>'Refreshed in &P100_START. seconds'
+,p_internal_uid=>7476211481048514
 );
 end;
 /
