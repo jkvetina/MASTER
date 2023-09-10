@@ -59,6 +59,8 @@ regions:
     template: Hero # 63402598617439121
     template-options: 
     - '#DEFAULT#'
+    css-classes: 
+    - FILTERS
     render-components: Above Content
 
   accessibility: 
@@ -92,6 +94,9 @@ regions:
     table-owner: Parsing Schema
     table-name: APP_LAUNCHPAD_V
     include-rowid-column: false
+    where-clause: 'workspace = :P100_WORKSPACE'
+    page-items-to-submit: 
+    - P100_WORKSPACE
 
   order-by: 
     type: None
@@ -177,4 +182,113 @@ regions:
       link: 
         type: Redirect to URL
         target: '&APP_LINK.'
+
+page-items: 
+- # ====== Page Item: P100_WORKSPACE ===========================
+  id: 7475718742048509
+  identification: 
+    name: P100_WORKSPACE
+    type: Select List
+
+  label: 
+    label: Workspace
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+    allow-multi-selection: false
+
+  layout: 
+    sequence: 10
+    region: Applications # 7475275434048504
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 2
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 63461560868439163
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: LOV_WORKSPACES # 14527761930824112
+    display-extra-values: false
+    display-null-value: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+dynamic-actions: 
+- # ====== Dynamic Action: FILTERS_CHANGED =====================
+  id: 7475819384048510
+  identification: 
+    name: FILTERS_CHANGED
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P100_WORKSPACE
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Submit Page =================================
+    id: 7475954697048511
+    identification: 
+      action: Submit Page
+
+    settings: 
+      show-processing: true
+
+    execution: 
+      sequence: 10
+      event: FILTERS_CHANGED # 7475819384048510
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+computations: 
+- # ====== Computation: P100_WORKSPACE =========================
+  id: 7476064344048512
+  identification: 
+    item-name: P100_WORKSPACE
+
+  execution: 
+    sequence: 10
+    point: Before Regions
+
+  computation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: core.get_app_workspace()
 

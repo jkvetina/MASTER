@@ -1,4 +1,21 @@
 ---
+- # ====== List of Values: LOV_WORKSPACES ======================
+  id: 14527761930824112
+  identification: 
+    name: LOV_WORKSPACES
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_LOV_WORKSPACES_V
+
+  column-mapping: 
+    return: WORKSPACE
+    display: WORKSPACE
+    default-sort: WORKSPACE
+    sort-direction: Ascending (Nulls Last)
+
 - # ====== List of Values: LOV_APPLICATIONS ====================
   id: 35274887131559187
   identification: 
@@ -8,12 +25,12 @@
     location: Local Database
     type: Table / View
     table-owner: Parsing Schema
-    table-name: INT_P100_APPS_V
+    table-name: APP_LOV_APPLICATIONS_V
 
   column-mapping: 
     return: APP_ID
-    display: APPLICATION_NAME
-    default-sort: APPLICATION_NAME
+    display: APP_NAME
+    default-sort: APP_NAME
     sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: LOV_USERS ===========================

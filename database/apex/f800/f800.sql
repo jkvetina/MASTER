@@ -33,12 +33,15 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   19:18 Neděle Září 10, 2023
+--   Date and Time:   19:50 Neděle Září 10, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      1
+--       Items:                    1
+--       Computations:             1
 --       Regions:                  2
+--       Dynamic Actions:          1
 --     Shared Components:
 --       Logic:
 --         Items:                 13
@@ -61,7 +64,7 @@ prompt APPLICATION 800 - Master
 --           Breadcrumb:           1
 --           Button:               3
 --           Report:              12
---         LOVs:                   2
+--         LOVs:                   3
 --         Plug-ins:               7
 --       PWA:
 --       Globalization:
@@ -780,11 +783,11 @@ wwv_flow_imp_shared.create_list_of_values(
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'
 ,p_use_local_sync_table=>false
-,p_query_table=>'INT_P100_APPS_V'
+,p_query_table=>'APP_LOV_APPLICATIONS_V'
 ,p_return_column_name=>'APP_ID'
-,p_display_column_name=>'APPLICATION_NAME'
+,p_display_column_name=>'APP_NAME'
 ,p_group_sort_direction=>'ASC'
-,p_default_sort_column_name=>'APPLICATION_NAME'
+,p_default_sort_column_name=>'APP_NAME'
 ,p_default_sort_direction=>'ASC'
 );
 end;
@@ -802,6 +805,21 @@ wwv_flow_imp_shared.create_list_of_values(
 ,p_display_column_name=>'USER_NAME'
 ,p_group_sort_direction=>'ASC'
 ,p_default_sort_column_name=>'USER_NAME'
+,p_default_sort_direction=>'ASC'
+);
+end;
+/
+prompt --application/shared_components/user_interface/lovs/lov_workspaces
+begin
+wwv_flow_imp_shared.create_list_of_values(
+ p_id=>wwv_flow_imp.id(14527761930824112)  -- LOV_WORKSPACES
+,p_lov_name=>'LOV_WORKSPACES'
+,p_source_type=>'TABLE'
+,p_location=>'LOCAL'
+,p_query_table=>'APP_LOV_WORKSPACES_V'
+,p_return_column_name=>'WORKSPACE'
+,p_display_column_name=>'WORKSPACE'
+,p_default_sort_column_name=>'WORKSPACE'
 ,p_default_sort_direction=>'ASC'
 );
 end;
@@ -18478,6 +18496,7 @@ wwv_flow_imp_page.create_page(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(7475275434048504)
 ,p_plug_name=>'Applications'
+,p_region_css_classes=>'FILTERS'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63402598617439121)
 ,p_plug_display_sequence=>10
@@ -18493,9 +18512,11 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_display_sequence=>20
 ,p_query_type=>'TABLE'
 ,p_query_table=>'APP_LAUNCHPAD_V'
+,p_query_where=>'workspace = :P100_WORKSPACE'
 ,p_include_rowid_column=>false
 ,p_lazy_loading=>false
 ,p_plug_source_type=>'NATIVE_CARDS'
+,p_ajax_items_to_submit=>'P100_WORKSPACE'
 ,p_plug_query_num_rows_type=>'SCROLL'
 ,p_show_total_row_count=>false
 );
@@ -18522,6 +18543,50 @@ wwv_flow_imp_page.create_card_action(
 ,p_display_sequence=>10
 ,p_link_target_type=>'REDIRECT_URL'
 ,p_link_target=>'&APP_LINK.'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(7475718742048509)
+,p_name=>'P100_WORKSPACE'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(7475275434048504)
+,p_prompt=>'Workspace'
+,p_display_as=>'NATIVE_SELECT_LIST'
+,p_named_lov=>'LOV_WORKSPACES'
+,p_cHeight=>1
+,p_colspan=>2
+,p_field_template=>wwv_flow_imp.id(63461560868439163)
+,p_item_template_options=>'#DEFAULT#'
+,p_lov_display_extra=>'NO'
+,p_attribute_01=>'NONE'
+,p_attribute_02=>'N'
+);
+wwv_flow_imp_page.create_page_computation(
+ p_id=>wwv_flow_imp.id(7476064344048512)
+,p_computation_sequence=>10
+,p_computation_item=>'P100_WORKSPACE'
+,p_computation_point=>'BEFORE_BOX_BODY'
+,p_computation_type=>'EXPRESSION'
+,p_computation_language=>'PLSQL'
+,p_computation=>'core.get_app_workspace()'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(7475819384048510)
+,p_name=>'FILTERS_CHANGED'
+,p_event_sequence=>10
+,p_triggering_element_type=>'ITEM'
+,p_triggering_element=>'P100_WORKSPACE'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'change'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(7475954697048511)
+,p_event_id=>wwv_flow_imp.id(7475819384048510)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_SUBMIT_PAGE'
+,p_attribute_02=>'Y'
 );
 end;
 /

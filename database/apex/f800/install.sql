@@ -33,6 +33,7 @@ prompt --install
 @@application/shared_components/navigation/tabs/parent.sql
 @@application/shared_components/user_interface/lovs/lov_applications.sql
 @@application/shared_components/user_interface/lovs/lov_users.sql
+@@application/shared_components/user_interface/lovs/lov_workspaces.sql
 @@application/pages/page_groups.sql
 @@application/comments.sql
 @@application/shared_components/navigation/breadcrumbentry.sql
