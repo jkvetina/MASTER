@@ -33,7 +33,7 @@ authentication:
   authentication-scheme: MASTER - OPEN_DOOR (TESTING ONLY) # 50432601105828086
 
 authorization: 
-  source-for-role-or-group-schemes: Access Control User Role Assignments
+  source-for-role-or-group-schemes: Custom Code
 
 session-management: 
   rejoin-sessions: Disabled
@@ -54,7 +54,7 @@ security:
   html-escaping-mode: Extended
 
 advanced: 
-  pass-ecid: N
+  pass-ecid: Y
 
 database-session: 
   parsing-schema: APPS

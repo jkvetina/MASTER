@@ -33,7 +33,7 @@ prompt APPLICATION 801 - App Template
 -- Application Export:
 --   Application:     801
 --   Name:            App Template
---   Date and Time:   19:18 Neděle Září 10, 2023
+--   Date and Time:   20:43 Neděle Září 10, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -114,6 +114,7 @@ wwv_imp_workspace.create_flow(
 'Created by Jan Kvetina, 2/2022',
 'www.jankvetina.cz'))
 ,p_authentication_id=>wwv_flow_imp.id(50432601105828086)
+,p_populate_roles=>'C'
 ,p_application_tab_set=>1
 ,p_logo_type=>'T'
 ,p_logo_text=>'&APP_NAME.'
@@ -127,7 +128,6 @@ wwv_imp_workspace.create_flow(
 ,p_browser_cache=>'N'
 ,p_browser_frame=>'D'
 ,p_deep_linking=>'Y'
-,p_pass_ecid=>'N'
 ,p_rejoin_existing_sessions=>'N'
 ,p_csv_encoding=>'N'
 ,p_auto_time_zone=>'N'
@@ -15312,7 +15312,7 @@ wwv_flow_imp_shared.create_authentication(
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
 ,p_use_secure_cookie_yn=>'N'
 ,p_ras_mode=>0
-,p_reference_id=>37901138623322271
+,p_reference_id=>63288166491439030
 );
 end;
 /
@@ -15325,7 +15325,7 @@ wwv_flow_imp_shared.create_authentication(
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
 ,p_use_secure_cookie_yn=>'N'
 ,p_ras_mode=>0
-,p_reference_id=>38115413754324720
+,p_reference_id=>63502441622441479
 );
 end;
 /

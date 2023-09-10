@@ -6,7 +6,8 @@
 
   subscription: 
     master: 
-      referenced-id: 37901138623322271
+      app: 800 # Master
+      referenced-id: 63288166491439030 # APEX_ACCOUNTS
 
   settings: 
     type: Oracle APEX Accounts
@@ -27,7 +28,8 @@
 
   subscription: 
     master: 
-      referenced-id: 38115413754324720
+      app: 800 # Master
+      referenced-id: 63502441622441479 # OPEN_DOOR (TESTING ONLY)
 
   settings: 
     type: Open Door Credentials

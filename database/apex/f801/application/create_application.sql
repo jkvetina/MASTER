@@ -41,6 +41,7 @@ wwv_imp_workspace.create_flow(
 'Created by Jan Kvetina, 2/2022',
 'www.jankvetina.cz'))
 ,p_authentication_id=>wwv_flow_imp.id(50432601105828086)
+,p_populate_roles=>'C'
 ,p_application_tab_set=>1
 ,p_logo_type=>'T'
 ,p_logo_text=>'&APP_NAME.'
@@ -54,7 +55,6 @@ wwv_imp_workspace.create_flow(
 ,p_browser_cache=>'N'
 ,p_browser_frame=>'D'
 ,p_deep_linking=>'Y'
-,p_pass_ecid=>'N'
 ,p_rejoin_existing_sessions=>'N'
 ,p_csv_encoding=>'N'
 ,p_auto_time_zone=>'N'
