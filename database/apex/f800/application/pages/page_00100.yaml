@@ -383,3 +383,6 @@ processes:
   server-side-condition: 
     when-button-pressed: REFRESH_MV # 7476159161048513
 
+  security: 
+    authorization-scheme: IS_DEVELOPER # 60089834032939902
+

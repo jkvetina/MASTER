@@ -154,6 +154,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(7476159161048513)
 ,p_process_success_message=>'Refreshed in &P100_START. seconds'
+,p_security_scheme=>wwv_flow_imp.id(60089834032939902)  -- IS_DEVELOPER
 ,p_internal_uid=>7476211481048514
 );
 wwv_flow_imp.component_end;
