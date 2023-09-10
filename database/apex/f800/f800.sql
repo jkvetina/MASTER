@@ -33,7 +33,7 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   20:32 Neděle Září 10, 2023
+--   Date and Time:   20:34 Neděle Září 10, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -145,7 +145,7 @@ begin
 wwv_flow_imp_shared.create_user_interface(
  p_id=>wwv_flow_imp.id(800)
 ,p_theme_id=>42
-,p_home_url=>'f?p=&APP_ID.:HOME:&APP_SESSION.::&DEBUG.:::'
+,p_home_url=>'f?p=&APP_ID.:LAUNCHPAD:&APP_SESSION.::&DEBUG.:::'
 ,p_login_url=>'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
 ,p_theme_style_by_user_pref=>false
 ,p_built_with_love=>false
