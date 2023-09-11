@@ -33,7 +33,7 @@ prompt APPLICATION 801 - App Template
 -- Application Export:
 --   Application:     801
 --   Name:            App Template
---   Date and Time:   17:10 Pondělí Září 11, 2023
+--   Date and Time:   20:56 Pondělí Září 11, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -47,6 +47,7 @@ prompt APPLICATION 801 - App Template
 --     Shared Components:
 --       Logic:
 --         Items:                 12
+--         Processes:              1
 --         App Settings:           1
 --         Build Options:          1
 --       Navigation:
@@ -705,6 +706,20 @@ end;
 prompt --application/shared_components/navigation/navigation_bar
 begin
 null;
+end;
+/
+prompt --application/shared_components/logic/application_processes/init_defaults
+begin
+wwv_flow_imp_shared.create_flow_process(
+ p_id=>wwv_flow_imp.id(14648252455703396)
+,p_process_sequence=>-10
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'INIT_DEFAULTS'
+,p_process_sql_clob=>'app.init_defaults();'
+,p_process_clob_language=>'PLSQL'
+,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
+);
 end;
 /
 prompt --application/shared_components/logic/application_items/format_date
@@ -18835,7 +18850,9 @@ end;
 /
 prompt --application/deployment/definition
 begin
-null;
+wwv_flow_imp_shared.create_install(
+ p_id=>wwv_flow_imp.id(14648082536700473)
+);
 end;
 /
 prompt --application/deployment/checks

@@ -11,7 +11,9 @@ wwv_flow_imp.component_begin (
 ,p_default_id_offset=>13873167262449266
 ,p_default_owner=>'APPS'
 );
-null;
+wwv_flow_imp_shared.create_install(
+ p_id=>wwv_flow_imp.id(14648082536700473)
+);
 wwv_flow_imp.component_end;
 end;
 /
