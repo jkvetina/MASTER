@@ -18,8 +18,9 @@ wwv_flow_imp_shared.create_security_scheme(
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '--selct .... app_id = :APP_ID and user = :APP_USER',
 'RETURN TRUE;'))
-,p_error_message=>'ACCESS_DENIED|USER'
+,p_error_message=>'ACCESS_DENIED|IS_USER'
 ,p_caching=>'BY_USER_BY_PAGE_VIEW'
+,p_comments=>'This needs to be relevant to active application'
 );
 wwv_flow_imp.component_end;
 end;

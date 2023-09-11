@@ -17,6 +17,7 @@ wwv_flow_imp_shared.create_security_scheme(
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
 ,p_attribute_01=>'RETURN FALSE;'
 ,p_caching=>'BY_USER_BY_SESSION'
+,p_comments=>'This is an alternative to build option Never and/or server side condition Never so you can keep values there'
 );
 wwv_flow_imp.component_end;
 end;

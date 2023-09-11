@@ -16,7 +16,7 @@ wwv_flow_imp_shared.create_security_scheme(
 ,p_name=>'IS_DEVELOPER'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
 ,p_attribute_01=>'RETURN core.is_developer();'
-,p_error_message=>'ACCESS_DENIED'
+,p_error_message=>'ACCESS_DENIED|IS_DEVELOPER'
 ,p_caching=>'BY_USER_BY_SESSION'
 );
 wwv_flow_imp.component_end;

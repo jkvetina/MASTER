@@ -33,7 +33,7 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   20:34 Neděle Září 10, 2023
+--   Date and Time:   05:14 Pondělí Září 11, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -116,7 +116,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-09-10'
+,p_flow_version=>'2023-09-11'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -576,8 +576,9 @@ wwv_flow_imp_shared.create_security_scheme(
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '--selct .... app_id = :APP_ID and user = :APP_USER',
 'RETURN TRUE;'))
-,p_error_message=>'ACCESS_DENIED|USER'
+,p_error_message=>'ACCESS_DENIED|IS_USER'
 ,p_caching=>'BY_USER_BY_PAGE_VIEW'
+,p_comments=>'This needs to be relevant to active application'
 );
 end;
 /
@@ -589,6 +590,7 @@ wwv_flow_imp_shared.create_security_scheme(
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
 ,p_attribute_01=>'RETURN FALSE;'
 ,p_caching=>'BY_USER_BY_SESSION'
+,p_comments=>'This is an alternative to build option Never and/or server side condition Never so you can keep values there'
 );
 end;
 /
@@ -599,7 +601,7 @@ wwv_flow_imp_shared.create_security_scheme(
 ,p_name=>'IS_DEVELOPER'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
 ,p_attribute_01=>'RETURN core.is_developer();'
-,p_error_message=>'ACCESS_DENIED'
+,p_error_message=>'ACCESS_DENIED|IS_DEVELOPER'
 ,p_caching=>'BY_USER_BY_SESSION'
 );
 end;
@@ -611,12 +613,14 @@ wwv_flow_imp_shared.create_security_scheme(
 ,p_name=>'IS_ADMIN'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'RETURN LOWER(:APP_USER) IN (',
-'    ''jan.k@remparsolutions.com'',',
-'    ''jank''',
+'RETURN :APP_USER IN (',
+'    UPPER(''jan.kvetina@gmail.com''),',
+'    ''JANK'',',
+'    ''DEV''',
 ');'))
-,p_error_message=>'ACCESS_DENIED|ADMIN'
+,p_error_message=>'ACCESS_DENIED|IS_ADMIN'
 ,p_caching=>'BY_USER_BY_PAGE_VIEW'
+,p_comments=>'This needs to be relevant to active application'
 );
 end;
 /
