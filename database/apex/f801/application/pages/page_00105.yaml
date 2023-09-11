@@ -5,6 +5,7 @@ identification:
   name: MODAL DIALOG TEMPLATE
   alias: MODAL-DIALOG-TEMPLATE
   title: MODAL DIALOG TEMPLATE
+  page-group: MAIN # 58127339030317860
 
 appearance: 
   page-mode: Modal Dialog

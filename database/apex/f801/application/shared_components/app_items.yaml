@@ -9,30 +9,20 @@
     session-state-protection: Restricted - May not be set from browser
     escape-special-characters: true
 
-- # ====== Application Item: G_CLIENT_ID =======================
+- # ====== Application Item: G_CONTEXT_ID ======================
   id: 13876282485472025
   identification: 
-    name: G_CLIENT_ID
+    name: G_CONTEXT_ID
     scope: Global
 
   security: 
     session-state-protection: Restricted - May not be set from browser
     escape-special-characters: true
 
-- # ====== Application Item: G_PROJECT_ID ======================
-  id: 13876473149472908
-  identification: 
-    name: G_PROJECT_ID
-    scope: Global
-
-  security: 
-    session-state-protection: Restricted - May not be set from browser
-    escape-special-characters: true
-
-- # ====== Application Item: G_APP_ID ==========================
+- # ====== Application Item: G_LOCKED_APP_ID ===================
   id: 13876752998479528
   identification: 
-    name: G_APP_ID
+    name: G_LOCKED_APP_ID
     scope: Global
 
   security: 

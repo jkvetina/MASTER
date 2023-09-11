@@ -15,10 +15,11 @@ wwv_flow_imp_shared.create_security_scheme(
  p_id=>wwv_flow_imp.id(50435901094915761)  -- MASTER - IS_ADMIN
 ,p_name=>'MASTER - IS_ADMIN'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
-,p_attribute_01=>'RETURN FALSE;'
-,p_error_message=>'ACCESS_DENIED|ADMIN'
-,p_reference_id=>38537511032053456
+,p_attribute_01=>'RETURN app.is_admin() = ''Y'';'
+,p_error_message=>'ACCESS_DENIED|IS_ADMIN'
+,p_reference_id=>63924538900170215
 ,p_caching=>'BY_USER_BY_PAGE_VIEW'
+,p_comments=>'This needs to be relevant to active application'
 );
 wwv_flow_imp.component_end;
 end;

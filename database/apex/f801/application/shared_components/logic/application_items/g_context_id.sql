@@ -1,7 +1,7 @@
-prompt --application/shared_components/logic/application_items/g_client_id
+prompt --application/shared_components/logic/application_items/g_context_id
 begin
 --   Manifest
---     APPLICATION ITEM: G_CLIENT_ID
+--     APPLICATION ITEM: G_CONTEXT_ID
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
@@ -13,7 +13,7 @@ wwv_flow_imp.component_begin (
 );
 wwv_flow_imp_shared.create_flow_item(
  p_id=>wwv_flow_imp.id(13876282485472025)
-,p_name=>'G_CLIENT_ID'
+,p_name=>'G_CONTEXT_ID'
 ,p_scope=>'GLOBAL'
 ,p_protection_level=>'I'
 );

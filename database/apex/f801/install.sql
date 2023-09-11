@@ -10,6 +10,10 @@ prompt --install
 @@application/shared_components/files/icons_app_icon_192_png.sql
 @@application/shared_components/files/icons_app_icon_512_png.sql
 @@application/plugin_settings.sql
+@@application/shared_components/security/authorizations/master_is_user_u.sql
+@@application/shared_components/security/authorizations/master_is_user_c.sql
+@@application/shared_components/security/authorizations/master_is_user_d.sql
+@@application/shared_components/security/authorizations/master_is_user_component.sql
 @@application/shared_components/security/authorizations/master_nobody.sql
 @@application/shared_components/security/authorizations/master_is_developer.sql
 @@application/shared_components/security/authorizations/master_is_admin.sql
@@ -24,9 +28,8 @@ prompt --install
 @@application/shared_components/logic/application_items/format_number_currency.sql
 @@application/shared_components/logic/application_items/format_time.sql
 @@application/shared_components/logic/application_items/format_time_short.sql
-@@application/shared_components/logic/application_items/g_app_id.sql
-@@application/shared_components/logic/application_items/g_client_id.sql
-@@application/shared_components/logic/application_items/g_project_id.sql
+@@application/shared_components/logic/application_items/g_context_id.sql
+@@application/shared_components/logic/application_items/g_locked_app_id.sql
 @@application/shared_components/logic/application_items/g_today.sql
 @@application/shared_components/logic/application_settings.sql
 @@application/shared_components/navigation/tabs/standard.sql
