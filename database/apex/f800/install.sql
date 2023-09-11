@@ -137,6 +137,7 @@ prompt --install
 @@application/user_interfaces/combined_files.sql
 @@application/pages/page_00100.sql
 @@application/pages/page_00900.sql
+@@application/pages/page_00980.sql
 @@application/deployment/definition.sql
 @@application/deployment/checks.sql
 @@application/deployment/buildoptions.sql
