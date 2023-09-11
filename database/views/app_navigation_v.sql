@@ -34,19 +34,22 @@ t AS (
     FROM app_navigation n
     CROSS JOIN curr
     JOIN app_navigation_map_mv s
-        ON s.app_id         = curr.app_id
+        ON s.app_id         = n.app_id
         AND s.page_id       = n.page_id
+    WHERE 1 = 1
+        AND n.app_id        = curr.app_id
         AND n.is_hidden     IS NULL
-    WHERE
-        'Y' = app.is_page_available (
+        --
+        AND 'Y' = app.is_page_available (
             in_user_id          => curr.user_id,
+            in_app_id           => s.app_id,
             in_page_id          => s.page_id,
             in_context_id       => curr.context_id,
             in_auth_scheme      => s.auth_scheme,
             in_procedure_name   => s.procedure_name
         )
-    -- add page zero to split navigation to left and right parts
     UNION ALL
+    -- add page zero to split navigation to left and right parts
     SELECT
         curr.app_id         AS app_id,
         curr.user_name      AS user_name,

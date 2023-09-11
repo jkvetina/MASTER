@@ -25,7 +25,7 @@ WITH p AS (
         --
         DBMS_LOB.SUBSTR(a.application_comment, 2000) AS app_desc,
         --
-        NVL(s.value, b.substitution_value) AS app_prefix,
+        core.get_app_prefix(in_app_id => a.application_id) AS app_prefix,
         --
         p.page_id,
         p.page_alias,
@@ -40,12 +40,6 @@ WITH p AS (
     FROM apex_applications a
     JOIN apex_application_pages p
         ON p.application_id         = a.application_id
-    LEFT JOIN apex_application_settings s
-        ON s.application_id         = a.application_id
-        AND s.name                  = 'APP_PREFIX'
-    LEFT JOIN apex_application_substitutions b
-        ON b.application_id         = a.application_id
-        AND b.substitution_string   = 'APP_PREFIX'
     WHERE a.workspace               NOT IN ('INTERNAL')
         AND a.workspace             NOT LIKE 'COM.%'
 )
@@ -67,17 +61,16 @@ SELECT
     p.auth_scheme,
 
     -- find procedures handling authorization on each page
-    NULLIF(MIN(s.owner || '.' || s.object_name || '.' || s.procedure_name), '..') AS procedure_name,
+    app.get_auth_function (
+        in_app_id       => p.app_id,
+        in_auth_scheme  => p.auth_scheme
+    ) AS procedure_name,
     --
     p.page_css_classes,
     p.page_mode,
     p.page_template
     --
 FROM p
-LEFT JOIN all_procedures s
-    ON s.owner                  = p.app_owner
-    AND s.object_name           IN ('AUTH', p.app_prefix || 'AUTH')
-    AND s.procedure_name        = REGEXP_SUBSTR(p.auth_scheme, '\S+$')
 GROUP BY
     p.workspace,
     p.app_id,
@@ -95,6 +88,9 @@ GROUP BY
     p.auth_scheme,
     p.page_css_classes,
     p.page_mode,
-    p.page_template;
+    p.page_template
+ORDER BY
+    p.app_id,
+    p.page_id;
 --
 
