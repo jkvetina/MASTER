@@ -462,27 +462,18 @@ CREATE OR REPLACE PACKAGE BODY app AS
         END IF;
 
         -- call procedure
-        core.log_debug('AUTH_PAGE', in_procedure_name, in_user_id, in_app_id, in_page_id, in_context_id);
-        /*
         IF in_auth_scheme LIKE 'IS_USER%' THEN
-
-            in_role_id              app_roles_map.role_id%TYPE,
-            in_user_id              app_roles.user_id%TYPE          := NULL,
-            in_app_id               app_roles.app_id%TYPE           := NULL,
-            in_context_id           app_roles_map.context_id%TYPE   := NULL
---
--- @TODO: check scheme name ^
---
             EXECUTE IMMEDIATE
-                'BEGIN :out_result := ' || in_procedure_name || '(in_user_id => :user_id, in_page_id => :page_id, in_context_id => :context_id); END;'
+                'BEGIN :out_result := ' || in_procedure_name || '(in_app_id => :app_id, in_page_id => :page_id, in_user_id => :user_id, in_context_id => :context_id); END;'
                 USING OUT out_result,
-                    IN in_user_id, IN in_app_id, IN in_page_id, IN in_context_id;
+                    IN in_app_id, IN in_page_id, IN in_user_id, IN in_context_id;
         ELSE
             EXECUTE IMMEDIATE
                 'BEGIN :out_result := ' || in_procedure_name || '(); END;'
                 USING OUT out_result;
         END IF;
-        */
+        --
+        --core.log_debug('AUTHORIZED_PAGE', out_result, in_procedure_name, in_app_id, in_page_id, in_user_id, in_context_id);
         --
         RETURN NVL(out_result, 'N');
     EXCEPTION
