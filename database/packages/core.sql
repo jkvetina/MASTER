@@ -1,15 +1,25 @@
 CREATE OR REPLACE PACKAGE BODY core AS
 
-    FUNCTION get_owner (
+    FUNCTION get_app_id
+    RETURN NUMBER
+    AS
+    BEGIN
+        RETURN APEX_APPLICATION.G_FLOW_ID;
+    END;
+
+
+
+    FUNCTION get_app_owner (
         in_app_id               NUMBER
     )
     RETURN VARCHAR2
     AS
         out_owner               apex_applications.owner%TYPE;
     BEGIN
-        SELECT a.owner INTO out_owner
+        SELECT a.owner
+        INTO out_owner
         FROM apex_applications a
-        WHERE a.application_id = in_app_id;
+        WHERE a.application_id = COALESCE(in_app_id, core.get_app_id());
         --
         RETURN out_owner;
     EXCEPTION
@@ -19,21 +29,38 @@ CREATE OR REPLACE PACKAGE BODY core AS
 
 
 
-    FUNCTION get_owner
+    FUNCTION get_app_owner
     RETURN VARCHAR2
     AS
         out_owner               apex_applications.owner%TYPE;
     BEGIN
-        RETURN COALESCE(core.get_owner(core.get_app_id()), APEX_UTIL.GET_DEFAULT_SCHEMA, USER);
+        RETURN COALESCE(core.get_app_owner(in_app_id => core.get_app_id()), APEX_UTIL.GET_DEFAULT_SCHEMA, USER);
     END;
 
 
 
-    FUNCTION get_app_id
-    RETURN NUMBER
+    FUNCTION get_app_prefix (
+        in_app_id               NUMBER      := NULL
+    )
+    RETURN VARCHAR2
     AS
+        out_prefix              VARCHAR2(30);
     BEGIN
-        RETURN APEX_APPLICATION.G_FLOW_ID;
+        SELECT NVL(s.value, b.substitution_value)
+        INTO out_prefix
+        FROM apex_applications a
+        LEFT JOIN apex_application_settings s
+            ON s.application_id         = a.application_id
+            AND s.name                  = 'APP_PREFIX'
+        LEFT JOIN apex_application_substitutions b
+            ON b.application_id         = a.application_id
+            AND b.substitution_string   = 'APP_PREFIX'
+        WHERE a.application_id = COALESCE(in_app_id, core.get_app_id());
+        --
+        RETURN out_prefix;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
     END;
 
 
@@ -53,6 +80,39 @@ CREATE OR REPLACE PACKAGE BODY core AS
     EXCEPTION
     WHEN NO_DATA_FOUND THEN
         RETURN NULL;
+    END;
+
+
+
+    FUNCTION get_app_homepage (
+        in_app_id               NUMBER      := NULL
+    )
+    RETURN NUMBER
+    AS
+        out_page_id             apex_application_pages.page_id%TYPE;
+    BEGIN
+        SELECT p.page_id
+        INTO out_page_id
+        FROM apex_applications a
+        JOIN apex_application_pages p
+            ON p.application_id     = a.application_id
+            AND p.page_alias        = REGEXP_SUBSTR(a.home_link, ':([^:]+)', 1, 1, NULL, 1)
+        WHERE a.application_id      = COALESCE(in_app_id, core.get_app_id());
+        --
+        RETURN out_page_id;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        BEGIN
+            SELECT TO_NUMBER(REGEXP_SUBSTR(a.home_link, ':([^:]+)', 1, 1, NULL, 1))
+            INTO out_page_id
+            FROM apex_applications a
+            WHERE a.application_id      = COALESCE(in_app_id, core.get_app_id());
+        EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            NULL;
+        END;
+        --
+        RETURN out_page_id;
     END;
 
 
@@ -2216,7 +2276,7 @@ CREATE OR REPLACE PACKAGE BODY core AS
     BEGIN
         -- better version of DBMS_UTILITY.FORMAT_CALL_STACK
         FOR i IN REVERSE NVL(in_offset, 2) .. UTL_CALL_STACK.DYNAMIC_DEPTH LOOP  -- 2 = ignore this function, 3 = ignore caller
-            CONTINUE WHEN in_skip_others AND NVL(UTL_CALL_STACK.OWNER(i), '-') NOT IN (core.get_owner());
+            CONTINUE WHEN in_skip_others AND NVL(UTL_CALL_STACK.OWNER(i), '-') NOT IN (core.get_app_owner());
             --
             out_module  := UTL_CALL_STACK.CONCATENATE_SUBPROGRAM(UTL_CALL_STACK.SUBPROGRAM(i));
             out_stack   := out_stack || out_module || CASE WHEN in_line_numbers THEN ' [' || TO_CHAR(UTL_CALL_STACK.UNIT_LINE(i)) || ']' END || in_splitter;
