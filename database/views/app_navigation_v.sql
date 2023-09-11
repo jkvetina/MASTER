@@ -19,7 +19,7 @@ WITH curr AS (
 t AS (
     -- available pages
     SELECT /*+ MATERIALIZE */
-        curr.app_id         AS app_id,
+        n.app_id            AS app_id,
         curr.user_name      AS user_name,
         --
         n.page_id,
@@ -37,7 +37,7 @@ t AS (
         ON s.app_id         = n.app_id
         AND s.page_id       = n.page_id
     WHERE 1 = 1
-        AND n.app_id        = curr.app_id
+        AND n.app_id        IN (curr.app_id, 800)
         AND n.is_hidden     IS NULL
         --
         AND 'Y' = app.is_page_available (
@@ -67,6 +67,19 @@ t AS (
         WHERE n.app_id      = curr.app_id
             AND n.page_id   = 0
     )
+    UNION ALL
+    -- add logout page
+    SELECT
+        800                 AS app_id,
+        curr.user_name      AS user_name,
+        9999                AS page_id,
+        900                 AS parent_id,
+        NULL                AS page_name,
+        NULL                AS page_alias,
+        NULL                AS auth_scheme,
+        NULL                AS is_reset,
+        999                 AS order#
+    FROM curr
 ),
 n AS (
     -- build the tree
@@ -132,38 +145,6 @@ n AS (
     START WITH t.parent_id      IS NULL
     ORDER SIBLINGS BY t.order# NULLS LAST, t.page_id
 )
-SELECT                          -- append launchpad icon/link
-    1                           AS lvl,
-    '<span class="fa fa-navicon"></span>' AS label,
-    --
-    APEX_PAGE.GET_URL (
-        p_application   => 800,
-        p_page          => 100
-        --p_clear_cache   => 100
-    ) AS target,
-    --
-    NULL                        AS is_current_list_entry,
-    NULL                        AS image,
-    NULL                        AS image_attribute,
-    NULL                        AS image_alt_attribute,
-    NULL                        AS attribute01,              -- <li class="...">
-    NULL                        AS attribute02,              -- <li>...<a>
-    NULL                        AS attribute03,              -- <a class="..."
-    NULL                        AS attribute04,              -- <a title="..."
-    NULL                        AS attribute05,              -- <a ...> // javascript onclick
-    NULL                        AS attribute06,              -- <a>... #TEXT</a>
-    NULL                        AS attribute07,              -- <a>#TEXT ...</a>
-    NULL                        AS attribute08,              -- </a>...
-    NULL                        AS attribute09,
-    NULL                        AS attribute10,
-    NULL                        AS page_id,
-    NULL                        AS parent_id,
-    NULL                        AS auth_scheme,
-    NULL                        AS label__,
-    NULL                        AS order#
-FROM curr
---
-UNION ALL
 SELECT
     n.lvl,
     n.label,
@@ -187,101 +168,7 @@ SELECT
     n.auth_scheme,
     n.label__,
     n.order#
-FROM n
---
-UNION ALL
-SELECT                          -- append user profile page and logout
-    1                           AS lvl,
-    --
-    core.get_page_name(in_name => t.page_name) AS label,
-    --
-    APEX_PAGE.GET_URL (
-        p_application   => t.app_id,
-        p_page          => t.page_id,
-        p_clear_cache   => t.page_id
-    ) AS target,
-    --
-    NULL                        AS is_current_list_entry,
-    NULL                        AS image,
-    NULL                        AS image_attribute,
-    NULL                        AS image_alt_attribute,
-    NULL                        AS attribute01,              -- <li class="...">
-    NULL                        AS attribute02,              -- <li>...<a>
-    NULL                        AS attribute03,              -- <a class="..."
-    NULL                        AS attribute04,              -- <a title="..."
-    NULL                        AS attribute05,              -- <a ...> // javascript onclick
-    NULL                        AS attribute06,              -- <a>... #TEXT</a>
-    NULL                        AS attribute07,              -- <a>#TEXT ...</a>
-    NULL                        AS attribute08,              -- </a>...
-    NULL                        AS attribute09,
-    NULL                        AS attribute10,
-    NULL                        AS page_id,
-    NULL                        AS parent_id,
-    NULL                        AS auth_scheme,
-    NULL                        AS label__,
-    '9998/help'                 AS order#
-FROM app_navigation_map_mv t
-WHERE t.app_id      = 800
-    AND t.page_id   = 980
---
-UNION ALL
-SELECT                          -- append user profile page and logout
-    1                           AS lvl,
-    curr.user_name              AS label,
-    --
-    APEX_PAGE.GET_URL (
-        p_application   => 800,
-        p_page          => 900,
-        p_clear_cache   => 900
-    ) AS target,
-    --
-    NULL                        AS is_current_list_entry,
-    NULL                        AS image,
-    NULL                        AS image_attribute,
-    NULL                        AS image_alt_attribute,
-    'RIGHT'                     AS attribute01,              -- <li class="...">
-    NULL                        AS attribute02,              -- <li>...<a>
-    NULL                        AS attribute03,              -- <a class="..."
-    NULL                        AS attribute04,              -- <a title="..."
-    NULL                        AS attribute05,              -- <a ...> // javascript onclick
-    NULL                        AS attribute06,              -- <a>... #TEXT</a>
-    NULL                        AS attribute07,              -- <a>#TEXT ...</a>
-    NULL                        AS attribute08,              -- </a>...
-    NULL                        AS attribute09,
-    NULL                        AS attribute10,
-    NULL                        AS page_id,
-    NULL                        AS parent_id,
-    NULL                        AS auth_scheme,
-    NULL                        AS label__,
-    '9999/user-profile'         AS order#
-FROM curr
---
-UNION ALL
-SELECT                          -- append user profile page and logout
-    2                           AS lvl,
-    'Logout'                    AS label,
-    '&' || 'LOGOUT_URL.'        AS target,
-    --
-    NULL                        AS is_current_list_entry,
-    NULL                        AS image,
-    NULL                        AS image_attribute,
-    NULL                        AS image_alt_attribute,
-    'RIGHT'                     AS attribute01,              -- <li class="...">
-    NULL                        AS attribute02,              -- <li>...<a>
-    NULL                        AS attribute03,              -- <a class="..."
-    NULL                        AS attribute04,              -- <a title="..."
-    NULL                        AS attribute05,              -- <a ...> // javascript onclick
-    NULL                        AS attribute06,              -- <a>... #TEXT</a>
-    NULL                        AS attribute07,              -- <a>#TEXT ...</a>
-    NULL                        AS attribute08,              -- </a>...
-    NULL                        AS attribute09,
-    NULL                        AS attribute10,
-    NULL                        AS page_id,
-    NULL                        AS parent_id,
-    NULL                        AS auth_scheme,
-    NULL                        AS label__,
-    '9999/user-profile/logout'  AS order#
-FROM curr;
+FROM n;
 --
 COMMENT ON TABLE app_navigation_v IS '';
 
