@@ -130,6 +130,7 @@ prompt --install
 @@application/shared_components/plugins/template_component/theme_42_media_list.sql
 @@application/user_interfaces/combined_files.sql
 @@application/pages/page_00100.sql
+@@application/pages/page_00900.sql
 @@application/deployment/definition.sql
 @@application/deployment/checks.sql
 @@application/deployment/buildoptions.sql
