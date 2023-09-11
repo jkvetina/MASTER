@@ -550,6 +550,7 @@ CREATE OR REPLACE PACKAGE BODY app AS
             RETURN;
         END IF;
         --
+        rec.app_id              := core.get_app_id();
         rec.component_id        := in_component_id;
         rec.component_type      := get_component_type(in_component_type);
         rec.component_name      := in_component_name;
