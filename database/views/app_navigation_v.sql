@@ -108,7 +108,11 @@ n AS (
             END AS attribute03,
         --
         NULL                    AS attribute04,
-        NULL                    AS attribute05,
+        --
+        CASE WHEN LEVEL > 2
+            THEN ' style="margin: -0.25rem 0.5rem -0.25rem ' || (LEVEL - 2) || 'rem; font-size: 70%;"'
+            END AS attribute05,
+        --
         NULL                    AS attribute06,
         NULL                    AS attribute07,
         NULL                    AS attribute08,
