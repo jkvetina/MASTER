@@ -13,13 +13,13 @@ wwv_flow_imp.component_begin (
 );
 wwv_flow_imp_page.create_page(
  p_id=>100
-,p_name=>'Launchpad'
+,p_name=>'#fa-navicon'
 ,p_alias=>'LAUNCHPAD'
-,p_step_title=>'Launchpad'
+,p_step_title=>'&APP_NAME.'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(43461472849711906)  -- MAIN
 ,p_page_template_options=>'#DEFAULT#'
-,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
+,p_required_role=>wwv_flow_imp.id(43462402185717150)  -- IS_USER
 ,p_protection_level=>'C'
 ,p_page_component_map=>'23'
 ,p_last_updated_by=>'DEV'

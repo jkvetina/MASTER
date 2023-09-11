@@ -1,10 +1,10 @@
 ---
-# ====== Page: Launchpad =====================================
+# ====== Page: #fa-navicon ===================================
 id: 100
 identification: 
-  name: Launchpad
+  name: '#fa-navicon'
   alias: LAUNCHPAD
-  title: Launchpad
+  title: '&APP_NAME.'
   page-group: MAIN # 43461472849711906
 
 appearance: 
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+  authorization-scheme: IS_USER # 43462402185717150
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
