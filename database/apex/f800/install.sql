@@ -10,6 +10,10 @@ prompt --install
 @@application/shared_components/files/icons_app_icon_192_png.sql
 @@application/shared_components/files/icons_app_icon_512_png.sql
 @@application/plugin_settings.sql
+@@application/shared_components/security/authorizations/is_user_component.sql
+@@application/shared_components/security/authorizations/is_user_c.sql
+@@application/shared_components/security/authorizations/is_user_d.sql
+@@application/shared_components/security/authorizations/is_user_u.sql
 @@application/shared_components/security/authorizations/is_user.sql
 @@application/shared_components/security/authorizations/nobody.sql
 @@application/shared_components/security/authorizations/is_developer.sql

@@ -1,4 +1,96 @@
 ---
+- # ====== Authorization: IS_USER_COMPONENT ====================
+  id: 14635437545348202
+  identification: 
+    name: IS_USER_COMPONENT
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN app.is_user_component (
+          in_component_id     => :APP_COMPONENT_ID,
+          in_component_type   => :APP_COMPONENT_TYPE,
+          in_component_name   => :APP_COMPONENT_NAME,
+          in_action           => NULL
+      ) = 'Y';
+
+  server-cache: 
+    evaluation-point: Always (No Caching)
+
+  error: 
+    error-message: ACCESS_DENIED|IS_USER_COMPONENT
+
+- # ====== Authorization: IS_USER_C ============================
+  id: 14635652640350931
+  identification: 
+    name: IS_USER_C
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN app.is_user_component (
+          in_component_id     => :APP_COMPONENT_ID,
+          in_component_type   => :APP_COMPONENT_TYPE,
+          in_component_name   => :APP_COMPONENT_NAME,
+          in_action           => 'C'
+      ) = 'Y';
+
+  server-cache: 
+    evaluation-point: Always (No Caching)
+
+  error: 
+    error-message: ACCESS_DENIED|IS_USER_C
+
+- # ====== Authorization: IS_USER_D ============================
+  id: 14636315967358599
+  identification: 
+    name: IS_USER_D
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN app.is_user_component (
+          in_component_id     => :APP_COMPONENT_ID,
+          in_component_type   => :APP_COMPONENT_TYPE,
+          in_component_name   => :APP_COMPONENT_NAME,
+          in_action           => 'D'
+      ) = 'Y';
+
+  server-cache: 
+    evaluation-point: Always (No Caching)
+
+  error: 
+    error-message: ACCESS_DENIED|IS_USER_D
+
+- # ====== Authorization: IS_USER_U ============================
+  id: 14636542046359086
+  identification: 
+    name: IS_USER_U
+
+  authorization-scheme: 
+    type: PL/SQL Function Returning Boolean
+
+  settings: 
+    pl/sql-function-body: |
+      RETURN app.is_user_component (
+          in_component_id     => :APP_COMPONENT_ID,
+          in_component_type   => :APP_COMPONENT_TYPE,
+          in_component_name   => :APP_COMPONENT_NAME,
+          in_action           => 'U'
+      ) = 'Y';
+
+  server-cache: 
+    evaluation-point: Always (No Caching)
+
+  error: 
+    error-message: ACCESS_DENIED|IS_USER_U
+
 - # ====== Authorization: IS_USER ==============================
   id: 43462402185717150
   identification: 
@@ -8,9 +100,7 @@
     type: PL/SQL Function Returning Boolean
 
   settings: 
-    pl/sql-function-body: |
-      --selct .... app_id = :APP_ID and user = :APP_USER
-      RETURN TRUE;
+    pl/sql-function-body: RETURN app.is_user() = 'Y';
 
   server-cache: 
     evaluation-point: Once per Page View
@@ -64,12 +154,7 @@
     type: PL/SQL Function Returning Boolean
 
   settings: 
-    pl/sql-function-body: |
-      RETURN :APP_USER IN (
-          UPPER('jan.kvetina@gmail.com'),
-          'JANK',
-          'DEV'
-      );
+    pl/sql-function-body: RETURN app.is_admin() = 'Y';
 
   server-cache: 
     evaluation-point: Once per Page View
