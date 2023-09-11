@@ -1,7 +1,7 @@
-prompt --application/shared_components/logic/application_items/g_project_id
+prompt --application/shared_components/logic/application_items/g_context_id
 begin
 --   Manifest
---     APPLICATION ITEM: G_PROJECT_ID
+--     APPLICATION ITEM: G_CONTEXT_ID
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
@@ -12,8 +12,8 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_flow_item(
- p_id=>wwv_flow_imp.id(14516201082399352)
-,p_name=>'G_PROJECT_ID'
+ p_id=>wwv_flow_imp.id(14516038395398443)
+,p_name=>'G_CONTEXT_ID'
 ,p_scope=>'GLOBAL'
 ,p_protection_level=>'I'
 );

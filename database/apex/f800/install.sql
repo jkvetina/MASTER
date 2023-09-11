@@ -19,6 +19,8 @@ prompt --install
 @@application/shared_components/security/authorizations/is_developer.sql
 @@application/shared_components/security/authorizations/is_admin.sql
 @@application/shared_components/navigation/navigation_bar.sql
+@@application/shared_components/logic/application_processes/after_auth.sql
+@@application/shared_components/logic/application_processes/init_defaults.sql
 @@application/shared_components/logic/application_items/format_date.sql
 @@application/shared_components/logic/application_items/format_date_short.sql
 @@application/shared_components/logic/application_items/format_date_time.sql
@@ -29,8 +31,8 @@ prompt --install
 @@application/shared_components/logic/application_items/format_time.sql
 @@application/shared_components/logic/application_items/format_time_short.sql
 @@application/shared_components/logic/application_items/g_app_id.sql
-@@application/shared_components/logic/application_items/g_client_id.sql
-@@application/shared_components/logic/application_items/g_project_id.sql
+@@application/shared_components/logic/application_items/g_app_name.sql
+@@application/shared_components/logic/application_items/g_context_id.sql
 @@application/shared_components/logic/application_items/g_today.sql
 @@application/shared_components/logic/application_settings.sql
 @@application/shared_components/navigation/tabs/standard.sql

@@ -1,0 +1,34 @@
+---
+- # ====== Application Process: AFTER_AUTH =====================
+  id: 14610014880346487
+  identification: 
+    name: AFTER_AUTH
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: app.after_auth();
+
+  execution: 
+    sequence: -10
+    point: After Authentication
+
+- # ====== Application Process: INIT_DEFAULTS ==================
+  id: 14610248066357632
+  identification: 
+    name: INIT_DEFAULTS
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: app.init_defaults();
+
+  execution: 
+    sequence: -10
+    point: Before Header
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
