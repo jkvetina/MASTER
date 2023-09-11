@@ -2,19 +2,19 @@ CREATE OR REPLACE FORCE VIEW app_navigation_v AS
 WITH curr AS (
     -- current context
     SELECT /*+ MATERIALIZE */
-        core.get_app_id()                   AS app_id,
-        core.get_page_id()                  AS page_id,
+        core.get_app_id()                           AS app_id,
+        core.get_page_id()                          AS page_id,
         n.parent_id,
-        core.get_page_group(n.page_id)      AS page_group,
-        COALESCE(NULL, core.get_user_id())  AS user_id,
-        COALESCE(NULL, core.get_user_id())  AS user_name
+        core.get_page_group(n.page_id)              AS page_group,
+        COALESCE(u.user_id,   core.get_user_id())   AS user_id,
+        COALESCE(u.user_name, core.get_user_id())   AS user_name,
+        core.get_item('G_CONTEXT_ID')               AS context_id
     FROM DUAL
     LEFT JOIN app_navigation n
         ON n.app_id         = core.get_app_id()
         AND n.page_id       = core.get_page_id()
-    --LEFT JOIN app_users u
-    --    ON u.user_id        = core.get_user_id()
-    --    AND u.is_active     = 'Y'
+    LEFT JOIN app_users u
+        ON u.user_id        = core.get_user_id()
 ),
 t AS (
     -- available pages
@@ -37,15 +37,33 @@ t AS (
         ON s.app_id         = curr.app_id
         AND s.page_id       = n.page_id
         AND n.is_hidden     IS NULL
-    /*
     WHERE
-        'Y' = app_auth.is_page_available (
+        'Y' = app.is_page_available (
             in_user_id          => curr.user_id,
             in_page_id          => s.page_id,
+            in_context_id       => curr.context_id,
             in_auth_scheme      => s.auth_scheme,
             in_procedure_name   => s.procedure_name
         )
-    */
+    -- add page zero to split navigation to left and right parts
+    UNION ALL
+    SELECT
+        curr.app_id         AS app_id,
+        curr.user_name      AS user_name,
+        0                   AS page_id,
+        NULL                AS parent_id,
+        NULL                AS page_name,
+        NULL                AS page_alias,
+        NULL                AS auth_scheme,
+        NULL                AS is_reset,
+        666                 AS order#
+    FROM curr
+    WHERE NOT EXISTS (
+        SELECT 1
+        FROM app_navigation n
+        WHERE n.app_id      = curr.app_id
+            AND n.page_id   = 0
+    )
 ),
 n AS (
     -- build the tree
@@ -162,7 +180,101 @@ SELECT
     n.auth_scheme,
     n.label__,
     n.order#
-FROM n;
+FROM n
+--
+UNION ALL
+SELECT                          -- append user profile page and logout
+    1                           AS lvl,
+    --
+    core.get_page_name(in_name => t.page_name) AS label,
+    --
+    APEX_PAGE.GET_URL (
+        p_application   => t.app_id,
+        p_page          => t.page_id,
+        p_clear_cache   => t.page_id
+    ) AS target,
+    --
+    NULL                        AS is_current_list_entry,
+    NULL                        AS image,
+    NULL                        AS image_attribute,
+    NULL                        AS image_alt_attribute,
+    NULL                        AS attribute01,              -- <li class="...">
+    NULL                        AS attribute02,              -- <li>...<a>
+    NULL                        AS attribute03,              -- <a class="..."
+    NULL                        AS attribute04,              -- <a title="..."
+    NULL                        AS attribute05,              -- <a ...> // javascript onclick
+    NULL                        AS attribute06,              -- <a>... #TEXT</a>
+    NULL                        AS attribute07,              -- <a>#TEXT ...</a>
+    NULL                        AS attribute08,              -- </a>...
+    NULL                        AS attribute09,
+    NULL                        AS attribute10,
+    NULL                        AS page_id,
+    NULL                        AS parent_id,
+    NULL                        AS auth_scheme,
+    NULL                        AS label__,
+    '9998/help'                 AS order#
+FROM app_navigation_map_mv t
+WHERE t.app_id      = 800
+    AND t.page_id   = 980
+--
+UNION ALL
+SELECT                          -- append user profile page and logout
+    1                           AS lvl,
+    curr.user_name              AS label,
+    --
+    APEX_PAGE.GET_URL (
+        p_application   => 800,
+        p_page          => 900,
+        p_clear_cache   => 900
+    ) AS target,
+    --
+    NULL                        AS is_current_list_entry,
+    NULL                        AS image,
+    NULL                        AS image_attribute,
+    NULL                        AS image_alt_attribute,
+    'RIGHT'                     AS attribute01,              -- <li class="...">
+    NULL                        AS attribute02,              -- <li>...<a>
+    NULL                        AS attribute03,              -- <a class="..."
+    NULL                        AS attribute04,              -- <a title="..."
+    NULL                        AS attribute05,              -- <a ...> // javascript onclick
+    NULL                        AS attribute06,              -- <a>... #TEXT</a>
+    NULL                        AS attribute07,              -- <a>#TEXT ...</a>
+    NULL                        AS attribute08,              -- </a>...
+    NULL                        AS attribute09,
+    NULL                        AS attribute10,
+    NULL                        AS page_id,
+    NULL                        AS parent_id,
+    NULL                        AS auth_scheme,
+    NULL                        AS label__,
+    '9999/user-profile'         AS order#
+FROM curr
+--
+UNION ALL
+SELECT                          -- append user profile page and logout
+    2                           AS lvl,
+    'Logout'                    AS label,
+    '&' || 'LOGOUT_URL.'        AS target,
+    --
+    NULL                        AS is_current_list_entry,
+    NULL                        AS image,
+    NULL                        AS image_attribute,
+    NULL                        AS image_alt_attribute,
+    'RIGHT'                     AS attribute01,              -- <li class="...">
+    NULL                        AS attribute02,              -- <li>...<a>
+    NULL                        AS attribute03,              -- <a class="..."
+    NULL                        AS attribute04,              -- <a title="..."
+    NULL                        AS attribute05,              -- <a ...> // javascript onclick
+    NULL                        AS attribute06,              -- <a>... #TEXT</a>
+    NULL                        AS attribute07,              -- <a>#TEXT ...</a>
+    NULL                        AS attribute08,              -- </a>...
+    NULL                        AS attribute09,
+    NULL                        AS attribute10,
+    NULL                        AS page_id,
+    NULL                        AS parent_id,
+    NULL                        AS auth_scheme,
+    NULL                        AS label__,
+    '9999/user-profile/logout'  AS order#
+FROM curr;
 --
 COMMENT ON TABLE app_navigation_v IS '';
 
