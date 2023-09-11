@@ -1,19 +1,4 @@
 ---
-- # ====== Application Process: AFTER_AUTH =====================
-  id: 14610014880346487
-  identification: 
-    name: AFTER_AUTH
-    type: NATIVE_PLSQL
-
-  source: 
-    location: Local Database
-    language: PL/SQL
-    pl/sql-code: app.after_auth();
-
-  execution: 
-    sequence: -10
-    point: After Authentication
-
 - # ====== Application Process: INIT_DEFAULTS ==================
   id: 14610248066357632
   identification: 

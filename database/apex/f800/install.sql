@@ -19,7 +19,6 @@ prompt --install
 @@application/shared_components/security/authorizations/is_developer.sql
 @@application/shared_components/security/authorizations/is_admin.sql
 @@application/shared_components/navigation/navigation_bar.sql
-@@application/shared_components/logic/application_processes/after_auth.sql
 @@application/shared_components/logic/application_processes/init_defaults.sql
 @@application/shared_components/logic/application_items/format_date.sql
 @@application/shared_components/logic/application_items/format_date_short.sql
