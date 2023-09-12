@@ -84,7 +84,7 @@ CREATE OR REPLACE PACKAGE BODY app AS
                     a.application_id,
                     a.application_name
                 FROM apex_applications a
-                WHERE a.application_id = core.get_app_id()
+                WHERE a.application_id = core.get_app_id(in_dont_override => 'Y')
             ) LOOP
                 core.log_debug('SWITCH_APP_CONTEXT', c.application_id);
                 --

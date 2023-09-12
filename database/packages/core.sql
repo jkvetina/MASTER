@@ -1,11 +1,13 @@
 CREATE OR REPLACE PACKAGE BODY core AS
 
-    FUNCTION get_app_id
+    FUNCTION get_app_id (
+        in_dont_override        CHAR := NULL
+    )
     RETURN NUMBER
     AS
     BEGIN
         RETURN COALESCE (
-            TO_NUMBER(APEX_UTIL.GET_SESSION_STATE('G_APP_ID')),
+            CASE WHEN in_dont_override IS NULL THEN TO_NUMBER(APEX_UTIL.GET_SESSION_STATE('G_APP_ID')) END,
             APEX_APPLICATION.G_FLOW_ID
         );
     EXCEPTION
@@ -79,6 +81,25 @@ CREATE OR REPLACE PACKAGE BODY core AS
         out_name                apex_applications.workspace%TYPE;
     BEGIN
         SELECT a.workspace INTO out_name
+        FROM apex_applications a
+        WHERE a.application_id = COALESCE(in_app_id, core.get_app_id());
+        --
+        RETURN out_name;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+    END;
+
+
+
+    FUNCTION get_app_name (
+        in_app_id               NUMBER      := NULL
+    )
+    RETURN VARCHAR2
+    AS
+        out_name                apex_applications.application_name%TYPE;
+    BEGIN
+        SELECT a.application_name INTO out_name
         FROM apex_applications a
         WHERE a.application_id = COALESCE(in_app_id, core.get_app_id());
         --
@@ -439,8 +460,8 @@ CREATE OR REPLACE PACKAGE BODY core AS
         IF out_name IS NULL THEN
             SELECT p.page_name INTO out_name
             FROM apex_application_pages p
-            WHERE p.application_id      = COALESCE(in_app_id, core.get_app_id())
-                AND p.page_id           = COALESCE(in_page_id, core.get_page_id());
+            WHERE p.application_id      = COALESCE(in_app_id,   core.get_app_id())
+                AND p.page_id           = COALESCE(in_page_id,  core.get_page_id());
         END IF;
 
         -- transform icons
