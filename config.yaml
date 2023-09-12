@@ -1,0 +1,15 @@
+
+# filter table data before export to CSV file
+csv_export_filters:
+  APP_NAVIGATION : 'app_id = 800'
+
+# auto add and lock new object with the prefix
+auto_lock_add_prefix : 'APP'
+
+# auto filter object names (to reduce subset of fetched objects significantly)
+auto_filter_prefix   : 'APP'
+
+# auto refresh and auto add CSV files
+auto_csv_refresh  : False
+auto_csv_add      : ['APP_LOV_%']
+
