@@ -23,7 +23,10 @@ WITH p AS (
         a.application_group         AS app_group,
         a.application_name          AS app_name,
         --
-        DBMS_LOB.SUBSTR(a.application_comment, 2000) AS app_desc,
+        COALESCE (
+            s.substitution_value,                           -- APP_DESC substitution
+            DBMS_LOB.SUBSTR(a.application_comment, 2000)    -- application comment
+        ) AS app_desc,
         --
         core.get_app_prefix(in_app_id => a.application_id) AS app_prefix,
         --
@@ -40,6 +43,9 @@ WITH p AS (
     FROM apex_applications a
     JOIN apex_application_pages p
         ON p.application_id         = a.application_id
+    LEFT JOIN apex_application_substitutions s
+        ON s.application_id         = a.application_id
+        AND s.substitution_string   = 'APP_DESC'
     WHERE a.workspace               NOT IN ('INTERNAL')
         AND a.workspace             NOT LIKE 'COM.%'
 )
