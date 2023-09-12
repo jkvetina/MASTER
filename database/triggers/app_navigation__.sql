@@ -11,9 +11,10 @@ COMPOUND TRIGGER
         -- make sure application exists
         IF INSERTING THEN
             BEGIN
-                INSERT INTO app_applications (app_id)
+                INSERT INTO app_applications (app_id, is_active)
                 VALUES (
-                    :NEW.app_id
+                    :NEW.app_id,
+                    'Y'
                 );
             EXCEPTION
             WHEN DUP_VAL_ON_INDEX THEN
