@@ -20,6 +20,7 @@ prompt --install
 @@application/shared_components/security/authorizations/is_admin.sql
 @@application/shared_components/navigation/navigation_bar.sql
 @@application/shared_components/logic/application_processes/init_defaults.sql
+@@application/shared_components/logic/application_processes/ajax_ping.sql
 @@application/shared_components/logic/application_items/format_date.sql
 @@application/shared_components/logic/application_items/format_date_short.sql
 @@application/shared_components/logic/application_items/format_date_time.sql
@@ -134,6 +135,7 @@ prompt --install
 @@application/shared_components/plugins/template_component/theme_42_content_row.sql
 @@application/shared_components/plugins/template_component/theme_42_media_list.sql
 @@application/user_interfaces/combined_files.sql
+@@application/pages/page_00000.sql
 @@application/pages/page_00100.sql
 @@application/pages/page_00900.sql
 @@application/pages/page_00980.sql

@@ -740,6 +740,78 @@ CREATE OR REPLACE PACKAGE BODY app AS
         core.raise_error();
     END;
 
+
+
+    PROCEDURE ajax_ping
+    AS
+    BEGIN
+        APEX_JSON.OPEN_OBJECT();
+        --
+        -- APEX_APPLICATION.G_X01, APEX_APPLICATION.G_X02, APEX_APPLICATION.G_X03
+        --
+        FOR c IN (
+            SELECT
+                m.app_id,
+                m.user_id,
+                m.message_id,
+                m.message_type,
+                m.message_payload
+            FROM app_user_messages m
+            WHERE m.app_id              = core.get_app_id()
+                AND m.user_id           = core.get_user_id()
+                AND (m.session_id       = core.get_session_id() OR m.session_id IS NULL)
+                AND m.delivered_at      IS NULL
+            ORDER BY m.created_at DESC
+            FETCH FIRST 1 ROWS ONLY
+        ) LOOP
+            APEX_JSON.WRITE('message',  c.message_payload);
+            APEX_JSON.WRITE('status',   c.message_type);        -- 'SUCCESS', ERROR, WARNING
+            --
+            UPDATE app_user_messages m
+            SET m.delivered_at          = SYSDATE
+            WHERE m.app_id              = c.app_id
+                AND m.user_id           = c.user_id
+                AND m.message_id        = c.message_id;
+        END LOOP;
+        --
+        APEX_JSON.CLOSE_OBJECT();
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE ajax_message (
+        in_user_id          app_user_messages.user_id%TYPE,
+        in_message          app_user_messages.message_payload%TYPE,
+        in_type             app_user_messages.message_type%TYPE         := NULL,
+        in_session_id       app_user_messages.session_id%TYPE           := NULL,
+        in_app_id           app_user_messages.app_id%TYPE               := NULL,
+        in_message_id       app_user_messages.message_id%TYPE           := NULL
+    )
+    AS
+        rec                 app_user_messages%ROWTYPE;
+    BEGIN
+        rec.app_id          := COALESCE(in_app_id,      core.get_app_id());
+        rec.user_id         := COALESCE(in_user_id,     core.get_user_id());
+        rec.message_id      := COALESCE(in_message_id,  REGEXP_REPLACE(SYS_GUID(), '(.{8})(.{4})(.{4})(.{4})(.{12})', '\1-\2-\3-\4-\5'));
+        rec.message_type    := COALESCE(in_type,        'SUCCESS');
+        rec.message_payload := LTRIM(RTRIM(in_message));
+        rec.session_id      := in_session_id;
+        rec.created_by      := core.get_user_id();
+        rec.created_at      := SYSDATE;
+        --
+        INSERT INTO app_user_messages VALUES rec;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
 END;
 /
 

@@ -18,6 +18,7 @@ wwv_flow_imp_shared.create_user_interface(
 ,p_login_url=>'f?p=&APP_ID.:LOGIN:&APP_SESSION.::&DEBUG.:::'
 ,p_theme_style_by_user_pref=>false
 ,p_built_with_love=>false
+,p_global_page_id=>0
 ,p_navigation_list_position=>'TOP'
 ,p_navigation_list_template_id=>wwv_flow_imp.id(63460188384439161)
 ,p_nav_list_template_options=>'#DEFAULT#:js-tabLike'

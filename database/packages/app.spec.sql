@@ -153,6 +153,21 @@ CREATE OR REPLACE PACKAGE app AS
     )
     RETURN BOOLEAN;
 
+
+
+    PROCEDURE ajax_ping;
+
+
+
+    PROCEDURE ajax_message (
+        in_user_id          app_user_messages.user_id%TYPE,
+        in_message          app_user_messages.message_payload%TYPE,
+        in_type             app_user_messages.message_type%TYPE         := NULL,
+        in_session_id       app_user_messages.session_id%TYPE           := NULL,
+        in_app_id           app_user_messages.app_id%TYPE               := NULL,
+        in_message_id       app_user_messages.message_id%TYPE           := NULL
+    );
+
 END;
 /
 

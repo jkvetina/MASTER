@@ -17,3 +17,21 @@
   security: 
     authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
 
+- # ====== Application Process: AJAX_PING ======================
+  id: 15475958849750657
+  identification: 
+    name: AJAX_PING
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: app.ajax_ping();
+
+  execution: 
+    sequence: 10
+    point: Ajax Callback
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+

@@ -20,6 +20,7 @@ prompt --install
 @@application/shared_components/security/authorizations/master_is_user.sql
 @@application/shared_components/navigation/navigation_bar.sql
 @@application/shared_components/logic/application_processes/init_defaults.sql
+@@application/shared_components/logic/application_processes/ajax_ping.sql
 @@application/shared_components/logic/application_items/format_date.sql
 @@application/shared_components/logic/application_items/format_date_short.sql
 @@application/shared_components/logic/application_items/format_date_time.sql

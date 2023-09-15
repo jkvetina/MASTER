@@ -6,6 +6,47 @@ identification:
   page-group: __ INTERNAL # 14547757548326366
 
 regions: 
+- # ====== Region: ITEMS =======================================
+  id: 14690707402436121
+  identification: 
+    title: ITEMS
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    position: BEFORE_FOOTER
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 14002580469276968
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
 - # ====== Region: JS ==========================================
   id: 64115224441482291
   identification: 
@@ -97,4 +138,71 @@ regions:
     settings: 
       output-as: HTML
       expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P0_AJAX_PING_INTERVAL ====================
+  id: 14690547577436119
+  identification: 
+    name: P0_AJAX_PING_INTERVAL
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: ITEMS # 14690707402436121
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Static Value
+    static-value: 10
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  comments: 
+    comments: Interval in seconds to fire AJAX_PING process
+
+dynamic-actions: 
+- # ====== Dynamic Action: INIT_PAGE ===========================
+  id: 14689966439436113
+  identification: 
+    name: INIT_PAGE
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  execution: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 14690091056436114
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        init_page();
+        
+
+    execution: 
+      sequence: 10
+      event: INIT_PAGE # 14689966439436113
+      fire-when-event-result-is: True
+      fire-on-initialization: false
 

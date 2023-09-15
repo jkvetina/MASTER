@@ -33,21 +33,21 @@ prompt APPLICATION 801 - App Template
 -- Application Export:
 --   Application:     801
 --   Name:            App Template
---   Date and Time:   20:56 Pondělí Září 11, 2023
+--   Date and Time:   17:13 Pátek Září 15, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      4
---       Items:                    4
+--       Items:                    5
 --       Computations:             1
 --       Processes:                4
---       Regions:                  5
+--       Regions:                  6
 --       Buttons:                  2
---       Dynamic Actions:          1
+--       Dynamic Actions:          2
 --     Shared Components:
 --       Logic:
 --         Items:                 12
---         Processes:              1
+--         Processes:              2
 --         App Settings:           1
 --         Build Options:          1
 --       Navigation:
@@ -122,7 +122,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-09-11'
+,p_flow_version=>'2023-09-15'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -717,6 +717,20 @@ wwv_flow_imp_shared.create_flow_process(
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'INIT_DEFAULTS'
 ,p_process_sql_clob=>'app.init_defaults();'
+,p_process_clob_language=>'PLSQL'
+,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
+);
+end;
+/
+prompt --application/shared_components/logic/application_processes/ajax_ping
+begin
+wwv_flow_imp_shared.create_flow_process(
+ p_id=>wwv_flow_imp.id(15483161914849548)
+,p_process_sequence=>10
+,p_process_point=>'ON_DEMAND'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'AJAX_PING'
+,p_process_sql_clob=>'app.ajax_ping();'
 ,p_process_clob_language=>'PLSQL'
 ,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
 );
@@ -18503,6 +18517,17 @@ wwv_flow_imp_page.create_page(
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 );
 wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(14690707402436121)
+,p_plug_name=>'ITEMS'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(14002580469276968)
+,p_plug_display_sequence=>30
+,p_include_in_reg_disp_sel_yn=>'Y'
+,p_plug_display_point=>'BEFORE_FOOTER'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(64115224441482291)
 ,p_plug_name=>'JS'
 ,p_region_template_options=>'#DEFAULT#'
@@ -18529,6 +18554,35 @@ wwv_flow_imp_page.create_page_plug(
 '</style>'))
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(14690547577436119)
+,p_name=>'P0_AJAX_PING_INTERVAL'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(14690707402436121)
+,p_source=>'10'
+,p_source_type=>'STATIC'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_attribute_01=>'Y'
+,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(14689966439436113)
+,p_name=>'INIT_PAGE'
+,p_event_sequence=>10
+,p_bind_type=>'bind'
+,p_bind_event_type=>'ready'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(14690091056436114)
+,p_event_id=>wwv_flow_imp.id(14689966439436113)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'init_page();',
+''))
 );
 end;
 /
