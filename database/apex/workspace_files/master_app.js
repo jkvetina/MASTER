@@ -34,7 +34,7 @@ const copy_to_clipboard = function (text) {
 
 
 //
-// COPY GRID CELL - ATTACH ONLY TO GRIDS
+// COPY GRID CELL - ATTACH ONLY TO GRIDS AND TO READ ONLY CELLS
 //
 /*
 const attach_copy_to_grid = function (el) {
@@ -74,10 +74,11 @@ const color_cell = function (options, value, title, color_bg, color_text) {
 // WHEN PAGE LOADS
 //
 var init_page = function() {
-    // autohide success messages, but this is actually ignoring AJAX messages
+    // autohide success messages
+    // this actually dont work together with the following setThemeHooks
     apex.theme42.util.configAPEXMsgs({
         autoDismiss : true,
-        duration    : 2500
+        duration    : 3000
     });
 
     // catch message event
@@ -93,16 +94,12 @@ var init_page = function() {
             if (pMsgType === apex.message.TYPE.SUCCESS) {
                 setTimeout(() => {
                     apex.message.hidePageSuccess();
-                }, 2500);
+                }, 3000);
             }
         },
         beforeHide: function(pMsgType, pElement$) {  // beforeShow, beforeHide
             //if (pMsgType === apex.message.TYPE.ERROR) {  // SUCCESS, ERROR
             //}
-            // hide from url so user can refresh the page without the message
-            const url = new URL(location);
-            url.searchParams.set('success_msg', '');
-            history.pushState({}, '', url);
         }
     });
 
@@ -203,6 +200,16 @@ var fix_grid_toolbar = function (region_id) {
     actions.hide('reset-report');
     actions.show('change-rows-per-page');
 
+    // modify save button
+    for (var i = 0; i < action2.controls.length; i++) {
+        var button = action2.controls[i];
+        if (button.action == 'save') {
+            button.hot          = false;
+            button.label        = 'Save Changes';
+            break;
+        }
+    }
+
     // modify add row button as a plus sign without text
     for (var i = 0; i < action3.controls.length; i++) {
         var button = action3.controls[i];
@@ -222,6 +229,7 @@ var fix_grid_toolbar = function (region_id) {
                 var region_id   = event.delegateTarget.id.replace('_ig', '');
                 var grid        = apex.region(region_id).widget();
                 var model       = grid.interactiveGrid('getViews', 'grid').model;
+                //
                 console.log('CALL SAVE_ALL', region_id, grid, model);
                 //
                 model.forEach(function(r) {
@@ -260,6 +268,7 @@ var fix_grid_toolbar = function (region_id) {
                 var selected    = grid.interactiveGrid('getViews').grid.getSelectedRecords();
                 var id;
                 var changed = [];
+                //
                 console.log('CALL SAVE_SELECTED', region_id, grid, model);
                 //
                 for (var i = 0; i < selected.length; i++ ) {
@@ -298,10 +307,12 @@ var fix_grid_toolbar = function (region_id) {
         });
     }
 
-    action4.controls.unshift({
+    // return back the row selectors
+    /*
+    action2.controls.unshift({
         type    : 'SELECT',
         action  : 'change-rows-per-page'
-    });
+    });*/
 
     // show refresh button before save button
     action4.controls.push({
@@ -338,20 +349,18 @@ var fix_grid_toolbar = function (region_id) {
 var fix_grid_save_button = function () {
     var observer = new MutationObserver(function(mutations) {
         mutations.forEach(function(mutation) {
+            // when Edit button is changed to active, then change Save button to hot
             var $target = $(mutation.target);
             if ($target.hasClass('is-active')) {
-                var $save = $target.parent().parent().find('button.a-Button.a-Toolbar-item.js-actionButton[data-action="save"]');
-                $save.addClass('is-active');
+                $target.parent().parent().find('button.a-Toolbar-item[data-action="save"]').addClass('is-active a-Button--hot');
                 //observer.disconnect();  // remove observer when fired
             }
         });
     });
-    //
-    $.each($('div.a-Toolbar-toggleButton.js-actionCheckbox.a-Toolbar-item[data-action="edit"] > label'), function(i, el) {
-        // assign unique ID + apply tracker/observer
+
+    // find Edit buttons on grids
+    $.each($('.a-Toolbar-button[name="edit"]'), function(i, el) {
         $el = $(el);
-        $el.attr('id', 'OBSERVE_' + $el.attr('for'));
-        console.log('TRACKING GRID', $el, $el.attr('for'));
         observer.observe($el[0], {
             attributes: true
         });
