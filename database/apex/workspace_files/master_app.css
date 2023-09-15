@@ -90,6 +90,11 @@ body.t-Dialog-page .t-HeroRegion {
 
 
 
+/* FIX TABS HEIGHT */
+.t-TabsRegion-items {
+   min-height           : auto !important;
+}
+
 /* REMOVE OUTLINE FROM ACTIVE TABS */
 ul.t-Tabs li.t-Tabs-item a.t-Tabs-link {
     outline             : none !important;
