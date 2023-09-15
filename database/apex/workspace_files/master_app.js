@@ -234,9 +234,9 @@ var fix_grid_toolbar = function (region_id) {
                 //
                 model.forEach(function(r) {
                     try {
-                        if (!model.getValue(r, 'ITEM_NAME').endsWith('?')) {
-                            model.setValue(r, 'ITEM_TYPE', model.getValue(r, 'ITEM_TYPE') + ' ');  // fake change
-                            console.log('CHANGED ROW', model.getValue(r, 'ITEM_NAME'), model.getValue(r, 'ITEM_TYPE'));
+                        var fake_change = model.getValue(r, 'MARK_AS_CHANGED');     // grid column name
+                        if (fake_change == '') {                                    // expected value (null)
+                            model.setValue(r, 'MARK_AS_CHANGED', 'Y ');             // different value to force change
                         }
                     }
                     catch(err) {  // deleted rows cant be changed
@@ -280,8 +280,10 @@ var fix_grid_toolbar = function (region_id) {
                     for (var i = 0; i < changed.length; i++ ) {
                         if (changed[i] == gridview.model.getRecordId(r)) {
                             try {
-                                model.setValue(r, 'ITEM_TYPE', model.getValue(r, 'ITEM_TYPE') + ' ');  // fake change
-                                console.log('CHANGED ROW', model.getValue(r, 'ITEM_TYPE'));
+                                var fake_change = model.getValue(r, 'MARK_AS_CHANGED');     // grid column name
+                                if (fake_change == '') {                                    // expected value (null)
+                                    model.setValue(r, 'MARK_AS_CHANGED', 'Y ');             // different value to force change
+                                }
                             }
                             catch(err) {  // deleted rows cant be changed
                             }
@@ -333,6 +335,11 @@ var fix_grid_toolbar = function (region_id) {
             icon        : ''  // no icon
         });
     }
+
+    // keep selected rows
+    config.defaultGridViewOptions = {
+        persistSelection: true
+    };
 
     // update toolbar
     //actions.set('edit', true);
