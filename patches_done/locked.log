@@ -12,6 +12,7 @@ database/tables/app_procedures.sql
 database/tables/app_roles.sql
 database/tables/app_roles_map.sql
 database/tables/app_tables.sql
+database/tables/app_user_messages.sql
 database/tables/app_users.sql
 database/tables/app_users_map.sql
 database/triggers/app_navigation__.sql
