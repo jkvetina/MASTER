@@ -8,7 +8,7 @@ WITH curr AS (
         800                                         AS master_app_id,
         --
         core.get_page_id()                          AS page_id,
-        core.get_page_group(n.page_id)              AS page_group,
+        --core.get_page_group(n.page_id)              AS page_group,
         n.parent_id,
         COALESCE(u.user_id,   core.get_user_id())   AS user_id,
         COALESCE(u.user_name, core.get_user_id())   AS user_name,
@@ -30,6 +30,8 @@ s AS (
         core.get_page_name(in_name => s.page_name) AS page_name,  -- to support #icons
         --
         s.page_alias,
+        s.page_group,
+        s.page_css_classes,
         s.auth_scheme,
         s.procedure_name,
         n.is_reset,
@@ -62,6 +64,8 @@ t AS (
         s.parent_id,
         s.page_name,
         s.page_alias,
+        s.page_group,
+        s.page_css_classes,
         s.auth_scheme,
         s.procedure_name,
         s.is_reset,
@@ -86,6 +90,8 @@ t AS (
         NULL                AS parent_id,
         NULL                AS page_name,
         NULL                AS page_alias,
+        NULL                AS page_group,
+        NULL                AS page_css_classes,
         NULL                AS auth_scheme,
         NULL                AS procedure_name,
         NULL                AS is_reset,
@@ -105,6 +111,8 @@ t AS (
         900                 AS parent_id,
         NULL                AS page_name,
         NULL                AS page_alias,
+        NULL                AS page_group,
+        NULL                AS page_css_classes,
         NULL                AS auth_scheme,
         NULL                AS procedure_name,
         NULL                AS is_reset,
@@ -143,9 +151,12 @@ n AS (
         NULL                    AS image_attribute,
         NULL                    AS image_alt_attribute,
         --
-        CASE
+        LTRIM(RTRIM(CASE
             WHEN t.page_id = 900 THEN 'RIGHT'
-            END AS attribute01,
+            END
+            || ' ' || t.page_group
+            || ' ' || t.page_css_classes
+            )) AS attribute01,
         --
         NULL                    AS attribute02,
         --
