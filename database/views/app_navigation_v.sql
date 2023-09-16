@@ -129,7 +129,9 @@ n AS (
             WHEN t.page_id = 0      THEN '</li></ul><ul class="empty"></ul><ul><li>'
                                     --   '</li></ul><ul class="EMPTY"></ul><ul><li style="display: none;">'  -- a trick to split nav menu to left and right
             ELSE
-                REPLACE(REPLACE(t.page_name,
+                REPLACE(REPLACE(
+                    CASE WHEN LEVEL > 2 AND t.page_name NOT LIKE '#fa-%' THEN '&' || 'mdash;&' || 'nbsp; ' END
+                    || t.page_name,
                     '&' || 'APP_NAME.', curr.app_name),
                     '&' || 'APP_USER.', curr.user_name)
             END AS label,
@@ -168,7 +170,7 @@ n AS (
         NULL                    AS attribute04,
         --
         CASE WHEN LEVEL > 2
-            THEN ' style="margin: -0.25rem 0.5rem -0.25rem ' || (LEVEL - 2) || 'rem; font-size: 70%;"'
+            THEN ' style="margin: -0.25rem 0.5rem -0.25rem ' || (LEVEL - 2 + 0.25) || 'rem; font-size: 70%;"'
             END AS attribute05,
         --
         NULL                    AS attribute06,
@@ -215,6 +217,11 @@ SELECT
     n.attribute05,              -- <a ...> // javascript onclick
     n.attribute06,              -- <a>... #TEXT</a>
     n.attribute07,              -- <a>#TEXT ...</a>
+    --
+    --CASE WHEN b.badge IS NOT NULL
+    --    THEN '<span class="BADGE">' || b.badge || '</badge>'
+    --    END AS attribute07,                     -- badge right
+    --
     n.attribute08,              -- </a>...
     n.attribute09,
     n.attribute10,
