@@ -37,9 +37,14 @@ prompt --install
 @@application/shared_components/logic/application_settings.sql
 @@application/shared_components/navigation/tabs/standard.sql
 @@application/shared_components/navigation/tabs/parent.sql
-@@application/shared_components/user_interface/lovs/lov_applications.sql
-@@application/shared_components/user_interface/lovs/lov_users.sql
-@@application/shared_components/user_interface/lovs/lov_workspaces.sql
+@@application/shared_components/user_interface/lovs/app_applications.sql
+@@application/shared_components/user_interface/lovs/app_pages.sql
+@@application/shared_components/user_interface/lovs/app_page_groups.sql
+@@application/shared_components/user_interface/lovs/app_roles.sql
+@@application/shared_components/user_interface/lovs/app_role_groups.sql
+@@application/shared_components/user_interface/lovs/app_users_id_name.sql
+@@application/shared_components/user_interface/lovs/app_users_all_id_name.sql
+@@application/shared_components/user_interface/lovs/app_workspaces.sql
 @@application/pages/page_groups.sql
 @@application/comments.sql
 @@application/shared_components/navigation/breadcrumbentry.sql

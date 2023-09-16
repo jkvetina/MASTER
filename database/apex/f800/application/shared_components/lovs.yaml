@@ -1,8 +1,8 @@
 ---
-- # ====== List of Values: LOV_WORKSPACES ======================
+- # ====== List of Values: APP_WORKSPACES ======================
   id: 14527761930824112
   identification: 
-    name: LOV_WORKSPACES
+    name: APP_WORKSPACES
 
   source: 
     location: Local Database
@@ -16,10 +16,117 @@
     default-sort: WORKSPACE
     sort-direction: Ascending (Nulls Last)
 
-- # ====== List of Values: LOV_APPLICATIONS ====================
+- # ====== List of Values: APP_PAGES ===========================
+  id: 15548432056414481
+  identification: 
+    name: APP_PAGES
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_LOV_PAGES_V
+
+  column-mapping: 
+    return: PAGE_ID
+    display: PAGE
+    default-sort: PAGE_ID
+    sort-direction: Ascending (Nulls Last)
+    group: PAGE_GROUP
+    group-sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: APP_PAGE_GROUPS =====================
+  id: 15549588398414491
+  identification: 
+    name: APP_PAGE_GROUPS
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_LOV_PAGE_GROUPS_V
+
+  column-mapping: 
+    return: PAGE_GROUP
+    display: PAGE_GROUP_NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+    group: GROUP_NAME
+    group-sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: APP_ROLES ===========================
+  id: 15550108150414491
+  identification: 
+    name: APP_ROLES
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_LOV_ROLES_V
+
+  column-mapping: 
+    return: ROLE_ID
+    display: ROLE_NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+    group: ROLE_GROUP
+    group-sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: APP_ROLE_GROUPS =====================
+  id: 15550779356414492
+  identification: 
+    name: APP_ROLE_GROUPS
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_LOV_ROLE_GROUPS_V
+
+  column-mapping: 
+    return: ROLE_GROUP
+    display: ROLE_GROUP
+    default-sort: Use Order By from Query
+
+- # ====== List of Values: LOV_APP_TABLES ======================
+  id: 15618073414439976
+  identification: 
+    name: LOV_APP_TABLES
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: TSK_LOV_APP_TABLES_V
+
+  column-mapping: 
+    return: TABLE_NAME
+    display: TABLE_NAME
+    default-sort: TABLE_NAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: APP_USERS_ALL #ID-NAME ==============
+  id: 18270447043617252
+  identification: 
+    name: 'APP_USERS_ALL #ID-NAME'
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_LOV_USERS_ALL_V
+
+  column-mapping: 
+    return: USER_ID
+    display: USER_NAME
+    default-sort: USER_NAME
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: APP_APPLICATIONS ====================
   id: 35274887131559187
   identification: 
-    name: LOV_APPLICATIONS
+    name: APP_APPLICATIONS
 
   source: 
     location: Local Database
@@ -32,17 +139,19 @@
     display: APP_NAME
     default-sort: APP_NAME
     sort-direction: Ascending (Nulls Last)
+    group: APP_GROUP
+    group-sort-direction: Ascending (Nulls Last)
 
-- # ====== List of Values: LOV_USERS ===========================
+- # ====== List of Values: APP_USERS #ID-NAME ==================
   id: 44168724960002617
   identification: 
-    name: LOV_USERS
+    name: 'APP_USERS #ID-NAME'
 
   source: 
     location: Local Database
     type: Table / View
     table-owner: Parsing Schema
-    table-name: INT_USERS
+    table-name: APP_LOV_USERS_V
 
   column-mapping: 
     return: USER_ID

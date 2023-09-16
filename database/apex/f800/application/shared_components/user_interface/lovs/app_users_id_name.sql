@@ -1,7 +1,7 @@
-prompt --application/shared_components/user_interface/lovs/lov_workspaces
+prompt --application/shared_components/user_interface/lovs/app_users_id_name
 begin
 --   Manifest
---     LOV_WORKSPACES
+--     APP_USERS #ID-NAME
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
@@ -12,14 +12,16 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_of_values(
- p_id=>wwv_flow_imp.id(14527761930824112)  -- LOV_WORKSPACES
-,p_lov_name=>'LOV_WORKSPACES'
+ p_id=>wwv_flow_imp.id(44168724960002617)  -- APP_USERS #ID-NAME
+,p_lov_name=>'APP_USERS #ID-NAME'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'
-,p_query_table=>'APP_LOV_WORKSPACES_V'
-,p_return_column_name=>'WORKSPACE'
-,p_display_column_name=>'WORKSPACE'
-,p_default_sort_column_name=>'WORKSPACE'
+,p_use_local_sync_table=>false
+,p_query_table=>'APP_LOV_USERS_V'
+,p_return_column_name=>'USER_ID'
+,p_display_column_name=>'USER_NAME'
+,p_group_sort_direction=>'ASC'
+,p_default_sort_column_name=>'USER_NAME'
 ,p_default_sort_direction=>'ASC'
 );
 wwv_flow_imp.component_end;

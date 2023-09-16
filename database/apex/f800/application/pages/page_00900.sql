@@ -15,7 +15,7 @@ wwv_flow_imp_page.create_page(
  p_id=>900
 ,p_name=>'&APP_USER.'
 ,p_alias=>'USER'
-,p_step_title=>'&APP_USER.'
+,p_step_title=>'User Profile'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(43461472849711906)  -- MAIN
 ,p_page_template_options=>'#DEFAULT#'
