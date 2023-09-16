@@ -126,8 +126,9 @@ n AS (
         --
         CASE
             WHEN t.page_id = 9999   THEN core.get_page_name(in_name => 'Logout #fa-coffee')
-            WHEN t.page_id = 0      THEN '</li></ul><ul class="empty"></ul><ul><li>'
-                                    --   '</li></ul><ul class="EMPTY"></ul><ul><li style="display: none;">'  -- a trick to split nav menu to left and right
+            WHEN t.page_id = 0      THEN '</span></a></li></ul>'   || CHR(10) ||
+                                         '<ul class="EMPTY"></ul>' || CHR(10) ||
+                                         '<ul class="RIGHT"><li style="display: none;"><a href=""><span>'  -- a trick to split nav menu to left and right
             ELSE
                 REPLACE(REPLACE(
                     CASE WHEN LEVEL > 2 AND t.page_name NOT LIKE '#fa-%' THEN '&' || 'mdash;&' || 'nbsp; ' END
@@ -155,7 +156,8 @@ n AS (
         NULL                    AS image_alt_attribute,
         --
         LTRIM(RTRIM(CASE
-            WHEN t.page_id = 900 THEN 'RIGHT'
+            WHEN t.page_id = 0      THEN 'HIDDEN'
+            WHEN t.page_id = 900    THEN 'RIGHT'
             END
             || ' ' || t.page_group
             || ' ' || t.page_css_classes
@@ -185,9 +187,12 @@ n AS (
         t.auth_scheme,
         t.procedure_name,
         --
+        TO_NUMBER(REGEXP_SUBSTR(LTRIM(SYS_CONNECT_BY_PATH(t.parent_id, '/'), '/'), '\d+')) AS page_root_id,
+        --
         SYS_CONNECT_BY_PATH(t.order# || '.' || t.page_id, '/') AS order#,
         --
         REPLACE(RPAD(' ', (LEVEL - 1) * 4, ' '), ' ', '&' || 'nbsp; ') || t.page_name AS label__
+        --
     FROM t
     CROSS JOIN curr
     CONNECT BY t.app_id         = PRIOR t.app_id
@@ -199,6 +204,7 @@ SELECT
     n.app_id,                   -- some extra columns for FE
     n.page_id,
     n.parent_id,
+    n.page_root_id,
     n.auth_scheme,
     n.procedure_name,
     n.label__,
@@ -223,10 +229,46 @@ SELECT
     --    END AS attribute07,                     -- badge right
     --
     n.attribute08,              -- </a>...
-    n.attribute09,
+    --n.attribute09,              -- <ul class="...">
+    --
+    CASE WHEN n.app_id = 800 AND n.parent_id = 800 THEN 'MULTI_3' END AS attribute09,   -- select count(distinct col_id) where parent_id = ...
+    --
     n.attribute10,
     n.order#
-FROM n;
+FROM n
+--
+UNION ALL
+SELECT
+    n.app_id,           -- some extra columns for FE
+    n.page_id,
+    NULL                AS parent_id,
+    n.page_root_id,
+    NULL                AS auth_scheme,
+    NULL                AS procedure_name,
+    '&' || 'nbsp;'      AS label__,
+    --
+    2                   AS lvl,  -- mandatory columns for APEX navigation
+    NULL                AS label,
+    NULL                AS target,
+    NULL                AS is_current_list_entry,
+    NULL                AS image,
+    NULL                AS image_attribute,
+    NULL                AS image_alt_attribute,
+    --
+    'NO_HOVER TRANSPARENT'          AS attribute01,
+    '<span>&' || 'nbsp;</span>'     AS attribute02,
+    --
+    NULL                AS attribute03,
+    NULL                AS attribute04,
+    NULL                AS attribute05,
+    NULL                AS attribute06,
+    NULL                AS attribute07,
+    NULL                AS attribute08,
+    NULL                AS attribute09,
+    NULL                AS attribute10,
+    n.order#
+FROM app_navigation_matrix_v n
+WHERE n.page_id IS NULL;
 --
 COMMENT ON TABLE app_navigation_v IS '';
 

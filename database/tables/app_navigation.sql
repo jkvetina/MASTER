@@ -5,6 +5,7 @@ CREATE TABLE app_navigation (
     is_hidden                       CHAR(1),
     is_reset                        CHAR(1),
     order#                          NUMBER(4,0),
+    col_id                          NUMBER(1,0),
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
@@ -37,4 +38,5 @@ COMMENT ON COLUMN app_navigation.parent_id      IS '';
 COMMENT ON COLUMN app_navigation.is_hidden      IS '';
 COMMENT ON COLUMN app_navigation.is_reset       IS '';
 COMMENT ON COLUMN app_navigation.order#         IS '';
+COMMENT ON COLUMN app_navigation.col_id         IS '';
 

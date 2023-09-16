@@ -10,14 +10,19 @@ WHERE app_id = 800;
 --
 MERGE INTO app_navigation t
 USING (
-    SELECT 800 AS app_id, 100 AS page_id, NULL AS parent_id, NULL AS is_hidden, NULL AS is_reset, 0 AS order# FROM DUAL UNION ALL
-    SELECT 800 AS app_id, 800 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 800 AS order# FROM DUAL UNION ALL
-    SELECT 800 AS app_id, 810 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order# FROM DUAL UNION ALL
-    SELECT 800 AS app_id, 815 AS page_id, 810 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order# FROM DUAL UNION ALL
-    SELECT 800 AS app_id, 820 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 20 AS order# FROM DUAL UNION ALL
-    SELECT 800 AS app_id, 900 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 990 AS order# FROM DUAL UNION ALL
-    SELECT 800 AS app_id, 980 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 980 AS order# FROM DUAL UNION ALL
-    SELECT 800 AS app_id, 9999 AS page_id, 900 AS parent_id, NULL AS is_hidden, NULL AS is_reset, 999 AS order# FROM DUAL
+    SELECT 800 AS app_id, 100 AS page_id, NULL AS parent_id, NULL AS is_hidden, NULL AS is_reset, 0 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 800 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 800 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 810 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, 1 AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 815 AS page_id, 810 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 820 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 20 AS order#, 2 AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 825 AS page_id, 820 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 830 AS page_id, 820 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 20 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 835 AS page_id, 820 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 30 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 840 AS page_id, 820 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 40 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 850 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 50 AS order#, 3 AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 900 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 990 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 980 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 980 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 9999 AS page_id, 900 AS parent_id, NULL AS is_hidden, NULL AS is_reset, 999 AS order#, NULL AS col_id FROM DUAL
 ) s
 ON (
     t.app_id = s.app_id
@@ -28,7 +33,8 @@ ON (
 --        t.parent_id = s.parent_id,
 --        t.is_hidden = s.is_hidden,
 --        t.is_reset = s.is_reset,
---        t.order# = s.order#
+--        t.order# = s.order#,
+--        t.col_id = s.col_id
 WHEN NOT MATCHED THEN
     INSERT (
         t.app_id,
@@ -36,7 +42,8 @@ WHEN NOT MATCHED THEN
         t.parent_id,
         t.is_hidden,
         t.is_reset,
-        t.order#
+        t.order#,
+        t.col_id
     )
     VALUES (
         s.app_id,
@@ -44,5 +51,6 @@ WHEN NOT MATCHED THEN
         s.parent_id,
         s.is_hidden,
         s.is_reset,
-        s.order#
+        s.order#,
+        s.col_id
     );

@@ -24,6 +24,7 @@ database/views/app_auth_pages_v.sql
 database/views/app_launchpad_v.sql
 database/views/app_lov_applications_v.sql
 database/views/app_lov_workspaces_v.sql
+database/views/app_navigation_matrix_v.sql
 database/views/app_navigation_v.sql
 database/views/app_roles_v.sql
 database/views/app_user_profile_v.sql
