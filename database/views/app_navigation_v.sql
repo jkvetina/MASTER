@@ -242,7 +242,7 @@ SELECT
         SELECT 'MULTI_' || MIN(m.cols_) AS cols_
         FROM app_navigation_matrix_v m
         WHERE m.app_id          = n.app_id
-            AND m.page_root_id  = n.page_root_id
+            AND m.page_root_id  IN (n.page_id, n.page_root_id)
     ), 'MULTI_') AS attribute09,
     --
     n.attribute10,
