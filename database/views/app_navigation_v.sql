@@ -125,8 +125,9 @@ n AS (
         CASE WHEN t.parent_id IS NULL THEN 1 ELSE 2 END AS lvl,
         --
         CASE
-            WHEN t.page_id = 9999   THEN 'Logout'
+            WHEN t.page_id = 9999   THEN core.get_page_name(in_name => 'Logout #fa-coffee')
             WHEN t.page_id = 0      THEN '</li></ul><ul class="empty"></ul><ul><li>'
+                                    --   '</li></ul><ul class="EMPTY"></ul><ul><li style="display: none;">'  -- a trick to split nav menu to left and right
             ELSE
                 REPLACE(REPLACE(t.page_name,
                     '&' || 'APP_NAME.', curr.app_name),
