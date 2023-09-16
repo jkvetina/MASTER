@@ -29,6 +29,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_display_sequence=>30
 ,p_include_in_reg_disp_sel_yn=>'Y'
 ,p_plug_display_point=>'BEFORE_FOOTER'
+,p_plug_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
@@ -43,6 +44,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<script>',
 '</script>'))
+,p_plug_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
@@ -57,6 +59,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<style>',
 '</style>'))
+,p_plug_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );

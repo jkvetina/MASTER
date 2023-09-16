@@ -36,6 +36,9 @@ regions:
     region-display-selector: true
     exclude-title-from-translation: false
 
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
   server-cache: 
     caching: Disabled
 
@@ -82,6 +85,9 @@ regions:
     region-display-selector: true
     exclude-title-from-translation: false
 
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
   server-cache: 
     caching: Disabled
 
@@ -127,6 +133,9 @@ regions:
   advanced: 
     region-display-selector: true
     exclude-title-from-translation: false
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
 
   server-cache: 
     caching: Disabled
