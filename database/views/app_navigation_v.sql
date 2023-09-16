@@ -36,6 +36,8 @@ s AS (
         s.procedure_name,
         n.is_reset,
         n.order#,
+        m.col_id,
+        m.order# AS col_order#,
         --
         CASE
             WHEN s.app_id = curr.master_app_id AND s.page_id = 100
@@ -51,6 +53,9 @@ s AS (
     JOIN app_navigation_map_mv s
         ON s.app_id         = n.app_id
         AND s.page_id       = n.page_id
+    LEFT JOIN app_navigation_matrix_v m
+        ON m.app_id         = n.app_id
+        AND m.page_id       = n.page_id
     WHERE 1 = 1
         AND n.app_id        IN (curr.app_id, curr.master_app_id)
         AND n.page_id       NOT IN (9999)
@@ -69,7 +74,8 @@ t AS (
         s.auth_scheme,
         s.procedure_name,
         s.is_reset,
-        s.order#
+        s.order#,
+        s.col_id
     FROM s
     CROSS JOIN curr
     WHERE s.rank_pages# = 1     -- to remove duplicates in between apps
@@ -95,7 +101,8 @@ t AS (
         NULL                AS auth_scheme,
         NULL                AS procedure_name,
         NULL                AS is_reset,
-        666                 AS order#
+        666                 AS order#,
+        NULL                AS col_id
     FROM curr
     WHERE NOT EXISTS (
         SELECT 1
@@ -116,7 +123,8 @@ t AS (
         NULL                AS auth_scheme,
         NULL                AS procedure_name,
         NULL                AS is_reset,
-        999                 AS order#
+        999                 AS order#,
+        NULL                AS col_id
     FROM curr
 ),
 n AS (
@@ -172,7 +180,7 @@ n AS (
         NULL                    AS attribute04,
         --
         CASE WHEN LEVEL > 2
-            THEN ' style="margin: -0.25rem 0.5rem -0.25rem ' || (LEVEL - 2 + 0.25) || 'rem; font-size: 70%;"'
+            THEN ' style="margin-right: 0.5rem; margin-left: ' || ((LEVEL - 2) + 1) || 'rem; font-size: 70%;"'
             END AS attribute05,
         --
         NULL                    AS attribute06,
@@ -189,7 +197,7 @@ n AS (
         --
         TO_NUMBER(REGEXP_SUBSTR(LTRIM(SYS_CONNECT_BY_PATH(t.parent_id, '/'), '/'), '\d+')) AS page_root_id,
         --
-        SYS_CONNECT_BY_PATH(t.order# || '.' || t.page_id, '/') AS order#,
+        SYS_CONNECT_BY_PATH(LTRIM(t.col_id || '.' || t.order#, '.') || '.' || t.page_id, '/') AS order#,
         --
         REPLACE(RPAD(' ', (LEVEL - 1) * 4, ' '), ' ', '&' || 'nbsp; ') || t.page_name AS label__
         --
@@ -230,8 +238,12 @@ SELECT
     --
     n.attribute08,              -- </a>...
     --n.attribute09,              -- <ul class="...">
-    --
-    CASE WHEN n.app_id = 800 AND n.parent_id = 800 THEN 'MULTI_3' END AS attribute09,   -- select count(distinct col_id) where parent_id = ...
+    NULLIF((
+        SELECT 'MULTI_' || MIN(m.cols_) AS cols_
+        FROM app_navigation_matrix_v m
+        WHERE m.app_id          = n.app_id
+            AND m.page_root_id  = n.page_root_id
+    ), 'MULTI_') AS attribute09,
     --
     n.attribute10,
     n.order#

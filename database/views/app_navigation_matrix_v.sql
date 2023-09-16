@@ -13,27 +13,28 @@ max_rows AS (
     FROM DUAL
     CONNECT BY LEVEL <= 30
 ),
+s AS (
+    SELECT /*+ MATERIALIZE */
+        n.app_id,
+        n.parent_id                 AS page_root_id,
+        CONNECT_BY_ROOT n.page_id   AS page_id,
+        --
+        '/' || n.app_id || '.' || n.parent_id || '/' || n.col_id --|| '.' || LEVEL
+            || SYS_CONNECT_BY_PATH(n.order#, '.') || '.' || n.page_id || '/'
+            || CONNECT_BY_ROOT n.page_id AS order#,
+        n.col_id
+    FROM app_navigation n
+    CROSS JOIN curr
+    WHERE n.app_id                  IN (curr.app_id, curr.master_app_id)
+        AND n.col_id                IS NOT NULL
+    CONNECT BY PRIOR n.app_id       = n.app_id
+        AND PRIOR n.parent_id       = n.page_id
+),
 n AS (
     SELECT /*+ MATERIALIZE */
-        n.*,
-        ROW_NUMBER() OVER (PARTITION BY n.app_id, n.page_root_id, n.col_id ORDER BY n.order#) AS row_id,
-        --
-        '/' || n.app_id || '.' || n.page_root_id || '/' || n.order# || '.' || n.page_id || '/_' AS path_
-        --
-    FROM (
-        SELECT
-            n.app_id,
-            n.parent_id                 AS page_root_id,
-            CONNECT_BY_ROOT n.page_id   AS page_id,
-            n.col_id,
-            n.order#
-        FROM app_navigation n
-        CROSS JOIN curr
-        WHERE n.app_id                  IN (curr.app_id, curr.master_app_id)
-            AND n.col_id                IS NOT NULL
-        CONNECT BY PRIOR n.parent_id    = n.page_id
-            AND PRIOR n.app_id          = n.app_id
-    ) n
+        s.*,
+        ROW_NUMBER() OVER (PARTITION BY s.app_id, s.page_root_id, s.col_id ORDER BY s.order#) AS row_id
+    FROM s
 ),
 dimensions AS (
     -- get columns and rows for each multi column menu
@@ -69,7 +70,7 @@ SELECT
     d.cols_,
     --
     (
-        SELECT MAX(n.path_)     AS order#
+        SELECT MAX(n.order#)    AS order#
         FROM n
         WHERE n.app_id          = d.app_id
             AND n.page_root_id  = d.page_root_id
