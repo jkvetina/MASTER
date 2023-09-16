@@ -155,8 +155,8 @@ n AS (
             END AS target,
         --
         CASE
-            WHEN t.app_id = curr.app_id AND t.page_id = curr.page_id    THEN 'YES'
-            WHEN t.app_id = curr.app_id AND t.page_id = curr.parent_id  THEN 'YES'
+            WHEN t.app_id IN (curr.app_id, curr.real_app_id) AND t.page_id = curr.page_id    THEN 'YES'
+            WHEN t.app_id IN (curr.app_id, curr.real_app_id) AND t.page_id = curr.parent_id  THEN 'YES'
             END AS is_current_list_entry,
         --
         NULL                    AS image,
