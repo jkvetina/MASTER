@@ -168,6 +168,24 @@ CREATE OR REPLACE PACKAGE app AS
         in_message_id       app_user_messages.message_id%TYPE           := NULL
     );
 
+
+
+    PROCEDURE nav_remove_page (
+        in_page_id              app_navigation.page_id%TYPE,
+        in_app_id               app_navigation.app_id%TYPE
+    );
+
+
+
+    PROCEDURE nav_add_page (
+        in_page_id              app_navigation.page_id%TYPE,
+        in_app_id               app_navigation.app_id%TYPE
+    );
+
+
+
+    PROCEDURE nav_autoupdate;
+
 END;
 /
 

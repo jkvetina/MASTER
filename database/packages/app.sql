@@ -812,6 +812,89 @@ CREATE OR REPLACE PACKAGE BODY app AS
         core.raise_error();
     END;
 
+
+
+    PROCEDURE nav_remove_page (
+        in_page_id              app_navigation.page_id%TYPE,
+        in_app_id               app_navigation.app_id%TYPE
+    )
+    AS
+    BEGIN
+        -- remove pages and references, related rows
+        UPDATE app_navigation n
+        SET n.parent_id         = NULL
+        WHERE n.app_id          = in_app_id
+            AND n.parent_id     = in_page_id;
+        --
+        DELETE FROM app_navigation n
+        WHERE n.app_id          = in_app_id
+            AND n.page_id       = in_page_id;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE nav_add_page (
+        in_page_id              app_navigation.page_id%TYPE,
+        in_app_id               app_navigation.app_id%TYPE
+    )
+    AS
+        rec                     app_navigation%ROWTYPE;
+    BEGIN
+        rec.app_id      := in_app_id;
+        rec.page_id     := in_page_id;
+        --
+        BEGIN
+            INSERT INTO app_navigation VALUES rec;
+        EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            NULL;
+        END;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE nav_autoupdate
+    AS
+    BEGIN
+        -- renumber siblings
+        MERGE INTO app_navigation g
+        USING (
+            SELECT n.app_id, n.page_id, n.new_order#
+            FROM (
+                SELECT
+                    n.app_id,
+                    n.page_id,
+                    n.order#,
+                    ROW_NUMBER() OVER (PARTITION BY n.col_id, n.parent_id ORDER BY n.col_id, n.order#, n.page_id) * 5 + 5 AS new_order#
+                FROM app_navigation n
+                WHERE n.app_id          = core.get_app_id()
+                    AND n.parent_id     IS NOT NULL
+            ) n
+            WHERE n.new_order# != n.order#
+        ) n
+        ON (
+            g.app_id            = n.app_id
+            AND g.page_id       = n.page_id
+        )
+        WHEN MATCHED THEN
+        UPDATE SET g.order#     = n.new_order#;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
 END;
 /
 

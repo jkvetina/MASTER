@@ -12,8 +12,6 @@ appearance:
   page-template: Theme Default
   template-options: 
   - '#DEFAULT#'
-  css-classes: 
-  - CSS_CLASS
 
 navigation-menu: 
   override-user-interface-level: false
@@ -95,6 +93,7 @@ regions:
       - Add Row
       - Update Row
       - Delete Row
+      allowed-row-operations-column: ACTION_DML
       lost-update-type: Row Values
       add-row-if-empty: false
 
@@ -147,6 +146,32 @@ regions:
         name: Primary Report
         alias: 183815
 
+  column-groups: 
+  - # ====== Column Group: Page Info =============================
+    id: 18480334432274406
+    heading: 
+      heading: Page Info
+
+  - # ====== Column Group: Flags =================================
+    id: 18480475433274407
+    heading: 
+      heading: Flags
+
+  - # ====== Column Group: Hierarchy =============================
+    id: 18480536908274408
+    heading: 
+      heading: Hierarchy
+
+  - # ====== Column Group: Security ==============================
+    id: 18480677568274409
+    heading: 
+      heading: Security
+
+  - # ====== Column Group: Theme =================================
+    id: 18480711956274410
+    heading: 
+      heading: Theme
+
   columns: 
   - # ====== Column: PAGE_ID =====================================
     id: 18377725553452332
@@ -163,8 +188,10 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 40
+      sequence: 50
       column-alignment: end
+      group: Hierarchy # 18480536908274408
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -202,12 +229,14 @@ regions:
       type: Select List
 
     heading: 
-      heading: Parent Id
+      heading: Parent
       alignment: start
 
     layout: 
-      sequence: 50
+      sequence: 60
       column-alignment: start
+      group: Hierarchy # 18480536908274408
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -266,8 +295,10 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 60
+      sequence: 70
       column-alignment: end
+      group: Hierarchy # 18480536908274408
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -305,7 +336,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: Col Id
+      heading: Column
       alignment: end
 
     settings: 
@@ -313,8 +344,10 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 70
+      sequence: 180
       column-alignment: end
+      group: Theme # 18480711956274410
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -352,7 +385,7 @@ regions:
       type: Checkbox
 
     heading: 
-      heading: Is Hidden
+      heading: Hidden
       alignment: center
 
     settings: 
@@ -360,8 +393,10 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 80
+      sequence: 110
       column-alignment: center
+      group: Flags # 18480475433274407
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -406,7 +441,7 @@ regions:
       type: Checkbox
 
     heading: 
-      heading: Is Reset
+      heading: Reset
       alignment: center
 
     settings: 
@@ -414,8 +449,10 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 90
+      sequence: 120
       column-alignment: center
+      group: Flags # 18480475433274407
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -460,7 +497,7 @@ regions:
       type: Display Only
 
     heading: 
-      heading: Page Alias
+      heading: Alias
       alignment: start
 
     settings: 
@@ -468,8 +505,10 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 100
+      sequence: 140
       column-alignment: start
+      group: Page Info # 18480334432274406
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -518,8 +557,10 @@ regions:
       html-expression: '&LABEL!RAW.'
 
     layout: 
-      sequence: 110
+      sequence: 150
       column-alignment: start
+      group: Page Info # 18480334432274406
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -555,8 +596,10 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 120
+      sequence: 160
       column-alignment: start
+      group: Page Info # 18480334432274406
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -606,8 +649,10 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 130
+      sequence: 170
       column-alignment: start
+      group: Security # 18480677568274409
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -648,7 +693,7 @@ regions:
       type: Checkbox
 
     heading: 
-      heading: Is Modal
+      heading: Modal
       alignment: center
 
     settings: 
@@ -656,8 +701,10 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 140
+      sequence: 130
       column-alignment: center
+      group: Flags # 18480475433274407
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -703,7 +750,7 @@ regions:
       type: Display Only
 
     heading: 
-      heading: Css Classes
+      heading: CSS Classes
       alignment: start
 
     settings: 
@@ -711,8 +758,10 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 150
+      sequence: 190
       column-alignment: start
+      group: Theme # 18480711956274410
+      use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
@@ -757,7 +806,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 160
+      sequence: 200
 
     accessibility: 
       value-identifies-row: false
@@ -793,7 +842,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 170
+      sequence: 210
       column-alignment: start
       stretch: Use Report Setting
 
@@ -861,7 +910,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 30
+      sequence: 40
 
     accessibility: 
       value-identifies-row: false
@@ -878,6 +927,104 @@ regions:
       language: PL/SQL
       pl/sql-expression: core.get_app_id()
       duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: ACTION_NAME =================================
+    id: 18479824308274401
+    identification: 
+      column-name: ACTION_NAME
+      type: HTML Expression
+
+    heading: 
+      heading: Action
+      alignment: center
+
+    settings: 
+      html-expression: <a href="&ACTION_LINK.">&ACTION_NAME!RAW.</a>
+
+    layout: 
+      sequence: 80
+      column-alignment: center
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: ACTION_NAME
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: ACTION_LINK =================================
+    id: 18479906167274402
+    identification: 
+      column-name: ACTION_LINK
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 90
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: ACTION_LINK
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: ACTION_DML ==================================
+    id: 18480202236274405
+    identification: 
+      column-name: ACTION_DML
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 100
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: ACTION_DML
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
 
     session-state: 
       data-type: VARCHAR2
@@ -1151,60 +1298,6 @@ dynamic-actions:
       fire-on-initialization: false
 
 processes: 
-- # ====== Process: INIT_ADD_FILTER ============================
-  id: 15860520931560687
-  identification: 
-    name: INIT_ADD_FILTER
-    type: Execute Code
-    execution-chain: None
-
-  source: 
-    location: Local Database
-    language: PL/SQL
-    pl/sql-code: |
-      DECLARE
-          in_static_id            CONSTANT VARCHAR2(30)   := 'NAVIGATION';
-          in_column_name          CONSTANT VARCHAR2(30)   := 'AUTH_SCHEME';
-          in_filter_value         CONSTANT VARCHAR2(30)   := core.get_item('$' || in_column_name);
-          in_operator             CONSTANT VARCHAR2(30)   := 'EQ';
-          --
-          region_id               apex_application_page_regions.region_id%TYPE;
-      BEGIN
-          -- convert static_id to region_id
-          SELECT region_id INTO region_id
-          FROM apex_application_page_regions
-          WHERE application_id    = core.get_app_id()
-              AND page_id         = core.get_page_id()
-              AND static_id       = in_static_id;
-          --
-          APEX_IG.RESET_REPORT (
-              p_page_id           => core.get_page_id(),
-              p_region_id         => region_id,
-              p_report_id         => NULL
-          );
-          --
-          IF in_filter_value IS NOT NULL THEN
-              APEX_IG.ADD_FILTER (
-                  p_page_id           => core.get_page_id(),
-                  p_region_id         => region_id,
-                  p_column_name       => in_column_name,
-                  p_filter_value      => in_filter_value,
-                  p_operator_abbr     => in_operator,
-                  p_is_case_sensitive => FALSE,
-                  p_report_id         => NULL
-              );
-          END IF;
-      EXCEPTION
-      WHEN NO_DATA_FOUND THEN
-          NULL;
-      END;
-      
-
-  execution: 
-    sequence: 40
-    point: Before Header
-    run-process: Once Per Page Visit (default)
-
 - # ====== Process: SAVE_NAVIGATION ============================
   id: 18379327893452348
   identification: 
@@ -1260,4 +1353,54 @@ processes:
 
   server-side-condition: 
     when-button-pressed: REFRESH_MV # 18467748806794069
+
+- # ====== Process: REMOVE_PAGE ================================
+  id: 18480024740274403
+  identification: 
+    name: REMOVE_PAGE
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      app.nav_remove_page (
+          in_page_id  => :P850_REMOVE_PAGE,
+          in_app_id   => core.get_app_id()
+      );
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P850_REMOVE_PAGE
+
+- # ====== Process: ADD_PAGE ===================================
+  id: 18480115549274404
+  identification: 
+    name: ADD_PAGE
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      app.nav_add_page (
+          in_page_id  => :P850_ADD_PAGE,
+          in_app_id   => core.get_app_id()
+      );
+
+  execution: 
+    sequence: 20
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P850_ADD_PAGE
 
