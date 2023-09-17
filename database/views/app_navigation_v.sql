@@ -37,7 +37,6 @@ s AS (
         n.is_reset,
         n.order#,
         m.col_id,
-        m.order# AS col_order#,
         --
         CASE
             WHEN s.app_id = curr.master_app_id AND s.page_id = 100
@@ -54,8 +53,8 @@ s AS (
         ON s.app_id         = n.app_id
         AND s.page_id       = n.page_id
     LEFT JOIN app_navigation_matrix_v m
-        ON m.app_id         = n.app_id
-        AND m.page_id       = n.page_id
+        ON m.app_id         = s.app_id
+        AND m.page_id       = s.page_id
     WHERE 1 = 1
         AND n.app_id        IN (curr.app_id, curr.master_app_id)
         AND n.page_id       NOT IN (9999)
