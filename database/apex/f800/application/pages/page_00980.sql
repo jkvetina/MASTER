@@ -18,7 +18,7 @@ wwv_flow_imp_page.create_page(
 ,p_page_mode=>'MODAL'
 ,p_step_title=>'#fa-question-circle'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461472849711906)  -- MAIN
+,p_group_id=>wwv_flow_imp.id(18317012587086665)  -- USER_PROFILE
 ,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'ol li {',
 '  line-height: 200%;',

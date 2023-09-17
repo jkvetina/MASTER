@@ -20,6 +20,10 @@ wwv_flow_imp_page.create_page_group(
 ,p_group_name=>'MAIN'
 );
 wwv_flow_imp_page.create_page_group(
+ p_id=>wwv_flow_imp.id(18317012587086665)  -- USER_PROFILE
+,p_group_name=>'USER_PROFILE'
+);
+wwv_flow_imp_page.create_page_group(
  p_id=>wwv_flow_imp.id(14547468167324179)  -- __ INTERNAL
 ,p_group_name=>'__ INTERNAL'
 );

@@ -5,7 +5,7 @@ identification:
   name: '&APP_USER.'
   alias: USER
   title: User Profile
-  page-group: MAIN # 43461472849711906
+  page-group: USER_PROFILE # 18317012587086665
 
 appearance: 
   page-mode: Normal
@@ -459,6 +459,34 @@ buttons:
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
     database-action: SQL UPDATE action
+
+- # ====== Button: CLONE_SESSION ===============================
+  id: 14692537262436139
+  identification: 
+    button-name: CLONE_SESSION
+    label: Clone Session
+
+  layout: 
+    sequence: 10
+    region: User Profile # 63563232810450017
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 63463978601439167
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to URL
+    target: "javascript:window.open(window.location.href + '&request=APEX_CLONE_SESSION', '_blank');"
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGED_PROJECT =====================

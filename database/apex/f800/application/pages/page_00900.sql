@@ -17,7 +17,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'USER'
 ,p_step_title=>'User Profile'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461472849711906)  -- MAIN
+,p_group_id=>wwv_flow_imp.id(18317012587086665)  -- USER_PROFILE
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(43462402185717150)  -- IS_USER
 ,p_protection_level=>'C'
@@ -107,6 +107,18 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_position=>'NEXT'
 ,p_button_css_classes=>'u-pullRight'
 ,p_database_action=>'UPDATE'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(14692537262436139)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(63563232810450017)
+,p_button_name=>'CLONE_SESSION'
+,p_button_action=>'REDIRECT_URL'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(63463978601439167)
+,p_button_image_alt=>'Clone Session'
+,p_button_position=>'RIGHT_OF_TITLE'
+,p_button_redirect_url=>'javascript:window.open(window.location.href + ''&request=APEX_CLONE_SESSION'', ''_blank'');'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(74333729284054604)

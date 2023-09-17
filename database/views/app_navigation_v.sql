@@ -133,7 +133,7 @@ n AS (
         CASE WHEN t.parent_id IS NULL THEN 1 ELSE 2 END AS lvl,
         --
         CASE
-            WHEN t.page_id = 9999   THEN core.get_page_name(in_name => 'Logout #fa-coffee')
+            WHEN t.page_id = 9999   THEN core.get_page_name(in_name => '#fa-coffee Logout')
             WHEN t.page_id = 0      THEN '</span></a></li></ul>'   || CHR(10) ||
                                          '<ul class="EMPTY"></ul>' || CHR(10) ||
                                          '<ul class="RIGHT"><li style="display: none;"><a href=""><span>'  -- a trick to split nav menu to left and right
@@ -165,7 +165,7 @@ n AS (
         --
         LTRIM(RTRIM(CASE
             WHEN t.page_id = 0      THEN 'HIDDEN'
-            WHEN t.page_id = 900    THEN 'RIGHT'
+            WHEN t.page_id = 900    THEN 'RIGHT_ALIGN'
             END
             || ' ' || t.page_group
             || ' ' || t.page_css_classes

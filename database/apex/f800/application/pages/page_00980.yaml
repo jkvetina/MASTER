@@ -5,7 +5,7 @@ identification:
   name: '#fa-question-circle'
   alias: HELP
   title: '#fa-question-circle'
-  page-group: MAIN # 43461472849711906
+  page-group: USER_PROFILE # 18317012587086665
 
 appearance: 
   page-mode: Modal Dialog
