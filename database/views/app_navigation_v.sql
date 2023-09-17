@@ -257,7 +257,7 @@ SELECT
     n.page_root_id,
     NULL                AS auth_scheme,
     NULL                AS procedure_name,
-    '&' || 'nbsp;'      AS label__,
+    NULL                AS label__,
     --
     2                   AS lvl,  -- mandatory columns for APEX navigation
     NULL                AS label,

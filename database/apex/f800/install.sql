@@ -143,6 +143,7 @@ prompt --install
 @@application/pages/page_00000.sql
 @@application/pages/page_00100.sql
 @@application/pages/page_00800.sql
+@@application/pages/page_00850.sql
 @@application/pages/page_00900.sql
 @@application/pages/page_00980.sql
 @@application/deployment/definition.sql
