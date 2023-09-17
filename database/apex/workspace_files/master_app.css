@@ -225,3 +225,60 @@ ul.DASH_LIST li:before {
   color                 : #fff;
   background            : #555;
 }
+
+
+
+/* NOTIFICATIONS */
+span.apex-page-error *,
+span.apex-page-success * {
+    color               : #fff !important;
+    font-family         : 'Roboto', sans-serif;
+    font-size           : 1.1rem;
+    font-weight         : bold;
+    line-height         : 1.5rem;
+}
+span.apex-page-error .a-Notification-title {
+    display             : none;
+}
+span.apex-page-error ul.a-Notification-list {
+    list-style          : none !important;
+    list-style-type     : none !important;
+}
+span.apex-page-error .a-Notification-list {
+    margin-top          : 0 !important;
+}
+span.apex-page-error .a-Notification-item {
+    margin-left         : -20px !important;
+}
+
+/* ICON */
+span.apex-page-error .t-Alert-icon .t-Icon,
+span.apex-page-success .t-Alert-icon .t-Icon {
+    color               : #fff !important;
+    font-size           : 2rem;
+    background          : transparent;
+    padding             : 1rem 2.5rem 1rem 0.5rem;
+}
+
+/* COLORS */
+span.apex-page-success .t-Alert.t-Alert--success {
+    background          : #518D54 !important;
+}
+span.apex-page-error .t-Alert--colorBG.t-Alert--warning,
+span.apex-page-error .t-Alert--colorBG.t-Alert--yellow {
+    background          : #E3C04D;
+    background          : #C9261D;
+}
+
+/* WARNING NOTIFICATION */
+button.a-Button.a-Button--notification.js-showDetails {
+    background          : transparent;
+    border              : 0;
+    outline             : none;
+}
+
+/** fa fa-info-circle */
+.t-Alert--horizontal .t-Alert-buttons {
+    align-items         : end;
+}
+
