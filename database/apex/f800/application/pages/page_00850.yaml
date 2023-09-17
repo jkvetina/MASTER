@@ -345,7 +345,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 180
+      sequence: 190
       column-alignment: end
       group: Theme # 18480711956274410
       use-group-for: Both
@@ -495,15 +495,11 @@ regions:
     id: 18378331200452338
     identification: 
       column-name: PAGE_ALIAS
-      type: Display Only
+      type: Link
 
     heading: 
       heading: Alias
       alignment: start
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
 
     layout: 
       sequence: 140
@@ -515,15 +511,16 @@ regions:
     accessibility: 
       value-identifies-row: false
 
+    link: 
+      target: '&PAGE_LINK.'
+      link-text: '&PAGE_ALIAS.'
+
     source: 
       type: Database Column
       database-column: PAGE_ALIAS
       data-type: VARCHAR2
       query-only: true
       primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
 
     column-filter: 
       enabled: true
@@ -543,6 +540,9 @@ regions:
       sort: true
       control-break/aggregate: true
       hide: true
+
+    security: 
+      escape-special-characters: true
 
   - # ====== Column: PAGE_NAME ===================================
     id: 18378468054452339
@@ -650,7 +650,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 170
+      sequence: 180
       column-alignment: start
       group: Security # 18480677568274409
       use-group-for: Both
@@ -759,7 +759,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 190
+      sequence: 200
       column-alignment: start
       group: Theme # 18480711956274410
       use-group-for: Both
@@ -807,7 +807,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 200
+      sequence: 210
 
     accessibility: 
       value-identifies-row: false
@@ -843,7 +843,7 @@ regions:
       based-on: Item Value
 
     layout: 
-      sequence: 210
+      sequence: 220
       column-alignment: start
       stretch: Use Report Setting
 
@@ -1023,6 +1023,37 @@ regions:
     source: 
       type: Database Column
       database-column: ACTION_DML
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: PAGE_LINK ===================================
+    id: 18480841419274411
+    identification: 
+      column-name: PAGE_LINK
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 170
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: PAGE_LINK
       data-type: VARCHAR2
       query-only: true
       primary-key: false
@@ -1267,10 +1298,10 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
-- # ====== Dynamic Action: HIDE_GLOBAL_PAGE_REGIONS ============
+- # ====== Dynamic Action: HIDE_INTERNAL_GROUPS ================
   id: 15862704001560690
   identification: 
-    name: HIDE_GLOBAL_PAGE_REGIONS
+    name: HIDE_INTERNAL_GROUPS
 
   execution: 
     sequence: 10
@@ -1294,7 +1325,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: HIDE_GLOBAL_PAGE_REGIONS # 15862704001560690
+      event: HIDE_INTERNAL_GROUPS # 15862704001560690
       fire-when-event-result-is: True
       fire-on-initialization: false
 

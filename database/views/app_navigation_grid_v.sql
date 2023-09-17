@@ -50,6 +50,11 @@ SELECT
     m.page_group,
     m.auth_scheme,
     --
+    core.get_page_url (
+        in_app_id       => m.app_id,
+        in_page_id      => m.page_id
+    ) AS page_link,
+    --
     CASE WHEN m.page_mode != 'Normal' THEN 'Y' END AS is_modal,
     --
     m.page_css_classes AS css_classes,
