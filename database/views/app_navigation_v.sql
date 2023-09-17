@@ -153,15 +153,6 @@ n AS (
                 )
             END AS target,
         --
-        CASE
-            WHEN t.app_id IN (curr.app_id, curr.real_app_id) AND t.page_id = curr.page_id    THEN 'YES'
-            WHEN t.app_id IN (curr.app_id, curr.real_app_id) AND t.page_id = curr.parent_id  THEN 'YES'
-            END AS is_current_list_entry,
-        --
-        NULL                    AS image,
-        NULL                    AS image_attribute,
-        NULL                    AS image_alt_attribute,
-        --
         LTRIM(RTRIM(CASE
             WHEN t.page_id = 0      THEN 'HIDDEN'
             WHEN t.page_id = 900    THEN 'RIGHT_ALIGN'
@@ -206,6 +197,17 @@ n AS (
         AND t.parent_id         = PRIOR t.page_id
     START WITH t.parent_id      IS NULL
     ORDER SIBLINGS BY t.order# NULLS LAST, t.page_id
+),
+r AS (
+    -- find root page
+    SELECT /*+ MATERIALIZE */
+        n.app_id,
+        n.page_id,
+        n.page_root_id
+    FROM n
+    CROSS JOIN curr
+    WHERE n.app_id      IN (curr.app_id, curr.real_app_id)
+        AND n.page_id   = curr.page_id
 )
 SELECT
     n.app_id,                   -- some extra columns for FE
@@ -219,10 +221,16 @@ SELECT
     n.lvl,                      -- mandatory columns for APEX navigation
     n.label,
     n.target,
-    n.is_current_list_entry,
-    n.image,
-    n.image_attribute,
-    n.image_alt_attribute,
+    --
+    CASE
+        WHEN n.app_id IN (curr.app_id, curr.real_app_id) AND n.page_id IN (curr.page_id, curr.parent_id) THEN 'YES'
+        WHEN n.app_id = r.app_id AND n.page_id = r.page_root_id THEN 'YES'
+        END AS is_current_list_entry,
+    --
+    NULL AS image,
+    NULL AS image_attribute,
+    NULL AS image_alt_attribute,
+    --
     n.attribute01,              -- <li class="...">
     n.attribute02,              -- <li>...<a>
     n.attribute03,              -- <a class="..."
@@ -247,6 +255,10 @@ SELECT
     n.attribute10,
     n.order#
 FROM n
+CROSS JOIN curr
+LEFT JOIN r
+    ON r.app_id         = n.app_id
+    AND r.page_root_id  = n.page_id
 --
 UNION ALL
 SELECT
