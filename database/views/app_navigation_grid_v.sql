@@ -52,10 +52,11 @@ SELECT
     --
     CASE WHEN m.page_mode != 'Normal' THEN 'Y' END AS is_modal,
     --
-    m.page_css_classes  AS css_classes,
+    m.page_css_classes AS css_classes,
     --
-    z.label__           AS label,
-    z.order#            AS sort_order#
+    NVL(z.label__, REPLACE(RPAD(' ', 4, ' '), ' ', '&' || 'nbsp; ') || m.page_name) AS label,
+    --
+    NVL(z.order#, f.order# || '/' || LTRIM(n.col_id || '.' || n.order#, '.') || '.' || n.page_id) AS sort_order#
     --
 FROM app_navigation_map_mv m
 JOIN x
@@ -65,7 +66,10 @@ LEFT JOIN app_navigation n
     AND n.page_id       = m.page_id
 LEFT JOIN app_navigation_v z
     ON z.app_id         = m.app_id
-    AND z.page_id       = m.page_id;
+    AND z.page_id       = m.page_id
+LEFT JOIN app_navigation_v f
+    ON f.app_id         = n.app_id
+    AND f.page_id       = n.parent_id;
 --
 COMMENT ON TABLE app_navigation_grid_v IS '';
 
