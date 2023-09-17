@@ -223,7 +223,7 @@ SELECT
     n.target,
     --
     CASE
-        WHEN n.app_id IN (curr.app_id, curr.real_app_id) AND n.page_id IN (curr.page_id, curr.parent_id) THEN 'YES'
+        WHEN n.app_id IN (curr.app_id, curr.real_app_id) AND n.page_id = curr.page_id THEN 'YES'
         WHEN n.app_id = r.app_id AND n.page_id = r.page_root_id THEN 'YES'
         END AS is_current_list_entry,
     --
