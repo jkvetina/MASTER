@@ -76,6 +76,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: NAVIGATION
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -1288,7 +1289,7 @@ dynamic-actions:
 
     settings: 
       code: |
-        fold_grid_group('PAGE_REGIONS', 'Page Group', '0 Global Page');
+        fold_grid_group('NAVIGATION', 'Page Group', '__ INTERNAL');
         
 
     execution: 

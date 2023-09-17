@@ -28,6 +28,7 @@ wwv_flow_imp_page.create_page(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(14693659803436150)
 ,p_plug_name=>'Navigation [GRID]'
+,p_region_name=>'NAVIGATION'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63355525363439097)
@@ -862,7 +863,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'fold_grid_group(''PAGE_REGIONS'', ''Page Group'', ''0 Global Page'');',
+'fold_grid_group(''NAVIGATION'', ''Page Group'', ''__ INTERNAL'');',
 ''))
 );
 wwv_flow_imp_page.create_page_process(

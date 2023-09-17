@@ -382,18 +382,23 @@ var fix_grid_save_button = function () {
 var fold_grid_group = function(grid_id, group_name, group_value) {
     (function loop(i) {
         setTimeout(function() {
-            var $x = $('#' + grid_id + ' table tbody tr:first button');
-            if ($x) {
-                var $b = $x.parent().find('.a-GV-controlBreakLabel');
-                if ($b.find('.a-GV-breakLabel').text().includes(group_name) && $b.find('.a-GV-breakValue').text().includes(group_value)) {
-                    $x.click();
-                    $x.blur();
-                    $(window).scrollTop(0);
-                    return;
+            $('#' + grid_id + ' table tbody tr button.a-Button.js-toggleBreak').each(function() {
+                if (i > 0) {
+                    $x = $(this);
+                    var $b = $x.parent().find('.a-GV-controlBreakLabel');
+                    var label = $b.find('.a-GV-breakLabel').text();
+                    var text = $b.find('.a-GV-breakValue').text();
+                    if (label.startsWith(group_name) && text.trim() == group_value) {
+                        $x.click();
+                        $x.blur();
+                        $(window).scrollTop(0);
+                        i = 0;
+                        return;
+                    }
                 }
-            }
+            });
             if (--i) loop(i);
-        }, 1000)
+        }, 200)
     })(10);
 };
 
