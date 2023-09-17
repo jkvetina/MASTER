@@ -239,13 +239,14 @@ span.apex-page-success * {
 }
 span.apex-page-error .a-Notification-title {
     display             : none;
+    margin              : 1rem 0 !important;
 }
 span.apex-page-error ul.a-Notification-list {
     list-style          : none !important;
     list-style-type     : none !important;
 }
 span.apex-page-error .a-Notification-list {
-    margin-top          : 0 !important;
+    margin              : 0.8rem 0 !important;
 }
 span.apex-page-error .a-Notification-item {
     margin-left         : -20px !important;
