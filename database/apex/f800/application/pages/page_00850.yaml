@@ -248,7 +248,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: APP_PAGES # 15548432056414481
+      list-of-values: 'APP_PAGES #ID-ID' # 19507748959642503
       display-extra-values: true
       display-null-value: true
 

@@ -130,7 +130,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_use_group_for=>'BOTH'
 ,p_is_required=>false
 ,p_lov_type=>'SHARED'
-,p_lov_id=>wwv_flow_imp.id(15548432056414481)  -- APP_PAGES
+,p_lov_id=>wwv_flow_imp.id(19507748959642503)  -- APP_PAGES #ID-ID
 ,p_lov_display_extra=>true
 ,p_lov_display_null=>true
 ,p_enable_filter=>true
@@ -650,7 +650,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(18377854946452333)
 ,p_is_visible=>true
 ,p_is_frozen=>false
-,p_width=>60
+,p_width=>90
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(18441114148590935)

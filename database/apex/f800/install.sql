@@ -39,6 +39,7 @@ prompt --install
 @@application/shared_components/navigation/tabs/parent.sql
 @@application/shared_components/user_interface/lovs/app_applications.sql
 @@application/shared_components/user_interface/lovs/app_pages.sql
+@@application/shared_components/user_interface/lovs/app_pages_id_id.sql
 @@application/shared_components/user_interface/lovs/app_page_groups.sql
 @@application/shared_components/user_interface/lovs/app_roles.sql
 @@application/shared_components/user_interface/lovs/app_role_groups.sql
