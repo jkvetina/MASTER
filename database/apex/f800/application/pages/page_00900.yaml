@@ -232,10 +232,11 @@ regions:
 
     subtitle: 
       advanced-formatting: false
-      column: ROLE_DESC
+      column: ROLE_GROUP
 
     body: 
       advanced-formatting: false
+      column: ROLE_DESC
 
     secondary-body: 
       advanced-formatting: false

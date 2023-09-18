@@ -87,8 +87,9 @@ wwv_flow_imp_page.create_card(
 ,p_title_adv_formatting=>false
 ,p_title_column_name=>'ROLE_NAME'
 ,p_sub_title_adv_formatting=>false
-,p_sub_title_column_name=>'ROLE_DESC'
+,p_sub_title_column_name=>'ROLE_GROUP'
 ,p_body_adv_formatting=>false
+,p_body_column_name=>'ROLE_DESC'
 ,p_second_body_adv_formatting=>false
 ,p_second_body_column_name=>'CONTEXT_ID'
 ,p_media_adv_formatting=>false
