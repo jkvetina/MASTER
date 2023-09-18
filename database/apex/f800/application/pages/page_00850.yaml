@@ -1329,6 +1329,41 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
+- # ====== Dynamic Action: REFRESH_MV_ON_SAVE ==================
+  id: 18480926849274412
+  identification: 
+    name: REFRESH_MV_ON_SAVE
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: NATIVE_IG|REGION TYPE|interactivegridsave
+    selection-type: Region
+    region: Navigation [GRID] # 14693659803436150
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 18481017828274413
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: core.refresh_mviews('APP_NAV%_MV');
+
+    execution: 
+      sequence: 10
+      event: REFRESH_MV_ON_SAVE # 18480926849274412
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
 processes: 
 - # ====== Process: SAVE_NAVIGATION ============================
   id: 18379327893452348

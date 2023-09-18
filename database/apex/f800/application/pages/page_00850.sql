@@ -889,6 +889,27 @@ wwv_flow_imp_page.create_page_da_action(
 'fold_grid_group(''NAVIGATION'', ''Page Group'', ''__ INTERNAL'');',
 ''))
 );
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(18480926849274412)
+,p_name=>'REFRESH_MV_ON_SAVE'
+,p_event_sequence=>20
+,p_triggering_element_type=>'REGION'
+,p_triggering_region_id=>wwv_flow_imp.id(14693659803436150)
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'NATIVE_IG|REGION TYPE|interactivegridsave'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(18481017828274413)
+,p_event_id=>wwv_flow_imp.id(18480926849274412)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
+,p_attribute_01=>'core.refresh_mviews(''APP_NAV%_MV'');'
+,p_attribute_05=>'PLSQL'
+,p_wait_for_result=>'Y'
+);
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(18379327893452348)
 ,p_process_sequence=>10
