@@ -224,7 +224,12 @@ SELECT
     --
     CASE
         WHEN n.app_id IN (curr.app_id, curr.real_app_id) AND n.page_id = curr.page_id THEN 'YES'
-        WHEN n.app_id = r.app_id AND n.page_id = r.page_root_id THEN 'YES'
+        WHEN (n.app_id, n.page_id) IN (
+            SELECT r.app_id, r.page_root_id
+            FROM r
+            WHERE r.app_id          = n.app_id
+                AND r.page_root_id  = n.page_id
+        ) THEN 'YES'
         END AS is_current_list_entry,
     --
     NULL AS image,
@@ -256,9 +261,6 @@ SELECT
     n.order#
 FROM n
 CROSS JOIN curr
-LEFT JOIN r
-    ON r.app_id         = n.app_id
-    AND r.page_root_id  = n.page_id
 --
 UNION ALL
 SELECT
@@ -296,7 +298,7 @@ WHERE n.page_id IS NULL
 UNION ALL
 SELECT
     n.app_id,           -- some extra columns for FE, to align submenus
-    n.page_id,
+    NULL                AS page_id,
     NULL                AS parent_id,
     n.page_root_id,
     NULL                AS auth_scheme,
