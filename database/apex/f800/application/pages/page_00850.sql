@@ -952,7 +952,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'SAVE_NAVIGATION'
 ,p_attribute_01=>'PLSQL_CODE'
 ,p_attribute_04=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'IF :APEX$ROW_ACTION = ''D'' THEN',
+'IF core.get_grid_action() = ''D'' THEN',
 '    app.nav_remove_page (',
 '        in_app_id       => :APP_ID,',
 '        in_page_id      => :PAGE_ID',
