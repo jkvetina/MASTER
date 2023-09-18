@@ -73,89 +73,100 @@ const color_cell = function (options, value, title, color_bg, color_text) {
 //
 // WHEN PAGE LOADS
 //
+var ping_active = true;
+var ping_loop;
+//
 var init_page = function() {
     // autohide success messages
     // this actually dont work together with the following setThemeHooks
     apex.theme42.util.configAPEXMsgs({
         autoDismiss : true,
-        duration    : 3000
+        duration    : 2300
     });
 
     // catch message event
     apex.message.setThemeHooks({
-        beforeShow: function(pMsgType, pElement$) {  // beforeShow, beforeHide
-            //console.log('MESSAGE:', pMsgType, pElement$);
+        beforeShow: function(pMsgType, pElement$) {
+            if (pMsgType === apex.message.TYPE.ERROR) {
+                var message = pElement$.find('ul.a-Notification-list li').text();
+                console.log('MESSAGE:', pMsgType, pElement$, message);
 
-            // unescape HTML in error message
-            var $err = $('#APEX_ERROR_MESSAGE');
-            $err.html($('<textarea />').html($err.html()).text());
+                // stop pinging on session timeout error
+                if (message.toUpperCase().includes('YOUR SESSION HAS ENDED')) {
+                    ping_active = false;
+                    for (var i = 0 ; i <= ping_loop; i++) {
+                        clearTimeout(i); 
+                    }
+                }
+            }
 
+            // autohide success messages
             // this message can be from AJAX call (AJAX_PING process) and then it wont be autoclosed
             if (pMsgType === apex.message.TYPE.SUCCESS) {
                 setTimeout(() => {
                     apex.message.hidePageSuccess();
-                }, 3000);
+                }, 2300);
             }
         },
-        beforeHide: function(pMsgType, pElement$) {  // beforeShow, beforeHide
-            //if (pMsgType === apex.message.TYPE.ERROR) {  // SUCCESS, ERROR
-            //}
+        beforeHide: function(pMsgType, pElement$) {
         }
     });
+
+    //
+    // PING FOR LOGGED USERS
+    //
+    var ping_interval = parseInt(apex.item('P0_AJAX_PING_INTERVAL').getValue());
+    var ping_fn = function() {
+        if (!ping_active) {
+            return;
+        }
+        //
+        console.log('CALL AJAX_PING');
+        apex.server.process (
+            'AJAX_PING',
+            {
+                //x01: 1,
+                //x02: 2,
+                //x03: 3,
+                //p_arg_names   : [''],     // set items?
+                //p_arg_values  : [''],
+            },  // params
+            {
+                async       : true,
+                dataType    : 'json',
+                success     : function(data) {
+                    //console.log('PING RECEIVED', ping_loop, data);
+                    //
+                    if (data.message) {
+                        if (data.status == 'SUCCESS') {
+                            apex.message.showPageSuccess(data.message);
+                        }
+                        else if (data.status == 'WARNING' || data.status == 'ERROR') {
+                            apex.message.showErrors([{
+                                type:       apex.message.TYPE.ERROR,
+                                location:   ['page'],
+                                message:    data.message,
+                                unsafe:     false
+                            }]);
+                        }
+                    }
+                }
+            }
+        );
+        //
+        if (ping_active && ping_interval > 0) {
+            ping_loop = setTimeout(function() { ping_fn(); }, ping_interval * 1000);
+        }
+    };
+    if (ping_active && ping_interval > 0 && apex.item('P0_AJAX_PING_INTERVAL').node) {
+        ping_loop = ping_fn();
+    }
 
     //
     // ADJUST GRIDS
     //
     fix_grid_toolbars();
     fix_grid_save_button();
-
-    //
-    // PING FOR LOGGED USERS
-    //
-    var ping_interval = parseInt(apex.item('P0_AJAX_PING_INTERVAL').getValue());
-    if (apex.item('P0_AJAX_PING_INTERVAL').node && ping_interval > 0) {
-        (function loop(i) {
-            setTimeout(function() {
-                if (ping_interval > 0) {
-                    console.log('CALL AJAX_PING');
-                    apex.server.process (
-                        'AJAX_PING',
-                        {
-                            //x01: 1,
-                            //x02: 2,
-                            //x03: 3,
-                            //p_arg_names   : [''],     // set items?
-                            //p_arg_values  : [''],
-                        },  // params
-                        {
-                            async       : true,
-                            dataType    : 'json',
-                            success     : function(data) {
-                                if (data.message) {
-                                    if (data.status == 'SUCCESS') {
-                                        apex.message.showPageSuccess(data.message);
-                                    }
-                                    else if (data.status == 'WARNING' || data.status == 'ERROR') {
-                                        apex.message.showErrors([{
-                                            type:       apex.message.TYPE.ERROR,
-                                            location:   ['page'],
-                                            message:    data.message,
-                                            unsafe:     false
-                                        }]);
-                                        // on session timeout stop pinging
-                                        if (type == 'ERROR' && data.message.includes('INTERNAL_ERROR') && data.message.includes('SESSION')) {
-                                            ping_interval = 0;
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    );
-                }
-                loop(i);
-            }, ping_interval * 1000);  // interval in miliseconds
-        })();
-    }
 };
 
 
