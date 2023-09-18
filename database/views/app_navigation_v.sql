@@ -170,7 +170,7 @@ n AS (
         NULL                    AS attribute04,
         --
         CASE WHEN LEVEL > 2
-            THEN ' style="margin-right: 0.5rem; margin-left: ' || ((LEVEL - 2) + 1) || 'rem; font-size: 70%;"'
+            THEN ' style="margin: -0.3rem 0.5rem -0.3rem ' || ((LEVEL - 2) + 1) || 'rem; font-size: 70%;"'
             END AS attribute05,
         --
         NULL                    AS attribute06,
@@ -246,7 +246,7 @@ SELECT
     n.attribute08,              -- </a>...
     --n.attribute09,              -- <ul class="...">
     NULLIF((
-        SELECT 'MULTI_' || MIN(m.cols_) AS cols_
+        SELECT 'MULTI_' || MAX(m.max_cols) AS max_cols
         FROM app_navigation_matrix_v m
         WHERE m.app_id          = n.app_id
             AND m.page_root_id  IN (n.page_id, n.page_root_id)
@@ -291,7 +291,43 @@ SELECT
     NULL                AS attribute10,
     n.order#
 FROM app_navigation_matrix_v n
-WHERE n.page_id IS NULL;
+WHERE n.page_id IS NULL
+--
+UNION ALL
+SELECT
+    n.app_id,           -- some extra columns for FE, to align submenus
+    n.page_id,
+    NULL                AS parent_id,
+    n.page_root_id,
+    NULL                AS auth_scheme,
+    NULL                AS procedure_name,
+    NULL                AS label__,
+    --
+    2                   AS lvl,  -- mandatory columns for APEX navigation
+    NULL                AS label,
+    NULL                AS target,
+    NULL                AS is_current_list_entry,
+    NULL                AS image,
+    NULL                AS image_attribute,
+    NULL                AS image_alt_attribute,
+    --
+    'NO_HOVER TRANSPARENT' AS attribute01,
+    --
+    '<div style="height: 0; overflow: hidden; margin: ' || (n.adjust_for_childs * (0.3 * 2)) || 'rem 0 0;">&' || 'nbsp;</div>' AS attribute02,
+    --
+    NULL                AS attribute03,
+    NULL                AS attribute04,
+    NULL                AS attribute05,
+    NULL                AS attribute06,
+    NULL                AS attribute07,
+    NULL                AS attribute08,
+    NULL                AS attribute09,
+    NULL                AS attribute10,
+    --
+    '/' || n.app_id || '.' || n.page_root_id || '/' || n.col_id || '/Z' AS order#
+    --
+FROM app_navigation_matrix_v n
+WHERE n.row_id = n.max_rows;
 --
 COMMENT ON TABLE app_navigation_v IS '';
 

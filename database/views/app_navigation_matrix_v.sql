@@ -18,6 +18,7 @@ s AS (
         n.app_id,
         n.parent_id                 AS page_root_id,
         CONNECT_BY_ROOT n.page_id   AS page_id,
+        NULLIF(LEVEL, 1)            AS lvl,
         --
         '/' || n.app_id || '.' || n.parent_id || '/' || n.col_id --|| '.' || LEVEL
             || SYS_CONNECT_BY_PATH(n.order#, '.') || '.' || n.page_id || '/'
@@ -33,7 +34,8 @@ s AS (
 n AS (
     SELECT /*+ MATERIALIZE */
         s.*,
-        ROW_NUMBER() OVER (PARTITION BY s.app_id, s.page_root_id, s.col_id ORDER BY s.order#) AS row_id
+        ROW_NUMBER() OVER (PARTITION BY s.app_id, s.page_root_id, s.col_id ORDER BY s.order#) AS row_id,
+        COUNT(s.lvl) OVER (PARTITION BY s.app_id, s.page_root_id, s.col_id) AS childs
     FROM s
 ),
 dimensions AS (
@@ -41,14 +43,18 @@ dimensions AS (
     SELECT /*+ MATERIALIZE */
         c.app_id,
         c.page_root_id,
-        MAX(c.cols_) AS cols_,
-        MAX(c.rows_) AS rows_
+        MAX(c.max_cols)     AS max_cols,
+        MAX(c.max_rows)     AS max_rows,
+        MAX(c.childs)       AS max_childs,
+        MIN(c.childs)       AS min_childs
     FROM (
         SELECT
             n.app_id,
             n.page_root_id,
-            COUNT(DISTINCT n.col_id)    OVER (PARTITION BY n.app_id, n.page_root_id) AS cols_,
-            COUNT(n.col_id)             AS rows_
+            COUNT(DISTINCT n.col_id)    OVER (PARTITION BY n.app_id, n.page_root_id) AS max_cols,
+            COUNT(n.col_id)             AS max_rows,
+            --
+            SUM(CASE WHEN n.lvl > 1 THEN 1 ELSE 0 END) AS childs
         FROM n
         GROUP BY
             n.app_id,
@@ -66,8 +72,18 @@ SELECT
     n.page_id,
     c.id                AS col_id,
     r.id                AS row_id,
-    d.rows_,
-    d.cols_,
+    d.max_rows,
+    d.max_cols,
+    d.max_childs,
+    d.min_childs,
+    --
+    (
+        SELECT MAX(n.childs) AS childs
+        FROM n
+        WHERE n.app_id          = d.app_id
+            AND n.page_root_id  = d.page_root_id
+            AND n.col_id        = c.id
+    ) - d.min_childs AS adjust_for_childs,
     --
     (
         SELECT MAX(n.order#)    AS order#
@@ -75,13 +91,13 @@ SELECT
         WHERE n.app_id          = d.app_id
             AND n.page_root_id  = d.page_root_id
             AND n.col_id        = c.id
-    ) AS order#
+    ) || '.' || r.id AS order#
     --
 FROM dimensions d
 JOIN max_rows c
-    ON c.id             <= d.cols_
+    ON c.id             <= d.max_cols
 JOIN max_rows r
-    ON r.id             <= d.rows_
+    ON r.id             <= d.max_rows
 LEFT JOIN n
     ON n.app_id         = d.app_id
     AND n.page_root_id  = d.page_root_id
