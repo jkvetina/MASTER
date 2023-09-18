@@ -123,9 +123,9 @@ wwv_flow_imp_page.create_region_column(
 ,p_is_query_only=>false
 ,p_item_type=>'NATIVE_SELECT_LIST'
 ,p_heading=>'Parent'
-,p_heading_alignment=>'LEFT'
+,p_heading_alignment=>'RIGHT'
 ,p_display_sequence=>60
-,p_value_alignment=>'LEFT'
+,p_value_alignment=>'RIGHT'
 ,p_group_id=>wwv_flow_imp.id(18480536908274408)
 ,p_use_group_for=>'BOTH'
 ,p_is_required=>false
@@ -761,7 +761,7 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_is_frozen=>false
 ,p_sort_order=>1
 ,p_sort_direction=>'ASC'
-,p_sort_nulls=>'LAST'
+,p_sort_nulls=>'FIRST'
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(18457064605619041)
@@ -833,10 +833,31 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_image_alt=>'Refresh MV'
 ,p_button_position=>'RIGHT_OF_TITLE'
 );
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(18481106375274414)
+,p_button_sequence=>20
+,p_button_plug_id=>wwv_flow_imp.id(39751669654005374)
+,p_button_name=>'AUTO_UPDATE'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(63463978601439167)
+,p_button_image_alt=>'Auto Update'
+,p_button_position=>'RIGHT_OF_TITLE'
+,p_button_css_classes=>'&P850_AUTO_UPDATE_HOT.'
+);
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(18379493042452349)
 ,p_name=>'P850_START'
 ,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(39751669654005374)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(18481290058274415)
+,p_name=>'P850_AUTO_UPDATE_HOT'
+,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(39751669654005374)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -871,6 +892,18 @@ wwv_flow_imp_page.create_page_item(
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
+wwv_flow_imp_page.create_page_computation(
+ p_id=>wwv_flow_imp.id(18481333048274416)
+,p_computation_sequence=>10
+,p_computation_item=>'P850_AUTO_UPDATE_HOT'
+,p_computation_point=>'BEFORE_BOX_BODY'
+,p_computation_type=>'QUERY'
+,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'SELECT ''t-Button--hot'' AS css_class',
+'FROM app_navigation_grid_v n',
+'WHERE n.action_name IS NOT NULL',
+'    AND ROWNUM = 1'))
+);
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(15862704001560690)
 ,p_name=>'HIDE_INTERNAL_GROUPS'
@@ -890,8 +923,8 @@ wwv_flow_imp_page.create_page_da_action(
 ''))
 );
 wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(18480926849274412)
-,p_name=>'REFRESH_MV_ON_SAVE'
+ p_id=>wwv_flow_imp.id(18481512895274418)
+,p_name=>'ON_SAVE'
 ,p_event_sequence=>20
 ,p_triggering_element_type=>'REGION'
 ,p_triggering_region_id=>wwv_flow_imp.id(14693659803436150)
@@ -900,8 +933,8 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_bind_event_type=>'NATIVE_IG|REGION TYPE|interactivegridsave'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(18481017828274413)
-,p_event_id=>wwv_flow_imp.id(18480926849274412)
+ p_id=>wwv_flow_imp.id(18481680969274419)
+,p_event_id=>wwv_flow_imp.id(18481512895274418)
 ,p_event_result=>'TRUE'
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
@@ -917,11 +950,29 @@ wwv_flow_imp_page.create_page_process(
 ,p_region_id=>wwv_flow_imp.id(14693659803436150)
 ,p_process_type=>'NATIVE_IG_DML'
 ,p_process_name=>'SAVE_NAVIGATION'
-,p_attribute_01=>'TABLE'
-,p_attribute_03=>'APP_NAVIGATION'
+,p_attribute_01=>'PLSQL_CODE'
+,p_attribute_04=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'IF :APEX$ROW_ACTION = ''D'' THEN',
+'    app.nav_remove_page (',
+'        in_app_id       => :APP_ID,',
+'        in_page_id      => :PAGE_ID',
+'    );',
+'ELSE',
+'    app.nav_add_page (',
+'        in_app_id       => :APP_ID,',
+'        in_page_id      => :PAGE_ID,',
+'        in_parent_id    => :PARENT_ID,',
+'        in_is_hidden    => :IS_HIDDEN,',
+'        in_is_reset     => :IS_RESET,',
+'        in_order#       => :ORDER#,',
+'        in_col_id       => :COL_ID',
+'    );',
+'END IF;',
+'--',
+'core.refresh_mviews(''APP_NAV%_MV'');',
+''))
 ,p_attribute_05=>'Y'
 ,p_attribute_06=>'N'
-,p_attribute_08=>'Y'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_internal_uid=>18379327893452348
 );

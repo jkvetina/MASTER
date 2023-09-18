@@ -815,8 +815,8 @@ CREATE OR REPLACE PACKAGE BODY app AS
 
 
     PROCEDURE nav_remove_page (
-        in_page_id              app_navigation.page_id%TYPE,
-        in_app_id               app_navigation.app_id%TYPE
+        in_app_id               app_navigation.app_id%TYPE,
+        in_page_id              app_navigation.page_id%TYPE
     )
     AS
     BEGIN
@@ -839,20 +839,33 @@ CREATE OR REPLACE PACKAGE BODY app AS
 
 
     PROCEDURE nav_add_page (
+        in_app_id               app_navigation.app_id%TYPE,
         in_page_id              app_navigation.page_id%TYPE,
-        in_app_id               app_navigation.app_id%TYPE
+        in_parent_id            app_navigation.parent_id%TYPE   := NULL,
+        in_is_hidden            app_navigation.is_hidden%TYPE   := NULL,
+        in_is_reset             app_navigation.is_reset%TYPE    := NULL,
+        in_order#               app_navigation.order#%TYPE      := NULL,
+        in_col_id               app_navigation.col_id%TYPE      := NULL
     )
     AS
         rec                     app_navigation%ROWTYPE;
     BEGIN
-        rec.app_id      := in_app_id;
-        rec.page_id     := in_page_id;
+        rec.app_id              := in_app_id;
+        rec.page_id             := in_page_id;
+        rec.parent_id           := in_parent_id;
+        rec.is_hidden           := in_is_hidden;
+        rec.is_reset            := in_is_reset;
+        rec.order#              := in_order#;
+        rec.col_id              := in_col_id;
         --
         BEGIN
             INSERT INTO app_navigation VALUES rec;
         EXCEPTION
         WHEN DUP_VAL_ON_INDEX THEN
-            NULL;
+            UPDATE app_navigation n
+            SET ROW = rec
+            WHERE n.app_id      = in_app_id
+                AND n.page_id   = in_page_id;
         END;
     EXCEPTION
     WHEN core.app_exception THEN

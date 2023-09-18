@@ -231,11 +231,11 @@ regions:
 
     heading: 
       heading: Parent
-      alignment: start
+      alignment: end
 
     layout: 
       sequence: 60
-      column-alignment: start
+      column-alignment: end
       group: Hierarchy # 18480536908274408
       use-group-for: Both
       stretch: Use Report Setting
@@ -1179,6 +1179,36 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P850_AUTO_UPDATE_HOT =====================
+  id: 18481290058274415
+  identification: 
+    name: P850_AUTO_UPDATE_HOT
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 50
+    region: Navigation # 39751669654005374
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P850_ADD_PAGE ============================
   id: 39823257670765752
   identification: 
@@ -1297,6 +1327,35 @@ buttons:
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
 
+- # ====== Button: AUTO_UPDATE =================================
+  id: 18481106375274414
+  identification: 
+    button-name: AUTO_UPDATE
+    label: Auto Update
+
+  layout: 
+    sequence: 20
+    region: Navigation # 39751669654005374
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 63463978601439167
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - '&P850_AUTO_UPDATE_HOT.'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
 dynamic-actions: 
 - # ====== Dynamic Action: HIDE_INTERNAL_GROUPS ================
   id: 15862704001560690
@@ -1329,10 +1388,10 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
-- # ====== Dynamic Action: REFRESH_MV_ON_SAVE ==================
-  id: 18480926849274412
+- # ====== Dynamic Action: ON_SAVE =============================
+  id: 18481512895274418
   identification: 
-    name: REFRESH_MV_ON_SAVE
+    name: ON_SAVE
 
   execution: 
     sequence: 20
@@ -1348,7 +1407,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 18481017828274413
+    id: 18481680969274419
     identification: 
       action: Execute Server-side Code
 
@@ -1358,11 +1417,29 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: REFRESH_MV_ON_SAVE # 18480926849274412
+      event: ON_SAVE # 18481512895274418
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
+
+computations: 
+- # ====== Computation: P850_AUTO_UPDATE_HOT ===================
+  id: 18481333048274416
+  identification: 
+    item-name: P850_AUTO_UPDATE_HOT
+
+  execution: 
+    sequence: 10
+    point: Before Regions
+
+  computation: 
+    type: SQL Query (return single value)
+    sql-query: |
+      SELECT 't-Button--hot' AS css_class
+      FROM app_navigation_grid_v n
+      WHERE n.action_name IS NOT NULL
+          AND ROWNUM = 1
 
 processes: 
 - # ====== Process: SAVE_NAVIGATION ============================
@@ -1374,12 +1451,29 @@ processes:
     editable-region: Navigation [GRID] # 14693659803436150
 
   settings: 
-    target-type: Table / View
-    table-owner: PARSING SCHEMA
-    table-name: APP_NAVIGATION
+    target-type: PL/SQL Code
+    pl/sql-code-to-insert/update/delete: |
+      IF :APEX$ROW_ACTION = 'D' THEN
+          app.nav_remove_page (
+              in_app_id       => :APP_ID,
+              in_page_id      => :PAGE_ID
+          );
+      ELSE
+          app.nav_add_page (
+              in_app_id       => :APP_ID,
+              in_page_id      => :PAGE_ID,
+              in_parent_id    => :PARENT_ID,
+              in_is_hidden    => :IS_HIDDEN,
+              in_is_reset     => :IS_RESET,
+              in_order#       => :ORDER#,
+              in_col_id       => :COL_ID
+          );
+      END IF;
+      --
+      core.refresh_mviews('APP_NAV%_MV');
+      
     prevent-lost-updates: true
     lock-row: No
-    return-primary-key(s)-after-insert: true
 
   execution: 
     sequence: 10

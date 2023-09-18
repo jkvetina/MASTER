@@ -94,9 +94,6 @@ GROUP BY
     p.auth_scheme,
     p.page_css_classes,
     p.page_mode,
-    p.page_template
-ORDER BY
-    p.app_id,
-    p.page_id;
+    p.page_template;
 --
 
