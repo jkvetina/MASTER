@@ -977,8 +977,21 @@ wwv_flow_imp_page.create_page_process(
 ,p_internal_uid=>18379327893452348
 );
 wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(18470080789804984)
+ p_id=>wwv_flow_imp.id(18481762792274420)
 ,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'AUTO_UPDATE'
+,p_process_sql_clob=>'app.nav_autoupdate();'
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when_button_id=>wwv_flow_imp.id(18481106375274414)
+,p_process_success_message=>'All changes applied'
+,p_internal_uid=>18481762792274420
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(18470080789804984)
+,p_process_sequence=>30
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'REFRESH_MV'

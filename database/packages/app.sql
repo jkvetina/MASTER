@@ -879,6 +879,33 @@ CREATE OR REPLACE PACKAGE BODY app AS
     PROCEDURE nav_autoupdate
     AS
     BEGIN
+        -- add/remove pages
+        FOR c IN (
+            SELECT n.*
+            FROM app_navigation_grid_v n
+            WHERE n.app_id          = core.get_app_id()
+                AND n.action_name   IS NOT NULL
+        ) LOOP
+            IF UPPER(c.action_link) LIKE '%REMOVE_PAGE%' THEN
+                app.nav_remove_page (
+                    in_app_id       => c.app_id,
+                    in_page_id      => c.page_id
+                );
+            END IF;
+            --
+            IF UPPER(c.action_link) LIKE '%ADD_PAGE%' THEN
+                app.nav_add_page (
+                    in_app_id       => c.app_id,
+                    in_page_id      => c.page_id,
+                    in_parent_id    => c.parent_id,
+                    in_is_hidden    => c.is_hidden,
+                    in_is_reset     => c.is_reset,
+                    in_order#       => c.order#,
+                    in_col_id       => c.col_id
+                );
+            END IF;
+        END LOOP;
+
         -- renumber siblings
         MERGE INTO app_navigation g
         USING (
@@ -901,6 +928,9 @@ CREATE OR REPLACE PACKAGE BODY app AS
         )
         WHEN MATCHED THEN
         UPDATE SET g.order#     = n.new_order#;
+
+        -- refresh MV
+        core.refresh_mviews('APP_NAV%_MV');
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
