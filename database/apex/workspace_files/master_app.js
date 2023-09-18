@@ -112,40 +112,46 @@ var init_page = function() {
     //
     // PING FOR LOGGED USERS
     //
-    const ping_interval = parseInt(apex.item('P0_AJAX_PING_INTERVAL').getValue());
+    var ping_interval = parseInt(apex.item('P0_AJAX_PING_INTERVAL').getValue());
     if (apex.item('P0_AJAX_PING_INTERVAL').node && ping_interval > 0) {
         (function loop(i) {
             setTimeout(function() {
-                console.log('CALL AJAX_PING');
-                apex.server.process (
-                    'AJAX_PING',
-                    {
-                        //x01: 1,
-                        //x02: 2,
-                        //x03: 3,
-                        //p_arg_names   : [''],     // set items?
-                        //p_arg_values  : [''],
-                    },  // params
-                    {
-                        async       : true,
-                        dataType    : 'json',
-                        success     : function(data) {
-                            if (data.message) {
-                                if (data.status == 'SUCCESS') {
-                                    apex.message.showPageSuccess(data.message);
-                                }
-                                else if (data.status == 'WARNING' || data.status == 'ERROR') {
-                                    apex.message.showErrors([{
-                                        type:       apex.message.TYPE.ERROR,
-                                        location:   ['page'],
-                                        message:    data.message,
-                                        unsafe:     false
-                                    }]);
+                if (ping_interval > 0) {
+                    console.log('CALL AJAX_PING');
+                    apex.server.process (
+                        'AJAX_PING',
+                        {
+                            //x01: 1,
+                            //x02: 2,
+                            //x03: 3,
+                            //p_arg_names   : [''],     // set items?
+                            //p_arg_values  : [''],
+                        },  // params
+                        {
+                            async       : true,
+                            dataType    : 'json',
+                            success     : function(data) {
+                                if (data.message) {
+                                    if (data.status == 'SUCCESS') {
+                                        apex.message.showPageSuccess(data.message);
+                                    }
+                                    else if (data.status == 'WARNING' || data.status == 'ERROR') {
+                                        apex.message.showErrors([{
+                                            type:       apex.message.TYPE.ERROR,
+                                            location:   ['page'],
+                                            message:    data.message,
+                                            unsafe:     false
+                                        }]);
+                                        // on session timeout stop pinging
+                                        if (type == 'ERROR' && data.message.includes('INTERNAL_ERROR') && data.message.includes('SESSION')) {
+                                            ping_interval = 0;
+                                        }
+                                    }
                                 }
                             }
                         }
-                    }
-                );
+                    );
+                }
                 loop(i);
             }, ping_interval * 1000);  // interval in miliseconds
         })();
