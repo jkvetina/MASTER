@@ -178,7 +178,7 @@ div.a-Toolbar-group [data-action="edit"] {
 
 
 
-/* FIX MIDING BORDER ON GRID HEADER */
+/* FIX MISSING BORDER ON GRID HEADER */
 th.a-GV-header {
     border-left         : 1px solid var(--a-gv-header-cell-border-color);
     border-bottom       : 2px solid var(--a-gv-header-cell-border-color);
@@ -220,6 +220,7 @@ ul.DASH_LIST li:before {
 }
 
 
+
 /* SELECTED TEXT BACKGROUND */
 ::selection {
   color                 : #fff;
@@ -230,6 +231,7 @@ ul.DASH_LIST li:before {
 
 /* NOTIFICATIONS */
 span.apex-page-error *,
+span.apex-page-error .a-Notification-item,
 span.apex-page-success * {
     color               : #fff !important;
     font-family         : 'Roboto', sans-serif;
