@@ -168,29 +168,6 @@ CREATE OR REPLACE PACKAGE app AS
         in_message_id       app_user_messages.message_id%TYPE           := NULL
     );
 
-
-
-    PROCEDURE nav_remove_page (
-        in_app_id               app_navigation.app_id%TYPE,
-        in_page_id              app_navigation.page_id%TYPE
-    );
-
-
-
-    PROCEDURE nav_add_page (
-        in_app_id               app_navigation.app_id%TYPE,
-        in_page_id              app_navigation.page_id%TYPE,
-        in_parent_id            app_navigation.parent_id%TYPE   := NULL,
-        in_is_hidden            app_navigation.is_hidden%TYPE   := NULL,
-        in_is_reset             app_navigation.is_reset%TYPE    := NULL,
-        in_order#               app_navigation.order#%TYPE      := NULL,
-        in_col_id               app_navigation.col_id%TYPE      := NULL
-    );
-
-
-
-    PROCEDURE nav_autoupdate;
-
 END;
 /
 
