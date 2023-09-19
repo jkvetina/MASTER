@@ -5,7 +5,7 @@ identification:
   name: '#fa-navicon'
   alias: LAUNCHPAD
   title: '&APP_NAME.'
-  page-group: MAIN # 43461472849711906
+  page-group: ' MAIN' # 43461472849711906
 
 appearance: 
   page-mode: Normal
@@ -221,7 +221,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: LOV_WORKSPACES # 14527761930824112
+    list-of-values: APP_WORKSPACES # 14527761930824112
     display-extra-values: false
     display-null-value: false
 
@@ -240,7 +240,7 @@ page-items:
 
   security: 
     session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
+    store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P100_START ===============================
@@ -270,7 +270,7 @@ page-items:
 
   security: 
     session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
+    store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
 buttons: 
