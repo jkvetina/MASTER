@@ -1,7 +1,12 @@
 
 # filter table data before export to CSV file
 csv_export_filters:
-  APP_NAVIGATION : 'app_id = 800'
+  APP_NAVIGATION    : 'app_id = 800'
+  APP_APPLICATIONS  : 'app_id = 800'
+  APP_CONTEXTS      : 'app_id = 800'
+  APP_SETTINGS      : 'app_id = 800'
+  APP_LOVS          : 'app_id = 800'
+  APP_ROLES         : 'app_id = 800'
 
 # auto add and lock new object with the prefix
 auto_lock_add_prefix : 'APP'
@@ -11,5 +16,5 @@ auto_filter_prefix   : 'APP'
 
 # auto refresh and auto add CSV files
 auto_csv_refresh  : False
-auto_csv_add      : ['APP_LOV_%']
+auto_csv_add      : ['APP_LOV%']
 
