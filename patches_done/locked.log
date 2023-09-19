@@ -4,6 +4,8 @@ database/jobs/app_navigaton_map_refresh.sql
 database/mviews/app_navigation_map_mv.sql
 database/packages/app.spec.sql
 database/packages/app.sql
+database/packages/app_nav.spec.sql
+database/packages/app_nav.sql
 database/tables/app_applications.sql
 database/tables/app_components.sql
 database/tables/app_contexts.sql

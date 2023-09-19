@@ -150,6 +150,9 @@ prompt --install
 @@application/pages/page_00810.sql
 @@application/pages/page_00820.sql
 @@application/pages/page_00850.sql
+@@application/pages/page_00860.sql
+@@application/pages/page_00862.sql
+@@application/pages/page_00865.sql
 @@application/pages/page_00900.sql
 @@application/pages/page_00980.sql
 @@application/deployment/definition.sql
