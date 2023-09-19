@@ -1399,11 +1399,10 @@ CREATE OR REPLACE PACKAGE BODY core AS
         v_message := SUBSTR(REPLACE(REPLACE(
             COALESCE(in_action_name, SQLERRM) ||
             RTRIM(
-                '|' || core.get_caller_name(3, TRUE) ||
                 '|' || in_arg1 || '|' || in_arg2 || '|' || in_arg3 || '|' || in_arg4 ||
                 '|' || in_arg5 || '|' || in_arg6 || '|' || in_arg7 || '|' || in_arg8,
                 '|'
-            ),
+            ) || '| ' || core.get_caller_name(3, TRUE),
             '"', ''), '&' || 'quot;', ''),
             1, 4000);
 
@@ -1412,7 +1411,7 @@ CREATE OR REPLACE PACKAGE BODY core AS
             v_backtrace := SUBSTR('|' || REPLACE(REPLACE(get_shorter_stack(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE), '"', ''), '&' || 'quot;', ''), 1, 4000);
         END IF;
         --
-        RAISE_APPLICATION_ERROR(core.app_exception_code, v_message || v_backtrace, TRUE);
+        RAISE_APPLICATION_ERROR(core.app_exception_code, v_message || RTRIM(v_backtrace, '|'), TRUE);
     END;
 
 
@@ -2208,7 +2207,7 @@ CREATE OR REPLACE PACKAGE BODY core AS
 
         -- show only the latest error message to common users
         out_result.message := CASE WHEN v_log_id IS NOT NULL THEN '#' || TO_CHAR(v_log_id) || '<br />' END
-            || APEX_LANG.MESSAGE(REGEXP_REPLACE(out_result.message, '^(ORA' || TO_CHAR(app_exception_code) || ':\s*)\s*', ''));
+            || core.get_translated(REGEXP_REPLACE(out_result.message, '^(ORA' || TO_CHAR(app_exception_code) || ':\s*)\s*', ''));
         --out_result.message := REPLACE(out_result.message, '&' || '#X27;', '');
         --
         out_result.display_location := APEX_ERROR.C_INLINE_IN_NOTIFICATION;  -- also removes HTML entities
@@ -2224,18 +2223,41 @@ CREATE OR REPLACE PACKAGE BODY core AS
 
 
 
+    FUNCTION get_translated (
+        in_message              VARCHAR2
+    )
+    RETURN VARCHAR2
+    AS
+    BEGIN
+        RETURN REPLACE(REPLACE(REPLACE(
+            NVL(NULLIF(APEX_LANG.MESSAGE(in_message), UPPER(in_message)), in_message),
+            '| ', '<br />'),
+            '|', ' | '),
+            '[', ' [');
+    END;
+
+
+
     PROCEDURE refresh_mviews (
         in_name_like            VARCHAR2 := NULL
     )
     AS
     BEGIN
         FOR c IN (
-            SELECT m.mview_name
-            FROM user_mviews m
-            WHERE (m.mview_name LIKE in_name_like ESCAPE '\' OR in_name_like IS NULL)
-            ORDER BY 1
+            SELECT
+                m.owner,
+                m.mview_name
+            FROM all_mviews m
+            WHERE m.owner           = SYS_CONTEXT('USERENV', 'CURRENT_SCHEMA')
+                AND (m.mview_name   LIKE in_name_like ESCAPE '\' OR in_name_like IS NULL)
+            ORDER BY 1, 2
         ) LOOP
-            DBMS_MVIEW.REFRESH(c.mview_name, 'C', parallelism => 1, atomic_refresh => FALSE);
+            DBMS_MVIEW.REFRESH (
+                list            => c.owner || '.' || c.mview_name,
+                method          => 'C',
+                parallelism     => 1,
+                atomic_refresh  => FALSE
+            );
         END LOOP;
     EXCEPTION
     WHEN OTHERS THEN
@@ -2862,6 +2884,61 @@ CREATE OR REPLACE PACKAGE BODY core AS
         IF in_value IS NULL THEN
             RAISE_APPLICATION_ERROR(c_assert_exception_code, c_assert_message || in_error_message);
         END IF;
+    END;
+
+
+
+    PROCEDURE add_grid_filter (
+        in_static_id            VARCHAR2,
+        in_column_name          VARCHAR2,
+        in_filter_value         VARCHAR2        := NULL,
+        in_operator             VARCHAR2        := 'EQ',
+        in_region_id            VARCHAR2        := NULL
+    )
+    AS
+        v_region_id             apex_application_page_regions.region_id%TYPE;
+        v_filter_value          VARCHAR2(2000);
+    BEGIN
+        v_region_id             := in_region_id;
+        v_filter_value          := COALESCE(in_filter_value, core.get_item('$' || in_column_name));
+    
+        -- convert static_id to region_id
+        IF in_region_id IS NULL THEN
+            BEGIN
+                SELECT a.region_id
+                INTO v_region_id
+                FROM apex_application_page_regions a
+                WHERE a.application_id  = core.get_app_id()
+                    AND a.page_id       = core.get_page_id()
+                    AND a.static_id     = in_static_id;
+            EXCEPTION
+            WHEN NO_DATA_FOUND THEN
+                core.raise_error('REGION_NOT_FOUND', in_static_id);
+            END;
+        END IF;
+        --
+        APEX_IG.RESET_REPORT (
+            p_page_id           => core.get_page_id(),
+            p_region_id         => v_region_id,
+            p_report_id         => NULL
+        );
+        --
+        IF v_filter_value IS NOT NULL THEN
+            APEX_IG.ADD_FILTER (
+                p_page_id           => core.get_page_id(),
+                p_region_id         => v_region_id,
+                p_column_name       => in_column_name,
+                p_filter_value      => v_filter_value,
+                p_operator_abbr     => in_operator,
+                p_is_case_sensitive => FALSE,
+                p_report_id         => NULL
+            );
+        END IF;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
     END;
 
 END;

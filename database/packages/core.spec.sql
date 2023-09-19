@@ -875,6 +875,13 @@ CREATE OR REPLACE PACKAGE core AS
 
 
 
+    FUNCTION get_translated (
+        in_message              VARCHAR2
+    )
+    RETURN VARCHAR2;
+
+
+
     PROCEDURE refresh_mviews (
         in_name_like            VARCHAR2 := NULL
     );
@@ -1007,6 +1014,16 @@ CREATE OR REPLACE PACKAGE core AS
     PROCEDURE assert_not_null (
         in_error_message        VARCHAR2,
         in_value                VARCHAR2
+    );
+
+
+
+    PROCEDURE add_grid_filter (
+        in_static_id            VARCHAR2,
+        in_column_name          VARCHAR2,
+        in_filter_value         VARCHAR2        := NULL,
+        in_operator             VARCHAR2        := 'EQ',
+        in_region_id            VARCHAR2        := NULL
     );
 
 END;
