@@ -846,18 +846,9 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_css_classes=>'&P850_AUTO_UPDATE_HOT.'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(18379493042452349)
-,p_name=>'P850_START'
-,p_item_sequence=>40
-,p_item_plug_id=>wwv_flow_imp.id(39751669654005374)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(18481290058274415)
 ,p_name=>'P850_AUTO_UPDATE_HOT'
-,p_item_sequence=>50
+,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(39751669654005374)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -897,12 +888,9 @@ wwv_flow_imp_page.create_page_computation(
 ,p_computation_sequence=>10
 ,p_computation_item=>'P850_AUTO_UPDATE_HOT'
 ,p_computation_point=>'BEFORE_BOX_BODY'
-,p_computation_type=>'QUERY'
-,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'SELECT ''t-Button--hot'' AS css_class',
-'FROM app_navigation_grid_v n',
-'WHERE n.action_name IS NOT NULL',
-'    AND ROWNUM = 1'))
+,p_computation_type=>'EXPRESSION'
+,p_computation_language=>'PLSQL'
+,p_computation=>'app_nav.get_autoupdate_hot()'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(15862704001560690)
@@ -910,6 +898,7 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_event_sequence=>10
 ,p_bind_type=>'bind'
 ,p_bind_event_type=>'ready'
+,p_display_when_type=>'NEVER'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(15863244854560690)
@@ -922,27 +911,6 @@ wwv_flow_imp_page.create_page_da_action(
 'fold_grid_group(''NAVIGATION'', ''Page Group'', ''__ INTERNAL'');',
 ''))
 );
-wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(18481512895274418)
-,p_name=>'ON_SAVE'
-,p_event_sequence=>20
-,p_triggering_element_type=>'REGION'
-,p_triggering_region_id=>wwv_flow_imp.id(14693659803436150)
-,p_bind_type=>'bind'
-,p_execution_type=>'IMMEDIATE'
-,p_bind_event_type=>'NATIVE_IG|REGION TYPE|interactivegridsave'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(18481680969274419)
-,p_event_id=>wwv_flow_imp.id(18481512895274418)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
-,p_attribute_01=>'core.refresh_mviews(''APP_NAV%_MV'');'
-,p_attribute_05=>'PLSQL'
-,p_wait_for_result=>'Y'
-);
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(18379327893452348)
 ,p_process_sequence=>10
@@ -953,12 +921,12 @@ wwv_flow_imp_page.create_page_process(
 ,p_attribute_01=>'PLSQL_CODE'
 ,p_attribute_04=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'IF core.get_grid_action() = ''D'' THEN',
-'    app.nav_remove_page (',
+'    app_nav.remove_page (',
 '        in_app_id       => :APP_ID,',
 '        in_page_id      => :PAGE_ID',
 '    );',
 'ELSE',
-'    app.nav_add_page (',
+'    app_nav.add_page (',
 '        in_app_id       => :APP_ID,',
 '        in_page_id      => :PAGE_ID,',
 '        in_parent_id    => :PARENT_ID,',
@@ -968,8 +936,6 @@ wwv_flow_imp_page.create_page_process(
 '        in_col_id       => :COL_ID',
 '    );',
 'END IF;',
-'--',
-'core.refresh_mviews(''APP_NAV%_MV'');',
 ''))
 ,p_attribute_05=>'Y'
 ,p_attribute_06=>'N'
@@ -982,7 +948,9 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'AUTO_UPDATE'
-,p_process_sql_clob=>'app.nav_autoupdate();'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'app_nav.autoupdate();',
+''))
 ,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(18481106375274414)
@@ -996,13 +964,17 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'REFRESH_MV'
 ,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
-':P850_START := TO_CHAR(SYSDATE, ''YYYY-MM-DD HH24:MI:SS'');',
-'core.refresh_mviews(''APP_NAV%_MV'');',
-':P850_START := ROUND((SYSDATE - TO_DATE(:P850_START, ''YYYY-MM-DD HH24:MI:SS'')) * 86400, 8);'))
+'app.refresh_mv(app_nav.c_mv);',
+'',
+'-- redirect to have correct navigation menu rendered',
+'core.redirect (',
+'    in_page_id => core.get_page_id()',
+');',
+''))
 ,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(18467748806794069)
-,p_process_success_message=>'Refreshed in &P850_START. seconds'
+,p_process_success_message=>'Refresh requested'
 ,p_internal_uid=>18470080789804984
 );
 wwv_flow_imp_page.create_page_process(
@@ -1012,7 +984,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'REMOVE_PAGE'
 ,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'app.nav_remove_page (',
+'app_nav.remove_page (',
 '    in_page_id  => :P850_REMOVE_PAGE,',
 '    in_app_id   => core.get_app_id()',
 ');'))
@@ -1028,7 +1000,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'ADD_PAGE'
 ,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'app.nav_add_page (',
+'app_nav.add_page (',
 '    in_page_id  => :P850_ADD_PAGE,',
 '    in_app_id   => core.get_app_id()',
 ');'))

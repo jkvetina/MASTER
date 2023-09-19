@@ -812,6 +812,164 @@ CREATE OR REPLACE PACKAGE BODY app AS
         core.raise_error();
     END;
 
+
+
+    PROCEDURE refresh_mv_job (
+        in_name_like        VARCHAR2,
+        in_ping_success     BOOLEAN := TRUE
+    )
+    AS
+        in_start            CONSTANT DATE := SYSDATE;
+    BEGIN
+        core.refresh_mviews(in_name_like);
+        --
+        IF in_ping_success THEN
+            app.ajax_message (
+                in_user_id      => core.get_user_id(),
+                in_message      => 'Refreshed in ' || ROUND((SYSDATE - in_start) * 86400, 0) || ' seconds',
+                in_type         => 'SUCCESS',
+                in_session_id   => NULL,--core.get_session_id(),
+                in_app_id       => core.get_app_id()
+            );
+        END IF;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE refresh_mv (
+        in_name_like        VARCHAR2,
+        in_wait             BOOLEAN := FALSE
+    )
+    AS
+    BEGIN
+        -- create a job to refresh MV on background
+        IF in_wait THEN
+            app.refresh_mv_job(in_name_like, in_ping_success => FALSE);
+        ELSE
+            core.create_job (
+                in_job_name         => 'REFRESH_MV_' || TRANSLATE(in_name_like, '%\', ''),
+                in_statement        => 'app.refresh_mv_job(''' || in_name_like || ''');',
+                in_user_id          => core.get_user_id(),
+                in_app_id           => core.get_app_id(),
+                in_session_id       => NULL
+            );
+        END IF;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    FUNCTION get_color (
+        in_lov_id           app_lovs.lov_id%TYPE,
+        in_value            app_lovs.treshold%TYPE,
+        in_text             CHAR                            := NULL
+    )
+    RETURN app_lovs.color_bg%TYPE
+    AS
+        in_app_id           CONSTANT app_applications.app_id%TYPE := core.get_app_id();
+        --
+        out_color           app_lovs.color_bg%TYPE;
+    BEGIN
+        -- check min value
+        BEGIN
+            SELECT CASE WHEN in_text IS NULL THEN t.color_bg ELSE t.color_text END INTO out_color
+            FROM app_lovs t
+            WHERE 1 = 1
+                AND t.app_id    = in_app_id
+                AND t.lov_id    = in_lov_id
+                AND t.treshold  <= in_value
+                AND ROWNUM      = 1;
+        EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            RETURN NULL;
+        END;
+
+        -- check max value
+        BEGIN
+            SELECT CASE WHEN in_text IS NULL THEN t.color_bg ELSE t.color_text END INTO out_color
+            FROM app_lovs t
+            WHERE 1 = 1
+                AND t.app_id    = in_app_id
+                AND t.lov_id    = in_lov_id
+                AND t.treshold  > in_value
+                AND ROWNUM      = 1;
+        EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            -- value is above max treshold
+            SELECT MIN(CASE WHEN in_text IS NULL THEN t.color_bg ELSE t.color_text END) KEEP (DENSE_RANK FIRST ORDER BY t.treshold DESC)
+            INTO out_color
+            FROM app_lovs t
+            WHERE 1 = 1
+                AND t.app_id    = in_app_id
+                AND t.lov_id    = in_lov_id;
+            --
+            RETURN out_color;
+        END;
+
+        -- shortloop for text colors
+        IF in_text IS NOT NULL THEN
+            SELECT
+                MIN(t.color_text) KEEP (DENSE_RANK FIRST ORDER BY t.treshold DESC)
+            INTO out_color
+            FROM app_lovs t
+            WHERE 1 = 1
+                AND t.app_id    = in_app_id
+                AND t.lov_id    = in_lov_id
+                AND t.treshold  <= in_value;
+            --
+            RETURN out_color;
+        END IF;
+
+        -- calculate color in between
+        WITH t AS (
+            SELECT /*+ MATERIALIZE */
+                t.left_treshold,
+                t.right_treshold,
+                in_value            AS value,
+                (in_value - t.left_treshold) / (t.right_treshold - t.left_treshold) AS value_perc,
+                --
+                TO_NUMBER(SUBSTR(t.left_color,  2, 2), 'XX') AS left_r,
+                TO_NUMBER(SUBSTR(t.left_color,  4, 2), 'XX') AS left_g,
+                TO_NUMBER(SUBSTR(t.left_color,  6, 2), 'XX') AS left_b,
+                TO_NUMBER(SUBSTR(t.right_color, 2, 2), 'XX') AS right_r,
+                TO_NUMBER(SUBSTR(t.right_color, 4, 2), 'XX') AS right_g,
+                TO_NUMBER(SUBSTR(t.right_color, 6, 2), 'XX') AS right_b
+            FROM (
+                SELECT
+                    MIN(t.color_bg) KEEP (DENSE_RANK FIRST ORDER BY t.treshold DESC)    AS left_color,
+                    MIN(t.treshold) KEEP (DENSE_RANK FIRST ORDER BY t.treshold DESC)    AS left_treshold,
+                    MIN(r.color_bg) KEEP (DENSE_RANK FIRST ORDER BY r.treshold)         AS right_color,
+                    MIN(r.treshold) KEEP (DENSE_RANK FIRST ORDER BY r.treshold)         AS right_treshold
+                FROM app_lovs t
+                JOIN app_lovs r
+                    ON r.app_id     = t.app_id
+                    AND r.lov_id    = t.lov_id
+                WHERE 1 = 1
+                    AND t.app_id    = in_app_id
+                    AND t.lov_id    = in_lov_id
+                    AND t.treshold  <= in_value
+                    AND r.treshold  > in_value
+            ) t
+        )
+        SELECT
+            TO_CHAR(GREATEST(LEAST(ROUND((t.right_r - t.left_r) * t.value_perc + t.left_r, 0), 255), 0), 'FM0X') ||
+            TO_CHAR(GREATEST(LEAST(ROUND((t.right_g - t.left_g) * t.value_perc + t.left_g, 0), 255), 0), 'FM0X') ||
+            TO_CHAR(GREATEST(LEAST(ROUND((t.right_b - t.left_b) * t.value_perc + t.left_b, 0), 255), 0), 'FM0X')
+        INTO out_color
+        FROM t;
+        --
+        RETURN '#' || out_color;
+    END;
+
 END;
 /
 

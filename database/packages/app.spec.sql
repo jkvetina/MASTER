@@ -168,6 +168,29 @@ CREATE OR REPLACE PACKAGE app AS
         in_message_id       app_user_messages.message_id%TYPE           := NULL
     );
 
+
+
+    PROCEDURE refresh_mv_job (
+        in_name_like        VARCHAR2,
+        in_ping_success     BOOLEAN := TRUE
+    );
+
+
+
+    PROCEDURE refresh_mv (
+        in_name_like        VARCHAR2,
+        in_wait             BOOLEAN := FALSE
+    );
+
+
+
+    FUNCTION get_color (
+        in_lov_id           app_lovs.lov_id%TYPE,
+        in_value            app_lovs.treshold%TYPE,
+        in_text             CHAR                            := NULL
+    )
+    RETURN app_lovs.color_bg%TYPE;
+
 END;
 /
 

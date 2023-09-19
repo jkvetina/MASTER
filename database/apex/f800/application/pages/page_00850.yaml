@@ -1149,36 +1149,6 @@ regions:
       expand-shortcuts: false
 
 page-items: 
-- # ====== Page Item: P850_START ===============================
-  id: 18379493042452349
-  identification: 
-    name: P850_START
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 40
-    region: Navigation # 39751669654005374
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
 - # ====== Page Item: P850_AUTO_UPDATE_HOT =====================
   id: 18481290058274415
   identification: 
@@ -1189,7 +1159,7 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 50
+    sequence: 40
     region: Navigation # 39751669654005374
     position: BODY
 
@@ -1371,6 +1341,9 @@ dynamic-actions:
   execution: 
     event-scope: Static
 
+  server-side-condition: 
+    type: Never
+
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
     id: 15863244854560690
@@ -1388,41 +1361,6 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
-- # ====== Dynamic Action: ON_SAVE =============================
-  id: 18481512895274418
-  identification: 
-    name: ON_SAVE
-
-  execution: 
-    sequence: 20
-
-  when: 
-    event: NATIVE_IG|REGION TYPE|interactivegridsave
-    selection-type: Region
-    region: Navigation [GRID] # 14693659803436150
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Execute Server-side Code ====================
-    id: 18481680969274419
-    identification: 
-      action: Execute Server-side Code
-
-    settings: 
-      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
-      pl/sql-code: core.refresh_mviews('APP_NAV%_MV');
-
-    execution: 
-      sequence: 10
-      event: ON_SAVE # 18481512895274418
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
-
 computations: 
 - # ====== Computation: P850_AUTO_UPDATE_HOT ===================
   id: 18481333048274416
@@ -1434,12 +1372,9 @@ computations:
     point: Before Regions
 
   computation: 
-    type: SQL Query (return single value)
-    sql-query: |
-      SELECT 't-Button--hot' AS css_class
-      FROM app_navigation_grid_v n
-      WHERE n.action_name IS NOT NULL
-          AND ROWNUM = 1
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: app_nav.get_autoupdate_hot()
 
 processes: 
 - # ====== Process: SAVE_NAVIGATION ============================
@@ -1454,12 +1389,12 @@ processes:
     target-type: PL/SQL Code
     pl/sql-code-to-insert/update/delete: |
       IF core.get_grid_action() = 'D' THEN
-          app.nav_remove_page (
+          app_nav.remove_page (
               in_app_id       => :APP_ID,
               in_page_id      => :PAGE_ID
           );
       ELSE
-          app.nav_add_page (
+          app_nav.add_page (
               in_app_id       => :APP_ID,
               in_page_id      => :PAGE_ID,
               in_parent_id    => :PARENT_ID,
@@ -1469,8 +1404,6 @@ processes:
               in_col_id       => :COL_ID
           );
       END IF;
-      --
-      core.refresh_mviews('APP_NAV%_MV');
       
     prevent-lost-updates: true
     lock-row: No
@@ -1497,9 +1430,13 @@ processes:
     location: Local Database
     language: PL/SQL
     pl/sql-code: |
-      :P850_START := TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS');
-      core.refresh_mviews('APP_NAV%_MV');
-      :P850_START := ROUND((SYSDATE - TO_DATE(:P850_START, 'YYYY-MM-DD HH24:MI:SS')) * 86400, 8);
+      app.refresh_mv(app_nav.c_mv);
+      
+      -- redirect to have correct navigation menu rendered
+      core.redirect (
+          in_page_id => core.get_page_id()
+      );
+      
 
   execution: 
     sequence: 30
@@ -1507,7 +1444,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
   success-message: 
-    success-message: Refreshed in &P850_START. seconds
+    success-message: Refresh requested
 
   error: 
     display-location: Inline in Notification
@@ -1526,7 +1463,7 @@ processes:
     location: Local Database
     language: PL/SQL
     pl/sql-code: |
-      app.nav_remove_page (
+      app_nav.remove_page (
           in_page_id  => :P850_REMOVE_PAGE,
           in_app_id   => core.get_app_id()
       );
@@ -1551,7 +1488,7 @@ processes:
     location: Local Database
     language: PL/SQL
     pl/sql-code: |
-      app.nav_add_page (
+      app_nav.add_page (
           in_page_id  => :P850_ADD_PAGE,
           in_app_id   => core.get_app_id()
       );
@@ -1575,7 +1512,9 @@ processes:
   source: 
     location: Local Database
     language: PL/SQL
-    pl/sql-code: app.nav_autoupdate();
+    pl/sql-code: |
+      app_nav.autoupdate();
+      
 
   execution: 
     sequence: 20
