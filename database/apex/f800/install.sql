@@ -38,6 +38,9 @@ prompt --install
 @@application/shared_components/navigation/tabs/standard.sql
 @@application/shared_components/navigation/tabs/parent.sql
 @@application/shared_components/user_interface/lovs/app_applications.sql
+@@application/shared_components/user_interface/lovs/app_contexts.sql
+@@application/shared_components/user_interface/lovs/app_lovs.sql
+@@application/shared_components/user_interface/lovs/app_lov_groups.sql
 @@application/shared_components/user_interface/lovs/app_pages.sql
 @@application/shared_components/user_interface/lovs/app_pages_id_id.sql
 @@application/shared_components/user_interface/lovs/app_page_groups.sql
