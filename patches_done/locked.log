@@ -1,5 +1,13 @@
+database/data/app_applications.csv
+database/data/app_contexts.csv
+database/data/app_lovs.csv
 database/data/app_navigation.csv
 database/data/app_navigation_map_mv.csv
+database/data/app_pages.csv
+database/data/app_procedures.csv
+database/data/app_roles.csv
+database/data/app_settings.csv
+database/data/app_tables.csv
 database/jobs/app_navigaton_map_refresh.sql
 database/mviews/app_navigation_map_mv.sql
 database/packages/app.spec.sql
