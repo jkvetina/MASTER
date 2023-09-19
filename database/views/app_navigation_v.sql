@@ -129,6 +129,7 @@ t AS (
 n AS (
     -- build the tree
     SELECT /*+ MATERIALIZE */
+        LEVEL AS depth,
         CASE WHEN t.parent_id IS NULL THEN 1 ELSE 2 END AS lvl,
         --
         CASE
@@ -187,9 +188,7 @@ n AS (
         --
         TO_NUMBER(REGEXP_SUBSTR(LTRIM(SYS_CONNECT_BY_PATH(t.parent_id, '/'), '/'), '\d+')) AS page_root_id,
         --
-        SYS_CONNECT_BY_PATH(LTRIM(t.col_id || '.' || t.order#, '.') || '.' || t.page_id, '/') AS order#,
-        --
-        REPLACE(RPAD(' ', (LEVEL - 1) * 4, ' '), ' ', '&' || 'nbsp; ') || t.page_name AS label__
+        SYS_CONNECT_BY_PATH(LTRIM(t.col_id || '.' || t.order#, '.') || '.' || t.page_id, '/') AS order#
         --
     FROM t
     CROSS JOIN curr
@@ -216,7 +215,8 @@ SELECT
     n.page_root_id,
     n.auth_scheme,
     n.procedure_name,
-    n.label__,
+    --
+    REPLACE(RPAD(' ', (n.depth - 1) * 4, ' '), ' ', '&' || 'nbsp; ') || n.label AS label__,
     --
     n.lvl,                      -- mandatory columns for APEX navigation
     n.label,
