@@ -820,17 +820,23 @@ CREATE OR REPLACE PACKAGE BODY app AS
     )
     AS
         in_start            CONSTANT DATE := SYSDATE;
+        --
+        out_message         VARCHAR2(512);
     BEGIN
         core.refresh_mviews(in_name_like);
+        --
+        out_message := 'Refreshed in ' || ROUND((SYSDATE - in_start) * 86400, 0) || ' seconds';
         --
         IF in_ping_success THEN
             app.ajax_message (
                 in_user_id      => core.get_user_id(),
-                in_message      => 'Refreshed in ' || ROUND((SYSDATE - in_start) * 86400, 0) || ' seconds',
+                in_message      => out_message,
                 in_type         => 'SUCCESS',
                 in_session_id   => NULL,--core.get_session_id(),
                 in_app_id       => core.get_app_id()
             );
+        ELSE
+            APEX_APPLICATION.G_PRINT_SUCCESS_MESSAGE := out_message;
         END IF;
     EXCEPTION
     WHEN core.app_exception THEN
