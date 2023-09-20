@@ -27,7 +27,7 @@ wwv_flow_imp_shared.create_list_template(
 ,p_theme_class_id=>20
 ,p_list_template_before_rows=>'<ul class="NAV_TOP">'
 ,p_list_template_after_rows=>'</ul>'
-,p_before_sub_list=>'<ul>'
+,p_before_sub_list=>'<ul class="#A09#">'
 ,p_after_sub_list=>'</ul></li>'
 ,p_sub_list_item_current=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<li class="ACTIVE #A01#">',
@@ -61,6 +61,7 @@ wwv_flow_imp_shared.create_list_template(
 ,p_a06_label=>'<a>... #TEXT</a>'
 ,p_a07_label=>'<a>#TEXT ...</a>'
 ,p_a08_label=>'</a>...'
+,p_a09_label=>'<ul class="...">'
 ,p_reference_id=>60837470868358458
 );
 wwv_flow_imp.component_end;

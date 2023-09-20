@@ -18,8 +18,9 @@ wwv_flow_imp_page.create_page(
 ,p_page_mode=>'MODAL'
 ,p_step_title=>'MODAL DIALOG TEMPLATE'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(58127339030317860)  -- MAIN
+,p_group_id=>wwv_flow_imp.id(58127339030317860)  --  MAIN
 ,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_imp.id(50436147934915762)  -- MASTER - IS_USER
 ,p_protection_level=>'C'
 ,p_page_component_map=>'17'
 ,p_last_updated_by=>'DEV'

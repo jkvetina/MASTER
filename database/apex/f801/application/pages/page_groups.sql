@@ -12,12 +12,8 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(58127514785318314)  -- ADMIN
-,p_group_name=>'ADMIN'
-);
-wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(58127339030317860)  -- MAIN
-,p_group_name=>'MAIN'
+ p_id=>wwv_flow_imp.id(58127339030317860)  --  MAIN
+,p_group_name=>' MAIN'
 );
 wwv_flow_imp_page.create_page_group(
  p_id=>wwv_flow_imp.id(14547757548326366)  -- __ INTERNAL

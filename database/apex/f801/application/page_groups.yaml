@@ -4,13 +4,8 @@
   identification: 
     name: __ INTERNAL
 
-- # ====== Page Group: MAIN ====================================
+- # ====== Page Group:  MAIN ===================================
   id: 58127339030317860
   identification: 
-    name: MAIN
-
-- # ====== Page Group: ADMIN ===================================
-  id: 58127514785318314
-  identification: 
-    name: ADMIN
+    name: ' MAIN'
 

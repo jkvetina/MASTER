@@ -16,8 +16,9 @@ wwv_imp_workspace.create_flow(
 ,p_owner=>nvl(wwv_flow_application_install.get_schema,'APPS')
 ,p_name=>nvl(wwv_flow_application_install.get_application_name,'App Template')
 ,p_alias=>nvl(wwv_flow_application_install.get_application_alias,'EMPTY')
-,p_application_group=>wwv_flow_imp.id(14521455008554600)
-,p_application_group_name=>'MASTER'
+,p_application_group=>wwv_flow_imp.id(14521045818542929)
+,p_application_group_name=>'LAUNCHPAD'
+,p_application_group_comment=>'Apps visible in Launchpad'
 ,p_page_view_logging=>'YES'
 ,p_page_protection_enabled_y_n=>'Y'
 ,p_checksum_salt=>'9CBCC171912554FE4A8996BCA5DC653BEC59C661B634BF18F954B71B4DA3D6FD'
@@ -48,7 +49,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-09-16'
+,p_flow_version=>'2023-09-20'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -61,6 +62,10 @@ wwv_imp_workspace.create_flow(
 ,p_error_handling_function=>'core.handle_apex_error'
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Empty App'
+,p_substitution_string_02=>'APP_DESC'
+,p_substitution_value_02=>'Application description visible in Launchpad'
+,p_substitution_string_03=>'APP_PREFIX'
+,p_substitution_value_03=>'APP_'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')

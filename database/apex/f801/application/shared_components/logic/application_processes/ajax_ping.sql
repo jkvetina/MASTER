@@ -13,7 +13,7 @@ wwv_flow_imp.component_begin (
 );
 wwv_flow_imp_shared.create_flow_process(
  p_id=>wwv_flow_imp.id(15483161914849548)
-,p_process_sequence=>10
+,p_process_sequence=>0
 ,p_process_point=>'ON_DEMAND'
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'AJAX_PING'

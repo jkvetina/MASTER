@@ -51,7 +51,7 @@ prompt --install
 @@application/shared_components/user_interface/templates/page/right_side_column.sql
 @@application/shared_components/user_interface/templates/page/standard.sql
 @@application/shared_components/user_interface/templates/page/standard_q.sql
-@@application/shared_components/user_interface/templates/page/standard_qnav.sql
+@@application/shared_components/user_interface/templates/page/standard_q_nav.sql
 @@application/shared_components/user_interface/templates/page/wizard_modal_dialog.sql
 @@application/shared_components/user_interface/templates/button/icon.sql
 @@application/shared_components/user_interface/templates/button/text.sql
@@ -136,7 +136,6 @@ prompt --install
 @@application/pages/page_00000.sql
 @@application/pages/page_00100.sql
 @@application/pages/page_00105.sql
-@@application/pages/page_09999.sql
 @@application/deployment/definition.sql
 @@application/deployment/checks.sql
 @@application/deployment/buildoptions.sql

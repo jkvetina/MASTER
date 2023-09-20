@@ -5,7 +5,7 @@ identification:
   name: App Template
   alias: EMPTY
   version: 2023-09-10
-  application-group: MASTER # 14521455008554600
+  application-group: LAUNCHPAD # 14521045818542929
 
 row-search: 
   tokenize: true
@@ -136,19 +136,19 @@ substitutions:
   value: 
     static-value: Empty App
 
-application-settings: 
-- # ====== Application Setting: APP_PREFIX =====================
-  id: 13911082187706081
+- # ====== Substitution: APP_DESC ==============================
+  id: 2
+  identification: 
+    name: APP_DESC
+
+  value: 
+    static-value: Application description visible in Launchpad
+
+- # ====== Substitution: APP_PREFIX ============================
+  id: 3
   identification: 
     name: APP_PREFIX
 
   value: 
-    value: APP_
-    required: true
-
-  advanced: 
-    on-upgrade-keep-value: true
-
-  comments: 
-    comments: Prefix for database objects relevant to this app
+    static-value: APP_
 
