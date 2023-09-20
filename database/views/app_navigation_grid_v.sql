@@ -75,7 +75,7 @@ SELECT
     --
     NVL(z.label__, REPLACE(RPAD(' ', 4, ' '), ' ', '&' || 'nbsp; ') || m.page_name) AS label,
     --
-    z.order# AS sort_order#
+    NVL(z.order#, p.order# || '/' || NVL(n.order#, 0) || '.' || n.page_id) AS sort_order#
     --
 FROM app_navigation_map_mv m
 JOIN x
@@ -86,6 +86,9 @@ JOIN app_navigation n
 LEFT JOIN app_navigation_v z
     ON z.app_id         = n.app_id
     AND z.page_id       = n.page_id
+LEFT JOIN app_navigation_v p
+    ON p.app_id         = n.app_id
+    AND p.page_id       = n.parent_id
 --
 -- remove pages
 UNION ALL
