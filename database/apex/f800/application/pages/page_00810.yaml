@@ -39,47 +39,6 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Users =======================================
-  id: 145401065261917452
-  identification: 
-    title: Users
-    type: Static Content
-
-  layout: 
-    sequence: 10
-    parent-region: No Parent
-    position: BODY
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes # 63325094538439079
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
 - # ====== Region: Users for &G_APP_NAME. ======================
   id: 145401151368917453
   identification: 
@@ -88,8 +47,8 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Users # 145401065261917452
-    position: SUB_REGIONS
+    parent-region: No Parent
+    position: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -136,8 +95,8 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Users # 145401065261917452
-    position: SUB_REGIONS
+    parent-region: No Parent
+    position: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
