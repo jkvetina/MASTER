@@ -27,7 +27,7 @@ wwv_flow_imp_page.create_page(
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(18484513951274448)
-,p_plug_name=>'Settings'
+,p_plug_name=>'Settings for &G_APP_NAME.'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63402598617439121)
 ,p_plug_display_sequence=>10
@@ -115,7 +115,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_heading_alignment=>'LEFT'
 ,p_display_sequence=>40
 ,p_value_alignment=>'LEFT'
-,p_is_required=>false
+,p_is_required=>true
 ,p_lov_type=>'SHARED'
 ,p_lov_id=>wwv_flow_imp.id(19826581500100372)  -- APP_CONTEXTS
 ,p_lov_display_extra=>true
@@ -131,6 +131,8 @@ wwv_flow_imp_page.create_region_column(
 ,p_enable_control_break=>true
 ,p_enable_hide=>true
 ,p_is_primary_key=>true
+,p_default_type=>'STATIC'
+,p_default_expression=>'-'
 ,p_duplicate_value=>true
 ,p_include_in_export=>false
 );
@@ -149,7 +151,8 @@ wwv_flow_imp_page.create_region_column(
 ,p_group_id=>wwv_flow_imp.id(19758449436896029)
 ,p_use_group_for=>'BOTH'
 ,p_attribute_05=>'BOTH'
-,p_is_required=>false
+,p_is_required=>true
+,p_max_length=>30
 ,p_enable_filter=>true
 ,p_filter_operators=>'C:S:CASE_INSENSITIVE:REGEXP'
 ,p_filter_is_required=>false

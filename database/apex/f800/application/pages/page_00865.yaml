@@ -39,10 +39,10 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Contexts ====================================
+- # ====== Region: Contexts for &G_APP_NAME. ===================
   id: 39538821146849321
   identification: 
-    title: Contexts
+    title: Contexts for &G_APP_NAME.
     type: Static Content
 
   layout: 

@@ -1106,10 +1106,10 @@ regions:
       font-color: '#000000'
       alignment: center
 
-- # ====== Region: Navigation ==================================
+- # ====== Region: Navigation for &G_APP_NAME. =================
   id: 39751669654005374
   identification: 
-    title: Navigation
+    title: Navigation for &G_APP_NAME.
     type: Static Content
 
   layout: 
@@ -1160,7 +1160,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Navigation # 39751669654005374
+    region: Navigation for &G_APP_NAME. # 39751669654005374
     position: BODY
 
   advanced: 
@@ -1190,7 +1190,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Navigation # 39751669654005374
+    region: Navigation for &G_APP_NAME. # 39751669654005374
     position: BODY
 
   advanced: 
@@ -1220,7 +1220,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Navigation # 39751669654005374
+    region: Navigation for &G_APP_NAME. # 39751669654005374
     position: BODY
 
   advanced: 
@@ -1250,7 +1250,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Navigation # 39751669654005374
+    region: Navigation for &G_APP_NAME. # 39751669654005374
     position: BODY
 
   advanced: 
@@ -1278,7 +1278,7 @@ buttons:
 
   layout: 
     sequence: 10
-    region: Navigation # 39751669654005374
+    region: Navigation for &G_APP_NAME. # 39751669654005374
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -1305,7 +1305,7 @@ buttons:
 
   layout: 
     sequence: 20
-    region: Navigation # 39751669654005374
+    region: Navigation for &G_APP_NAME. # 39751669654005374
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true

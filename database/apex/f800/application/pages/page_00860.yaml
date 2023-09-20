@@ -39,10 +39,10 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Settings ====================================
+- # ====== Region: Settings for &G_APP_NAME. ===================
   id: 18484513951274448
   identification: 
-    title: Settings
+    title: Settings for &G_APP_NAME.
     type: Static Content
 
   layout: 
@@ -252,7 +252,7 @@ regions:
       value-identifies-row: false
 
     validation: 
-      value-required: false
+      value-required: true
 
     list-of-values: 
       type: Shared Component
@@ -268,6 +268,8 @@ regions:
       primary-key: true
 
     default: 
+      type: Static
+      static-value: '-'
       duplicate-copies-existing-value: true
 
     column-filter: 
@@ -314,7 +316,8 @@ regions:
       value-identifies-row: false
 
     validation: 
-      value-required: false
+      value-required: true
+      maximum-length: 30
 
     source: 
       type: Database Column
