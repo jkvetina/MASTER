@@ -105,15 +105,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_01=>'NONE'
 ,p_attribute_02=>'N'
 );
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(7476352905048515)
-,p_name=>'P100_START'
-,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_imp.id(7475275434048504)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
 wwv_flow_imp_page.create_page_computation(
  p_id=>wwv_flow_imp.id(7476064344048512)
 ,p_computation_sequence=>10
@@ -148,14 +139,10 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'REFRESH_MV'
-,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
-':P100_START := TO_CHAR(SYSDATE, ''YYYY-MM-DD HH24:MI:SS'');',
-'core.refresh_mviews(''APP_NAV%_MV'');',
-':P100_START := ROUND((SYSDATE - TO_DATE(:P100_START, ''YYYY-MM-DD HH24:MI:SS'')) * 86400, 8);'))
+,p_process_sql_clob=>'app.refresh_mv(''APP_NAV%_MV'', in_wait => TRUE);'
 ,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(7476159161048513)
-,p_process_success_message=>'Refreshed in &P100_START. seconds'
 ,p_security_scheme=>wwv_flow_imp.id(60089834032939902)  -- IS_DEVELOPER
 ,p_internal_uid=>7476211481048514
 );

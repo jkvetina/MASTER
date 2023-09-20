@@ -243,36 +243,6 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P100_START ===============================
-  id: 7476352905048515
-  identification: 
-    name: P100_START
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 20
-    region: Applications # 7475275434048504
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
 buttons: 
 - # ====== Button: REFRESH_MV ==================================
   id: 7476159161048513
@@ -364,18 +334,12 @@ processes:
   source: 
     location: Local Database
     language: PL/SQL
-    pl/sql-code: |
-      :P100_START := TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS');
-      core.refresh_mviews('APP_NAV%_MV');
-      :P100_START := ROUND((SYSDATE - TO_DATE(:P100_START, 'YYYY-MM-DD HH24:MI:SS')) * 86400, 8);
+    pl/sql-code: app.refresh_mv('APP_NAV%_MV', in_wait => TRUE);
 
   execution: 
     sequence: 10
     point: Processing
     run-process: Once Per Page Visit (default)
-
-  success-message: 
-    success-message: Refreshed in &P100_START. seconds
 
   error: 
     display-location: Inline in Notification
