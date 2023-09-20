@@ -46,6 +46,8 @@ prompt --install
 @@application/shared_components/user_interface/lovs/app_page_groups.sql
 @@application/shared_components/user_interface/lovs/app_roles.sql
 @@application/shared_components/user_interface/lovs/app_role_groups.sql
+@@application/shared_components/user_interface/lovs/app_tracking_metrics.sql
+@@application/shared_components/user_interface/lovs/app_tracking_pages.sql
 @@application/shared_components/user_interface/lovs/app_users_id_name.sql
 @@application/shared_components/user_interface/lovs/app_users_all_id_name.sql
 @@application/shared_components/user_interface/lovs/app_workspaces.sql
@@ -153,6 +155,7 @@ prompt --install
 @@application/pages/page_00860.sql
 @@application/pages/page_00862.sql
 @@application/pages/page_00865.sql
+@@application/pages/page_00890.sql
 @@application/pages/page_00900.sql
 @@application/pages/page_00980.sql
 @@application/deployment/definition.sql

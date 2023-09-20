@@ -10,10 +10,13 @@ database/data/app_settings.csv
 database/data/app_tables.csv
 database/jobs/app_navigaton_map_refresh.sql
 database/mviews/app_navigation_map_mv.sql
+database/mviews/app_tracking_src_mv.sql
 database/packages/app.spec.sql
 database/packages/app.sql
 database/packages/app_nav.spec.sql
 database/packages/app_nav.sql
+database/packages/app_tracking.spec.sql
+database/packages/app_tracking.sql
 database/tables/app_applications.sql
 database/tables/app_components.sql
 database/tables/app_contexts.sql
@@ -25,6 +28,7 @@ database/tables/app_roles.sql
 database/tables/app_roles_map.sql
 database/tables/app_settings.sql
 database/tables/app_tables.sql
+database/tables/app_tracking_src.sql
 database/tables/app_user_messages.sql
 database/tables/app_users.sql
 database/tables/app_users_map.sql
@@ -43,6 +47,8 @@ database/views/app_lov_page_groups_v.sql
 database/views/app_lov_pages_v.sql
 database/views/app_lov_role_groups_v.sql
 database/views/app_lov_roles_v.sql
+database/views/app_lov_tracking_metrics_v.sql
+database/views/app_lov_tracking_pages_v.sql
 database/views/app_lov_users_all_v.sql
 database/views/app_lov_users_v.sql
 database/views/app_lov_workspaces_v.sql
@@ -50,6 +56,8 @@ database/views/app_navigation_grid_v.sql
 database/views/app_navigation_matrix_v.sql
 database/views/app_navigation_v.sql
 database/views/app_roles_v.sql
+database/views/app_tracking_base_v.sql
+database/views/app_tracking_chart_v.sql
 database/views/app_user_profile_v.sql
 database/views/app_user_roles_v.sql
 database/views/app_users_v.sql
