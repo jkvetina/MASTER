@@ -39,10 +39,10 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: LOVs ========================================
+- # ====== Region: LOVs for &G_APP_NAME. =======================
   id: 18481884807274421
   identification: 
-    title: LOVs
+    title: LOVs for &G_APP_NAME.
     type: Static Content
 
   layout: 
@@ -547,7 +547,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 100
+      sequence: 110
       column-alignment: end
       group: Status # 18483195623274434
       use-group-for: Both
@@ -596,7 +596,7 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 110
+      sequence: 120
       column-alignment: end
       group: Colors # 18483306282274436
       use-group-for: Both
@@ -644,7 +644,7 @@ regions:
       use-defaults: true
 
     layout: 
-      sequence: 120
+      sequence: 130
       column-alignment: start
       group: Colors # 18483306282274436
       use-group-for: Both
@@ -700,7 +700,7 @@ regions:
       use-defaults: true
 
     layout: 
-      sequence: 130
+      sequence: 140
       column-alignment: start
       group: Colors # 18483306282274436
       use-group-for: Both
@@ -752,7 +752,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 140
+      sequence: 150
 
     accessibility: 
       value-identifies-row: false
@@ -791,6 +791,131 @@ regions:
 
     layout: 
       sequence: 10
+
+  - # ====== Column: UPDATED_BY ==================================
+    id: 19759643705896041
+    identification: 
+      column-name: UPDATED_BY
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 160
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: UPDATED_BY
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: UPDATED_AT ==================================
+    id: 19759766101896042
+    identification: 
+      column-name: UPDATED_AT
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 170
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: UPDATED_AT
+      data-type: DATE
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: STATUS_VALUE ================================
+    id: 19759803294896043
+    identification: 
+      column-name: STATUS_VALUE
+      type: Text Field
+
+    heading: 
+      heading: Value
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 100
+      column-alignment: start
+      group: Status # 18483195623274434
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 64
+
+    source: 
+      type: Database Column
+      database-column: STATUS_VALUE
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
 
   printing: 
     page: 
@@ -848,7 +973,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: LOVs # 18481884807274421
+    region: LOVs for &G_APP_NAME. # 18481884807274421
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -907,7 +1032,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: LOVs # 18481884807274421
+    region: LOVs for &G_APP_NAME. # 18481884807274421
     position: BODY
     alignment: Left
     start-new-layout: false
