@@ -107,10 +107,10 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Tracking Apps ===============================
+- # ====== Region: Tracking Activity ===========================
   id: 142951642654720735
   identification: 
-    title: Tracking Apps
+    title: Tracking Activity
     type: Static Content
 
   layout: 
@@ -254,35 +254,35 @@ regions:
         alias: 519823
 
   column-groups: 
-  - # ====== Column Group: &P100_WEEK_1. =========================
+  - # ====== Column Group: &P890_WEEK_1. =========================
     id: 40976576592784593
     heading: 
-      heading: '&P100_WEEK_1.'
+      heading: '&P890_WEEK_1.'
 
-  - # ====== Column Group: &P100_WEEK_2. =========================
+  - # ====== Column Group: &P890_WEEK_2. =========================
     id: 40976726297784594
     heading: 
-      heading: '&P100_WEEK_2.'
+      heading: '&P890_WEEK_2.'
 
-  - # ====== Column Group: &P100_WEEK_3. =========================
+  - # ====== Column Group: &P890_WEEK_3. =========================
     id: 40976776508784595
     heading: 
-      heading: '&P100_WEEK_3.'
+      heading: '&P890_WEEK_3.'
 
-  - # ====== Column Group: &P100_WEEK_4. =========================
+  - # ====== Column Group: &P890_WEEK_4. =========================
     id: 40976888584784596
     heading: 
-      heading: '&P100_WEEK_4.'
+      heading: '&P890_WEEK_4.'
 
-  - # ====== Column Group: &P100_WEEK_5. =========================
+  - # ====== Column Group: &P890_WEEK_5. =========================
     id: 40976989681784597
     heading: 
-      heading: '&P100_WEEK_5.'
+      heading: '&P890_WEEK_5.'
 
-  - # ====== Column Group: &P100_WEEK_6. =========================
+  - # ====== Column Group: &P890_WEEK_6. =========================
     id: 40979491060784622
     heading: 
-      heading: '&P100_WEEK_6.'
+      heading: '&P890_WEEK_6.'
 
   - # ====== Column Group: Page Info =============================
     id: 41257172925083920
@@ -290,6 +290,40 @@ regions:
       heading: Page Info
 
   columns: 
+  - # ====== Column: PAGE_LINK ===================================
+    id: 22777463703601004
+    identification: 
+      column-name: PAGE_LINK
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 60
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: PAGE_LINK
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
   - # ====== Column: T00_COLOR ===================================
     id: 40113090857943312
     identification: 
@@ -300,7 +334,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 800
+      sequence: 810
 
     accessibility: 
       value-identifies-row: false
@@ -331,7 +365,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 430
+      sequence: 440
 
     accessibility: 
       value-identifies-row: false
@@ -359,7 +393,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T31!RAW.'
+      heading: '&P890_HEADER_T31!RAW.'
       alignment: center
 
     settings: 
@@ -367,9 +401,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 370
+      sequence: 380
       column-alignment: end
-      group: '&P100_WEEK_5.' # 40976989681784597
+      group: '&P890_WEEK_5.' # 40976989681784597
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -422,7 +456,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T32!RAW.'
+      heading: '&P890_HEADER_T32!RAW.'
       alignment: center
 
     settings: 
@@ -430,9 +464,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 380
+      sequence: 390
       column-alignment: end
-      group: '&P100_WEEK_5.' # 40976989681784597
+      group: '&P890_WEEK_5.' # 40976989681784597
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -485,7 +519,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T33!RAW.'
+      heading: '&P890_HEADER_T33!RAW.'
       alignment: center
 
     settings: 
@@ -493,9 +527,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 390
+      sequence: 400
       column-alignment: end
-      group: '&P100_WEEK_5.' # 40976989681784597
+      group: '&P890_WEEK_5.' # 40976989681784597
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -548,7 +582,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T34!RAW.'
+      heading: '&P890_HEADER_T34!RAW.'
       alignment: center
 
     settings: 
@@ -556,9 +590,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 400
+      sequence: 410
       column-alignment: end
-      group: '&P100_WEEK_5.' # 40976989681784597
+      group: '&P890_WEEK_5.' # 40976989681784597
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -611,7 +645,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T35!RAW.'
+      heading: '&P890_HEADER_T35!RAW.'
       alignment: center
 
     settings: 
@@ -619,9 +653,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 410
+      sequence: 420
       column-alignment: end
-      group: '&P100_WEEK_6.' # 40979491060784622
+      group: '&P890_WEEK_6.' # 40979491060784622
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -674,7 +708,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T36!RAW.'
+      heading: '&P890_HEADER_T36!RAW.'
       alignment: center
 
     settings: 
@@ -682,9 +716,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 420
+      sequence: 430
       column-alignment: end
-      group: '&P100_WEEK_6.' # 40979491060784622
+      group: '&P890_WEEK_6.' # 40979491060784622
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -740,7 +774,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1110
+      sequence: 1120
 
     accessibility: 
       value-identifies-row: false
@@ -771,7 +805,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 740
+      sequence: 750
 
     accessibility: 
       value-identifies-row: false
@@ -802,7 +836,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1120
+      sequence: 1130
 
     accessibility: 
       value-identifies-row: false
@@ -833,7 +867,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 750
+      sequence: 760
 
     accessibility: 
       value-identifies-row: false
@@ -864,7 +898,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1130
+      sequence: 1140
 
     accessibility: 
       value-identifies-row: false
@@ -895,7 +929,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 760
+      sequence: 770
 
     accessibility: 
       value-identifies-row: false
@@ -926,7 +960,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1140
+      sequence: 1150
 
     accessibility: 
       value-identifies-row: false
@@ -957,7 +991,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 770
+      sequence: 780
 
     accessibility: 
       value-identifies-row: false
@@ -988,7 +1022,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1150
+      sequence: 1160
 
     accessibility: 
       value-identifies-row: false
@@ -1019,7 +1053,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 780
+      sequence: 790
 
     accessibility: 
       value-identifies-row: false
@@ -1050,7 +1084,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1160
+      sequence: 1170
 
     accessibility: 
       value-identifies-row: false
@@ -1081,7 +1115,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 790
+      sequence: 800
 
     accessibility: 
       value-identifies-row: false
@@ -1106,15 +1140,11 @@ regions:
     id: 41256916167083918
     identification: 
       column-name: PAGE_ALIAS
-      type: Text Field
+      type: Link
 
     heading: 
       heading: Alias
       alignment: start
-
-    settings: 
-      trim-spaces: Leading and Trailing
-      text-case: NO CHANGE
 
     layout: 
       sequence: 40
@@ -1126,9 +1156,9 @@ regions:
     accessibility: 
       value-identifies-row: false
 
-    validation: 
-      value-required: false
-      maximum-length: 255
+    link: 
+      target: '&PAGE_LINK.'
+      link-text: '&PAGE_ALIAS.'
 
     source: 
       type: Database Column
@@ -1158,6 +1188,9 @@ regions:
       sort: true
       control-break/aggregate: true
       hide: true
+
+    security: 
+      escape-special-characters: true
 
   - # ====== Column: PAGE_GROUP ==================================
     id: 41256983623083919
@@ -1226,7 +1259,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 500
+      sequence: 510
 
     accessibility: 
       value-identifies-row: false
@@ -1257,7 +1290,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 880
+      sequence: 890
 
     accessibility: 
       value-identifies-row: false
@@ -1288,7 +1321,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 510
+      sequence: 520
 
     accessibility: 
       value-identifies-row: false
@@ -1319,7 +1352,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 890
+      sequence: 900
 
     accessibility: 
       value-identifies-row: false
@@ -1350,7 +1383,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 520
+      sequence: 530
 
     accessibility: 
       value-identifies-row: false
@@ -1381,7 +1414,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 530
+      sequence: 540
 
     accessibility: 
       value-identifies-row: false
@@ -1412,7 +1445,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 540
+      sequence: 550
 
     accessibility: 
       value-identifies-row: false
@@ -1443,7 +1476,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 550
+      sequence: 560
 
     accessibility: 
       value-identifies-row: false
@@ -1474,7 +1507,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 560
+      sequence: 570
 
     accessibility: 
       value-identifies-row: false
@@ -1505,7 +1538,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 570
+      sequence: 580
 
     accessibility: 
       value-identifies-row: false
@@ -1536,7 +1569,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 580
+      sequence: 590
 
     accessibility: 
       value-identifies-row: false
@@ -1567,7 +1600,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 590
+      sequence: 600
 
     accessibility: 
       value-identifies-row: false
@@ -1598,7 +1631,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 600
+      sequence: 610
 
     accessibility: 
       value-identifies-row: false
@@ -1629,7 +1662,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 610
+      sequence: 620
 
     accessibility: 
       value-identifies-row: false
@@ -1660,7 +1693,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 620
+      sequence: 630
 
     accessibility: 
       value-identifies-row: false
@@ -1691,7 +1724,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 630
+      sequence: 640
 
     accessibility: 
       value-identifies-row: false
@@ -1722,7 +1755,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 640
+      sequence: 650
 
     accessibility: 
       value-identifies-row: false
@@ -1753,7 +1786,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 650
+      sequence: 660
 
     accessibility: 
       value-identifies-row: false
@@ -1784,7 +1817,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 660
+      sequence: 670
 
     accessibility: 
       value-identifies-row: false
@@ -1815,7 +1848,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 670
+      sequence: 680
 
     accessibility: 
       value-identifies-row: false
@@ -1846,7 +1879,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 680
+      sequence: 690
 
     accessibility: 
       value-identifies-row: false
@@ -1877,7 +1910,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 690
+      sequence: 700
 
     accessibility: 
       value-identifies-row: false
@@ -1908,7 +1941,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 700
+      sequence: 710
 
     accessibility: 
       value-identifies-row: false
@@ -1939,7 +1972,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 710
+      sequence: 720
 
     accessibility: 
       value-identifies-row: false
@@ -1970,7 +2003,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 720
+      sequence: 730
 
     accessibility: 
       value-identifies-row: false
@@ -2001,7 +2034,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 730
+      sequence: 740
 
     accessibility: 
       value-identifies-row: false
@@ -2032,7 +2065,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 810
+      sequence: 820
 
     accessibility: 
       value-identifies-row: false
@@ -2063,7 +2096,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 440
+      sequence: 450
 
     accessibility: 
       value-identifies-row: false
@@ -2094,7 +2127,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 820
+      sequence: 830
 
     accessibility: 
       value-identifies-row: false
@@ -2125,7 +2158,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 450
+      sequence: 460
 
     accessibility: 
       value-identifies-row: false
@@ -2156,7 +2189,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 830
+      sequence: 840
 
     accessibility: 
       value-identifies-row: false
@@ -2187,7 +2220,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 460
+      sequence: 470
 
     accessibility: 
       value-identifies-row: false
@@ -2218,7 +2251,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 840
+      sequence: 850
 
     accessibility: 
       value-identifies-row: false
@@ -2249,7 +2282,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 470
+      sequence: 480
 
     accessibility: 
       value-identifies-row: false
@@ -2280,7 +2313,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 850
+      sequence: 860
 
     accessibility: 
       value-identifies-row: false
@@ -2311,7 +2344,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 480
+      sequence: 490
 
     accessibility: 
       value-identifies-row: false
@@ -2342,7 +2375,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 860
+      sequence: 870
 
     accessibility: 
       value-identifies-row: false
@@ -2373,7 +2406,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 490
+      sequence: 500
 
     accessibility: 
       value-identifies-row: false
@@ -2404,7 +2437,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 870
+      sequence: 880
 
     accessibility: 
       value-identifies-row: false
@@ -2524,7 +2557,8 @@ regions:
       include-in-export-/-print: true
 
     enable-users-to: 
-      sort: false
+      sort: true
+      control-break/aggregate: true
       hide: true
 
   - # ====== Column: T00 =========================================
@@ -2534,7 +2568,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T00!RAW.'
+      heading: '&P890_HEADER_T00!RAW.'
       alignment: center
 
     settings: 
@@ -2542,9 +2576,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 60
+      sequence: 70
       column-alignment: end
-      group: '&P100_WEEK_1.' # 40976576592784593
+      group: '&P890_WEEK_1.' # 40976576592784593
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2597,7 +2631,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T01!RAW.'
+      heading: '&P890_HEADER_T01!RAW.'
       alignment: center
 
     settings: 
@@ -2605,9 +2639,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 70
+      sequence: 80
       column-alignment: end
-      group: '&P100_WEEK_1.' # 40976576592784593
+      group: '&P890_WEEK_1.' # 40976576592784593
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2660,7 +2694,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T02!RAW.'
+      heading: '&P890_HEADER_T02!RAW.'
       alignment: center
 
     settings: 
@@ -2668,9 +2702,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 80
+      sequence: 90
       column-alignment: end
-      group: '&P100_WEEK_1.' # 40976576592784593
+      group: '&P890_WEEK_1.' # 40976576592784593
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2723,7 +2757,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T03!RAW.'
+      heading: '&P890_HEADER_T03!RAW.'
       alignment: center
 
     settings: 
@@ -2731,9 +2765,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 90
+      sequence: 100
       column-alignment: end
-      group: '&P100_WEEK_1.' # 40976576592784593
+      group: '&P890_WEEK_1.' # 40976576592784593
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2786,7 +2820,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T04!RAW.'
+      heading: '&P890_HEADER_T04!RAW.'
       alignment: center
 
     settings: 
@@ -2794,9 +2828,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 100
+      sequence: 110
       column-alignment: end
-      group: '&P100_WEEK_1.' # 40976576592784593
+      group: '&P890_WEEK_1.' # 40976576592784593
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2849,7 +2883,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T05!RAW.'
+      heading: '&P890_HEADER_T05!RAW.'
       alignment: center
 
     settings: 
@@ -2857,9 +2891,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 110
+      sequence: 120
       column-alignment: end
-      group: '&P100_WEEK_1.' # 40976576592784593
+      group: '&P890_WEEK_1.' # 40976576592784593
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2912,7 +2946,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T06!RAW.'
+      heading: '&P890_HEADER_T06!RAW.'
       alignment: center
 
     settings: 
@@ -2920,9 +2954,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 120
+      sequence: 130
       column-alignment: end
-      group: '&P100_WEEK_1.' # 40976576592784593
+      group: '&P890_WEEK_1.' # 40976576592784593
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -2975,7 +3009,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T07!RAW.'
+      heading: '&P890_HEADER_T07!RAW.'
       alignment: center
 
     settings: 
@@ -2983,9 +3017,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 130
+      sequence: 140
       column-alignment: end
-      group: '&P100_WEEK_2.' # 40976726297784594
+      group: '&P890_WEEK_2.' # 40976726297784594
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3038,7 +3072,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T08!RAW.'
+      heading: '&P890_HEADER_T08!RAW.'
       alignment: center
 
     settings: 
@@ -3046,9 +3080,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 140
+      sequence: 150
       column-alignment: end
-      group: '&P100_WEEK_2.' # 40976726297784594
+      group: '&P890_WEEK_2.' # 40976726297784594
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3101,7 +3135,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T09!RAW.'
+      heading: '&P890_HEADER_T09!RAW.'
       alignment: center
 
     settings: 
@@ -3109,9 +3143,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 150
+      sequence: 160
       column-alignment: end
-      group: '&P100_WEEK_2.' # 40976726297784594
+      group: '&P890_WEEK_2.' # 40976726297784594
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3164,7 +3198,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T10!RAW.'
+      heading: '&P890_HEADER_T10!RAW.'
       alignment: center
 
     settings: 
@@ -3172,9 +3206,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 160
+      sequence: 170
       column-alignment: end
-      group: '&P100_WEEK_2.' # 40976726297784594
+      group: '&P890_WEEK_2.' # 40976726297784594
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3227,7 +3261,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T11!RAW.'
+      heading: '&P890_HEADER_T11!RAW.'
       alignment: center
 
     settings: 
@@ -3235,9 +3269,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 170
+      sequence: 180
       column-alignment: end
-      group: '&P100_WEEK_2.' # 40976726297784594
+      group: '&P890_WEEK_2.' # 40976726297784594
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3290,7 +3324,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T12!RAW.'
+      heading: '&P890_HEADER_T12!RAW.'
       alignment: center
 
     settings: 
@@ -3298,9 +3332,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 180
+      sequence: 190
       column-alignment: end
-      group: '&P100_WEEK_2.' # 40976726297784594
+      group: '&P890_WEEK_2.' # 40976726297784594
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3353,7 +3387,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T13!RAW.'
+      heading: '&P890_HEADER_T13!RAW.'
       alignment: center
 
     settings: 
@@ -3361,9 +3395,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 190
+      sequence: 200
       column-alignment: end
-      group: '&P100_WEEK_2.' # 40976726297784594
+      group: '&P890_WEEK_2.' # 40976726297784594
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3416,7 +3450,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T14!RAW.'
+      heading: '&P890_HEADER_T14!RAW.'
       alignment: center
 
     settings: 
@@ -3424,9 +3458,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 200
+      sequence: 210
       column-alignment: end
-      group: '&P100_WEEK_3.' # 40976776508784595
+      group: '&P890_WEEK_3.' # 40976776508784595
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3479,7 +3513,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T15!RAW.'
+      heading: '&P890_HEADER_T15!RAW.'
       alignment: center
 
     settings: 
@@ -3487,9 +3521,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 210
+      sequence: 220
       column-alignment: end
-      group: '&P100_WEEK_3.' # 40976776508784595
+      group: '&P890_WEEK_3.' # 40976776508784595
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3542,7 +3576,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T16!RAW.'
+      heading: '&P890_HEADER_T16!RAW.'
       alignment: center
 
     settings: 
@@ -3550,9 +3584,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 220
+      sequence: 230
       column-alignment: end
-      group: '&P100_WEEK_3.' # 40976776508784595
+      group: '&P890_WEEK_3.' # 40976776508784595
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3605,7 +3639,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T17!RAW.'
+      heading: '&P890_HEADER_T17!RAW.'
       alignment: center
 
     settings: 
@@ -3613,9 +3647,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 230
+      sequence: 240
       column-alignment: end
-      group: '&P100_WEEK_3.' # 40976776508784595
+      group: '&P890_WEEK_3.' # 40976776508784595
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3668,7 +3702,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T18!RAW.'
+      heading: '&P890_HEADER_T18!RAW.'
       alignment: center
 
     settings: 
@@ -3676,9 +3710,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 240
+      sequence: 250
       column-alignment: end
-      group: '&P100_WEEK_3.' # 40976776508784595
+      group: '&P890_WEEK_3.' # 40976776508784595
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3731,7 +3765,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T19!RAW.'
+      heading: '&P890_HEADER_T19!RAW.'
       alignment: center
 
     settings: 
@@ -3739,9 +3773,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 250
+      sequence: 260
       column-alignment: end
-      group: '&P100_WEEK_3.' # 40976776508784595
+      group: '&P890_WEEK_3.' # 40976776508784595
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3794,7 +3828,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T20!RAW.'
+      heading: '&P890_HEADER_T20!RAW.'
       alignment: center
 
     settings: 
@@ -3802,9 +3836,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 260
+      sequence: 270
       column-alignment: end
-      group: '&P100_WEEK_3.' # 40976776508784595
+      group: '&P890_WEEK_3.' # 40976776508784595
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3857,7 +3891,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T21!RAW.'
+      heading: '&P890_HEADER_T21!RAW.'
       alignment: center
 
     settings: 
@@ -3865,9 +3899,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 270
+      sequence: 280
       column-alignment: end
-      group: '&P100_WEEK_4.' # 40976888584784596
+      group: '&P890_WEEK_4.' # 40976888584784596
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3920,7 +3954,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T22!RAW.'
+      heading: '&P890_HEADER_T22!RAW.'
       alignment: center
 
     settings: 
@@ -3928,9 +3962,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 280
+      sequence: 290
       column-alignment: end
-      group: '&P100_WEEK_4.' # 40976888584784596
+      group: '&P890_WEEK_4.' # 40976888584784596
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -3983,7 +4017,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T23!RAW.'
+      heading: '&P890_HEADER_T23!RAW.'
       alignment: center
 
     settings: 
@@ -3991,9 +4025,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 290
+      sequence: 300
       column-alignment: end
-      group: '&P100_WEEK_4.' # 40976888584784596
+      group: '&P890_WEEK_4.' # 40976888584784596
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -4046,7 +4080,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T24!RAW.'
+      heading: '&P890_HEADER_T24!RAW.'
       alignment: center
 
     settings: 
@@ -4054,9 +4088,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 300
+      sequence: 310
       column-alignment: end
-      group: '&P100_WEEK_4.' # 40976888584784596
+      group: '&P890_WEEK_4.' # 40976888584784596
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -4109,7 +4143,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T25!RAW.'
+      heading: '&P890_HEADER_T25!RAW.'
       alignment: center
 
     settings: 
@@ -4117,9 +4151,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 310
+      sequence: 320
       column-alignment: end
-      group: '&P100_WEEK_4.' # 40976888584784596
+      group: '&P890_WEEK_4.' # 40976888584784596
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -4172,7 +4206,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T26!RAW.'
+      heading: '&P890_HEADER_T26!RAW.'
       alignment: center
 
     settings: 
@@ -4180,9 +4214,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 320
+      sequence: 330
       column-alignment: end
-      group: '&P100_WEEK_4.' # 40976888584784596
+      group: '&P890_WEEK_4.' # 40976888584784596
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -4235,7 +4269,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T27!RAW.'
+      heading: '&P890_HEADER_T27!RAW.'
       alignment: center
 
     settings: 
@@ -4243,9 +4277,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 330
+      sequence: 340
       column-alignment: end
-      group: '&P100_WEEK_4.' # 40976888584784596
+      group: '&P890_WEEK_4.' # 40976888584784596
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -4298,7 +4332,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T28!RAW.'
+      heading: '&P890_HEADER_T28!RAW.'
       alignment: center
 
     settings: 
@@ -4306,9 +4340,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 340
+      sequence: 350
       column-alignment: end
-      group: '&P100_WEEK_5.' # 40976989681784597
+      group: '&P890_WEEK_5.' # 40976989681784597
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -4361,7 +4395,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T29!RAW.'
+      heading: '&P890_HEADER_T29!RAW.'
       alignment: center
 
     settings: 
@@ -4369,9 +4403,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 350
+      sequence: 360
       column-alignment: end
-      group: '&P100_WEEK_5.' # 40976989681784597
+      group: '&P890_WEEK_5.' # 40976989681784597
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -4424,7 +4458,7 @@ regions:
       type: Number Field
 
     heading: 
-      heading: '&P100_HEADER_T30!RAW.'
+      heading: '&P890_HEADER_T30!RAW.'
       alignment: center
 
     settings: 
@@ -4432,9 +4466,9 @@ regions:
       virtual-keyboard: Decimal
 
     layout: 
-      sequence: 360
+      sequence: 370
       column-alignment: end
-      group: '&P100_WEEK_5.' # 40976989681784597
+      group: '&P890_WEEK_5.' # 40976989681784597
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -4490,7 +4524,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 900
+      sequence: 910
 
     accessibility: 
       value-identifies-row: false
@@ -4521,7 +4555,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 910
+      sequence: 920
 
     accessibility: 
       value-identifies-row: false
@@ -4552,7 +4586,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 920
+      sequence: 930
 
     accessibility: 
       value-identifies-row: false
@@ -4583,7 +4617,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 930
+      sequence: 940
 
     accessibility: 
       value-identifies-row: false
@@ -4614,7 +4648,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 940
+      sequence: 950
 
     accessibility: 
       value-identifies-row: false
@@ -4645,7 +4679,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 950
+      sequence: 960
 
     accessibility: 
       value-identifies-row: false
@@ -4676,7 +4710,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 960
+      sequence: 970
 
     accessibility: 
       value-identifies-row: false
@@ -4707,7 +4741,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 970
+      sequence: 980
 
     accessibility: 
       value-identifies-row: false
@@ -4738,7 +4772,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 980
+      sequence: 990
 
     accessibility: 
       value-identifies-row: false
@@ -4769,7 +4803,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 990
+      sequence: 1000
 
     accessibility: 
       value-identifies-row: false
@@ -4800,7 +4834,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1000
+      sequence: 1010
 
     accessibility: 
       value-identifies-row: false
@@ -4831,7 +4865,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1010
+      sequence: 1020
 
     accessibility: 
       value-identifies-row: false
@@ -4862,7 +4896,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1020
+      sequence: 1030
 
     accessibility: 
       value-identifies-row: false
@@ -4893,7 +4927,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1030
+      sequence: 1040
 
     accessibility: 
       value-identifies-row: false
@@ -4924,7 +4958,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1040
+      sequence: 1050
 
     accessibility: 
       value-identifies-row: false
@@ -4955,7 +4989,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1050
+      sequence: 1060
 
     accessibility: 
       value-identifies-row: false
@@ -4986,7 +5020,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1060
+      sequence: 1070
 
     accessibility: 
       value-identifies-row: false
@@ -5017,7 +5051,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1070
+      sequence: 1080
 
     accessibility: 
       value-identifies-row: false
@@ -5048,7 +5082,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1080
+      sequence: 1090
 
     accessibility: 
       value-identifies-row: false
@@ -5079,7 +5113,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1090
+      sequence: 1100
 
     accessibility: 
       value-identifies-row: false
@@ -5110,7 +5144,7 @@ regions:
       value-protected: true
 
     layout: 
-      sequence: 1100
+      sequence: 1110
 
     accessibility: 
       value-identifies-row: false
@@ -6105,22 +6139,19 @@ page-items:
   id: 40977558460784621
   identification: 
     name: P890_SESSION_ID
-    type: Text Field
+    type: Select List
 
   label: 
     label: Session Id
     alignment: Left
 
   settings: 
-    subtype: Text
-    trim-spaces: Leading and Trailing
-    text-case: NO CHANGE
-    submit-when-enter-pressed: false
-    disabled: false
+    page-action-on-selection: None
+    allow-multi-selection: false
 
   layout: 
     sequence: 60
-    region: Tracking Apps # 142951642654720735
+    region: Tracking Activity # 142951642654720735
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -6134,10 +6165,16 @@ page-items:
     template: Optional - Floating # 63461560868439163
     template-options: 
     - '#DEFAULT#'
-    width: 30
+    height: 1
 
   validation: 
     value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: APP_TRACKING_SESSIONS # 18668731613813043
+    display-extra-values: false
+    display-null-value: true
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -6528,7 +6565,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Tracking Apps # 142951642654720735
+    region: Tracking Activity # 142951642654720735
     position: BODY
 
   advanced: 
@@ -6567,7 +6604,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Tracking Apps # 142951642654720735
+    region: Tracking Activity # 142951642654720735
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -6626,7 +6663,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Tracking Apps # 142951642654720735
+    region: Tracking Activity # 142951642654720735
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -6673,22 +6710,19 @@ page-items:
   id: 142954202475720801
   identification: 
     name: P890_SOURCE
-    type: Text Field
+    type: Select List
 
   label: 
     label: Data Source
     alignment: Left
 
   settings: 
-    subtype: Text
-    trim-spaces: Leading and Trailing
-    text-case: NO CHANGE
-    submit-when-enter-pressed: false
-    disabled: false
+    page-action-on-selection: None
+    allow-multi-selection: false
 
   layout: 
     sequence: 40
-    region: Tracking Apps # 142951642654720735
+    region: Tracking Activity # 142951642654720735
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -6702,10 +6736,16 @@ page-items:
     template: Optional - Floating # 63461560868439163
     template-options: 
     - '#DEFAULT#'
-    width: 30
+    height: 1
 
   validation: 
     value-required: true
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: APP_TRACKING_SOURCE # 18669328786813045
+    display-extra-values: false
+    display-null-value: false
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -6729,22 +6769,19 @@ page-items:
   id: 142954254898720802
   identification: 
     name: P890_USER_ID
-    type: Text Field
+    type: Select List
 
   label: 
     label: User Id
     alignment: Left
 
   settings: 
-    subtype: Text
-    trim-spaces: Leading and Trailing
-    text-case: NO CHANGE
-    submit-when-enter-pressed: false
-    disabled: false
+    page-action-on-selection: None
+    allow-multi-selection: false
 
   layout: 
     sequence: 50
-    region: Tracking Apps # 142951642654720735
+    region: Tracking Activity # 142951642654720735
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -6758,10 +6795,16 @@ page-items:
     template: Optional - Floating # 63461560868439163
     template-options: 
     - '#DEFAULT#'
-    width: 30
+    height: 1
 
   validation: 
     value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: APP_TRACKING_USERS # 18669935827813045
+    display-extra-values: false
+    display-null-value: true
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -6790,7 +6833,7 @@ buttons:
 
   layout: 
     sequence: 70
-    region: Tracking Apps # 142951642654720735
+    region: Tracking Activity # 142951642654720735
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
