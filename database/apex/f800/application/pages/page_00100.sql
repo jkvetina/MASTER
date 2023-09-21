@@ -64,8 +64,10 @@ wwv_flow_imp_page.create_card(
 ,p_grid_column_count=>5
 ,p_title_adv_formatting=>true
 ,p_title_html_expr=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'<div style="float: right; align-items: flex-start; margin-top: 0.2rem;"><button style="background: transparent; border: 0; margin-right: -0.5rem;"><span class="fa &BADGE_ICON."></span></button></div>',
-'<h3 class="a-CardView-title">&APP_NAME.</h3>'))
+'<div style="float: right; align-items: flex-start; margin-top: 0.2rem;"><button type="button" class="a-CardView-button " onclick="console.log(''FAVORITE_SWITCH'')" style="background: transparent; margin: -0.5rem -0.5rem 0 0; padding: 0.5rem; z-index: 9'
+||'98 !important;"><span class="fa &BADGE_ICON."></span></button></div>',
+'<h3 class="a-CardView-title">&APP_NAME.</h3>',
+''))
 ,p_sub_title_adv_formatting=>true
 ,p_sub_title_html_expr=>'<span style="font-size: 85%;">&APP_ALIAS., &APP_PREFIX.</span>'
 ,p_body_adv_formatting=>false
