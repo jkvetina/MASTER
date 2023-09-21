@@ -2,23 +2,28 @@ CREATE OR REPLACE PACKAGE BODY app_tracking AS
 
     PROCEDURE init_headers
     AS
-        v_offset        CONSTANT PLS_INTEGER := get_offset();
+        in_page_id      CONSTANT VARCHAR2(8)    := core.get_page_id();
+        in_offset       CONSTANT PLS_INTEGER    := get_offset();
+        --
         v_last_week     PLS_INTEGER;
     BEGIN
         FOR i IN 0 .. 36 LOOP
             core.set_item (
-                'P100_HEADER_T' || LPAD(i, 2, '0'),
-                CASE WHEN TRUNC(SYSDATE) - i + v_offset <= TRUNC(SYSDATE) AND i + v_offset - 1 <= c_show_days + v_offset
+                'P' || in_page_id || '_HEADER_T' || LPAD(i, 2, '0'),
+                CASE WHEN TRUNC(SYSDATE) - i + in_offset <= TRUNC(SYSDATE) AND i + in_offset - 1 <= c_show_days + in_offset
                     THEN '<span title="'
-                        || REGEXP_REPLACE(TO_CHAR(TRUNC(SYSDATE) - i + v_offset, 'Day, FMMonth ddth'), '\s+,', ',') || '">'
-                        || TO_CHAR(TRUNC(SYSDATE) - i + v_offset, 'fmdd')
+                        || REGEXP_REPLACE(TO_CHAR(TRUNC(SYSDATE) - i + in_offset, 'Day, FMMonth ddth'), '\s+,', ',') || '">'
+                        || TO_CHAR(TRUNC(SYSDATE) - i + in_offset, 'fmdd')
                         || '</span>'
                     END
             );
             --
-            IF SUBSTR(TO_CHAR(TRUNC(SYSDATE) - i + v_offset, 'Dy'), 1, 1) = 'M' THEN
+            IF SUBSTR(TO_CHAR(TRUNC(SYSDATE) - i + in_offset, 'Dy'), 1, 1) = 'M' THEN
                 v_last_week := NVL(v_last_week, 0) + 1;
-                core.set_item('P100_WEEK_' || v_last_week, REGEXP_REPLACE(TO_CHAR(TRUNC(SYSDATE) - i + v_offset, 'Month [IW]'), '\s+,', ','));
+                core.set_item (
+                    'P' || in_page_id || '_WEEK_' || v_last_week,
+                    REGEXP_REPLACE(TO_CHAR(TRUNC(SYSDATE) - i + in_offset, 'Month [IW]'), '\s+,', ',')
+                );
             END IF;
         END LOOP;
     END;

@@ -100,6 +100,7 @@ t AS (
         NULLIF(SUM(NVL(CASE WHEN s.view_date = x.today - 36 + day_offset THEN s.value END, 0)), 0) AS t36
     FROM s
     CROSS JOIN x
+    WHERE s.page_id > 0
     GROUP BY
         s.page_id,
         s.page_name,
@@ -111,6 +112,12 @@ SELECT
     t.page_name,
     t.page_alias,
     t.page_group,
+    --
+    core.get_page_url (
+        in_app_id       => x.app_id,
+        in_page_id      => t.page_id,
+        in_plain        => NULL
+    ) AS page_link,
     --
     t.t00, t.t01, t.t02, t.t03, t.t04, t.t05, t.t06, t.t07, t.t08, t.t09,
     t.t10, t.t11, t.t12, t.t13, t.t14, t.t15, t.t16, t.t17, t.t18, t.t19,
