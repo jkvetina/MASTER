@@ -187,7 +187,8 @@ CREATE OR REPLACE PACKAGE app AS
     FUNCTION get_color (
         in_lov_id           app_lovs.lov_id%TYPE,
         in_value            app_lovs.treshold%TYPE,
-        in_text             CHAR                            := NULL
+        in_text             CHAR                        := NULL,
+        in_app_id           app_lovs.app_id%TYPE        := NULL
     )
     RETURN app_lovs.color_bg%TYPE;
 

@@ -877,12 +877,11 @@ CREATE OR REPLACE PACKAGE BODY app AS
     FUNCTION get_color (
         in_lov_id           app_lovs.lov_id%TYPE,
         in_value            app_lovs.treshold%TYPE,
-        in_text             CHAR                            := NULL
+        in_text             CHAR                        := NULL,
+        in_app_id           app_lovs.app_id%TYPE        := NULL
     )
     RETURN app_lovs.color_bg%TYPE
     AS
-        in_app_id           CONSTANT app_applications.app_id%TYPE := core.get_app_id();
-        --
         out_color           app_lovs.color_bg%TYPE;
     BEGIN
         -- check min value
@@ -890,7 +889,7 @@ CREATE OR REPLACE PACKAGE BODY app AS
             SELECT CASE WHEN in_text IS NULL THEN t.color_bg ELSE t.color_text END INTO out_color
             FROM app_lovs t
             WHERE 1 = 1
-                AND t.app_id    = in_app_id
+                AND t.app_id    = COALESCE(in_app_id, core.get_app_id())
                 AND t.lov_id    = in_lov_id
                 AND t.treshold  <= in_value
                 AND ROWNUM      = 1;
@@ -904,7 +903,7 @@ CREATE OR REPLACE PACKAGE BODY app AS
             SELECT CASE WHEN in_text IS NULL THEN t.color_bg ELSE t.color_text END INTO out_color
             FROM app_lovs t
             WHERE 1 = 1
-                AND t.app_id    = in_app_id
+                AND t.app_id    = COALESCE(in_app_id, core.get_app_id())
                 AND t.lov_id    = in_lov_id
                 AND t.treshold  > in_value
                 AND ROWNUM      = 1;
@@ -915,7 +914,7 @@ CREATE OR REPLACE PACKAGE BODY app AS
             INTO out_color
             FROM app_lovs t
             WHERE 1 = 1
-                AND t.app_id    = in_app_id
+                AND t.app_id    = COALESCE(in_app_id, core.get_app_id())
                 AND t.lov_id    = in_lov_id;
             --
             RETURN out_color;
@@ -928,7 +927,7 @@ CREATE OR REPLACE PACKAGE BODY app AS
             INTO out_color
             FROM app_lovs t
             WHERE 1 = 1
-                AND t.app_id    = in_app_id
+                AND t.app_id    = COALESCE(in_app_id, core.get_app_id())
                 AND t.lov_id    = in_lov_id
                 AND t.treshold  <= in_value;
             --
@@ -960,7 +959,7 @@ CREATE OR REPLACE PACKAGE BODY app AS
                     ON r.app_id     = t.app_id
                     AND r.lov_id    = t.lov_id
                 WHERE 1 = 1
-                    AND t.app_id    = in_app_id
+                    AND t.app_id    = COALESCE(in_app_id, core.get_app_id())
                     AND t.lov_id    = in_lov_id
                     AND t.treshold  <= in_value
                     AND r.treshold  > in_value
