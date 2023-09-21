@@ -1,5 +1,5 @@
 DECLARE
-    in_job_name             CONSTANT VARCHAR2(30)   := 'APP_NAVIGATON_MAP_REFRESH';
+    in_job_name             CONSTANT VARCHAR2(30)   := 'APP_MV_REFRESH';
     in_run_immediatelly     CONSTANT BOOLEAN        := FALSE;
 BEGIN
     DBMS_OUTPUT.PUT_LINE('--');
@@ -22,10 +22,10 @@ BEGIN
         repeat_interval     => 'FREQ=DAILY;BYHOUR=0;BYMINUTE=0;BYSECOND=5;',
         enabled             => FALSE,
         auto_drop           => FALSE,
-        comments            => 'Refresh Navigation MV'
+        comments            => 'Refresh all MVs'
     );
     --
-    DBMS_SCHEDULER.SET_JOB_ARGUMENT_VALUE(in_job_name, argument_position => 1, argument_value => APP_NAV%_MV);
+    DBMS_SCHEDULER.SET_JOB_ARGUMENT_VALUE(in_job_name, argument_position => 1, argument_value => 'APP_%MV');
     --
     DBMS_SCHEDULER.SET_ATTRIBUTE(in_job_name, 'JOB_PRIORITY', 3);
     DBMS_SCHEDULER.ENABLE(in_job_name);
