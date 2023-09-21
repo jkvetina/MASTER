@@ -142,29 +142,35 @@
 /**
  * MULTI COLUMN SUPPORT
  */
+ul.MULTI_1,
 ul.MULTI_2,
 ul.MULTI_3,
-ul.MULTI_4 {
+ul.MULTI_4,
+ul.MULTI_5,
+ul.MULTI_6,
+ul.MULTI_7,
+ul.MULTI_8,
+ul.MULTI_9,
+ul.MULTI_10,
+ul.MULTI_11,
+ul.MULTI_12 {
     -moz-column-gap:        0;
     -webkit-column-gap:     0;
     column-gap:             0;
     background:             #3f3d33;
 }
-ul.MULTI_2 {
-    -moz-column-count       : 2;
-    -webkit-column-count    : 2;
-    column-count            : 2;
-}
-ul.MULTI_3 {
-    -moz-column-count       : 3;
-    -webkit-column-count    : 3;
-    column-count            : 3;
-}
-ul.MULTI_4 {
-    -moz-column-count       : 4;
-    -webkit-column-count    : 4;
-    column-count            : 4;
-}
+ul.MULTI_1  { -moz-column-count :  1; -webkit-column-count :  1; column-count :  1; }
+ul.MULTI_2  { -moz-column-count :  2; -webkit-column-count :  2; column-count :  2; }
+ul.MULTI_3  { -moz-column-count :  3; -webkit-column-count :  3; column-count :  3; }
+ul.MULTI_4  { -moz-column-count :  4; -webkit-column-count :  4; column-count :  4; }
+ul.MULTI_5  { -moz-column-count :  5; -webkit-column-count :  5; column-count :  5; }
+ul.MULTI_6  { -moz-column-count :  6; -webkit-column-count :  6; column-count :  6; }
+ul.MULTI_7  { -moz-column-count :  7; -webkit-column-count :  7; column-count :  7; }
+ul.MULTI_8  { -moz-column-count :  8; -webkit-column-count :  8; column-count :  8; }
+ul.MULTI_9  { -moz-column-count :  9; -webkit-column-count :  9; column-count :  9; }
+ul.MULTI_10 { -moz-column-count : 10; -webkit-column-count : 10; column-count : 10; }
+ul.MULTI_11 { -moz-column-count : 11; -webkit-column-count : 11; column-count : 11; }
+ul.MULTI_12 { -moz-column-count : 12; -webkit-column-count : 12; column-count : 12; }
 
 
 
