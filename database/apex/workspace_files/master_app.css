@@ -143,9 +143,10 @@ a.t-Tabs-link::before {
 
 
 
-/* CARD BADGE AT TOP */
+/* CARD BADGE AT TOP + FIX TOO MUCH SPACE BEFORE HEADER AND BODY */
 .a-CardView-header {
     align-items         : flex-start;
+    padding-bottom      : 0;
 }
 
 
