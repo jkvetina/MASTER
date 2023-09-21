@@ -89,23 +89,6 @@
     display: ROLE_GROUP
     default-sort: Use Order By from Query
 
-- # ====== List of Values: LOV_APP_TABLES ======================
-  id: 15618073414439976
-  identification: 
-    name: LOV_APP_TABLES
-
-  source: 
-    location: Local Database
-    type: Table / View
-    table-owner: Parsing Schema
-    table-name: TSK_LOV_APP_TABLES_V
-
-  column-mapping: 
-    return: TABLE_NAME
-    display: TABLE_NAME
-    default-sort: TABLE_NAME
-    sort-direction: Ascending (Nulls Last)
-
 - # ====== List of Values: APP_USERS_ALL #ID-NAME ==============
   id: 18270447043617252
   identification: 
@@ -122,6 +105,179 @@
     display: USER_NAME
     default-sort: USER_NAME
     sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: APP_TRACKING_METRICS ================
+  id: 18667581296813041
+  identification: 
+    name: APP_TRACKING_METRICS
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_LOV_TRACKING_METRICS_V
+
+  column-mapping: 
+    return: ID
+    display: NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: APP_TRACKING_PAGES ==================
+  id: 18668168205813042
+  identification: 
+    name: APP_TRACKING_PAGES
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_LOV_TRACKING_PAGES_V
+
+  column-mapping: 
+    return: PAGE_ID
+    display: PAGE_NAME__
+    default-sort: PAGE_ID
+    sort-direction: Ascending (Nulls Last)
+    group: GROUP_NAME
+    group-sort-direction: Ascending (Nulls First)
+
+- # ====== List of Values: APP_TRACKING_SESSIONS ===============
+  id: 18668731613813043
+  identification: 
+    name: APP_TRACKING_SESSIONS
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_LOV_TRACKING_SESSIONS_V
+
+  column-mapping: 
+    return: ID
+    display: NAME
+    default-sort: ID
+    sort-direction: Ascending (Nulls Last)
+    group: GROUP_NAME
+    group-sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: APP_TRACKING_SOURCE =================
+  id: 18669328786813045
+  identification: 
+    name: APP_TRACKING_SOURCE
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_LOV_TRACKING_SOURCE_V
+
+  column-mapping: 
+    return: ID
+    display: NAME
+    default-sort: Use Order By from Query
+
+- # ====== List of Values: APP_TRACKING_USERS ==================
+  id: 18669935827813045
+  identification: 
+    name: APP_TRACKING_USERS
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_LOV_TRACKING_USERS_V
+
+  column-mapping: 
+    return: ID
+    display: NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+    group: GROUP_NAME
+    group-sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: APP_PAGES #ID-ID ====================
+  id: 19507748959642503
+  identification: 
+    name: 'APP_PAGES #ID-ID'
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_LOV_PAGES_V
+
+  column-mapping: 
+    return: PAGE_ID
+    display: PAGE_ID
+    default-sort: PAGE_ID
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: APP_LOV_GROUPS ======================
+  id: 19745575075395325
+  identification: 
+    name: APP_LOV_GROUPS
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT DISTINCT
+          t.lov_group
+      FROM app_lovs t
+      WHERE t.app_id = core.get_app_id();
+
+  column-mapping: 
+    return: LOV_GROUP
+    display: LOV_GROUP
+    default-sort: LOV_GROUP
+    sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: APP_LOVS ============================
+  id: 19745855586402324
+  identification: 
+    name: APP_LOVS
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT DISTINCT
+          t.lov_group,
+          t.lov_id
+      FROM app_lovs t
+      WHERE t.app_id          = core.get_app_id()
+          AND (t.lov_group    = core.get_item('$LOV_GROUP') OR core.get_item('$LOV_GROUP') IS NULL);
+
+  column-mapping: 
+    return: LOV_ID
+    display: LOV_ID
+    default-sort: LOV_ID
+    sort-direction: Ascending (Nulls Last)
+    group: LOV_GROUP
+    group-sort-direction: Ascending (Nulls Last)
+
+- # ====== List of Values: APP_CONTEXTS ========================
+  id: 19826581500100372
+  identification: 
+    name: APP_CONTEXTS
+
+  source: 
+    location: Local Database
+    type: SQL Query
+    sql-query: |
+      SELECT t.*
+      FROM app_contexts t
+      WHERE t.app_id = core.get_app_id();
+      
+
+  column-mapping: 
+    return: CONTEXT_ID
+    display: CONTEXT_NAME
+    default-sort: ORDER#
+    sort-direction: Ascending (Nulls Last)
+    group: CONTEXT_GROUP
+    group-sort-direction: Ascending (Nulls Last)
 
 - # ====== List of Values: APP_APPLICATIONS ====================
   id: 35274887131559187

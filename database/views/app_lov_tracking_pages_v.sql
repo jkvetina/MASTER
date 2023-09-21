@@ -21,7 +21,8 @@ page_groups AS (
 SELECT
     TO_CHAR(x.app_id)   AS group_name,
     TO_NUMBER(NULL)     AS page_id,
-    'All pages'         AS page_name,
+    'All pages'         AS page_name__,
+    NULL                AS page_name,
     NULL                AS page_alias,
     NULL                AS page_group
 FROM x
@@ -30,7 +31,8 @@ UNION ALL
 SELECT
     TO_CHAR(x.app_id)   AS group_name,
     0                   AS page_id,
-    'Used pages only'   AS page_name,
+    'Used pages only'   AS page_name__,
+    NULL                AS page_name,
     NULL                AS page_alias,
     NULL                AS page_group
 FROM x
@@ -46,7 +48,8 @@ SELECT
         END AS group_name,
     --
     t.page_id,
-    RTRIM(t.page_id || ' - ' || t.page_name, ' - ') AS page_name,
+    RTRIM(t.page_id || ' - ' || t.page_name, ' - ') AS page_name__,
+    t.page_name,
     p.page_alias,
     p.page_group
     --

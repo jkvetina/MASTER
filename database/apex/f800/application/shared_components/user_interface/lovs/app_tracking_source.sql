@@ -1,7 +1,7 @@
-prompt --application/shared_components/user_interface/lovs/app_tracking_pages
+prompt --application/shared_components/user_interface/lovs/app_tracking_source
 begin
 --   Manifest
---     APP_TRACKING_PAGES
+--     APP_TRACKING_SOURCE
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
@@ -12,17 +12,15 @@ wwv_flow_imp.component_begin (
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_of_values(
- p_id=>wwv_flow_imp.id(18668168205813042)  -- APP_TRACKING_PAGES
-,p_lov_name=>'APP_TRACKING_PAGES'
+ p_id=>wwv_flow_imp.id(18669328786813045)  -- APP_TRACKING_SOURCE
+,p_lov_name=>'APP_TRACKING_SOURCE'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'
 ,p_use_local_sync_table=>false
-,p_query_table=>'APP_LOV_TRACKING_PAGES_V'
-,p_return_column_name=>'PAGE_ID'
-,p_display_column_name=>'PAGE_NAME__'
-,p_group_column_name=>'GROUP_NAME'
-,p_group_sort_direction=>'ASC_NULLS_FIRST'
-,p_default_sort_column_name=>'PAGE_ID'
+,p_query_table=>'APP_LOV_TRACKING_SOURCE_V'
+,p_return_column_name=>'ID'
+,p_display_column_name=>'NAME'
+,p_group_sort_direction=>'ASC'
 ,p_default_sort_direction=>'ASC'
 );
 wwv_flow_imp.component_end;

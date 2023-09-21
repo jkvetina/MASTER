@@ -48,6 +48,9 @@ prompt --install
 @@application/shared_components/user_interface/lovs/app_role_groups.sql
 @@application/shared_components/user_interface/lovs/app_tracking_metrics.sql
 @@application/shared_components/user_interface/lovs/app_tracking_pages.sql
+@@application/shared_components/user_interface/lovs/app_tracking_sessions.sql
+@@application/shared_components/user_interface/lovs/app_tracking_source.sql
+@@application/shared_components/user_interface/lovs/app_tracking_users.sql
 @@application/shared_components/user_interface/lovs/app_users_id_name.sql
 @@application/shared_components/user_interface/lovs/app_users_all_id_name.sql
 @@application/shared_components/user_interface/lovs/app_workspaces.sql
