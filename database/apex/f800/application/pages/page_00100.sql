@@ -18,6 +18,11 @@ wwv_flow_imp_page.create_page(
 ,p_step_title=>'&APP_NAME.'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(43461472849711906)  --  MAIN
+,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'.a-CardView-headerBody h2 {',
+'  margin: 0;',
+'}',
+''))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(43462402185717150)  -- IS_USER
 ,p_protection_level=>'C'
@@ -57,8 +62,10 @@ wwv_flow_imp_page.create_card(
 ,p_region_id=>wwv_flow_imp.id(7475317403048505)
 ,p_layout_type=>'GRID'
 ,p_grid_column_count=>5
-,p_title_adv_formatting=>false
-,p_title_column_name=>'APP_NAME'
+,p_title_adv_formatting=>true
+,p_title_html_expr=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'<div style="float: right; align-items: flex-start; margin-top: 0.2rem;"><button style="background: transparent; border: 0; margin-right: -0.5rem;"><span class="fa &BADGE_ICON."></span></button></div>',
+'<h3 class="a-CardView-title">&APP_NAME.</h3>'))
 ,p_sub_title_adv_formatting=>true
 ,p_sub_title_html_expr=>'<span style="font-size: 85%;">&APP_ALIAS., &APP_PREFIX.</span>'
 ,p_body_adv_formatting=>false

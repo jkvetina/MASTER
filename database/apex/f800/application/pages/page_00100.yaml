@@ -20,6 +20,13 @@ navigation:
   cursor-focus: Do not focus cursor
   warn-on-unsaved-changes: true
 
+css: 
+  inline: |
+    .a-CardView-headerBody h2 {
+      margin: 0;
+    }
+    
+
 security: 
   authorization-scheme: IS_USER # 43462402185717150
   authentication: Page Requires Authentication
@@ -141,8 +148,10 @@ regions:
       primary-key-column-1: APP_ID
 
     title: 
-      advanced-formatting: false
-      column: APP_NAME
+      advanced-formatting: true
+      html-expression: |
+        <div style="float: right; align-items: flex-start; margin-top: 0.2rem;"><button style="background: transparent; border: 0; margin-right: -0.5rem;"><span class="fa &BADGE_ICON."></span></button></div>
+        <h3 class="a-CardView-title">&APP_NAME.</h3>
 
     subtitle: 
       advanced-formatting: true

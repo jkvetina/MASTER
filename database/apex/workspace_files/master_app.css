@@ -143,6 +143,13 @@ a.t-Tabs-link::before {
 
 
 
+/* CARD BADGE AT TOP */
+.a-CardView-header {
+    align-items         : flex-start;
+}
+
+
+    
 /* FIX READ ONLY LABELS ON FORM TEXTAREA */
 .apex-item-wrapper--display-only label {
     background: transparent !important;

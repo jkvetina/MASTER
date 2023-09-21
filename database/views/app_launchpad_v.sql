@@ -21,7 +21,12 @@ SELECT
         p_session       => core.get_session_id(),
         p_application   => m.app_id,
         p_page          => 'HOME'           -- get real homepage
-    ) AS app_link
+    ) AS app_link,
+    --
+    CASE WHEN m.app_id = 710
+        THEN 'fa-heart'
+        ELSE 'fa-heart-o'
+        END AS badge_icon
     --
 FROM app_navigation_map_mv m
 JOIN x
