@@ -26,6 +26,10 @@ CREATE OR REPLACE PACKAGE BODY app_tracking AS
                 );
             END IF;
         END LOOP;
+
+        -- default LOVs
+        core.set_item('$METRIC', NVL(core.get_item('$METRIC'), 'ACTIVITY'));
+        core.set_item('$SOURCE', NVL(core.get_item('$SOURCE'), 'rendering:'));
     END;
 
 
