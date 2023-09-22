@@ -314,3 +314,23 @@ button.a-Button.a-Button--notification.js-showDetails {
     align-items         : end;
 }
 
+
+
+/* ADJUST FONTS ON BUTTONS AND MENUS */
+button .t-Button-label,
+button .a-Button-label,
+#t_Header > #top_header > nav ul li a,
+#t_Header > #top_header > nav ul li span,
+.a-CardView-subTitle,
+#t_Footer .t-Footer-version {
+    font-family         : 'Roboto Slab', sans-serif;
+    font-size           : 0.9rem;
+}
+#t_Header > #top_header > nav ul li a.SECOND_LEVEL span {
+    font-size           : 0.9rem;
+}
+#t_Footer .t-Footer-version {
+    font-size           : 0.85rem;
+    color               : #555;
+}
+

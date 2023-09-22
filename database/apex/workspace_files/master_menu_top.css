@@ -228,3 +228,7 @@ ul.MULTI_12 { -moz-column-count : 12; -webkit-column-count : 12; column-count : 
     font-weight:            500;
     font-size:              0.7rem;
 }
+#t_Header > #top_header > nav ul li.ACTIVE a > span.BADGE {
+    font-weight:            600;
+}
+

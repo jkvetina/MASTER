@@ -166,12 +166,14 @@ n AS (
         --
         CASE
             WHEN t.page_id = 0 THEN '" style="display: none;'
+            WHEN LEVEL > 2
+                THEN 'SECOND_LEVEL'
             END AS attribute03,
         --
         NULL                    AS attribute04,
         --
         CASE WHEN LEVEL > 2
-            THEN ' style="margin: -0.3rem 0.5rem -0.3rem ' || ((LEVEL - 2) + 1) || 'rem; font-size: 70%;"'
+            THEN ' style="margin: -0.3rem 0.5rem -0.3rem ' || ((LEVEL - 2) + 1) || 'rem;"'
             END AS attribute05,
         --
         NULL                    AS attribute06,
