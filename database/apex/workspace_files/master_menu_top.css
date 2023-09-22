@@ -213,3 +213,18 @@ ul.MULTI_12 { -moz-column-count : 12; -webkit-column-count : 12; column-count : 
 #t_Header > #top_header > nav ul li.USER_PROFILE a:hover {
 }
 
+
+
+/**
+ * BADGE IN TOP MENU
+ */
+#t_Header > #top_header > nav ul li a > span.BADGE {
+    position:               relative;
+    top:                    0.65rem;
+    padding:                0 0 0 0.5rem;
+    margin-right:           -0.5rem;
+    color:                  #fff;
+    font-family:            'Roboto', sans-serif;
+    font-weight:            500;
+    font-size:              0.7rem;
+}
