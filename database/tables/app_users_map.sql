@@ -3,6 +3,7 @@ CREATE TABLE app_users_map (
     user_id                         VARCHAR2(128)   CONSTRAINT nn_app_users_map_user NOT NULL,
     is_active                       CHAR(1),
     is_admin                        CHAR(1),
+    is_favorite                     CHAR(1),
     created_by                      VARCHAR2(128),
     created_at                      DATE,
     updated_by                      VARCHAR2(128),
@@ -17,6 +18,9 @@ CREATE TABLE app_users_map (
     CONSTRAINT ch_app_users_map_admin
         CHECK (is_admin = 'Y' OR is_admin IS NULL),
     --
+    CONSTRAINT ch_app_users_map_favorite
+        CHECK (is_favorite = 'Y' OR is_favorite IS NULL),
+    --
     CONSTRAINT fk_app_users_map_user
         FOREIGN KEY (user_id)
         REFERENCES app_users (user_id)
@@ -30,8 +34,9 @@ CREATE TABLE app_users_map (
 --
 COMMENT ON TABLE app_users_map IS '';
 --
-COMMENT ON COLUMN app_users_map.app_id      IS '';
-COMMENT ON COLUMN app_users_map.user_id     IS '';
-COMMENT ON COLUMN app_users_map.is_active   IS '';
-COMMENT ON COLUMN app_users_map.is_admin    IS '';
+COMMENT ON COLUMN app_users_map.app_id          IS '';
+COMMENT ON COLUMN app_users_map.user_id         IS '';
+COMMENT ON COLUMN app_users_map.is_active       IS '';
+COMMENT ON COLUMN app_users_map.is_admin        IS '';
+COMMENT ON COLUMN app_users_map.is_favorite     IS '';
 

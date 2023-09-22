@@ -20,6 +20,39 @@ navigation:
   cursor-focus: Do not focus cursor
   warn-on-unsaved-changes: true
 
+javascript: 
+  function-and-global-variable-declaration: |
+    const favorite_switch = function(el) {
+        $el = $(el);
+        apex.server.process (
+            'FAVORITE_SWITCH',
+            {
+                x01: $el.data('app-id')
+            },
+            {
+                async       : false,
+                dataType    : 'json',
+                success     : function(data) {
+                    // show result
+                    show_message(data);
+    
+                    // switch current icon
+                    // @TODO: it would be better to get new icon from server process
+                    var $icon = $el.find('span.fa');
+                    if ($icon.hasClass('fa-heart')) {
+                        $icon.removeClass('fa-heart');
+                        $icon.addClass('fa-heart-o');
+                    }
+                    else {
+                        $icon.removeClass('fa-heart-o');
+                        $icon.addClass('fa-heart');
+                    }
+                }
+            }
+        );
+    };
+    
+
 css: 
   inline: |
     .a-CardView-headerBody h2 {
@@ -150,8 +183,8 @@ regions:
     title: 
       advanced-formatting: true
       html-expression: |
-        <div style="float: right; align-items: flex-start; margin-top: 0.2rem;"><button type="button" class="a-CardView-button " onclick="console.log('FAVORITE_SWITCH')" style="background: transparent; margin: -0.5rem -0.5rem 0 0; padding: 0.5rem; z-index: 998 !important;"><span class="fa &BADGE_ICON."></span></button></div>
-        <h3 class="a-CardView-title">&APP_NAME.</h3>
+        <div style="float: right; align-items: flex-start; margin-top: 0.2rem;"><button type="button" onclick="favorite_switch(this);" data-app-id="&APP_ID." class="a-CardView-button " onclick="console.log('FAVORITE_SWITCH')" style="background: transparent; margin: -0.5rem -0.5rem 0 0; padding: 0.5rem; z-index: 100 !important;"><span class="fa &BADGE_ICON."></span></button></div>
+        <h3 class="a-CardView-title a-lineclamp-2">&APP_NAME.</h3>
         
 
     subtitle: 
@@ -359,4 +392,25 @@ processes:
 
   security: 
     authorization-scheme: IS_DEVELOPER # 60089834032939902
+
+- # ====== Process: FAVORITE_SWITCH ============================
+  id: 22778700306601017
+  identification: 
+    name: FAVORITE_SWITCH
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      app.favorite_switch (
+          in_app_id   => APEX_APPLICATION.G_X01,
+          in_user_id  => core.get_user_id()
+      );
+
+  execution: 
+    sequence: 10
+    point: Ajax Callback
+    run-process: Once Per Page Visit (default)
 

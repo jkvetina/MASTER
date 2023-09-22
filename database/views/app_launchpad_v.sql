@@ -23,7 +23,7 @@ SELECT
         p_page          => 'HOME'           -- get real homepage
     ) AS app_link,
     --
-    CASE WHEN m.app_id = 710
+    CASE WHEN a.is_favorite = 'Y'
         THEN 'fa-heart'
         ELSE 'fa-heart-o'
         END AS badge_icon
@@ -31,6 +31,8 @@ SELECT
 FROM app_navigation_map_mv m
 JOIN x
     ON x.app_id         = m.app_id
+LEFT JOIN app_users_map a
+    ON a.app_id         = m.app_id
 WHERE m.app_group       = 'LAUNCHPAD'
 GROUP BY
     m.workspace,
@@ -38,7 +40,8 @@ GROUP BY
     m.app_alias,
     m.app_prefix,
     m.app_name,
-    m.app_desc
+    m.app_desc,
+    a.is_favorite
 ORDER BY
     m.workspace,
     m.app_name;

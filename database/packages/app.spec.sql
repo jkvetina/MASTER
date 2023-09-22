@@ -192,6 +192,13 @@ CREATE OR REPLACE PACKAGE app AS
     )
     RETURN app_lovs.color_bg%TYPE;
 
+
+
+    PROCEDURE favorite_switch (
+        in_app_id               app_users_map.app_id%TYPE,
+        in_user_id              app_users_map.user_id%TYPE
+    );
+
 END;
 /
 

@@ -975,6 +975,30 @@ CREATE OR REPLACE PACKAGE BODY app AS
         RETURN '#' || out_color;
     END;
 
+
+
+    PROCEDURE favorite_switch (
+        in_app_id               app_users_map.app_id%TYPE,
+        in_user_id              app_users_map.user_id%TYPE
+    )
+    AS
+        out_favorite            app_users_map.is_favorite%TYPE;
+    BEGIN
+        UPDATE app_users_map t
+        SET t.is_favorite       = CASE WHEN t.is_favorite IS NULL THEN 'Y' END
+        WHERE t.app_id          = in_app_id
+            AND t.user_id       = in_user_id
+        RETURNING t.is_favorite INTO out_favorite;
+        --
+        core.set_json_message('Application ' || in_app_id || ' ' || CASE WHEN out_favorite = 'Y' THEN 'added to' ELSE 'removed from' END || ' favorites');
+        --
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
 END;
 /
 

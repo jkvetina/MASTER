@@ -18,6 +18,37 @@ wwv_flow_imp_page.create_page(
 ,p_step_title=>'&APP_NAME.'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(43461472849711906)  --  MAIN
+,p_javascript_code=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'const favorite_switch = function(el) {',
+'    $el = $(el);',
+'    apex.server.process (',
+'        ''FAVORITE_SWITCH'',',
+'        {',
+'            x01: $el.data(''app-id'')',
+'        },',
+'        {',
+'            async       : false,',
+'            dataType    : ''json'',',
+'            success     : function(data) {',
+'                // show result',
+'                show_message(data);',
+'',
+'                // switch current icon',
+'                // @TODO: it would be better to get new icon from server process',
+'                var $icon = $el.find(''span.fa'');',
+'                if ($icon.hasClass(''fa-heart'')) {',
+'                    $icon.removeClass(''fa-heart'');',
+'                    $icon.addClass(''fa-heart-o'');',
+'                }',
+'                else {',
+'                    $icon.removeClass(''fa-heart-o'');',
+'                    $icon.addClass(''fa-heart'');',
+'                }',
+'            }',
+'        }',
+'    );',
+'};',
+''))
 ,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '.a-CardView-headerBody h2 {',
 '  margin: 0;',
@@ -64,9 +95,9 @@ wwv_flow_imp_page.create_card(
 ,p_grid_column_count=>5
 ,p_title_adv_formatting=>true
 ,p_title_html_expr=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'<div style="float: right; align-items: flex-start; margin-top: 0.2rem;"><button type="button" class="a-CardView-button " onclick="console.log(''FAVORITE_SWITCH'')" style="background: transparent; margin: -0.5rem -0.5rem 0 0; padding: 0.5rem; z-index: 9'
-||'98 !important;"><span class="fa &BADGE_ICON."></span></button></div>',
-'<h3 class="a-CardView-title">&APP_NAME.</h3>',
+'<div style="float: right; align-items: flex-start; margin-top: 0.2rem;"><button type="button" onclick="favorite_switch(this);" data-app-id="&APP_ID." class="a-CardView-button " onclick="console.log(''FAVORITE_SWITCH'')" style="background: transparent; '
+||'margin: -0.5rem -0.5rem 0 0; padding: 0.5rem; z-index: 100 !important;"><span class="fa &BADGE_ICON."></span></button></div>',
+'<h3 class="a-CardView-title a-lineclamp-2">&APP_NAME.</h3>',
 ''))
 ,p_sub_title_adv_formatting=>true
 ,p_sub_title_html_expr=>'<span style="font-size: 85%;">&APP_ALIAS., &APP_PREFIX.</span>'
@@ -154,6 +185,20 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_when_button_id=>wwv_flow_imp.id(7476159161048513)
 ,p_security_scheme=>wwv_flow_imp.id(60089834032939902)  -- IS_DEVELOPER
 ,p_internal_uid=>7476211481048514
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(22778700306601017)
+,p_process_sequence=>10
+,p_process_point=>'ON_DEMAND'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'FAVORITE_SWITCH'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'app.favorite_switch (',
+'    in_app_id   => APEX_APPLICATION.G_X01,',
+'    in_user_id  => core.get_user_id()',
+');'))
+,p_process_clob_language=>'PLSQL'
+,p_internal_uid=>22778700306601017
 );
 wwv_flow_imp.component_end;
 end;
