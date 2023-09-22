@@ -11,16 +11,8 @@ CREATE OR REPLACE PACKAGE BODY app_nav AS
             FROM app_navigation_grid_v n
             WHERE n.action_name     IS NOT NULL
         ) LOOP
-            core.set_item('$AUTO_UPDATE_HOT',   c.css_class);
-            core.set_item('$AUTO_UPDATE_BADGE', core.get_icon(
-                CASE
-                    WHEN c.badge = 0 THEN NULL
-                    WHEN c.badge < 10
-                        THEN 'fa-number-' || c.badge
-                    ELSE 'fa-plus-circle'
-                    END
-            ));
-            core.set_item('$AUTO_UPDATE_BADGE', '<div class="BADGE">' || c.badge || '</div>');
+            core.set_item('$AUTO_UPDATE_HOT',   CASE WHEN c.badge > 0 THEN c.css_class END);
+            core.set_item('$AUTO_UPDATE_BADGE', CASE WHEN c.badge > 0 THEN '<div class="BADGE">' || c.badge || '</div>' END);
         END LOOP;
     EXCEPTION
     WHEN core.app_exception THEN
