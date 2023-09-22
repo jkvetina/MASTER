@@ -24,7 +24,7 @@ SELECT
     ) AS app_link,
     --
     CASE WHEN a.is_favorite = 'Y'
-        THEN 'fa-heart'
+        THEN 'fa-heart RED'
         ELSE 'fa-heart-o'
         END AS badge_icon
     --
