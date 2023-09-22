@@ -155,6 +155,43 @@ CREATE OR REPLACE PACKAGE BODY app_nav AS
         core.raise_error();
     END;
 
+
+
+    PROCEDURE init_badges
+    AS
+    BEGIN
+        APEX_COLLECTION.CREATE_OR_TRUNCATE_COLLECTION (
+            p_collection_name   => c_collection_badges
+        );
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE add_badge (
+        in_app_id               app_navigation.app_id%TYPE,
+        in_page_id              app_navigation.page_id%TYPE,
+        in_badge                VARCHAR2
+    )
+    AS
+    BEGIN
+        APEX_COLLECTION.ADD_MEMBER (
+            p_collection_name   => c_collection_badges,
+            p_c001              => in_badge,
+            p_n001              => in_app_id,
+            p_n002              => in_page_id
+        );
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
 END;
 /
 

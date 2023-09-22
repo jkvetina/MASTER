@@ -209,7 +209,18 @@ r AS (
     CROSS JOIN curr
     WHERE n.app_id      IN (curr.app_id, curr.real_app_id)
         AND n.page_id   = curr.page_id
+),
+b AS (
+    -- find badges for specific pages
+    -- you can fill the collection from any app, but you have to remove things too
+    SELECT /*+ MATERIALIZE */
+        a.n001      AS app_id,
+        a.n002      AS page_id,
+        a.c001      AS badge
+    FROM apex_collections a
+    WHERE a.collection_name = 'APP_NAVIGATION_BADGES'   -- check app_nav package
 )
+--
 SELECT
     n.app_id,                   -- some extra columns for FE
     n.page_id,
@@ -244,11 +255,11 @@ SELECT
     n.attribute04,              -- <a title="..."
     n.attribute05,              -- <a ...> // javascript onclick
     n.attribute06,              -- <a>... #TEXT</a>
-    n.attribute07,              -- <a>#TEXT ...</a>
+    --n.attribute07,              -- <a>#TEXT ...</a>
     --
-    --CASE WHEN b.badge IS NOT NULL
-    --    THEN '<span class="BADGE">' || b.badge || '</badge>'
-    --    END AS attribute07,                     -- badge right
+    CASE WHEN b.badge IS NOT NULL
+        THEN '<span class="BADGE">' || b.badge || '</badge>'
+        END AS attribute07,                     -- badge right
     --
     n.attribute08,              -- </a>...
     --n.attribute09,              -- <ul class="...">
@@ -263,6 +274,9 @@ SELECT
     n.order#
 FROM n
 CROSS JOIN curr
+LEFT JOIN b
+    ON b.app_id         = n.app_id
+    AND b.page_id       = n.page_id
 --
 UNION ALL
 SELECT

@@ -1,6 +1,7 @@
 CREATE OR REPLACE PACKAGE app_nav AS
 
     c_mv                        CONSTANT VARCHAR2(30)   := 'APP_NAV%_MV';
+    c_collection_badges         CONSTANT VARCHAR2(30)   := 'APP_NAVIGATION_BADGES';     -- also used in nav view
 
 
 
@@ -28,6 +29,18 @@ CREATE OR REPLACE PACKAGE app_nav AS
 
 
     PROCEDURE autoupdate;
+
+
+
+    PROCEDURE init_badges;
+
+
+
+    PROCEDURE add_badge (
+        in_app_id               app_navigation.app_id%TYPE,
+        in_page_id              app_navigation.page_id%TYPE,
+        in_badge                VARCHAR2
+    );
 
 END;
 /
