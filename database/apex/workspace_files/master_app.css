@@ -73,13 +73,29 @@ BUTTON .BADGE {
     border-radius       : 15px 15px;
     margin              : 0;
     padding             : 0.1rem 0.5rem 0;
-    font-family         : Roboto, sans-serif;
+    font-family         : 'Roboto', sans-serif;
     font-size           : 0.75rem;
-    line-height         : 1.25rem;
+    line-height         : 1.2rem;
 }
 .RED {
     color               : red;
 }
+
+/* OVERRIDE MENU BADGES WITH SAME STYLE */
+#t_Header > #top_header > nav ul li a > span.BADGE {
+    position            : relative;
+    top                 : -0.65rem;
+    padding             : 0.1rem 0.5rem 0;
+    margin              : 0 -0.25rem 0 0.25rem;
+    border-radius       : 15px 15px;
+    background          : red;
+    color               : #fff;
+    font-family         : 'Roboto', sans-serif;
+    font-weight         : 500;
+    font-size           : 0.75rem;
+    line-height         : 1.2rem;
+}
+
 
 
 
