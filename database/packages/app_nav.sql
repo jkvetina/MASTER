@@ -1,5 +1,36 @@
 CREATE OR REPLACE PACKAGE BODY app_nav AS
 
+    PROCEDURE init_defaults
+    AS
+    BEGIN
+        -- init items on page 850
+        FOR c IN (
+            SELECT
+                't-Button--hot'     AS css_class,
+                COUNT(*)            AS badge
+            FROM app_navigation_grid_v n
+            WHERE n.action_name     IS NOT NULL
+        ) LOOP
+            core.set_item('$AUTO_UPDATE_HOT',   c.css_class);
+            core.set_item('$AUTO_UPDATE_BADGE', core.get_icon(
+                CASE
+                    WHEN c.badge = 0 THEN NULL
+                    WHEN c.badge < 10
+                        THEN 'fa-number-' || c.badge
+                    ELSE 'fa-plus-circle'
+                    END
+            ));
+            core.set_item('$AUTO_UPDATE_BADGE', '<div class="BADGE">' || c.badge || '</div>');
+        END LOOP;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
     PROCEDURE remove_page (
         in_app_id               app_navigation.app_id%TYPE,
         in_page_id              app_navigation.page_id%TYPE
@@ -122,25 +153,6 @@ CREATE OR REPLACE PACKAGE BODY app_nav AS
         RAISE;
     WHEN OTHERS THEN
         core.raise_error();
-    END;
-
-
-
-    FUNCTION get_autoupdate_hot
-    RETURN VARCHAR2
-    AS
-        out_css_class VARCHAR2(16);
-    BEGIN
-        SELECT 't-Button--hot'
-        INTO out_css_class
-        FROM app_navigation_grid_v n
-        WHERE n.action_name IS NOT NULL
-            AND ROWNUM = 1;
-        --
-        RETURN out_css_class;
-    EXCEPTION
-    WHEN NO_DATA_FOUND THEN
-        RETURN NULL;
     END;
 
 END;

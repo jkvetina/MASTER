@@ -841,7 +841,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_action=>'SUBMIT'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(63463978601439167)
-,p_button_image_alt=>'Auto Update'
+,p_button_image_alt=>'Auto Update &P850_AUTO_UPDATE_BADGE!RAW.'
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_button_css_classes=>'&P850_AUTO_UPDATE_HOT.'
 );
@@ -849,6 +849,15 @@ wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(18481290058274415)
 ,p_name=>'P850_AUTO_UPDATE_HOT'
 ,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(39751669654005374)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(22779303392601023)
+,p_name=>'P850_AUTO_UPDATE_BADGE'
+,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(39751669654005374)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -882,15 +891,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_computation(
- p_id=>wwv_flow_imp.id(18481333048274416)
-,p_computation_sequence=>10
-,p_computation_item=>'P850_AUTO_UPDATE_HOT'
-,p_computation_point=>'BEFORE_BOX_BODY'
-,p_computation_type=>'EXPRESSION'
-,p_computation_language=>'PLSQL'
-,p_computation=>'app_nav.get_autoupdate_hot()'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(15862704001560690)
@@ -978,8 +978,19 @@ wwv_flow_imp_page.create_page_process(
 ,p_internal_uid=>18470080789804984
 );
 wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(18480024740274403)
+ p_id=>wwv_flow_imp.id(22779648793601026)
 ,p_process_sequence=>10
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_INVOKE_API'
+,p_process_name=>'INIT_DEFAULTS'
+,p_attribute_01=>'PLSQL_PACKAGE'
+,p_attribute_03=>'APP_NAV'
+,p_attribute_04=>'INIT_DEFAULTS'
+,p_internal_uid=>22779648793601026
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(18480024740274403)
+,p_process_sequence=>20
 ,p_process_point=>'BEFORE_HEADER'
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'REMOVE_PAGE'
@@ -995,7 +1006,7 @@ wwv_flow_imp_page.create_page_process(
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(18480115549274404)
-,p_process_sequence=>20
+,p_process_sequence=>30
 ,p_process_point=>'BEFORE_HEADER'
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'ADD_PAGE'

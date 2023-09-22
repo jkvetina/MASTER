@@ -4,6 +4,10 @@ CREATE OR REPLACE PACKAGE app_nav AS
 
 
 
+    PROCEDURE init_defaults;
+
+
+
     PROCEDURE remove_page (
         in_app_id               app_navigation.app_id%TYPE,
         in_page_id              app_navigation.page_id%TYPE
@@ -24,11 +28,6 @@ CREATE OR REPLACE PACKAGE app_nav AS
 
 
     PROCEDURE autoupdate;
-
-
-
-    FUNCTION get_autoupdate_hot
-    RETURN VARCHAR2;
 
 END;
 /
