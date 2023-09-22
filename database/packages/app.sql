@@ -95,7 +95,7 @@ CREATE OR REPLACE PACKAGE BODY app AS
 
         -- find init block for specific/current page
         v_procedure_name := get_init_defaults_procedure (
-            in_app_id       => core.get_app_id(),
+            in_app_id       => core.get_app_id(in_dont_override => 'Y'),
             in_page_id      => core.get_page_id()
         );
         --
@@ -137,7 +137,7 @@ CREATE OR REPLACE PACKAGE BODY app AS
     RETURN VARCHAR2
     RESULT_CACHE
     AS
-        c_app_id        CONSTANT NUMBER(10)     := core.get_app_id();
+        c_app_id        CONSTANT NUMBER(10)     := in_app_id;
         c_owner         CONSTANT VARCHAR2(30)   := core.get_app_owner(c_app_id);
         c_prefix        CONSTANT VARCHAR2(30)   := core.get_app_prefix(c_app_id);
         --
