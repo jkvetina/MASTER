@@ -210,6 +210,22 @@ var init_page = function() {
     fix_grid_save_button();
 };
 
+// fix badges on buttons
+$('button > .t-Button-label').each(function(k, id) {
+    $(id).html($(id).html().replace(/\[([^\]]+)\]/, '<div class="BADGE">$1</div>'));
+});
+
+// when page is loaded
+$(function() {
+});
+
+// when all APEX components are loaded
+apex.jQuery(window).on('theme42ready', function() {
+    init_page();
+});
+
+
+
 
 
 //

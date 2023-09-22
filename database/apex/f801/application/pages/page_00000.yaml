@@ -183,35 +183,3 @@ page-items:
   comments: 
     comments: Interval in seconds to fire AJAX_PING process
 
-dynamic-actions: 
-- # ====== Dynamic Action: INIT_PAGE ===========================
-  id: 14689966439436113
-  identification: 
-    name: INIT_PAGE
-
-  execution: 
-    sequence: 10
-
-  when: 
-    event: EVENT.EVENT.BROWSER.READY
-
-  execution: 
-    event-scope: Static
-
-  actions: 
-  - # ====== Action: Execute JavaScript Code =====================
-    id: 14690091056436114
-    identification: 
-      action: Execute JavaScript Code
-
-    settings: 
-      code: |
-        init_page();
-        
-
-    execution: 
-      sequence: 10
-      event: INIT_PAGE # 14689966439436113
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
