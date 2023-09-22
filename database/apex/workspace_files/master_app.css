@@ -275,10 +275,11 @@ span.apex-page-success .t-Alert-icon .t-Icon {
 span.apex-page-success .t-Alert.t-Alert--success {
     background          : #518D54 !important;
 }
-span.apex-page-error .t-Alert--colorBG.t-Alert--warning,
-span.apex-page-error .t-Alert--colorBG.t-Alert--yellow {
-    background          : #E3C04D;
+span.apex-page-error .t-Alert--colorBG.t-Alert--warning {
     background          : #C9261D;
+}
+span.apex-page-error .t-Alert--colorBG.t-Alert--yellow {
+    background          : #ecad01;
 }
 
 /* WARNING NOTIFICATION */
