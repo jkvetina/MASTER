@@ -105,6 +105,19 @@ CREATE OR REPLACE PACKAGE BODY app AS
             EXECUTE IMMEDIATE
                 'BEGIN ' || v_procedure_name || '(); END;';
         END IF;
+
+        -- init badges in navigation, @TODO: we can probably skip this for modal pages
+        -- then it is up to the application to add user/page/app specific badges by calling app_nav.add_badge procedure
+        app_nav.init_badges();
+        --
+        FOR c IN (
+            SELECT COUNT(*) AS badge
+            FROM app_navigation_grid_v g
+            WHERE g.action_name IS NOT NULL
+            HAVING COUNT(*) > 0
+        ) LOOP
+            app_nav.add_badge(800, 850, NULLIF(c.badge, 0));
+        END LOOP;
         --
     EXCEPTION
     WHEN core.app_exception THEN
