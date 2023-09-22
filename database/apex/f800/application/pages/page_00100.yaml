@@ -191,7 +191,7 @@ regions:
 
     subtitle: 
       advanced-formatting: true
-      html-expression: '<span style="font-size: 85%;">&APP_ALIAS., &APP_PREFIX.</span>'
+      html-expression: <span class="a-CardView-subTitle">&APP_ALIAS., &APP_PREFIX.</span>
 
     body: 
       advanced-formatting: false

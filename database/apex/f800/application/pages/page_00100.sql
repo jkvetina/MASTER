@@ -102,7 +102,7 @@ wwv_flow_imp_page.create_card(
 '<h3 class="a-CardView-title a-lineclamp-2">&APP_NAME.</h3>',
 ''))
 ,p_sub_title_adv_formatting=>true
-,p_sub_title_html_expr=>'<span style="font-size: 85%;">&APP_ALIAS., &APP_PREFIX.</span>'
+,p_sub_title_html_expr=>'<span class="a-CardView-subTitle">&APP_ALIAS., &APP_PREFIX.</span>'
 ,p_body_adv_formatting=>false
 ,p_body_column_name=>'APP_DESC'
 ,p_second_body_adv_formatting=>false
