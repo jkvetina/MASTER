@@ -5,13 +5,13 @@ CREATE TABLE app_lovs (
     lov_name                        VARCHAR2(64),
     status_id                       VARCHAR2(64),
     status_name                     VARCHAR2(64),
+    status_value                    VARCHAR2(64),
     order#                          NUMBER(4,0),
     treshold                        NUMBER,
     color_bg                        VARCHAR2(32),
     color_text                      VARCHAR2(32),
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
-    status_value                    VARCHAR2(64),
     --
     CONSTRAINT uq_app_lovs
         UNIQUE (app_id, lov_group, lov_id, status_id, treshold),
@@ -33,9 +33,9 @@ COMMENT ON COLUMN app_lovs.lov_id           IS '';
 COMMENT ON COLUMN app_lovs.lov_name         IS '';
 COMMENT ON COLUMN app_lovs.status_id        IS '';
 COMMENT ON COLUMN app_lovs.status_name      IS '';
+COMMENT ON COLUMN app_lovs.status_value     IS '';
 COMMENT ON COLUMN app_lovs.order#           IS '';
 COMMENT ON COLUMN app_lovs.treshold         IS '';
 COMMENT ON COLUMN app_lovs.color_bg         IS '';
 COMMENT ON COLUMN app_lovs.color_text       IS '';
-COMMENT ON COLUMN app_lovs.status_value     IS '';
 
