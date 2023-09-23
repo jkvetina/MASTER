@@ -38,7 +38,8 @@ WITH p AS (
         p.authorization_scheme      AS auth_scheme,
         p.page_css_classes,
         p.page_mode,
-        p.page_template
+        p.page_template,
+        a.home_link
         --
     FROM apex_applications a
     JOIN apex_application_pages p
@@ -74,7 +75,8 @@ SELECT
     --
     p.page_css_classes,
     p.page_mode,
-    p.page_template
+    p.page_template,
+    p.home_link
     --
 FROM p
 GROUP BY
@@ -94,6 +96,7 @@ GROUP BY
     p.auth_scheme,
     p.page_css_classes,
     p.page_mode,
-    p.page_template;
+    p.page_template,
+    p.home_link;
 --
 

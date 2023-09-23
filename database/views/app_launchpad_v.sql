@@ -1,7 +1,9 @@
 CREATE OR REPLACE FORCE VIEW app_launchpad_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        u.app_id
+        u.app_id,
+        core.get_session_id()   AS session_id,
+        V('DEBUG')              AS debug_mode
     FROM app_users_map u
     JOIN app_applications a
         ON a.app_id         = u.app_id
@@ -17,11 +19,11 @@ SELECT
     m.app_name,
     m.app_desc,
     --
-    APEX_PAGE.GET_URL (
-        p_session       => core.get_session_id(),
-        p_application   => m.app_id,
-        p_page          => 'HOME'           -- get real homepage
-    ) AS app_link,
+    MAX(APEX_UTIL.PREPARE_URL(REPLACE(REPLACE(REPLACE(m.home_link,
+        '&' || 'APP_ID.',       m.app_id),
+        '&' || 'APP_SESSION.',  x.session_id),
+        '&' || 'DEBUG.',        x.debug_mode)
+    )) AS app_link,
     --
     CASE WHEN a.is_favorite = 'Y'
         THEN 'fa-heart RED'
