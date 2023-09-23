@@ -41,6 +41,7 @@ database/triggers/app_settings__.sql
 database/triggers/app_users__.sql
 database/triggers/app_users_map__.sql
 database/views/app_auth_components_v.sql
+database/views/app_auth_grids_v.sql
 database/views/app_auth_pages_v.sql
 database/views/app_launchpad_v.sql
 database/views/app_lov_applications_v.sql
@@ -59,6 +60,7 @@ database/views/app_lov_workspaces_v.sql
 database/views/app_navigation_grid_v.sql
 database/views/app_navigation_matrix_v.sql
 database/views/app_navigation_v.sql
+database/views/app_qa_grids_v.sql
 database/views/app_roles_v.sql
 database/views/app_tracking_base_v.sql
 database/views/app_tracking_chart_v.sql

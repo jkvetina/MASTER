@@ -167,6 +167,47 @@ CREATE OR REPLACE PACKAGE BODY app AS
 
 
 
+    FUNCTION get_icon_warning (
+        in_title                VARCHAR2    := NULL,
+        in_style                VARCHAR2    := NULL
+    )
+    RETURN VARCHAR2
+    AS
+    BEGIN
+        RETURN core.get_icon('fa-warning', in_title, 'color: orange; margin-right: 0.3rem;' || in_style);
+    END;
+
+
+
+    FUNCTION get_icon_check (
+        in_title                VARCHAR2    := NULL,
+        in_style                VARCHAR2    := NULL
+    )
+    RETURN VARCHAR2
+    AS
+    BEGIN
+        RETURN core.get_icon('fa-check', in_title, 'color: #333;' || in_style);
+    END;
+
+
+
+    FUNCTION get_user_views_text (
+        in_view_name            user_views.view_name%TYPE
+    )
+    RETURN VARCHAR2
+    AS
+        out_text                user_views.text%TYPE;
+    BEGIN
+        -- convert LONG to VARCHAR2, output limited for first 4000 chars
+        SELECT v.text INTO out_text
+        FROM user_views v
+        WHERE v.view_name       = in_view_name;
+        --
+        RETURN out_text;
+    END;
+
+
+
     FUNCTION get_auth_function (
         in_app_id               app_pages.app_id%TYPE,
         in_auth_scheme          VARCHAR2
@@ -475,7 +516,10 @@ CREATE OR REPLACE PACKAGE BODY app AS
         END IF;
 
         -- call procedure
-        IF in_auth_scheme LIKE 'IS_USER%' THEN
+        IF in_auth_scheme = 'IS_DEVELOPER' THEN
+            RETURN NVL(core.is_developer_y(), 'N');
+            --
+        ELSIF in_auth_scheme LIKE 'IS_USER%' THEN
             EXECUTE IMMEDIATE
                 'BEGIN :out_result := ' || in_procedure_name || '(in_app_id => :app_id, in_page_id => :page_id, in_user_id => :user_id, in_context_id => :context_id); END;'
                 USING OUT out_result,

@@ -25,6 +25,29 @@ CREATE OR REPLACE PACKAGE app AS
 
 
 
+    FUNCTION get_icon_warning (
+        in_title                VARCHAR2    := NULL,
+        in_style                VARCHAR2    := NULL
+    )
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_icon_check (
+        in_title                VARCHAR2    := NULL,
+        in_style                VARCHAR2    := NULL
+    )
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_user_views_text (
+        in_view_name            user_views.view_name%TYPE
+    )
+    RETURN VARCHAR2;
+
+
+
     FUNCTION get_auth_function (
         in_app_id               app_pages.app_id%TYPE,
         in_auth_scheme          VARCHAR2
