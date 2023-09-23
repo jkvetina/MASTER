@@ -190,7 +190,9 @@ n AS (
         --
         TO_NUMBER(REGEXP_SUBSTR(LTRIM(SYS_CONNECT_BY_PATH(t.parent_id, '/'), '/'), '\d+')) AS page_root_id,
         --
-        SYS_CONNECT_BY_PATH(LTRIM(t.col_id || '.' || t.order#, '.') || '.' || t.page_id, '/') AS order#
+        SYS_CONNECT_BY_PATH(LTRIM(t.col_id || '.' ||
+            CASE WHEN t.page_id = 0 THEN NVL(t.order#, 666) ELSE t.order# END,      -- default for age zero
+            '.') || '.' || t.page_id, '/') AS order#
         --
     FROM t
     CROSS JOIN curr
@@ -272,6 +274,7 @@ SELECT
     --
     n.attribute10,
     n.order#
+    --
 FROM n
 CROSS JOIN curr
 LEFT JOIN b
