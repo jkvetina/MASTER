@@ -131,6 +131,9 @@ CREATE OR REPLACE PACKAGE BODY app AS
         WHERE v.view_name       = in_view_name;
         --
         RETURN out_text;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
     END;
 
 
