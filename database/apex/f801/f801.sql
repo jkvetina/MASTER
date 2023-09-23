@@ -33,7 +33,7 @@ prompt APPLICATION 801 - App Template
 -- Application Export:
 --   Application:     801
 --   Name:            App Template
---   Date and Time:   15:47 Pátek Září 22, 2023
+--   Date and Time:   18:50 Sobota Září 23, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -45,7 +45,7 @@ prompt APPLICATION 801 - App Template
 --       Dynamic Actions:          1
 --     Shared Components:
 --       Logic:
---         Items:                 12
+--         Items:                 13
 --         Processes:              2
 --         Build Options:          1
 --       Navigation:
@@ -121,7 +121,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-09-22'
+,p_flow_version=>'2023-09-23'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -583,7 +583,7 @@ wwv_flow_imp_shared.create_security_scheme(
 ,p_name=>'MASTER - IS_USER_U'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'RETURN app.is_user_component (',
+'RETURN app_auth.is_user_component (',
 '    in_component_id     => :APP_COMPONENT_ID,',
 '    in_component_type   => :APP_COMPONENT_TYPE,',
 '    in_component_name   => :APP_COMPONENT_NAME,',
@@ -602,7 +602,7 @@ wwv_flow_imp_shared.create_security_scheme(
 ,p_name=>'MASTER - IS_USER_C'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'RETURN app.is_user_component (',
+'RETURN app_auth.is_user_component (',
 '    in_component_id     => :APP_COMPONENT_ID,',
 '    in_component_type   => :APP_COMPONENT_TYPE,',
 '    in_component_name   => :APP_COMPONENT_NAME,',
@@ -621,7 +621,7 @@ wwv_flow_imp_shared.create_security_scheme(
 ,p_name=>'MASTER - IS_USER_D'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'RETURN app.is_user_component (',
+'RETURN app_auth.is_user_component (',
 '    in_component_id     => :APP_COMPONENT_ID,',
 '    in_component_type   => :APP_COMPONENT_TYPE,',
 '    in_component_name   => :APP_COMPONENT_NAME,',
@@ -640,7 +640,7 @@ wwv_flow_imp_shared.create_security_scheme(
 ,p_name=>'MASTER - IS_USER_COMPONENT'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'RETURN app.is_user_component (',
+'RETURN app_auth.is_user_component (',
 '    in_component_id     => :APP_COMPONENT_ID,',
 '    in_component_type   => :APP_COMPONENT_TYPE,',
 '    in_component_name   => :APP_COMPONENT_NAME,',
@@ -684,7 +684,7 @@ wwv_flow_imp_shared.create_security_scheme(
  p_id=>wwv_flow_imp.id(50435901094915761)  -- MASTER - IS_ADMIN
 ,p_name=>'MASTER - IS_ADMIN'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
-,p_attribute_01=>'RETURN app.is_admin() = ''Y'';'
+,p_attribute_01=>'RETURN app_auth.is_admin() = ''Y'';'
 ,p_error_message=>'ACCESS_DENIED|IS_ADMIN'
 ,p_reference_id=>63924538900170215
 ,p_caching=>'BY_USER_BY_PAGE_VIEW'
@@ -698,7 +698,7 @@ wwv_flow_imp_shared.create_security_scheme(
  p_id=>wwv_flow_imp.id(50436147934915762)  -- MASTER - IS_USER
 ,p_name=>'MASTER - IS_USER'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
-,p_attribute_01=>'RETURN app.is_user() = ''Y'';'
+,p_attribute_01=>'RETURN app_auth.is_user() = ''Y'';'
 ,p_error_message=>'ACCESS_DENIED|IS_USER'
 ,p_reference_id=>43462402185717150
 ,p_caching=>'BY_USER_BY_PAGE_VIEW'
@@ -829,21 +829,31 @@ wwv_flow_imp_shared.create_flow_item(
 );
 end;
 /
-prompt --application/shared_components/logic/application_items/g_context_id
+prompt --application/shared_components/logic/application_items/g_app_id
 begin
 wwv_flow_imp_shared.create_flow_item(
- p_id=>wwv_flow_imp.id(13876282485472025)
-,p_name=>'G_CONTEXT_ID'
+ p_id=>wwv_flow_imp.id(13876752998479528)
+,p_name=>'G_APP_ID'
 ,p_scope=>'GLOBAL'
 ,p_protection_level=>'I'
 );
 end;
 /
-prompt --application/shared_components/logic/application_items/g_locked_app_id
+prompt --application/shared_components/logic/application_items/g_app_name
 begin
 wwv_flow_imp_shared.create_flow_item(
- p_id=>wwv_flow_imp.id(13876752998479528)
-,p_name=>'G_LOCKED_APP_ID'
+ p_id=>wwv_flow_imp.id(23261729264824935)
+,p_name=>'G_APP_NAME'
+,p_scope=>'GLOBAL'
+,p_protection_level=>'I'
+);
+end;
+/
+prompt --application/shared_components/logic/application_items/g_context_id
+begin
+wwv_flow_imp_shared.create_flow_item(
+ p_id=>wwv_flow_imp.id(13876282485472025)
+,p_name=>'G_CONTEXT_ID'
 ,p_scope=>'GLOBAL'
 ,p_protection_level=>'I'
 );
@@ -15474,6 +15484,7 @@ wwv_flow_imp_shared.create_authentication(
 ,p_name=>'MASTER - APEX_ACCOUNTS'
 ,p_scheme_type=>'NATIVE_APEX_ACCOUNTS'
 ,p_invalid_session_type=>'LOGIN'
+,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
 ,p_use_secure_cookie_yn=>'N'
 ,p_ras_mode=>0
@@ -15487,6 +15498,7 @@ wwv_flow_imp_shared.create_authentication(
  p_id=>wwv_flow_imp.id(50432601105828086)
 ,p_name=>'MASTER - OPEN_DOOR (TESTING ONLY)'
 ,p_scheme_type=>'NATIVE_OPEN_DOOR'
+,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
 ,p_use_secure_cookie_yn=>'N'
 ,p_ras_mode=>0

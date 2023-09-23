@@ -19,10 +19,10 @@
     session-state-protection: Restricted - May not be set from browser
     escape-special-characters: true
 
-- # ====== Application Item: G_LOCKED_APP_ID ===================
+- # ====== Application Item: G_APP_ID ==========================
   id: 13876752998479528
   identification: 
-    name: G_LOCKED_APP_ID
+    name: G_APP_ID
     scope: Global
 
   security: 
@@ -113,6 +113,16 @@
   id: 13878998348521147
   identification: 
     name: FORMAT_DATE_TIME
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+- # ====== Application Item: G_APP_NAME ========================
+  id: 23261729264824935
+  identification: 
+    name: G_APP_NAME
     scope: Global
 
   security: 
