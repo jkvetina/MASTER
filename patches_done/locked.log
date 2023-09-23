@@ -15,6 +15,8 @@ database/mviews/app_navigation_map_mv.sql
 database/mviews/app_tracking_src_mv.sql
 database/packages/app.spec.sql
 database/packages/app.sql
+database/packages/app_auth.spec.sql
+database/packages/app_auth.sql
 database/packages/app_nav.spec.sql
 database/packages/app_nav.sql
 database/packages/app_tracking.spec.sql

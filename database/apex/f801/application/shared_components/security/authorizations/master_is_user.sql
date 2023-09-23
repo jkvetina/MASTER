@@ -15,7 +15,7 @@ wwv_flow_imp_shared.create_security_scheme(
  p_id=>wwv_flow_imp.id(50436147934915762)  -- MASTER - IS_USER
 ,p_name=>'MASTER - IS_USER'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
-,p_attribute_01=>'RETURN app.is_user() = ''Y'';'
+,p_attribute_01=>'RETURN app_auth.is_user() = ''Y'';'
 ,p_error_message=>'ACCESS_DENIED|IS_USER'
 ,p_reference_id=>43462402185717150
 ,p_caching=>'BY_USER_BY_PAGE_VIEW'

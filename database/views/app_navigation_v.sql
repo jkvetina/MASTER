@@ -79,7 +79,7 @@ t AS (
     CROSS JOIN curr
     WHERE s.rank_pages# = 1     -- to remove duplicates in between apps
         --
-        AND 'Y' = app.is_page_available (
+        AND 'Y' = app_auth.is_page_available (
             in_user_id          => curr.user_id,
             in_app_id           => s.app_id,
             in_page_id          => s.page_id,

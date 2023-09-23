@@ -15,7 +15,7 @@ wwv_flow_imp_shared.create_authentication(
  p_id=>wwv_flow_imp.id(63502441622441479)
 ,p_name=>'OPEN_DOOR (TESTING ONLY)'
 ,p_scheme_type=>'NATIVE_OPEN_DOOR'
-,p_post_auth_process=>'app.after_auth'
+,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
 ,p_use_secure_cookie_yn=>'N'
 ,p_ras_mode=>0

@@ -59,6 +59,9 @@ wwv_imp_workspace.create_flow(
 ,p_error_handling_function=>'core.handle_apex_error'
 ,p_substitution_string_01=>'APP_NAME'
 ,p_substitution_value_01=>'Master'
+,p_substitution_string_02=>'APP_DESC'
+,p_substitution_string_03=>'APP_PREFIX'
+,p_substitution_value_03=>'APP_'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')

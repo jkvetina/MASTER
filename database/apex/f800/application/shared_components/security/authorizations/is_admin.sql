@@ -15,7 +15,7 @@ wwv_flow_imp_shared.create_security_scheme(
  p_id=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_name=>'IS_ADMIN'
 ,p_scheme_type=>'NATIVE_FUNCTION_BODY'
-,p_attribute_01=>'RETURN app.is_admin() = ''Y'';'
+,p_attribute_01=>'RETURN app_auth.is_admin() = ''Y'';'
 ,p_error_message=>'ACCESS_DENIED|IS_ADMIN'
 ,p_caching=>'BY_USER_BY_PAGE_VIEW'
 ,p_comments=>'This needs to be relevant to active application'

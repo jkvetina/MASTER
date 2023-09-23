@@ -67,7 +67,7 @@ SELECT
     p.auth_scheme,
 
     -- find procedures handling authorization on each page
-    app.get_auth_function (
+    app_auth.get_auth_function (
         in_app_id       => p.app_id,
         in_auth_scheme  => p.auth_scheme
     ) AS procedure_name,

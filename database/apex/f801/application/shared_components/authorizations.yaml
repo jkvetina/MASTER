@@ -14,7 +14,7 @@
 
   settings: 
     pl/sql-function-body: |
-      RETURN app.is_user_component (
+      RETURN app_auth.is_user_component (
           in_component_id     => :APP_COMPONENT_ID,
           in_component_type   => :APP_COMPONENT_TYPE,
           in_component_name   => :APP_COMPONENT_NAME,
@@ -42,7 +42,7 @@
 
   settings: 
     pl/sql-function-body: |
-      RETURN app.is_user_component (
+      RETURN app_auth.is_user_component (
           in_component_id     => :APP_COMPONENT_ID,
           in_component_type   => :APP_COMPONENT_TYPE,
           in_component_name   => :APP_COMPONENT_NAME,
@@ -70,7 +70,7 @@
 
   settings: 
     pl/sql-function-body: |
-      RETURN app.is_user_component (
+      RETURN app_auth.is_user_component (
           in_component_id     => :APP_COMPONENT_ID,
           in_component_type   => :APP_COMPONENT_TYPE,
           in_component_name   => :APP_COMPONENT_NAME,
@@ -98,7 +98,7 @@
 
   settings: 
     pl/sql-function-body: |
-      RETURN app.is_user_component (
+      RETURN app_auth.is_user_component (
           in_component_id     => :APP_COMPONENT_ID,
           in_component_type   => :APP_COMPONENT_TYPE,
           in_component_name   => :APP_COMPONENT_NAME,
@@ -169,7 +169,7 @@
     type: PL/SQL Function Returning Boolean
 
   settings: 
-    pl/sql-function-body: RETURN app.is_admin() = 'Y';
+    pl/sql-function-body: RETURN app_auth.is_admin() = 'Y';
 
   server-cache: 
     evaluation-point: Once per Page View
@@ -194,7 +194,7 @@
     type: PL/SQL Function Returning Boolean
 
   settings: 
-    pl/sql-function-body: RETURN app.is_user() = 'Y';
+    pl/sql-function-body: RETURN app_auth.is_user() = 'Y';
 
   server-cache: 
     evaluation-point: Once per Page View

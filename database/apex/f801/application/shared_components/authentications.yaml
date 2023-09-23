@@ -16,6 +16,7 @@
     redirect-to: Login Page
 
   login-processing: 
+    post-authentication-procedure-name: app_auth.after_auth
     switch-in-session: false
 
   real-application-security: 
@@ -35,6 +36,7 @@
     type: Open Door Credentials
 
   login-processing: 
+    post-authentication-procedure-name: app_auth.after_auth
     switch-in-session: false
 
   real-application-security: 
