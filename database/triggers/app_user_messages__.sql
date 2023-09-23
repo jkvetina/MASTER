@@ -1,8 +1,8 @@
-CREATE OR REPLACE TRIGGER app_roles_map__
-FOR UPDATE OR INSERT OR DELETE ON app_roles_map
+CREATE OR REPLACE TRIGGER app_user_messages__
+FOR UPDATE OR INSERT OR DELETE ON app_user_messages
 COMPOUND TRIGGER
 
-    c_table_name CONSTANT VARCHAR2(128) := 'APP_ROLES_MAP';
+    c_table_name CONSTANT VARCHAR2(128) := 'APP_USER_MESSAGES';
 
 
 
@@ -10,10 +10,8 @@ COMPOUND TRIGGER
     BEGIN
         -- populate audit columns
         IF NOT DELETING THEN
-            :NEW.updated_by := core.get_user_id();
-            :NEW.updated_at := SYSDATE;
-            --:NEW.created_by := COALESCE(:NEW.created_by, :NEW.updated_by);
-            --:NEW.created_at := COALESCE(:NEW.created_at, :NEW.updated_at);
+            :NEW.created_by := core.get_user_id();
+            :NEW.created_at := SYSDATE;
         END IF;
         --
     EXCEPTION

@@ -24,6 +24,7 @@ database/packages/app_tracking.sql
 database/tables/app_applications.sql
 database/tables/app_components.sql
 database/tables/app_contexts.sql
+database/tables/app_contexts_map.sql
 database/tables/app_lovs.sql
 database/tables/app_navigation.sql
 database/tables/app_pages.sql
@@ -36,11 +37,19 @@ database/tables/app_tracking_src.sql
 database/tables/app_user_messages.sql
 database/tables/app_users.sql
 database/tables/app_users_map.sql
+database/triggers/app_applications__.sql
+database/triggers/app_components__.sql
 database/triggers/app_contexts__.sql
+database/triggers/app_contexts_map__.sql
 database/triggers/app_lovs__.sql
 database/triggers/app_navigation__.sql
+database/triggers/app_pages__.sql
+database/triggers/app_procedures__.sql
 database/triggers/app_roles__.sql
+database/triggers/app_roles_map__.sql
 database/triggers/app_settings__.sql
+database/triggers/app_tables__.sql
+database/triggers/app_user_messages__.sql
 database/triggers/app_users__.sql
 database/triggers/app_users_map__.sql
 database/views/app_auth_components_v.sql

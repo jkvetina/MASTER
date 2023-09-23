@@ -1,8 +1,8 @@
-CREATE OR REPLACE TRIGGER app_roles_map__
-FOR UPDATE OR INSERT OR DELETE ON app_roles_map
+CREATE OR REPLACE TRIGGER app_applications__
+FOR UPDATE OR INSERT OR DELETE ON app_applications
 COMPOUND TRIGGER
 
-    c_table_name CONSTANT VARCHAR2(128) := 'APP_ROLES_MAP';
+    c_table_name CONSTANT VARCHAR2(128) := 'APP_APPLICATIONS';
 
 
 
@@ -14,6 +14,18 @@ COMPOUND TRIGGER
             :NEW.updated_at := SYSDATE;
             --:NEW.created_by := COALESCE(:NEW.created_by, :NEW.updated_by);
             --:NEW.created_at := COALESCE(:NEW.created_at, :NEW.updated_at);
+
+            -- make sure every app has default context
+            BEGIN
+                INSERT INTO app_contexts (app_id, context_id)
+                VALUES (
+                    :NEW.app_id,
+                    '-'
+                );
+            EXCEPTION
+            WHEN DUP_VAL_ON_INDEX THEN
+                NULL;
+            END;
         END IF;
         --
     EXCEPTION
