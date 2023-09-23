@@ -343,8 +343,9 @@ button .a-Button-label,
     font-size           : 0.9rem;
 }
 #t_Header > #top_header > nav ul li a.SECOND_LEVEL span {
-    font-size           : 0.9rem;
+    font-size           : 0.85rem;
 }
+.a-CardView-subTitle,
 #t_Footer .t-Footer-version {
     font-size           : 0.85rem;
     color               : #555;
