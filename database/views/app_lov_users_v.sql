@@ -7,7 +7,9 @@ WITH x AS (
 SELECT
     t.user_id,
     t.user_name,
-    t.user_mail
+    t.user_mail,
+    m.is_active,
+    NVL(m.is_admin, t.is_admin) AS is_admin
     --
 FROM app_users t
 CROSS JOIN x
