@@ -132,6 +132,25 @@ CREATE OR REPLACE PACKAGE app_auth AS
     )
     RETURN BOOLEAN;
 
+
+
+    PROCEDURE set_context (
+        in_app_id               app_contexts_map.app_id%TYPE,
+        in_user_id              app_contexts_map.user_id%TYPE,
+        in_page_id              app_contexts_map.page_id%TYPE,
+        in_context_id           app_contexts_map.context_id%TYPE
+    );
+
+
+
+    FUNCTION check_context (
+        in_app_id               app_contexts_map.app_id%TYPE,
+        in_user_id              app_contexts_map.user_id%TYPE,
+        in_page_id              app_contexts_map.page_id%TYPE,
+        in_context_id           app_contexts_map.context_id%TYPE
+    )
+    RETURN CHAR;
+
 END;
 /
 

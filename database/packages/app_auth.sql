@@ -662,6 +662,71 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
         core.raise_error();
     END;
 
+
+
+    PROCEDURE set_context (
+        in_app_id               app_contexts_map.app_id%TYPE,
+        in_user_id              app_contexts_map.user_id%TYPE,
+        in_page_id              app_contexts_map.page_id%TYPE,
+        in_context_id           app_contexts_map.context_id%TYPE
+    )
+    AS
+        rec                     app_contexts_map%ROWTYPE;
+    BEGIN
+        rec.app_id              := in_app_id;
+        rec.user_id             := in_user_id;
+        rec.page_id             := in_page_id;
+        rec.context_id          := in_context_id;
+        rec.is_active           := 'Y';
+        --
+        BEGIN
+            INSERT INTO app_contexts_map
+            VALUES rec;
+        EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            UPDATE app_contexts_map t
+            SET ROW                 = rec
+            WHERE t.app_id          = rec.app_id
+                AND t.user_id       = rec.user_id
+                AND t.page_id       = rec.page_id
+                AND t.context_id    = rec.context_id;
+        END;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    FUNCTION check_context (
+        in_app_id               app_contexts_map.app_id%TYPE,
+        in_user_id              app_contexts_map.user_id%TYPE,
+        in_page_id              app_contexts_map.page_id%TYPE,
+        in_context_id           app_contexts_map.context_id%TYPE
+    )
+    RETURN CHAR
+    AS
+        out_flag    CHAR;
+    BEGIN
+        SELECT 'Y' INTO out_flag
+        FROM app_contexts_map t
+        WHERE t.app_id          = in_app_id
+            AND t.user_id       = in_user_id
+            AND t.page_id       = in_page_id
+            AND t.context_id    = in_context_id;
+        --
+        RETURN out_flag;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
 END;
 /
 
