@@ -16,6 +16,14 @@ live_pages AS (
     FROM x
     JOIN apex_application_pages p
         ON p.application_id     = x.app_id
+),
+z AS (
+    SELECT /*+ MATERIALIZE */
+        z.app_id,
+        z.page_id,
+        z.label__,
+        z.order#
+    FROM app_navigation_v z
 )
 -- existing pages
 SELECT
@@ -83,10 +91,10 @@ JOIN x
 JOIN app_navigation n
     ON n.app_id         = m.app_id
     AND n.page_id       = m.page_id
-LEFT JOIN app_navigation_v z
+LEFT JOIN z
     ON z.app_id         = n.app_id
     AND z.page_id       = n.page_id
-LEFT JOIN app_navigation_v p
+LEFT JOIN z p
     ON p.app_id         = n.app_id
     AND p.page_id       = n.parent_id
 --
