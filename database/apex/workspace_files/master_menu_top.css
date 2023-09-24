@@ -218,7 +218,8 @@ ul.MULTI_12 { -moz-column-count : 12; -webkit-column-count : 12; column-count : 
 /**
  * BADGE IN TOP MENU
  */
-#t_Header > #top_header > nav ul li a > span.BADGE {
+#t_Header > #top_header > nav ul li a > span.BADGE,
+#t_Header > #top_header > nav ul li a > span.BADGE_DECENT {
     position                : relative;
     top                     : 0.65rem;
     padding                 : 0 0 0 0.5rem;
@@ -228,7 +229,8 @@ ul.MULTI_12 { -moz-column-count : 12; -webkit-column-count : 12; column-count : 
     font-weight             : 500;
     font-size               : 0.75rem;
 }
-#t_Header > #top_header > nav ul li.ACTIVE a > span.BADGE {
+#t_Header > #top_header > nav ul li.ACTIVE a > span.BADGE,
+#t_Header > #top_header > nav ul li.ACTIVE a > span.BADGE_DECENT {
     font-weight             : 600;
 }
 
