@@ -71,6 +71,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'10'
 ,p_source_type=>'STATIC'
 ,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 ,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
 );
