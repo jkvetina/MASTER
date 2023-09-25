@@ -12,12 +12,16 @@ CREATE OR REPLACE PACKAGE app AS
 
 
 
-    FUNCTION get_init_defaults_procedure (
+    FUNCTION get_init_defaults (
         in_app_id               app_pages.app_id%TYPE,
         in_page_id              app_pages.page_id%TYPE
     )
     RETURN VARCHAR2
     RESULT_CACHE;
+
+
+
+    PROCEDURE call_init_defaults;
 
 
 

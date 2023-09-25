@@ -2,7 +2,6 @@ CREATE OR REPLACE PACKAGE BODY app AS
 
     PROCEDURE init_defaults
     AS
-        v_procedure_name        VARCHAR2(256);
     BEGIN
         -- if requested page is a homepage then setup G_APP_ID item
         IF core.get_page_id() = core.get_app_homepage() THEN
@@ -21,17 +20,7 @@ CREATE OR REPLACE PACKAGE BODY app AS
         END IF;
 
         -- find init block for specific/current page
-        v_procedure_name := get_init_defaults_procedure (
-            in_app_id       => core.get_app_id(in_dont_override => 'Y'),
-            in_page_id      => core.get_page_id()
-        );
-        --
-        IF v_procedure_name IS NOT NULL THEN
-            core.log_debug('CALLING_INIT', v_procedure_name);
-            --
-            EXECUTE IMMEDIATE
-                'BEGIN ' || v_procedure_name || '(); END;';
-        END IF;
+        app.call_init_defaults();
 
         -- init badges in navigation, @TODO: we can probably skip this for modal pages
         -- then it is up to the application to add user/page/app specific badges by calling app_nav.add_badge procedure
@@ -57,7 +46,7 @@ CREATE OR REPLACE PACKAGE BODY app AS
 
 
 
-    FUNCTION get_init_defaults_procedure (
+    FUNCTION get_init_defaults (
         in_app_id               app_pages.app_id%TYPE,
         in_page_id              app_pages.page_id%TYPE
     )
@@ -68,23 +57,52 @@ CREATE OR REPLACE PACKAGE BODY app AS
         c_owner         CONSTANT VARCHAR2(30)   := core.get_app_owner(c_app_id);
         c_prefix        CONSTANT VARCHAR2(30)   := core.get_app_prefix(c_app_id);
         --
-        out_procedure   VARCHAR2(256);
+        out_procedures          VARCHAR2(2000);
     BEGIN
-        SELECT MAX(p.object_name || '.' || p.procedure_name)
-        INTO out_procedure
+        SELECT LISTAGG(p.object_name || '.' || p.procedure_name, ',') WITHIN GROUP (ORDER BY p.object_name, p.procedure_name)
+        INTO out_procedures
         FROM all_procedures p
         WHERE 1 = 1
             AND p.owner = c_owner
             AND ((
                 p.object_name           = c_prefix || 'APP'
-                AND p.procedure_name    = 'INIT_DEFAULTS_P' || TO_CHAR(in_page_id)
+                AND p.procedure_name    IN ('INIT_DEFAULTS', 'INIT_DEFAULTS_P' || TO_CHAR(in_page_id))
             )
             OR (
                 p.object_name           = c_prefix || 'P' || TO_CHAR(in_page_id)
                 AND p.procedure_name    = 'INIT_DEFAULTS'
             ));
         --
-        RETURN out_procedure;
+        RETURN out_procedures;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE call_init_defaults
+    AS
+        v_procedures            VARCHAR2(2000);
+    BEGIN
+        v_procedures := get_init_defaults (
+            in_app_id           => core.get_app_id(in_dont_override => 'Y'),
+            in_page_id          => core.get_page_id()
+        );
+        --
+        FOR c IN (
+            SELECT
+                REGEXP_SUBSTR(v_procedures, '[^,]+', 1, LEVEL) AS procedure_name
+            FROM DUAL
+            CONNECT BY REGEXP_SUBSTR(v_procedures, '[^,]+', 1, LEVEL) IS NOT NULL
+        ) LOOP
+            core.log_debug('CALLING_INIT', c.procedure_name);
+            --
+            EXECUTE IMMEDIATE
+                'BEGIN ' || c.procedure_name || '(); END;';
+        END LOOP;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
