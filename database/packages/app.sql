@@ -98,10 +98,12 @@ CREATE OR REPLACE PACKAGE BODY app AS
             FROM DUAL
             CONNECT BY REGEXP_SUBSTR(v_procedures, '[^,]+', 1, LEVEL) IS NOT NULL
         ) LOOP
-            core.log_debug('CALLING_INIT', c.procedure_name);
-            --
-            EXECUTE IMMEDIATE
-                'BEGIN ' || c.procedure_name || '(); END;';
+            IF c.procedure_name IS NOT NULL THEN
+                core.log_debug('CALLING_INIT', c.procedure_name);
+                --
+                EXECUTE IMMEDIATE
+                    'BEGIN ' || c.procedure_name || '(); END;';
+            END IF;
         END LOOP;
     EXCEPTION
     WHEN core.app_exception THEN
