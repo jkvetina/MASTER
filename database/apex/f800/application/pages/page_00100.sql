@@ -55,6 +55,20 @@ wwv_flow_imp_page.create_page(
 '.a-CardView-headerBody h2 {',
 '  margin: 0;',
 '}',
+'',
+'#WELCOME_BANNER {',
+'    background      : #615d51;',
+'    color           : #fff;',
+'    padding         : 3rem;',
+'    height          : 16rem;',
+'    margin-top      : -3rem;  /* to hide white bg on page overscroll */',
+'}',
+'#WELCOME_BANNER h1 {',
+'    font-family     : var(--ut-hero-region-title-font-family), sans-serif;',
+'    font-weight     : 300;',
+'    font-size       : 2rem;',
+'    margin          : 3rem 0 0.5rem !important;',
+'}',
 ''))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(43462402185717150)  -- IS_USER
@@ -66,10 +80,9 @@ wwv_flow_imp_page.create_page(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(7475275434048504)
 ,p_plug_name=>'Applications'
-,p_region_css_classes=>'FILTERS'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63402598617439121)
-,p_plug_display_sequence=>10
+,p_plug_display_sequence=>20
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
@@ -79,7 +92,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63327898435439081)
-,p_plug_display_sequence=>20
+,p_plug_display_sequence=>30
 ,p_query_type=>'TABLE'
 ,p_query_table=>'APP_LAUNCHPAD_V'
 ,p_query_where=>'workspace = :P100_WORKSPACE'
@@ -118,6 +131,19 @@ wwv_flow_imp_page.create_card_action(
 ,p_link_target_type=>'REDIRECT_URL'
 ,p_link_target=>'&APP_LINK.'
 );
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(23519630376581627)
+,p_plug_name=>'WELCOME'
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'REGION_POSITION_01'
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'<div id="WELCOME_BANNER">',
+'<h1>Welcome, &P100_USER_NAME.</h1>',
+'  <p>Current workspace: &P100_WORKSPACE.<p>',
+'</div>'))
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(7476159161048513)
 ,p_button_sequence=>20
@@ -135,17 +161,24 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P100_WORKSPACE'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(7475275434048504)
-,p_prompt=>'Workspace'
-,p_display_as=>'NATIVE_SELECT_LIST'
-,p_named_lov=>'APP_WORKSPACES'
-,p_cHeight=>1
-,p_colspan=>2
-,p_field_template=>wwv_flow_imp.id(63461560868439163)
-,p_item_template_options=>'#DEFAULT#'
-,p_lov_display_extra=>'NO'
+,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'NONE'
-,p_attribute_02=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(23519786654581628)
+,p_name=>'P100_USER_NAME'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(23519630376581627)
+,p_item_default=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'SELECT SUBSTR(u.user_name, 1, INSTR(u.user_name, '' '') - 1) AS first_name',
+'FROM app_users u',
+'WHERE u.user_id = core.get_user_id()',
+''))
+,p_item_default_type=>'SQL_QUERY'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_computation(
  p_id=>wwv_flow_imp.id(7476064344048512)

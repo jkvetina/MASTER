@@ -61,6 +61,20 @@ css:
       margin: 0;
     }
     
+    #WELCOME_BANNER {
+        background      : #615d51;
+        color           : #fff;
+        padding         : 3rem;
+        height          : 16rem;
+        margin-top      : -3rem;  /* to hide white bg on page overscroll */
+    }
+    #WELCOME_BANNER h1 {
+        font-family     : var(--ut-hero-region-title-font-family), sans-serif;
+        font-weight     : 300;
+        font-size       : 2rem;
+        margin          : 3rem 0 0.5rem !important;
+    }
+    
 
 security: 
   authorization-scheme: IS_USER # 43462402185717150
@@ -88,7 +102,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 10
+    sequence: 20
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -101,8 +115,6 @@ regions:
     template: Hero # 63402598617439121
     template-options: 
     - '#DEFAULT#'
-    css-classes: 
-    - FILTERS
     render-components: Above Content
 
   accessibility: 
@@ -144,7 +156,7 @@ regions:
     type: None
 
   layout: 
-    sequence: 20
+    sequence: 30
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -228,47 +240,61 @@ regions:
         type: Redirect to URL
         target: '&APP_LINK.'
 
+- # ====== Region: WELCOME =====================================
+  id: 23519630376581627
+  identification: 
+    title: WELCOME
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div id="WELCOME_BANNER">
+      <h1>Welcome, &P100_USER_NAME.</h1>
+        <p>Current workspace: &P100_WORKSPACE.<p>
+      </div>
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: None
+    render-components: Above Content
+
+  advanced: 
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
 page-items: 
 - # ====== Page Item: P100_WORKSPACE ===========================
   id: 7475718742048509
   identification: 
     name: P100_WORKSPACE
-    type: Select List
-
-  label: 
-    label: Workspace
-    alignment: Left
+    type: Hidden
 
   settings: 
-    page-action-on-selection: None
-    allow-multi-selection: false
+    value-protected: true
 
   layout: 
     sequence: 10
     region: Applications # 7475275434048504
     position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: 2
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 63461560868439163
-    template-options: 
-    - '#DEFAULT#'
-    height: 1
-
-  validation: 
-    value-required: false
-
-  list-of-values: 
-    type: Shared Component
-    list-of-values: APP_WORKSPACES # 14527761930824112
-    display-extra-values: false
-    display-null-value: false
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -278,10 +304,46 @@ page-items:
     used: Only when current value in session state is null
 
   session-state: 
+    data-type: VARCHAR2
     storage: Per Session (Persistent)
 
-  quick-picks: 
-    show-quick-picks: false
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P100_USER_NAME ===========================
+  id: 23519786654581628
+  identification: 
+    name: P100_USER_NAME
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: WELCOME # 23519630376581627
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: SQL Query
+    sql-query: |
+      SELECT SUBSTR(u.user_name, 1, INSTR(u.user_name, ' ') - 1) AS first_name
+      FROM app_users u
+      WHERE u.user_id = core.get_user_id()
+      
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
 
   security: 
     session-state-protection: Unrestricted

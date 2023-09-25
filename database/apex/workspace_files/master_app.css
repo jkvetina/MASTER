@@ -351,3 +351,14 @@ button .a-Button-label,
     color               : #555;
 }
 
+
+
+/* HIDE BOTTOM IMAGE ON BREADCRUMB BAR */
+#t_Body_title.t-Body-title {
+    border              : 0;
+}
+#t_Body_title.t-Body-title::after {
+    background-image    : none;
+    display             : none !important;
+}
+
