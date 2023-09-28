@@ -77,6 +77,14 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(43462402185717150)  -- IS_USER
 ,p_protection_level=>'C'
+,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'This is the main page, also called Launchpad. It was designed in a way that you can access all applications from one place.',
+'',
+'- you can see the environment info at top',
+'- you can see all applications available to you',
+'- you can mark some applications as your favorites',
+'- cards contains the application alias and objects prefix in the subtitle',
+''))
 ,p_page_component_map=>'23'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'

@@ -98,6 +98,16 @@ advanced:
 server-cache: 
   caching: Disabled
 
+help: 
+  help-text: |
+    This is the main page, also called Launchpad. It was designed in a way that you can access all applications from one place.
+    
+    - you can see the environment info at top
+    - you can see all applications available to you
+    - you can mark some applications as your favorites
+    - cards contains the application alias and objects prefix in the subtitle
+    
+
 regions: 
 - # ====== Region: Applications ================================
   id: 7475275434048504
