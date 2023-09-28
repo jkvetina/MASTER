@@ -161,6 +161,10 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
     AS
         out_flag CHAR;
     BEGIN
+        IF app_auth.is_admin() = 'Y' THEN
+            RETURN 'Y';
+        END IF;
+        --
         SELECT MAX('Y')
         INTO out_flag
         FROM app_auth_pages_v t
@@ -171,10 +175,6 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
                 t.context_id    IS NULL
                 OR t.context_id IN (in_context_id, SUBSTR(in_context_id, 1, INSTR(in_context_id, '|') - 1))
             );
-        --
-        IF out_flag IS NULL THEN
-            RETURN app_auth.is_admin();
-        END IF;
         --
         RETURN out_flag;
     EXCEPTION
