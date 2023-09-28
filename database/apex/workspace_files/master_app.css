@@ -82,6 +82,9 @@ BUTTON .BADGE {
 }
 
 /* OVERRIDE MENU BADGES WITH SAME STYLE */
+#t_Header > #top_header > nav ul li.RED {
+    background          : red;
+}
 #t_Header > #top_header > nav ul li a > span.BADGE {
     position            : relative;
     top                 : -0.65rem;
