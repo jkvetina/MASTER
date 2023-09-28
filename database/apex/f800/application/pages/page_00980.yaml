@@ -27,6 +27,29 @@ navigation:
   cursor-focus: Do not focus cursor
   warn-on-unsaved-changes: true
 
+css: 
+  inline: |
+    .DRAWER .CONTENT {
+      padding               : 0 0.5rem;
+    }
+    .DRAWER p,
+    .DRAWER ul li {
+      font-size             : 1rem;
+      line-height           : 1.5rem;
+    }
+    .DRAWER ul {
+      list-style-type       : none;
+      margin                : 0.5rem 0 0.5rem 3rem;
+    }
+    .DRAWER ul li:before {
+      content               : '\2014';  /* mdash */
+      content               : '\2013';  /* ndash */
+      position              : absolute;
+      margin                : 0 3rem 0 -1.5rem;
+      line-height           : 1.75rem;
+    }
+    
+
 security: 
   authorization-scheme: IS_USER # 43462402185717150
   authentication: Page Requires Authentication
@@ -82,6 +105,8 @@ regions:
     template: Blank with Attributes # 63325094538439079
     template-options: 
     - '#DEFAULT#'
+    css-classes: 
+    - CONTENT
     render-components: Above Content
 
   accessibility: 
@@ -89,9 +114,6 @@ regions:
     landmark-type: Template Default
 
   advanced: 
-    custom-attributes: 
-    - 'style="padding-left:'
-    - 0.5rem;"
     region-display-selector: false
     exclude-title-from-translation: false
 

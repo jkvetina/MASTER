@@ -375,10 +375,13 @@ button .a-Button-label,
 
 /* ADJUST DRAWER HEADER */
 .DRAWER .ui-dialog-titlebar {
-    display: none;
+    display             : none;
 }
 .DRAWER h1.t-HeroRegion-title {
-    margin-top: -2rem;
-    font-size: 1.8rem;
+    margin-top          : -2rem;
+    font-size           : 1.8rem;
+}
+.DRAWER .t-HeroRegion {
+    padding-bottom      : 0;
 }
 

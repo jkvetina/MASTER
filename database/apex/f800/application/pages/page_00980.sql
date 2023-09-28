@@ -19,6 +19,27 @@ wwv_flow_imp_page.create_page(
 ,p_step_title=>'#fa-question-circle'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(18317012587086665)  -- USER_PROFILE
+,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'.DRAWER .CONTENT {',
+'  padding               : 0 0.5rem;',
+'}',
+'.DRAWER p,',
+'.DRAWER ul li {',
+'  font-size             : 1rem;',
+'  line-height           : 1.5rem;',
+'}',
+'.DRAWER ul {',
+'  list-style-type       : none;',
+'  margin                : 0.5rem 0 0.5rem 3rem;',
+'}',
+'.DRAWER ul li:before {',
+'  content               : ''\2014'';  /* mdash */',
+'  content               : ''\2013'';  /* ndash */',
+'  position              : absolute;',
+'  margin                : 0 3rem 0 -1.5rem;',
+'  line-height           : 1.75rem;',
+'}',
+''))
 ,p_step_template=>wwv_flow_imp.id(63289183138439042)
 ,p_page_css_classes=>'DRAWER'
 ,p_page_template_options=>'#DEFAULT#:js-dialog-class-t-Drawer--pullOutEnd:js-dialog-class-t-Drawer--sm'
@@ -32,8 +53,8 @@ wwv_flow_imp_page.create_page(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(23520192747581632)
 ,p_plug_name=>'[CONTENT]'
+,p_region_css_classes=>'CONTENT'
 ,p_region_template_options=>'#DEFAULT#'
-,p_region_attributes=>'style="padding-left: 0.5rem;"'
 ,p_plug_template=>wwv_flow_imp.id(63325094538439079)
 ,p_plug_display_sequence=>20
 ,p_function_body_language=>'PLSQL'
