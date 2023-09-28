@@ -64,15 +64,19 @@ css:
     #WELCOME_BANNER {
         background      : #615d51;
         color           : #fff;
-        padding         : 3rem;
-        height          : 16rem;
+        padding         : 2.5rem;
+        height          : 17rem;
         margin-top      : -3rem;  /* to hide white bg on page overscroll */
     }
     #WELCOME_BANNER h1 {
         font-family     : var(--ut-hero-region-title-font-family), sans-serif;
         font-weight     : 300;
-        font-size       : 2rem;
+        font-size       : 2.4rem;
         margin          : 3rem 0 0.5rem !important;
+    }
+    #WELCOME_BANNER ::selection {
+      color             : #fff;
+      background        : #333;
     }
     
 
@@ -250,7 +254,7 @@ regions:
     html-code: |
       <div id="WELCOME_BANNER">
       <h1>Welcome, &P100_USER_NAME.</h1>
-        <p>Current workspace: &P100_WORKSPACE.<p>
+        <p>Current workspace: &P100_WORKSPACE. | &P100_ENV.<p>
       </div>
 
   layout: 
@@ -350,6 +354,36 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P100_ENV =================================
+  id: 23519964219581630
+  identification: 
+    name: P100_ENV
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Applications # 7475275434048504
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 buttons: 
 - # ====== Button: REFRESH_MV ==================================
   id: 7476159161048513
@@ -429,6 +463,20 @@ computations:
     type: Expression
     language: PL/SQL
     pl/sql-expression: core.get_app_workspace()
+
+- # ====== Computation: P100_ENV ===============================
+  id: 23520014758581631
+  identification: 
+    item-name: P100_ENV
+
+  execution: 
+    sequence: 20
+    point: Before Regions
+
+  computation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: SUBSTR(SYS_CONTEXT('USERENV', 'DB_NAME'), INSTR(SYS_CONTEXT('USERENV', 'DB_NAME'), '_') + 1)
 
 processes: 
 - # ====== Process: REFRESH_MV =================================

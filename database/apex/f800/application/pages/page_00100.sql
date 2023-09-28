@@ -59,15 +59,19 @@ wwv_flow_imp_page.create_page(
 '#WELCOME_BANNER {',
 '    background      : #615d51;',
 '    color           : #fff;',
-'    padding         : 3rem;',
-'    height          : 16rem;',
+'    padding         : 2.5rem;',
+'    height          : 17rem;',
 '    margin-top      : -3rem;  /* to hide white bg on page overscroll */',
 '}',
 '#WELCOME_BANNER h1 {',
 '    font-family     : var(--ut-hero-region-title-font-family), sans-serif;',
 '    font-weight     : 300;',
-'    font-size       : 2rem;',
+'    font-size       : 2.4rem;',
 '    margin          : 3rem 0 0.5rem !important;',
+'}',
+'#WELCOME_BANNER ::selection {',
+'  color             : #fff;',
+'  background        : #333;',
 '}',
 ''))
 ,p_page_template_options=>'#DEFAULT#'
@@ -139,7 +143,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<div id="WELCOME_BANNER">',
 '<h1>Welcome, &P100_USER_NAME.</h1>',
-'  <p>Current workspace: &P100_WORKSPACE.<p>',
+'  <p>Current workspace: &P100_WORKSPACE. | &P100_ENV.<p>',
 '</div>'))
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
@@ -180,6 +184,15 @@ wwv_flow_imp_page.create_page_item(
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(23519964219581630)
+,p_name=>'P100_ENV'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(7475275434048504)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
 wwv_flow_imp_page.create_page_computation(
  p_id=>wwv_flow_imp.id(7476064344048512)
 ,p_computation_sequence=>10
@@ -188,6 +201,15 @@ wwv_flow_imp_page.create_page_computation(
 ,p_computation_type=>'EXPRESSION'
 ,p_computation_language=>'PLSQL'
 ,p_computation=>'core.get_app_workspace()'
+);
+wwv_flow_imp_page.create_page_computation(
+ p_id=>wwv_flow_imp.id(23520014758581631)
+,p_computation_sequence=>20
+,p_computation_item=>'P100_ENV'
+,p_computation_point=>'BEFORE_BOX_BODY'
+,p_computation_type=>'EXPRESSION'
+,p_computation_language=>'PLSQL'
+,p_computation=>'SUBSTR(SYS_CONTEXT(''USERENV'', ''DB_NAME''), INSTR(SYS_CONTEXT(''USERENV'', ''DB_NAME''), ''_'') + 1)'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(7475819384048510)
