@@ -353,6 +353,12 @@ button .a-Button-label,
     font-size           : 0.85rem;
     color               : #555;
 }
+#t_Footer .BUTTON {
+    font-family         : 'Roboto Slab', sans-serif;
+    font-size           : 0.85rem;
+    width               : auto;
+    margin-right        : 0.25rem;
+}
 
 
 
