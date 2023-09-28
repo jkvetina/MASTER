@@ -19,6 +19,7 @@ WITH curr AS (
         AND n.page_id       = core.get_page_id()
     LEFT JOIN app_users u
         ON u.user_id        = core.get_user_id()
+    WHERE n.page_id         NOT IN (9999)
 ),
 s AS (
     -- available pages
@@ -145,7 +146,12 @@ n AS (
                     '&' || 'APP_USER.', curr.user_name)
             END AS label,
         CASE
-            WHEN t.page_id = 9999   THEN '&' || 'LOGOUT_URL.'
+            WHEN t.page_id = 9999   THEN --'&' || 'LOGOUT_URL.'
+                APEX_PAGE.GET_URL (
+                    p_application   => curr.master_app_id,
+                    p_page          => 9999,
+                    p_session       => 0
+                )
             WHEN t.page_id > 0      THEN
                 APEX_PAGE.GET_URL (
                     p_application   => t.app_id,
