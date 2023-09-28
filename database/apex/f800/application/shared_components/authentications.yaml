@@ -44,7 +44,7 @@
 
   login-processing: 
     post-authentication-procedure-name: app_auth.after_auth
-    switch-in-session: false
+    switch-in-session: true
 
   real-application-security: 
     ras-mode: Disabled

@@ -30,7 +30,7 @@ advanced:
 
 authentication: 
   public-user: APEX_PUBLIC_USER
-  authentication-scheme: GOOGLE # 24099271848341251
+  authentication-scheme: OPEN_DOOR (TESTING ONLY) # 63502441622441479
 
 authorization: 
   source-for-role-or-group-schemes: Access Control User Role Assignments
