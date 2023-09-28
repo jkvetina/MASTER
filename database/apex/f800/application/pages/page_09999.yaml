@@ -323,9 +323,9 @@ buttons:
   behavior: 
     action: Redirect to Page in this Application
     target: 
-      url: 'f?p=&APP_ID.:100:&SESSION.:APEX_AUTHENTICATON=GOOGLE:&DEBUG.:::'
+      url: 'f?p=&APP_ID.:100:&SESSION.:APEX_AUTHENTICATION=GOOGLE:&DEBUG.:::'
       page: 100 # #fa-navicon
-      request: APEX_AUTHENTICATON=GOOGLE
+      request: APEX_AUTHENTICATION=GOOGLE
 
     warn-on-unsaved-changes: Do Not Check
 

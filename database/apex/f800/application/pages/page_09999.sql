@@ -145,7 +145,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_id=>wwv_flow_imp.id(63464158031439167)
 ,p_button_is_hot=>'Y'
 ,p_button_image_alt=>'Sign with Google'
-,p_button_redirect_url=>'f?p=&APP_ID.:100:&SESSION.:APEX_AUTHENTICATON=GOOGLE:&DEBUG.:::'
+,p_button_redirect_url=>'f?p=&APP_ID.:100:&SESSION.:APEX_AUTHENTICATION=GOOGLE:&DEBUG.:::'
 ,p_icon_css_classes=>'fa-lock-user'
 );
 wwv_flow_imp_page.create_page_item(
