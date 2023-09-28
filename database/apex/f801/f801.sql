@@ -33,7 +33,7 @@ prompt APPLICATION 801 - App Template
 -- Application Export:
 --   Application:     801
 --   Name:            App Template
---   Date and Time:   20:35 Čtvrtek Září 28, 2023
+--   Date and Time:   21:03 Čtvrtek Září 28, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -15502,7 +15502,7 @@ wwv_flow_imp_shared.create_authentication(
 ,p_attribute_11=>'N'
 ,p_attribute_13=>'Y'
 ,p_invalid_session_type=>'URL'
-,p_invalid_session_url=>'f?p=800:9999:0'
+,p_invalid_session_url=>'f?p=800:9999:0::::P9999_TIMEOUT:Y'
 ,p_logout_url=>'f?p=800:9999:0'
 ,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
@@ -15519,11 +15519,14 @@ wwv_flow_imp_shared.create_authentication(
  p_id=>wwv_flow_imp.id(50432398701828085)
 ,p_name=>'MASTER - APEX_ACCOUNTS'
 ,p_scheme_type=>'NATIVE_APEX_ACCOUNTS'
-,p_invalid_session_type=>'LOGIN'
+,p_invalid_session_type=>'URL'
+,p_invalid_session_url=>'f?p=800:9999:0::::P9999_TIMEOUT:Y'
+,p_logout_url=>'f?p=800:9999:0'
 ,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
 ,p_use_secure_cookie_yn=>'N'
 ,p_ras_mode=>0
+,p_switch_in_session_yn=>'Y'
 ,p_reference_id=>63288166491439030
 );
 end;
@@ -15536,12 +15539,13 @@ wwv_flow_imp_shared.create_authentication(
 ,p_scheme_type=>'NATIVE_CUSTOM'
 ,p_attribute_05=>'N'
 ,p_invalid_session_type=>'URL'
-,p_invalid_session_url=>'f?p=800:9999:0'
+,p_invalid_session_url=>'f?p=800:9999:0::::P9999_TIMEOUT:Y'
 ,p_logout_url=>'f?p=800:9999:0'
 ,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
 ,p_use_secure_cookie_yn=>'N'
 ,p_ras_mode=>0
+,p_switch_in_session_yn=>'Y'
 ,p_reference_id=>63502441622441479
 );
 end;

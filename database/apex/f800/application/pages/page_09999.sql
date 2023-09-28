@@ -149,6 +149,17 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-lock-user'
 );
 wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(23521694882581647)
+,p_name=>'P9999_TIMEOUT'
+,p_item_sequence=>40
+,p_item_plug_id=>wwv_flow_imp.id(47585583127572946)
+,p_use_cache_before_default=>'NO'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_warn_on_unsaved_changes=>'I'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(24011339265868741)
 ,p_name=>'P9999_USERNAME'
 ,p_is_required=>true
@@ -164,10 +175,31 @@ wwv_flow_imp_page.create_page_item(
 ,p_field_template=>wwv_flow_imp.id(63461560868439163)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 ,p_attribute_02=>'N'
 ,p_attribute_04=>'TEXT'
 ,p_attribute_05=>'NONE'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(23521787343581648)
+,p_name=>'SHOW_TIMEOUT'
+,p_event_sequence=>10
+,p_bind_type=>'bind'
+,p_bind_event_type=>'ready'
+,p_display_when_type=>'ITEM_IS_NOT_NULL'
+,p_display_when_cond=>'P9999_TIMEOUT'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(23521875192581649)
+,p_event_id=>wwv_flow_imp.id(23521787343581648)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'show_error(''Your session has ended.'');',
+''))
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(24012872872868744)

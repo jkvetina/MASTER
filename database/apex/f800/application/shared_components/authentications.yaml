@@ -17,9 +17,11 @@
   session-not-valid: 
     redirect-to: URL
     invalid-session-url: 
-      url: 'f?p=800:9999:0'
+      url: 'f?p=800:9999:0::::P9999_TIMEOUT:Y'
       app: 800
       page: 9999
+      values: 
+        p9999_timeout: Y
 
   login-processing: 
     post-authentication-procedure-name: app_auth.after_auth
@@ -40,11 +42,20 @@
     type: Oracle APEX Accounts
 
   session-not-valid: 
-    redirect-to: Login Page
+    redirect-to: URL
+    invalid-session-url: 
+      url: 'f?p=800:9999:0::::P9999_TIMEOUT:Y'
+      app: 800
+      page: 9999
+      values: 
+        p9999_timeout: Y
 
   login-processing: 
     post-authentication-procedure-name: app_auth.after_auth
     switch-in-session: true
+
+  post-logout-url: 
+    post-logout-url: 'f?p=800:9999:0'
 
   real-application-security: 
     ras-mode: Disabled
@@ -61,9 +72,11 @@
   session-not-valid: 
     redirect-to: URL
     invalid-session-url: 
-      url: 'f?p=800:9999:0'
+      url: 'f?p=800:9999:0::::P9999_TIMEOUT:Y'
       app: 800
       page: 9999
+      values: 
+        p9999_timeout: Y
 
   login-processing: 
     post-authentication-procedure-name: app_auth.after_auth

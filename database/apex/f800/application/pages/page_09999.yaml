@@ -231,6 +231,36 @@ regions:
       expand-shortcuts: false
 
 page-items: 
+- # ====== Page Item: P9999_TIMEOUT ============================
+  id: 23521694882581647
+  identification: 
+    name: P9999_TIMEOUT
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 40
+    region: WELCOME # 47585583127572946
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P9999_USERNAME ===========================
   id: 24011339265868741
   identification: 
@@ -291,7 +321,7 @@ page-items:
 
   security: 
     session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
+    store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
 buttons: 
@@ -367,6 +397,42 @@ buttons:
     type: Expression
     language: PL/SQL
     pl/sql-expression: NV('APP_BUILDER_SESSION') > 0
+
+dynamic-actions: 
+- # ====== Dynamic Action: SHOW_TIMEOUT ========================
+  id: 23521787343581648
+  identification: 
+    name: SHOW_TIMEOUT
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  execution: 
+    event-scope: Static
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P9999_TIMEOUT
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 23521875192581649
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        show_error('Your session has ended.');
+        
+
+    execution: 
+      sequence: 10
+      event: SHOW_TIMEOUT # 23521787343581648
+      fire-when-event-result-is: True
+      fire-on-initialization: false
 
 processes: 
 - # ====== Process: LOGIN ======================================

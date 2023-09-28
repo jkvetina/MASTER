@@ -37,10 +37,10 @@ authorization:
 
 session-management: 
   rejoin-sessions: Disabled
-  maximum-session-length: 14400
-  session-timeout-url: 'f?p=800:9999:0'
-  maximum-session-idle-time: 0
-  session-idle-timeout-url: 'f?p=800:9999:0'
+  maximum-session-length: 32400
+  session-timeout-url: 'f?p=800:9999:0::::P9999_TIMEOUT:Y'
+  maximum-session-idle-time: 5400
+  session-idle-timeout-url: 'f?p=800:9999:0::::P9999_TIMEOUT:Y'
 
 session-state-protection: 
   enabled: true

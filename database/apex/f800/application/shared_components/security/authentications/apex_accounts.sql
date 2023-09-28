@@ -15,7 +15,9 @@ wwv_flow_imp_shared.create_authentication(
  p_id=>wwv_flow_imp.id(63288166491439030)
 ,p_name=>'APEX_ACCOUNTS'
 ,p_scheme_type=>'NATIVE_APEX_ACCOUNTS'
-,p_invalid_session_type=>'LOGIN'
+,p_invalid_session_type=>'URL'
+,p_invalid_session_url=>'f?p=800:9999:0::::P9999_TIMEOUT:Y'
+,p_logout_url=>'f?p=800:9999:0'
 ,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
 ,p_use_secure_cookie_yn=>'N'
