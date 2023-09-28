@@ -164,6 +164,7 @@ prompt --install
 @@application/pages/page_00890.sql
 @@application/pages/page_00900.sql
 @@application/pages/page_00980.sql
+@@application/pages/page_00985.sql
 @@application/deployment/definition.sql
 @@application/deployment/checks.sql
 @@application/deployment/buildoptions.sql
