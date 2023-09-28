@@ -129,3 +129,13 @@
     session-state-protection: Restricted - May not be set from browser
     escape-special-characters: true
 
+- # ====== Application Item: P0_HELP_PAGE_ID ===================
+  id: 23957875602083265
+  identification: 
+    name: P0_HELP_PAGE_ID
+    scope: Application
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+

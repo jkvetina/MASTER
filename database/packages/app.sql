@@ -34,6 +34,11 @@ CREATE OR REPLACE PACKAGE BODY app AS
         ) LOOP
             app_nav.add_badge(800, 850, NULLIF(c.badge, 0));
         END LOOP;
+
+        -- set page_id for all standard pages (ignore help page and other modals)
+        IF core.get_page_id() != 980 AND core.get_page_is_modal() IS NULL THEN
+            core.set_item('P0_HELP_PAGE_ID', core.get_page_id());
+        END IF;
         --
     EXCEPTION
     WHEN core.app_exception THEN

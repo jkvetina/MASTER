@@ -13,10 +13,12 @@ appearance:
   template-options: 
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
-  - js-dialog-class-t-Drawer--md
+  - js-dialog-class-t-Drawer--sm
+  css-classes: 
+  - DRAWER
 
 dialog: 
-  chained: true
+  chained: false
 
 navigation-menu: 
   override-user-interface-level: false
@@ -24,12 +26,6 @@ navigation-menu:
 navigation: 
   cursor-focus: Do not focus cursor
   warn-on-unsaved-changes: true
-
-css: 
-  inline: |
-    ol li {
-      line-height: 200%;
-    }
 
 security: 
   authorization-scheme: IS_USER # 43462402185717150
@@ -50,10 +46,69 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Help (context aware) ========================
+- # ====== Region: [CONTENT] ===================================
+  id: 23520192747581632
+  identification: 
+    title: '[CONTENT]'
+    type: Dynamic Content
+
+  source: 
+    language: PL/SQL
+    pl/sql-function-body-returning-a-clob: |
+      FOR c IN (
+          SELECT
+              p.help_text
+          FROM apex_application_pages p
+          WHERE p.application_id  = :APP_ID
+              AND p.page_id       = :P980_PAGE_ID
+      ) LOOP
+          RETURN APEX_MARKDOWN.TO_HTML(APEX_APPLICATION.DO_SUBSTITUTIONS(c.help_text));
+      END LOOP;
+      
+    page-items-to-submit: 
+    - P980_PAGE_ID
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    custom-attributes: 
+    - 'style="padding-left:'
+    - 0.5rem;"
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    performance: 
+      lazy-loading: false
+
+- # ====== Region: Help for &P980_PAGE_NAME. ===================
   id: 38168018527510827
   identification: 
-    title: Help (context aware)
+    title: Help for &P980_PAGE_NAME.
     type: Static Content
 
   layout: 
@@ -91,25 +146,82 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: [CONTENT] ===================================
-  id: 38168078124510828
+page-items: 
+- # ====== Page Item: P980_PAGE_NAME ===========================
+  id: 23520543569581636
   identification: 
-    title: '[CONTENT]'
-    type: Static Content
+    name: P980_PAGE_NAME
+    type: Hidden
 
-  source: 
-    html-code: |
-      <ol>
-      <li>help specific to active app and page</li>
-      <li>maybe even active component</li>
-      <li>we should add a close button</li>
-      </ol>
-      
+  settings: 
+    value-protected: true
 
   layout: 
     sequence: 20
-    parent-region: No Parent
+    region: Help for &P980_PAGE_NAME. # 38168018527510827
     position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P980_PAGE_ID =============================
+  id: 23520666102581637
+  identification: 
+    name: P980_PAGE_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Help for &P980_PAGE_NAME. # 38168018527510827
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: 900
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CLOSE_DIALOG ================================
+  id: 23520285924581633
+  identification: 
+    button-name: CLOSE_DIALOG
+    label: Close Dialog
+
+  layout: 
+    sequence: 10
+    region: Help for &P980_PAGE_NAME. # 38168018527510827
+    position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -117,27 +229,78 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    button-template: Icon # 63463317880439166
+    hot: false
     template-options: 
     - '#DEFAULT#'
-    render-components: Above Content
+    css-classes: 
+    - u-pullRight
+    icon: fa-times
 
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: false
 
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
+dynamic-actions: 
+- # ====== Dynamic Action: CLOSE_DIALOG ========================
+  id: 23520338887581634
+  identification: 
+    name: CLOSE_DIALOG
 
-  server-cache: 
-    caching: Disabled
+  execution: 
+    sequence: 10
 
-  customization: 
-    customizable: Not Customizable By End Users
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CLOSE_DIALOG # 23520285924581633
 
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Close Dialog ================================
+    id: 23520416020581635
+    identification: 
+      action: Close Dialog
+
+    execution: 
+      sequence: 10
+      event: CLOSE_DIALOG # 23520338887581634
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+computations: 
+- # ====== Computation: P980_PAGE_NAME =========================
+  id: 23520739686581638
+  identification: 
+    item-name: P980_PAGE_NAME
+
+  execution: 
+    sequence: 20
+    point: Before Regions
+
+  computation: 
+    type: SQL Query (return single value)
+    sql-query: |
+      SELECT
+          APEX_APPLICATION.DO_SUBSTITUTIONS(p.page_title) AS title
+      FROM apex_application_pages p
+      WHERE p.application_id  = :APP_ID
+          AND p.page_id       = :P980_PAGE_ID
+      
+
+- # ====== Computation: P980_PAGE_ID ===========================
+  id: 23520848535581639
+  identification: 
+    item-name: P980_PAGE_ID
+
+  execution: 
+    sequence: 10
+    point: Before Regions
+
+  computation: 
+    type: Item
+    item-name: P0_HELP_PAGE_ID
 

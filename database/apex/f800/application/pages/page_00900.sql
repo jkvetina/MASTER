@@ -21,6 +21,12 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(43462402185717150)  -- IS_USER
 ,p_protection_level=>'C'
+,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'On this page you can set your profile.',
+'- change your name and email address',
+'- change your avatar',
+'- see the roles you have been assigned on current app',
+''))
 ,p_page_component_map=>'02'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'

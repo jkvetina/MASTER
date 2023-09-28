@@ -34,6 +34,7 @@ prompt --install
 @@application/shared_components/logic/application_items/g_app_name.sql
 @@application/shared_components/logic/application_items/g_context_id.sql
 @@application/shared_components/logic/application_items/g_today.sql
+@@application/shared_components/logic/application_items/p0_help_page_id.sql
 @@application/shared_components/logic/application_settings.sql
 @@application/shared_components/navigation/tabs/standard.sql
 @@application/shared_components/navigation/tabs/parent.sql

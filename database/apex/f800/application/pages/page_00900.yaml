@@ -38,6 +38,14 @@ advanced:
 server-cache: 
   caching: Disabled
 
+help: 
+  help-text: |
+    On this page you can set your profile.
+    - change your name and email address
+    - change your avatar
+    - see the roles you have been assigned on current app
+    
+
 regions: 
 - # ====== Region: User Profile ================================
   id: 63563232810450017
