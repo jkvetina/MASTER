@@ -1,0 +1,582 @@
+---
+# ====== Page: Login Page ====================================
+id: 9999
+identification: 
+  name: Login Page
+  alias: LOGIN
+  title: Log In
+  page-group: __ INTERNAL # 14547468167324179
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: true
+  list: Do not show Navigation Menu List
+
+navigation: 
+  cursor-focus: First item on page
+  warn-on-unsaved-changes: false
+
+css: 
+  inline: |
+    #WELCOME_BANNER {
+        background      : #615d51;
+        color           : #fff;
+        padding         : 2.5rem;
+        height          : 17rem;
+        margin-top      : -3rem;  /* to hide white bg on page overscroll */
+    }
+    #WELCOME_BANNER h1 {
+        font-family     : var(--ut-hero-region-title-font-family), sans-serif;
+        font-weight     : 300;
+        font-size       : 2.4rem;
+        margin          : 3rem 0 0.5rem !important;
+    }
+    #WELCOME_BANNER ::selection {
+      color             : #fff;
+      background        : #333;
+    }
+    
+    /* MOVE LOGIN FIELDS INTO BANNER */
+    div#P9999_USERNAME_CONTAINER {
+        width           : 20rem;
+        position        : absolute;
+        left            : 2rem;
+        top             : 6.5rem;
+    }
+    div#P9999_USERNAME_error {
+        color           : #fff;
+    }
+    button#LOGIN {
+        position        : absolute;
+        left            : 22.5rem;
+        top             : 7.4rem;
+    }
+    button#LOGIN_GOOGLE {
+        position        : absolute;
+        left            : 27.5rem;
+        top             : 7.4rem;
+    }
+    
+
+security: 
+  authentication: Page Is Public
+
+advanced: 
+  enable-meta-tags: false
+
+security: 
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: DISCLAIMER ==================================
+  id: 23521368406581644
+  identification: 
+    title: DISCLAIMER
+    type: Static Content
+
+  source: 
+    html-code: |
+      <p style="line-height: 185%; padding: 1.5rem; color: #555;">Unauthorized access to this system is forbidden and will be
+      prosecuted by law. By accessing this system, you agree that your actions may be monitored if unauthorized usage is suspected. Your IP address, username, browser and other available informations has been logged and has been sent to the server administrator. All activities on this system are monitored. Unauthorized access will be fully investigated and reported to the appropriate law enforcement agencies.</p>
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 6
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: WELCOME =====================================
+  id: 47585583127572946
+  identification: 
+    title: WELCOME
+    type: Static Content
+
+  source: 
+    html-code: |
+      <div id="WELCOME_BANNER">
+      <h1>Hey stranger, what is your name?</h1>
+      </div>
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: REGION_POSITION_01
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: None
+    render-components: Below Content
+
+  advanced: 
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P9999_USERNAME ===========================
+  id: 24011339265868741
+  identification: 
+    name: P9999_USERNAME
+    type: Text Field
+
+  label: 
+    label: Username
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: None
+    text-case: NO CHANGE
+    submit-when-enter-pressed: true
+    disabled: false
+
+  layout: 
+    sequence: 10
+    region: WELCOME # 47585583127572946
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 63461560868439163
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: true
+    maximum-length: 100
+
+  advanced: 
+    custom-attributes: 
+    - autocomplete="username"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9999_PASSWORD ===========================
+  id: 24011705231868741
+  identification: 
+    name: P9999_PASSWORD
+    type: Password
+
+  label: 
+    label: Password
+    alignment: Left
+
+  settings: 
+    submit-when-enter-pressed: true
+
+  layout: 
+    sequence: 40
+    region: WELCOME # 47585583127572946
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden # 63461237820439162
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-key
+    width: 40
+    value-placeholder: Password
+
+  validation: 
+    value-required: false
+    maximum-length: 100
+
+  advanced: 
+    custom-attributes: 
+    - autocomplete="current-password"
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: NEVER # 14512796942362028
+
+- # ====== Page Item: P9999_REMEMBER ===========================
+  id: 24012123275868743
+  identification: 
+    name: P9999_REMEMBER
+    type: Checkbox
+
+  label: 
+    label: Remember username
+    alignment: Left
+
+  settings: 
+    use-defaults: true
+
+  layout: 
+    sequence: 50
+    region: WELCOME # 47585583127572946
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Hidden # 63461237820439162
+    template-options: 
+    - '#DEFAULT#'
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: apex_authentication.persistent_cookies_enabled
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+  configuration: 
+    build-option: NEVER # 14512796942362028
+
+buttons: 
+- # ====== Button: LOGIN_GOOGLE ================================
+  id: 23521464747581645
+  identification: 
+    button-name: LOGIN_GOOGLE
+    label: Sign with Google
+
+  layout: 
+    sequence: 30
+    region: WELCOME # 47585583127572946
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text with Icon # 63464158031439167
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-lock-user
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:100:&SESSION.:APEX_AUTHENTICATON=GOOGLE:&DEBUG.:::'
+      page: 100 # #fa-navicon
+      request: APEX_AUTHENTICATON=GOOGLE
+
+    warn-on-unsaved-changes: Do Not Check
+
+  advanced: 
+    static-id: LOGIN_GOOGLE
+
+- # ====== Button: LOGIN =======================================
+  id: 24012554410868744
+  identification: 
+    button-name: LOGIN
+    label: Sign In
+
+  layout: 
+    sequence: 20
+    region: WELCOME # 47585583127572946
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 63463978601439167
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+  advanced: 
+    static-id: LOGIN
+
+processes: 
+- # ====== Process: Login ======================================
+  id: 24012872872868744
+  identification: 
+    name: Login
+    type: Invoke API
+    execution-chain: None
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: APEX_AUTHENTICATION
+    procedure-or-function: LOGIN
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  parameters: 
+  - # ====== Parameter: p_username ===============================
+    id: 24013373708868747
+    identification: 
+      name: p_username
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P9999_USERNAME
+
+    advanced: 
+      display-sequence: 1
+
+  - # ====== Parameter: p_password ===============================
+    id: 24013878408868748
+    identification: 
+      name: p_password
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P9999_PASSWORD
+
+    advanced: 
+      display-sequence: 2
+
+  - # ====== Parameter: p_set_persistent_auth ====================
+    id: 24014308043868748
+    identification: 
+      name: p_set_persistent_auth
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: true
+
+    value: 
+      type: API Default
+
+    advanced: 
+      display-sequence: 3
+
+- # ====== Process: Set Username Cookie ========================
+  id: 24014711138868749
+  identification: 
+    name: Set Username Cookie
+    type: Invoke API
+    execution-chain: None
+
+  settings: 
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: APEX_AUTHENTICATION
+    procedure-or-function: SEND_LOGIN_USERNAME_COOKIE
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  parameters: 
+  - # ====== Parameter: p_username ===============================
+    id: 24015279755868749
+    identification: 
+      name: p_username
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Expression
+      language: PL/SQL
+      pl/sql-expression: 'lower( :P9999_USERNAME )'
+
+    advanced: 
+      display-sequence: 1
+
+  - # ====== Parameter: p_consent ================================
+    id: 24015755403868749
+    identification: 
+      name: p_consent
+
+    parameter: 
+      direction: In
+      data-type: BOOLEAN
+      has-default: false
+
+    value: 
+      type: Item
+      item: P9999_REMEMBER
+
+    advanced: 
+      display-sequence: 2
+
+- # ====== Process: Get Username Cookie ========================
+  id: 24016261331868750
+  identification: 
+    name: Get Username Cookie
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      :P9999_USERNAME := apex_authentication.get_login_username_cookie;
+      :P9999_REMEMBER := case when :P9999_USERNAME is not null then 'Y' end;
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
+- # ====== Process: Clear Page(s) Cache ========================
+  id: 24016648742868750
+  identification: 
+    name: Clear Page(s) Cache
+    type: Clear Session State
+    execution-chain: None
+
+  settings: 
+    type: Clear all Items on the Current Page
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+

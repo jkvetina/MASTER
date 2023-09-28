@@ -147,20 +147,3 @@ substitutions:
   value: 
     static-value: APP_
 
-application-settings: 
-- # ====== Application Setting: FEEDBACK_ATTACHMENTS_YN ========
-  id: 24017417666886363
-  identification: 
-    name: FEEDBACK_ATTACHMENTS_YN
-
-  value: 
-    value: Y
-    required: false
-
-  advanced: 
-    valid-values: Y, N
-    on-upgrade-keep-value: true
-
-  configuration: 
-    build-option: 'Feature: Feedback' # 24017173311886357
-
