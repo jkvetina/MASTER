@@ -1,4 +1,41 @@
 ---
+- # ====== Authentication: MASTER - GOOGLE =====================
+  id: 24108060597028610
+  identification: 
+    name: MASTER - GOOGLE
+
+  subscription: 
+    master: 
+      app: 800 # Master
+      referenced-id: 24099271848341251 # GOOGLE
+
+  settings: 
+    type: Social Sign-In
+    credential-store: 62013508289982337
+    authentication-provider: Google
+    scope: profile,email
+    username: '#email#'
+    convert-username-to-upper-case: false
+    additional-user-attributes: email,name
+    verify-attributes: true
+
+  session-not-valid: 
+    redirect-to: URL
+    invalid-session-url: 
+      url: 'f?p=800:9999:0'
+      app: 800
+      page: 9999
+
+  login-processing: 
+    post-authentication-procedure-name: app_auth.after_auth
+    switch-in-session: true
+
+  post-logout-url: 
+    post-logout-url: 'f?p=800:9999:0'
+
+  real-application-security: 
+    ras-mode: Disabled
+
 - # ====== Authentication: MASTER - APEX_ACCOUNTS ==============
   id: 50432398701828085
   identification: 
@@ -33,11 +70,22 @@
       referenced-id: 63502441622441479 # OPEN_DOOR (TESTING ONLY)
 
   settings: 
-    type: Open Door Credentials
+    type: Custom
+    enable-legacy-authentication-attributes: false
+
+  session-not-valid: 
+    redirect-to: URL
+    invalid-session-url: 
+      url: 'f?p=800:9999:0'
+      app: 800
+      page: 9999
 
   login-processing: 
     post-authentication-procedure-name: app_auth.after_auth
     switch-in-session: false
+
+  post-logout-url: 
+    post-logout-url: 'f?p=800:9999:0'
 
   real-application-security: 
     ras-mode: Disabled

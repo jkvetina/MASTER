@@ -38,7 +38,7 @@ wwv_imp_workspace.create_flow(
 ,p_documentation_banner=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'Created by Jan Kvetina, 2/2022',
 'www.jankvetina.cz'))
-,p_authentication_id=>wwv_flow_imp.id(63502441622441479)
+,p_authentication_id=>wwv_flow_imp.id(24099271848341251)
 ,p_application_tab_set=>1
 ,p_logo_type=>'T'
 ,p_logo_text=>'&APP_NAME.'

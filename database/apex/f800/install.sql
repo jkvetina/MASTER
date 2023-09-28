@@ -3,6 +3,7 @@ prompt --install
 @@application/delete_application.sql
 @@application/create_application.sql
 @@application/user_interfaces.sql
+@@workspace/credentials/sso_google.sql
 @@application/shared_components/navigation/lists/navigation.sql
 @@application/shared_components/files/icons_app_icon_144_rounded_png.sql
 @@application/shared_components/files/icons_app_icon_256_rounded_png.sql
@@ -140,6 +141,7 @@ prompt --install
 @@application/shared_components/logic/build_options.sql
 @@application/shared_components/globalization/messages.sql
 @@application/shared_components/globalization/dyntranslations.sql
+@@application/shared_components/security/authentications/google.sql
 @@application/shared_components/security/authentications/apex_accounts.sql
 @@application/shared_components/security/authentications/open_door_testing_only.sql
 @@application/shared_components/plugins/template_component/theme_42_avatar.sql

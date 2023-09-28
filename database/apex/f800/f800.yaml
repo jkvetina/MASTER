@@ -30,14 +30,16 @@ advanced:
 
 authentication: 
   public-user: APEX_PUBLIC_USER
-  authentication-scheme: OPEN_DOOR (TESTING ONLY) # 63502441622441479
+  authentication-scheme: GOOGLE # 24099271848341251
 
 authorization: 
   source-for-role-or-group-schemes: Access Control User Role Assignments
 
 session-management: 
   rejoin-sessions: Disabled
+  maximum-session-length: 14400
   session-timeout-url: '#LOGOUT_URL#'
+  maximum-session-idle-time: 0
   session-idle-timeout-url: '#LOGOUT_URL#'
 
 session-state-protection: 
@@ -132,19 +134,33 @@ substitutions:
   value: 
     static-value: Master
 
-application-settings: 
-- # ====== Application Setting: APP_PREFIX =====================
-  id: 14513059611369287
+- # ====== Substitution: APP_DESC ==============================
+  id: 2
+  identification: 
+    name: APP_DESC
+
+- # ====== Substitution: APP_PREFIX ============================
+  id: 3
   identification: 
     name: APP_PREFIX
 
   value: 
-    value: APP_
-    required: true
+    static-value: APP_
+
+application-settings: 
+- # ====== Application Setting: FEEDBACK_ATTACHMENTS_YN ========
+  id: 24017417666886363
+  identification: 
+    name: FEEDBACK_ATTACHMENTS_YN
+
+  value: 
+    value: Y
+    required: false
 
   advanced: 
+    valid-values: Y, N
     on-upgrade-keep-value: true
 
-  comments: 
-    comments: Prefix for database objects relevant to this app
+  configuration: 
+    build-option: 'Feature: Feedback' # 24017173311886357
 

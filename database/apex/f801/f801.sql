@@ -33,7 +33,7 @@ prompt APPLICATION 801 - App Template
 -- Application Export:
 --   Application:     801
 --   Name:            App Template
---   Date and Time:   16:24 Pondělí Září 25, 2023
+--   Date and Time:   18:51 Čtvrtek Září 28, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -51,7 +51,7 @@ prompt APPLICATION 801 - App Template
 --       Navigation:
 --         Lists:                  1
 --       Security:
---         Authentication:         2
+--         Authentication:         3
 --         Authorization:          8
 --       User Interface:
 --         Themes:                 1
@@ -121,7 +121,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-09-25'
+,p_flow_version=>'2023-09-28'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -170,6 +170,17 @@ wwv_flow_imp_shared.create_user_interface(
 ,p_nav_bar_list_id=>wwv_flow_imp.id(13912259202248569)
 ,p_nav_bar_list_template_id=>wwv_flow_imp.id(14130134493277045)
 ,p_nav_bar_template_options=>'#DEFAULT#'
+);
+end;
+/
+prompt --workspace/credentials/sso_google
+begin
+wwv_imp_workspace.create_credential(
+ p_id=>wwv_flow_imp.id(62013508289982337)
+,p_name=>'SSO_GOOGLE'
+,p_static_id=>'SSO_GOOGLE'
+,p_authentication_type=>'OAUTH2_CLIENT_CREDENTIALS'
+,p_prompt_on_install=>true
 );
 end;
 /
@@ -3724,7 +3735,8 @@ wwv_flow_imp_shared.create_template(
 '            #BUILT_WITH_LOVE_USING_APEX#',
 '          </div>',
 '        </div>',
-'        <div class="t-Footer-top">',
+'        <div class="t-Footer-top" style="display: flex;">',
+'          <a href="f?p=800:985:&APP_SESSION.:::::" class="t-Footer-topButton BUTTON" title="" id="BUTTON_FEEDBACK">Feedback</a>',
 '          <a href="#top" class="t-Footer-topButton" id="t_Footer_topButton" title="&"APP_TEXT$APEX.UI.BACK_TO_TOP"." aria-label="&"APP_TEXT$APEX.UI.BACK_TO_TOP"."><span class="a-Icon icon-up-chevron" aria-hidden="true"></span></a>',
 '        </div>',
 '      </footer>',
@@ -3839,7 +3851,7 @@ wwv_flow_imp_shared.create_template(
 ,p_reference_id=>63188215361701831
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(22252836722245292)
+ p_id=>wwv_flow_imp.id(24002549916567696)
 ,p_page_template_id=>wwv_flow_imp.id(13992488231276959)
 ,p_name=>'After Logo'
 ,p_placeholder=>'AFTER_LOGO'
@@ -3851,7 +3863,7 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>4
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(22253387226245292)
+ p_id=>wwv_flow_imp.id(24003035777567696)
 ,p_page_template_id=>wwv_flow_imp.id(13992488231276959)
 ,p_name=>'After Navigation Bar'
 ,p_placeholder=>'AFTER_NAVIGATION_BAR'
@@ -3863,7 +3875,7 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>4
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(22253863236245292)
+ p_id=>wwv_flow_imp.id(24003566080567696)
 ,p_page_template_id=>wwv_flow_imp.id(13992488231276959)
 ,p_name=>'Before Navigation Bar'
 ,p_placeholder=>'BEFORE_NAVIGATION_BAR'
@@ -3875,7 +3887,7 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>4
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(22254388076245292)
+ p_id=>wwv_flow_imp.id(24004070017567697)
 ,p_page_template_id=>wwv_flow_imp.id(13992488231276959)
 ,p_name=>'Body'
 ,p_placeholder=>'BODY'
@@ -3887,7 +3899,7 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>12
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(22254846043245293)
+ p_id=>wwv_flow_imp.id(24004502650567697)
 ,p_page_template_id=>wwv_flow_imp.id(13992488231276959)
 ,p_name=>'Breadcrumb Bar'
 ,p_placeholder=>'REGION_POSITION_01'
@@ -3898,7 +3910,7 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(22255344851245293)
+ p_id=>wwv_flow_imp.id(24005082466567697)
 ,p_page_template_id=>wwv_flow_imp.id(13992488231276959)
 ,p_name=>'Dialogs, Drawers and Popups'
 ,p_placeholder=>'REGION_POSITION_04'
@@ -3910,7 +3922,7 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>12
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(22255828192245293)
+ p_id=>wwv_flow_imp.id(24005585972567697)
 ,p_page_template_id=>wwv_flow_imp.id(13992488231276959)
 ,p_name=>'Footer'
 ,p_placeholder=>'REGION_POSITION_05'
@@ -3922,7 +3934,7 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_max_fixed_grid_columns=>12
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(22256357489245293)
+ p_id=>wwv_flow_imp.id(24006067384567698)
 ,p_page_template_id=>wwv_flow_imp.id(13992488231276959)
 ,p_name=>'Top Navigation'
 ,p_placeholder=>'REGION_POSITION_06'
@@ -3933,7 +3945,7 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(22256895192245294)
+ p_id=>wwv_flow_imp.id(24006518899567698)
 ,p_page_template_id=>wwv_flow_imp.id(13992488231276959)
 ,p_name=>'Banner'
 ,p_placeholder=>'REGION_POSITION_07'
@@ -3944,7 +3956,7 @@ wwv_flow_imp_shared.create_page_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_page_tmpl_display_point(
- p_id=>wwv_flow_imp.id(22257352981245294)
+ p_id=>wwv_flow_imp.id(24007070038567698)
 ,p_page_template_id=>wwv_flow_imp.id(13992488231276959)
 ,p_name=>'Full Width Content'
 ,p_placeholder=>'REGION_POSITION_08'
@@ -15477,6 +15489,31 @@ begin
 null;
 end;
 /
+prompt --application/shared_components/security/authentications/master_google
+begin
+wwv_flow_imp_shared.create_authentication(
+ p_id=>wwv_flow_imp.id(24108060597028610)
+,p_name=>'MASTER - GOOGLE'
+,p_scheme_type=>'NATIVE_SOCIAL'
+,p_attribute_01=>wwv_flow_imp.id(62013508289982337)
+,p_attribute_02=>'GOOGLE'
+,p_attribute_07=>'profile,email'
+,p_attribute_09=>'#email#'
+,p_attribute_10=>'email,name'
+,p_attribute_11=>'N'
+,p_attribute_13=>'Y'
+,p_invalid_session_type=>'URL'
+,p_invalid_session_url=>'f?p=800:9999:0'
+,p_logout_url=>'f?p=800:9999:0'
+,p_post_auth_process=>'app_auth.after_auth'
+,p_cookie_name=>'&WORKSPACE_COOKIE.'
+,p_use_secure_cookie_yn=>'N'
+,p_ras_mode=>0
+,p_switch_in_session_yn=>'Y'
+,p_reference_id=>24099271848341251
+);
+end;
+/
 prompt --application/shared_components/security/authentications/master_apex_accounts
 begin
 wwv_flow_imp_shared.create_authentication(
@@ -15497,7 +15534,11 @@ begin
 wwv_flow_imp_shared.create_authentication(
  p_id=>wwv_flow_imp.id(50432601105828086)
 ,p_name=>'MASTER - OPEN_DOOR (TESTING ONLY)'
-,p_scheme_type=>'NATIVE_OPEN_DOOR'
+,p_scheme_type=>'NATIVE_CUSTOM'
+,p_attribute_05=>'N'
+,p_invalid_session_type=>'URL'
+,p_invalid_session_url=>'f?p=800:9999:0'
+,p_logout_url=>'f?p=800:9999:0'
 ,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
 ,p_use_secure_cookie_yn=>'N'
