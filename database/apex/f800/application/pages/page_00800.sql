@@ -18,7 +18,7 @@ wwv_flow_imp_page.create_page(
 ,p_step_title=>'Administration'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
-,p_page_css_classes=>'RIGHT_ALIGN'
+,p_page_css_classes=>'RIGHT_FIXED'
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'

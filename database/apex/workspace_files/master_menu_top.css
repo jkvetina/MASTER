@@ -102,6 +102,12 @@
     left:                   auto;
     right:                  0;
 }
+#t_Header > #top_header > nav ul li.RIGHT_FIXED ul {
+    position                : fixed;
+    left                    : auto;
+    right                   : 0;
+    top                     : 3rem;
+}
 #t_Header > #top_header > nav ul li.RIGHT ul li,
 #t_Header > #top_header > nav ul li.RIGHT ul li > * {
     text-align:             right;
