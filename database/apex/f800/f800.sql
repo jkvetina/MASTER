@@ -33,11 +33,11 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   13:14 Pátek Září 29, 2023
+--   Date and Time:   13:52 Pátek Září 29, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
---     Pages:                     28
+--     Pages:                     29
 --       Items:                   70
 --       Computations:             5
 --       Processes:               21
@@ -20227,7 +20227,7 @@ wwv_flow_imp_page.create_page(
 ,p_step_title=>'Administration'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
-,p_page_css_classes=>'RIGHT_ALIGN'
+,p_page_css_classes=>'RIGHT_FIXED'
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -29077,6 +29077,23 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_DIALOG_CLOSE'
+);
+end;
+/
+prompt --application/pages/page_00986
+begin
+wwv_flow_imp_page.create_page(
+ p_id=>986
+,p_name=>'Feedback'
+,p_alias=>'FEEDBACKS'
+,p_step_title=>'Feedback'
+,p_autocomplete_on_off=>'OFF'
+,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_page_template_options=>'#DEFAULT#'
+,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
+,p_protection_level=>'C'
+,p_last_updated_by=>'DEV'
+,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 );
 end;
 /

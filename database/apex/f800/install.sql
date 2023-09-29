@@ -178,6 +178,7 @@ prompt --install
 @@application/pages/page_00900.sql
 @@application/pages/page_00980.sql
 @@application/pages/page_00985.sql
+@@application/pages/page_00986.sql
 @@application/pages/page_09999.sql
 @@application/deployment/definition.sql
 @@application/deployment/checks.sql
