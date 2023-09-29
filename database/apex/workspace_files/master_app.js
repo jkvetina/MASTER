@@ -150,6 +150,8 @@ var init_page = function() {
                     for (var i = 0 ; i <= ping_loop; i++) {
                         clearTimeout(i); 
                     }
+                    // also redirect to login page
+                    window.location.href = apex.item('P0_SESSION_TIMEOUT_URL').getValue();
                 }
             }
 
