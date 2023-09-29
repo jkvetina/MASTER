@@ -44,6 +44,34 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_01=>'Y'
 ,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
 );
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(23521964459581650)
+,p_name=>'P0_HELP_PAGE_ID'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(14690651926436120)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(24148870799647501)
+,p_name=>'P0_SESSION_TIMEOUT_URL'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(14690651926436120)
+,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'APEX_PAGE.GET_URL (',
+'    p_application   => 800,',
+'    p_page          => 9999,',
+'    p_session       => 0,',
+'    p_items         => ''P9999_ERROR'',',
+'    p_values        => ''TIMEOUT''',
+')'))
+,p_source_type=>'EXPRESSION'
+,p_source_language=>'PLSQL'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
 wwv_flow_imp.component_end;
 end;
 /

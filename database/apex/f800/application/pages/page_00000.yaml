@@ -85,3 +85,72 @@ page-items:
   comments: 
     comments: Interval in seconds to fire AJAX_PING process
 
+- # ====== Page Item: P0_HELP_PAGE_ID ==========================
+  id: 23521964459581650
+  identification: 
+    name: P0_HELP_PAGE_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: ITEMS # 14690651926436120
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P0_SESSION_TIMEOUT_URL ===================
+  id: 24148870799647501
+  identification: 
+    name: P0_SESSION_TIMEOUT_URL
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 30
+    region: ITEMS # 14690651926436120
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: |
+      APEX_PAGE.GET_URL (
+          p_application   => 800,
+          p_page          => 9999,
+          p_session       => 0,
+          p_items         => 'P9999_ERROR',
+          p_values        => 'TIMEOUT'
+      )
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+

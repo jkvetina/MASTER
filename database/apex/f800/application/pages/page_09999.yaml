@@ -231,14 +231,14 @@ regions:
       expand-shortcuts: false
 
 page-items: 
-- # ====== Page Item: P9999_TIMEOUT ============================
+- # ====== Page Item: P9999_ERROR ==============================
   id: 23521694882581647
   identification: 
-    name: P9999_TIMEOUT
+    name: P9999_ERROR
     type: Hidden
 
   settings: 
-    value-protected: true
+    value-protected: false
 
   layout: 
     sequence: 40
@@ -254,12 +254,12 @@ page-items:
 
   session-state: 
     data-type: VARCHAR2
-    storage: Per Session (Persistent)
+    storage: Per Request (Memory Only)
 
   security: 
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
+    restricted-characters: Allowlist for a-Z, 0-9 and space
 
 - # ====== Page Item: P9999_USERNAME ===========================
   id: 24011339265868741
@@ -399,10 +399,10 @@ buttons:
     pl/sql-expression: NV('APP_BUILDER_SESSION') > 0
 
 dynamic-actions: 
-- # ====== Dynamic Action: SHOW_TIMEOUT ========================
+- # ====== Dynamic Action: SHOW_ERROR ==========================
   id: 23521787343581648
   identification: 
-    name: SHOW_TIMEOUT
+    name: SHOW_ERROR
 
   execution: 
     sequence: 10
@@ -415,7 +415,7 @@ dynamic-actions:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P9999_TIMEOUT
+    item: P9999_ERROR
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
@@ -430,9 +430,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: SHOW_TIMEOUT # 23521787343581648
+      event: SHOW_ERROR # 23521787343581648
       fire-when-event-result-is: True
       fire-on-initialization: false
+
+    client-side-condition: 
+      type: Item = Value
+      item: P9999_ERROR
+      value: TIMEOUT
 
 processes: 
 - # ====== Process: LOGIN ======================================

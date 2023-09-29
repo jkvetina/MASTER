@@ -33,7 +33,7 @@ prompt APPLICATION 801 - App Template
 -- Application Export:
 --   Application:     801
 --   Name:            App Template
---   Date and Time:   21:03 Čtvrtek Září 28, 2023
+--   Date and Time:   10:41 Pátek Září 29, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -120,7 +120,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-09-28'
+,p_flow_version=>'2023-09-29'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -15502,7 +15502,7 @@ wwv_flow_imp_shared.create_authentication(
 ,p_attribute_11=>'N'
 ,p_attribute_13=>'Y'
 ,p_invalid_session_type=>'URL'
-,p_invalid_session_url=>'f?p=800:9999:0::::P9999_TIMEOUT:Y'
+,p_invalid_session_url=>'f?p=800:9999:0::::P9999_ERROR:TIMEOUT'
 ,p_logout_url=>'f?p=800:9999:0'
 ,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
@@ -15520,7 +15520,7 @@ wwv_flow_imp_shared.create_authentication(
 ,p_name=>'MASTER - APEX_ACCOUNTS'
 ,p_scheme_type=>'NATIVE_APEX_ACCOUNTS'
 ,p_invalid_session_type=>'URL'
-,p_invalid_session_url=>'f?p=800:9999:0::::P9999_TIMEOUT:Y'
+,p_invalid_session_url=>'f?p=800:9999:0::::P9999_ERROR:TIMEOUT'
 ,p_logout_url=>'f?p=800:9999:0'
 ,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
@@ -15539,7 +15539,7 @@ wwv_flow_imp_shared.create_authentication(
 ,p_scheme_type=>'NATIVE_CUSTOM'
 ,p_attribute_05=>'N'
 ,p_invalid_session_type=>'URL'
-,p_invalid_session_url=>'f?p=800:9999:0::::P9999_TIMEOUT:Y'
+,p_invalid_session_url=>'f?p=800:9999:0::::P9999_ERROR:TIMEOUT'
 ,p_logout_url=>'f?p=800:9999:0'
 ,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'

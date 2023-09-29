@@ -150,14 +150,16 @@ wwv_flow_imp_page.create_page_button(
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23521694882581647)
-,p_name=>'P9999_TIMEOUT'
+,p_name=>'P9999_ERROR'
 ,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(47585583127572946)
 ,p_use_cache_before_default=>'NO'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_warn_on_unsaved_changes=>'I'
+,p_is_persistent=>'N'
+,p_restricted_characters=>'US_ONLY'
 ,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
+,p_attribute_01=>'N'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(24011339265868741)
@@ -183,12 +185,12 @@ wwv_flow_imp_page.create_page_item(
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(23521787343581648)
-,p_name=>'SHOW_TIMEOUT'
+,p_name=>'SHOW_ERROR'
 ,p_event_sequence=>10
 ,p_bind_type=>'bind'
 ,p_bind_event_type=>'ready'
 ,p_display_when_type=>'ITEM_IS_NOT_NULL'
-,p_display_when_cond=>'P9999_TIMEOUT'
+,p_display_when_cond=>'P9999_ERROR'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(23521875192581649)
@@ -200,6 +202,9 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'show_error(''Your session has ended.'');',
 ''))
+,p_client_condition_type=>'EQUALS'
+,p_client_condition_element=>'P9999_ERROR'
+,p_client_condition_expression=>'TIMEOUT'
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(24012872872868744)

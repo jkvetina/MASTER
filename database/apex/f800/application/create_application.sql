@@ -23,9 +23,9 @@ wwv_imp_workspace.create_flow(
 ,p_checksum_salt=>'9CBCC171912554FE4A8996BCA5DC653BEC59C661B634BF18F954B71B4DA3D6FD'
 ,p_bookmark_checksum_function=>'SH512'
 ,p_max_session_length_sec=>32400
-,p_on_max_session_timeout_url=>'f?p=800:9999:0::::P9999_TIMEOUT:Y'
+,p_on_max_session_timeout_url=>'f?p=800:9999:0::::P9999_ERROR:TIMEOUT'
 ,p_max_session_idle_sec=>5400
-,p_on_max_idle_timeout_url=>'f?p=800:9999:0::::P9999_TIMEOUT:Y'
+,p_on_max_idle_timeout_url=>'f?p=800:9999:0::::P9999_ERROR:TIMEOUT'
 ,p_compatibility_mode=>'21.2'
 ,p_session_state_commits=>'IMMEDIATE'
 ,p_flow_language=>'en'
@@ -45,7 +45,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-09-28'
+,p_flow_version=>'2023-09-29'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
