@@ -140,6 +140,7 @@ CREATE OR REPLACE PACKAGE BODY app_nav AS
 
         -- refresh MV
         app.refresh_mv(app_nav.c_mv, in_wait => TRUE);
+        APEX_APPLICATION.G_PRINT_SUCCESS_MESSAGE := '';     -- remove message from MV refresh
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
