@@ -17,7 +17,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'SCHEDULERS'
 ,p_step_title=>'Schedulers'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24261994233103408)  -- ADMIN - DASHBOARD
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'

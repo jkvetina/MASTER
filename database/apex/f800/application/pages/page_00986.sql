@@ -17,10 +17,11 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'FEEDBACKS'
 ,p_step_title=>'Feedback'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24261994233103408)  -- ADMIN - DASHBOARD
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
+,p_page_component_map=>'11'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 );

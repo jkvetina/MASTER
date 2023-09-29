@@ -5,7 +5,7 @@ identification:
   name: Administration
   alias: ADMINISTRATION
   title: Administration
-  page-group: ADMIN # 43461648604712360
+  page-group: ADMIN - DASHBOARD # 24261994233103408
 
 appearance: 
   page-mode: Normal

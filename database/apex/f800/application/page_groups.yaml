@@ -14,13 +14,28 @@
   identification: 
     name: QA
 
+- # ====== Page Group: ADMIN - DASHBOARD =======================
+  id: 24261994233103408
+  identification: 
+    name: ADMIN - DASHBOARD
+
+- # ====== Page Group: ADMIN - SETTINGS ========================
+  id: 24262084363106217
+  identification: 
+    name: ADMIN - SETTINGS
+
+- # ====== Page Group: ADMIN - OTHERS ==========================
+  id: 24264527170116211
+  identification: 
+    name: ADMIN - OTHERS
+
 - # ====== Page Group:  MAIN ===================================
   id: 43461472849711906
   identification: 
     name: ' MAIN'
 
-- # ====== Page Group: ADMIN ===================================
+- # ====== Page Group: ADMIN - USERS & ROLES ===================
   id: 43461648604712360
   identification: 
-    name: ADMIN
+    name: ADMIN - USERS & ROLES
 

@@ -17,7 +17,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'MAP-COMPONENTS'
 ,p_step_title=>'Map Components'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN - USERS & ROLES
 ,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '.is-readonly span.u-checkbox {',
 '    display: none !important;',

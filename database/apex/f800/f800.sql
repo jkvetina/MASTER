@@ -33,7 +33,7 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   13:52 Pátek Září 29, 2023
+--   Date and Time:   15:12 Pátek Září 29, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -1202,8 +1202,20 @@ wwv_flow_imp_page.create_page_group(
 ,p_group_name=>' MAIN'
 );
 wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
-,p_group_name=>'ADMIN'
+ p_id=>wwv_flow_imp.id(24261994233103408)  -- ADMIN - DASHBOARD
+,p_group_name=>'ADMIN - DASHBOARD'
+);
+wwv_flow_imp_page.create_page_group(
+ p_id=>wwv_flow_imp.id(24264527170116211)  -- ADMIN - OTHERS
+,p_group_name=>'ADMIN - OTHERS'
+);
+wwv_flow_imp_page.create_page_group(
+ p_id=>wwv_flow_imp.id(24262084363106217)  -- ADMIN - SETTINGS
+,p_group_name=>'ADMIN - SETTINGS'
+);
+wwv_flow_imp_page.create_page_group(
+ p_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN - USERS & ROLES
+,p_group_name=>'ADMIN - USERS & ROLES'
 );
 wwv_flow_imp_page.create_page_group(
  p_id=>wwv_flow_imp.id(23033093447426599)  -- QA
@@ -20190,7 +20202,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'NOTIFICATIONS'
 ,p_step_title=>'Notifications'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24264527170116211)  -- ADMIN - OTHERS
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -20208,7 +20220,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'UPLOADER'
 ,p_step_title=>'Uploader'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24264527170116211)  -- ADMIN - OTHERS
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -20226,7 +20238,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'ADMINISTRATION'
 ,p_step_title=>'Administration'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24261994233103408)  -- ADMIN - DASHBOARD
 ,p_page_css_classes=>'RIGHT_FIXED'
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
@@ -20254,7 +20266,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'USERS'
 ,p_step_title=>'Users'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN - USERS & ROLES
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -20660,7 +20672,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'MAP-ROLES'
 ,p_step_title=>'Map Roles'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN - USERS & ROLES
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -20678,7 +20690,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'ROLES'
 ,p_step_title=>'Roles'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN - USERS & ROLES
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -21291,7 +21303,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'MAP-PAGES'
 ,p_step_title=>'Map Pages'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN - USERS & ROLES
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -21309,7 +21321,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'MAP-COMPONENTS'
 ,p_step_title=>'Map Components'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN - USERS & ROLES
 ,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '.is-readonly span.u-checkbox {',
 '    display: none !important;',
@@ -21332,7 +21344,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'MAP-TABLES'
 ,p_step_title=>'Map Tables'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN - USERS & ROLES
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -21350,7 +21362,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'MAP-PROCEDURES'
 ,p_step_title=>'Map Procedures'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN - USERS & ROLES
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -21368,7 +21380,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'NAVIGATION'
 ,p_step_title=>'Navigation'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24264527170116211)  -- ADMIN - OTHERS
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_page_comment=>'Navigation setup page'
@@ -22373,7 +22385,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'SETTINGS'
 ,p_step_title=>'Settings'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24262084363106217)  -- ADMIN - SETTINGS
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -22938,7 +22950,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'LOVS'
 ,p_step_title=>'LOVs'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24262084363106217)  -- ADMIN - SETTINGS
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -23723,7 +23735,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'CONTEXTS'
 ,p_step_title=>'Contexts'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24262084363106217)  -- ADMIN - SETTINGS
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -24141,7 +24153,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'TRANSLATIONS'
 ,p_step_title=>'Translations'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24262084363106217)  -- ADMIN - SETTINGS
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -24159,7 +24171,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'DASHBOARD'
 ,p_step_title=>'Dashboard'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24261994233103408)  -- ADMIN - DASHBOARD
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -24177,7 +24189,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'LOGS'
 ,p_step_title=>'Logs'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24261994233103408)  -- ADMIN - DASHBOARD
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -24195,7 +24207,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'SCHEDULERS'
 ,p_step_title=>'Schedulers'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24261994233103408)  -- ADMIN - DASHBOARD
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -24213,7 +24225,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'TRACKING'
 ,p_step_title=>'Tracking'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24261994233103408)  -- ADMIN - DASHBOARD
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -28587,7 +28599,7 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'EVENTS'
 ,p_step_title=>'Events'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24261994233103408)  -- ADMIN - DASHBOARD
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
@@ -29088,10 +29100,11 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'FEEDBACKS'
 ,p_step_title=>'Feedback'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
+,p_group_id=>wwv_flow_imp.id(24261994233103408)  -- ADMIN - DASHBOARD
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
+,p_page_component_map=>'11'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 );

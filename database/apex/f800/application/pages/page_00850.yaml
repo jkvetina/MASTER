@@ -5,7 +5,7 @@ identification:
   name: '#fa-map-signs Navigation'
   alias: NAVIGATION
   title: Navigation
-  page-group: ADMIN # 43461648604712360
+  page-group: ADMIN - OTHERS # 24264527170116211
 
 appearance: 
   page-mode: Normal

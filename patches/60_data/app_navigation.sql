@@ -15,7 +15,7 @@ USING (
     SELECT 800 AS app_id, 700 AS page_id, NULL AS parent_id, 'Y' AS is_hidden, 'Y' AS is_reset, 820 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 705 AS page_id, 700 AS parent_id, 'Y' AS is_hidden, 'Y' AS is_reset, 10 AS order#, 1 AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 750 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, 4 AS col_id FROM DUAL UNION ALL
-    SELECT 800 AS app_id, 770 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 25 AS order#, 4 AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 770 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 20 AS order#, 4 AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 800 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 800 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 810 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, 2 AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 815 AS page_id, 810 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, NULL AS col_id FROM DUAL UNION ALL
@@ -28,7 +28,7 @@ USING (
     SELECT 800 AS app_id, 860 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 15 AS order#, 3 AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 862 AS page_id, 860 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 865 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, 3 AS col_id FROM DUAL UNION ALL
-    SELECT 800 AS app_id, 870 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 20 AS order#, 4 AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 870 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 20 AS order#, 3 AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 880 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, 1 AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 885 AS page_id, 880 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 888 AS page_id, 880 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 15 AS order#, NULL AS col_id FROM DUAL UNION ALL

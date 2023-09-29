@@ -16,8 +16,20 @@ wwv_flow_imp_page.create_page_group(
 ,p_group_name=>' MAIN'
 );
 wwv_flow_imp_page.create_page_group(
- p_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN
-,p_group_name=>'ADMIN'
+ p_id=>wwv_flow_imp.id(24261994233103408)  -- ADMIN - DASHBOARD
+,p_group_name=>'ADMIN - DASHBOARD'
+);
+wwv_flow_imp_page.create_page_group(
+ p_id=>wwv_flow_imp.id(24264527170116211)  -- ADMIN - OTHERS
+,p_group_name=>'ADMIN - OTHERS'
+);
+wwv_flow_imp_page.create_page_group(
+ p_id=>wwv_flow_imp.id(24262084363106217)  -- ADMIN - SETTINGS
+,p_group_name=>'ADMIN - SETTINGS'
+);
+wwv_flow_imp_page.create_page_group(
+ p_id=>wwv_flow_imp.id(43461648604712360)  -- ADMIN - USERS & ROLES
+,p_group_name=>'ADMIN - USERS & ROLES'
 );
 wwv_flow_imp_page.create_page_group(
  p_id=>wwv_flow_imp.id(23033093447426599)  -- QA
