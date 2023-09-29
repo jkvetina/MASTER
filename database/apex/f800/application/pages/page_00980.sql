@@ -24,7 +24,8 @@ wwv_flow_imp_page.create_page(
 '  padding               : 0 0.5rem;',
 '}',
 '.DRAWER p,',
-'.DRAWER ul li {',
+'.DRAWER ul li,',
+'.DRAWER ul li:before {',
 '  font-size             : 1rem;',
 '  line-height           : 1.5rem;',
 '}',
@@ -37,7 +38,6 @@ wwv_flow_imp_page.create_page(
 '  content               : ''\2013'';  /* ndash */',
 '  position              : absolute;',
 '  margin                : 0 3rem 0 -1.5rem;',
-'  line-height           : 1.75rem;',
 '}',
 ''))
 ,p_step_template=>wwv_flow_imp.id(63289183138439042)
