@@ -1444,22 +1444,12 @@ processes:
   source: 
     location: Local Database
     language: PL/SQL
-    pl/sql-code: |
-      app.refresh_mv(app_nav.c_mv);
-      
-      -- redirect to have correct navigation menu rendered
-      core.redirect (
-          in_page_id => core.get_page_id()
-      );
-      
+    pl/sql-code: app.refresh_mv(app_nav.c_mv, in_wait => TRUE);
 
   execution: 
     sequence: 30
     point: Processing
     run-process: Once Per Page Visit (default)
-
-  success-message: 
-    success-message: Refresh requested
 
   error: 
     display-location: Inline in Notification

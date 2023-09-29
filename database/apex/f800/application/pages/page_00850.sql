@@ -963,18 +963,10 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_PLSQL'
 ,p_process_name=>'REFRESH_MV'
-,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'app.refresh_mv(app_nav.c_mv);',
-'',
-'-- redirect to have correct navigation menu rendered',
-'core.redirect (',
-'    in_page_id => core.get_page_id()',
-');',
-''))
+,p_process_sql_clob=>'app.refresh_mv(app_nav.c_mv, in_wait => TRUE);'
 ,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_process_when_button_id=>wwv_flow_imp.id(18467748806794069)
-,p_process_success_message=>'Refresh requested'
 ,p_internal_uid=>18470080789804984
 );
 wwv_flow_imp_page.create_page_process(
