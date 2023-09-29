@@ -236,3 +236,11 @@ ul.MULTI_12 { -moz-column-count : 12; -webkit-column-count : 12; column-count : 
     font-weight             : 600;
 }
 
+
+
+/* SUB ITEMS, MARGIN-LEFT SET AS STYLE ATTR IN NAV VIEW */
+#t_Header > #top_header > nav ul li a.SECOND_LEVEL {
+    height                  : 2.7rem;
+    margin                  : -0.3rem 0.5rem 0 0;
+}
+

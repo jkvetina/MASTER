@@ -179,7 +179,7 @@ n AS (
         NULL                    AS attribute04,
         --
         CASE WHEN LEVEL > 2
-            THEN ' style="margin: -0.3rem 0.5rem -0.3rem ' || ((LEVEL - 2) + 1) || 'rem;"'
+            THEN ' style="margin-left: ' || ((LEVEL - 2) + 0.6) || 'rem;"'
             END AS attribute05,
         --
         NULL                    AS attribute06,
