@@ -45,7 +45,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-09-29'
+,p_flow_version=>'2023-09-30'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -68,7 +68,13 @@ wwv_imp_workspace.create_flow(
 ,p_files_version=>18
 ,p_print_server_type=>'NATIVE'
 ,p_is_pwa=>'Y'
-,p_pwa_is_installable=>'N'
+,p_pwa_is_installable=>'Y'
+,p_pwa_manifest_display=>'fullscreen'
+,p_pwa_manifest_orientation=>'any'
+,p_pwa_apple_status_bar_style=>'default'
+,p_pwa_is_push_enabled=>'Y'
+,p_pwa_push_credential_id=>wwv_flow_imp.id(24266049089366575)
+,p_pwa_vapid_contact_info=>'jan.kvetina@gmail.com'
 );
 wwv_flow_imp.component_end;
 end;

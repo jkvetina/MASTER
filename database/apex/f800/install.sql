@@ -3,6 +3,7 @@ prompt --install
 @@application/delete_application.sql
 @@application/create_application.sql
 @@application/user_interfaces.sql
+@@workspace/credentials/app_800_push_notifications_credentials.sql
 @@workspace/credentials/sso_google.sql
 @@application/shared_components/navigation/lists/navigation.sql
 @@application/shared_components/files/icons_app_icon_144_rounded_png.sql
