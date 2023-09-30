@@ -23,44 +23,38 @@ navigation:
 
 css: 
   inline: |
-    #WELCOME_BANNER {
+    #BANNER {
         background      : #615d51;
         color           : #fff;
-        padding         : 2.5rem;
-        height          : 17rem;
-        margin-top      : -3rem;  /* to hide white bg on page overscroll */
+        padding         : 1.5rem 2.5rem;
+        min-height      : 17rem;
+        margin          : -3rem -1rem 2rem;
     }
-    #WELCOME_BANNER h1 {
+    #BANNER h1 {
         font-family     : var(--ut-hero-region-title-font-family), sans-serif;
         font-weight     : 300;
         font-size       : 2.4rem;
         margin          : 3rem 0 0.5rem !important;
     }
-    #WELCOME_BANNER ::selection {
+    #BANNER ::selection {
       color             : #fff;
       background        : #333;
     }
     
-    /* MOVE LOGIN FIELDS INTO BANNER */
-    div#P9999_USERNAME_CONTAINER {
-        width           : 20rem;
-        position        : absolute;
-        left            : 2rem;
-        top             : 6.5rem;
-    }
     div#P9999_USERNAME_error {
         color           : #fff;
     }
-    button#LOGIN {
-        position        : absolute;
-        left            : 22.5rem;
-        top             : 7.4rem;
-    }
+    button#LOGIN,
     button#LOGIN_GOOGLE {
-        position        : absolute;
-        left            : 27.5rem;
-        top             : 7.4rem;
+        margin-top      : 0.8rem;
     }
+    
+    .DISCLAIMER {
+        line-height     : 185%;
+        padding         : 0 1.5rem 1.5rem;
+        color           : #555;
+    }
+    
     
 
 security: 
@@ -94,11 +88,11 @@ regions:
 
   source: 
     html-code: |
-      <p style="line-height: 185%; padding: 1.5rem; color: #555;">Unauthorized access to this system is forbidden and will be
+      <p class="DISCLAIMER">Unauthorized access to this system is forbidden and will be
       prosecuted by law. By accessing this system, you agree that your actions may be monitored if unauthorized usage is suspected. Your IP address, username, browser and other available informations has been logged and has been sent to the server administrator. All activities on this system are monitored. Unauthorized access will be fully investigated and reported to the appropriate law enforcement agencies.</p>
 
   layout: 
-    sequence: 10
+    sequence: 20
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -132,28 +126,21 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: ADJUST_SSO_POSITION =========================
-  id: 23521511064581646
+- # ====== Region: WELCOME =====================================
+  id: 47585583127572946
   identification: 
-    title: ADJUST_SSO_POSITION
+    title: WELCOME
     type: Static Content
 
   source: 
     html-code: |
-      <style>
-      
-      button#LOGIN_GOOGLE {
-        left: 2.5rem;
-      
-      }
-      
-      </style>
+      <h1>Hey stranger, what is your name?</h1>
       
 
   layout: 
     sequence: 10
-    parent-region: WELCOME # 47585583127572946
-    position: SUB_REGIONS
+    parent-region: No Parent
+    position: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -164,59 +151,15 @@ regions:
     template: Blank with Attributes # 63325094538439079
     template-options: 
     - '#DEFAULT#'
-    render-components: Above Content
+    render-components: Below Content
 
   accessibility: 
     use-landmark: true
     landmark-type: Template Default
 
   advanced: 
+    static-id: BANNER
     region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-side-condition: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: NV('APP_BUILDER_SESSION') IS NULL
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: WELCOME =====================================
-  id: 47585583127572946
-  identification: 
-    title: WELCOME
-    type: Static Content
-
-  source: 
-    html-code: |
-      <div id="WELCOME_BANNER">
-      <h1>Hey stranger, what is your name?</h1>
-      </div>
-
-  layout: 
-    sequence: 20
-    parent-region: No Parent
-    position: REGION_POSITION_01
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: None
-    render-components: Below Content
-
-  advanced: 
     exclude-title-from-translation: false
 
   server-cache: 
@@ -287,7 +230,7 @@ page-items:
     start-new-row: true
     column: Automatic
     new-column: true
-    column-span: Automatic
+    column-span: 3
     label-column-span: Page Template Default
 
   appearance: 
@@ -314,11 +257,6 @@ page-items:
   quick-picks: 
     show-quick-picks: false
 
-  server-side-condition: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: NV('APP_BUILDER_SESSION') > 0
-
   security: 
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
@@ -336,9 +274,9 @@ buttons:
     region: WELCOME # 47585583127572946
     position: BODY
     start-new-layout: false
-    start-new-row: true
+    start-new-row: false
     column: Automatic
-    new-column: true
+    new-column: false
     column-span: Automatic
     alignment: Left center
 
@@ -373,7 +311,7 @@ buttons:
     region: WELCOME # 47585583127572946
     position: BODY
     start-new-layout: false
-    start-new-row: true
+    start-new-row: false
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -392,11 +330,6 @@ buttons:
 
   advanced: 
     static-id: LOGIN
-
-  server-side-condition: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: NV('APP_BUILDER_SESSION') > 0
 
 dynamic-actions: 
 - # ====== Dynamic Action: SHOW_ERROR ==========================
@@ -460,9 +393,6 @@ processes:
 
   error: 
     display-location: Inline in Notification
-
-  security: 
-    authorization-scheme: IS_DEVELOPER # 60089834032939902
 
   parameters: 
   - # ====== Parameter: p_username ===============================

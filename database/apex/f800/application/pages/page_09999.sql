@@ -21,44 +21,38 @@ wwv_flow_imp_page.create_page(
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(14547468167324179)  -- __ INTERNAL
 ,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'#WELCOME_BANNER {',
+'#BANNER {',
 '    background      : #615d51;',
 '    color           : #fff;',
-'    padding         : 2.5rem;',
-'    height          : 17rem;',
-'    margin-top      : -3rem;  /* to hide white bg on page overscroll */',
+'    padding         : 1.5rem 2.5rem;',
+'    min-height      : 17rem;',
+'    margin          : -3rem -1rem 2rem;',
 '}',
-'#WELCOME_BANNER h1 {',
+'#BANNER h1 {',
 '    font-family     : var(--ut-hero-region-title-font-family), sans-serif;',
 '    font-weight     : 300;',
 '    font-size       : 2.4rem;',
 '    margin          : 3rem 0 0.5rem !important;',
 '}',
-'#WELCOME_BANNER ::selection {',
+'#BANNER ::selection {',
 '  color             : #fff;',
 '  background        : #333;',
 '}',
 '',
-'/* MOVE LOGIN FIELDS INTO BANNER */',
-'div#P9999_USERNAME_CONTAINER {',
-'    width           : 20rem;',
-'    position        : absolute;',
-'    left            : 2rem;',
-'    top             : 6.5rem;',
-'}',
 'div#P9999_USERNAME_error {',
 '    color           : #fff;',
 '}',
-'button#LOGIN {',
-'    position        : absolute;',
-'    left            : 22.5rem;',
-'    top             : 7.4rem;',
-'}',
+'button#LOGIN,',
 'button#LOGIN_GOOGLE {',
-'    position        : absolute;',
-'    left            : 27.5rem;',
-'    top             : 7.4rem;',
+'    margin-top      : 0.8rem;',
 '}',
+'',
+'.DISCLAIMER {',
+'    line-height     : 185%;',
+'    padding         : 0 1.5rem 1.5rem;',
+'    color           : #555;',
+'}',
+'',
 ''))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_overwrite_navigation_list=>'Y'
@@ -73,10 +67,10 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_name=>'DISCLAIMER'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63325094538439079)
-,p_plug_display_sequence=>10
+,p_plug_display_sequence=>20
 ,p_plug_grid_column_span=>6
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'<p style="line-height: 185%; padding: 1.5rem; color: #555;">Unauthorized access to this system is forbidden and will be',
+'<p class="DISCLAIMER">Unauthorized access to this system is forbidden and will be',
 'prosecuted by law. By accessing this system, you agree that your actions may be monitored if unauthorized usage is suspected. Your IP address, username, browser and other available informations has been logged and has been sent to the server administ'
 ||'rator. All activities on this system are monitored. Unauthorized access will be fully investigated and reported to the appropriate law enforcement agencies.</p>'))
 ,p_attribute_01=>'N'
@@ -85,37 +79,14 @@ wwv_flow_imp_page.create_page_plug(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(47585583127572946)
 ,p_plug_name=>'WELCOME'
-,p_plug_display_sequence=>20
-,p_plug_display_point=>'REGION_POSITION_01'
-,p_plug_item_display_point=>'BELOW'
-,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'<div id="WELCOME_BANNER">',
-'<h1>Hey stranger, what is your name?</h1>',
-'</div>'))
-,p_attribute_01=>'N'
-,p_attribute_02=>'HTML'
-);
-wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(23521511064581646)
-,p_plug_name=>'ADJUST_SSO_POSITION'
-,p_parent_plug_id=>wwv_flow_imp.id(47585583127572946)
+,p_region_name=>'BANNER'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63325094538439079)
 ,p_plug_display_sequence=>10
-,p_plug_display_point=>'SUB_REGIONS'
+,p_plug_item_display_point=>'BELOW'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'<style>',
-'',
-'button#LOGIN_GOOGLE {',
-'  left: 2.5rem;',
-'',
-'}',
-'',
-'</style>',
+'<h1>Hey stranger, what is your name?</h1>',
 ''))
-,p_plug_display_condition_type=>'EXPRESSION'
-,p_plug_display_when_condition=>'NV(''APP_BUILDER_SESSION'') IS NULL'
-,p_plug_display_when_cond2=>'PLSQL'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
@@ -130,9 +101,8 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_template_id=>wwv_flow_imp.id(63463978601439167)
 ,p_button_is_hot=>'Y'
 ,p_button_image_alt=>'Sign In'
-,p_button_condition=>'NV(''APP_BUILDER_SESSION'') > 0'
-,p_button_condition2=>'PLSQL'
-,p_button_condition_type=>'EXPRESSION'
+,p_grid_new_row=>'N'
+,p_grid_new_column=>'Y'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(23521464747581645)
@@ -147,6 +117,8 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_image_alt=>'Sign with Google'
 ,p_button_redirect_url=>'f?p=&APP_ID.:100:&SESSION.:APEX_AUTHENTICATION=GOOGLE:&DEBUG.:::'
 ,p_icon_css_classes=>'fa-lock-user'
+,p_grid_new_row=>'N'
+,p_grid_new_column=>'N'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23521694882581647)
@@ -171,9 +143,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_TEXT_FIELD'
 ,p_cMaxlength=>100
 ,p_tag_attributes=>'autocomplete="username"'
-,p_display_when=>'NV(''APP_BUILDER_SESSION'') > 0'
-,p_display_when2=>'PLSQL'
-,p_display_when_type=>'EXPRESSION'
+,p_colspan=>3
 ,p_field_template=>wwv_flow_imp.id(63461560868439163)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
@@ -216,7 +186,6 @@ wwv_flow_imp_page.create_page_process(
 ,p_attribute_03=>'APEX_AUTHENTICATION'
 ,p_attribute_04=>'LOGIN'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
-,p_security_scheme=>wwv_flow_imp.id(60089834032939902)  -- IS_DEVELOPER
 ,p_internal_uid=>24012872872868744
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
