@@ -10,8 +10,8 @@ prompt --install
 @@application/shared_components/files/icons_app_icon_144_rounded_png.sql
 @@application/shared_components/files/icons_app_icon_256_rounded_png.sql
 @@application/shared_components/files/app_css.sql
-@@application/shared_components/files/app_min_css.sql
 @@application/shared_components/files/pwa_master_screen_launchpad_png.sql
+@@application/shared_components/files/app_min_css.sql
 @@application/shared_components/files/icons_app_icon_32_png.sql
 @@application/shared_components/files/icons_app_icon_192_png.sql
 @@application/shared_components/files/icons_app_icon_512_png.sql

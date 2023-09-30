@@ -38,3 +38,13 @@ button#LOGIN_GOOGLE {
   margin: 0;
 }
 
+
+/* CHANGE TABS COLORS */
+ul.t-Tabs .is-active .t-Tabs-link {
+    border-bottom       : 6px solid #615d51;
+}
+ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover {
+    border-bottom       : 6px solid #615d51 !important;
+    color               : #000;
+}
+

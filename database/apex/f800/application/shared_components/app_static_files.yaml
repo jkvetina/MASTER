@@ -26,15 +26,6 @@
     mime-type: text/css
     file-character-set: Unicode UTF-8
 
-- # ====== Static Application File: app.min.css ================
-  id: 24616997266768804
-  identification: 
-    file-name: app.min.css
-
-  attributes: 
-    mime-type: text/css
-    file-character-set: Unicode UTF-8
-
 - # ====== Static Application File: pwa/master_screen_launchpad.
   id: 24619070739809388
   identification: 
@@ -42,6 +33,15 @@
 
   attributes: 
     mime-type: image/png
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: app.min.css ================
+  id: 24648134649295388
+  identification: 
+    file-name: app.min.css
+
+  attributes: 
+    mime-type: text/css
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: icons/app-icon-32.png ======
