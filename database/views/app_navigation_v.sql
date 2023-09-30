@@ -19,7 +19,7 @@ WITH curr AS (
         AND n.page_id       = core.get_page_id()
     LEFT JOIN app_users u
         ON u.user_id        = core.get_user_id()
-    WHERE n.page_id         NOT IN (9999)
+    WHERE (core.get_app_id(), core.get_page_id()) NOT IN (SELECT 800, 9999 FROM DUAL)
 ),
 s AS (
     -- available pages
