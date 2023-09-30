@@ -84,10 +84,10 @@ help:
     
 
 regions: 
-- # ====== Region: Applications ================================
+- # ====== Region: Available Apps ==============================
   id: 7475275434048504
   identification: 
-    title: Applications
+    title: Available Apps
     type: Static Content
 
   layout: 
@@ -137,7 +137,9 @@ regions:
     table-owner: Parsing Schema
     table-name: APP_LAUNCHPAD_V
     include-rowid-column: false
-    where-clause: 'workspace = :P100_WORKSPACE'
+    where-clause: |
+      workspace = :P100_WORKSPACE
+      AND is_favorite IS NULL
     page-items-to-submit: 
     - P100_WORKSPACE
 
@@ -149,9 +151,9 @@ regions:
     parent-region: No Parent
     position: BODY
     start-new-layout: false
-    start-new-row: true
+    start-new-row: false
     column: Automatic
-    new-column: true
+    new-column: false
     column-span: Automatic
 
   appearance: 
@@ -178,7 +180,7 @@ regions:
     id: 7475420236048506
     appearance: 
       layout: Grid
-      grid-columns: 5 Columns
+      grid-columns: 3 Columns
 
     card: 
       primary-key-column-1: APP_ID
@@ -277,6 +279,153 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
+- # ====== Region: Applications [CARDS] ========================
+  id: 24621155643821114
+  identification: 
+    title: Applications [CARDS]
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_LAUNCHPAD_V
+    include-rowid-column: false
+    where-clause: |
+      workspace = :P100_WORKSPACE
+      AND is_favorite = 'Y'
+    page-items-to-submit: 
+    - P100_WORKSPACE
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 60
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: false
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container # 63327898435439081
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 24621229550821115
+    appearance: 
+      layout: Grid
+      grid-columns: 3 Columns
+
+    card: 
+      primary-key-column-1: APP_ID
+
+    title: 
+      advanced-formatting: true
+      html-expression: |
+        <div style="float: right; align-items: flex-start; margin-top: 0.2rem;"><button type="button" onclick="favorite_switch(this);" data-app-id="&APP_ID." class="a-CardView-button " onclick="console.log('FAVORITE_SWITCH')" style="background: transparent; margin: -0.5rem -0.5rem 0 0; padding: 0.5rem; z-index: 100 !important;"><span class="fa &BADGE_ICON."></span></button></div>
+        <h3 class="a-CardView-title a-lineclamp-2">&APP_NAME.</h3>
+        
+
+    subtitle: 
+      advanced-formatting: true
+      html-expression: <span class="a-CardView-subTitle">&APP_ALIAS., &APP_PREFIX.</span>
+
+    body: 
+      advanced-formatting: false
+      column: APP_DESC
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: No Icon
+      badge-column: APP_ID
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+    actions: 
+    - # ====== Action: FULL_CARD ===================================
+      id: 24621315336821116
+      identification: 
+        type: Full Card
+
+      layout: 
+        sequence: 10
+
+      link: 
+        type: Redirect to URL
+        target: '&APP_LINK.'
+
+- # ====== Region: Favorite Apps ===============================
+  id: 24621440329821117
+  identification: 
+    title: Favorite Apps
+    type: Static Content
+
+  layout: 
+    sequence: 50
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 63402598617439121
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
 page-items: 
 - # ====== Page Item: P100_WORKSPACE ===========================
   id: 7475718742048509
@@ -289,7 +438,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Applications # 7475275434048504
+    region: Available Apps # 7475275434048504
     position: BODY
 
   advanced: 
@@ -349,7 +498,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Applications # 7475275434048504
+    region: Available Apps # 7475275434048504
     position: BODY
 
   advanced: 
@@ -377,7 +526,7 @@ buttons:
 
   layout: 
     sequence: 20
-    region: Applications # 7475275434048504
+    region: Available Apps # 7475275434048504
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true

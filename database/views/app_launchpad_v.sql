@@ -28,7 +28,9 @@ SELECT
     CASE WHEN a.is_favorite = 'Y'
         THEN 'fa-heart RED'
         ELSE 'fa-heart-o'
-        END AS badge_icon
+        END AS badge_icon,
+    --
+    a.is_favorite
     --
 FROM app_navigation_map_mv m
 JOIN x
