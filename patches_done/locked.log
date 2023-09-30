@@ -71,6 +71,7 @@ database/views/app_lov_users_v.sql
 database/views/app_lov_workspaces_v.sql
 database/views/app_navigation_grid_v.sql
 database/views/app_navigation_matrix_v.sql
+database/views/app_navigation_public_v.sql
 database/views/app_navigation_v.sql
 database/views/app_qa_grids_v.sql
 database/views/app_roles_v.sql

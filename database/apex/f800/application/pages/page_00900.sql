@@ -37,7 +37,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63325094538439079)
 ,p_plug_display_sequence=>10
-,p_plug_grid_column_span=>2
+,p_plug_grid_column_span=>3
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
@@ -49,17 +49,6 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_display_sequence=>20
 ,p_plug_new_grid_row=>false
 ,p_plug_grid_column_span=>3
-,p_attribute_01=>'N'
-,p_attribute_02=>'HTML'
-);
-wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(24620356124821106)
-,p_plug_name=>'About You'
-,p_parent_plug_id=>wwv_flow_imp.id(24620271018821105)
-,p_region_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(63325094538439079)
-,p_plug_display_sequence=>40
-,p_plug_display_point=>'SUB_REGIONS'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
@@ -103,23 +92,12 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_source_type=>'NATIVE_FORM'
 );
 wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(24620774897821110)
-,p_plug_name=>'TABS_RIGHT'
-,p_region_template_options=>'#DEFAULT#:t-TabsRegion-mod--simple'
-,p_plug_template=>wwv_flow_imp.id(63372587703439106)
-,p_plug_display_sequence=>30
-,p_plug_new_grid_row=>false
-,p_plug_grid_column_span=>3
-,p_attribute_01=>'N'
-,p_attribute_02=>'HTML'
-);
-wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(24620825912821111)
-,p_plug_name=>'Application Roles'
-,p_parent_plug_id=>wwv_flow_imp.id(24620774897821110)
+,p_plug_name=>'Roles'
+,p_parent_plug_id=>wwv_flow_imp.id(24620271018821105)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63325094538439079)
-,p_plug_display_sequence=>10
+,p_plug_display_sequence=>20
 ,p_plug_display_point=>'SUB_REGIONS'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
@@ -171,11 +149,23 @@ wwv_flow_imp_page.create_card(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(24621020226821113)
 ,p_plug_name=>'Achievements'
-,p_parent_plug_id=>wwv_flow_imp.id(24620774897821110)
+,p_parent_plug_id=>wwv_flow_imp.id(24620271018821105)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63325094538439079)
-,p_plug_display_sequence=>20
+,p_plug_display_sequence=>30
 ,p_plug_display_point=>'SUB_REGIONS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(24620774897821110)
+,p_plug_name=>'TABS_RIGHT'
+,p_region_template_options=>'#DEFAULT#:t-TabsRegion-mod--simple'
+,p_plug_template=>wwv_flow_imp.id(63372587703439106)
+,p_plug_display_sequence=>30
+,p_plug_new_grid_row=>false
+,p_plug_grid_column_span=>3
+,p_plug_display_condition_type=>'NEVER'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
@@ -205,7 +195,6 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_display_sequence=>80
 ,p_plug_new_grid_row=>false
 ,p_plug_grid_column_span=>3
-,p_plug_display_column=>10
 ,p_plug_item_display_point=>'BELOW'
 ,p_plug_source=>'Push notifications are not currently supported in your browser.'
 ,p_attribute_01=>'N'

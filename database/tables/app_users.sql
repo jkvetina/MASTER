@@ -4,12 +4,12 @@ CREATE TABLE app_users (
     user_mail                       VARCHAR2(128),
     is_active                       CHAR(1),
     is_admin                        CHAR(1),
+    user_nickname                   VARCHAR2(32),
+    user_title                      VARCHAR2(64),
     created_by                      VARCHAR2(128),
     created_at                      DATE,
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
-    user_nickname                   VARCHAR2(32),
-    user_title                      VARCHAR2(64),
     --
     CONSTRAINT ch_app_users_active
         CHECK (is_active = 'Y' OR is_active IS NULL),

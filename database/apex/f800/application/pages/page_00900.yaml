@@ -61,7 +61,7 @@ regions:
     start-new-row: true
     column: Automatic
     new-column: true
-    column-span: 2
+    column-span: 3
 
   appearance: 
     template: Blank with Attributes # 63325094538439079
@@ -109,47 +109,6 @@ regions:
     template-options: 
     - '#DEFAULT#'
     - t-TabsRegion-mod--simple
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: About You ===================================
-  id: 24620356124821106
-  identification: 
-    title: About You
-    type: Static Content
-
-  layout: 
-    sequence: 40
-    parent-region: TABS_LEFT # 24620271018821105
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes # 63325094538439079
-    template-options: 
-    - '#DEFAULT#'
     render-components: Above Content
 
   accessibility: 
@@ -243,6 +202,9 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
+  server-side-condition: 
+    type: Never
+
   server-cache: 
     caching: Disabled
 
@@ -254,15 +216,15 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Application Roles ===========================
+- # ====== Region: Roles =======================================
   id: 24620825912821111
   identification: 
-    title: Application Roles
+    title: Roles
     type: Static Content
 
   layout: 
-    sequence: 10
-    parent-region: TABS_RIGHT # 24620774897821110
+    sequence: 20
+    parent-region: TABS_LEFT # 24620271018821105
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -302,8 +264,8 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 20
-    parent-region: TABS_RIGHT # 24620774897821110
+    sequence: 30
+    parent-region: TABS_LEFT # 24620271018821105
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -402,7 +364,7 @@ regions:
     position: BODY
     start-new-layout: false
     start-new-row: false
-    column: 10
+    column: Automatic
     new-column: true
     column-span: 3
 
@@ -541,7 +503,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: Application Roles # 24620825912821111
+    parent-region: Roles # 24620825912821111
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -592,7 +554,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Application Roles # 24620825912821111
+    parent-region: Roles # 24620825912821111
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
