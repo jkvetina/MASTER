@@ -22,11 +22,9 @@
   session-not-valid: 
     redirect-to: URL
     invalid-session-url: 
-      url: 'f?p=800:9999:0::::P9999_ERROR:TIMEOUT'
+      url: 'f?p=800:9999:0'
       app: 800
       page: 9999
-      values: 
-        p9999_error: TIMEOUT
 
   login-processing: 
     post-authentication-procedure-name: app_auth.after_auth
@@ -54,11 +52,9 @@
   session-not-valid: 
     redirect-to: URL
     invalid-session-url: 
-      url: 'f?p=800:9999:0::::P9999_ERROR:TIMEOUT'
+      url: 'f?p=800:9999:0'
       app: 800
       page: 9999
-      values: 
-        p9999_error: TIMEOUT
 
   login-processing: 
     post-authentication-procedure-name: app_auth.after_auth
@@ -87,11 +83,9 @@
   session-not-valid: 
     redirect-to: URL
     invalid-session-url: 
-      url: 'f?p=800:9999:0::::P9999_ERROR:TIMEOUT'
+      url: 'f?p=800:9999:0'
       app: 800
       page: 9999
-      values: 
-        p9999_error: TIMEOUT
 
   login-processing: 
     post-authentication-procedure-name: app_auth.after_auth
