@@ -92,6 +92,12 @@ CREATE OR REPLACE PACKAGE app AS
         in_user_id              app_users_map.user_id%TYPE
     );
 
+
+
+    PROCEDURE download_avatar (
+        in_user_id              app_users.user_id%TYPE := NULL
+    );
+
 END;
 /
 

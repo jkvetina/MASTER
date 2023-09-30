@@ -420,6 +420,35 @@ CREATE OR REPLACE PACKAGE BODY app AS
         core.raise_error();
     END;
 
+
+
+    PROCEDURE download_avatar (
+        in_user_id              app_users.user_id%TYPE := NULL
+    )
+    AS
+        rec                     app_users%ROWTYPE;
+    BEGIN
+        BEGIN
+            SELECT t.* INTO rec
+            FROM app_users t
+            WHERE t.user_id     = COALESCE(in_user_id, core.get_user_id());
+        EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            core.raise_error('FILE_NOT_FOUND');
+        END;
+        --
+        core.download_file (
+            in_file_name        => rec.avatar_url,
+            in_file_mime        => rec.avatar_mime,
+            in_file_payload     => rec.avatar_blob
+        );
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
 END;
 /
 
