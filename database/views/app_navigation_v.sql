@@ -354,7 +354,37 @@ SELECT
     '/' || n.app_id || '.' || n.page_root_id || '/' || n.col_id || '/Z' AS order#
     --
 FROM app_navigation_matrix_v n
-WHERE n.row_id = n.max_rows;
+WHERE n.row_id = n.max_rows
+--
+UNION ALL
+SELECT
+    n.app_id,           -- some extra columns for FE, to align submenus
+    n.page_id,
+    n.parent_id,
+    n.page_root_id,
+    n.auth_scheme,
+    n.procedure_name,
+    n.label__,
+    n.lvl,
+    n.label,
+    n.target,
+    n.is_current_list_entry,
+    n.image,
+    n.image_attribute,
+    n.image_alt_attribute,
+    n.attribute01,
+    n.attribute02,
+    n.attribute03,
+    n.attribute04,
+    n.attribute05,
+    n.attribute06,
+    n.attribute07,
+    n.attribute08,
+    n.attribute09,
+    n.attribute10,
+    n.order#
+    --
+FROM app_navigation_public_v n;
 --
 COMMENT ON TABLE app_navigation_v IS '';
 
