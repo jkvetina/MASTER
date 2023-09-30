@@ -160,12 +160,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P100_USER_NAME'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(23519630376581627)
-,p_item_default=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'SELECT SUBSTR(u.user_name, 1, INSTR(u.user_name, '' '') - 1) AS first_name',
-'FROM app_users u',
-'WHERE u.user_id = core.get_user_id()',
-''))
-,p_item_default_type=>'SQL_QUERY'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -196,6 +190,21 @@ wwv_flow_imp_page.create_page_computation(
 ,p_computation_type=>'EXPRESSION'
 ,p_computation_language=>'PLSQL'
 ,p_computation=>'SUBSTR(SYS_CONTEXT(''USERENV'', ''DB_NAME''), INSTR(SYS_CONTEXT(''USERENV'', ''DB_NAME''), ''_'') + 1)'
+);
+wwv_flow_imp_page.create_page_computation(
+ p_id=>wwv_flow_imp.id(24620100706821104)
+,p_computation_sequence=>30
+,p_computation_item=>'P100_USER_NAME'
+,p_computation_point=>'BEFORE_BOX_BODY'
+,p_computation_type=>'QUERY'
+,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'SELECT COALESCE (',
+'        u.user_nickname,',
+'        SUBSTR(u.user_name, 1, INSTR(u.user_name, '' '') - 1)',
+'    ) AS first_name',
+'FROM app_users u',
+'WHERE u.user_id = core.get_user_id();',
+''))
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(7475819384048510)

@@ -8,6 +8,8 @@ CREATE TABLE app_users (
     created_at                      DATE,
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
+    user_nickname                   VARCHAR2(32),
+    user_title                      VARCHAR2(64),
     --
     CONSTRAINT ch_app_users_active
         CHECK (is_active = 'Y' OR is_active IS NULL),
@@ -21,9 +23,11 @@ CREATE TABLE app_users (
 --
 COMMENT ON TABLE app_users IS '';
 --
-COMMENT ON COLUMN app_users.user_id     IS '';
-COMMENT ON COLUMN app_users.user_name   IS '';
-COMMENT ON COLUMN app_users.user_mail   IS '';
-COMMENT ON COLUMN app_users.is_active   IS '';
-COMMENT ON COLUMN app_users.is_admin    IS '';
+COMMENT ON COLUMN app_users.user_id         IS '';
+COMMENT ON COLUMN app_users.user_name       IS '';
+COMMENT ON COLUMN app_users.user_mail       IS '';
+COMMENT ON COLUMN app_users.is_active       IS '';
+COMMENT ON COLUMN app_users.is_admin        IS '';
+COMMENT ON COLUMN app_users.user_nickname   IS '';
+COMMENT ON COLUMN app_users.user_title      IS '';
 

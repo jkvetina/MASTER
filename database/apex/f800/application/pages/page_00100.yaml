@@ -329,14 +329,6 @@ page-items:
     type: Null
     used: Only when current value in session state is null
 
-  default: 
-    type: SQL Query
-    sql-query: |
-      SELECT SUBSTR(u.user_name, 1, INSTR(u.user_name, ' ') - 1) AS first_name
-      FROM app_users u
-      WHERE u.user_id = core.get_user_id()
-      
-
   session-state: 
     data-type: VARCHAR2
     storage: Per Session (Persistent)
@@ -469,6 +461,26 @@ computations:
     type: Expression
     language: PL/SQL
     pl/sql-expression: SUBSTR(SYS_CONTEXT('USERENV', 'DB_NAME'), INSTR(SYS_CONTEXT('USERENV', 'DB_NAME'), '_') + 1)
+
+- # ====== Computation: P100_USER_NAME =========================
+  id: 24620100706821104
+  identification: 
+    item-name: P100_USER_NAME
+
+  execution: 
+    sequence: 30
+    point: Before Regions
+
+  computation: 
+    type: SQL Query (return single value)
+    sql-query: |
+      SELECT COALESCE (
+              u.user_nickname,
+              SUBSTR(u.user_name, 1, INSTR(u.user_name, ' ') - 1)
+          ) AS first_name
+      FROM app_users u
+      WHERE u.user_id = core.get_user_id();
+      
 
 processes: 
 - # ====== Process: REFRESH_MV =================================
