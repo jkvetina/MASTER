@@ -25,7 +25,7 @@ END;
 
 -- create missing FK indexes
 DECLARE
-    in_prefix       CONSTANT VARCHAR2(30) := 'XX%';
+    in_prefix       CONSTANT VARCHAR2(30) := 'APP%';
 BEGIN
     DBMS_OUTPUT.PUT_LINE('--');
     DBMS_OUTPUT.PUT_LINE('-- MISSING INDEXES:');
