@@ -5,11 +5,13 @@ prompt --install
 @@application/user_interfaces.sql
 @@workspace/credentials/app_800_push_notifications_credentials.sql
 @@workspace/credentials/sso_google.sql
+@@application/shared_components/pwa/screenshots/launchpad.sql
 @@application/shared_components/navigation/lists/navigation.sql
 @@application/shared_components/files/icons_app_icon_144_rounded_png.sql
 @@application/shared_components/files/icons_app_icon_256_rounded_png.sql
 @@application/shared_components/files/app_css.sql
 @@application/shared_components/files/app_min_css.sql
+@@application/shared_components/files/pwa_master_screen_launchpad_png.sql
 @@application/shared_components/files/icons_app_icon_32_png.sql
 @@application/shared_components/files/icons_app_icon_192_png.sql
 @@application/shared_components/files/icons_app_icon_512_png.sql

@@ -150,3 +150,15 @@ substitutions:
   value: 
     static-value: APP_
 
+pwa-screenshots: 
+- # ====== PWA Screenshot: Launchpad ===========================
+  id: 24619220116809392
+  label: 
+    label: Launchpad
+
+  layout: 
+    sequence: 10
+
+  configuration: 
+    screenshot-url: pwa/master_screen_launchpad.png
+
