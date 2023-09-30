@@ -51,29 +51,6 @@ wwv_flow_imp_page.create_page(
 '    );',
 '};',
 ''))
-,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'.a-CardView-headerBody h2 {',
-'  margin: 0;',
-'}',
-'',
-'#WELCOME_BANNER {',
-'    background      : #615d51;',
-'    color           : #fff;',
-'    padding         : 2.5rem;',
-'    height          : 17rem;',
-'    margin-top      : -3rem;  /* to hide white bg on page overscroll */',
-'}',
-'#WELCOME_BANNER h1 {',
-'    font-family     : var(--ut-hero-region-title-font-family), sans-serif;',
-'    font-weight     : 300;',
-'    font-size       : 2.4rem;',
-'    margin          : 3rem 0 0.5rem !important;',
-'}',
-'#WELCOME_BANNER ::selection {',
-'  color             : #fff;',
-'  background        : #333;',
-'}',
-''))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(43462402185717150)  -- IS_USER
 ,p_protection_level=>'C'
@@ -94,7 +71,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_name=>'Applications'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63402598617439121)
-,p_plug_display_sequence=>20
+,p_plug_display_sequence=>30
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
@@ -104,7 +81,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63327898435439081)
-,p_plug_display_sequence=>30
+,p_plug_display_sequence=>40
 ,p_query_type=>'TABLE'
 ,p_query_table=>'APP_LAUNCHPAD_V'
 ,p_query_where=>'workspace = :P100_WORKSPACE'
@@ -145,14 +122,15 @@ wwv_flow_imp_page.create_card_action(
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(23519630376581627)
-,p_plug_name=>'WELCOME'
+,p_plug_name=>'BANNER'
+,p_region_name=>'BANNER'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(63325094538439079)
 ,p_plug_display_sequence=>10
-,p_plug_display_point=>'REGION_POSITION_01'
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'<div id="WELCOME_BANNER">',
 '<h1>Welcome, &P100_USER_NAME.</h1>',
-'  <p>Current workspace: &P100_WORKSPACE. | &P100_ENV.<p>',
-'</div>'))
+'<p>Current workspace: &P100_WORKSPACE. | &P100_ENV.<p>',
+''))
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );

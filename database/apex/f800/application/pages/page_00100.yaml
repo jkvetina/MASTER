@@ -55,31 +55,6 @@ javascript:
     };
     
 
-css: 
-  inline: |
-    .a-CardView-headerBody h2 {
-      margin: 0;
-    }
-    
-    #WELCOME_BANNER {
-        background      : #615d51;
-        color           : #fff;
-        padding         : 2.5rem;
-        height          : 17rem;
-        margin-top      : -3rem;  /* to hide white bg on page overscroll */
-    }
-    #WELCOME_BANNER h1 {
-        font-family     : var(--ut-hero-region-title-font-family), sans-serif;
-        font-weight     : 300;
-        font-size       : 2.4rem;
-        margin          : 3rem 0 0.5rem !important;
-    }
-    #WELCOME_BANNER ::selection {
-      color             : #fff;
-      background        : #333;
-    }
-    
-
 security: 
   authorization-scheme: IS_USER # 43462402185717150
   authentication: Page Requires Authentication
@@ -116,7 +91,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 20
+    sequence: 30
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -170,7 +145,7 @@ regions:
     type: None
 
   layout: 
-    sequence: 30
+    sequence: 40
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -254,23 +229,22 @@ regions:
         type: Redirect to URL
         target: '&APP_LINK.'
 
-- # ====== Region: WELCOME =====================================
+- # ====== Region: BANNER ======================================
   id: 23519630376581627
   identification: 
-    title: WELCOME
+    title: BANNER
     type: Static Content
 
   source: 
     html-code: |
-      <div id="WELCOME_BANNER">
       <h1>Welcome, &P100_USER_NAME.</h1>
-        <p>Current workspace: &P100_WORKSPACE. | &P100_ENV.<p>
-      </div>
+      <p>Current workspace: &P100_WORKSPACE. | &P100_ENV.<p>
+      
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: REGION_POSITION_01
+    position: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -278,10 +252,18 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: None
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
     render-components: Above Content
 
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
   advanced: 
+    static-id: BANNER
+    region-display-selector: false
     exclude-title-from-translation: false
 
   server-cache: 
@@ -337,7 +319,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: WELCOME # 23519630376581627
+    region: BANNER # 23519630376581627
     position: BODY
 
   advanced: 

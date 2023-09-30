@@ -90,10 +90,10 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: WELCOME =====================================
+- # ====== Region: BANNER ======================================
   id: 47585583127572946
   identification: 
-    title: WELCOME
+    title: BANNER
     type: Static Content
 
   source: 
@@ -149,7 +149,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: WELCOME # 47585583127572946
+    region: BANNER # 47585583127572946
     position: BODY
 
   advanced: 
@@ -187,7 +187,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: WELCOME # 47585583127572946
+    region: BANNER # 47585583127572946
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -235,7 +235,7 @@ buttons:
 
   layout: 
     sequence: 30
-    region: WELCOME # 47585583127572946
+    region: BANNER # 47585583127572946
     position: BODY
     start-new-layout: false
     start-new-row: false
@@ -272,7 +272,7 @@ buttons:
 
   layout: 
     sequence: 20
-    region: WELCOME # 47585583127572946
+    region: BANNER # 47585583127572946
     position: BODY
     start-new-layout: false
     start-new-row: false

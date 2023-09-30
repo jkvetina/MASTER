@@ -44,7 +44,7 @@ wwv_flow_imp_page.create_page_plug(
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(47585583127572946)
-,p_plug_name=>'WELCOME'
+,p_plug_name=>'BANNER'
 ,p_region_name=>'BANNER'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63325094538439079)
