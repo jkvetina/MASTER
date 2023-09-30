@@ -20,40 +20,6 @@ wwv_flow_imp_page.create_page(
 ,p_first_item=>'AUTO_FIRST_ITEM'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(14547468167324179)  -- __ INTERNAL
-,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'#BANNER {',
-'    background      : #615d51;',
-'    color           : #fff;',
-'    padding         : 1.5rem 2.5rem;',
-'    min-height      : 17rem;',
-'    margin          : -3rem -1rem 2rem;',
-'}',
-'#BANNER h1 {',
-'    font-family     : var(--ut-hero-region-title-font-family), sans-serif;',
-'    font-weight     : 300;',
-'    font-size       : 2.4rem;',
-'    margin          : 3rem 0 0.5rem !important;',
-'}',
-'#BANNER ::selection {',
-'  color             : #fff;',
-'  background        : #333;',
-'}',
-'',
-'div#P9999_USERNAME_error {',
-'    color           : #fff;',
-'}',
-'button#LOGIN,',
-'button#LOGIN_GOOGLE {',
-'    margin-top      : 0.8rem;',
-'}',
-'',
-'.DISCLAIMER {',
-'    line-height     : 185%;',
-'    padding         : 0 1.5rem 1.5rem;',
-'    color           : #555;',
-'}',
-'',
-''))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_overwrite_navigation_list=>'Y'
 ,p_page_is_public_y_n=>'Y'

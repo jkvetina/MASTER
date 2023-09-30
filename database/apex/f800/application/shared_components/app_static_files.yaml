@@ -17,6 +17,24 @@
     mime-type: image/png
     file-character-set: Unicode UTF-8
 
+- # ====== Static Application File: app.css ====================
+  id: 24338474181866654
+  identification: 
+    file-name: app.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
+- # ====== Static Application File: app.min.css ================
+  id: 24339460482870129
+  identification: 
+    file-name: app.min.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
 - # ====== Static Application File: icons/app-icon-32.png ======
   id: 63490272237439221
   identification: 

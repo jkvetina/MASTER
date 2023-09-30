@@ -79,11 +79,13 @@ logo:
 
 progressive-web-app: 
   enable: true
-  installable: false
-  display: Standalone
+  installable: true
+  display: Fullscreen
   screen-orientation: Any
   ios-status-bar-style: Default
-  enable-push-notifications: false
+  enable-push-notifications: true
+  pwa-push-notifications-credentials: App 800 Push Notifications Credentials # 24266049089366575
+  contact-email: jan.kvetina@gmail.com
 
 navigation: 
   home-url: 
@@ -117,7 +119,8 @@ css:
   file-urls: 
   - '#WORKSPACE_FILES#master_fonts#MIN#.css?version=#APP_VERSION#'
   - '#WORKSPACE_FILES#master_menu_top#MIN#.css?version=#APP_VERSION#'
-  - '#WORKSPACE_FILES#master_app#MIN#.css?version=#APP_VERSION#'
+  - '#WORKSPACE_FILES#master_app#MIN#.css?version=#APP_VERSION#'
+  - '#APP_FILES#app#MIN#.css?version=#APP_VERSION#'
 
 attributes: 
   theme: Universal Theme # 42
