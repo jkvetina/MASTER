@@ -48,7 +48,7 @@ help:
 
 regions: 
 - # ====== Region: User Profile ================================
-  id: 63563232810450017
+  id: 24149617450647509
   identification: 
     title: User Profile
     type: Static Content
@@ -61,10 +61,10 @@ regions:
     start-new-row: true
     column: Automatic
     new-column: true
-    column-span: 4
+    column-span: 2
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Blank with Attributes # 63325094538439079
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -88,10 +88,405 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: User Profile [FORM] =========================
+- # ====== Region: TABS_LEFT ===================================
+  id: 24620271018821105
+  identification: 
+    title: TABS_LEFT
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+
+  appearance: 
+    template: Tabs Container # 63372587703439106
+    template-options: 
+    - '#DEFAULT#'
+    - t-TabsRegion-mod--simple
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: About You ===================================
+  id: 24620356124821106
+  identification: 
+    title: About You
+    type: Static Content
+
+  layout: 
+    sequence: 40
+    parent-region: TABS_LEFT # 24620271018821105
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: User Profile ================================
+  id: 24620417106821107
+  identification: 
+    title: User Profile
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: TABS_LEFT # 24620271018821105
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: TABS_RIGHT ==================================
+  id: 24620774897821110
+  identification: 
+    title: TABS_RIGHT
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 3
+
+  appearance: 
+    template: Tabs Container # 63372587703439106
+    template-options: 
+    - '#DEFAULT#'
+    - t-TabsRegion-mod--simple
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Application Roles ===========================
+  id: 24620825912821111
+  identification: 
+    title: Application Roles
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: TABS_RIGHT # 24620774897821110
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Achievements ================================
+  id: 24621020226821113
+  identification: 
+    title: Achievements
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: TABS_RIGHT # 24620774897821110
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Push Notifications ==========================
+  id: 48547233909047763
+  identification: 
+    title: Push Notifications
+    type: Static Content
+
+  source: 
+    html-code: Push notifications have to be enabled for each device you want to receive the notifications on. The first time you enable push notifications, you will have to grant permission to your browser. This setting can be changed at any time.
+
+  layout: 
+    sequence: 90
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: false
+    column-span: Automatic
+
+  appearance: 
+    template: Alert # 63319929615439072
+    template-options: 
+    - '#DEFAULT#'
+    - t-Alert--colorBG
+    - t-Alert--wizard
+    - t-Alert--customIcons
+    - t-Alert--warning
+    css-classes: 
+    - a-pwaPush--subscriptionRegion
+    icon: fa-bell-o
+    render-components: Below Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Push Notifications Not Supported ============
+  id: 48605859706387160
+  identification: 
+    title: Push Notifications Not Supported
+    type: Static Content
+
+  source: 
+    html-code: Push notifications are not currently supported in your browser.
+
+  layout: 
+    sequence: 80
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: 10
+    new-column: true
+    column-span: 3
+
+  appearance: 
+    template: Alert # 63319929615439072
+    template-options: 
+    - '#DEFAULT#'
+    - t-Alert--colorBG
+    - t-Alert--wizard
+    - t-Alert--customIcons
+    - t-Alert--warning
+    css-classes: 
+    - a-pwaPush--subscriptionRegion--not-supported
+    icon: fa-bell-slash-o
+    render-components: Below Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    custom-attributes: 
+    - 'style="display:none;"'
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: User Profile ================================
+  id: 63563232810450017
+  identification: 
+    title: User Profile
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: User Profile # 24620417106821107
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 63402598617439121
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - SHORTER
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: PROFILE [FORM] ==============================
   id: 74330709806054597
   identification: 
-    title: User Profile [FORM]
+    title: PROFILE [FORM]
     type: Form
 
   source: 
@@ -103,12 +498,12 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: No Parent
-    position: BODY
+    parent-region: User Profile # 24620417106821107
+    position: SUB_REGIONS
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
-    new-column: false
+    new-column: true
     column-span: Automatic
 
   appearance: 
@@ -138,21 +533,21 @@ regions:
       - Update Row
       lost-update-type: Row Values
 
-- # ====== Region: User Roles for &G_APP_NAME. =================
+- # ====== Region: Roles for &G_APP_NAME. ======================
   id: 75653747485463881
   identification: 
-    title: User Roles for &G_APP_NAME.
+    title: Roles for &G_APP_NAME.
     type: Static Content
 
   layout: 
-    sequence: 30
-    parent-region: No Parent
-    position: BODY
+    sequence: 10
+    parent-region: Application Roles # 24620825912821111
+    position: SUB_REGIONS
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
-    column-span: 4
+    column-span: Automatic
 
   appearance: 
     template: Hero # 63402598617439121
@@ -179,10 +574,10 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: User Roles [CARDS] ==========================
+- # ====== Region: ROLES [CARDS] ===============================
   id: 75654026921463884
   identification: 
-    title: User Roles [CARDS]
+    title: ROLES [CARDS]
     type: Cards
 
   source: 
@@ -196,13 +591,13 @@ regions:
     type: None
 
   layout: 
-    sequence: 40
-    parent-region: No Parent
-    position: BODY
+    sequence: 20
+    parent-region: Application Roles # 24620825912821111
+    position: SUB_REGIONS
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
-    new-column: false
+    new-column: true
     column-span: Automatic
 
   appearance: 
@@ -265,6 +660,211 @@ regions:
       show-total-count: false
 
 page-items: 
+- # ====== Page Item: P900_MESSAGE =============================
+  id: 24149759321647510
+  identification: 
+    name: P900_MESSAGE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Push Notifications # 48547233909047763
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "'TEST ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')"
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P900_USER_NICKNAME =======================
+  id: 24619901457821102
+  identification: 
+    name: P900_USER_NICKNAME
+    type: Text Field
+
+  label: 
+    label: Nickname
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 40
+    region: PROFILE [FORM] # 74330709806054597
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 63461560868439163
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 32
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: PROFILE [FORM] # 74330709806054597
+    column: USER_NICKNAME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P900_USER_TITLE ==========================
+  id: 24620014260821103
+  identification: 
+    name: P900_USER_TITLE
+    type: Text Field
+
+  label: 
+    label: Title
+    alignment: Left
+
+  settings: 
+    subtype: Text
+    trim-spaces: Leading and Trailing
+    text-case: NO CHANGE
+    submit-when-enter-pressed: false
+    disabled: false
+
+  layout: 
+    sequence: 50
+    region: PROFILE [FORM] # 74330709806054597
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 63461560868439163
+    template-options: 
+    - '#DEFAULT#'
+    width: 30
+
+  validation: 
+    value-required: false
+    maximum-length: 64
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: PROFILE [FORM] # 74330709806054597
+    column: USER_TITLE
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    storage: Per Request (Memory Only)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P900_ENABLE_PUSH =========================
+  id: 48547984357047767
+  identification: 
+    name: P900_ENABLE_PUSH
+    type: Checkbox
+
+  label: 
+    label: Enable on this device
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    checked-value: Y
+
+  layout: 
+    sequence: 10
+    region: Push Notifications # 48547233909047763
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 63461560868439163
+    template-options: 
+    - '#DEFAULT#'
+    - margin-top-sm
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P900_USER_ID =============================
   id: 74333729284054604
   identification: 
@@ -283,7 +883,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: User Profile [FORM] # 74330709806054597
+    region: PROFILE [FORM] # 74330709806054597
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -302,7 +902,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: User Profile [FORM] # 74330709806054597
+    form-region: PROFILE [FORM] # 74330709806054597
     column: USER_ID
     data-type: VARCHAR2
     query-only: false
@@ -336,7 +936,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: User Profile [FORM] # 74330709806054597
+    region: PROFILE [FORM] # 74330709806054597
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -360,7 +960,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: User Profile [FORM] # 74330709806054597
+    form-region: PROFILE [FORM] # 74330709806054597
     column: USER_NAME
     data-type: VARCHAR2
     query-only: false
@@ -396,7 +996,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: User Profile [FORM] # 74330709806054597
+    region: PROFILE [FORM] # 74330709806054597
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -421,7 +1021,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: User Profile [FORM] # 74330709806054597
+    form-region: PROFILE [FORM] # 74330709806054597
     column: USER_MAIL
     data-type: VARCHAR2
     query-only: false
@@ -447,7 +1047,7 @@ buttons:
 
   layout: 
     sequence: 10
-    region: User Profile [FORM] # 74330709806054597
+    region: PROFILE [FORM] # 74330709806054597
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -497,6 +1097,64 @@ buttons:
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
 
+  configuration: 
+    build-option: NEVER # 14512796942362028
+
+- # ====== Button: INSTALL =====================================
+  id: 24149004790647503
+  identification: 
+    button-name: INSTALL
+    label: Install
+
+  layout: 
+    sequence: 10
+    region: Push Notifications # 48547233909047763
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 63464158031439167
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-cloud-download
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+- # ====== Button: SEND_TEST ===================================
+  id: 24149324030647506
+  identification: 
+    button-name: SEND_TEST
+    label: Send Test
+
+  layout: 
+    sequence: 20
+    region: Push Notifications # 48547233909047763
+    position: NEXT
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 63463978601439167
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGED_PROJECT =====================
   id: 14562952563376436
@@ -531,6 +1189,92 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
+- # ====== Dynamic Action: INSTALL_PWA =========================
+  id: 24149170987647504
+  identification: 
+    name: INSTALL_PWA
+
+  execution: 
+    sequence: 30
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: INSTALL # 24149004790647503
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 24149244849647505
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: apex.pwa.openInstallDialog();
+
+    execution: 
+      sequence: 10
+      event: INSTALL_PWA # 24149170987647504
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: SWITCH_PUSH_NOTIFICATIONS ===========
+  id: 24279802208673720
+  identification: 
+    name: SWITCH_PUSH_NOTIFICATIONS
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P900_ENABLE_PUSH
+
+  client-side-condition: 
+    type: Item = Value
+    item: P900_ENABLE_PUSH
+    value: Y
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Subscribe to push notifications =============
+    id: 24280231939673721
+    identification: 
+      name: Subscribe to push notifications
+      action: Execute JavaScript Code
+
+    settings: 
+      code: apex.pwa.subscribePushNotifications();
+
+    execution: 
+      sequence: 10
+      event: SWITCH_PUSH_NOTIFICATIONS # 24279802208673720
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Unsubscribe from push notifications =========
+    id: 24280734870673721
+    identification: 
+      name: Unsubscribe from push notifications
+      action: Execute JavaScript Code
+
+    settings: 
+      code: apex.pwa.unsubscribePushNotifications();
+
+    execution: 
+      sequence: 10
+      event: SWITCH_PUSH_NOTIFICATIONS # 24279802208673720
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
 computations: 
 - # ====== Computation: P900_USER_ID ===========================
   id: 7477830577048530
@@ -546,46 +1290,34 @@ computations:
     language: PL/SQL
     pl/sql-expression: core.get_user_id()
 
-processes: 
-- # ====== Process: INIT_RECORD ================================
-  id: 7476718412048519
+- # ====== Computation: P900_ENABLE_PUSH =======================
+  id: 24619825594821101
   identification: 
-    name: INIT_RECORD
-    type: Execute Code
-    execution-chain: None
-
-  source: 
-    location: Local Database
-    language: PL/SQL
-    pl/sql-code: |
-      BEGIN
-          INSERT INTO app_users (user_id, is_active)
-          VALUES (
-              core.get_user_id(),
-              'Y'
-          );
-          --
-          COMMIT;
-      EXCEPTION
-      WHEN DUP_VAL_ON_INDEX THEN
-          NULL;
-      END;
+    item-name: P900_ENABLE_PUSH
 
   execution: 
     sequence: 10
-    point: Before Header
-    run-process: Once Per Page Visit (default)
+    point: Before Regions
 
+  computation: 
+    type: SQL Query (return single value)
+    sql-query: |
+      SELECT 'Y' AS is_active
+      FROM apex_appl_push_subscriptions t
+      WHERE t.application_id      = core.get_app_id()
+          AND t.user_name         = core.get_user_id();
+
+processes: 
 - # ====== Process: INIT_FORM ==================================
   id: 14561177705376432
   identification: 
     name: INIT_FORM
     type: Form - Initialization
     execution-chain: None
-    form-region: User Profile [FORM] # 74330709806054597
+    form-region: PROFILE [FORM] # 74330709806054597
 
   execution: 
-    sequence: 20
+    sequence: 10
     point: Before Header
     run-process: Once Per Page Visit (default)
 
@@ -595,7 +1327,7 @@ processes:
     name: SAVE_USER_PROFILE
     type: Form - Automatic Row Processing (DML)
     execution-chain: None
-    form-region: User Profile [FORM] # 74330709806054597
+    form-region: PROFILE [FORM] # 74330709806054597
 
   settings: 
     target-type: Table / View
@@ -612,4 +1344,53 @@ processes:
 
   error: 
     display-location: Inline in Notification
+
+- # ====== Process: SEND_PUSH_MESSAGE ==========================
+  id: 24149410107647507
+  identification: 
+    name: SEND_PUSH_MESSAGE
+    type: Send Push Notification
+    execution-chain: None
+
+  settings: 
+    to: '&APP_USER.'
+    title: '&P900_MESSAGE.'
+    body: MESSAGE
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: Sent
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: SEND_TEST # 24149324030647506
+
+- # ====== Process: SEND_PUSH_QUEUE ============================
+  id: 24149503872647508
+  identification: 
+    name: SEND_PUSH_QUEUE
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: apex_pwa.push_queue();
+
+  execution: 
+    sequence: 30
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: SEND_TEST # 24149324030647506
 
