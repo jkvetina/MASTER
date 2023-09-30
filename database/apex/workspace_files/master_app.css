@@ -378,7 +378,7 @@ button .a-Button-label,
     display             : none;
 }
 .DRAWER h1.t-HeroRegion-title {
-    margin-top          : -2rem;
+    margin-top          : -1.75rem;  /* CANT GO HIGHER DUE TO CLOSE BUTTONS */
     font-size           : 1.8rem;
 }
 .DRAWER .t-HeroRegion {

@@ -19,14 +19,6 @@ wwv_flow_imp_page.create_page(
 ,p_step_title=>'Feedback'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(18317012587086665)  -- USER_PROFILE
-,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'.ui-dialog-titlebar {',
-'    display: none;',
-'}',
-'h1.t-HeroRegion-title {',
-'    margin-top: -2rem;',
-'}',
-''))
 ,p_step_template=>wwv_flow_imp.id(63289183138439042)
 ,p_page_css_classes=>'DRAWER'
 ,p_page_template_options=>'#DEFAULT#:js-dialog-class-t-Drawer--pullOutEnd:js-dialog-class-t-Drawer--sm'

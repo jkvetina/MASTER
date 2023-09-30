@@ -27,16 +27,6 @@ navigation:
   cursor-focus: Do not focus cursor
   warn-on-unsaved-changes: true
 
-css: 
-  inline: |
-    .ui-dialog-titlebar {
-        display: none;
-    }
-    h1.t-HeroRegion-title {
-        margin-top: -2rem;
-    }
-    
-
 security: 
   authorization-scheme: IS_USER # 43462402185717150
   authentication: Page Requires Authentication
