@@ -535,10 +535,12 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text with Icon # 63464158031439167
     hot: false
     template-options: 
     - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-lock-user
 
   behavior: 
     action: Submit Page
