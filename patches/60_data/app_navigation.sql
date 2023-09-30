@@ -35,11 +35,13 @@ USING (
     SELECT 800 AS app_id, 890 AS page_id, 880 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 20 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 895 AS page_id, 880 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 25 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 900 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 990 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 901 AS page_id, 900 AS parent_id, 'Y' AS is_hidden, 'Y' AS is_reset, NULL AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 902 AS page_id, 900 AS parent_id, 'Y' AS is_hidden, 'Y' AS is_reset, NULL AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 980 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 980 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 985 AS page_id, 980 AS parent_id, 'Y' AS is_hidden, 'Y' AS is_reset, NULL AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 986 AS page_id, 880 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 30 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 9995 AS page_id, 900 AS parent_id, 'Y' AS is_hidden, NULL AS is_reset, 10 AS order#, NULL AS col_id FROM DUAL UNION ALL
-    SELECT 800 AS app_id, 9999 AS page_id, 900 AS parent_id, 'Y' AS is_hidden, NULL AS is_reset, 90 AS order#, NULL AS col_id FROM DUAL
+    SELECT 800 AS app_id, 9999 AS page_id, 900 AS parent_id, 'Y' AS is_hidden, NULL AS is_reset, 15 AS order#, NULL AS col_id FROM DUAL
 ) s
 ON (
     t.app_id = s.app_id

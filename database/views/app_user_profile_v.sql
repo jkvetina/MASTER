@@ -4,7 +4,8 @@ SELECT
     t.user_name,
     t.user_mail,
     t.user_nickname,
-    t.user_title
+    t.user_title,
+    t.user_about
     --
 FROM app_users t
 WHERE t.user_id = core.get_user_id();
