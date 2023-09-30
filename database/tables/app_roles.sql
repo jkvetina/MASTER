@@ -4,8 +4,8 @@ CREATE TABLE app_roles (
     role_name                       VARCHAR2(64),
     role_group                      VARCHAR2(64),
     role_desc                       VARCHAR2(512),
-    is_active                       CHAR(1),
     order#                          NUMBER(4,0),
+    is_active                       CHAR(1),
     created_by                      VARCHAR2(128),
     created_at                      DATE,
     updated_by                      VARCHAR2(128),
@@ -30,6 +30,6 @@ COMMENT ON COLUMN app_roles.role_id         IS '';
 COMMENT ON COLUMN app_roles.role_name       IS '';
 COMMENT ON COLUMN app_roles.role_group      IS '';
 COMMENT ON COLUMN app_roles.role_desc       IS '';
-COMMENT ON COLUMN app_roles.is_active       IS '';
 COMMENT ON COLUMN app_roles.order#          IS '';
+COMMENT ON COLUMN app_roles.is_active       IS '';
 

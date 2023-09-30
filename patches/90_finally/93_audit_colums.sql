@@ -26,9 +26,9 @@ BEGIN
             SELECT c.table_name, c.column_name
             FROM user_tab_cols c
             JOIN x
-                ON x.column_name    = c.column_name
+                ON c.column_name    LIKE x.column_name ESCAPE '\'
             WHERE c.table_name      = t.table_name
-            ORDER BY x.r# ASC
+            ORDER BY x.r#, c.column_id
         ) LOOP
             DBMS_OUTPUT.PUT_LINE('  MOVING ' || c.table_name || '.' || c.column_name);
             --

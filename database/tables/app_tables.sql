@@ -2,10 +2,10 @@ CREATE TABLE app_tables (
     app_id                          NUMBER(8,0)     CONSTRAINT nn_app_tables_app NOT NULL,
     table_name                      VARCHAR2(64)    CONSTRAINT nn_app_tables_name NOT NULL,
     role_id                         VARCHAR2(64),
-    is_active                       CHAR(1),
     is_allowed_create               CHAR(1),
     is_allowed_update               CHAR(1),
     is_allowed_delete               CHAR(1),
+    is_active                       CHAR(1),
     updated_by                      VARCHAR2(128),
     updated_at                      DATE,
     --
@@ -44,8 +44,8 @@ COMMENT ON TABLE app_tables IS '';
 COMMENT ON COLUMN app_tables.app_id                 IS '';
 COMMENT ON COLUMN app_tables.table_name             IS '';
 COMMENT ON COLUMN app_tables.role_id                IS '';
-COMMENT ON COLUMN app_tables.is_active              IS '';
 COMMENT ON COLUMN app_tables.is_allowed_create      IS '';
 COMMENT ON COLUMN app_tables.is_allowed_update      IS '';
 COMMENT ON COLUMN app_tables.is_allowed_delete      IS '';
+COMMENT ON COLUMN app_tables.is_active              IS '';
 
