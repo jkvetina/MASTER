@@ -32,7 +32,7 @@ SELECT
     NULL AS image_attribute,
     NULL AS image_alt_attribute,
     --
-    '" style="background: #000;' AS attribute01,  -- <li class="...">
+    '" style="background: #222;' AS attribute01,  -- <li class="...">
     --
     NULL AS attribute02,              -- <li>...<a>
     NULL AS attribute03,              -- <a class="..."
