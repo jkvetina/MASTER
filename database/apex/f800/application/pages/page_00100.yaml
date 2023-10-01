@@ -138,7 +138,7 @@ regions:
     table-name: APP_LAUNCHPAD_V
     include-rowid-column: false
     where-clause: |
-      workspace = :P100_WORKSPACE
+      workspace = :G_WORKSPACE
       AND is_favorite IS NULL
 
   order-by: 
@@ -290,7 +290,7 @@ regions:
     table-name: APP_LAUNCHPAD_V
     include-rowid-column: false
     where-clause: |
-      workspace = :P100_WORKSPACE
+      workspace = :G_WORKSPACE
       AND is_favorite = 'Y'
 
   order-by: 

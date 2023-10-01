@@ -87,7 +87,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_query_type=>'TABLE'
 ,p_query_table=>'APP_LAUNCHPAD_V'
 ,p_query_where=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'workspace = :P100_WORKSPACE',
+'workspace = :G_WORKSPACE',
 'AND is_favorite IS NULL'))
 ,p_include_rowid_column=>false
 ,p_lazy_loading=>false
@@ -149,7 +149,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_query_type=>'TABLE'
 ,p_query_table=>'APP_LAUNCHPAD_V'
 ,p_query_where=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'workspace = :P100_WORKSPACE',
+'workspace = :G_WORKSPACE',
 'AND is_favorite = ''Y'''))
 ,p_include_rowid_column=>false
 ,p_lazy_loading=>false
