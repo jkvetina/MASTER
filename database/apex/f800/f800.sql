@@ -33,17 +33,17 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   16:29 Neděle Říjen 1, 2023
+--   Date and Time:   17:32 Neděle Říjen 1, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     33
 --       Items:                   90
 --       Computations:             7
---       Processes:               27
+--       Processes:               25
 --       Regions:                 52
 --       Buttons:                 21
---       Dynamic Actions:         21
+--       Dynamic Actions:         22
 --     Shared Components:
 --       Logic:
 --         Items:                 17
@@ -32921,11 +32921,13 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_sequence=>20
 ,p_button_plug_id=>wwv_flow_imp.id(48547233909047763)
 ,p_button_name=>'SEND_TEST'
-,p_button_action=>'SUBMIT'
+,p_button_static_id=>'SEND_TEST'
+,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(63463978601439167)
 ,p_button_image_alt=>'Send Test'
 ,p_button_position=>'CLOSE'
+,p_warn_on_unsaved_changes=>null
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(24730493665693512)
@@ -33078,31 +33080,45 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>'show_success(''Profile updated'');'
 );
-wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(24149410107647507)
-,p_process_sequence=>20
-,p_process_point=>'AFTER_SUBMIT'
-,p_process_type=>'NATIVE_SEND_PUSH_NOTIFICATION'
-,p_process_name=>'SEND_PUSH_MESSAGE'
-,p_attribute_01=>'&APP_USER.'
-,p_attribute_02=>'TITLE'
-,p_attribute_03=>'MESSAGE &P900_MESSAGE.'
-,p_error_display_location=>'INLINE_IN_NOTIFICATION'
-,p_process_when_button_id=>wwv_flow_imp.id(24149324030647506)
-,p_process_success_message=>'Push notification sent'
-,p_internal_uid=>24149410107647507
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(24857865163145922)
+,p_name=>'SEND_PUSH_NOTIFICATION'
+,p_event_sequence=>50
+,p_triggering_element_type=>'BUTTON'
+,p_triggering_button_id=>wwv_flow_imp.id(24149324030647506)
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'click'
 );
-wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(24149503872647508)
-,p_process_sequence=>30
-,p_process_point=>'AFTER_SUBMIT'
-,p_process_type=>'NATIVE_PLSQL'
-,p_process_name=>'SEND_PUSH_QUEUE'
-,p_process_sql_clob=>'apex_pwa.push_queue();'
-,p_process_clob_language=>'PLSQL'
-,p_error_display_location=>'INLINE_IN_NOTIFICATION'
-,p_process_when_button_id=>wwv_flow_imp.id(24149324030647506)
-,p_internal_uid=>24149503872647508
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(24857985542145923)
+,p_event_id=>wwv_flow_imp.id(24857865163145922)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_EXECUTE_PLSQL_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'core.send_push_notification (',
+'    in_title    => ''Test Notification'',',
+'    in_message  => ''Message created at '' || TO_CHAR(SYSDATE, ''YYYY-MM-DD HH24:MI''),',
+'    in_asap     => TRUE',
+');',
+''))
+,p_attribute_05=>'PLSQL'
+,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(24858030700145924)
+,p_event_id=>wwv_flow_imp.id(24857865163145922)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'$(''#SEND_TEST'').blur();',
+'show_success(''Push notification sent'');',
+'',
+''))
 );
 end;
 /
@@ -33868,6 +33884,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
 ,p_protection_level=>'S'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
 ,p_attribute_04=>'TEXT'
@@ -33890,6 +33907,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_field_template=>wwv_flow_imp.id(63461560868439163)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'N'
 ,p_attribute_04=>'TEXT'
@@ -33912,6 +33930,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_field_template=>wwv_flow_imp.id(63461560868439163)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 ,p_attribute_02=>'N'
 ,p_attribute_03=>'N'
@@ -33932,6 +33951,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_field_template=>wwv_flow_imp.id(63461560868439163)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'Y'
 );
@@ -33947,6 +33967,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_is_persistent=>'N'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
@@ -33961,6 +33982,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_is_persistent=>'N'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
@@ -33975,6 +33997,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_is_persistent=>'N'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
@@ -33989,6 +34012,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_is_persistent=>'N'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
@@ -34003,6 +34027,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_is_persistent=>'N'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
@@ -34017,6 +34042,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_is_persistent=>'N'
+,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_da_event(
@@ -34114,7 +34140,9 @@ wwv_flow_imp_page.create_page(
 ,p_overwrite_navigation_list=>'Y'
 ,p_page_is_public_y_n=>'Y'
 ,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'Gateway to all applications. If you don''t have account, you can request one in top right corner.',
+'Gateway to all applications. Login options are available depending on your role and location.',
+'',
+'If you don''t have account, you can request one in top right corner.',
 ''))
 ,p_page_component_map=>'12'
 ,p_last_updated_by=>'DEV'

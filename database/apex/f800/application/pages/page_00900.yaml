@@ -22,6 +22,10 @@ navigation:
 
 css: 
   inline: |
+    #BANNER {
+        min-height: 12rem;
+    }
+    
     .a-CardView-items--row .has-media {
         grid-template-columns: 200px minmax(0,var(--a-cv-icon-spacer,44px)) 1fr minmax(0,auto);
     }
@@ -77,14 +81,14 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 50
+    sequence: 30
     parent-region: No Parent
     position: BODY
     start-new-layout: false
     start-new-row: false
     column: Automatic
     new-column: true
-    column-span: 4
+    column-span: 3
 
   appearance: 
     template: Blank with Attributes # 63325094538439079
@@ -282,14 +286,14 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 60
+    sequence: 40
     parent-region: No Parent
     position: BODY
     start-new-layout: false
     start-new-row: false
-    column: 10
+    column: 11
     new-column: true
-    column-span: 3
+    column-span: 2
 
   appearance: 
     template: Blank with Attributes # 63325094538439079
@@ -365,7 +369,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 10
+    sequence: 20
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -501,10 +505,57 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Roles for &G_APP_NAME. ======================
+- # ====== Region: BANNER ======================================
+  id: 72401475894285964
+  identification: 
+    title: BANNER
+    type: Static Content
+
+  source: 
+    html-code: |
+      <h1>Good job, &G_USER_FIRST_NAME.</h1>
+      
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Below Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: BANNER
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: App Roles ===================================
   id: 75653747485463881
   identification: 
-    title: Roles for &G_APP_NAME.
+    title: App Roles
     type: Static Content
 
   layout: 
@@ -699,7 +750,7 @@ page-items:
     value-required: false
 
   advanced: 
-    warn-on-unsaved-changes: Page Default
+    warn-on-unsaved-changes: Ignore
 
   source: 
     type: Null
@@ -765,9 +816,11 @@ buttons:
     - '#DEFAULT#'
 
   behavior: 
-    action: Submit Page
+    action: Defined by Dynamic Action
     execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
+
+  advanced: 
+    static-id: SEND_TEST
 
 - # ====== Button: EDIT_PROFILE ================================
   id: 24730493665693512
@@ -968,6 +1021,65 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
+- # ====== Dynamic Action: SEND_PUSH_NOTIFICATION ==============
+  id: 24857865163145922
+  identification: 
+    name: SEND_PUSH_NOTIFICATION
+
+  execution: 
+    sequence: 50
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: SEND_TEST # 24149324030647506
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 24857985542145923
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        core.send_push_notification (
+            in_title    => 'Test Notification',
+            in_message  => 'Message created at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),
+            in_asap     => TRUE
+        );
+        
+
+    execution: 
+      sequence: 10
+      event: SEND_PUSH_NOTIFICATION # 24857865163145922
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 24858030700145924
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        $('#SEND_TEST').blur();
+        show_success('Push notification sent');
+        
+        
+
+    execution: 
+      sequence: 20
+      event: SEND_PUSH_NOTIFICATION # 24857865163145922
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
 computations: 
 - # ====== Computation: P900_ENABLE_PUSH =======================
   id: 24619825594821101
@@ -985,54 +1097,4 @@ computations:
       FROM apex_appl_push_subscriptions t
       WHERE t.application_id      = core.get_app_id()
           AND t.user_name         = core.get_user_id();
-
-processes: 
-- # ====== Process: SEND_PUSH_MESSAGE ==========================
-  id: 24149410107647507
-  identification: 
-    name: SEND_PUSH_MESSAGE
-    type: Send Push Notification
-    execution-chain: None
-
-  settings: 
-    to: '&APP_USER.'
-    title: TITLE
-    body: MESSAGE &P900_MESSAGE.
-
-  execution: 
-    sequence: 20
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  success-message: 
-    success-message: Push notification sent
-
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    when-button-pressed: SEND_TEST # 24149324030647506
-
-- # ====== Process: SEND_PUSH_QUEUE ============================
-  id: 24149503872647508
-  identification: 
-    name: SEND_PUSH_QUEUE
-    type: Execute Code
-    execution-chain: None
-
-  source: 
-    location: Local Database
-    language: PL/SQL
-    pl/sql-code: apex_pwa.push_queue();
-
-  execution: 
-    sequence: 30
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  error: 
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    when-button-pressed: SEND_TEST # 24149324030647506
 

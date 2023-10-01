@@ -45,7 +45,9 @@ server-cache:
 
 help: 
   help-text: |
-    Gateway to all applications. If you don't have account, you can request one in top right corner.
+    Gateway to all applications. Login options are available depending on your role and location.
+    
+    If you don't have account, you can request one in top right corner.
     
 
 regions: 
