@@ -2,6 +2,7 @@ CREATE OR REPLACE FORCE VIEW app_launchpad_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
         u.app_id,
+        u.user_id,
         core.get_session_id()   AS session_id,
         V('DEBUG')              AS debug_mode
     FROM app_users_map u
@@ -37,6 +38,7 @@ JOIN x
     ON x.app_id         = m.app_id
 LEFT JOIN app_users_map a
     ON a.app_id         = m.app_id
+    AND a.user_id       = x.user_id
 WHERE m.app_group       = 'LAUNCHPAD'
 GROUP BY
     m.workspace,
