@@ -98,7 +98,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_warn_on_unsaved_changes=>'I'
 ,p_is_persistent=>'N'
-,p_restricted_characters=>'US_ONLY'
+,p_restricted_characters=>'NO_SPECIAL_CHAR_NL'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'N'
 );
@@ -144,6 +144,34 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_client_condition_type=>'EQUALS'
 ,p_client_condition_element=>'P9999_ERROR'
 ,p_client_condition_expression=>'TIMEOUT'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(24732342224693531)
+,p_event_id=>wwv_flow_imp.id(23521787343581648)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'show_error(''Invalid username or password!'');',
+''))
+,p_client_condition_type=>'EQUALS'
+,p_client_condition_element=>'P9999_ERROR'
+,p_client_condition_expression=>'INVALID_USER'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(24732475168693532)
+,p_event_id=>wwv_flow_imp.id(23521787343581648)
+,p_event_result=>'TRUE'
+,p_action_sequence=>30
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'show_error(''Your account is disabled!'');',
+''))
+,p_client_condition_type=>'EQUALS'
+,p_client_condition_element=>'P9999_ERROR'
+,p_client_condition_expression=>'ACCOUNT_DISABLED'
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(24012872872868744)

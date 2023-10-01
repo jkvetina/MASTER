@@ -16,6 +16,11 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
             -- check if account is active
             IF rec.is_active IS NULL THEN
                 core.raise_error('ACCOUNT_DISABLED');
+                core.redirect(
+                    in_page_id      => 9999,
+                    in_names        => 'P9999_ERROR',
+                    in_values       => 'ACCOUNT_DISABLED'
+                );
             END IF;
 
             -- change user_mail to user_id
@@ -36,6 +41,10 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
         EXCEPTION
         WHEN NO_DATA_FOUND THEN
             core.log_error('INVALID_USER');
+            core.redirect(
+                in_page_id      => 9999,
+                in_names        => 'P9999_ERROR',
+                in_values       => 'INVALID_USER'
             );
         END;
 

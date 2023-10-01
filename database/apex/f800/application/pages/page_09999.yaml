@@ -171,7 +171,7 @@ page-items:
   security: 
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
-    restricted-characters: Allowlist for a-Z, 0-9 and space
+    restricted-characters: Blocklist &<>"/;,*|=% or -- and new line
 
 - # ====== Page Item: P9999_USERNAME ===========================
   id: 24011339265868741
@@ -340,6 +340,48 @@ dynamic-actions:
       type: Item = Value
       item: P9999_ERROR
       value: TIMEOUT
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 24732342224693531
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        show_error('Invalid username or password!');
+        
+
+    execution: 
+      sequence: 20
+      event: SHOW_ERROR # 23521787343581648
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+    client-side-condition: 
+      type: Item = Value
+      item: P9999_ERROR
+      value: INVALID_USER
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 24732475168693532
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        show_error('Your account is disabled!');
+        
+
+    execution: 
+      sequence: 30
+      event: SHOW_ERROR # 23521787343581648
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+    client-side-condition: 
+      type: Item = Value
+      item: P9999_ERROR
+      value: ACCOUNT_DISABLED
 
 processes: 
 - # ====== Process: LOGIN ======================================
