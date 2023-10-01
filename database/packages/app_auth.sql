@@ -104,6 +104,25 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
         WHEN DUP_VAL_ON_INDEX THEN
             core.raise_error('ACCOUNT_REQUEST_EXISTS');
         END;
+
+        -- notify administrators
+        FOR c IN (
+            SELECT u.user_id
+            FROM app_users u
+            JOIN app_users_map t
+                ON t.app_id         = core.get_app_id(in_dont_override => 'Y')
+                AND t.user_id       = u.user_id
+            WHERE u.is_active       = 'Y'
+                AND u.is_admin      = 'Y'
+        ) LOOP
+            core.send_push_notification (
+                in_title        => 'New account requested',
+                in_message      => 'User: ' || rec.user_mail,
+                in_user_id      => c.user_id,
+                in_asap         => TRUE
+            );
+        END LOOP;
+        --
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;

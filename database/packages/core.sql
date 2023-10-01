@@ -1428,12 +1428,12 @@ CREATE OR REPLACE PACKAGE BODY core AS
                 '|' || in_arg1 || '|' || in_arg2 || '|' || in_arg3 || '|' || in_arg4 ||
                 '|' || in_arg5 || '|' || in_arg6 || '|' || in_arg7 || '|' || in_arg8,
                 '|'
-            ) || '| ' || core.get_caller_name(3, TRUE),
+            ) || CASE WHEN UPPER(core.get_user_id()) NOT IN ('NOBODY') THEN '| ' || core.get_caller_name(3, TRUE) END,
             '"', ''), '&' || 'quot;', ''),
             1, 4000);
 
         -- add backtrace for developers (or on demand) to quickly find the problem
-        IF (in_traceback OR core.is_developer()) THEN
+        IF (in_traceback OR core.is_developer()) AND UPPER(core.get_user_id()) NOT IN ('NOBODY') THEN
             v_backtrace := SUBSTR('|' || REPLACE(REPLACE(get_shorter_stack(DBMS_UTILITY.FORMAT_ERROR_BACKTRACE), '"', ''), '&' || 'quot;', ''), 1, 4000);
         END IF;
         --
@@ -2444,6 +2444,46 @@ CREATE OR REPLACE PACKAGE BODY core AS
 
 
 
+    PROCEDURE send_push_notification (
+        in_title                VARCHAR2,
+        in_message              VARCHAR2,
+        in_user_id              VARCHAR2    := NULL,
+        in_app_id               NUMBER      := NULL,
+        in_target_url           VARCHAR2    := NULL,
+        in_icon_url             VARCHAR2    := NULL,
+        in_asap                 BOOLEAN     := TRUE
+    )
+    AS
+        v_app_id                CONSTANT NUMBER         := COALESCE(in_app_id,  core.get_app_id(in_dont_override => 'Y'));
+        v_user_id               CONSTANT VARCHAR2(128)  := COALESCE(in_user_id, core.get_user_id());
+    BEGIN
+        -- https://docs.oracle.com/en/database/oracle/apex/23.1/aeapi/APEX_PWA.SEND_PUSH_NOTIFICATION-Procedure.html
+        IF APEX_PWA.HAS_PUSH_SUBSCRIPTION (
+            p_application_id    => v_app_id,
+            p_user_name         => v_user_id
+        ) THEN
+            apex_pwa.send_push_notification (
+                p_application_id    => v_app_id,
+                p_user_name         => v_user_id,
+                p_title             => in_title,
+                p_body              => in_message,
+                p_icon_url          => in_icon_url,
+                p_target_url        => in_target_url
+            );
+            --
+            IF in_asap THEN
+                apex_pwa.push_queue();
+            END IF;
+        END IF;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
     PROCEDURE send_mail (
         in_to                   VARCHAR2,
         in_subject              VARCHAR2,
@@ -2630,8 +2670,10 @@ CREATE OR REPLACE PACKAGE BODY core AS
         WHEN UTL_SMTP.TRANSIENT_ERROR OR UTL_SMTP.PERMANENT_ERROR THEN
             NULL;
         END;
+    WHEN core.app_exception THEN
+        RAISE;
     WHEN OTHERS THEN
-        core.raise_error('SEND_MAIL_FAILED');
+        core.raise_error();
     END;
 
 
