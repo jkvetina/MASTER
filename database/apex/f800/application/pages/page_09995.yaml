@@ -262,10 +262,10 @@ page-items:
     store-value-encrypted-in-session-state: true
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P9995_USER_NOTE ==========================
+- # ====== Page Item: P9995_USER_NOTES =========================
   id: 24732956013693537
   identification: 
-    name: P9995_USER_NOTE
+    name: P9995_USER_NOTES
     type: Textarea
 
   label: 
@@ -306,7 +306,7 @@ page-items:
 
   source: 
     form-region: '[FORM]' # 24732507850693533
-    column: USER_NOTE
+    column: USER_NOTES
     data-type: VARCHAR2
     query-only: false
     primary-key: false
@@ -667,15 +667,14 @@ processes:
   id: 24733827376693546
   identification: 
     name: PROCESS_REQUEST
-    type: Form - Automatic Row Processing (DML)
+    type: Invoke API
     execution-chain: None
-    form-region: '[FORM]' # 24732507850693533
 
   settings: 
-    target-type: Region Source
-    prevent-lost-updates: true
-    lock-row: No
-    return-primary-key(s)-after-insert: true
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: APP_AUTH
+    procedure-or-function: REQUEST_ACCOUNT
 
   execution: 
     sequence: 10
@@ -684,6 +683,75 @@ processes:
 
   error: 
     display-location: Inline in Notification
+
+  parameters: 
+  - # ====== Parameter: in_user_mail =============================
+    id: 24857320285145917
+    identification: 
+      name: in_user_mail
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P9995_USER_MAIL
+
+    advanced: 
+      display-sequence: 10
+
+  - # ====== Parameter: in_user_name =============================
+    id: 24857415314145918
+    identification: 
+      name: in_user_name
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P9995_USER_NAME
+
+    advanced: 
+      display-sequence: 20
+
+  - # ====== Parameter: in_user_notes ============================
+    id: 24857562273145919
+    identification: 
+      name: in_user_notes
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P9995_USER_NOTES
+
+    advanced: 
+      display-sequence: 30
+
+  - # ====== Parameter: in_agreement =============================
+    id: 24857638838145920
+    identification: 
+      name: in_agreement
+
+    parameter: 
+      direction: In
+      data-type: CHAR
+      has-default: false
+
+    value: 
+      type: Item
+      item: P9995_IS_AGREEMENT
+
+    advanced: 
+      display-sequence: 40
 
 branches: 
 - # ====== Branch: REDIRECT_TO_LOGIN ===========================
