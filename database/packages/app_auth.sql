@@ -64,6 +64,41 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
 
 
 
+    PROCEDURE request_account (
+        in_user_mail        app_user_requests.user_mail%TYPE,
+        in_user_name        app_user_requests.user_name%TYPE,
+        in_user_notes       app_user_requests.user_notes%TYPE,
+        in_agreement        app_user_requests.is_agreement%TYPE
+    )
+    AS
+        rec                 app_user_requests%ROWTYPE;
+    BEGIN
+        rec.user_name       := in_user_name;
+        rec.user_mail       := in_user_mail;
+        rec.user_notes      := in_user_notes;
+        rec.is_agreement    := in_agreement;
+        rec.created_by      := USER;
+        rec.created_at      := SYSDATE;
+        --
+        IF rec.user_mail NOT LIKE '%@%' THEN
+            core.raise_error('INVALID_EMAIL');
+        END IF;
+        --
+        BEGIN
+            INSERT INTO app_user_requests VALUES rec;
+        EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            core.raise_error('REQUEST_EXISTS');
+        END;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
     PROCEDURE create_user (
         in_user_id          app_users.user_id%TYPE,
         in_user_name        app_users.user_id%TYPE      := NULL,

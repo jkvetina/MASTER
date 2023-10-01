@@ -4,6 +4,15 @@ CREATE OR REPLACE PACKAGE app_auth AS
 
 
 
+    PROCEDURE request_account (
+        in_user_mail        app_user_requests.user_mail%TYPE,
+        in_user_name        app_user_requests.user_name%TYPE,
+        in_user_notes       app_user_requests.user_notes%TYPE,
+        in_agreement        app_user_requests.is_agreement%TYPE
+    );
+
+
+
     PROCEDURE create_user (
         in_user_id          app_users.user_id%TYPE,
         in_user_name        app_users.user_id%TYPE      := NULL,
