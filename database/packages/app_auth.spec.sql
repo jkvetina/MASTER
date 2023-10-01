@@ -15,8 +15,25 @@ CREATE OR REPLACE PACKAGE app_auth AS
 
     PROCEDURE create_user (
         in_user_id          app_users.user_id%TYPE,
-        in_user_name        app_users.user_id%TYPE      := NULL,
-        in_user_mail        app_users.user_id%TYPE      := NULL
+        in_user_name        app_users.user_name%TYPE        := NULL,
+        in_user_mail        app_users.user_mail%TYPE        := NULL
+    );
+
+
+
+    PROCEDURE update_user (
+        in_user_id          app_users.user_id%TYPE,
+        in_user_name        app_users.user_name%TYPE        := NULL,
+        in_user_mail        app_users.user_mail%TYPE        := NULL,
+        in_user_nickname    app_users.user_nickname%TYPE    := NULL,
+        in_user_title       app_users.user_title%TYPE       := NULL,
+        in_user_about       app_users.user_about%TYPE       := NULL
+    );
+
+
+
+    PROCEDURE update_user_avatar (
+        in_file_name        VARCHAR2
     );
 
 

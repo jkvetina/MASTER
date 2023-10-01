@@ -35,6 +35,7 @@ database/tables/app_settings.sql
 database/tables/app_tables.sql
 database/tables/app_tracking_src.sql
 database/tables/app_user_messages.sql
+database/tables/app_user_requests.sql
 database/tables/app_users.sql
 database/tables/app_users_map.sql
 database/triggers/app_applications__.sql

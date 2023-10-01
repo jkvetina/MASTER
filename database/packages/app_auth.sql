@@ -134,8 +134,8 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
 
     PROCEDURE create_user (
         in_user_id          app_users.user_id%TYPE,
-        in_user_name        app_users.user_id%TYPE      := NULL,
-        in_user_mail        app_users.user_id%TYPE      := NULL
+        in_user_name        app_users.user_name%TYPE        := NULL,
+        in_user_mail        app_users.user_mail%TYPE        := NULL
     )
     AS
         rec                 app_users%ROWTYPE;
@@ -157,6 +157,69 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
         WHEN DUP_VAL_ON_INDEX THEN
             core.raise_error('USER_EXISTS');
         END;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE update_user (
+        in_user_id          app_users.user_id%TYPE,
+        in_user_name        app_users.user_name%TYPE        := NULL,
+        in_user_mail        app_users.user_mail%TYPE        := NULL,
+        in_user_nickname    app_users.user_nickname%TYPE    := NULL,
+        in_user_title       app_users.user_title%TYPE       := NULL,
+        in_user_about       app_users.user_about%TYPE       := NULL
+    )
+    AS
+    BEGIN
+        UPDATE app_users u
+        SET u.user_name         = in_user_name,
+            u.user_mail         = in_user_mail,
+            u.user_nickname     = in_user_nickname,
+            u.user_title        = in_user_title,
+            u.user_about        = in_user_about
+        WHERE u.user_id         = in_user_id;
+        --
+        IF SQL%ROWCOUNT = 1 THEN
+            core.set_item('$SUCCESS', 'Profile updated.');
+        END IF;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE update_user_avatar (
+        in_file_name        VARCHAR2
+    )
+    AS
+    BEGIN
+        FOR c IN (
+            SELECT
+                f.name,
+                f.blob_content,
+                f.mime_type
+            FROM apex_application_temp_files f
+            WHERE f.name = in_file_name
+        ) LOOP
+            --
+            UPDATE app_users t
+            SET t.avatar_blob   = c.blob_content,
+                t.avatar_url    = 'avatar' || REGEXP_SUBSTR(c.name, '(\.[^\.])^', 1, 1, NULL, 1),
+                t.avatar_mime   = c.mime_type
+            WHERE t.user_id     = core.get_user_id();
+            --
+            IF SQL%ROWCOUNT = 1 THEN
+                core.set_item('$SUCCESS', 'Profile image updated.');
+            END IF;
+        END LOOP;
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
