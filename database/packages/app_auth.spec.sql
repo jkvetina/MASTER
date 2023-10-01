@@ -4,6 +4,14 @@ CREATE OR REPLACE PACKAGE app_auth AS
 
 
 
+    PROCEDURE create_user (
+        in_user_id          app_users.user_id%TYPE,
+        in_user_name        app_users.user_id%TYPE      := NULL,
+        in_user_mail        app_users.user_id%TYPE      := NULL
+    );
+
+
+
     FUNCTION get_auth_function (
         in_app_id               app_pages.app_id%TYPE,
         in_auth_scheme          VARCHAR2

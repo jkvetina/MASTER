@@ -2,7 +2,7 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
 
     PROCEDURE after_auth
     AS
-        rec                     app_users%ROWTYPE;
+        rec                 app_users%ROWTYPE;
     BEGIN
         -- convert email address to the login if needed
         BEGIN
@@ -49,6 +49,40 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
         RAISE;
     WHEN APEX_APPLICATION.E_STOP_APEX_ENGINE THEN
         NULL;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
+    PROCEDURE create_user (
+        in_user_id          app_users.user_id%TYPE,
+        in_user_name        app_users.user_id%TYPE      := NULL,
+        in_user_mail        app_users.user_id%TYPE      := NULL
+    )
+    AS
+        rec                 app_users%ROWTYPE;
+    BEGIN
+        rec.user_id         := COALESCE(in_user_id, core.get_user_id());
+        rec.user_name       := in_user_name;
+        rec.user_mail       := COALESCE(in_user_mail, core.get_user_id());
+        rec.is_active       := 'Y';
+        rec.updated_by      := USER;
+        rec.updated_at      := SYSDATE;
+        --
+        IF rec.user_mail NOT LIKE '%@%' THEN
+            core.raise_error('INVALID_EMAIL');
+        END IF;
+        --
+        BEGIN
+            INSERT INTO app_users VALUES rec;
+        EXCEPTION
+        WHEN DUP_VAL_ON_INDEX THEN
+            core.raise_error('USER_EXISTS');
+        END;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
     WHEN OTHERS THEN
         core.raise_error();
     END;
