@@ -318,6 +318,7 @@ SELECT
     NULL                AS attribute10,
     n.order#
 FROM app_navigation_matrix_v n
+CROSS JOIN curr
 WHERE n.page_id IS NULL
 --
 UNION ALL
@@ -354,6 +355,7 @@ SELECT
     '/' || n.app_id || '.' || n.page_root_id || '/' || n.col_id || '/Z' AS order#
     --
 FROM app_navigation_matrix_v n
+CROSS JOIN curr
 WHERE n.row_id = n.max_rows
 --
 UNION ALL
