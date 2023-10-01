@@ -681,6 +681,9 @@ processes:
     point: Processing
     run-process: Once Per Page Visit (default)
 
+  success-message: 
+    success-message: Account requested.
+
   error: 
     display-location: Inline in Notification
 
@@ -753,11 +756,29 @@ processes:
     advanced: 
       display-sequence: 40
 
-branches: 
-- # ====== Branch: REDIRECT_TO_LOGIN ===========================
-  id: 24857088460145914
+- # ====== Process: CLOSE_DIALOG ===============================
+  id: 24936653724469309
   identification: 
-    name: REDIRECT_TO_LOGIN
+    name: CLOSE_DIALOG
+    type: Close Dialog
+    execution-chain: None
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  security: 
+    authorization-scheme: IS_USER # 43462402185717150
+
+branches: 
+- # ====== Branch: REDIRECT ====================================
+  id: 24937210845469315
+  identification: 
+    name: REDIRECT
 
   execution: 
     sequence: 10
@@ -766,9 +787,12 @@ branches:
   behavior: 
     type: Page or URL (Redirect)
     target: 
-      url: 'f?p=&APP_ID.:9999:&SESSION.::&DEBUG.:9999:P9999_SUCCESS:ACCOUNT_REQUESTED&success_msg=#SUCCESS_MSG#'
+      url: 'f?p=&APP_ID.:9999:&SESSION.::&DEBUG.:9999::&success_msg=#SUCCESS_MSG#'
       page: 9999 # Login Page
       clear-cache: 9999
-      values: 
-        p9999_success: ACCOUNT_REQUESTED
+
+  server-side-condition: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: UPPER(core.get_user_id()) = 'NOBODY'
 

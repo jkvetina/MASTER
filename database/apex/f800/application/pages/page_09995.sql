@@ -81,12 +81,15 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-times'
 );
 wwv_flow_imp_page.create_page_branch(
- p_id=>wwv_flow_imp.id(24857088460145914)
-,p_branch_name=>'REDIRECT_TO_LOGIN'
-,p_branch_action=>'f?p=&APP_ID.:9999:&SESSION.::&DEBUG.:9999:P9999_SUCCESS:ACCOUNT_REQUESTED&success_msg=#SUCCESS_MSG#'
+ p_id=>wwv_flow_imp.id(24937210845469315)
+,p_branch_name=>'REDIRECT'
+,p_branch_action=>'f?p=&APP_ID.:9999:&SESSION.::&DEBUG.:9999::&success_msg=#SUCCESS_MSG#'
 ,p_branch_point=>'AFTER_PROCESSING'
 ,p_branch_type=>'REDIRECT_URL'
 ,p_branch_sequence=>10
+,p_branch_condition_type=>'EXPRESSION'
+,p_branch_condition=>'UPPER(core.get_user_id()) = ''NOBODY'''
+,p_branch_condition_text=>'PLSQL'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(24732748750693535)
@@ -296,6 +299,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_attribute_03=>'APP_AUTH'
 ,p_attribute_04=>'REQUEST_ACCOUNT'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'Account requested.'
 ,p_internal_uid=>24733827376693546
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
@@ -345,6 +349,16 @@ wwv_flow_imp_shared.create_invokeapi_comp_param(
 ,p_display_sequence=>40
 ,p_value_type=>'ITEM'
 ,p_value=>'P9995_IS_AGREEMENT'
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(24936653724469309)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_CLOSE_WINDOW'
+,p_process_name=>'CLOSE_DIALOG'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_security_scheme=>wwv_flow_imp.id(43462402185717150)  -- IS_USER
+,p_internal_uid=>24936653724469309
 );
 wwv_flow_imp.component_end;
 end;
