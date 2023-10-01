@@ -1,0 +1,886 @@
+---
+# ====== Page: Account Requests ==============================
+id: 806
+identification: 
+  name: Account Requests
+  alias: ACCOUNT-REQUESTS
+  title: Account Requests
+  page-group: ADMIN - USERS & ROLES # 43461648604712360
+
+appearance: 
+  page-mode: Normal
+  page-template: Theme Default
+  template-options: 
+  - '#DEFAULT#'
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+security: 
+  authorization-scheme: IS_DEVELOPER # 60089834032939902
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Account Requests ============================
+  id: 195112390602999478
+  identification: 
+    title: Account Requests
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 63402598617439121
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: [GRID] ======================================
+  id: 263806569569946727
+  identification: 
+    title: '[GRID]'
+    type: Interactive Grid
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_USER_REQUESTS
+    include-rowid-column: true
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Interactive Report # 63355525363439097
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 263806706384946728
+    edit: 
+      enabled: true
+      allowed-operations: 
+      - Add Row
+      - Update Row
+      - Delete Row
+      lost-update-type: Row Values
+      add-row-if-empty: false
+
+    performance: 
+      lazy-loading: false
+
+    appearance: 
+      select-first-row: false
+      fixed-row-height: true
+
+    pagination: 
+      type: Scroll
+      show-total-count: true
+
+    toolbar: 
+      show: true
+      controls: 
+      - Search Column Selection
+      - Search Field
+      - Actions Menu
+      - Save Button
+
+    enable-users-to: 
+      save-public-report: false
+      flashback: true
+      define-chart-view: true
+      download: true
+
+    download: 
+      formats: 
+      - CSV
+      - HTML
+      - Excel
+      - PDF
+      send-as-email: true
+
+    heading: 
+      fixed-to: Page
+
+    icon-view: 
+      show: false
+
+    detail-view: 
+      show: false
+
+    saved-reports: 
+    - # ====== Saved Report: Primary Report ========================
+      id: 264699446121962523
+      identification: 
+        name: Primary Report
+        alias: 347276
+
+  columns: 
+  - # ====== Column: USER_NOTES ==================================
+    id: 24860108081145945
+    identification: 
+      column-name: USER_NOTES
+      type: Display Only
+
+    heading: 
+      heading: Notes
+      alignment: start
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 60
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: USER_NOTES
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: false
+      hide: true
+
+  - # ====== Column: IS_AGREEMENT ================================
+    id: 24860294842145946
+    identification: 
+      column-name: IS_AGREEMENT
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 70
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: IS_AGREEMENT
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: CREATED_BY ==================================
+    id: 24860311102145947
+    identification: 
+      column-name: CREATED_BY
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 80
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: CREATED_BY
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: CREATED_AT ==================================
+    id: 24860483349145948
+    identification: 
+      column-name: CREATED_AT
+      type: Display Only
+
+    heading: 
+      heading: Created At
+      alignment: center
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 90
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: CREATED_AT
+      data-type: DATE
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+      date-ranges: All
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: ACCEPTED_BY =================================
+    id: 24860598645145949
+    identification: 
+      column-name: ACCEPTED_BY
+      type: Display Only
+
+    heading: 
+      heading: Accepted By
+      alignment: start
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 100
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: ACCEPTED_BY
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: ACCEPTED_AT =================================
+    id: 24860602521145950
+    identification: 
+      column-name: ACCEPTED_AT
+      type: Display Only
+
+    heading: 
+      heading: Accepted At
+      alignment: center
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 110
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: ACCEPTED_AT
+      data-type: DATE
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+      date-ranges: All
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: REJECTED_BY =================================
+    id: 24935891275469301
+    identification: 
+      column-name: REJECTED_BY
+      type: Display Only
+
+    heading: 
+      heading: Rejected By
+      alignment: start
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 120
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: REJECTED_BY
+      data-type: VARCHAR2
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: REJECTED_AT =================================
+    id: 24935913541469302
+    identification: 
+      column-name: REJECTED_AT
+      type: Display Only
+
+    heading: 
+      heading: Rejected At
+      alignment: center
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 130
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: REJECTED_AT
+      data-type: DATE
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: Distinct Column
+      date-ranges: All
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: APEX$ROW_ACTION =============================
+    id: 24936087978469303
+    identification: 
+      column-name: APEX$ROW_ACTION
+      type: Actions Menu
+
+    layout: 
+      sequence: 20
+
+  - # ====== Column: APEX$ROW_SELECTOR ===========================
+    id: 24936123566469304
+    identification: 
+      column-name: APEX$ROW_SELECTOR
+      type: Row Selector
+
+    settings: 
+      enable-multi-select: true
+      show-select-all: true
+      hide-control: false
+
+    layout: 
+      sequence: 10
+
+  - # ====== Column: ROWID =======================================
+    id: 24936322178469306
+    identification: 
+      column-name: ROWID
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 140
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: ROWID
+      data-type: ROWID
+      primary-key: true
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+  - # ====== Column: USER_ID =====================================
+    id: 24936497470469307
+    identification: 
+      column-name: USER_ID
+      type: Text Field
+
+    heading: 
+      heading: User Id
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 30
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: true
+      maximum-length: 128
+
+    source: 
+      type: Database Column
+      database-column: USER_ID
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: USER_NAME ===================================
+    id: 124446848128425368
+    identification: 
+      column-name: USER_NAME
+      type: Text Field
+
+    heading: 
+      heading: User Name
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 40
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: true
+      maximum-length: 64
+
+    source: 
+      type: Database Column
+      database-column: USER_NAME
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: USER_MAIL ===================================
+    id: 124587058529046562
+    identification: 
+      column-name: USER_MAIL
+      type: Text Field
+
+    heading: 
+      heading: E-mail
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 50
+      column-alignment: start
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+
+    source: 
+      type: Database Column
+      database-column: USER_MAIL
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  printing: 
+    page: 
+      size: Letter
+      orientation: Landscape
+      units: Inches
+      width: 11
+      height: 8.5
+      border-width: 0.5
+      border-color: '#666666'
+
+    page-header: 
+      font: Helvetica
+      font-weight: Normal
+      font-size: 12
+      font-color: '#000000'
+      alignment: center
+      page-header-text: '[GRID]'
+
+    column-headings: 
+      font: Helvetica
+      font-weight: Bold
+      font-size: 10
+      font-color: '#000000'
+      background-color: '#EEEEEE'
+
+    columns: 
+      font: Helvetica
+      font-weight: Normal
+      font-size: 10
+      font-color: '#000000'
+      background-color: '#FFFFFF'
+
+    page-footer: 
+      font: Helvetica
+      font-weight: Normal
+      font-size: 12
+      font-color: '#000000'
+      alignment: center
+
+buttons: 
+- # ====== Button: ADD_REQUEST =================================
+  id: 24936570281469308
+  identification: 
+    button-name: ADD_REQUEST
+    label: Add Request
+
+  layout: 
+    sequence: 10
+    region: Account Requests # 195112390602999478
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 63463317880439166
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    icon: fa-plus
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:9995:&SESSION.::&DEBUG.:9995::'
+      page: 9995 # Request Access
+      clear-cache: 9995
+
+    warn-on-unsaved-changes: Do Not Check
+
+dynamic-actions: 
+- # ====== Dynamic Action: DIALOG_CLOSED =======================
+  id: 24937328074469316
+  identification: 
+    name: DIALOG_CLOSED
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    selection-type: JavaScript Expression
+    javascript-expression: window
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 24937413293469317
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: '[GRID]' # 263806569569946727
+
+    execution: 
+      sequence: 10
+      event: DIALOG_CLOSED # 24937328074469316
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: SAVE_REQUESTS ==============================
+  id: 24936206652469305
+  identification: 
+    name: SAVE_REQUESTS
+    type: Interactive Grid - Automatic Row Processing (DML)
+    execution-chain: None
+    editable-region: '[GRID]' # 263806569569946727
+
+  settings: 
+    target-type: Region Source
+    prevent-lost-updates: true
+    lock-row: No
+    return-primary-key(s)-after-insert: true
+
+  execution: 
+    sequence: 10
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    execution-scope: For Created and Modified Rows
+

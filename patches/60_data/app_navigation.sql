@@ -18,8 +18,9 @@ USING (
     SELECT 800 AS app_id, 770 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 20 AS order#, 4 AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 800 AS page_id, NULL AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 800 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 805 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, 2 AS col_id FROM DUAL UNION ALL
-    SELECT 800 AS app_id, 810 AS page_id, 805 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, NULL AS col_id FROM DUAL UNION ALL
-    SELECT 800 AS app_id, 815 AS page_id, 805 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 15 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 806 AS page_id, 805 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 810 AS page_id, 805 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 15 AS order#, NULL AS col_id FROM DUAL UNION ALL
+    SELECT 800 AS app_id, 815 AS page_id, 805 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 20 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 820 AS page_id, 800 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 15 AS order#, 2 AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 825 AS page_id, 820 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 10 AS order#, NULL AS col_id FROM DUAL UNION ALL
     SELECT 800 AS app_id, 830 AS page_id, 820 AS parent_id, NULL AS is_hidden, 'Y' AS is_reset, 15 AS order#, NULL AS col_id FROM DUAL UNION ALL

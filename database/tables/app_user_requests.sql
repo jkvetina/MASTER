@@ -1,4 +1,5 @@
 CREATE TABLE app_user_requests (
+    user_id                         VARCHAR2(128)   CONSTRAINT nn_app_user_requests_id NOT NULL,
     user_mail                       VARCHAR2(128)   CONSTRAINT nn_app_user_requests_mail NOT NULL,
     user_name                       VARCHAR2(64)    CONSTRAINT nn_app_user_requests_name NOT NULL,
     user_notes                      VARCHAR2(512),
@@ -19,6 +20,7 @@ CREATE TABLE app_user_requests (
 --
 COMMENT ON TABLE app_user_requests IS '';
 --
+COMMENT ON COLUMN app_user_requests.user_id         IS '';
 COMMENT ON COLUMN app_user_requests.user_mail       IS '';
 COMMENT ON COLUMN app_user_requests.user_name       IS '';
 COMMENT ON COLUMN app_user_requests.user_notes      IS '';

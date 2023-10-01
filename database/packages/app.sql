@@ -36,12 +36,16 @@ CREATE OR REPLACE PACKAGE BODY app AS
         app_nav.init_badges();
         --
         FOR c IN (
-            SELECT COUNT(*) AS badge
-            FROM app_navigation_grid_v g
-            WHERE g.action_name IS NOT NULL
-            HAVING COUNT(*) > 0
+            SELECT 800 AS app_id, 850 AS page_id, NULLIF(COUNT(*), 0) AS badge
+            FROM app_navigation_grid_v t
+            WHERE t.action_name IS NOT NULL
+            UNION ALL
+            SELECT 800 AS app_id, 806 AS page_id, NULLIF(COUNT(*), 0) AS badge
+            FROM app_user_requests t
+            WHERE t.accepted_at     IS NULL
+                AND t.rejected_at   IS NULL
         ) LOOP
-            app_nav.add_badge(800, 850, NULLIF(c.badge, 0));
+            app_nav.add_badge(c.app_id, c.page_id, c.badge);
         END LOOP;
         --
     EXCEPTION

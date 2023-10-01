@@ -51,6 +51,7 @@ database/triggers/app_roles_map__.sql
 database/triggers/app_settings__.sql
 database/triggers/app_tables__.sql
 database/triggers/app_user_messages__.sql
+database/triggers/app_user_requests__.sql
 database/triggers/app_users__.sql
 database/triggers/app_users_map__.sql
 database/views/app_auth_components_v.sql

@@ -173,6 +173,7 @@ prompt --install
 @@application/pages/page_00770.sql
 @@application/pages/page_00800.sql
 @@application/pages/page_00805.sql
+@@application/pages/page_00806.sql
 @@application/pages/page_00810.sql
 @@application/pages/page_00815.sql
 @@application/pages/page_00820.sql
