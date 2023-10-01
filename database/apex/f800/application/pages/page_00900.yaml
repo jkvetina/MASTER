@@ -751,6 +751,88 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P900_EDIT_PROFILE_HOT ====================
+  id: 24859995898145943
+  identification: 
+    name: P900_EDIT_PROFILE_HOT
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 30
+    region: USER_PROFILE # 24622294394821125
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: SQL Query
+    sql-query: |
+      SELECT 't-Button--hot' AS css_class
+      FROM app_users u
+      WHERE u.user_id = core.get_user_id()
+          AND (
+              u.user_name     IS NULL OR
+              u.user_title    IS NULL OR
+              u.user_nickname IS NULL OR
+              u.user_about    IS NULL
+          );
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P900_EDIT_IMAGE_HOT ======================
+  id: 24860035774145944
+  identification: 
+    name: P900_EDIT_IMAGE_HOT
+    type: Hidden
+
+  settings: 
+    value-protected: false
+
+  layout: 
+    sequence: 20
+    region: USER_PROFILE # 24622294394821125
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: SQL Query
+    sql-query: |
+      SELECT 't-Button--hot' AS css_class
+      FROM app_users u
+      WHERE u.user_id = core.get_user_id()
+          AND u.avatar_url IS NULL;
+      
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P900_ENABLE_PUSH =========================
   id: 48547984357047767
   identification: 
@@ -880,6 +962,8 @@ buttons:
     hot: false
     template-options: 
     - '#DEFAULT#'
+    css-classes: 
+    - '&P900_EDIT_PROFILE_HOT.'
     icon: fa-clipboard-edit
 
   behavior: 
@@ -912,6 +996,8 @@ buttons:
     hot: false
     template-options: 
     - '#DEFAULT#'
+    css-classes: 
+    - '&P900_EDIT_IMAGE_HOT.'
     icon: fa-image
 
   behavior: 

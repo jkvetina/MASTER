@@ -295,6 +295,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_image_alt=>'Edit Profile Image'
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_button_redirect_url=>'f?p=&APP_ID.:902:&SESSION.::&DEBUG.:902::'
+,p_button_css_classes=>'&P900_EDIT_IMAGE_HOT.'
 ,p_icon_css_classes=>'fa-image'
 );
 wwv_flow_imp_page.create_page_button(
@@ -308,6 +309,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_image_alt=>'Edit Profile'
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_button_redirect_url=>'f?p=&APP_ID.:901:&SESSION.::&DEBUG.:901::'
+,p_button_css_classes=>'&P900_EDIT_PROFILE_HOT.'
 ,p_icon_css_classes=>'fa-clipboard-edit'
 );
 wwv_flow_imp_page.create_page_item(
@@ -327,6 +329,42 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P900_SUCCESS'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(24622294394821125)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'N'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(24859995898145943)
+,p_name=>'P900_EDIT_PROFILE_HOT'
+,p_item_sequence=>30
+,p_item_plug_id=>wwv_flow_imp.id(24622294394821125)
+,p_item_default=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'SELECT ''t-Button--hot'' AS css_class',
+'FROM app_users u',
+'WHERE u.user_id = core.get_user_id()',
+'    AND (',
+'        u.user_name     IS NULL OR',
+'        u.user_title    IS NULL OR',
+'        u.user_nickname IS NULL OR',
+'        u.user_about    IS NULL',
+'    );'))
+,p_item_default_type=>'SQL_QUERY'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'N'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(24860035774145944)
+,p_name=>'P900_EDIT_IMAGE_HOT'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(24622294394821125)
+,p_item_default=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'SELECT ''t-Button--hot'' AS css_class',
+'FROM app_users u',
+'WHERE u.user_id = core.get_user_id()',
+'    AND u.avatar_url IS NULL;',
+''))
+,p_item_default_type=>'SQL_QUERY'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'N'
