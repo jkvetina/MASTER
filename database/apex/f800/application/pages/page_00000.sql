@@ -64,7 +64,7 @@ wwv_flow_imp_page.create_page_item(
 '    p_page          => 9999,',
 '    p_session       => 0,',
 '    p_items         => ''P9999_ERROR'',',
-'    p_values        => ''TIMEOUT''',
+'    p_values        => ''SESSION_TIMEOUT''',
 ')'))
 ,p_source_type=>'EXPRESSION'
 ,p_source_language=>'PLSQL'

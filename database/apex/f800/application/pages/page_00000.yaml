@@ -141,7 +141,7 @@ page-items:
           p_page          => 9999,
           p_session       => 0,
           p_items         => 'P9999_ERROR',
-          p_values        => 'TIMEOUT'
+          p_values        => 'SESSION_TIMEOUT'
       )
     used: Only when current value in session state is null
 

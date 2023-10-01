@@ -1,0 +1,85 @@
+---
+- # ====== Text Message: ACCOUNT_REQUEST_INVALID ===============
+  id: 24879743253609889
+  identification: 
+    name: ACCOUNT_REQUEST_INVALID
+
+  message: 
+    text: Request invalid.
+
+  attributes: 
+    language: English (en)
+    used-in-javascript: true
+
+- # ====== Text Message: ACCOUNT_REQUEST_EXISTS ================
+  id: 24880096391622649
+  identification: 
+    name: ACCOUNT_REQUEST_EXISTS
+
+  message: 
+    text: Request already exists.
+
+  attributes: 
+    language: English (en)
+    used-in-javascript: true
+
+- # ====== Text Message: INVALID_EMAIL =========================
+  id: 24880292443624019
+  identification: 
+    name: INVALID_EMAIL
+
+  message: 
+    text: E-mail is not valid.
+
+  attributes: 
+    language: English (en)
+    used-in-javascript: true
+
+- # ====== Text Message: ACCOUNT_REQUESTED =====================
+  id: 24880436869631193
+  identification: 
+    name: ACCOUNT_REQUESTED
+
+  message: 
+    text: Account requested.
+
+  attributes: 
+    language: English (en)
+    used-in-javascript: true
+
+- # ====== Text Message: SESSION_TIMEOUT =======================
+  id: 24880722931639994
+  identification: 
+    name: SESSION_TIMEOUT
+
+  message: 
+    text: Your session has ended.
+
+  attributes: 
+    language: English (en)
+    used-in-javascript: true
+
+- # ====== Text Message: INVALID_USER ==========================
+  id: 24880918938644160
+  identification: 
+    name: INVALID_USER
+
+  message: 
+    text: Invalid username or password.
+
+  attributes: 
+    language: English (en)
+    used-in-javascript: true
+
+- # ====== Text Message: ACCOUNT_DISABLED ======================
+  id: 24881103352645549
+  identification: 
+    name: ACCOUNT_DISABLED
+
+  message: 
+    text: Your account is disabled.
+
+  attributes: 
+    language: English (en)
+    used-in-javascript: true
+

@@ -50,7 +50,7 @@ help:
 
 regions: 
 - # ====== Region: DISCLAIMER ==================================
-  id: 23521368406581644
+  id: 37391842310003147
   identification: 
     title: DISCLAIMER
     type: Static Content
@@ -96,7 +96,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: BANNER ======================================
-  id: 47585583127572946
+  id: 61456057030994449
   identification: 
     title: BANNER
     type: Static Content
@@ -144,7 +144,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P9999_ERROR ==============================
-  id: 23521694882581647
+  id: 37392168786003150
   identification: 
     name: P9999_ERROR
     type: Hidden
@@ -154,7 +154,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: BANNER # 47585583127572946
+    region: BANNER # 61456057030994449
     position: BODY
 
   advanced: 
@@ -174,7 +174,7 @@ page-items:
     restricted-characters: Blocklist &<>"/;,*|=% or -- and new line
 
 - # ====== Page Item: P9999_USERNAME ===========================
-  id: 24011339265868741
+  id: 37881813169290244
   identification: 
     name: P9999_USERNAME
     type: Text Field
@@ -192,7 +192,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: BANNER # 47585583127572946
+    region: BANNER # 61456057030994449
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -232,7 +232,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9999_ERROR_MESSAGE ======================
-  id: 24856168136145905
+  id: 38726642039567408
   identification: 
     name: P9999_ERROR_MESSAGE
     type: Hidden
@@ -242,7 +242,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: BANNER # 47585583127572946
+    region: BANNER # 61456057030994449
     position: BODY
 
   advanced: 
@@ -262,7 +262,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9999_SUCCESS ============================
-  id: 24856686200145910
+  id: 38727160103567413
   identification: 
     name: P9999_SUCCESS
     type: Hidden
@@ -272,7 +272,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: BANNER # 47585583127572946
+    region: BANNER # 61456057030994449
     position: BODY
 
   advanced: 
@@ -292,7 +292,7 @@ page-items:
     restricted-characters: Blocklist &<>"/;,*|=% or -- and new line
 
 - # ====== Page Item: P9999_SUCCESS_MESSAGE ====================
-  id: 24857133286145915
+  id: 38727607189567418
   identification: 
     name: P9999_SUCCESS_MESSAGE
     type: Hidden
@@ -302,7 +302,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: BANNER # 47585583127572946
+    region: BANNER # 61456057030994449
     position: BODY
 
   advanced: 
@@ -323,14 +323,14 @@ page-items:
 
 buttons: 
 - # ====== Button: LOGIN_GOOGLE ================================
-  id: 23521464747581645
+  id: 37391938651003148
   identification: 
     button-name: LOGIN_GOOGLE
     label: Sign with Google
 
   layout: 
     sequence: 30
-    region: BANNER # 47585583127572946
+    region: BANNER # 61456057030994449
     position: BODY
     start-new-layout: false
     start-new-row: false
@@ -360,14 +360,14 @@ buttons:
     static-id: LOGIN_GOOGLE
 
 - # ====== Button: LOGIN =======================================
-  id: 24012554410868744
+  id: 37883028314290247
   identification: 
     button-name: LOGIN
     label: Sign In
 
   layout: 
     sequence: 20
-    region: BANNER # 47585583127572946
+    region: BANNER # 61456057030994449
     position: BODY
     start-new-layout: false
     start-new-row: false
@@ -392,7 +392,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: SHOW_ERROR ==========================
-  id: 23521787343581648
+  id: 37392261247003151
   identification: 
     name: SHOW_ERROR
 
@@ -411,7 +411,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 23521875192581649
+    id: 37392349096003152
     identification: 
       action: Execute JavaScript Code
 
@@ -429,12 +429,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: SHOW_ERROR # 23521787343581648
+      event: SHOW_ERROR # 37392261247003151
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Clear =======================================
-    id: 24856397678145907
+    id: 38726871581567410
     identification: 
       action: Clear
 
@@ -446,12 +446,12 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: SHOW_ERROR # 23521787343581648
+      event: SHOW_ERROR # 37392261247003151
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: SHOW_SUCCESS ========================
-  id: 24856798669145911
+  id: 38727272572567414
   identification: 
     name: SHOW_SUCCESS
 
@@ -470,7 +470,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 24856862065145912
+    id: 38727335968567415
     identification: 
       action: Execute JavaScript Code
 
@@ -488,12 +488,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: SHOW_SUCCESS # 24856798669145911
+      event: SHOW_SUCCESS # 38727272572567414
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Clear =======================================
-    id: 24856906853145913
+    id: 38727380756567416
     identification: 
       action: Clear
 
@@ -504,13 +504,13 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: SHOW_SUCCESS # 24856798669145911
+      event: SHOW_SUCCESS # 38727272572567414
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 computations: 
 - # ====== Computation: P9999_ERROR_MESSAGE ====================
-  id: 24856252576145906
+  id: 38726726479567409
   identification: 
     item-name: P9999_ERROR_MESSAGE
 
@@ -521,19 +521,14 @@ computations:
   computation: 
     type: Expression
     language: PL/SQL
-    pl/sql-expression: |
-      CASE :P9999_ERROR
-          WHEN 'TIMEOUT'              THEN 'Your session has ended.'
-          WHEN 'INVALID_USER'         THEN 'Invalid username or password.'
-          WHEN 'ACCOUNT_DISABLED'     THEN 'Your account is disabled.'
-          ELSE :P9999_ERROR END
+    pl/sql-expression: 'APEX_LANG.MESSAGE(:P9999_ERROR)'
 
   server-side-condition: 
     type: Item is NOT NULL
     item: P9999_ERROR
 
 - # ====== Computation: P9999_SUCCESS_MESSAGE ==================
-  id: 24857209489145916
+  id: 38727683392567419
   identification: 
     item-name: P9999_SUCCESS_MESSAGE
 
@@ -544,10 +539,7 @@ computations:
   computation: 
     type: Expression
     language: PL/SQL
-    pl/sql-expression: |
-      CASE :P9999_SUCCESS
-          WHEN 'ACCOUNT_REQUESTED'    THEN 'Account requested.'
-          ELSE :P9999_SUCCESS END
+    pl/sql-expression: 'APEX_LANG.MESSAGE(:P9999_SUCCESS)'
 
   server-side-condition: 
     type: Item is NOT NULL
@@ -555,7 +547,7 @@ computations:
 
 processes: 
 - # ====== Process: LOGIN ======================================
-  id: 24012872872868744
+  id: 37883346776290247
   identification: 
     name: LOGIN
     type: Invoke API
@@ -577,7 +569,7 @@ processes:
 
   parameters: 
   - # ====== Parameter: p_username ===============================
-    id: 24013373708868747
+    id: 37883847612290250
     identification: 
       name: p_username
 
@@ -594,7 +586,7 @@ processes:
       display-sequence: 1
 
   - # ====== Parameter: p_password ===============================
-    id: 24013878408868748
+    id: 37884352312290251
     identification: 
       name: p_password
 
@@ -610,7 +602,7 @@ processes:
       display-sequence: 2
 
   - # ====== Parameter: p_set_persistent_auth ====================
-    id: 24014308043868748
+    id: 37884781947290251
     identification: 
       name: p_set_persistent_auth
 
@@ -626,7 +618,7 @@ processes:
       display-sequence: 3
 
 - # ====== Process: CLEAR_CACHE ================================
-  id: 24016648742868750
+  id: 37887122646290253
   identification: 
     name: CLEAR_CACHE
     type: Clear Session State

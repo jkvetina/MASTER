@@ -88,7 +88,7 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
             INSERT INTO app_user_requests VALUES rec;
         EXCEPTION
         WHEN DUP_VAL_ON_INDEX THEN
-            core.raise_error('REQUEST_EXISTS');
+            core.raise_error('ACCOUNT_REQUEST_EXISTS');
         END;
     EXCEPTION
     WHEN core.app_exception THEN

@@ -25,7 +25,7 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#:js-dialog-class-t-Drawer--pullOutEnd:js-dialog-class-t-Drawer--sm'
 ,p_page_is_public_y_n=>'Y'
 ,p_protection_level=>'C'
-,p_page_component_map=>'11'
+,p_page_component_map=>'17'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 );
