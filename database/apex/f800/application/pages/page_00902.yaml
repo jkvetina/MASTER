@@ -168,7 +168,7 @@ page-items:
 
   security: 
     session-state-protection: Checksum Required - Session Level
-    store-value-encrypted-in-session-state: true
+    store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P902_AVATAR_BLOB =========================
@@ -256,7 +256,7 @@ page-items:
 
   security: 
     session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: true
+    store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
 buttons: 
