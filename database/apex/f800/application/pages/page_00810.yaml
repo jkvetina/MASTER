@@ -59,6 +59,8 @@ regions:
     template: Hero # 63402598617439121
     template-options: 
     - '#DEFAULT#'
+    css-classes: 
+    - FILTERS
     render-components: Above Content
 
   accessibility: 
@@ -92,6 +94,12 @@ regions:
     table-owner: Parsing Schema
     table-name: APP_USERS_MAP
     include-rowid-column: true
+    where-clause: |
+      (app_id = :P810_APP_ID OR :P810_APP_ID IS NULL)
+      AND (user_id = :P810_USER_ID OR :P810_USER_ID IS NULL)
+    page-items-to-submit: 
+    - P810_APP_ID
+    - P810_USER_ID
 
   layout: 
     sequence: 20
@@ -752,6 +760,125 @@ regions:
       font-color: '#000000'
       alignment: center
 
+page-items: 
+- # ====== Page Item: P810_APP_ID ==============================
+  id: 24731739601693525
+  identification: 
+    name: P810_APP_ID
+    type: Select List
+
+  label: 
+    label: App Id
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+    allow-multi-selection: false
+
+  layout: 
+    sequence: 10
+    region: Map Applications # 145401151368917453
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: 2
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 63461560868439163
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: APP_APPLICATIONS # 35274887131559187
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P810_USER_ID =============================
+  id: 24731818270693526
+  identification: 
+    name: P810_USER_ID
+    type: Select List
+
+  label: 
+    label: User Id
+    alignment: Left
+
+  settings: 
+    page-action-on-selection: None
+    allow-multi-selection: false
+
+  layout: 
+    sequence: 20
+    region: Map Applications # 145401151368917453
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: 2
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 63461560868439163
+    template-options: 
+    - '#DEFAULT#'
+    height: 1
+
+  validation: 
+    value-required: false
+
+  list-of-values: 
+    type: Shared Component
+    list-of-values: 'APP_USERS_ALL #ID-NAME' # 18270447043617252
+    display-extra-values: true
+    display-null-value: true
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  quick-picks: 
+    show-quick-picks: false
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: true
+    restricted-characters: All characters can be saved.
+
 buttons: 
 - # ====== Button: ADD_USER_WIZARD =============================
   id: 14592151108898952
@@ -779,6 +906,41 @@ buttons:
   behavior: 
     action: Defined by Dynamic Action
     execute-validations: true
+
+dynamic-actions: 
+- # ====== Dynamic Action: CHANGED_FILTERS =====================
+  id: 24731998727693527
+  identification: 
+    name: CHANGED_FILTERS
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P810_APP_ID
+    - P810_USER_ID
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Submit Page =================================
+    id: 24732078433693528
+    identification: 
+      action: Submit Page
+
+    settings: 
+      show-processing: true
+
+    execution: 
+      sequence: 10
+      event: CHANGED_FILTERS # 24731998727693527
+      fire-when-event-result-is: True
+      fire-on-initialization: false
 
 processes: 
 - # ====== Process: SAVE_USERS =================================

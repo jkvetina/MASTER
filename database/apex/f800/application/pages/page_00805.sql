@@ -101,7 +101,7 @@ wwv_flow_imp_page.create_region_column(
 ,p_value_alignment=>'RIGHT'
 ,p_group_id=>wwv_flow_imp.id(100830635308882933)
 ,p_use_group_for=>'BOTH'
-,p_link_target=>'f?p=&APP_ID.:810:&SESSION.::&DEBUG.:810::'
+,p_link_target=>'f?p=&APP_ID.:810:&SESSION.::&DEBUG.:810:P810_USER_ID:&USER_ID.'
 ,p_link_text=>'&COUNT_APPS.'
 ,p_enable_filter=>true
 ,p_filter_is_required=>false

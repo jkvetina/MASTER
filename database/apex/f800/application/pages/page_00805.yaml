@@ -222,9 +222,11 @@ regions:
 
     link: 
       target: 
-        url: 'f?p=&APP_ID.:810:&SESSION.::&DEBUG.:810::'
+        url: 'f?p=&APP_ID.:810:&SESSION.::&DEBUG.:810:P810_USER_ID:&USER_ID.'
         page: 810 # Map Applications
         clear-cache: 810
+        values: 
+          p810_user_id: '&USER_ID.'
 
       link-text: '&COUNT_APPS.'
 
