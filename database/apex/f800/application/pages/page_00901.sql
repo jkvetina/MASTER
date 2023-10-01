@@ -112,7 +112,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(49342505516467531)
 ,p_item_source_plug_id=>wwv_flow_imp.id(49342505516467531)
-,p_prompt=>'User Name'
+,p_prompt=>'Name'
 ,p_source=>'USER_NAME'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
@@ -134,7 +134,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(49342505516467531)
 ,p_item_source_plug_id=>wwv_flow_imp.id(49342505516467531)
-,p_prompt=>'User Mail'
+,p_prompt=>'E-mail'
 ,p_source=>'USER_MAIL'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
@@ -156,7 +156,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(49342505516467531)
 ,p_item_source_plug_id=>wwv_flow_imp.id(49342505516467531)
-,p_prompt=>'User Nickname'
+,p_prompt=>'Nickname'
 ,p_source=>'USER_NICKNAME'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
@@ -178,7 +178,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>50
 ,p_item_plug_id=>wwv_flow_imp.id(49342505516467531)
 ,p_item_source_plug_id=>wwv_flow_imp.id(49342505516467531)
-,p_prompt=>'User Title'
+,p_prompt=>'Title/Role'
 ,p_source=>'USER_TITLE'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXT_FIELD'
@@ -200,7 +200,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_sequence=>60
 ,p_item_plug_id=>wwv_flow_imp.id(49342505516467531)
 ,p_item_source_plug_id=>wwv_flow_imp.id(49342505516467531)
-,p_prompt=>'User About'
+,p_prompt=>'About You'
 ,p_source=>'USER_ABOUT'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_TEXTAREA'
@@ -277,7 +277,7 @@ wwv_flow_imp_shared.create_invokeapi_comp_param(
 ,p_has_default=>true
 ,p_display_sequence=>20
 ,p_value_type=>'ITEM'
-,p_value=>'P901_USER_MAIL'
+,p_value=>'P901_USER_NAME'
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
  p_id=>wwv_flow_imp.id(24859544935145939)

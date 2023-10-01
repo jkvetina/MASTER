@@ -208,7 +208,7 @@ page-items:
     type: Text Field
 
   label: 
-    label: User Name
+    label: Name
     alignment: Left
 
   settings: 
@@ -268,7 +268,7 @@ page-items:
     type: Text Field
 
   label: 
-    label: User Mail
+    label: E-mail
     alignment: Left
 
   settings: 
@@ -328,7 +328,7 @@ page-items:
     type: Text Field
 
   label: 
-    label: User Nickname
+    label: Nickname
     alignment: Left
 
   settings: 
@@ -388,7 +388,7 @@ page-items:
     type: Text Field
 
   label: 
-    label: User Title
+    label: Title/Role
     alignment: Left
 
   settings: 
@@ -448,7 +448,7 @@ page-items:
     type: Textarea
 
   label: 
-    label: User About
+    label: About You
     alignment: Left
 
   settings: 
@@ -691,7 +691,7 @@ processes:
 
     value: 
       type: Item
-      item: P901_USER_MAIL
+      item: P901_USER_NAME
 
     advanced: 
       display-sequence: 20
