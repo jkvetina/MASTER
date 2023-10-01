@@ -92,7 +92,6 @@ wwv_flow_imp_page.create_page_plug(
 ,p_include_rowid_column=>false
 ,p_lazy_loading=>false
 ,p_plug_source_type=>'NATIVE_CARDS'
-,p_ajax_items_to_submit=>'P100_WORKSPACE'
 ,p_plug_query_num_rows_type=>'SCROLL'
 ,p_show_total_row_count=>false
 );
@@ -132,8 +131,8 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_template=>wwv_flow_imp.id(63325094538439079)
 ,p_plug_display_sequence=>10
 ,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'<h1>Welcome, &P100_USER_NAME.</h1>',
-'<p>Current workspace: &P100_WORKSPACE. | &P100_ENV.<p>',
+'<h1>Welcome, &G_USER_FIRST_NAME.</h1>',
+'<p>Current workspace: &G_WORKSPACE. | &G_ENV.<p>',
 ''))
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
@@ -155,7 +154,6 @@ wwv_flow_imp_page.create_page_plug(
 ,p_include_rowid_column=>false
 ,p_lazy_loading=>false
 ,p_plug_source_type=>'NATIVE_CARDS'
-,p_ajax_items_to_submit=>'P100_WORKSPACE'
 ,p_plug_query_num_rows_type=>'SCROLL'
 ,p_show_total_row_count=>false
 );
@@ -209,66 +207,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_position=>'RIGHT_OF_TITLE'
 ,p_icon_css_classes=>'fa-lock-user'
 ,p_security_scheme=>wwv_flow_imp.id(60089834032939902)  -- IS_DEVELOPER
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(7475718742048509)
-,p_name=>'P100_WORKSPACE'
-,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_imp.id(7475275434048504)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(23519786654581628)
-,p_name=>'P100_USER_NAME'
-,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_imp.id(23519630376581627)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(23519964219581630)
-,p_name=>'P100_ENV'
-,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_imp.id(7475275434048504)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_computation(
- p_id=>wwv_flow_imp.id(7476064344048512)
-,p_computation_sequence=>10
-,p_computation_item=>'P100_WORKSPACE'
-,p_computation_point=>'BEFORE_BOX_BODY'
-,p_computation_type=>'EXPRESSION'
-,p_computation_language=>'PLSQL'
-,p_computation=>'core.get_app_workspace()'
-);
-wwv_flow_imp_page.create_page_computation(
- p_id=>wwv_flow_imp.id(23520014758581631)
-,p_computation_sequence=>20
-,p_computation_item=>'P100_ENV'
-,p_computation_point=>'BEFORE_BOX_BODY'
-,p_computation_type=>'EXPRESSION'
-,p_computation_language=>'PLSQL'
-,p_computation=>'SUBSTR(SYS_CONTEXT(''USERENV'', ''DB_NAME''), INSTR(SYS_CONTEXT(''USERENV'', ''DB_NAME''), ''_'') + 1)'
-);
-wwv_flow_imp_page.create_page_computation(
- p_id=>wwv_flow_imp.id(24620100706821104)
-,p_computation_sequence=>30
-,p_computation_item=>'P100_USER_NAME'
-,p_computation_point=>'BEFORE_BOX_BODY'
-,p_computation_type=>'QUERY'
-,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'SELECT COALESCE (',
-'        u.user_nickname,',
-'        SUBSTR(u.user_name, 1, INSTR(u.user_name, '' '') - 1)',
-'    ) AS first_name',
-'FROM app_users u',
-'WHERE u.user_id = core.get_user_id();',
-''))
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(7475819384048510)
