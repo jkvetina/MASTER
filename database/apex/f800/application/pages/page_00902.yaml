@@ -259,6 +259,39 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
+- # ====== Page Item: P902_SUCCESS =============================
+  id: 24858423334145928
+  identification: 
+    name: P902_SUCCESS
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: User Image # 86853369392541254
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    form-region: '[FORM]' # 24622632967821129
+    column: AVATAR_MIME
+    data-type: VARCHAR2
+    query-only: false
+    primary-key: false
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 buttons: 
 - # ====== Button: UPDATE_IMAGE ================================
   id: 24624430747821147
@@ -378,27 +411,43 @@ processes:
     point: Before Header
     run-process: Once Per Page Visit (default)
 
-- # ====== Process: SAVE_PROFILE ===============================
+- # ====== Process: SAVE_PROFILE_IMAGE =========================
   id: 24624547559821148
   identification: 
-    name: SAVE_PROFILE
-    type: Form - Automatic Row Processing (DML)
+    name: SAVE_PROFILE_IMAGE
+    type: Execute Code
     execution-chain: None
-    form-region: '[FORM]' # 24622632967821129
 
-  settings: 
-    target-type: Region Source
-    prevent-lost-updates: true
-    lock-row: No
-    return-primary-key(s)-after-insert: true
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      app_auth.update_user_avatar(:P902_AVATAR_BLOB);
+      
 
   execution: 
     sequence: 10
     point: Processing
     run-process: Once Per Page Visit (default)
 
-  success-message: 
-    success-message: Profile updated
+  error: 
+    display-location: Inline in Notification
+
+- # ====== Process: CLOSE_DIALOG ===============================
+  id: 24858136449145925
+  identification: 
+    name: CLOSE_DIALOG
+    type: Close Dialog
+    execution-chain: None
+
+  settings: 
+    items-to-return-: 
+    - P902_SUCCESS
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
 
   error: 
     display-location: Inline in Notification

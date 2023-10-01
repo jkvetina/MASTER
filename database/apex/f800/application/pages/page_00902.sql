@@ -132,6 +132,20 @@ wwv_flow_imp_page.create_page_item(
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(24858423334145928)
+,p_name=>'P902_SUCCESS'
+,p_source_data_type=>'VARCHAR2'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(86853369392541254)
+,p_item_source_plug_id=>wwv_flow_imp.id(24622632967821129)
+,p_source=>'AVATAR_MIME'
+,p_source_type=>'REGION_SOURCE_COLUMN'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_is_persistent=>'N'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
 wwv_flow_imp_page.create_page_computation(
  p_id=>wwv_flow_imp.id(24624354931821146)
 ,p_computation_sequence=>10
@@ -163,16 +177,24 @@ wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(24624547559821148)
 ,p_process_sequence=>10
 ,p_process_point=>'AFTER_SUBMIT'
-,p_region_id=>wwv_flow_imp.id(24622632967821129)
-,p_process_type=>'NATIVE_FORM_DML'
-,p_process_name=>'SAVE_PROFILE'
-,p_attribute_01=>'REGION_SOURCE'
-,p_attribute_05=>'Y'
-,p_attribute_06=>'N'
-,p_attribute_08=>'Y'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'SAVE_PROFILE_IMAGE'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'app_auth.update_user_avatar(:P902_AVATAR_BLOB);',
+''))
+,p_process_clob_language=>'PLSQL'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
-,p_process_success_message=>'Profile updated'
 ,p_internal_uid=>24624547559821148
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(24858136449145925)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_CLOSE_WINDOW'
+,p_process_name=>'CLOSE_DIALOG'
+,p_attribute_01=>'P902_SUCCESS'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_internal_uid=>24858136449145925
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(24622729299821130)

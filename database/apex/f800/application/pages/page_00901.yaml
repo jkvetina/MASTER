@@ -138,6 +138,36 @@ regions:
       expand-shortcuts: false
 
 page-items: 
+- # ====== Page Item: P901_SUCCESS =============================
+  id: 24858852730145932
+  identification: 
+    name: P901_SUCCESS
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: User Profile # 111573241941187656
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P901_USER_ID =============================
   id: 49344479290467537
   identification: 
@@ -585,6 +615,10 @@ processes:
     type: Close Dialog
     execution-chain: None
 
+  settings: 
+    items-to-return-: 
+    - P901_SUCCESS
+
   execution: 
     sequence: 20
     point: Processing
@@ -610,24 +644,123 @@ processes:
   id: 24725700892646414
   identification: 
     name: SAVE_PROFILE
-    type: Form - Automatic Row Processing (DML)
+    type: Invoke API
     execution-chain: None
-    form-region: '[FORM]' # 49342505516467531
 
   settings: 
-    target-type: Region Source
-    prevent-lost-updates: true
-    lock-row: No
-    return-primary-key(s)-after-insert: true
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: APP_AUTH
+    procedure-or-function: UPDATE_USER
 
   execution: 
     sequence: 10
     point: Processing
     run-process: Once Per Page Visit (default)
 
-  success-message: 
-    success-message: Profile updated
-
   error: 
     display-location: Inline in Notification
+
+  parameters: 
+  - # ====== Parameter: in_user_id ===============================
+    id: 24859395793145937
+    identification: 
+      name: in_user_id
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: false
+
+    value: 
+      type: Item
+      item: P901_USER_ID
+
+    advanced: 
+      display-sequence: 10
+
+  - # ====== Parameter: in_user_name =============================
+    id: 24859431554145938
+    identification: 
+      name: in_user_name
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: true
+
+    value: 
+      type: Item
+      item: P901_USER_MAIL
+
+    advanced: 
+      display-sequence: 20
+
+  - # ====== Parameter: in_user_mail =============================
+    id: 24859544935145939
+    identification: 
+      name: in_user_mail
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: true
+
+    value: 
+      type: Item
+      item: P901_USER_MAIL
+
+    advanced: 
+      display-sequence: 30
+
+  - # ====== Parameter: in_user_nickname =========================
+    id: 24859689786145940
+    identification: 
+      name: in_user_nickname
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: true
+
+    value: 
+      type: Item
+      item: P901_USER_NICKNAME
+
+    advanced: 
+      display-sequence: 40
+
+  - # ====== Parameter: in_user_title ============================
+    id: 24859789742145941
+    identification: 
+      name: in_user_title
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: true
+
+    value: 
+      type: Item
+      item: P901_USER_TITLE
+
+    advanced: 
+      display-sequence: 50
+
+  - # ====== Parameter: in_user_about ============================
+    id: 24859863739145942
+    identification: 
+      name: in_user_about
+
+    parameter: 
+      direction: In
+      data-type: VARCHAR2
+      has-default: true
+
+    value: 
+      type: Item
+      item: P901_USER_ABOUT
+
+    advanced: 
+      display-sequence: 60
 
