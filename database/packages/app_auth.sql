@@ -79,11 +79,25 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
         rec.is_agreement    := in_agreement;
         rec.created_by      := USER;
         rec.created_at      := SYSDATE;
-        --
-        IF rec.user_mail NOT LIKE '%@%' THEN
+
+        -- check for valid email
+        IF rec.user_mail NOT LIKE '%@%.%' THEN      -- @TODO: room for improvement
             core.raise_error('INVALID_EMAIL');
         END IF;
-        --
+
+        -- check existing users
+        FOR c IN (
+            SELECT 1
+            FROM app_users t
+            WHERE (
+                t.user_mail     = rec.user_mail
+                OR t.user_id    = rec.user_mail
+            )
+        ) LOOP
+            core.raise_error('ACCOUNT_REQUEST_INVALID');    -- account already exists
+        END LOOP;
+
+        -- check existing requests
         BEGIN
             INSERT INTO app_user_requests VALUES rec;
         EXCEPTION
