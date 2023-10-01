@@ -24,6 +24,9 @@ wwv_flow_imp_page.create_page(
 ,p_overwrite_navigation_list=>'Y'
 ,p_page_is_public_y_n=>'Y'
 ,p_protection_level=>'C'
+,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'Gateway to all applications. If you don''t have account, you can request one in top right corner.',
+''))
 ,p_page_component_map=>'12'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'

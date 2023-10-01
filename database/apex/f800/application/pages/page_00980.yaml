@@ -5,7 +5,7 @@ identification:
   name: '#fa-question-circle'
   alias: HELP
   title: '#fa-question-circle'
-  page-group: USER_PROFILE # 18317012587086665
+  page-group: __ INTERNAL # 14547468167324179
 
 appearance: 
   page-mode: Modal Dialog
@@ -51,8 +51,12 @@ css:
     
 
 security: 
-  authorization-scheme: IS_USER # 43462402185717150
-  authentication: Page Requires Authentication
+  authentication: Page Is Public
+
+advanced: 
+  enable-meta-tags: false
+
+security: 
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
   form-auto-complete: Off
@@ -301,16 +305,20 @@ computations:
 
   execution: 
     sequence: 20
-    point: Before Regions
+    point: Before Header
 
   computation: 
     type: SQL Query (return single value)
     sql-query: |
       SELECT
-          APEX_APPLICATION.DO_SUBSTITUTIONS(p.page_title) AS title
+          APEX_APPLICATION.DO_SUBSTITUTIONS (
+              CASE WHEN p.page_id IN (9999)
+                  THEN p.page_name
+                  ELSE p.page_title END
+          ) AS title
       FROM apex_application_pages p
       WHERE p.application_id  = :APP_ID
-          AND p.page_id       = :P980_PAGE_ID
+          AND p.page_id       = :P980_PAGE_ID;
       
 
 - # ====== Computation: P980_PAGE_ID ===========================
@@ -320,7 +328,7 @@ computations:
 
   execution: 
     sequence: 10
-    point: Before Regions
+    point: Before Header
 
   computation: 
     type: Item

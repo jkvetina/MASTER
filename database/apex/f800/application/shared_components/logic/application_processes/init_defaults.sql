@@ -19,7 +19,6 @@ wwv_flow_imp_shared.create_flow_process(
 ,p_process_name=>'INIT_DEFAULTS'
 ,p_process_sql_clob=>'app.init_defaults();'
 ,p_process_clob_language=>'PLSQL'
-,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
 );
 wwv_flow_imp.component_end;
 end;

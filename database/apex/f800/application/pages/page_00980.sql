@@ -18,7 +18,7 @@ wwv_flow_imp_page.create_page(
 ,p_page_mode=>'MODAL'
 ,p_step_title=>'#fa-question-circle'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(18317012587086665)  -- USER_PROFILE
+,p_group_id=>wwv_flow_imp.id(14547468167324179)  -- __ INTERNAL
 ,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '.DRAWER .CONTENT {',
 '  padding               : 0 0.5rem;',
@@ -43,8 +43,8 @@ wwv_flow_imp_page.create_page(
 ,p_step_template=>wwv_flow_imp.id(63289183138439042)
 ,p_page_css_classes=>'DRAWER'
 ,p_page_template_options=>'#DEFAULT#:js-dialog-class-t-Drawer--pullOutEnd:js-dialog-class-t-Drawer--sm'
-,p_required_role=>wwv_flow_imp.id(43462402185717150)  -- IS_USER
 ,p_dialog_chained=>'N'
+,p_page_is_public_y_n=>'Y'
 ,p_protection_level=>'C'
 ,p_page_component_map=>'25'
 ,p_last_updated_by=>'DEV'
@@ -122,7 +122,7 @@ wwv_flow_imp_page.create_page_computation(
  p_id=>wwv_flow_imp.id(23520848535581639)
 ,p_computation_sequence=>10
 ,p_computation_item=>'P980_PAGE_ID'
-,p_computation_point=>'BEFORE_BOX_BODY'
+,p_computation_point=>'BEFORE_HEADER'
 ,p_computation_type=>'ITEM_VALUE'
 ,p_computation=>'P0_HELP_PAGE_ID'
 );
@@ -130,14 +130,18 @@ wwv_flow_imp_page.create_page_computation(
  p_id=>wwv_flow_imp.id(23520739686581638)
 ,p_computation_sequence=>20
 ,p_computation_item=>'P980_PAGE_NAME'
-,p_computation_point=>'BEFORE_BOX_BODY'
+,p_computation_point=>'BEFORE_HEADER'
 ,p_computation_type=>'QUERY'
 ,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'SELECT',
-'    APEX_APPLICATION.DO_SUBSTITUTIONS(p.page_title) AS title',
+'    APEX_APPLICATION.DO_SUBSTITUTIONS (',
+'        CASE WHEN p.page_id IN (9999)',
+'            THEN p.page_name',
+'            ELSE p.page_title END',
+'    ) AS title',
 'FROM apex_application_pages p',
 'WHERE p.application_id  = :APP_ID',
-'    AND p.page_id       = :P980_PAGE_ID',
+'    AND p.page_id       = :P980_PAGE_ID;',
 ''))
 );
 wwv_flow_imp_page.create_page_da_event(

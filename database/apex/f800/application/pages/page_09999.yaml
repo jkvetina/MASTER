@@ -43,6 +43,11 @@ advanced:
 server-cache: 
   caching: Disabled
 
+help: 
+  help-text: |
+    Gateway to all applications. If you don't have account, you can request one in top right corner.
+    
+
 regions: 
 - # ====== Region: DISCLAIMER ==================================
   id: 23521368406581644

@@ -14,9 +14,6 @@
     sequence: -10
     point: Before Header
 
-  security: 
-    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
-
 - # ====== Application Process: AJAX_PING ======================
   id: 15475958849750657
   identification: 
