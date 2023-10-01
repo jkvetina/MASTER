@@ -1,10 +1,10 @@
 ---
-# ====== Page: Map Applications ==============================
-id: 810
+# ====== Page: #fa-users Users ===============================
+id: 805
 identification: 
-  name: Map Applications
-  alias: MAP-APPLICATIONS
-  title: Map Applications
+  name: '#fa-users Users'
+  alias: USERS
+  title: Users
   page-group: ADMIN - USERS & ROLES # 43461648604712360
 
 appearance: 
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_DEVELOPER # 60089834032939902
+  authorization-scheme: IS_ADMIN # 63924538900170215
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -39,10 +39,10 @@ server-cache:
   caching: Disabled
 
 regions: 
-- # ====== Region: Map Applications ============================
-  id: 145401151368917453
+- # ====== Region: Users for &G_APP_NAME. ======================
+  id: 170183251856532779
   identification: 
-    title: Map Applications
+    title: Users for &G_APP_NAME.
     type: Static Content
 
   layout: 
@@ -80,18 +80,18 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Map Applications [GRID] =====================
-  id: 214095330335864702
+- # ====== Region: Users [GRID] ================================
+  id: 238877430823480028
   identification: 
-    title: Map Applications [GRID]
+    title: Users [GRID]
     type: Interactive Grid
 
   source: 
     location: Local Database
     type: Table / View
     table-owner: Parsing Schema
-    table-name: APP_USERS_MAP
-    include-rowid-column: true
+    table-name: APP_USERS_V
+    include-rowid-column: false
 
   layout: 
     sequence: 20
@@ -124,7 +124,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 214095467150864703
+    id: 238877567638480029
     edit: 
       enabled: true
       allowed-operations: 
@@ -178,259 +178,66 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 214988206887880498
+      id: 239770307375495824
       identification: 
         name: Primary Report
         alias: 347276
 
   column-groups: 
   - # ====== Column Group: Flags =================================
-    id: 76048396825267606
+    id: 100830497312882932
     heading: 
       heading: Flags
 
+  - # ====== Column Group: Counters ==============================
+    id: 100830635308882933
+    heading: 
+      heading: Counters
+
   - # ====== Column Group: User Info =============================
-    id: 76048546115267608
+    id: 100830646602882934
     heading: 
       heading: User Info
 
   columns: 
-  - # ====== Column: APP_ID ======================================
-    id: 24730525843693513
+  - # ====== Column: COUNT_APPS ==================================
+    id: 32260123614663858
     identification: 
-      column-name: APP_ID
-      type: Select List
+      column-name: COUNT_APPS
+      type: Link
 
     heading: 
-      heading: Application
-      alignment: start
-
-    layout: 
-      sequence: 30
-      column-alignment: start
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: true
-
-    list-of-values: 
-      type: Shared Component
-      list-of-values: APP_APPLICATIONS # 35274887131559187
-      display-extra-values: false
-      display-null-value: true
-
-    source: 
-      type: Database Column
-      database-column: APP_ID
-      data-type: NUMBER
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Use List of Values
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-    enable-users-to: 
-      sort: false
-      hide: true
-
-  - # ====== Column: IS_ADMIN ====================================
-    id: 24730650440693514
-    identification: 
-      column-name: IS_ADMIN
-      type: Checkbox
-
-    heading: 
-      heading: Admin
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
+      heading: Apps
+      alignment: end
 
     layout: 
       sequence: 70
-      column-alignment: center
-      group: Flags # 76048396825267606
+      column-alignment: end
+      group: Counters # 100830635308882933
       use-group-for: Both
       stretch: Use Report Setting
 
     accessibility: 
       value-identifies-row: false
 
-    validation: 
-      value-required: false
+    link: 
+      target: 
+        url: 'f?p=&APP_ID.:810:&SESSION.::&DEBUG.:810::'
+        page: 810 # Map Applications
+        clear-cache: 810
+
+      link-text: '&COUNT_APPS.'
 
     source: 
       type: Database Column
-      database-column: IS_ADMIN
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: IS_FAVORITE =================================
-    id: 24730709824693515
-    identification: 
-      column-name: IS_FAVORITE
-      type: Checkbox
-
-    heading: 
-      heading: Favorite
-      alignment: center
-
-    settings: 
-      use-defaults: false
-      checked-value: Y
-
-    layout: 
-      sequence: 80
-      column-alignment: center
-      group: Flags # 76048396825267606
-      use-group-for: Both
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    validation: 
-      value-required: false
-
-    source: 
-      type: Database Column
-      database-column: IS_FAVORITE
-      data-type: VARCHAR2
-      query-only: false
-      primary-key: false
-
-    default: 
-      duplicate-copies-existing-value: true
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: ROWID =======================================
-    id: 24731273359693520
-    identification: 
-      column-name: ROWID
-      type: Hidden
-
-    settings: 
-      value-protected: true
-
-    layout: 
-      sequence: 130
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: ROWID
-      data-type: ROWID
-      primary-key: true
-
-    session-state: 
-      data-type: VARCHAR2
-
-    export-/-printing: 
-      include-in-export-/-print: false
-
-  - # ====== Column: CREATED_BY ==================================
-    id: 24731322139693521
-    identification: 
-      column-name: CREATED_BY
-      type: Display Only
-
-    heading: 
-      heading: Created By
-      alignment: start
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 140
-      column-alignment: start
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: CREATED_BY
-      data-type: VARCHAR2
+      database-column: COUNT_APPS
+      data-type: NUMBER
       query-only: true
       primary-key: false
 
-    session-state: 
-      data-type: VARCHAR2
-
     column-filter: 
       enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
+      lov-type: None
 
     export-/-printing: 
       include-in-export-/-print: true
@@ -440,168 +247,27 @@ regions:
       control-break/aggregate: true
       hide: true
 
-  - # ====== Column: CREATED_AT ==================================
-    id: 24731418046693522
-    identification: 
-      column-name: CREATED_AT
-      type: Display Only
-
-    heading: 
-      heading: Created At
-      alignment: center
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 150
-      column-alignment: center
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: CREATED_AT
-      data-type: DATE
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: Distinct Column
-      date-ranges: All
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: UPDATED_BY ==================================
-    id: 24731581194693523
-    identification: 
-      column-name: UPDATED_BY
-      type: Display Only
-
-    heading: 
-      heading: Updated By
-      alignment: start
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 160
-      column-alignment: start
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: UPDATED_BY
-      data-type: VARCHAR2
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      performance-impacting-operators: 
-      - Contains
-      - Starts With
-      - Case Insensitive
-      - Regular Expression
-      text-case: Mixed
-      lov-type: Distinct Column
-      exact-match: true
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
-
-  - # ====== Column: UPDATED_AT ==================================
-    id: 24731601576693524
-    identification: 
-      column-name: UPDATED_AT
-      type: Display Only
-
-    heading: 
-      heading: Updated At
-      alignment: center
-
-    settings: 
-      format: Plain Text
-      based-on: Item Value
-
-    layout: 
-      sequence: 170
-      column-alignment: center
-      stretch: Use Report Setting
-
-    accessibility: 
-      value-identifies-row: false
-
-    source: 
-      type: Database Column
-      database-column: UPDATED_AT
-      data-type: DATE
-      query-only: true
-      primary-key: false
-
-    session-state: 
-      data-type: VARCHAR2
-
-    column-filter: 
-      enabled: true
-      lov-type: Distinct Column
-      date-ranges: All
-
-    export-/-printing: 
-      include-in-export-/-print: true
-
-    enable-users-to: 
-      sort: true
-      control-break/aggregate: true
-      hide: true
+    security: 
+      escape-special-characters: true
 
   - # ====== Column: USER_ID =====================================
-    id: 74735459606343342
+    id: 99517560093958668
     identification: 
       column-name: USER_ID
-      type: Text Field with autocomplete
+      type: Text Field
 
     heading: 
       heading: User Id
       alignment: start
 
     settings: 
-      search: Contains & Ignore Case
-      fetch-on-type: true
-      cache: true
-      maximum-values-in-list: 7
-      minimum-search: 1
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
 
     layout: 
-      sequence: 40
+      sequence: 30
       column-alignment: start
-      group: User Info # 76048546115267608
+      group: User Info # 100830646602882934
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -612,14 +278,66 @@ regions:
       value-required: true
       maximum-length: 128
 
-    list-of-values: 
-      type: Shared Component
-      list-of-values: 'APP_USERS_ALL #ID-NAME' # 18270447043617252
-      display-extra-values: true
-
     source: 
       type: Database Column
       database-column: USER_ID
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: true
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: USER_NAME ===================================
+    id: 99517709381958669
+    identification: 
+      column-name: USER_NAME
+      type: Text Field
+
+    heading: 
+      heading: User Name
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 40
+      column-alignment: start
+      group: User Info # 100830646602882934
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 64
+
+    source: 
+      type: Database Column
+      database-column: USER_NAME
       data-type: VARCHAR2
       query-only: false
       primary-key: false
@@ -635,11 +353,11 @@ regions:
       - Case Insensitive
       - Regular Expression
       text-case: Mixed
-      lov-type: Use List of Values
+      lov-type: Distinct Column
       exact-match: true
 
     export-/-printing: 
-      include-in-export-/-print: false
+      include-in-export-/-print: true
 
     enable-users-to: 
       sort: true
@@ -647,7 +365,7 @@ regions:
       hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 74874276012964522
+    id: 99656376500579848
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -655,8 +373,111 @@ regions:
     layout: 
       sequence: 20
 
+  - # ====== Column: USER_MAIL ===================================
+    id: 99657919782579863
+    identification: 
+      column-name: USER_MAIL
+      type: Text Field
+
+    heading: 
+      heading: User Mail
+      alignment: start
+
+    settings: 
+      trim-spaces: Leading and Trailing
+      text-case: NO CHANGE
+
+    layout: 
+      sequence: 50
+      column-alignment: start
+      group: User Info # 100830646602882934
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    validation: 
+      value-required: false
+      maximum-length: 128
+
+    source: 
+      type: Database Column
+      database-column: USER_MAIL
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: false
+
+    default: 
+      duplicate-copies-existing-value: true
+
+    column-filter: 
+      enabled: true
+      performance-impacting-operators: 
+      - Contains
+      - Starts With
+      - Case Insensitive
+      - Regular Expression
+      text-case: Mixed
+      lov-type: Distinct Column
+      exact-match: true
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
+  - # ====== Column: COUNT_ROLES =================================
+    id: 100830947501882937
+    identification: 
+      column-name: COUNT_ROLES
+      type: Display Only
+
+    heading: 
+      heading: Roles
+      alignment: end
+
+    settings: 
+      format: Plain Text
+      based-on: Item Value
+
+    layout: 
+      sequence: 80
+      column-alignment: end
+      group: Counters # 100830635308882933
+      use-group-for: Both
+      stretch: Use Report Setting
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: COUNT_ROLES
+      data-type: NUMBER
+      query-only: true
+      primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    column-filter: 
+      enabled: true
+      lov-type: None
+
+    export-/-printing: 
+      include-in-export-/-print: true
+
+    enable-users-to: 
+      sort: true
+      control-break/aggregate: true
+      hide: true
+
   - # ====== Column: IS_ACTIVE ===================================
-    id: 121127711947266440
+    id: 145909812434881766
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -670,9 +491,9 @@ regions:
       checked-value: Y
 
     layout: 
-      sequence: 50
+      sequence: 60
       column-alignment: center
-      group: Flags # 76048396825267606
+      group: Flags # 100830497312882932
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -729,7 +550,7 @@ regions:
       font-size: 12
       font-color: '#000000'
       alignment: center
-      page-header-text: Map Applications [GRID]
+      page-header-text: Users [GRID]
 
     column-headings: 
       font: Helvetica
@@ -754,14 +575,14 @@ regions:
 
 buttons: 
 - # ====== Button: ADD_USER_WIZARD =============================
-  id: 14592151108898952
+  id: 24782755541615350
   identification: 
     button-name: ADD_USER_WIZARD
     label: Add User Wizard
 
   layout: 
     sequence: 10
-    region: Map Applications # 145401151368917453
+    region: Users for &G_APP_NAME. # 170183251856532779
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -782,12 +603,12 @@ buttons:
 
 processes: 
 - # ====== Process: SAVE_USERS =================================
-  id: 14598181991898968
+  id: 24788266324615373
   identification: 
     name: SAVE_USERS
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
-    editable-region: Map Applications [GRID] # 214095330335864702
+    editable-region: Users [GRID] # 238877430823480028
 
   settings: 
     target-type: Table / View
