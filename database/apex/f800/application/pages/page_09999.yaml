@@ -29,7 +29,7 @@ advanced:
 
 security: 
   deep-linking: Application Default
-  page-access-protection: Arguments Must Have Checksum
+  page-access-protection: Unrestricted
   form-auto-complete: Off
   browser-cache: Application Default
 
@@ -150,7 +150,7 @@ page-items:
     type: Hidden
 
   settings: 
-    value-protected: false
+    value-protected: true
 
   layout: 
     sequence: 40
@@ -162,7 +162,7 @@ page-items:
 
   source: 
     type: Null
-    used: Always, replacing any existing value in session state
+    used: Only when current value in session state is null
 
   session-state: 
     data-type: VARCHAR2
@@ -228,6 +228,96 @@ page-items:
 
   security: 
     session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9999_ERROR_MESSAGE ======================
+  id: 24856168136145905
+  identification: 
+    name: P9999_ERROR_MESSAGE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 50
+    region: BANNER # 47585583127572946
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P9999_SUCCESS ============================
+  id: 24856686200145910
+  identification: 
+    name: P9999_SUCCESS
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 60
+    region: BANNER # 47585583127572946
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: Blocklist &<>"/;,*|=% or -- and new line
+
+- # ====== Page Item: P9999_SUCCESS_MESSAGE ====================
+  id: 24857133286145915
+  identification: 
+    name: P9999_SUCCESS_MESSAGE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 70
+    region: BANNER # 47585583127572946
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Request (Memory Only)
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
@@ -317,7 +407,7 @@ dynamic-actions:
 
   server-side-condition: 
     type: Item is NOT NULL
-    item: P9999_ERROR
+    item: P9999_ERROR_MESSAGE
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
@@ -327,7 +417,14 @@ dynamic-actions:
 
     settings: 
       code: |
-        show_error('Your session has ended.');
+        show_error(apex.item('P9999_ERROR_MESSAGE').getValue());
+        
+        // remove message from browser address
+        let url = new URL(document.location);
+        if (url.searchParams.has('p9999_error')) {
+            url.searchParams.delete('p9999_error');
+            window.history.replaceState(null, null, url.toString().replaceAll('%3A', ':').replaceAll('%2C', ','));
+        }
         
 
     execution: 
@@ -336,20 +433,16 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
-    client-side-condition: 
-      type: Item = Value
-      item: P9999_ERROR
-      value: TIMEOUT
-
-  - # ====== Action: Execute JavaScript Code =====================
-    id: 24732342224693531
+  - # ====== Action: Clear =======================================
+    id: 24856397678145907
     identification: 
-      action: Execute JavaScript Code
+      action: Clear
 
-    settings: 
-      code: |
-        show_error('Invalid username or password!');
-        
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P9999_ERROR
+      - P9999_ERROR_MESSAGE
 
     execution: 
       sequence: 20
@@ -357,31 +450,108 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
-    client-side-condition: 
-      type: Item = Value
-      item: P9999_ERROR
-      value: INVALID_USER
+- # ====== Dynamic Action: SHOW_SUCCESS ========================
+  id: 24856798669145911
+  identification: 
+    name: SHOW_SUCCESS
 
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  execution: 
+    event-scope: Static
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P9999_SUCCESS_MESSAGE
+
+  actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 24732475168693532
+    id: 24856862065145912
     identification: 
       action: Execute JavaScript Code
 
     settings: 
       code: |
-        show_error('Your account is disabled!');
+        show_success(apex.item('P9999_SUCCESS_MESSAGE').getValue());
+        
+        // remove message from browser address
+        let url = new URL(document.location);
+        if (url.searchParams.has('p9999_success')) {
+            url.searchParams.delete('p9999_success');
+            window.history.replaceState(null, null, url.toString().replaceAll('%3A', ':').replaceAll('%2C', ','));
+        }
         
 
     execution: 
-      sequence: 30
-      event: SHOW_ERROR # 23521787343581648
+      sequence: 10
+      event: SHOW_SUCCESS # 24856798669145911
       fire-when-event-result-is: True
       fire-on-initialization: false
 
-    client-side-condition: 
-      type: Item = Value
-      item: P9999_ERROR
-      value: ACCOUNT_DISABLED
+  - # ====== Action: Clear =======================================
+    id: 24856906853145913
+    identification: 
+      action: Clear
+
+    affected-elements: 
+      selection-type: Item(s)
+      item(s): 
+      - P9999_SUCCESS
+
+    execution: 
+      sequence: 20
+      event: SHOW_SUCCESS # 24856798669145911
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+computations: 
+- # ====== Computation: P9999_ERROR_MESSAGE ====================
+  id: 24856252576145906
+  identification: 
+    item-name: P9999_ERROR_MESSAGE
+
+  execution: 
+    sequence: 10
+    point: Before Header
+
+  computation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: |
+      CASE :P9999_ERROR
+          WHEN 'TIMEOUT'              THEN 'Your session has ended.'
+          WHEN 'INVALID_USER'         THEN 'Invalid username or password.'
+          WHEN 'ACCOUNT_DISABLED'     THEN 'Your account is disabled.'
+          ELSE :P9999_ERROR END
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P9999_ERROR
+
+- # ====== Computation: P9999_SUCCESS_MESSAGE ==================
+  id: 24857209489145916
+  identification: 
+    item-name: P9999_SUCCESS_MESSAGE
+
+  execution: 
+    sequence: 20
+    point: Before Header
+
+  computation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: |
+      CASE :P9999_SUCCESS
+          WHEN 'ACCOUNT_REQUESTED'    THEN 'Account requested.'
+          ELSE :P9999_SUCCESS END
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P9999_SUCCESS
 
 processes: 
 - # ====== Process: LOGIN ======================================

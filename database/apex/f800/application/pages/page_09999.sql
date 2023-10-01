@@ -23,7 +23,6 @@ wwv_flow_imp_page.create_page(
 ,p_page_template_options=>'#DEFAULT#'
 ,p_overwrite_navigation_list=>'Y'
 ,p_page_is_public_y_n=>'Y'
-,p_protection_level=>'C'
 ,p_help_text=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'Gateway to all applications. If you don''t have account, you can request one in top right corner.',
 ''))
@@ -94,13 +93,12 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P9999_ERROR'
 ,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(47585583127572946)
-,p_use_cache_before_default=>'NO'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_warn_on_unsaved_changes=>'I'
 ,p_is_persistent=>'N'
 ,p_restricted_characters=>'NO_SPECIAL_CHAR_NL'
 ,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'N'
+,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(24011339265868741)
@@ -122,6 +120,72 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_04=>'TEXT'
 ,p_attribute_05=>'NONE'
 );
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(24856168136145905)
+,p_name=>'P9999_ERROR_MESSAGE'
+,p_item_sequence=>50
+,p_item_plug_id=>wwv_flow_imp.id(47585583127572946)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_warn_on_unsaved_changes=>'I'
+,p_is_persistent=>'N'
+,p_protection_level=>'I'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(24856686200145910)
+,p_name=>'P9999_SUCCESS'
+,p_item_sequence=>60
+,p_item_plug_id=>wwv_flow_imp.id(47585583127572946)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_warn_on_unsaved_changes=>'I'
+,p_is_persistent=>'N'
+,p_restricted_characters=>'NO_SPECIAL_CHAR_NL'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(24857133286145915)
+,p_name=>'P9999_SUCCESS_MESSAGE'
+,p_item_sequence=>70
+,p_item_plug_id=>wwv_flow_imp.id(47585583127572946)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_warn_on_unsaved_changes=>'I'
+,p_is_persistent=>'N'
+,p_protection_level=>'I'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_computation(
+ p_id=>wwv_flow_imp.id(24856252576145906)
+,p_computation_sequence=>10
+,p_computation_item=>'P9999_ERROR_MESSAGE'
+,p_computation_point=>'BEFORE_HEADER'
+,p_computation_type=>'EXPRESSION'
+,p_computation_language=>'PLSQL'
+,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'CASE :P9999_ERROR',
+'    WHEN ''TIMEOUT''              THEN ''Your session has ended.''',
+'    WHEN ''INVALID_USER''         THEN ''Invalid username or password.''',
+'    WHEN ''ACCOUNT_DISABLED''     THEN ''Your account is disabled.''',
+'    ELSE :P9999_ERROR END'))
+,p_compute_when=>'P9999_ERROR'
+,p_compute_when_type=>'ITEM_IS_NOT_NULL'
+);
+wwv_flow_imp_page.create_page_computation(
+ p_id=>wwv_flow_imp.id(24857209489145916)
+,p_computation_sequence=>20
+,p_computation_item=>'P9999_SUCCESS_MESSAGE'
+,p_computation_point=>'BEFORE_HEADER'
+,p_computation_type=>'EXPRESSION'
+,p_computation_language=>'PLSQL'
+,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'CASE :P9999_SUCCESS',
+'    WHEN ''ACCOUNT_REQUESTED''    THEN ''Account requested.''',
+'    ELSE :P9999_SUCCESS END'))
+,p_compute_when=>'P9999_SUCCESS'
+,p_compute_when_type=>'ITEM_IS_NOT_NULL'
+);
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(23521787343581648)
 ,p_name=>'SHOW_ERROR'
@@ -129,7 +193,7 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_bind_type=>'bind'
 ,p_bind_event_type=>'ready'
 ,p_display_when_type=>'ITEM_IS_NOT_NULL'
-,p_display_when_cond=>'P9999_ERROR'
+,p_display_when_cond=>'P9999_ERROR_MESSAGE'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(23521875192581649)
@@ -139,39 +203,62 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'show_error(''Your session has ended.'');',
+'show_error(apex.item(''P9999_ERROR_MESSAGE'').getValue());',
+'',
+'// remove message from browser address',
+'let url = new URL(document.location);',
+'if (url.searchParams.has(''p9999_error'')) {',
+'    url.searchParams.delete(''p9999_error'');',
+'    window.history.replaceState(null, null, url.toString().replaceAll(''%3A'', '':'').replaceAll(''%2C'', '',''));',
+'}',
 ''))
-,p_client_condition_type=>'EQUALS'
-,p_client_condition_element=>'P9999_ERROR'
-,p_client_condition_expression=>'TIMEOUT'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(24732342224693531)
+ p_id=>wwv_flow_imp.id(24856397678145907)
 ,p_event_id=>wwv_flow_imp.id(23521787343581648)
 ,p_event_result=>'TRUE'
 ,p_action_sequence=>20
 ,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_JAVASCRIPT_CODE'
-,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'show_error(''Invalid username or password!'');',
-''))
-,p_client_condition_type=>'EQUALS'
-,p_client_condition_element=>'P9999_ERROR'
-,p_client_condition_expression=>'INVALID_USER'
+,p_action=>'NATIVE_CLEAR'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P9999_ERROR,P9999_ERROR_MESSAGE'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(24856798669145911)
+,p_name=>'SHOW_SUCCESS'
+,p_event_sequence=>20
+,p_bind_type=>'bind'
+,p_bind_event_type=>'ready'
+,p_display_when_type=>'ITEM_IS_NOT_NULL'
+,p_display_when_cond=>'P9999_SUCCESS_MESSAGE'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(24732475168693532)
-,p_event_id=>wwv_flow_imp.id(23521787343581648)
+ p_id=>wwv_flow_imp.id(24856862065145912)
+,p_event_id=>wwv_flow_imp.id(24856798669145911)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>30
+,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'show_error(''Your account is disabled!'');',
+'show_success(apex.item(''P9999_SUCCESS_MESSAGE'').getValue());',
+'',
+'// remove message from browser address',
+'let url = new URL(document.location);',
+'if (url.searchParams.has(''p9999_success'')) {',
+'    url.searchParams.delete(''p9999_success'');',
+'    window.history.replaceState(null, null, url.toString().replaceAll(''%3A'', '':'').replaceAll(''%2C'', '',''));',
+'}',
 ''))
-,p_client_condition_type=>'EQUALS'
-,p_client_condition_element=>'P9999_ERROR'
-,p_client_condition_expression=>'ACCOUNT_DISABLED'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(24856906853145913)
+,p_event_id=>wwv_flow_imp.id(24856798669145911)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CLEAR'
+,p_affected_elements_type=>'ITEM'
+,p_affected_elements=>'P9999_SUCCESS'
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(24012872872868744)
