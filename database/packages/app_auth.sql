@@ -24,38 +24,20 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
                     p_user => rec.user_id
                 );
             END IF;
-        EXCEPTION
-        WHEN NO_DATA_FOUND THEN
-            core.log_error('LOGIN_FAILED', SYS_CONTEXT('APEX$SESSION', 'APP_USER'));
-            --
-            -- @TODO: check if we can auto create new account
-            -- we should not allow everyone in
-            --
 
-            -- create user record
-            rec.user_id         := core.get_user_id();
-            rec.user_name       := rec.user_id;
-            rec.user_mail       := rec.user_id;
-            rec.is_active       := 'Y';
-            rec.updated_by      := rec.user_id;
+            -- update account
+            rec.updated_by      := core.get_user_id();
             rec.updated_at      := SYSDATE;
             --
-            BEGIN
-                INSERT INTO app_users VALUES rec;
-            EXCEPTION
-            WHEN DUP_VAL_ON_INDEX THEN
-                NULL;
-            END;
+            UPDATE app_users u
+            SET u.updated_by    = rec.updated_by,
+                u.updated_at    = rec.updated_at
+            WHERE u.user_id     = rec.user_id;
+        EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+            core.log_error('INVALID_USER');
+            );
         END;
-
-        -- update account
-        rec.updated_by      := core.get_user_id();
-        rec.updated_at      := SYSDATE;
-        --
-        UPDATE app_users u
-        SET u.updated_by    = rec.updated_by,
-            u.updated_at    = rec.updated_at
-        WHERE u.user_id     = rec.user_id;
 
         --
         -- @TODO: setup format strings
