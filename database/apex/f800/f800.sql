@@ -33,17 +33,17 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   18:13 Pondělí Říjen 2, 2023
+--   Date and Time:   19:40 Pondělí Říjen 2, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     35
 --       Items:                   95
 --       Computations:             6
---       Processes:               29
+--       Processes:               30
 --       Regions:                 58
 --       Buttons:                 25
---       Dynamic Actions:         24
+--       Dynamic Actions:         26
 --     Shared Components:
 --       Logic:
 --         Items:                 17
@@ -34410,6 +34410,7 @@ wwv_flow_imp_page.create_page_plug(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(24938887202469331)
 ,p_plug_name=>'Subscribed Devices [DATA]'
+,p_region_name=>'SUBSCRIPTIONS'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63327898435439081)
 ,p_plug_display_sequence=>40
@@ -34707,6 +34708,113 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(24938887202469331)
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(25063353905730013)
+,p_event_id=>wwv_flow_imp.id(25059550714716922)
+,p_event_result=>'TRUE'
+,p_action_sequence=>40
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'let add_badge = async () => {',
+'    // add red badge to the last card',
+'    var $el = $(''#SUBSCRIPTIONS'').find(''li.a-CardView-item:last'');',
+'    var badge = ''<div class="a-CardView-badge" style="background: red; color: #fff;" title=""><span class="a-CardView-badgeValue">CURRENT</span></div>'';',
+'    $(badge).insertAfter($el.find(''.a-CardView-headerBody''));',
+'};',
+'delay(250).then(() => add_badge());',
+''))
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(25062827562730008)
+,p_name=>'SHOW_INSTALL_PWA'
+,p_event_sequence=>50
+,p_bind_type=>'bind'
+,p_bind_event_type=>'ready'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(25062998650730009)
+,p_event_id=>wwv_flow_imp.id(25062827562730008)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'apex.jQuery(apex.gPageContext$).on(''apexreadyend'', function(e) {',
+'    let check_install = async () => {',
+'        const is_installable = await apex.pwa.isInstallable();',
+'        console.log(''INSTALLABLE'', is_installable);',
+'        if (is_installable) {',
+'            $(''#INSTALL_PWA'').show();',
+'        }',
+'    };',
+'    delay(500).then(() => check_install());',
+'});',
+''))
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(25063096140730010)
+,p_name=>'SHOW_PUSH_STATUS'
+,p_event_sequence=>60
+,p_bind_type=>'bind'
+,p_bind_event_type=>'ready'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(25063195862730011)
+,p_event_id=>wwv_flow_imp.id(25063096140730010)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'apex.jQuery(apex.gPageContext$).on(''apexreadyend'', function(e) {',
+'    let check_push_status = async () => {',
+'        let subscription = await apex.pwa.getPushSubscription();',
+'        if (subscription) {',
+'            // make checkbox selected',
+'            $(''#P905_ENABLE_PUSH'').prop(''checked'', ''checked'');',
+'',
+'            // get pus_id from server',
+'            apex.server.process(''SET_CURRENT_DEVICE'',',
+'                {',
+'                    x01: subscription.endpoint',
+'                },',
+'                {',
+'                    dataType: ''text'',',
+'                    success: function(push_id) {',
+'                        // add red badge',
+'                        var $el = $(''#SUBSCRIPTIONS'').find(''li.a-CardView-item[data-id="'' + push_id.trim() + ''"]'');',
+'                        var badge = ''<div class="a-CardView-badge" style="background: red; color: #fff;" title=""><span class="a-CardView-badgeValue">CURRENT</span></div>'';',
+'                        $(badge).insertAfter($el.find(''.a-CardView-headerBody''));',
+'                    }',
+'                }',
+'            );',
+'        }',
+'    };',
+'    delay(200).then(() => check_push_status());',
+'});',
+''))
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(25063225985730012)
+,p_process_sequence=>10
+,p_process_point=>'ON_DEMAND'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'SET_CURRENT_DEVICE'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'FOR c IN (',
+'    SELECT t.push_subscription_id',
+'    FROM apex_appl_push_subscriptions t',
+'    WHERE t.workspace                   = core.get_app_workspace()',
+'        AND t.application_id            = core.get_app_id()',
+'        AND t.subscription_interface    LIKE ''{"endpoint":"'' || APEX_APPLICATION.G_X01 || ''%''',
+') LOOP',
+'    HTP.P(c.push_subscription_id);',
+'END LOOP;',
+''))
+,p_process_clob_language=>'PLSQL'
+,p_internal_uid=>25063225985730012
 );
 end;
 /

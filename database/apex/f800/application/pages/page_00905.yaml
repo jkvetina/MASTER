@@ -143,6 +143,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
+    static-id: SUBSCRIPTIONS
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -795,4 +796,150 @@ dynamic-actions:
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 25063353905730013
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        let add_badge = async () => {
+            // add red badge to the last card
+            var $el = $('#SUBSCRIPTIONS').find('li.a-CardView-item:last');
+            var badge = '<div class="a-CardView-badge" style="background: red; color: #fff;" title=""><span class="a-CardView-badgeValue">CURRENT</span></div>';
+            $(badge).insertAfter($el.find('.a-CardView-headerBody'));
+        };
+        delay(250).then(() => add_badge());
+        
+
+    execution: 
+      sequence: 40
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: SHOW_INSTALL_PWA ====================
+  id: 25062827562730008
+  identification: 
+    name: SHOW_INSTALL_PWA
+
+  execution: 
+    sequence: 50
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  execution: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 25062998650730009
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        apex.jQuery(apex.gPageContext$).on('apexreadyend', function(e) {
+            let check_install = async () => {
+                const is_installable = await apex.pwa.isInstallable();
+                console.log('INSTALLABLE', is_installable);
+                if (is_installable) {
+                    $('#INSTALL_PWA').show();
+                }
+            };
+            delay(500).then(() => check_install());
+        });
+        
+
+    execution: 
+      sequence: 10
+      event: SHOW_INSTALL_PWA # 25062827562730008
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: SHOW_PUSH_STATUS ====================
+  id: 25063096140730010
+  identification: 
+    name: SHOW_PUSH_STATUS
+
+  execution: 
+    sequence: 60
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  execution: 
+    event-scope: Static
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 25063195862730011
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        apex.jQuery(apex.gPageContext$).on('apexreadyend', function(e) {
+            let check_push_status = async () => {
+                let subscription = await apex.pwa.getPushSubscription();
+                if (subscription) {
+                    // make checkbox selected
+                    $('#P905_ENABLE_PUSH').prop('checked', 'checked');
+        
+                    // get pus_id from server
+                    apex.server.process('SET_CURRENT_DEVICE',
+                        {
+                            x01: subscription.endpoint
+                        },
+                        {
+                            dataType: 'text',
+                            success: function(push_id) {
+                                // add red badge
+                                var $el = $('#SUBSCRIPTIONS').find('li.a-CardView-item[data-id="' + push_id.trim() + '"]');
+                                var badge = '<div class="a-CardView-badge" style="background: red; color: #fff;" title=""><span class="a-CardView-badgeValue">CURRENT</span></div>';
+                                $(badge).insertAfter($el.find('.a-CardView-headerBody'));
+                            }
+                        }
+                    );
+                }
+            };
+            delay(200).then(() => check_push_status());
+        });
+        
+
+    execution: 
+      sequence: 10
+      event: SHOW_PUSH_STATUS # 25063096140730010
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+processes: 
+- # ====== Process: SET_CURRENT_DEVICE =========================
+  id: 25063225985730012
+  identification: 
+    name: SET_CURRENT_DEVICE
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      FOR c IN (
+          SELECT t.push_subscription_id
+          FROM apex_appl_push_subscriptions t
+          WHERE t.workspace                   = core.get_app_workspace()
+              AND t.application_id            = core.get_app_id()
+              AND t.subscription_interface    LIKE '{"endpoint":"' || APEX_APPLICATION.G_X01 || '%'
+      ) LOOP
+          HTP.P(c.push_subscription_id);
+      END LOOP;
+      
+
+  execution: 
+    sequence: 10
+    point: Ajax Callback
+    run-process: Once Per Page Visit (default)
 
