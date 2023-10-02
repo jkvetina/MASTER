@@ -41,8 +41,16 @@ body {
 .t-HeroRegion.SHORTER {
     padding-bottom      : 1rem;
 }
+.t-HeroRegion.SECOND {
+    margin-top          : 3rem;
+}
 h1.t-HeroRegion-title {
+    font-size           : 1.8rem;
     line-height         : 150%;
+}
+
+/* HERO REGION - BOLD ON MOBILE */
+@media only screen and (max-width: 600px) {
 }
 
 /* HERO REGION - HIDE ICON */
