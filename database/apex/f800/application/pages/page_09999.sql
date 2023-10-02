@@ -140,7 +140,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_warn_on_unsaved_changes=>'I'
 ,p_is_persistent=>'N'
-,p_protection_level=>'I'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
@@ -164,7 +163,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_warn_on_unsaved_changes=>'I'
 ,p_is_persistent=>'N'
-,p_protection_level=>'I'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
