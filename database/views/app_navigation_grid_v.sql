@@ -85,12 +85,12 @@ SELECT
     --
     NVL(z.order#, p.order# || '/' || NVL(n.order#, 0) || '.' || n.page_id) AS sort_order#
     --
-FROM app_navigation_map_mv m
+FROM app_navigation n
 JOIN x
-    ON x.app_id         = m.app_id
-JOIN app_navigation n
-    ON n.app_id         = m.app_id
-    AND n.page_id       = m.page_id
+    ON x.app_id         = n.app_id
+JOIN app_navigation_map_mv m
+    ON m.app_id         = n.app_id
+    AND m.page_id       = n.page_id
 LEFT JOIN z
     ON z.app_id         = n.app_id
     AND z.page_id       = n.page_id
