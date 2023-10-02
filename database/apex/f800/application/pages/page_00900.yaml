@@ -23,7 +23,7 @@ navigation:
 css: 
   inline: |
     #BANNER {
-        min-height: 12rem;
+        min-height: 13rem;
     }
     
     .a-CardView-items--row .has-media {
@@ -40,10 +40,6 @@ css:
         border-radius: 8px;
     }
     .a-CardView-mainContent {
-    }
-    
-    #PUSH_NOTIFICATIONS .t-Region-body {
-        padding: 0 2rem 0.5rem 0.6rem;
     }
     
 
@@ -88,7 +84,7 @@ regions:
     start-new-row: false
     column: Automatic
     new-column: true
-    column-span: 3
+    column-span: 4
 
   appearance: 
     template: Blank with Attributes # 63325094538439079
@@ -285,89 +281,6 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: PUSH_NOTIFICATIONS ==========================
-  id: 24621907041821122
-  identification: 
-    title: PUSH_NOTIFICATIONS
-    type: Static Content
-
-  layout: 
-    sequence: 40
-    parent-region: No Parent
-    position: BODY
-    start-new-layout: false
-    start-new-row: false
-    column: 11
-    new-column: true
-    column-span: 2
-
-  appearance: 
-    template: Blank with Attributes # 63325094538439079
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    static-id: PUSH_NOTIFICATIONS
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: Push Notifications ==========================
-  id: 24622108084821124
-  identification: 
-    title: Push Notifications
-    type: Static Content
-
-  layout: 
-    sequence: 10
-    parent-region: PUSH_NOTIFICATIONS # 24621907041821122
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Hero # 63402598617439121
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Above Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
 - # ====== Region: USER_PROFILE ================================
   id: 24622294394821125
   identification: 
@@ -395,108 +308,6 @@ regions:
     landmark-type: Template Default
 
   advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: Push Notifications ==========================
-  id: 48547233909047763
-  identification: 
-    title: Push Notifications
-    type: Static Content
-
-  source: 
-    html-code: Push notifications have to be enabled for each device you want to receive the notifications on. The first time you enable push notifications, you will have to grant permission to your browser. This setting can be changed at any time.
-
-  layout: 
-    sequence: 30
-    parent-region: PUSH_NOTIFICATIONS # 24621907041821122
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Standard # 63362861151439101
-    template-options: 
-    - '#DEFAULT#'
-    - t-Region--removeHeader js-removeLandmark
-    - t-Region--textContent
-    - t-Region--scrollBody
-    css-classes: 
-    - a-pwaPush--subscriptionRegion
-    icon: fa-bell-o
-    render-components: Below Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: Push Notifications Not Supported ============
-  id: 48605859706387160
-  identification: 
-    title: Push Notifications Not Supported
-    type: Static Content
-
-  source: 
-    html-code: Push notifications are not currently supported in your browser.
-
-  layout: 
-    sequence: 20
-    parent-region: PUSH_NOTIFICATIONS # 24621907041821122
-    position: SUB_REGIONS
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Standard # 63362861151439101
-    template-options: 
-    - '#DEFAULT#'
-    - t-Region--removeHeader js-removeLandmark
-    - t-Region--textContent
-    - t-Region--scrollBody
-    css-classes: 
-    - a-pwaPush--subscriptionRegion--not-supported
-    icon: fa-bell-slash-o
-    render-components: Below Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    custom-attributes: 
-    - 'style="display:none;"'
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -600,10 +411,10 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: ROLES [CARDS] ===============================
+- # ====== Region: App Roles [CARDS] ===========================
   id: 75654026921463884
   identification: 
-    title: ROLES [CARDS]
+    title: App Roles [CARDS]
     type: Cards
 
   source: 
@@ -686,41 +497,6 @@ regions:
       show-total-count: false
 
 page-items: 
-- # ====== Page Item: P900_MESSAGE =============================
-  id: 24149759321647510
-  identification: 
-    name: P900_MESSAGE
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 20
-    region: Push Notifications # 48547233909047763
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  default: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: "'TEST ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')"
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
 - # ====== Page Item: P900_SUCCESS =============================
   id: 24858237592145926
   identification: 
@@ -833,114 +609,7 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P900_ENABLE_PUSH =========================
-  id: 48547984357047767
-  identification: 
-    name: P900_ENABLE_PUSH
-    type: Checkbox
-
-  label: 
-    label: Enable on this device
-    alignment: Left
-
-  settings: 
-    use-defaults: false
-    checked-value: Y
-
-  layout: 
-    sequence: 10
-    region: Push Notifications # 48547233909047763
-    position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 63461560868439163
-    template-options: 
-    - '#DEFAULT#'
-    - margin-top-sm
-
-  validation: 
-    value-required: false
-
-  advanced: 
-    warn-on-unsaved-changes: Ignore
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
 buttons: 
-- # ====== Button: INSTALL =====================================
-  id: 24149004790647503
-  identification: 
-    button-name: INSTALL
-    label: Install
-
-  layout: 
-    sequence: 10
-    region: Push Notifications # 48547233909047763
-    position: CLOSE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Text with Icon # 63464158031439167
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    - t-Button--iconLeft
-    icon: fa-cloud-download
-
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: true
-
-- # ====== Button: SEND_TEST ===================================
-  id: 24149324030647506
-  identification: 
-    button-name: SEND_TEST
-    label: Send Test
-
-  layout: 
-    sequence: 20
-    region: Push Notifications # 48547233909047763
-    position: CLOSE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Text # 63463978601439167
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: true
-
-  advanced: 
-    static-id: SEND_TEST
-
 - # ====== Button: EDIT_PROFILE ================================
   id: 24730493665693512
   identification: 
@@ -1010,184 +679,6 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
-- # ====== Dynamic Action: CHANGED_PROJECT =====================
-  id: 14562952563376436
-  identification: 
-    name: CHANGED_PROJECT
-
-  execution: 
-    sequence: 10
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
-    selection-type: Item(s)
-    item(s): 
-    - P900_PROJECT_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Submit Page =================================
-    id: 14563452990376438
-    identification: 
-      action: Submit Page
-
-    settings: 
-      show-processing: true
-
-    execution: 
-      sequence: 20
-      event: CHANGED_PROJECT # 14562952563376436
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-- # ====== Dynamic Action: INSTALL_PWA =========================
-  id: 24149170987647504
-  identification: 
-    name: INSTALL_PWA
-
-  execution: 
-    sequence: 30
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CLICK
-    selection-type: Button
-    button: INSTALL # 24149004790647503
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Execute JavaScript Code =====================
-    id: 24149244849647505
-    identification: 
-      action: Execute JavaScript Code
-
-    settings: 
-      code: apex.pwa.openInstallDialog();
-
-    execution: 
-      sequence: 10
-      event: INSTALL_PWA # 24149170987647504
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-- # ====== Dynamic Action: SWITCH_PUSH_NOTIFICATIONS ===========
-  id: 24279802208673720
-  identification: 
-    name: SWITCH_PUSH_NOTIFICATIONS
-
-  execution: 
-    sequence: 20
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
-    selection-type: Item(s)
-    item(s): 
-    - P900_ENABLE_PUSH
-
-  client-side-condition: 
-    type: Item = Value
-    item: P900_ENABLE_PUSH
-    value: Y
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Subscribe to push notifications =============
-    id: 24280231939673721
-    identification: 
-      name: Subscribe to push notifications
-      action: Execute JavaScript Code
-
-    settings: 
-      code: apex.pwa.subscribePushNotifications();
-
-    execution: 
-      sequence: 10
-      event: SWITCH_PUSH_NOTIFICATIONS # 24279802208673720
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-  - # ====== Action: Unsubscribe from push notifications =========
-    id: 24280734870673721
-    identification: 
-      name: Unsubscribe from push notifications
-      action: Execute JavaScript Code
-
-    settings: 
-      code: apex.pwa.unsubscribePushNotifications();
-
-    execution: 
-      sequence: 10
-      event: SWITCH_PUSH_NOTIFICATIONS # 24279802208673720
-      fire-when-event-result-is: False
-      fire-on-initialization: false
-
-- # ====== Dynamic Action: SEND_PUSH_NOTIFICATION ==============
-  id: 24857865163145922
-  identification: 
-    name: SEND_PUSH_NOTIFICATION
-
-  execution: 
-    sequence: 50
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CLICK
-    selection-type: Button
-    button: SEND_TEST # 24149324030647506
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Execute Server-side Code ====================
-    id: 24857985542145923
-    identification: 
-      action: Execute Server-side Code
-
-    settings: 
-      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
-      pl/sql-code: |
-        core.send_push_notification (
-            in_title    => 'Test Notification',
-            in_message  => 'Message created at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),
-            in_asap     => TRUE
-        );
-        
-
-    execution: 
-      sequence: 10
-      event: SEND_PUSH_NOTIFICATION # 24857865163145922
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-      stop-execution-on-error: true
-      wait-for-result: true
-
-  - # ====== Action: Execute JavaScript Code =====================
-    id: 24858030700145924
-    identification: 
-      action: Execute JavaScript Code
-
-    settings: 
-      code: |
-        $('#SEND_TEST').blur();
-        show_success('Push notification sent');
-        
-        
-
-    execution: 
-      sequence: 20
-      event: SEND_PUSH_NOTIFICATION # 24857865163145922
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
 - # ====== Dynamic Action: ON_CLOSE_IMAGE ======================
   id: 24858692681145930
   identification: 
@@ -1220,6 +711,10 @@ dynamic-actions:
       event: ON_CLOSE_IMAGE # 24858692681145930
       fire-when-event-result-is: True
       fire-on-initialization: false
+
+    client-side-condition: 
+      type: Item is not null
+      item: P902_SUCCESS
 
   - # ====== Action: Execute JavaScript Code =====================
     id: 24729464791693502
@@ -1336,21 +831,7 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
-computations: 
-- # ====== Computation: P900_ENABLE_PUSH =======================
-  id: 24619825594821101
-  identification: 
-    item-name: P900_ENABLE_PUSH
-
-  execution: 
-    sequence: 10
-    point: Before Regions
-
-  computation: 
-    type: SQL Query (return single value)
-    sql-query: |
-      SELECT 'Y' AS is_active
-      FROM apex_appl_push_subscriptions t
-      WHERE t.application_id      = core.get_app_id()
-          AND t.user_name         = core.get_user_id();
+    client-side-condition: 
+      type: Item is not null
+      item: P901_SUCCESS
 

@@ -1,0 +1,798 @@
+---
+# ====== Page: #fa-bell-o Push Notifications =================
+id: 905
+identification: 
+  name: '#fa-bell-o Push Notifications'
+  alias: PUSH-NOTIFICATIONS
+  title: Push Notifications
+  page-group: USER_PROFILE # 18317012587086665
+
+appearance: 
+  page-mode: Modal Dialog
+  dialog-template: Drawer # 63289183138439042
+  template-options: 
+  - '#DEFAULT#'
+  - js-dialog-class-t-Drawer--pullOutEnd
+  - js-dialog-class-t-Drawer--sm
+  css-classes: 
+  - DRAWER
+
+dialog: 
+  chained: true
+
+navigation-menu: 
+  override-user-interface-level: false
+
+navigation: 
+  cursor-focus: Do not focus cursor
+  warn-on-unsaved-changes: true
+
+css: 
+  inline: |
+    /* FIX TEXT ALIGNMENT */
+    #PUSH_NOTIFICATIONS .t-Region-body {
+        padding: 0 2rem 0.5rem 0.6rem;
+    }
+    
+    /* KEEP CARDS AS TWO COLUMNS */
+    .a-CardView-items--grid2col {
+        grid-template-columns: repeat(2,minmax(0,1fr)) !important;
+    }
+    
+    .t-HeroRegion.SECOND {
+        margin-top: 3rem;
+    }
+    
+
+security: 
+  authorization-scheme: IS_USER # 43462402185717150
+  authentication: Page Requires Authentication
+  deep-linking: Application Default
+  page-access-protection: Arguments Must Have Checksum
+  form-auto-complete: Off
+  browser-cache: Application Default
+
+session-management: 
+  rejoin-sessions: Application Default
+
+advanced: 
+  enable-duplicate-page-submissions: Yes - Enable page to be re-posted
+  reload-on-submit: Only for Success
+
+server-cache: 
+  caching: Disabled
+
+regions: 
+- # ====== Region: Subscribed Devices ==========================
+  id: 24938768455469330
+  identification: 
+    title: Subscribed Devices
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 63402598617439121
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - SECOND
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Subscribed Devices [DATA] ===================
+  id: 24938887202469331
+  identification: 
+    title: Subscribed Devices [DATA]
+    type: Cards
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_USERS_DEVICES_V
+    include-rowid-column: false
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 40
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Cards Container # 63327898435439081
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 24940186668469344
+    appearance: 
+      layout: Grid
+      grid-columns: 2 Columns
+
+    card: 
+      primary-key-column-1: PUSH_SUBSCRIPTION_ID
+
+    title: 
+      advanced-formatting: false
+      column: DEVICE_ID
+
+    subtitle: 
+      advanced-formatting: false
+      column: CREATED_AT
+
+    body: 
+      advanced-formatting: false
+      column: DOMAIN
+
+    secondary-body: 
+      advanced-formatting: false
+
+    icon-and-badge: 
+      icon-source: No Icon
+
+    media: 
+      advanced-formatting: false
+      source: No Media
+
+    performance: 
+      lazy-loading: false
+
+    pagination: 
+      type: Scroll
+      show-total-count: false
+
+- # ====== Region: PUSH_NOTIFICATIONS ==========================
+  id: 49627157919894318
+  identification: 
+    title: PUSH_NOTIFICATIONS
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    static-id: PUSH_NOTIFICATIONS
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Push Notifications ==========================
+  id: 73552484787120959
+  identification: 
+    title: Push Notifications
+    type: Static Content
+
+  source: 
+    html-code: Push notifications have to be enabled for each device you want to receive the notifications on. The first time you enable push notifications, you will have to grant permission to your browser. This setting can be changed at any time.
+
+  layout: 
+    sequence: 20
+    parent-region: PUSH_NOTIFICATIONS # 49627157919894318
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 63362861151439101
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--textContent
+    - t-Region--scrollBody
+    css-classes: 
+    - a-pwaPush--subscriptionRegion
+    icon: fa-bell-o
+    render-components: Below Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Push Notifications Not Supported ============
+  id: 73611110584460356
+  identification: 
+    title: Push Notifications Not Supported
+    type: Static Content
+
+  source: 
+    html-code: Push notifications are not currently supported in your browser.
+
+  layout: 
+    sequence: 10
+    parent-region: PUSH_NOTIFICATIONS # 49627157919894318
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Standard # 63362861151439101
+    template-options: 
+    - '#DEFAULT#'
+    - t-Region--removeHeader js-removeLandmark
+    - t-Region--textContent
+    - t-Region--scrollBody
+    css-classes: 
+    - a-pwaPush--subscriptionRegion--not-supported
+    icon: fa-bell-slash-o
+    render-components: Below Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    custom-attributes: 
+    - 'style="display:none;"'
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Push Notifications ==========================
+  id: 87142237557933358
+  identification: 
+    title: Push Notifications
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 63402598617439121
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P905_MESSAGE =============================
+  id: 49156876603720712
+  identification: 
+    name: P905_MESSAGE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: Push Notifications # 73552484787120959
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: "'TEST ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')"
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P905_ENABLE_PUSH =========================
+  id: 73555101639120969
+  identification: 
+    name: P905_ENABLE_PUSH
+    type: Checkbox
+
+  label: 
+    label: Enable on this device
+    alignment: Left
+
+  settings: 
+    use-defaults: false
+    checked-value: Y
+
+  layout: 
+    sequence: 10
+    region: Push Notifications # 73552484787120959
+    position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 63461560868439163
+    template-options: 
+    - '#DEFAULT#'
+    - margin-top-sm
+
+  validation: 
+    value-required: false
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+buttons: 
+- # ====== Button: CLOSE_DIALOG ================================
+  id: 25003463964006280
+  identification: 
+    button-name: CLOSE_DIALOG
+    label: Close Dialog
+
+  layout: 
+    sequence: 10
+    region: Push Notifications # 87142237557933358
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 63463317880439166
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-pullRight
+    icon: fa-times
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: false
+
+- # ====== Button: INSTALL_PWA =================================
+  id: 25006313014073201
+  identification: 
+    button-name: INSTALL_PWA
+    label: Install
+
+  layout: 
+    sequence: 10
+    region: Push Notifications # 73552484787120959
+    position: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text with Icon # 63464158031439167
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    - t-Button--iconLeft
+    icon: fa-cloud-download
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+  advanced: 
+    static-id: INSTALL_PWA
+    custom-attributes: 
+    - 'style="display:'
+    - none;"
+
+- # ====== Button: SEND_TEST ===================================
+  id: 25006777932073202
+  identification: 
+    button-name: SEND_TEST
+    label: Send Test
+
+  layout: 
+    sequence: 30
+    region: Push Notifications # 73552484787120959
+    position: CREATE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 63463978601439167
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: true
+
+  advanced: 
+    static-id: SEND_TEST
+
+dynamic-actions: 
+- # ====== Dynamic Action: SEND_TEST_NOTIFICATION ==============
+  id: 24940268978469345
+  identification: 
+    name: SEND_TEST_NOTIFICATION
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: SEND_TEST # 25006777932073202
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute Server-side Code ====================
+    id: 24940320224469346
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: |
+        core.send_push_notification (
+            in_title    => 'Test Notification',
+            in_message  => 'Message created at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),
+            in_asap     => TRUE
+        );
+        
+
+    execution: 
+      sequence: 10
+      event: SEND_TEST_NOTIFICATION # 24940268978469345
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 24940404504469347
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        $('#SEND_TEST').blur();
+        show_success('Push notification sent.');
+        
+
+    execution: 
+      sequence: 20
+      event: SEND_TEST_NOTIFICATION # 24940268978469345
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: INSTALL_PWA =========================
+  id: 24940572292469348
+  identification: 
+    name: INSTALL_PWA
+
+  execution: 
+    sequence: 30
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: INSTALL_PWA # 25006313014073201
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 24940681547469349
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: apex.pwa.openInstallDialog();
+
+    execution: 
+      sequence: 10
+      event: INSTALL_PWA # 24940572292469348
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: CLOSE_DIALOG ========================
+  id: 25004083955006299
+  identification: 
+    name: CLOSE_DIALOG
+
+  execution: 
+    sequence: 10
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: Button
+    button: CLOSE_DIALOG # 25003463964006280
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Close Dialog ================================
+    id: 25004510478006301
+    identification: 
+      action: Close Dialog
+
+    execution: 
+      sequence: 10
+      event: CLOSE_DIALOG # 25004083955006299
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: SWITCH_PUSH_NOTIFICATIONS ===========
+  id: 25059550714716922
+  identification: 
+    name: SWITCH_PUSH_NOTIFICATIONS
+
+  execution: 
+    sequence: 40
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CHANGE
+    selection-type: Item(s)
+    item(s): 
+    - P905_ENABLE_PUSH
+
+  client-side-condition: 
+    type: Item = Value
+    item: P905_ENABLE_PUSH
+    value: Y
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Refresh =====================================
+    id: 24940795482469350
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Subscribed Devices [DATA] # 24938887202469331
+
+    execution: 
+      sequence: 30
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Subscribe to push notifications =============
+    id: 25059939640716929
+    identification: 
+      name: Subscribe to push notifications
+      action: Execute JavaScript Code
+
+    settings: 
+      code: apex.pwa.subscribePushNotifications();
+
+    execution: 
+      sequence: 10
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Unsubscribe from push notifications =========
+    id: 25060490420716930
+    identification: 
+      name: Unsubscribe from push notifications
+      action: Execute JavaScript Code
+
+    settings: 
+      code: apex.pwa.unsubscribePushNotifications();
+
+    execution: 
+      sequence: 10
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+  - # ====== Action: Refresh =====================================
+    id: 25062184738730001
+    identification: 
+      action: Refresh
+
+    affected-elements: 
+      selection-type: Region
+      region: Subscribed Devices [DATA] # 24938887202469331
+
+    execution: 
+      sequence: 30
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+
+  - # ====== Action: Execute Server-side Code ====================
+    id: 25062256531730002
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: DBMS_SESSION.SLEEP(1);
+      items-to-submit: 
+      - P905_ENABLE_PUSH
+
+    execution: 
+      sequence: 20
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+
+  - # ====== Action: Execute Server-side Code ====================
+    id: 25062353560730003
+    identification: 
+      action: Execute Server-side Code
+
+    settings: 
+      language: PE.PROPERTY.SOURCE_SNIPPET_LANG.LOV.PLSQL.D
+      pl/sql-code: DBMS_SESSION.SLEEP(0.5);
+      items-to-submit: 
+      - P905_ENABLE_PUSH
+
+    execution: 
+      sequence: 20
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
+      fire-when-event-result-is: False
+      fire-on-initialization: false
+      stop-execution-on-error: true
+      wait-for-result: true
+

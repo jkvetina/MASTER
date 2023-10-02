@@ -82,4 +82,5 @@ database/views/app_tracking_chart_v.sql
 database/views/app_user_profile_v.sql
 database/views/app_user_roles_v.sql
 database/views/app_user_v.sql
+database/views/app_users_devices_v.sql
 database/views/app_users_v.sql
