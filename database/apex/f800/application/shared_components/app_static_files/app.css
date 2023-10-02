@@ -16,14 +16,6 @@
   color             : #fff;
   background        : #333;
 }
-div#P9999_USERNAME_error {
-    color           : #fff;
-}
-button#LOGIN,
-button#LOGIN_GOOGLE {
-    margin-top      : 0.8rem;
-    margin-right    : 0.25rem;
-}
 
 .DISCLAIMER {
     line-height     : 185%;

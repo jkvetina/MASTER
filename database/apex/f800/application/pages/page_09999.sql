@@ -20,6 +20,16 @@ wwv_flow_imp_page.create_page(
 ,p_first_item=>'AUTO_FIRST_ITEM'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(14547468167324179)  -- __ INTERNAL
+,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'div#P9999_USERNAME_error {',
+'    color           : #fff;',
+'}',
+'button#LOGIN,',
+'button#LOGIN_GOOGLE {',
+'    margin-top      : 0.8rem;',
+'    margin-right    : 0.25rem;',
+'}',
+''))
 ,p_page_template_options=>'#DEFAULT#'
 ,p_overwrite_navigation_list=>'Y'
 ,p_page_is_public_y_n=>'Y'

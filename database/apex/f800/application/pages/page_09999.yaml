@@ -21,6 +21,18 @@ navigation:
   cursor-focus: First item on page
   warn-on-unsaved-changes: false
 
+css: 
+  inline: |
+    div#P9999_USERNAME_error {
+        color           : #fff;
+    }
+    button#LOGIN,
+    button#LOGIN_GOOGLE {
+        margin-top      : 0.8rem;
+        margin-right    : 0.25rem;
+    }
+    
+
 security: 
   authentication: Page Is Public
 
