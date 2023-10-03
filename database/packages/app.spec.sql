@@ -5,6 +5,12 @@ CREATE OR REPLACE PACKAGE app AS
     global_app_name             CONSTANT VARCHAR2(30) := 'G_APP_NAME';
     global_context_id           CONSTANT VARCHAR2(30) := 'G_CONTEXT_ID';
     global_today                CONSTANT VARCHAR2(30) := 'G_TODAY';
+    global_env                  CONSTANT VARCHAR2(30) := 'G_ENV';
+    global_workspace            CONSTANT VARCHAR2(30) := 'G_WORKSPACE';
+    global_user_name            CONSTANT VARCHAR2(30) := 'G_USER_NAME';
+    global_user_first_name      CONSTANT VARCHAR2(30) := 'G_USER_FIRST_NAME';
+
+    --        ('P0_HELP_PAGE_ID', '');
 
 
 
