@@ -95,6 +95,10 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P905_SUBSCRIBED
+
   server-cache: 
     caching: Disabled
 
@@ -146,6 +150,10 @@ regions:
     static-id: SUBSCRIPTIONS
     region-display-selector: false
     exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P905_SUBSCRIBED
 
   server-cache: 
     caching: Disabled
@@ -377,6 +385,36 @@ regions:
       expand-shortcuts: false
 
 page-items: 
+- # ====== Page Item: P905_SUBSCRIBED ==========================
+  id: 25063447918730014
+  identification: 
+    name: P905_SUBSCRIBED
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: Push Notifications # 87142237557933358
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
 - # ====== Page Item: P905_MESSAGE =============================
   id: 49156876603720712
   identification: 
@@ -555,6 +593,10 @@ buttons:
   advanced: 
     static-id: SEND_TEST
 
+  server-side-condition: 
+    type: Item is NOT NULL
+    item: P905_SUBSCRIBED
+
 dynamic-actions: 
 - # ====== Dynamic Action: SEND_TEST_NOTIFICATION ==============
   id: 24940268978469345
@@ -714,6 +756,10 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
+    client-side-condition: 
+      type: Item is not null
+      item: P905_SUBSCRIBED
+
   - # ====== Action: Subscribe to push notifications =============
     id: 25059939640716929
     identification: 
@@ -819,6 +865,28 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
+    client-side-condition: 
+      type: Item is not null
+      item: P905_SUBSCRIBED
+
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 25063660573730016
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: location.reload();
+
+    execution: 
+      sequence: 50
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+    client-side-condition: 
+      type: Item is null
+      item: P905_SUBSCRIBED
+
 - # ====== Dynamic Action: SHOW_INSTALL_PWA ====================
   id: 25062827562730008
   identification: 
@@ -885,10 +953,7 @@ dynamic-actions:
             let check_push_status = async () => {
                 let subscription = await apex.pwa.getPushSubscription();
                 if (subscription) {
-                    // make checkbox selected
-                    $('#P905_ENABLE_PUSH').prop('checked', 'checked');
-        
-                    // get pus_id from server
+                    // get push_id from server
                     apex.server.process('SET_CURRENT_DEVICE',
                         {
                             x01: subscription.endpoint
@@ -896,10 +961,16 @@ dynamic-actions:
                         {
                             dataType: 'text',
                             success: function(push_id) {
-                                // add red badge
-                                var $el = $('#SUBSCRIPTIONS').find('li.a-CardView-item[data-id="' + push_id.trim() + '"]');
-                                var badge = '<div class="a-CardView-badge" style="background: red; color: #fff;" title=""><span class="a-CardView-badgeValue">CURRENT</span></div>';
-                                $(badge).insertAfter($el.find('.a-CardView-headerBody'));
+                                push_id = push_id.trim();
+                                if (push_id) {
+                                    // add red badge
+                                    var $el = $('#SUBSCRIPTIONS').find('li.a-CardView-item[data-id="' + push_id + '"]');
+                                    var badge = '<div class="a-CardView-badge" style="background: red; color: #fff;" title=""><span class="a-CardView-badgeValue">CURRENT</span></div>';
+                                    $(badge).insertAfter($el.find('.a-CardView-headerBody'));
+        
+                                    // make checkbox selected
+                                    $('#P905_ENABLE_PUSH').prop('checked', 'checked');
+                                }
                             }
                         }
                     );
@@ -915,6 +986,23 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
+computations: 
+- # ====== Computation: P905_SUBSCRIBED ========================
+  id: 25063529601730015
+  identification: 
+    item-name: P905_SUBSCRIBED
+
+  execution: 
+    sequence: 10
+    point: Before Regions
+
+  computation: 
+    type: SQL Query (return single value)
+    sql-query: |
+      SELECT 'Y'
+      FROM app_users_devices_v
+      WHERE ROWNUM = 1;
+
 processes: 
 - # ====== Process: SET_CURRENT_DEVICE =========================
   id: 25063225985730012
@@ -929,10 +1017,8 @@ processes:
     pl/sql-code: |
       FOR c IN (
           SELECT t.push_subscription_id
-          FROM apex_appl_push_subscriptions t
-          WHERE t.workspace                   = core.get_app_workspace()
-              AND t.application_id            = core.get_app_id()
-              AND t.subscription_interface    LIKE '{"endpoint":"' || APEX_APPLICATION.G_X01 || '%'
+          FROM app_users_devices_v t
+          WHERE t.subscription_interface LIKE '{"endpoint":"' || APEX_APPLICATION.G_X01 || '%'
       ) LOOP
           HTP.P(c.push_subscription_id);
       END LOOP;

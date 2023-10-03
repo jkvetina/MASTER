@@ -12,8 +12,9 @@ SELECT
     t.subscription_interface
     --
 FROM apex_appl_push_subscriptions t
-WHERE t.workspace       = core.get_app_workspace()
-    AND t.user_name     = core.get_user_id();
+WHERE t.workspace           = core.get_app_workspace()
+    AND t.application_id    = core.get_app_id()
+    AND t.user_name         = core.get_user_id();
 --
 COMMENT ON TABLE app_users_devices_v IS '';
 

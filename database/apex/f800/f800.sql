@@ -33,13 +33,13 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   19:40 Pondělí Říjen 2, 2023
+--   Date and Time:   19:27 Úterý Říjen 3, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     35
---       Items:                   95
---       Computations:             6
+--       Items:                   96
+--       Computations:             7
 --       Processes:               30
 --       Regions:                 58
 --       Buttons:                 25
@@ -48,7 +48,6 @@ prompt APPLICATION 800 - Master
 --       Logic:
 --         Items:                 17
 --         Processes:              3
---         Computations:           4
 --         Build Options:          1
 --       Navigation:
 --         Lists:                  1
@@ -121,7 +120,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-10-02'
+,p_flow_version=>'2023-10-03'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -4198,76 +4197,6 @@ wwv_flow_imp_shared.create_flow_item(
 ,p_name=>'G_WORKSPACE'
 ,p_scope=>'GLOBAL'
 ,p_protection_level=>'I'
-);
-end;
-/
-prompt --application/shared_components/logic/application_computations/g_workspace
-begin
-wwv_flow_imp_shared.create_flow_computation(
- p_id=>wwv_flow_imp.id(24820243305751455)
-,p_computation_sequence=>10
-,p_computation_item=>'G_WORKSPACE'
-,p_computation_point=>'AFTER_LOGIN'
-,p_computation_type=>'EXPRESSION'
-,p_computation_language=>'PLSQL'
-,p_computation_processed=>'REPLACE_EXISTING'
-,p_computation=>'core.get_app_workspace()'
-);
-end;
-/
-prompt --application/shared_components/logic/application_computations/g_env
-begin
-wwv_flow_imp_shared.create_flow_computation(
- p_id=>wwv_flow_imp.id(24822088789772975)
-,p_computation_sequence=>10
-,p_computation_item=>'G_ENV'
-,p_computation_point=>'AFTER_LOGIN'
-,p_computation_type=>'EXPRESSION'
-,p_computation_language=>'SQL'
-,p_computation_processed=>'REPLACE_EXISTING'
-,p_computation=>'SUBSTR(SYS_CONTEXT(''USERENV'', ''DB_NAME''), INSTR(SYS_CONTEXT(''USERENV'', ''DB_NAME''), ''_'') + 1)'
-);
-end;
-/
-prompt --application/shared_components/logic/application_computations/g_user_first_name
-begin
-wwv_flow_imp_shared.create_flow_computation(
- p_id=>wwv_flow_imp.id(24820593777754818)
-,p_computation_sequence=>20
-,p_computation_item=>'G_USER_FIRST_NAME'
-,p_computation_point=>'AFTER_LOGIN'
-,p_computation_type=>'QUERY'
-,p_computation_processed=>'REPLACE_EXISTING'
-,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'SELECT COALESCE (',
-'        u.user_nickname,',
-'        SUBSTR(u.user_name, 1, INSTR(u.user_name, '' '') - 1)',
-'    ) AS first_name',
-'FROM app_users u',
-'WHERE u.user_id = core.get_user_id();',
-''))
-,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
-);
-end;
-/
-prompt --application/shared_components/logic/application_computations/g_user_name
-begin
-wwv_flow_imp_shared.create_flow_computation(
- p_id=>wwv_flow_imp.id(24821032977765137)
-,p_computation_sequence=>20
-,p_computation_item=>'G_USER_NAME'
-,p_computation_point=>'AFTER_LOGIN'
-,p_computation_type=>'QUERY'
-,p_computation_processed=>'REPLACE_EXISTING'
-,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'SELECT COALESCE (',
-'        u.user_name,',
-'        u.user_mail',
-'    ) AS user_name',
-'FROM app_users u',
-'WHERE u.user_id = core.get_user_id();',
-''))
-,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
 );
 end;
 /
@@ -34404,6 +34333,8 @@ wwv_flow_imp_page.create_page_plug(
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63402598617439121)
 ,p_plug_display_sequence=>30
+,p_plug_display_condition_type=>'ITEM_IS_NOT_NULL'
+,p_plug_display_when_condition=>'P905_SUBSCRIBED'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
@@ -34421,6 +34352,8 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_source_type=>'NATIVE_CARDS'
 ,p_plug_query_num_rows_type=>'SCROLL'
 ,p_show_total_row_count=>false
+,p_plug_display_condition_type=>'ITEM_IS_NOT_NULL'
+,p_plug_display_when_condition=>'P905_SUBSCRIBED'
 );
 wwv_flow_imp_page.create_card(
  p_id=>wwv_flow_imp.id(24940186668469344)
@@ -34514,6 +34447,8 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_image_alt=>'Send Test'
 ,p_button_position=>'CREATE'
 ,p_warn_on_unsaved_changes=>null
+,p_button_condition=>'P905_SUBSCRIBED'
+,p_button_condition_type=>'ITEM_IS_NOT_NULL'
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(25003463964006280)
@@ -34529,6 +34464,15 @@ wwv_flow_imp_page.create_page_button(
 ,p_warn_on_unsaved_changes=>null
 ,p_button_css_classes=>'u-pullRight'
 ,p_icon_css_classes=>'fa-times'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(25063447918730014)
+,p_name=>'P905_SUBSCRIBED'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(87142237557933358)
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(49156876603720712)
@@ -34555,6 +34499,17 @@ wwv_flow_imp_page.create_page_item(
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'Y'
+);
+wwv_flow_imp_page.create_page_computation(
+ p_id=>wwv_flow_imp.id(25063529601730015)
+,p_computation_sequence=>10
+,p_computation_item=>'P905_SUBSCRIBED'
+,p_computation_point=>'BEFORE_BOX_BODY'
+,p_computation_type=>'QUERY'
+,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'SELECT ''Y''',
+'FROM app_users_devices_v',
+'WHERE ROWNUM = 1;'))
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(25004083955006299)
@@ -34698,6 +34653,8 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(24938887202469331)
+,p_client_condition_type=>'NOT_NULL'
+,p_client_condition_element=>'P905_SUBSCRIBED'
 );
 wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(25062184738730001)
@@ -34725,6 +34682,19 @@ wwv_flow_imp_page.create_page_da_action(
 '};',
 'delay(250).then(() => add_badge());',
 ''))
+,p_client_condition_type=>'NOT_NULL'
+,p_client_condition_element=>'P905_SUBSCRIBED'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(25063660573730016)
+,p_event_id=>wwv_flow_imp.id(25059550714716922)
+,p_event_result=>'TRUE'
+,p_action_sequence=>50
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>'location.reload();'
+,p_client_condition_type=>'NULL'
+,p_client_condition_element=>'P905_SUBSCRIBED'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(25062827562730008)
@@ -34772,10 +34742,7 @@ wwv_flow_imp_page.create_page_da_action(
 '    let check_push_status = async () => {',
 '        let subscription = await apex.pwa.getPushSubscription();',
 '        if (subscription) {',
-'            // make checkbox selected',
-'            $(''#P905_ENABLE_PUSH'').prop(''checked'', ''checked'');',
-'',
-'            // get pus_id from server',
+'            // get push_id from server',
 '            apex.server.process(''SET_CURRENT_DEVICE'',',
 '                {',
 '                    x01: subscription.endpoint',
@@ -34783,10 +34750,16 @@ wwv_flow_imp_page.create_page_da_action(
 '                {',
 '                    dataType: ''text'',',
 '                    success: function(push_id) {',
-'                        // add red badge',
-'                        var $el = $(''#SUBSCRIPTIONS'').find(''li.a-CardView-item[data-id="'' + push_id.trim() + ''"]'');',
-'                        var badge = ''<div class="a-CardView-badge" style="background: red; color: #fff;" title=""><span class="a-CardView-badgeValue">CURRENT</span></div>'';',
-'                        $(badge).insertAfter($el.find(''.a-CardView-headerBody''));',
+'                        push_id = push_id.trim();',
+'                        if (push_id) {',
+'                            // add red badge',
+'                            var $el = $(''#SUBSCRIPTIONS'').find(''li.a-CardView-item[data-id="'' + push_id + ''"]'');',
+'                            var badge = ''<div class="a-CardView-badge" style="background: red; color: #fff;" title=""><span class="a-CardView-badgeValue">CURRENT</span></div>'';',
+'                            $(badge).insertAfter($el.find(''.a-CardView-headerBody''));',
+'',
+'                            // make checkbox selected',
+'                            $(''#P905_ENABLE_PUSH'').prop(''checked'', ''checked'');',
+'                        }',
 '                    }',
 '                }',
 '            );',
@@ -34805,10 +34778,8 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'FOR c IN (',
 '    SELECT t.push_subscription_id',
-'    FROM apex_appl_push_subscriptions t',
-'    WHERE t.workspace                   = core.get_app_workspace()',
-'        AND t.application_id            = core.get_app_id()',
-'        AND t.subscription_interface    LIKE ''{"endpoint":"'' || APEX_APPLICATION.G_X01 || ''%''',
+'    FROM app_users_devices_v t',
+'    WHERE t.subscription_interface LIKE ''{"endpoint":"'' || APEX_APPLICATION.G_X01 || ''%''',
 ') LOOP',
 '    HTP.P(c.push_subscription_id);',
 'END LOOP;',
