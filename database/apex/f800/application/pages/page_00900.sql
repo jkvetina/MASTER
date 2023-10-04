@@ -185,6 +185,76 @@ wwv_flow_imp_page.create_page_plug(
 ,p_attribute_02=>'HTML'
 );
 wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(25063859291730018)
+,p_plug_name=>'ACHIEVEMENTS'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(63325094538439079)
+,p_plug_display_sequence=>40
+,p_plug_new_grid_row=>false
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(25063922276730019)
+,p_plug_name=>'Street Credit [CHART]'
+,p_parent_plug_id=>wwv_flow_imp.id(25063859291730018)
+,p_region_template_options=>'#DEFAULT#'
+,p_component_template_options=>'#DEFAULT#'
+,p_region_attributes=>'style="margin-left: 3rem;"'
+,p_escape_on_http_output=>'Y'
+,p_plug_template=>wwv_flow_imp.id(63325094538439079)
+,p_plug_display_sequence=>20
+,p_plug_display_point=>'SUB_REGIONS'
+,p_query_type=>'TABLE'
+,p_query_table=>'APP_USER_STREET_CREDIT_V'
+,p_include_rowid_column=>false
+,p_plug_source_type=>'NATIVE_JET_CHART'
+);
+wwv_flow_imp_page.create_jet_chart(
+ p_id=>wwv_flow_imp.id(25064029507730020)
+,p_region_id=>wwv_flow_imp.id(25063922276730019)
+,p_chart_type=>'dial'
+,p_title=>'Street Credit'
+,p_width=>'90'
+,p_height=>'100'
+,p_animation_on_display=>'auto'
+,p_animation_on_data_change=>'auto'
+,p_value_text_type=>'percent'
+,p_value_format_scaling=>'none'
+,p_tooltip_rendered=>'N'
+,p_gauge_orientation=>'circular'
+,p_gauge_indicator_size=>1
+,p_gauge_inner_radius=>.7
+,p_gauge_plot_area=>'on'
+,p_gauge_start_angle=>90
+,p_gauge_angle_extent=>360
+,p_show_gauge_value=>true
+);
+wwv_flow_imp_page.create_jet_chart_series(
+ p_id=>wwv_flow_imp.id(25064191824730021)
+,p_chart_id=>wwv_flow_imp.id(25064029507730020)
+,p_seq=>10
+,p_name=>'Gauge'
+,p_location=>'REGION_SOURCE'
+,p_items_value_column_name=>'REQUESTS'
+,p_items_max_value=>'MAX_REQUESTS'
+,p_color=>'#222222'
+,p_items_label_rendered=>false
+,p_gauge_plot_area_color=>'#dddddd'
+,p_threshold_display=>'all'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(25064471611730024)
+,p_plug_name=>'Street Credit'
+,p_parent_plug_id=>wwv_flow_imp.id(25063859291730018)
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(63402598617439121)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'SUB_REGIONS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(72401475894285964)
 ,p_plug_name=>'BANNER'
 ,p_region_name=>'BANNER'

@@ -322,6 +322,199 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
+- # ====== Region: ACHIEVEMENTS ================================
+  id: 25063859291730018
+  identification: 
+    title: ACHIEVEMENTS
+    type: Static Content
+
+  layout: 
+    sequence: 40
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Street Credit [CHART] =======================
+  id: 25063922276730019
+  identification: 
+    title: Street Credit [CHART]
+    type: Chart
+
+  source: 
+    location: Local Database
+    type: Table / View
+    table-owner: Parsing Schema
+    table-name: APP_USER_STREET_CREDIT_V
+    include-rowid-column: false
+
+  order-by: 
+    type: None
+
+  layout: 
+    sequence: 20
+    parent-region: ACHIEVEMENTS # 25063859291730018
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    custom-attributes: 
+    - 'style="margin-left:'
+    - 3rem;"
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  security: 
+    escape-special-characters: true
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    id: 25064029507730020
+    chart: 
+      type: Status Meter Gauge
+
+    title: 
+      title: Street Credit
+
+    layout: 
+      maximum-width: 90
+      height: 100
+
+    gauge: 
+      orientation: Circular
+      show-plot-area: true
+      indicator-size: 1
+      inner-radius: 0.7
+      start-angle: 90
+      angle-extent: 360
+
+    value: 
+      show: true
+      value-type: Percent
+      format-scaling: None
+
+    animation: 
+      on-display: Automatic
+      on-data-change: Automatic
+
+    tooltip: 
+      show: false
+
+    series: 
+    - # ====== Series: Gauge =======================================
+      id: 25064191824730021
+      identification: 
+        name: Gauge
+
+      execution: 
+        sequence: 10
+
+      source: 
+        location: Region Source
+
+      column-mapping: 
+        value-aggregation: No Aggregation
+        value: REQUESTS
+        maximum-value: MAX_REQUESTS
+
+      appearance: 
+        color: '#222222'
+        plot-area-color: '#dddddd'
+
+      thresholds: 
+        display: All
+
+      label: 
+        show: false
+
+- # ====== Region: Street Credit ===============================
+  id: 25064471611730024
+  identification: 
+    title: Street Credit
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: ACHIEVEMENTS # 25063859291730018
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Hero # 63402598617439121
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
 - # ====== Region: BANNER ======================================
   id: 72401475894285964
   identification: 
