@@ -14,8 +14,6 @@ appearance:
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
   - js-dialog-class-t-Drawer--sm
-  css-classes: 
-  - DRAWER
 
 dialog: 
   chained: false
@@ -29,20 +27,20 @@ navigation:
 
 css: 
   inline: |
-    .DRAWER .CONTENT {
+    .CONTENT {
       padding               : 0 0.5rem;
     }
-    .DRAWER p,
-    .DRAWER ul li,
-    .DRAWER ul li:before {
+    .CONTENT p,
+    .CONTENT ul li,
+    .CONTENT ul li:before {
       font-size             : 1rem;
       line-height           : 1.5rem;
     }
-    .DRAWER ul {
+    .CONTENT ul {
       list-style-type       : none;
       margin                : 0.5rem 0 0.5rem 3rem;
     }
-    .DRAWER ul li:before {
+    .CONTENT ul li:before {
       content               : '\2014';  /* mdash */
       content               : '\2013';  /* ndash */
       position              : absolute;
@@ -140,7 +138,7 @@ regions:
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    position: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -247,7 +245,7 @@ buttons:
   layout: 
     sequence: 10
     region: Help for &P980_PAGE_NAME. # 38168018527510827
-    position: RIGHT_OF_TITLE
+    position: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic

@@ -14,8 +14,6 @@ appearance:
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
   - js-dialog-class-t-Drawer--sm
-  css-classes: 
-  - DRAWER
 
 dialog: 
   chained: true
@@ -105,7 +103,7 @@ regions:
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    position: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -512,7 +510,7 @@ buttons:
   layout: 
     sequence: 10
     region: User Profile # 111573241941187656
-    position: RIGHT_OF_TITLE
+    position: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -585,6 +583,10 @@ dynamic-actions:
     id: 24727104910646416
     identification: 
       action: Close Dialog
+
+    settings: 
+      items-to-return: 
+      - P901_SUCCESS
 
     execution: 
       sequence: 10

@@ -14,8 +14,6 @@ appearance:
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
   - js-dialog-class-t-Drawer--sm
-  css-classes: 
-  - DRAWER
 
 dialog: 
   chained: true
@@ -37,10 +35,6 @@ css:
     /* KEEP CARDS AS TWO COLUMNS */
     .a-CardView-items--grid2col {
         grid-template-columns: repeat(2,minmax(0,1fr)) !important;
-    }
-    
-    .t-HeroRegion.SECOND {
-        margin-top: 3rem;
     }
     
 
@@ -352,7 +346,7 @@ regions:
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    position: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -510,7 +504,7 @@ buttons:
   layout: 
     sequence: 10
     region: Push Notifications # 87142237557933358
-    position: RIGHT_OF_TITLE
+    position: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic

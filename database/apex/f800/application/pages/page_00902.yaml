@@ -14,8 +14,6 @@ appearance:
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
   - js-dialog-class-t-Drawer--sm
-  css-classes: 
-  - DRAWER
 
 dialog: 
   chained: true
@@ -105,7 +103,7 @@ regions:
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    position: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -142,15 +140,34 @@ page-items:
   id: 24622858410821131
   identification: 
     name: P902_USER_ID
-    type: Hidden
+    type: Display Only
+
+  label: 
+    label: New
+    alignment: Left
 
   settings: 
-    value-protected: true
+    format: Plain Text
+    based-on: Item Value
+    show-line-breaks: true
+    send-on-page-submit: true
 
   layout: 
     sequence: 10
     region: '[FORM]' # 24622632967821129
     position: BODY
+    alignment: Left
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    label-column-span: Page Template Default
+
+  appearance: 
+    template: Optional - Floating # 63461560868439163
+    template-options: 
+    - '#DEFAULT#'
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -332,7 +349,7 @@ buttons:
   layout: 
     sequence: 10
     region: User Image # 86853369392541254
-    position: RIGHT_OF_TITLE
+    position: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -375,6 +392,10 @@ dynamic-actions:
     id: 24715746119614155
     identification: 
       action: Close Dialog
+
+    settings: 
+      items-to-return: 
+      - P902_SUCCESS
 
     execution: 
       sequence: 10
