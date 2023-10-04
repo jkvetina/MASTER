@@ -85,6 +85,41 @@ CREATE OR REPLACE PACKAGE BODY app_nav AS
 
 
 
+    PROCEDURE save_grid
+    AS
+        v_deleted       PLS_INTEGER;
+        v_inserted      PLS_INTEGER;
+        v_updated       PLS_INTEGER;
+    BEGIN
+        IF core.get_grid_action() = 'D' THEN
+            app_nav.remove_page (
+                in_app_id       => core.get_grid_data('APP_ID'),
+                in_page_id      => core.get_grid_data('PAGE_ID')
+            );
+            --core.raise_error('DEL', core.get_grid_data('APP_ID'), core.get_grid_data('PAGE_ID'));
+            app.ajax_message('DEL');
+        ELSE
+            app_nav.add_page (
+                in_app_id       => core.get_grid_data('APP_ID'),
+                in_page_id      => core.get_grid_data('PAGE_ID'),
+                in_parent_id    => core.get_grid_data('PARENT_ID'),
+                in_is_hidden    => core.get_grid_data('IS_HIDDEN'),
+                in_is_reset     => core.get_grid_data('IS_RESET'),
+                in_order#       => core.get_grid_data('ORDER#'),
+                in_col_id       => core.get_grid_data('COL_ID')
+            );
+            app.ajax_message('ADD');
+        END IF;
+        --
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
     PROCEDURE autoupdate
     AS
     BEGIN

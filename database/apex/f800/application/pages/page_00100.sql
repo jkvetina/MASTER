@@ -197,7 +197,7 @@ wwv_flow_imp_page.create_page_plug(
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(7476159161048513)
-,p_button_sequence=>20
+,p_button_sequence=>10
 ,p_button_plug_id=>wwv_flow_imp.id(7475275434048504)
 ,p_button_name=>'REFRESH_MV'
 ,p_button_action=>'SUBMIT'

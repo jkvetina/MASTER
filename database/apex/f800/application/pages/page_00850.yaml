@@ -91,12 +91,9 @@ regions:
     edit: 
       enabled: true
       allowed-operations: 
-      - Add Row
       - Update Row
-      - Delete Row
       allowed-row-operations-column: ACTION_DML
       lost-update-type: Row Values
-      add-row-if-empty: false
 
     performance: 
       lazy-loading: false
@@ -206,7 +203,7 @@ regions:
       database-column: PAGE_ID
       data-type: NUMBER
       query-only: false
-      primary-key: true
+      primary-key: false
 
     default: 
       duplicate-copies-existing-value: true
@@ -921,7 +918,7 @@ regions:
       database-column: APP_ID
       data-type: NUMBER
       query-only: false
-      primary-key: true
+      primary-key: false
 
     default: 
       type: Expression
@@ -1057,6 +1054,40 @@ regions:
       data-type: VARCHAR2
       query-only: true
       primary-key: false
+
+    session-state: 
+      data-type: VARCHAR2
+
+    export-/-printing: 
+      include-in-export-/-print: false
+
+    enable-users-to: 
+      sort: false
+
+  - # ====== Column: PK ==========================================
+    id: 25063761175730017
+    identification: 
+      column-name: PK
+      type: Hidden
+
+    settings: 
+      value-protected: true
+
+    layout: 
+      sequence: 30
+
+    accessibility: 
+      value-identifies-row: false
+
+    source: 
+      type: Database Column
+      database-column: PK
+      data-type: VARCHAR2
+      query-only: false
+      primary-key: true
+
+    default: 
+      duplicate-copies-existing-value: true
 
     session-state: 
       data-type: VARCHAR2
@@ -1307,7 +1338,7 @@ buttons:
     label: Refresh MV
 
   layout: 
-    sequence: 10
+    sequence: 20
     region: Navigation for &G_APP_NAME. # 39751669654005374
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -1334,7 +1365,7 @@ buttons:
     label: Auto Update &P850_AUTO_UPDATE_BADGE!RAW.
 
   layout: 
-    sequence: 20
+    sequence: 10
     region: Navigation for &G_APP_NAME. # 39751669654005374
     position: RIGHT_OF_TITLE
     start-new-layout: false
@@ -1396,32 +1427,15 @@ processes:
   id: 18379327893452348
   identification: 
     name: SAVE_NAVIGATION
-    type: Interactive Grid - Automatic Row Processing (DML)
+    type: Invoke API
     execution-chain: None
     editable-region: Navigation [GRID] # 14693659803436150
 
   settings: 
-    target-type: PL/SQL Code
-    pl/sql-code-to-insert/update/delete: |
-      IF core.get_grid_action() = 'D' THEN
-          app_nav.remove_page (
-              in_app_id       => :APP_ID,
-              in_page_id      => :PAGE_ID
-          );
-      ELSE
-          app_nav.add_page (
-              in_app_id       => :APP_ID,
-              in_page_id      => :PAGE_ID,
-              in_parent_id    => :PARENT_ID,
-              in_is_hidden    => :IS_HIDDEN,
-              in_is_reset     => :IS_RESET,
-              in_order#       => :ORDER#,
-              in_col_id       => :COL_ID
-          );
-      END IF;
-      
-    prevent-lost-updates: true
-    lock-row: No
+    type: PL/SQL Package
+    owner: PARSING SCHEMA
+    package: APP_NAV
+    procedure-or-function: SAVE_GRID
 
   execution: 
     sequence: 10
@@ -1444,7 +1458,10 @@ processes:
   source: 
     location: Local Database
     language: PL/SQL
-    pl/sql-code: app.refresh_mv(app_nav.c_mv, in_wait => TRUE);
+    pl/sql-code: |
+      app.refresh_mv(app_nav.c_mv, in_wait => TRUE);
+      DBMS_SESSION.SLEEP(1);
+      
 
   execution: 
     sequence: 30

@@ -27,6 +27,8 @@ z AS (
 )
 -- existing pages
 SELECT
+    'EDIT:' || NVL(m.app_id, n.app_id) || ':' || NVL(m.page_id, n.page_id) AS pk,
+    --
     NVL(m.app_id, n.app_id)     AS app_id,
     NVL(m.page_id, n.page_id)   AS page_id,
     --
@@ -101,6 +103,8 @@ LEFT JOIN z p
 -- remove pages
 UNION ALL
 SELECT
+    'DEL:' || n.app_id || ':' || n.page_id AS pk,
+    --
     n.app_id,
     n.page_id,
     --
@@ -141,6 +145,8 @@ WHERE p.page_id         IS NULL
 -- add pages
 UNION ALL
 SELECT
+    'ADD:' || p.app_id || ':' || p.page_id AS pk,
+    --
     p.app_id,
     p.page_id,
     --

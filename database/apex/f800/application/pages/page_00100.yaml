@@ -430,7 +430,7 @@ buttons:
     label: Refresh MV
 
   layout: 
-    sequence: 20
+    sequence: 10
     region: Available Apps # 7475275434048504
     position: RIGHT_OF_TITLE
     start-new-layout: false
