@@ -399,3 +399,11 @@ button .a-Button-label,
     display             : none !important;
 }
 
+
+
+/* DECENT BUTTONS */
+button.DECENT {
+    background          : transparent;
+    color               : #999;
+}
+
