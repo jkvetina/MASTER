@@ -129,10 +129,10 @@ regions:
     performance: 
       lazy-loading: false
 
-- # ====== Region: Help for &P980_PAGE_NAME. ===================
+- # ====== Region: &P980_PAGE_NAME. ============================
   id: 38168018527510827
   identification: 
-    title: Help for &P980_PAGE_NAME.
+    title: '&P980_PAGE_NAME.'
     type: Static Content
 
   layout: 
@@ -181,8 +181,8 @@ page-items:
     value-protected: true
 
   layout: 
-    sequence: 20
-    region: Help for &P980_PAGE_NAME. # 38168018527510827
+    sequence: 40
+    region: '&P980_PAGE_NAME.' # 38168018527510827
     position: BODY
 
   advanced: 
@@ -211,8 +211,42 @@ page-items:
     value-protected: true
 
   layout: 
+    sequence: 20
+    region: '&P980_PAGE_NAME.' # 38168018527510827
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Ignore
+
+  source: 
+    type: Null
+    used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: 900
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+- # ====== Page Item: P980_APP_ID ==============================
+  id: 25477710036860906
+  identification: 
+    name: P980_APP_ID
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
     sequence: 10
-    region: Help for &P980_PAGE_NAME. # 38168018527510827
+    region: '&P980_PAGE_NAME.' # 38168018527510827
     position: BODY
 
   advanced: 
@@ -244,7 +278,7 @@ buttons:
 
   layout: 
     sequence: 10
-    region: Help for &P980_PAGE_NAME. # 38168018527510827
+    region: '&P980_PAGE_NAME.' # 38168018527510827
     position: UP
     start-new-layout: false
     start-new-row: true
@@ -309,13 +343,14 @@ computations:
     type: SQL Query (return single value)
     sql-query: |
       SELECT
+          'Help for ' ||
           APEX_APPLICATION.DO_SUBSTITUTIONS (
               CASE WHEN p.page_id IN (9999)
                   THEN p.page_name
                   ELSE p.page_title END
           ) AS title
       FROM apex_application_pages p
-      WHERE p.application_id  = :APP_ID
+      WHERE p.application_id  = NVL(:P980_APP_ID, :APP_ID)
           AND p.page_id       = :P980_PAGE_ID;
       
 
@@ -331,4 +366,8 @@ computations:
   computation: 
     type: Item
     item-name: P0_HELP_PAGE_ID
+
+  server-side-condition: 
+    type: Item is NULL
+    item: P980_PAGE_ID
 

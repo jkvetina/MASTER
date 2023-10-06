@@ -74,7 +74,7 @@ wwv_flow_imp_page.create_page_plug(
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(38168018527510827)
-,p_plug_name=>'Help for &P980_PAGE_NAME.'
+,p_plug_name=>'&P980_PAGE_NAME.'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63402598617439121)
 ,p_plug_display_sequence=>10
@@ -100,7 +100,7 @@ wwv_flow_imp_page.create_page_button(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23520543569581636)
 ,p_name=>'P980_PAGE_NAME'
-,p_item_sequence=>20
+,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(38168018527510827)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_warn_on_unsaved_changes=>'I'
@@ -110,6 +110,17 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23520666102581637)
 ,p_name=>'P980_PAGE_ID'
+,p_item_sequence=>20
+,p_item_plug_id=>wwv_flow_imp.id(38168018527510827)
+,p_item_default=>'900'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_warn_on_unsaved_changes=>'I'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(25477710036860906)
+,p_name=>'P980_APP_ID'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(38168018527510827)
 ,p_item_default=>'900'
@@ -125,6 +136,8 @@ wwv_flow_imp_page.create_page_computation(
 ,p_computation_point=>'BEFORE_HEADER'
 ,p_computation_type=>'ITEM_VALUE'
 ,p_computation=>'P0_HELP_PAGE_ID'
+,p_compute_when=>'P980_PAGE_ID'
+,p_compute_when_type=>'ITEM_IS_NULL'
 );
 wwv_flow_imp_page.create_page_computation(
  p_id=>wwv_flow_imp.id(23520739686581638)
@@ -134,13 +147,14 @@ wwv_flow_imp_page.create_page_computation(
 ,p_computation_type=>'QUERY'
 ,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'SELECT',
+'    ''Help for '' ||',
 '    APEX_APPLICATION.DO_SUBSTITUTIONS (',
 '        CASE WHEN p.page_id IN (9999)',
 '            THEN p.page_name',
 '            ELSE p.page_title END',
 '    ) AS title',
 'FROM apex_application_pages p',
-'WHERE p.application_id  = :APP_ID',
+'WHERE p.application_id  = NVL(:P980_APP_ID, :APP_ID)',
 '    AND p.page_id       = :P980_PAGE_ID;',
 ''))
 );
