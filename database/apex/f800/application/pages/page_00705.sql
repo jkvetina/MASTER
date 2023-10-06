@@ -38,7 +38,6 @@ wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(352295163456845128)
 ,p_plug_name=>'Check Grids'
 ,p_parent_plug_id=>wwv_flow_imp.id(352294060701845117)
-,p_region_css_classes=>'FILTERS'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63402598617439121)
 ,p_plug_display_sequence=>10

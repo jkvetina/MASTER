@@ -100,8 +100,6 @@ regions:
     template: Hero # 63402598617439121
     template-options: 
     - '#DEFAULT#'
-    css-classes: 
-    - FILTERS
     render-components: Above Content
 
   accessibility: 

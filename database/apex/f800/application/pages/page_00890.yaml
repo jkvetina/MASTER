@@ -128,8 +128,6 @@ regions:
     template-options: 
     - '#DEFAULT#'
     - t-HeroRegion--hideIcon
-    css-classes: 
-    - FILTERS
     render-components: Above Content
 
   accessibility: 
