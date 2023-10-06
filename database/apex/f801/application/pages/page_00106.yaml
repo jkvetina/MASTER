@@ -1,17 +1,18 @@
 ---
-# ====== Page: TEMPLATE - Modal Dialog =======================
-id: 105
+# ====== Page: TEMPLATE - Drawer Dialog ======================
+id: 106
 identification: 
-  name: TEMPLATE - Modal Dialog
-  alias: TEMPLATE-MODAL-DIALOG
-  title: Modal Dialog
+  name: TEMPLATE - Drawer Dialog
+  alias: TEMPLATE-DRAWER-DIALOG
+  title: Drawer Dialog
   page-group: ' MAIN' # 58127339030317860
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Modal Dialog # 13980447098276953
+  dialog-template: Drawer # 13959805364276935
   template-options: 
   - '#DEFAULT#'
+  - js-dialog-class-t-Drawer--pullOutEnd
 
 dialog: 
   chained: false
@@ -43,7 +44,7 @@ server-cache:
 
 regions: 
 - # ====== Region: TEST ========================================
-  id: 25477866511860907
+  id: 51316375081919615
   identification: 
     title: TEST
     type: Interactive Grid
@@ -57,7 +58,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: CONTENT # 93355414219631471
+    parent-region: CONTENT # 118872501309033916
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -86,7 +87,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 25477912959860908
+    id: 51316421529919616
     edit: 
       enabled: false
 
@@ -135,14 +136,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 25837073486057737
+      id: 51675582056116445
       identification: 
         name: Primary Report
         alias: 258371
 
   columns: 
   - # ====== Column: DUMMY =======================================
-    id: 25478035155860909
+    id: 51316543725919617
     identification: 
       column-name: DUMMY
       type: Text Field
@@ -235,10 +236,10 @@ regions:
       font-color: '#000000'
       alignment: center
 
-- # ====== Region: &P105_HEADER. ===============================
-  id: 93355258906631470
+- # ====== Region: &P106_HEADER. ===============================
+  id: 118872345996033915
   identification: 
-    title: '&P105_HEADER.'
+    title: '&P106_HEADER.'
     type: Static Content
 
   layout: 
@@ -277,7 +278,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: CONTENT =====================================
-  id: 93355414219631471
+  id: 118872501309033916
   identification: 
     title: CONTENT
     type: Static Content
@@ -318,10 +319,10 @@ regions:
       expand-shortcuts: false
 
 page-items: 
-- # ====== Page Item: P105_MESSAGE =============================
-  id: 50579129894125626
+- # ====== Page Item: P106_MESSAGE =============================
+  id: 76097963392528074
   identification: 
-    name: P105_MESSAGE
+    name: P106_MESSAGE
     type: Hidden
 
   settings: 
@@ -329,7 +330,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: '&P105_HEADER.' # 93355258906631470
+    region: '&P106_HEADER.' # 118872345996033915
     position: BODY
 
   advanced: 
@@ -348,10 +349,10 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P105_HEADER ==============================
-  id: 93359459997631511
+- # ====== Page Item: P106_HEADER ==============================
+  id: 118878293496033959
   identification: 
-    name: P105_HEADER
+    name: P106_HEADER
     type: Hidden
 
   settings: 
@@ -359,7 +360,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: '&P105_HEADER.' # 93355258906631470
+    region: '&P106_HEADER.' # 118872345996033915
     position: BODY
 
   advanced: 
@@ -379,15 +380,106 @@ page-items:
     restricted-characters: All characters can be saved.
 
 buttons: 
+- # ====== Button: TEST_106 ====================================
+  id: 25478194385860910
+  identification: 
+    button-name: TEST_106
+    label: Test 106
+
+  layout: 
+    sequence: 50
+    region: '&P106_HEADER.' # 118872345996033915
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 14142798738277060
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:106:&SESSION.::&DEBUG.:106::'
+      page: 106 # TEMPLATE - Drawer Dialog
+      clear-cache: 106
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: CLOSE_DIALOG ================================
+  id: 25518077783402447
+  identification: 
+    button-name: CLOSE_DIALOG
+    label: Close Dialog
+
+  layout: 
+    sequence: 20
+    region: '&P106_HEADER.' # 118872345996033915
+    position: UP
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Icon # 14142008945277056
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+    css-classes: 
+    - u-pullRight
+    icon: fa-times
+
+  behavior: 
+    action: Defined by Dynamic Action
+    execute-validations: false
+
+- # ====== Button: TEST_105 ====================================
+  id: 25518481535402447
+  identification: 
+    button-name: TEST_105
+    label: Test 105
+
+  layout: 
+    sequence: 40
+    region: '&P106_HEADER.' # 118872345996033915
+    position: RIGHT_OF_TITLE
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    button-template: Text # 14142798738277060
+    hot: true
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105::'
+      page: 105 # TEMPLATE - Modal Dialog
+      clear-cache: 105
+
+    warn-on-unsaved-changes: Do Not Check
+
 - # ====== Button: HELP ========================================
-  id: 25477607100860905
+  id: 25832821377739526
   identification: 
     button-name: HELP
     label: Help
 
   layout: 
     sequence: 10
-    region: '&P105_HEADER.' # 93355258906631470
+    region: '&P106_HEADER.' # 118872345996033915
     position: UP
     start-new-layout: false
     start-new-row: true
@@ -418,100 +510,9 @@ buttons:
 
     warn-on-unsaved-changes: Do Not Check
 
-- # ====== Button: TEST_106 ====================================
-  id: 25478271744860911
-  identification: 
-    button-name: TEST_106
-    label: Test 106
-
-  layout: 
-    sequence: 50
-    region: '&P105_HEADER.' # 93355258906631470
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Text # 14142798738277060
-    hot: true
-    template-options: 
-    - '#DEFAULT#'
-
-  behavior: 
-    action: Redirect to Page in this Application
-    target: 
-      url: 'f?p=&APP_ID.:106:&SESSION.::&DEBUG.:106::'
-      page: 106 # TEMPLATE - Drawer Dialog
-      clear-cache: 106
-
-    warn-on-unsaved-changes: Do Not Check
-
-- # ====== Button: CLOSE_DIALOG ================================
-  id: 25511212507395578
-  identification: 
-    button-name: CLOSE_DIALOG
-    label: Close Dialog
-
-  layout: 
-    sequence: 20
-    region: '&P105_HEADER.' # 93355258906631470
-    position: UP
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Icon # 14142008945277056
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-    css-classes: 
-    - u-pullRight
-    icon: fa-times
-
-  behavior: 
-    action: Defined by Dynamic Action
-    execute-validations: false
-
-- # ====== Button: TEST_105 ====================================
-  id: 25511609769395579
-  identification: 
-    button-name: TEST_105
-    label: Test 105
-
-  layout: 
-    sequence: 40
-    region: '&P105_HEADER.' # 93355258906631470
-    position: RIGHT_OF_TITLE
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    button-template: Text # 14142798738277060
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-
-  behavior: 
-    action: Redirect to Page in this Application
-    target: 
-      url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:105::'
-      page: 105 # TEMPLATE - Modal Dialog
-      clear-cache: 105
-
-    warn-on-unsaved-changes: Do Not Check
-
 dynamic-actions: 
 - # ====== Dynamic Action: CLOSE_DIALOG ========================
-  id: 25513609980395582
+  id: 25520066895402449
   identification: 
     name: CLOSE_DIALOG
 
@@ -521,7 +522,7 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
-    button: CLOSE_DIALOG # 25511212507395578
+    button: CLOSE_DIALOG # 25518077783402447
 
   execution: 
     event-scope: Static
@@ -529,25 +530,25 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Close Dialog ================================
-    id: 25514108538395582
+    id: 25520596069402449
     identification: 
       action: Close Dialog
 
     settings: 
       items-to-return: 
-      - P105_MESSAGE
+      - P106_MESSAGE
 
     execution: 
       sequence: 10
-      event: CLOSE_DIALOG # 25513609980395582
+      event: CLOSE_DIALOG # 25520066895402449
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 computations: 
-- # ====== Computation: P105_HEADER ============================
-  id: 25513340616395581
+- # ====== Computation: P106_HEADER ============================
+  id: 25519748131402449
   identification: 
-    item-name: P105_HEADER
+    item-name: P106_HEADER
 
   execution: 
     sequence: 10

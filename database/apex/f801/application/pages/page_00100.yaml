@@ -38,3 +38,67 @@ advanced:
 server-cache: 
   caching: Disabled
 
+buttons: 
+- # ====== Button: MODAL_DIALOG ================================
+  id: 25477414087860903
+  identification: 
+    button-name: MODAL_DIALOG
+    label: Modal Dialog
+
+  layout: 
+    sequence: 10
+    region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 14142798738277060
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:::'
+      page: 105 # TEMPLATE - Modal Dialog
+
+    warn-on-unsaved-changes: Do Not Check
+
+- # ====== Button: DRAWER_DIALOG ===============================
+  id: 25477595858860904
+  identification: 
+    button-name: DRAWER_DIALOG
+    label: Drawer Dialog
+
+  layout: 
+    sequence: 20
+    region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: false
+    column: Automatic
+    new-column: false
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 14142798738277060
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Redirect to Page in this Application
+    target: 
+      url: 'f?p=&APP_ID.:106:&SESSION.::&DEBUG.:106::'
+      page: 106 # TEMPLATE - Drawer Dialog
+      clear-cache: 106
+
+    warn-on-unsaved-changes: Do Not Check
+

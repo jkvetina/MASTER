@@ -25,6 +25,29 @@ wwv_flow_imp_page.create_page(
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 );
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(25477414087860903)
+,p_button_sequence=>10
+,p_button_name=>'MODAL_DIALOG'
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(14142798738277060)
+,p_button_image_alt=>'Modal Dialog'
+,p_button_redirect_url=>'f?p=&APP_ID.:105:&SESSION.::&DEBUG.:::'
+,p_grid_new_row=>'Y'
+);
+wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(25477595858860904)
+,p_button_sequence=>20
+,p_button_name=>'DRAWER_DIALOG'
+,p_button_action=>'REDIRECT_PAGE'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(14142798738277060)
+,p_button_image_alt=>'Drawer Dialog'
+,p_button_redirect_url=>'f?p=&APP_ID.:106:&SESSION.::&DEBUG.:106::'
+,p_grid_new_row=>'N'
+,p_grid_new_column=>'N'
+);
 wwv_flow_imp.component_end;
 end;
 /
