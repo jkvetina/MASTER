@@ -16,7 +16,7 @@ appearance:
   - js-dialog-class-t-Drawer--sm
 
 dialog: 
-  chained: true
+  chained: false
 
 navigation-menu: 
   override-user-interface-level: false

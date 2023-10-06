@@ -14,11 +14,9 @@ appearance:
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
   - js-dialog-class-t-Drawer--sm
-  css-classes: 
-  - DRAWER
 
 dialog: 
-  chained: true
+  chained: false
 
 navigation-menu: 
   override-user-interface-level: false
@@ -109,7 +107,7 @@ regions:
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    position: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -583,7 +581,7 @@ buttons:
   layout: 
     sequence: 10
     region: Request Access # 86808387988451347
-    position: RIGHT_OF_TITLE
+    position: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
