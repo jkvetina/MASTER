@@ -361,8 +361,6 @@ buttons:
     hot: false
     template-options: 
     - '#DEFAULT#'
-    css-classes: 
-    - u-pullRight
     icon: fa-times
 
   behavior: 

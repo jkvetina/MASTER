@@ -401,7 +401,6 @@ buttons:
     template-options: 
     - '#DEFAULT#'
     css-classes: 
-    - u-pullRight
     - DECENT
     icon: fa-question
 
@@ -470,8 +469,6 @@ buttons:
     hot: false
     template-options: 
     - '#DEFAULT#'
-    css-classes: 
-    - u-pullRight
     icon: fa-times
 
   behavior: 
