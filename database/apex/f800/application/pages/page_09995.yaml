@@ -356,6 +356,10 @@ page-items:
     value-required: true
 
   advanced: 
+    custom-attributes: 
+    - data-valid-message="Agreement
+    - is
+    - required."
     warn-on-unsaved-changes: Page Default
 
   source: 

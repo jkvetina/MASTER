@@ -174,6 +174,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_source=>'IS_AGREEMENT'
 ,p_source_type=>'REGION_SOURCE_COLUMN'
 ,p_display_as=>'NATIVE_SINGLE_CHECKBOX'
+,p_tag_attributes=>'data-valid-message="Agreement is required."'
 ,p_field_template=>wwv_flow_imp.id(63461560868439163)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
