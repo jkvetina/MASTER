@@ -194,15 +194,26 @@ ul.t-Tabs .t-Tabs-link {
     background          : transparent;
     font-size           : 1rem;
 }
-ul.t-Tabs .is-active .t-Tabs-link,
-ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover {
+ul.t-Tabs li.t-Tabs-item a.t-Tabs-link,
+ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
     outline             : none;
     box-shadow          : none;
     font-weight         : 600;
-    color               : #000;
+    color               : #444;
     background          : transparent;
+    padding-bottom      : 0.6rem;
+    border-bottom       : 8px solid #ededed;
+}
+ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
+    color               : #000;
     border-bottom       : 8px solid #615d51 !important;
 }
+ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover,
+ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link:hover {
+    color               : #000;
+    border-bottom       : 8px solid #222 !important;
+}
+
 .t-TabsRegion-items > div {
     display             : none;
 }
@@ -211,6 +222,16 @@ ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover {
 }
 a.t-Tabs-link::before {
     display             : none;  /* remove dupe green border */
+}
+ul.t-Tabs li.t-Tabs-item {
+    margin-right        : 8px;
+}
+
+ul.t-Tabs li.t-Tabs-item {
+    margin-right        : 8px;
+}
+ul.t-Tabs li.t-Tabs-item:last-child {
+    margin-right        : 0;
 }
 
 
