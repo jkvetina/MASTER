@@ -387,7 +387,7 @@ regions:
     start-new-row: true
     column: Automatic
     new-column: true
-    column-span: Automatic
+    column-span: 6
 
   appearance: 
     template: Blank with Attributes # 63325094538439079
@@ -441,8 +441,8 @@ regions:
       format-scaling: None
 
     animation: 
-      on-display: Automatic
-      on-data-change: Automatic
+      on-display: None
+      on-data-change: None
 
     tooltip: 
       show: false
@@ -460,6 +460,7 @@ regions:
         location: Region Source
 
       column-mapping: 
+        label: MAX_REQUESTS
         value-aggregation: No Aggregation
         value: REQUESTS
         maximum-value: MAX_REQUESTS
@@ -472,7 +473,8 @@ regions:
         display: All
 
       label: 
-        show: false
+        show: true
+        position: Below Marker
 
 - # ====== Region: Street Credit ===============================
   id: 25064471611730024
@@ -690,36 +692,6 @@ regions:
       show-total-count: false
 
 page-items: 
-- # ====== Page Item: P900_SUCCESS =============================
-  id: 24858237592145926
-  identification: 
-    name: P900_SUCCESS
-    type: Hidden
-
-  settings: 
-    value-protected: false
-
-  layout: 
-    sequence: 10
-    region: USER_PROFILE # 24622294394821125
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
 - # ====== Page Item: P900_EDIT_PROFILE_HOT ====================
   id: 24859995898145943
   identification: 
@@ -730,7 +702,7 @@ page-items:
     value-protected: false
 
   layout: 
-    sequence: 30
+    sequence: 20
     region: USER_PROFILE # 24622294394821125
     position: BODY
 
@@ -773,7 +745,7 @@ page-items:
     value-protected: false
 
   layout: 
-    sequence: 20
+    sequence: 10
     region: USER_PROFILE # 24622294394821125
     position: BODY
 
@@ -900,29 +872,7 @@ dynamic-actions:
       region: User Profile [CARD] # 24621546834821118
 
     execution: 
-      sequence: 30
-      event: ON_CLOSE_IMAGE # 24858692681145930
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-    client-side-condition: 
-      type: Item is not null
-      item: P902_SUCCESS
-
-  - # ====== Action: Execute JavaScript Code =====================
-    id: 24729464791693502
-    identification: 
-      action: Execute JavaScript Code
-
-    settings: 
-      code: |
-        if (apex.item('P900_SUCCESS').getValue()) {
-            show_success(apex.item('P900_SUCCESS').getValue());
-        }
-        
-
-    execution: 
-      sequence: 20
+      sequence: 10
       event: ON_CLOSE_IMAGE # 24858692681145930
       fire-when-event-result-is: True
       fire-on-initialization: false
@@ -991,24 +941,6 @@ dynamic-actions:
       stop-execution-on-error: true
       wait-for-result: true
 
-  - # ====== Action: Execute JavaScript Code =====================
-    id: 24859122845145935
-    identification: 
-      action: Execute JavaScript Code
-
-    settings: 
-      code: |
-        if (apex.item('P900_SUCCESS').getValue()) {
-            show_success(apex.item('P900_SUCCESS').getValue());
-        }
-        
-
-    execution: 
-      sequence: 20
-      event: ON_CLOSE_PROFILE # 24858944222145933
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
   - # ====== Action: Refresh =====================================
     id: 24859242130145936
     identification: 
@@ -1019,12 +951,8 @@ dynamic-actions:
       region: User Profile [CARD] # 24621546834821118
 
     execution: 
-      sequence: 30
+      sequence: 10
       event: ON_CLOSE_PROFILE # 24858944222145933
       fire-when-event-result-is: True
       fire-on-initialization: false
-
-    client-side-condition: 
-      type: Item is not null
-      item: P901_SUCCESS
 

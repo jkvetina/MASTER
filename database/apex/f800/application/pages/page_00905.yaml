@@ -409,41 +409,6 @@ page-items:
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
-- # ====== Page Item: P905_MESSAGE =============================
-  id: 49156876603720712
-  identification: 
-    name: P905_MESSAGE
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 20
-    region: Push Notifications # 73552484787120959
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  default: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: "'TEST ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI:SS')"
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
 - # ====== Page Item: P905_ENABLE_PUSH =========================
   id: 73555101639120969
   identification: 

@@ -35,7 +35,7 @@ wwv_flow_imp_page.create_page_plug(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(14690402955436118)
 ,p_name=>'P0_AJAX_PING_INTERVAL'
-,p_item_sequence=>10
+,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(14690651926436120)
 ,p_source=>'6'
 ,p_source_type=>'STATIC'
@@ -47,7 +47,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(23521964459581650)
 ,p_name=>'P0_HELP_PAGE_ID'
-,p_item_sequence=>20
+,p_item_sequence=>40
 ,p_item_plug_id=>wwv_flow_imp.id(14690651926436120)
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
@@ -56,7 +56,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(24148870799647501)
 ,p_name=>'P0_SESSION_TIMEOUT_URL'
-,p_item_sequence=>30
+,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(14690651926436120)
 ,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'APEX_PAGE.GET_URL (',
@@ -71,6 +71,39 @@ wwv_flow_imp_page.create_page_item(
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(27236160043725549)
+,p_name=>'P0_SUCCESS_MESSAGE'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(14690651926436120)
+,p_use_cache_before_default=>'NO'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+,p_item_comment=>'For passing messages from modal dialogs'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(27236280189725550)
+,p_name=>'DIALOG_CLOSED'
+,p_event_sequence=>10
+,p_triggering_element_type=>'JAVASCRIPT_EXPRESSION'
+,p_triggering_element=>'window'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'apexafterclosedialog'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(27418381649258601)
+,p_event_id=>wwv_flow_imp.id(27236280189725550)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'if (this.data && this.data.successMessage && this.data.successMessage.text) {',
+'    show_success(this.data.successMessage.text);',
+'}'))
 );
 wwv_flow_imp.component_end;
 end;

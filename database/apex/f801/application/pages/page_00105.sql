@@ -24,7 +24,7 @@ wwv_flow_imp_page.create_page(
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_dialog_chained=>'N'
 ,p_protection_level=>'C'
-,p_page_component_map=>'21'
+,p_page_component_map=>'17'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 );
@@ -78,15 +78,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-times'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(50579129894125626)
-,p_name=>'P105_MESSAGE'
-,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_imp.id(93355258906631470)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(93359459997631511)
 ,p_name=>'P105_HEADER'
 ,p_item_sequence=>20
@@ -124,7 +115,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_DIALOG_CLOSE'
-,p_attribute_01=>'P105_MESSAGE'
 );
 wwv_flow_imp.component_end;
 end;

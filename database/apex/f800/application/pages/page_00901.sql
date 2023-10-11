@@ -81,15 +81,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-times'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(24858852730145932)
-,p_name=>'P901_SUCCESS'
-,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_imp.id(111573241941187656)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(49344479290467537)
 ,p_name=>'P901_USER_ID'
 ,p_source_data_type=>'VARCHAR2'
@@ -242,7 +233,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_DIALOG_CLOSE'
-,p_attribute_01=>'P901_SUCCESS'
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(24725700892646414)
@@ -334,8 +324,8 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_point=>'AFTER_SUBMIT'
 ,p_process_type=>'NATIVE_CLOSE_WINDOW'
 ,p_process_name=>'CLOSE_DIALOG'
-,p_attribute_01=>'P901_SUCCESS'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>24624655801821149
 );
 wwv_flow_imp_page.create_page_process(

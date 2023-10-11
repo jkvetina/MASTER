@@ -188,18 +188,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(49156876603720712)
-,p_name=>'P905_MESSAGE'
-,p_item_sequence=>20
-,p_item_plug_id=>wwv_flow_imp.id(73552484787120959)
-,p_item_default=>'''TEST '' || TO_CHAR(SYSDATE, ''YYYY-MM-DD HH24:MI:SS'')'
-,p_item_default_type=>'EXPRESSION'
-,p_item_default_language=>'PLSQL'
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(73555101639120969)
 ,p_name=>'P905_ENABLE_PUSH'
 ,p_item_sequence=>10

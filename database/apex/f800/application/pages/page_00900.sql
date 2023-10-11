@@ -204,6 +204,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_escape_on_http_output=>'Y'
 ,p_plug_template=>wwv_flow_imp.id(63325094538439079)
 ,p_plug_display_sequence=>20
+,p_plug_grid_column_span=>6
 ,p_plug_display_point=>'SUB_REGIONS'
 ,p_query_type=>'TABLE'
 ,p_query_table=>'APP_USER_STREET_CREDIT_V'
@@ -217,8 +218,8 @@ wwv_flow_imp_page.create_jet_chart(
 ,p_title=>'Street Credit'
 ,p_width=>'90'
 ,p_height=>'100'
-,p_animation_on_display=>'auto'
-,p_animation_on_data_change=>'auto'
+,p_animation_on_display=>'none'
+,p_animation_on_data_change=>'none'
 ,p_value_text_type=>'percent'
 ,p_value_format_scaling=>'none'
 ,p_tooltip_rendered=>'N'
@@ -238,8 +239,10 @@ wwv_flow_imp_page.create_jet_chart_series(
 ,p_location=>'REGION_SOURCE'
 ,p_items_value_column_name=>'REQUESTS'
 ,p_items_max_value=>'MAX_REQUESTS'
+,p_items_label_column_name=>'MAX_REQUESTS'
 ,p_color=>'#222222'
-,p_items_label_rendered=>false
+,p_items_label_rendered=>true
+,p_items_label_position=>'belowMarker'
 ,p_gauge_plot_area_color=>'#dddddd'
 ,p_threshold_display=>'all'
 );
@@ -298,18 +301,9 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-clipboard-edit'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(24858237592145926)
-,p_name=>'P900_SUCCESS'
-,p_item_sequence=>10
-,p_item_plug_id=>wwv_flow_imp.id(24622294394821125)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'N'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(24859995898145943)
 ,p_name=>'P900_EDIT_PROFILE_HOT'
-,p_item_sequence=>30
+,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(24622294394821125)
 ,p_item_default=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'SELECT ''t-Button--hot'' AS css_class',
@@ -329,7 +323,7 @@ wwv_flow_imp_page.create_page_item(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(24860035774145944)
 ,p_name=>'P900_EDIT_IMAGE_HOT'
-,p_item_sequence=>20
+,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(24622294394821125)
 ,p_item_default=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'SELECT ''t-Button--hot'' AS css_class',
@@ -353,6 +347,16 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_bind_event_type=>'apexafterclosedialog'
 );
 wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(24729319809693501)
+,p_event_id=>wwv_flow_imp.id(24858692681145930)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(24621546834821118)
+);
+wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(24858366234145927)
 ,p_event_id=>wwv_flow_imp.id(24858692681145930)
 ,p_event_result=>'TRUE'
@@ -365,31 +369,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_attribute_09=>'N'
 ,p_attribute_10=>'P902_SUCCESS'
 ,p_wait_for_result=>'Y'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(24729464791693502)
-,p_event_id=>wwv_flow_imp.id(24858692681145930)
-,p_event_result=>'TRUE'
-,p_action_sequence=>20
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_JAVASCRIPT_CODE'
-,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'if (apex.item(''P900_SUCCESS'').getValue()) {',
-'    show_success(apex.item(''P900_SUCCESS'').getValue());',
-'}',
-''))
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(24729319809693501)
-,p_event_id=>wwv_flow_imp.id(24858692681145930)
-,p_event_result=>'TRUE'
-,p_action_sequence=>30
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_REFRESH'
-,p_affected_elements_type=>'REGION'
-,p_affected_region_id=>wwv_flow_imp.id(24621546834821118)
-,p_client_condition_type=>'NOT_NULL'
-,p_client_condition_element=>'P902_SUCCESS'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(24858944222145933)
@@ -416,29 +395,14 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_wait_for_result=>'Y'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(24859122845145935)
-,p_event_id=>wwv_flow_imp.id(24858944222145933)
-,p_event_result=>'TRUE'
-,p_action_sequence=>20
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_JAVASCRIPT_CODE'
-,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'if (apex.item(''P900_SUCCESS'').getValue()) {',
-'    show_success(apex.item(''P900_SUCCESS'').getValue());',
-'}',
-''))
-);
-wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(24859242130145936)
 ,p_event_id=>wwv_flow_imp.id(24858944222145933)
 ,p_event_result=>'TRUE'
-,p_action_sequence=>30
+,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_REFRESH'
 ,p_affected_elements_type=>'REGION'
 ,p_affected_region_id=>wwv_flow_imp.id(24621546834821118)
-,p_client_condition_type=>'NOT_NULL'
-,p_client_condition_element=>'P901_SUCCESS'
 );
 wwv_flow_imp.component_end;
 end;

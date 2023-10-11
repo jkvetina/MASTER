@@ -201,6 +201,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_name=>'CLOSE_DIALOG'
 ,p_attribute_01=>'P902_SUCCESS'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_success_message=>'&P0_SUCCESS_MESSAGE.'
 ,p_internal_uid=>24858136449145925
 );
 wwv_flow_imp_page.create_page_process(

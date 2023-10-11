@@ -125,36 +125,6 @@ regions:
       expand-shortcuts: false
 
 page-items: 
-- # ====== Page Item: P105_MESSAGE =============================
-  id: 50579129894125626
-  identification: 
-    name: P105_MESSAGE
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 30
-    region: '&P105_HEADER.' # 93355258906631470
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
 - # ====== Page Item: P105_HEADER ==============================
   id: 93359459997631511
   identification: 
@@ -274,10 +244,6 @@ dynamic-actions:
     id: 25514108538395582
     identification: 
       action: Close Dialog
-
-    settings: 
-      items-to-return: 
-      - P105_MESSAGE
 
     execution: 
       sequence: 10

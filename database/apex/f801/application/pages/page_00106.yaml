@@ -126,36 +126,6 @@ regions:
       expand-shortcuts: false
 
 page-items: 
-- # ====== Page Item: P106_MESSAGE =============================
-  id: 76097963392528074
-  identification: 
-    name: P106_MESSAGE
-    type: Hidden
-
-  settings: 
-    value-protected: true
-
-  layout: 
-    sequence: 30
-    region: '&P106_HEADER.' # 118872345996033915
-    position: BODY
-
-  advanced: 
-    warn-on-unsaved-changes: Page Default
-
-  source: 
-    type: Null
-    used: Only when current value in session state is null
-
-  session-state: 
-    data-type: VARCHAR2
-    storage: Per Session (Persistent)
-
-  security: 
-    session-state-protection: Unrestricted
-    store-value-encrypted-in-session-state: false
-    restricted-characters: All characters can be saved.
-
 - # ====== Page Item: P106_HEADER ==============================
   id: 118878293496033959
   identification: 
@@ -275,10 +245,6 @@ dynamic-actions:
     id: 25520596069402449
     identification: 
       action: Close Dialog
-
-    settings: 
-      items-to-return: 
-      - P106_MESSAGE
 
     execution: 
       sequence: 10

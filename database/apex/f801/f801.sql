@@ -33,16 +33,16 @@ prompt APPLICATION 801 - App Template
 -- Application Export:
 --   Application:     801
 --   Name:            App Template
---   Date and Time:   15:18 Středa Říjen 11, 2023
+--   Date and Time:   18:08 Středa Říjen 11, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                      4
---       Items:                    5
+--       Items:                    4
 --       Computations:             2
 --       Regions:                  7
 --       Buttons:                  6
---       Dynamic Actions:          2
+--       Dynamic Actions:          3
 --     Shared Components:
 --       Logic:
 --         Items:                 13
@@ -18682,7 +18682,7 @@ wwv_flow_imp_page.create_page_plug(
 wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(14690547577436119)
 ,p_name=>'P0_AJAX_PING_INTERVAL'
-,p_item_sequence=>10
+,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(14690707402436121)
 ,p_source=>'10'
 ,p_source_type=>'STATIC'
@@ -18690,6 +18690,39 @@ wwv_flow_imp_page.create_page_item(
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 ,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
+);
+wwv_flow_imp_page.create_page_item(
+ p_id=>wwv_flow_imp.id(27418498398258602)
+,p_name=>'P0_SUCCESS_MESSAGE'
+,p_item_sequence=>10
+,p_item_plug_id=>wwv_flow_imp.id(14690707402436121)
+,p_use_cache_before_default=>'NO'
+,p_display_as=>'NATIVE_HIDDEN'
+,p_encrypt_session_state_yn=>'N'
+,p_attribute_01=>'Y'
+,p_item_comment=>'For passing messages from modal dialogs'
+);
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(27418636207258604)
+,p_name=>'DIALOG_CLOSED'
+,p_event_sequence=>10
+,p_triggering_element_type=>'JAVASCRIPT_EXPRESSION'
+,p_triggering_element=>'window'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'apexafterclosedialog'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(27418751977258605)
+,p_event_id=>wwv_flow_imp.id(27418636207258604)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'if (this.data && this.data.successMessage && this.data.successMessage.text) {',
+'    show_success(this.data.successMessage.text);',
+'}'))
 );
 end;
 /
@@ -18749,7 +18782,7 @@ wwv_flow_imp_page.create_page(
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_dialog_chained=>'N'
 ,p_protection_level=>'C'
-,p_page_component_map=>'21'
+,p_page_component_map=>'17'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 );
@@ -18803,15 +18836,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-times'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(50579129894125626)
-,p_name=>'P105_MESSAGE'
-,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_imp.id(93355258906631470)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(93359459997631511)
 ,p_name=>'P105_HEADER'
 ,p_item_sequence=>20
@@ -18849,7 +18873,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_DIALOG_CLOSE'
-,p_attribute_01=>'P105_MESSAGE'
 );
 end;
 /
@@ -18868,7 +18891,7 @@ wwv_flow_imp_page.create_page(
 ,p_required_role=>'MUST_NOT_BE_PUBLIC_USER'
 ,p_dialog_chained=>'N'
 ,p_protection_level=>'C'
-,p_page_component_map=>'21'
+,p_page_component_map=>'17'
 ,p_last_updated_by=>'DEV'
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 );
@@ -18922,15 +18945,6 @@ wwv_flow_imp_page.create_page_button(
 ,p_icon_css_classes=>'fa-times'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(76097963392528074)
-,p_name=>'P106_MESSAGE'
-,p_item_sequence=>30
-,p_item_plug_id=>wwv_flow_imp.id(118872345996033915)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(118878293496033959)
 ,p_name=>'P106_HEADER'
 ,p_item_sequence=>20
@@ -18968,7 +18982,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action_sequence=>10
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_DIALOG_CLOSE'
-,p_attribute_01=>'P106_MESSAGE'
 );
 end;
 /

@@ -204,9 +204,8 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
             u.user_about        = in_user_about
         WHERE u.user_id         = in_user_id;
         --
-        IF SQL%ROWCOUNT = 1 THEN
-            core.set_item('$SUCCESS', 'Profile updated.');
-        END IF;
+        core.set_item('P0_SUCCESS_MESSAGE', CASE WHEN SQL%ROWCOUNT = 1 THEN 'Profile updated.' END);
+        --
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
@@ -232,13 +231,12 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
             --
             UPDATE app_users t
             SET t.avatar_blob   = c.blob_content,
-                t.avatar_url    = 'avatar' || REGEXP_SUBSTR(c.name, '(\.[^\.])^', 1, 1, NULL, 1),
+                t.avatar_url    = 'avatar' || REGEXP_SUBSTR(c.name, '(\.[^\.])^', 1, 1, NULL, 1),  -- APEX_STRING_UTIL.GET_FILE_EXTENTION
                 t.avatar_mime   = c.mime_type
             WHERE t.user_id     = core.get_user_id();
             --
-            IF SQL%ROWCOUNT = 1 THEN
-                core.set_item('$SUCCESS', 'Profile image updated.');
-            END IF;
+            core.set_item('P0_SUCCESS_MESSAGE', CASE WHEN SQL%ROWCOUNT = 1 THEN 'Profile image updated.' END);
+            --
         END LOOP;
     EXCEPTION
     WHEN core.app_exception THEN
