@@ -241,6 +241,7 @@ page-items:
     show-quick-picks: false
 
   security: 
+    authorization-scheme: IS_DEVELOPER # 60089834032939902
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
@@ -403,6 +404,9 @@ buttons:
 
   advanced: 
     static-id: LOGIN
+
+  security: 
+    authorization-scheme: IS_DEVELOPER # 60089834032939902
 
 dynamic-actions: 
 - # ====== Dynamic Action: SHOW_ERROR ==========================
@@ -580,6 +584,9 @@ processes:
 
   error: 
     display-location: Inline in Notification
+
+  security: 
+    authorization-scheme: IS_DEVELOPER # 60089834032939902
 
   parameters: 
   - # ====== Parameter: p_username ===============================

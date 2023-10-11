@@ -83,6 +83,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_image_alt=>'Sign In'
 ,p_grid_new_row=>'N'
 ,p_grid_new_column=>'Y'
+,p_security_scheme=>wwv_flow_imp.id(60089834032939902)  -- IS_DEVELOPER
 );
 wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(37391938651003148)
@@ -126,6 +127,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_field_template=>wwv_flow_imp.id(63461560868439163)
 ,p_item_template_options=>'#DEFAULT#'
 ,p_is_persistent=>'N'
+,p_security_scheme=>wwv_flow_imp.id(60089834032939902)  -- IS_DEVELOPER
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 ,p_attribute_02=>'N'
@@ -274,6 +276,7 @@ wwv_flow_imp_page.create_page_process(
 ,p_attribute_03=>'APEX_AUTHENTICATION'
 ,p_attribute_04=>'LOGIN'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_security_scheme=>wwv_flow_imp.id(60089834032939902)  -- IS_DEVELOPER
 ,p_internal_uid=>24012872872868744
 );
 wwv_flow_imp_shared.create_invokeapi_comp_param(
