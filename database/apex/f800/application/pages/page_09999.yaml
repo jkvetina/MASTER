@@ -272,7 +272,7 @@ page-items:
     storage: Per Request (Memory Only)
 
   security: 
-    session-state-protection: Unrestricted
+    session-state-protection: Restricted - May not be set from browser
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
@@ -332,7 +332,7 @@ page-items:
     storage: Per Request (Memory Only)
 
   security: 
-    session-state-protection: Unrestricted
+    session-state-protection: Restricted - May not be set from browser
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
