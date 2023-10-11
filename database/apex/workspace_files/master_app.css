@@ -75,6 +75,14 @@ h1.t-HeroRegion-title {
     align-items         : flex-start;
 }
 
+/* HERO REGION - MOVE UP REGION TO THE RIGHT - USED FOR BUTTONS */
+.t-HeroRegion-col--beforeIcon,
+.t-HeroRegion-col--beforeIcon {
+    order               : 5;
+    margin              : 1px 0 0;
+    gap                 : 0.13rem;
+}
+
 
 
 /* HERO REGION - HIDE ICONS */
@@ -106,6 +114,11 @@ h1.t-HeroRegion-title button:first-child {
 }
 
 
+
+/* FIX BUTTON OFFSET ON LINE WITH OTHER ITEMS */
+.FILTERS button {
+    margin-top          : 0.9rem;
+}
 
 /* BUTTON BADGES */
 button .BADGE {
