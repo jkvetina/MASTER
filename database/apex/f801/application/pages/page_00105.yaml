@@ -178,7 +178,7 @@ buttons:
     template-options: 
     - '#DEFAULT#'
     css-classes: 
-    - DECENT
+    - TRANSPARENT
     icon: fa-question
 
   behavior: 
