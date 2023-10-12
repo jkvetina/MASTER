@@ -33,7 +33,7 @@ prompt APPLICATION 801 - App Template
 -- Application Export:
 --   Application:     801
 --   Name:            App Template
---   Date and Time:   18:08 Středa Říjen 11, 2023
+--   Date and Time:   20:42 Čtvrtek Říjen 12, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -42,7 +42,7 @@ prompt APPLICATION 801 - App Template
 --       Computations:             2
 --       Regions:                  7
 --       Buttons:                  6
---       Dynamic Actions:          3
+--       Dynamic Actions:          2
 --     Shared Components:
 --       Logic:
 --         Items:                 13
@@ -120,7 +120,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-10-11'
+,p_flow_version=>'2023-10-12'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -18724,6 +18724,24 @@ wwv_flow_imp_page.create_page_da_action(
 '    show_success(this.data.successMessage.text);',
 '}'))
 );
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(27422774161258645)
+,p_name=>'CLOSE_DIALOG'
+,p_event_sequence=>10
+,p_triggering_element_type=>'JQUERY_SELECTOR'
+,p_triggering_element=>'#CLOSE_DIALOG'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'click'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(27422813307258646)
+,p_event_id=>wwv_flow_imp.id(27422774161258645)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_DIALOG_CLOSE'
+);
 end;
 /
 prompt --application/pages/page_00100
@@ -18818,7 +18836,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_image_alt=>'Help'
 ,p_button_position=>'UP'
 ,p_button_redirect_url=>'f?p=800:980:&SESSION.::&DEBUG.:980:P980_APP_ID,P980_PAGE_ID:&APP_ID.,&APP_PAGE_ID.'
-,p_button_css_classes=>'DECENT'
+,p_button_css_classes=>'TRANSPARENT'
 ,p_icon_css_classes=>'fa-question'
 );
 wwv_flow_imp_page.create_page_button(
@@ -18826,6 +18844,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_sequence=>20
 ,p_button_plug_id=>wwv_flow_imp.id(93355258906631470)
 ,p_button_name=>'CLOSE_DIALOG'
+,p_button_static_id=>'CLOSE_DIALOG'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(14142008945277056)
@@ -18855,24 +18874,6 @@ wwv_flow_imp_page.create_page_computation(
 'FROM apex_application_pages p',
 'WHERE p.application_id  = :APP_ID',
 '    AND p.page_id       = :APP_PAGE_ID;'))
-);
-wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(25513609980395582)
-,p_name=>'CLOSE_DIALOG'
-,p_event_sequence=>10
-,p_triggering_element_type=>'BUTTON'
-,p_triggering_button_id=>wwv_flow_imp.id(25511212507395578)
-,p_bind_type=>'bind'
-,p_execution_type=>'IMMEDIATE'
-,p_bind_event_type=>'click'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(25514108538395582)
-,p_event_id=>wwv_flow_imp.id(25513609980395582)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_DIALOG_CLOSE'
 );
 end;
 /
@@ -18927,7 +18928,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_image_alt=>'Help'
 ,p_button_position=>'UP'
 ,p_button_redirect_url=>'f?p=800:980:&SESSION.::&DEBUG.:980:P980_APP_ID,P980_PAGE_ID:&APP_ID.,&APP_PAGE_ID.'
-,p_button_css_classes=>'DECENT'
+,p_button_css_classes=>'TRANSPARENT'
 ,p_icon_css_classes=>'fa-question'
 );
 wwv_flow_imp_page.create_page_button(
@@ -18935,6 +18936,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_sequence=>20
 ,p_button_plug_id=>wwv_flow_imp.id(118872345996033915)
 ,p_button_name=>'CLOSE_DIALOG'
+,p_button_static_id=>'CLOSE_DIALOG'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(14142008945277056)
@@ -18964,24 +18966,6 @@ wwv_flow_imp_page.create_page_computation(
 'FROM apex_application_pages p',
 'WHERE p.application_id  = :APP_ID',
 '    AND p.page_id       = :APP_PAGE_ID;'))
-);
-wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(25520066895402449)
-,p_name=>'CLOSE_DIALOG'
-,p_event_sequence=>10
-,p_triggering_element_type=>'BUTTON'
-,p_triggering_button_id=>wwv_flow_imp.id(25518077783402447)
-,p_bind_type=>'bind'
-,p_execution_type=>'IMMEDIATE'
-,p_bind_event_type=>'click'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(25520596069402449)
-,p_event_id=>wwv_flow_imp.id(25520066895402449)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_DIALOG_CLOSE'
 );
 end;
 /

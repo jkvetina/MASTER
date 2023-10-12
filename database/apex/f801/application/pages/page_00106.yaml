@@ -184,6 +184,9 @@ buttons:
     action: Defined by Dynamic Action
     execute-validations: false
 
+  advanced: 
+    static-id: CLOSE_DIALOG
+
 - # ====== Button: HELP ========================================
   id: 25832821377739526
   identification: 
@@ -221,36 +224,6 @@ buttons:
         p980_page_id: '&APP_PAGE_ID.'
 
     warn-on-unsaved-changes: Do Not Check
-
-dynamic-actions: 
-- # ====== Dynamic Action: CLOSE_DIALOG ========================
-  id: 25520066895402449
-  identification: 
-    name: CLOSE_DIALOG
-
-  execution: 
-    sequence: 10
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CLICK
-    selection-type: Button
-    button: CLOSE_DIALOG # 25518077783402447
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Close Dialog ================================
-    id: 25520596069402449
-    identification: 
-      action: Close Dialog
-
-    execution: 
-      sequence: 10
-      event: CLOSE_DIALOG # 25520066895402449
-      fire-when-event-result-is: True
-      fire-on-initialization: false
 
 computations: 
 - # ====== Computation: P106_HEADER ============================
