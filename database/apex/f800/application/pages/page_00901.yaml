@@ -498,6 +498,9 @@ buttons:
     action: Defined by Dynamic Action
     execute-validations: false
 
+  advanced: 
+    static-id: CLOSE_DIALOG
+
 - # ====== Button: UPDATE_PROFILE ==============================
   id: 24721256679646406
   identification: 
@@ -527,36 +530,6 @@ buttons:
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
     database-action: SQL UPDATE action
-
-dynamic-actions: 
-- # ====== Dynamic Action: CLOSE_DIALOG ========================
-  id: 24726694654646415
-  identification: 
-    name: CLOSE_DIALOG
-
-  execution: 
-    sequence: 10
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CLICK
-    selection-type: Button
-    button: CLOSE_DIALOG # 24720494234646404
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Close Dialog ================================
-    id: 24727104910646416
-    identification: 
-      action: Close Dialog
-
-    execution: 
-      sequence: 10
-      event: CLOSE_DIALOG # 24726694654646415
-      fire-when-event-result-is: True
-      fire-on-initialization: false
 
 computations: 
 - # ====== Computation: P901_USER_ID ===========================

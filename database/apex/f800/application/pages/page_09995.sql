@@ -71,6 +71,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_sequence=>10
 ,p_button_plug_id=>wwv_flow_imp.id(86808387988451347)
 ,p_button_name=>'CLOSE_DIALOG'
+,p_button_static_id=>'CLOSE_DIALOG'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(63463317880439166)
@@ -271,24 +272,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_is_persistent=>'N'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(24670230371524268)
-,p_name=>'CLOSE_DIALOG'
-,p_event_sequence=>10
-,p_triggering_element_type=>'BUTTON'
-,p_triggering_button_id=>wwv_flow_imp.id(24669674069524254)
-,p_bind_type=>'bind'
-,p_execution_type=>'IMMEDIATE'
-,p_bind_event_type=>'click'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(24670681598524270)
-,p_event_id=>wwv_flow_imp.id(24670230371524268)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_DIALOG_CLOSE'
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(24733827376693546)

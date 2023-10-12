@@ -169,6 +169,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_sequence=>10
 ,p_button_plug_id=>wwv_flow_imp.id(87142237557933358)
 ,p_button_name=>'CLOSE_DIALOG'
+,p_button_static_id=>'CLOSE_DIALOG'
 ,p_button_action=>'DEFINED_BY_DA'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(63463317880439166)
@@ -211,24 +212,6 @@ wwv_flow_imp_page.create_page_computation(
 'SELECT ''Y''',
 'FROM app_users_devices_v',
 'WHERE ROWNUM = 1;'))
-);
-wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(25004083955006299)
-,p_name=>'CLOSE_DIALOG'
-,p_event_sequence=>10
-,p_triggering_element_type=>'BUTTON'
-,p_triggering_button_id=>wwv_flow_imp.id(25003463964006280)
-,p_bind_type=>'bind'
-,p_execution_type=>'IMMEDIATE'
-,p_bind_event_type=>'click'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(25004510478006301)
-,p_event_id=>wwv_flow_imp.id(25004083955006299)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_DIALOG_CLOSE'
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(24940268978469345)

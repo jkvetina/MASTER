@@ -367,39 +367,8 @@ buttons:
     action: Defined by Dynamic Action
     execute-validations: false
 
-dynamic-actions: 
-- # ====== Dynamic Action: CLOSE_DIALOG ========================
-  id: 24715215966614154
-  identification: 
-    name: CLOSE_DIALOG
-
-  execution: 
-    sequence: 10
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CLICK
-    selection-type: Button
-    button: CLOSE_DIALOG # 24714630369614153
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Close Dialog ================================
-    id: 24715746119614155
-    identification: 
-      action: Close Dialog
-
-    settings: 
-      items-to-return: 
-      - P902_SUCCESS
-
-    execution: 
-      sequence: 10
-      event: CLOSE_DIALOG # 24715215966614154
-      fire-when-event-result-is: True
-      fire-on-initialization: false
+  advanced: 
+    static-id: CLOSE_DIALOG
 
 computations: 
 - # ====== Computation: P902_USER_ID ===========================

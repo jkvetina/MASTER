@@ -487,6 +487,9 @@ buttons:
     action: Defined by Dynamic Action
     execute-validations: false
 
+  advanced: 
+    static-id: CLOSE_DIALOG
+
 - # ====== Button: INSTALL_PWA =================================
   id: 25006313014073201
   identification: 
@@ -642,35 +645,6 @@ dynamic-actions:
     execution: 
       sequence: 10
       event: INSTALL_PWA # 24940572292469348
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
-- # ====== Dynamic Action: CLOSE_DIALOG ========================
-  id: 25004083955006299
-  identification: 
-    name: CLOSE_DIALOG
-
-  execution: 
-    sequence: 10
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CLICK
-    selection-type: Button
-    button: CLOSE_DIALOG # 25003463964006280
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Close Dialog ================================
-    id: 25004510478006301
-    identification: 
-      action: Close Dialog
-
-    execution: 
-      sequence: 10
-      event: CLOSE_DIALOG # 25004083955006299
       fire-when-event-result-is: True
       fire-on-initialization: false
 

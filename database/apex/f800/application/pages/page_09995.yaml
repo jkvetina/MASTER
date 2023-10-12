@@ -603,6 +603,9 @@ buttons:
     action: Defined by Dynamic Action
     execute-validations: false
 
+  advanced: 
+    static-id: CLOSE_DIALOG
+
 - # ====== Button: REQUEST_ACCESS ==============================
   id: 24733784389693545
   identification: 
@@ -631,36 +634,6 @@ buttons:
     action: Submit Page
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
-
-dynamic-actions: 
-- # ====== Dynamic Action: CLOSE_DIALOG ========================
-  id: 24670230371524268
-  identification: 
-    name: CLOSE_DIALOG
-
-  execution: 
-    sequence: 10
-
-  when: 
-    event: EVENT.EVENT.BROWSER.CLICK
-    selection-type: Button
-    button: CLOSE_DIALOG # 24669674069524254
-
-  execution: 
-    event-scope: Static
-    type: Immediate
-
-  actions: 
-  - # ====== Action: Close Dialog ================================
-    id: 24670681598524270
-    identification: 
-      action: Close Dialog
-
-    execution: 
-      sequence: 10
-      event: CLOSE_DIALOG # 24670230371524268
-      fire-when-event-result-is: True
-      fire-on-initialization: false
 
 processes: 
 - # ====== Process: PROCESS_REQUEST ============================
