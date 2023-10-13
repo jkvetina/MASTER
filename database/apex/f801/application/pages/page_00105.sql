@@ -54,6 +54,7 @@ wwv_flow_imp_page.create_page_button(
 ,p_button_sequence=>10
 ,p_button_plug_id=>wwv_flow_imp.id(93355258906631470)
 ,p_button_name=>'HELP'
+,p_button_static_id=>'HELP_BUTTON'
 ,p_button_action=>'REDIRECT_APP'
 ,p_button_template_options=>'#DEFAULT#'
 ,p_button_template_id=>wwv_flow_imp.id(14142008945277056)

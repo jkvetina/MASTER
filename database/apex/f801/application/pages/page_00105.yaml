@@ -194,6 +194,9 @@ buttons:
 
     warn-on-unsaved-changes: Do Not Check
 
+  advanced: 
+    static-id: HELP_BUTTON
+
 - # ====== Button: CLOSE_DIALOG ================================
   id: 25511212507395578
   identification: 

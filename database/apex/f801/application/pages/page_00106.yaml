@@ -225,6 +225,9 @@ buttons:
 
     warn-on-unsaved-changes: Do Not Check
 
+  advanced: 
+    static-id: HELP_BUTTON
+
 computations: 
 - # ====== Computation: P106_HEADER ============================
   id: 25519748131402449
