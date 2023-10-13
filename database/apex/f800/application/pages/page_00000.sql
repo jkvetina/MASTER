@@ -45,15 +45,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(23521964459581650)
-,p_name=>'P0_HELP_PAGE_ID'
-,p_item_sequence=>40
-,p_item_plug_id=>wwv_flow_imp.id(14690651926436120)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(24148870799647501)
 ,p_name=>'P0_SESSION_TIMEOUT_URL'
 ,p_item_sequence=>20

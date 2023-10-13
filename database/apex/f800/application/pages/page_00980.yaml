@@ -28,7 +28,7 @@ navigation:
 css: 
   inline: |
     .CONTENT {
-      padding               : 0 0.5rem;
+      padding               : 1rem 0;
     }
     .CONTENT p,
     .CONTENT ul li,
@@ -84,13 +84,14 @@ regions:
           SELECT
               p.help_text
           FROM apex_application_pages p
-          WHERE p.application_id  = :APP_ID
-              AND p.page_id       = :P980_PAGE_ID
+          WHERE p.application_id  = NVL(:P980_APP_ID,     core.get_app_id())
+              AND p.page_id       = NVL(:P980_PAGE_ID,    core.get_page_id())
       ) LOOP
           RETURN APEX_MARKDOWN.TO_HTML(APEX_APPLICATION.DO_SUBSTITUTIONS(c.help_text));
       END LOOP;
       
     page-items-to-submit: 
+    - P980_APP_ID
     - P980_PAGE_ID
 
   layout: 
@@ -222,10 +223,6 @@ page-items:
     type: Null
     used: Only when current value in session state is null
 
-  default: 
-    type: Static
-    static-value: 900
-
   session-state: 
     data-type: VARCHAR2
     storage: Per Session (Persistent)
@@ -255,10 +252,6 @@ page-items:
   source: 
     type: Null
     used: Only when current value in session state is null
-
-  default: 
-    type: Static
-    static-value: 900
 
   session-state: 
     data-type: VARCHAR2
@@ -307,38 +300,24 @@ computations:
     item-name: P980_PAGE_NAME
 
   execution: 
-    sequence: 20
+    sequence: 10
     point: Before Header
 
   computation: 
     type: SQL Query (return single value)
     sql-query: |
-      SELECT
+      SELECT MAX(
           'Help for ' ||
           APEX_APPLICATION.DO_SUBSTITUTIONS (
-              CASE WHEN p.page_id IN (9999)
-                  THEN p.page_name
-                  ELSE p.page_title END
-          ) AS title
+              REPLACE (
+                  CASE WHEN p.page_id IN (9999)
+                      THEN p.page_name
+                      ELSE p.page_title END,
+                  '&' || 'APP_NAME.', p.application_name
+              )
+          )) AS title
       FROM apex_application_pages p
-      WHERE p.application_id  = NVL(:P980_APP_ID, :APP_ID)
-          AND p.page_id       = :P980_PAGE_ID;
+      WHERE p.application_id  = NVL(:P980_APP_ID,     core.get_app_id())
+          AND p.page_id       = NVL(:P980_PAGE_ID,    core.get_page_id());
       
-
-- # ====== Computation: P980_PAGE_ID ===========================
-  id: 23520848535581639
-  identification: 
-    item-name: P980_PAGE_ID
-
-  execution: 
-    sequence: 10
-    point: Before Header
-
-  computation: 
-    type: Item
-    item-name: P0_HELP_PAGE_ID
-
-  server-side-condition: 
-    type: Item is NULL
-    item: P980_PAGE_ID
 

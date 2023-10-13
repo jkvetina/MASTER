@@ -146,13 +146,20 @@ n AS (
                     '&' || 'APP_USER.', curr.user_name)
             END AS label,
         CASE
-            WHEN t.page_id = 9999   THEN --'&' || 'LOGOUT_URL.'
+            WHEN t.page_id = 9999 THEN --'&' || 'LOGOUT_URL.'
                 APEX_PAGE.GET_URL (
                     p_application   => curr.master_app_id,
                     p_page          => 9999,
                     p_session       => 0
                 )
-            WHEN t.page_id > 0      THEN
+            WHEN t.page_id = 980 THEN   -- add/pass page items for Help page
+                APEX_PAGE.GET_URL (
+                    p_application   => curr.master_app_id,
+                    p_page          => t.page_id,
+                    p_items         => 'P980_APP_ID,P980_PAGE_ID',
+                    p_values        => curr.app_id || ',' || curr.page_id
+                )
+            WHEN t.page_id > 0 THEN
                 APEX_PAGE.GET_URL (
                     p_application   => t.app_id,
                     p_page          => NVL(t.page_alias, t.page_id),

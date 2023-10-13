@@ -33,13 +33,13 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   20:45 Čtvrtek Říjen 12, 2023
+--   Date and Time:   14:10 Pátek Říjen 13, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     35
---       Items:                   95
---       Computations:             7
+--       Items:                   94
+--       Computations:             6
 --       Processes:               30
 --       Regions:                 61
 --       Buttons:                 25
@@ -120,7 +120,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-10-12'
+,p_flow_version=>'2023-10-13'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -22324,15 +22324,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_item_comment=>'Interval in seconds to fire AJAX_PING process'
 );
 wwv_flow_imp_page.create_page_item(
- p_id=>wwv_flow_imp.id(23521964459581650)
-,p_name=>'P0_HELP_PAGE_ID'
-,p_item_sequence=>40
-,p_item_plug_id=>wwv_flow_imp.id(14690651926436120)
-,p_display_as=>'NATIVE_HIDDEN'
-,p_encrypt_session_state_yn=>'N'
-,p_attribute_01=>'Y'
-);
-wwv_flow_imp_page.create_page_item(
  p_id=>wwv_flow_imp.id(24148870799647501)
 ,p_name=>'P0_SESSION_TIMEOUT_URL'
 ,p_item_sequence=>20
@@ -34819,7 +34810,7 @@ wwv_flow_imp_page.create_page(
 ,p_group_id=>wwv_flow_imp.id(14547468167324179)  -- __ INTERNAL
 ,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '.CONTENT {',
-'  padding               : 0 0.5rem;',
+'  padding               : 1rem 0;',
 '}',
 '.CONTENT p,',
 '.CONTENT ul li,',
@@ -34860,15 +34851,15 @@ wwv_flow_imp_page.create_page_plug(
 '    SELECT',
 '        p.help_text',
 '    FROM apex_application_pages p',
-'    WHERE p.application_id  = :APP_ID',
-'        AND p.page_id       = :P980_PAGE_ID',
+'    WHERE p.application_id  = NVL(:P980_APP_ID,     core.get_app_id())',
+'        AND p.page_id       = NVL(:P980_PAGE_ID,    core.get_page_id())',
 ') LOOP',
 '    RETURN APEX_MARKDOWN.TO_HTML(APEX_APPLICATION.DO_SUBSTITUTIONS(c.help_text));',
 'END LOOP;',
 ''))
 ,p_lazy_loading=>false
 ,p_plug_source_type=>'NATIVE_DYNAMIC_CONTENT'
-,p_ajax_items_to_submit=>'P980_PAGE_ID'
+,p_ajax_items_to_submit=>'P980_APP_ID,P980_PAGE_ID'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(38168018527510827)
@@ -34910,7 +34901,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P980_PAGE_ID'
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(38168018527510827)
-,p_item_default=>'900'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_warn_on_unsaved_changes=>'I'
 ,p_encrypt_session_state_yn=>'N'
@@ -34921,39 +34911,31 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P980_APP_ID'
 ,p_item_sequence=>10
 ,p_item_plug_id=>wwv_flow_imp.id(38168018527510827)
-,p_item_default=>'900'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_warn_on_unsaved_changes=>'I'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
 );
 wwv_flow_imp_page.create_page_computation(
- p_id=>wwv_flow_imp.id(23520848535581639)
-,p_computation_sequence=>10
-,p_computation_item=>'P980_PAGE_ID'
-,p_computation_point=>'BEFORE_HEADER'
-,p_computation_type=>'ITEM_VALUE'
-,p_computation=>'P0_HELP_PAGE_ID'
-,p_compute_when=>'P980_PAGE_ID'
-,p_compute_when_type=>'ITEM_IS_NULL'
-);
-wwv_flow_imp_page.create_page_computation(
  p_id=>wwv_flow_imp.id(23520739686581638)
-,p_computation_sequence=>20
+,p_computation_sequence=>10
 ,p_computation_item=>'P980_PAGE_NAME'
 ,p_computation_point=>'BEFORE_HEADER'
 ,p_computation_type=>'QUERY'
 ,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'SELECT',
+'SELECT MAX(',
 '    ''Help for '' ||',
 '    APEX_APPLICATION.DO_SUBSTITUTIONS (',
-'        CASE WHEN p.page_id IN (9999)',
-'            THEN p.page_name',
-'            ELSE p.page_title END',
-'    ) AS title',
+'        REPLACE (',
+'            CASE WHEN p.page_id IN (9999)',
+'                THEN p.page_name',
+'                ELSE p.page_title END,',
+'            ''&'' || ''APP_NAME.'', p.application_name',
+'        )',
+'    )) AS title',
 'FROM apex_application_pages p',
-'WHERE p.application_id  = NVL(:P980_APP_ID, :APP_ID)',
-'    AND p.page_id       = :P980_PAGE_ID;',
+'WHERE p.application_id  = NVL(:P980_APP_ID,     core.get_app_id())',
+'    AND p.page_id       = NVL(:P980_PAGE_ID,    core.get_page_id());',
 ''))
 );
 end;
