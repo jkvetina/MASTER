@@ -107,10 +107,23 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_bind_event_type=>'click'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(27423020049258648)
+ p_id=>wwv_flow_imp.id(27771011058313611)
 ,p_event_id=>wwv_flow_imp.id(27422956920258647)
 ,p_event_result=>'TRUE'
 ,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CONFIRM'
+,p_attribute_01=>'There are unsaved changes on the page, do you want to continue?'
+,p_attribute_03=>'danger'
+,p_attribute_04=>' '
+,p_client_condition_type=>'JAVASCRIPT_EXPRESSION'
+,p_client_condition_expression=>'apex.page.isChanged()'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(27423020049258648)
+,p_event_id=>wwv_flow_imp.id(27422956920258647)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_DIALOG_CLOSE'
 );

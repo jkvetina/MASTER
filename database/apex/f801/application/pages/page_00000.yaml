@@ -276,8 +276,28 @@ dynamic-actions:
       action: Close Dialog
 
     execution: 
+      sequence: 20
+      event: CLOSE_DIALOG # 27422774161258645
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Confirm =====================================
+    id: 27771137899313612
+    identification: 
+      action: Confirm
+
+    settings: 
+      message: There are unsaved changes on the page, do you want to continue?
+      style: Danger
+      icon: ' '
+
+    execution: 
       sequence: 10
       event: CLOSE_DIALOG # 27422774161258645
       fire-when-event-result-is: True
       fire-on-initialization: false
+
+    client-side-condition: 
+      type: JavaScript expression
+      javascript-expression: apex.page.isChanged()
 

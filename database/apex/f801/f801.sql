@@ -33,7 +33,7 @@ prompt APPLICATION 801 - App Template
 -- Application Export:
 --   Application:     801
 --   Name:            App Template
---   Date and Time:   14:36 Pátek Říjen 13, 2023
+--   Date and Time:   20:04 Pátek Říjen 13, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -18735,10 +18735,23 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_bind_event_type=>'click'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(27422813307258646)
+ p_id=>wwv_flow_imp.id(27771137899313612)
 ,p_event_id=>wwv_flow_imp.id(27422774161258645)
 ,p_event_result=>'TRUE'
 ,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_CONFIRM'
+,p_attribute_01=>'There are unsaved changes on the page, do you want to continue?'
+,p_attribute_03=>'danger'
+,p_attribute_04=>' '
+,p_client_condition_type=>'JAVASCRIPT_EXPRESSION'
+,p_client_condition_expression=>'apex.page.isChanged()'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(27422813307258646)
+,p_event_id=>wwv_flow_imp.id(27422774161258645)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_DIALOG_CLOSE'
 );
