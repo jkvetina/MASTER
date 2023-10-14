@@ -292,6 +292,16 @@ CREATE OR REPLACE PACKAGE core AS
 
 
 
+    FUNCTION get_grid_selector
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_grid_row#
+    RETURN NUMBER;
+
+
+
     FUNCTION get_grid_data (
         in_column_name          VARCHAR2
     )
