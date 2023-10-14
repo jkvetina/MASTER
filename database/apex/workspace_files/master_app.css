@@ -317,6 +317,14 @@ td.a-GV-cell a:hover {
 
 
 
+/* LIGHTER CHECKED CHECKBOXES IN GRID */
+.apex-item-single-checkbox input:checked+.u-checkbox,
+.apex-item-single-checkbox input:checked+label, .u-checkbox.is-checked {
+    --a-checkbox-background-color: #555;
+}
+
+
+
 /* BORDERLESS COLORFUL CELL IN IG/IR */
 .COLOR_CELL,
 .COLOR_CELL_LEFT {
