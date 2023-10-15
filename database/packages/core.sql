@@ -639,24 +639,6 @@ CREATE OR REPLACE PACKAGE BODY core AS
 
 
 
-    FUNCTION get_grid_selector
-    RETURN VARCHAR2
-    AS
-    BEGIN
-        RETURN APEX_UTIL.GET_SESSION_STATE('APEX$ROW_SELECTOR');
-    END;
-
-
-
-    FUNCTION get_grid_row#
-    RETURN NUMBER
-    AS
-    BEGIN
-        RETURN TO_NUMBER(APEX_UTIL.GET_SESSION_STATE('APEX$ROW_NUM'));
-    END;
-
-
-
     FUNCTION get_grid_data (
         in_column_name          VARCHAR2
     )
