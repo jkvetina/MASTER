@@ -443,6 +443,10 @@ dynamic-actions:
             url.searchParams.delete('p9999_error');
             window.history.replaceState(null, null, url.toString().replaceAll('%3A', ':').replaceAll('%2C', ','));
         }
+        else {
+            // remove oldschool args
+            window.history.replaceState(null, null, url.toString().split(':P9999_ERROR:')[0]);
+        }
         
 
     execution: 
@@ -564,6 +568,46 @@ computations:
     item: P9999_SUCCESS
 
 processes: 
+- # ====== Process: LOGOUT =====================================
+  id: 28428595267964214
+  identification: 
+    name: LOGOUT
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      IF :APP_SESSION > 0 AND APEX_AUTHENTICATION.IS_AUTHENTICATED AND UPPER(:APP_USER) != 'NOBODY' THEN
+          BEGIN
+              APEX_AUTHENTICATION.LOGOUT (
+                  p_session_id    => :APP_SESSION,
+                  p_app_id        => core.get_app_id()
+              );
+          EXCEPTION
+          WHEN OTHERS THEN
+              NULL;
+          END;
+          --
+          BEGIN
+              APEX_SESSION.DELETE_SESSION(p_session_id => :APP_SESSION);
+          EXCEPTION
+          WHEN OTHERS THEN
+              NULL;
+          END;
+      
+      --    core.redirect('/ords/r/apps/master/login?session=0');
+          core.redirect('/ords/f?p=800:9999:0');
+      --core.raise_error('REDIRECTING');
+          --APEX_CUSTOM_AUTH.SET_SESSION_ID_TO_NEXT_VALUE;
+      END IF;
+
+  execution: 
+    sequence: 10
+    point: Before Header
+    run-process: Once Per Page Visit (default)
+
 - # ====== Process: LOGIN ======================================
   id: 37883346776290247
   identification: 

@@ -5,7 +5,7 @@ begin
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.2'
+,p_release=>'23.1.5'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>800
 ,p_default_id_offset=>13870473903421503
@@ -218,6 +218,10 @@ wwv_flow_imp_page.create_page_da_action(
 '    url.searchParams.delete(''p9999_error'');',
 '    window.history.replaceState(null, null, url.toString().replaceAll(''%3A'', '':'').replaceAll(''%2C'', '',''));',
 '}',
+'else {',
+'    // remove oldschool args',
+'    window.history.replaceState(null, null, url.toString().split('':P9999_ERROR:'')[0]);',
+'}',
 ''))
 );
 wwv_flow_imp_page.create_page_da_action(
@@ -324,6 +328,39 @@ wwv_flow_imp_page.create_page_process(
 ,p_attribute_01=>'CLEAR_CACHE_CURRENT_PAGE'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_internal_uid=>24016648742868750
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(28428595267964214)
+,p_process_sequence=>10
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'LOGOUT'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'IF :APP_SESSION > 0 AND APEX_AUTHENTICATION.IS_AUTHENTICATED AND UPPER(:APP_USER) != ''NOBODY'' THEN',
+'    BEGIN',
+'        APEX_AUTHENTICATION.LOGOUT (',
+'            p_session_id    => :APP_SESSION,',
+'            p_app_id        => core.get_app_id()',
+'        );',
+'    EXCEPTION',
+'    WHEN OTHERS THEN',
+'        NULL;',
+'    END;',
+'    --',
+'    BEGIN',
+'        APEX_SESSION.DELETE_SESSION(p_session_id => :APP_SESSION);',
+'    EXCEPTION',
+'    WHEN OTHERS THEN',
+'        NULL;',
+'    END;',
+'',
+'--    core.redirect(''/ords/r/apps/master/login?session=0'');',
+'    core.redirect(''/ords/f?p=800:9999:0'');',
+'--core.raise_error(''REDIRECTING'');',
+'    --APEX_CUSTOM_AUTH.SET_SESSION_ID_TO_NEXT_VALUE;',
+'END IF;'))
+,p_process_clob_language=>'PLSQL'
+,p_internal_uid=>28428595267964214
 );
 wwv_flow_imp.component_end;
 end;

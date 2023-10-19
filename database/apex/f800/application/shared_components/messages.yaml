@@ -83,3 +83,15 @@
     language: English (en)
     used-in-javascript: true
 
+- # ====== Text Message: SESSION_INVALID =======================
+  id: 28679871925515305
+  identification: 
+    name: SESSION_INVALID
+
+  message: 
+    text: Your session has expired.
+
+  attributes: 
+    language: English (en)
+    used-in-javascript: false
+

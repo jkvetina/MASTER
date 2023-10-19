@@ -16,17 +16,14 @@
 
   session-not-valid: 
     redirect-to: URL
-    invalid-session-url: 
-      url: 'f?p=800:9999:0'
-      app: 800
-      page: 9999
+    invalid-session-url: '/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_INVALID'
 
   login-processing: 
     post-authentication-procedure-name: app_auth.after_auth
     switch-in-session: true
 
   post-logout-url: 
-    post-logout-url: 'f?p=800:9999:0'
+    post-logout-url: '/ords/f?p=800:9999:0'
 
   real-application-security: 
     ras-mode: Disabled
@@ -41,17 +38,14 @@
 
   session-not-valid: 
     redirect-to: URL
-    invalid-session-url: 
-      url: 'f?p=800:9999:0'
-      app: 800
-      page: 9999
+    invalid-session-url: '/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_INVALID'
 
   login-processing: 
     post-authentication-procedure-name: app_auth.after_auth
     switch-in-session: true
 
   post-logout-url: 
-    post-logout-url: 'f?p=800:9999:0'
+    post-logout-url: '/ords/f?p=800:9999:0'
 
   real-application-security: 
     ras-mode: Disabled
@@ -67,17 +61,14 @@
 
   session-not-valid: 
     redirect-to: URL
-    invalid-session-url: 
-      url: 'f?p=800:9999:0'
-      app: 800
-      page: 9999
+    invalid-session-url: '/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_INVALID'
 
   login-processing: 
     post-authentication-procedure-name: app_auth.after_auth
     switch-in-session: true
 
   post-logout-url: 
-    post-logout-url: 'f?p=800:9999:0'
+    post-logout-url: '/ords/f?p=800:9999:0'
 
   real-application-security: 
     ras-mode: Disabled

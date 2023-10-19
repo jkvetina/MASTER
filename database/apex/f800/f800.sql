@@ -19,7 +19,7 @@ whenever sqlerror exit sql.sqlcode rollback
 begin
 wwv_flow_imp.import_begin (
  p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.2'
+,p_release=>'23.1.5'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>800
 ,p_default_id_offset=>13870473903421503
@@ -33,14 +33,14 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   20:03 Pátek Říjen 13, 2023
+--   Date and Time:   17:08 Čtvrtek Říjen 19, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
 --     Pages:                     35
 --       Items:                   94
 --       Computations:             6
---       Processes:               30
+--       Processes:               31
 --       Regions:                 61
 --       Buttons:                 25
 --       Dynamic Actions:         22
@@ -71,11 +71,11 @@ prompt APPLICATION 800 - Master
 --       PWA:
 --         Screenshots:             1
 --       Globalization:
---         Messages:               7
+--         Messages:               8
 --       Reports:
 --       E-Mail:
 --     Supporting Objects:  Included
---   Version:         23.1.2
+--   Version:         23.1.5
 --   Instance ID:     7462307610850096
 --
 
@@ -98,9 +98,10 @@ wwv_imp_workspace.create_flow(
 ,p_checksum_salt=>'9CBCC171912554FE4A8996BCA5DC653BEC59C661B634BF18F954B71B4DA3D6FD'
 ,p_bookmark_checksum_function=>'SH512'
 ,p_max_session_length_sec=>32400
-,p_on_max_session_timeout_url=>'f?p=800:9999:0::::P9999_ERROR:SESSION_TIMEOUT'
+,p_on_max_session_timeout_url=>'/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_TIMEOUT'
 ,p_max_session_idle_sec=>5400
-,p_on_max_idle_timeout_url=>'f?p=800:9999:0::::P9999_ERROR:SESSION_TIMEOUT'
+,p_on_max_idle_timeout_url=>'/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_TIMEOUT'
+,p_session_timeout_warning_sec=>0
 ,p_compatibility_mode=>'21.2'
 ,p_session_state_commits=>'IMMEDIATE'
 ,p_flow_language=>'en'
@@ -120,7 +121,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-10-13'
+,p_flow_version=>'2023-10-19'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -19141,12 +19142,16 @@ end;
 /
 begin
 wwv_flow_imp_shared.create_message(
+ p_id=>wwv_flow_imp.id(28679871925515305)
+,p_name=>'SESSION_INVALID'
+,p_message_text=>'Your session has expired.'
+);
+wwv_flow_imp_shared.create_message(
  p_id=>wwv_flow_imp.id(24880722931639994)
 ,p_name=>'SESSION_TIMEOUT'
 ,p_message_text=>'Your session has ended.'
 ,p_is_js_message=>true
 );
-null;
 end;
 /
 prompt --application/shared_components/globalization/dyntranslations
@@ -19168,8 +19173,8 @@ wwv_flow_imp_shared.create_authentication(
 ,p_attribute_11=>'N'
 ,p_attribute_13=>'Y'
 ,p_invalid_session_type=>'URL'
-,p_invalid_session_url=>'f?p=800:9999:0'
-,p_logout_url=>'f?p=800:9999:0'
+,p_invalid_session_url=>'/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_INVALID'
+,p_logout_url=>'/ords/f?p=800:9999:0'
 ,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
 ,p_use_secure_cookie_yn=>'N'
@@ -19185,8 +19190,8 @@ wwv_flow_imp_shared.create_authentication(
 ,p_name=>'APEX_ACCOUNTS'
 ,p_scheme_type=>'NATIVE_APEX_ACCOUNTS'
 ,p_invalid_session_type=>'URL'
-,p_invalid_session_url=>'f?p=800:9999:0'
-,p_logout_url=>'f?p=800:9999:0'
+,p_invalid_session_url=>'/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_INVALID'
+,p_logout_url=>'/ords/f?p=800:9999:0'
 ,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
 ,p_use_secure_cookie_yn=>'N'
@@ -19203,8 +19208,8 @@ wwv_flow_imp_shared.create_authentication(
 ,p_scheme_type=>'NATIVE_CUSTOM'
 ,p_attribute_05=>'N'
 ,p_invalid_session_type=>'URL'
-,p_invalid_session_url=>'f?p=800:9999:0'
-,p_logout_url=>'f?p=800:9999:0'
+,p_invalid_session_url=>'/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_INVALID'
+,p_logout_url=>'/ords/f?p=800:9999:0'
 ,p_post_auth_process=>'app_auth.after_auth'
 ,p_cookie_name=>'&WORKSPACE_COOKIE.'
 ,p_use_secure_cookie_yn=>'N'
@@ -35562,6 +35567,10 @@ wwv_flow_imp_page.create_page_da_action(
 '    url.searchParams.delete(''p9999_error'');',
 '    window.history.replaceState(null, null, url.toString().replaceAll(''%3A'', '':'').replaceAll(''%2C'', '',''));',
 '}',
+'else {',
+'    // remove oldschool args',
+'    window.history.replaceState(null, null, url.toString().split('':P9999_ERROR:'')[0]);',
+'}',
 ''))
 );
 wwv_flow_imp_page.create_page_da_action(
@@ -35668,6 +35677,39 @@ wwv_flow_imp_page.create_page_process(
 ,p_attribute_01=>'CLEAR_CACHE_CURRENT_PAGE'
 ,p_error_display_location=>'INLINE_IN_NOTIFICATION'
 ,p_internal_uid=>24016648742868750
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(28428595267964214)
+,p_process_sequence=>10
+,p_process_point=>'BEFORE_HEADER'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'LOGOUT'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'IF :APP_SESSION > 0 AND APEX_AUTHENTICATION.IS_AUTHENTICATED AND UPPER(:APP_USER) != ''NOBODY'' THEN',
+'    BEGIN',
+'        APEX_AUTHENTICATION.LOGOUT (',
+'            p_session_id    => :APP_SESSION,',
+'            p_app_id        => core.get_app_id()',
+'        );',
+'    EXCEPTION',
+'    WHEN OTHERS THEN',
+'        NULL;',
+'    END;',
+'    --',
+'    BEGIN',
+'        APEX_SESSION.DELETE_SESSION(p_session_id => :APP_SESSION);',
+'    EXCEPTION',
+'    WHEN OTHERS THEN',
+'        NULL;',
+'    END;',
+'',
+'--    core.redirect(''/ords/r/apps/master/login?session=0'');',
+'    core.redirect(''/ords/f?p=800:9999:0'');',
+'--core.raise_error(''REDIRECTING'');',
+'    --APEX_CUSTOM_AUTH.SET_SESSION_ID_TO_NEXT_VALUE;',
+'END IF;'))
+,p_process_clob_language=>'PLSQL'
+,p_internal_uid=>28428595267964214
 );
 end;
 /
