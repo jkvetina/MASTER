@@ -129,6 +129,20 @@
     padding-right       : 3rem;
 }
 
+
+
+/**
+ * ACTIVE ITEMS OVERWRITE
+ */
+#t_Header > #top_header > nav ul li.ACTIVE {
+    background:             #222;
+    font-weight:            600 !important;
+}
+#t_Header > #top_header > nav ul li:hover,
+#t_Header > #top_header > nav ul li.ACTIVE:hover {
+    background:             #222;
+}
+
 /* ADJUST BADGES */
 #t_Header > #top_header > nav a > span.BADGE,
 #t_Header > #top_header > nav a:hover > span.BADGE {

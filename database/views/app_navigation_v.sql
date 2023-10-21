@@ -58,6 +58,14 @@ available_pages AS (
             in_procedure_name   => s.procedure_name
         )
 ),
+current_path AS (
+    SELECT /*+ MATERIALIZE */
+        MAX(SYS_CONNECT_BY_PATH(t.page_id, '/')) || '/' AS active_pages
+    FROM available_pages t
+    CONNECT BY t.app_id         = PRIOR t.app_id
+        AND t.page_id           = PRIOR t.parent_id
+    START WITH t.page_id        = t.curr_page_id
+),
 t AS (
     -- build the tree, we need pages in specific order
     SELECT /*+ MATERIALIZE */
@@ -140,11 +148,17 @@ SELECT
     -- use this to pass values to parent <li>
     ' class="' || t.page_group || ' ' || t.page_css_classes ||
         CASE WHEN ((SELECT COUNT(DISTINCT s.col_id) FROM t s WHERE s.parent_id = t.page_id)) > 1 THEN ' MULTICOLUMN' END ||
+        CASE WHEN (
+                t.page_id = t.curr_page_id
+                OR p.active_pages LIKE '/' || t.page_id || '/%'
+                OR p.active_pages LIKE '%/' || t.page_id || '/'
+            ) THEN ' ACTIVE' END ||
         '"' AS attribute10,
     --
     t.order#    -- to sort pages properly
     --
 FROM t
+CROSS JOIN current_path p
 --
 UNION ALL
 SELECT
