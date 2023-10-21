@@ -33,7 +33,7 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   17:56 Sobota Říjen 21, 2023
+--   Date and Time:   20:39 Sobota Říjen 21, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -221,12 +221,14 @@ wwv_flow_imp_shared.create_list(
 ,p_list_query=>wwv_flow_string.join(wwv_flow_t_varchar2(
 'SELECT',
 '    t.lvl,',
-'    t.label,',
-'    t.target,',
-'    t.is_current_list_entry,',
-'    t.image,',
-'    t.image_attribute,',
-'    t.image_alt_attribute,',
+'    --',
+'    NULL AS label,',
+'    NULL AS target,',
+'    NULL AS is_current_list_entry,',
+'    NULL AS image,',
+'    NULL AS image_attribute,',
+'    NULL AS image_alt_attribute,',
+'    --',
 '    t.attribute01,',
 '    t.attribute02,',
 '    t.attribute03,',

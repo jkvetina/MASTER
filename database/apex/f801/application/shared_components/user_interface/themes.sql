@@ -20,7 +20,7 @@ wwv_flow_imp_shared.create_theme(
 ,p_nav_bar_type=>'LIST'
 ,p_reference_id=>63467056572439181
 ,p_is_locked=>false
-,p_default_page_template=>wwv_flow_imp.id(13992488231276959)
+,p_default_page_template=>wwv_flow_imp.id(33236265733645235)
 ,p_default_dialog_template=>wwv_flow_imp.id(13980447098276953)
 ,p_error_template=>wwv_flow_imp.id(13970403551276947)
 ,p_printer_friendly_template=>wwv_flow_imp.id(13985649764276955)
@@ -43,14 +43,14 @@ wwv_flow_imp_shared.create_theme(
 ,p_default_calendar_template=>wwv_flow_imp.id(14144420310277062)
 ,p_default_list_template=>wwv_flow_imp.id(14123795408277041)
 ,p_default_nav_list_template=>wwv_flow_imp.id(14135937982277048)
-,p_default_top_nav_list_temp=>wwv_flow_imp.id(14130134493277045)
-,p_default_side_nav_list_temp=>wwv_flow_imp.id(14130134493277045)
+,p_default_top_nav_list_temp=>wwv_flow_imp.id(33535392271645455)
+,p_default_side_nav_list_temp=>wwv_flow_imp.id(33535392271645455)
 ,p_default_nav_list_position=>'TOP'
 ,p_default_dialogbtnr_template=>wwv_flow_imp.id(14005375610276970)
 ,p_default_dialogr_template=>wwv_flow_imp.id(14002580469276968)
 ,p_default_option_label=>wwv_flow_imp.id(14140267744277053)
 ,p_default_required_label=>wwv_flow_imp.id(14141509781277055)
-,p_default_navbar_list_template=>wwv_flow_imp.id(14130134493277045)
+,p_default_navbar_list_template=>wwv_flow_imp.id(33535392271645455)
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_theme_file_prefix(800),'#APEX_FILES#themes/theme_42/23.1/')
 ,p_files_version=>64
 ,p_icon_library=>'FONTAPEX'

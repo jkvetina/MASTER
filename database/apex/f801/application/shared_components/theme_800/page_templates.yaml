@@ -44,18 +44,13 @@
   identification: 
     name: Standard
 
-- # ====== Page Template: Standard Q ===========================
-  id: 13989038328276957
-  identification: 
-    name: Standard Q
-
-- # ====== Page Template: Standard Q-NAV =======================
-  id: 13992488231276959
-  identification: 
-    name: Standard Q-NAV
-
 - # ====== Page Template: Wizard Modal Dialog ==================
   id: 13995861996276960
   identification: 
     name: Wizard Modal Dialog
+
+- # ====== Page Template: Standard Q23 =========================
+  id: 33236265733645235
+  identification: 
+    name: Standard Q23
 

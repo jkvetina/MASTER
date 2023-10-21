@@ -52,9 +52,8 @@ prompt --install
 @@application/shared_components/user_interface/templates/page/modal_dialog.sql
 @@application/shared_components/user_interface/templates/page/right_side_column.sql
 @@application/shared_components/user_interface/templates/page/standard.sql
-@@application/shared_components/user_interface/templates/page/standard_q.sql
-@@application/shared_components/user_interface/templates/page/standard_q_nav.sql
 @@application/shared_components/user_interface/templates/page/wizard_modal_dialog.sql
+@@application/shared_components/user_interface/templates/page/standard_qnav.sql
 @@application/shared_components/user_interface/templates/button/icon.sql
 @@application/shared_components/user_interface/templates/button/text.sql
 @@application/shared_components/user_interface/templates/button/text_with_icon.sql
@@ -86,13 +85,13 @@ prompt --install
 @@application/shared_components/user_interface/templates/list/menu_bar.sql
 @@application/shared_components/user_interface/templates/list/menu_popup.sql
 @@application/shared_components/user_interface/templates/list/navigation_bar.sql
-@@application/shared_components/user_interface/templates/list/navigation_bar_q.sql
 @@application/shared_components/user_interface/templates/list/side_navigation_menu.sql
 @@application/shared_components/user_interface/templates/list/tabs.sql
 @@application/shared_components/user_interface/templates/list/top_navigation_mega_menu.sql
 @@application/shared_components/user_interface/templates/list/top_navigation_menu.sql
 @@application/shared_components/user_interface/templates/list/top_navigation_tabs.sql
 @@application/shared_components/user_interface/templates/list/wizard_progress.sql
+@@application/shared_components/user_interface/templates/list/navigation_q23.sql
 @@application/shared_components/user_interface/templates/report/alerts.sql
 @@application/shared_components/user_interface/templates/report/badge_list.sql
 @@application/shared_components/user_interface/templates/report/cards.sql
