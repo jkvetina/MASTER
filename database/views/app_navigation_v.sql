@@ -119,13 +119,6 @@ badges AS (
 SELECT
     t.lvl,
     --
-    NULL AS label,              -- ignore (but pass) some mandatory columns
-    NULL AS target,
-    NULL AS is_current_list_entry,
-    NULL AS image,
-    NULL AS image_attribute,
-    NULL AS image_alt_attribute,
-    --
     CASE
         WHEN t.page_id = 0
             -- split navigation to left and right on page zero
@@ -182,12 +175,6 @@ LEFT JOIN badges b
 UNION ALL
 SELECT
     n.lvl,
-    n.label,
-    n.target,
-    n.is_current_list_entry,
-    n.image,
-    n.image_attribute,
-    n.image_alt_attribute,
     n.attribute01,
     n.attribute02,
     n.attribute03,
