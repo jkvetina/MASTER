@@ -211,7 +211,7 @@ CREATE OR REPLACE PACKAGE BODY app_nav AS
         APEX_COLLECTION.ADD_MEMBER (
             p_collection_name   => c_collection_badges,
             p_c001              => in_badge,        -- badge payload
-            p_c002              => 'DECENT',        -- badge class
+            p_c002              => '',              -- badge class, like DECENT
             p_n001              => in_app_id,
             p_n002              => in_page_id
         );

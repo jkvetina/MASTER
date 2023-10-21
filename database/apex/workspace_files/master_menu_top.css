@@ -134,13 +134,14 @@
 /**
  * ACTIVE ITEMS OVERWRITE
  */
-#t_Header > #top_header > nav ul li.ACTIVE {
-    background:             #222;
-    font-weight:            600 !important;
-}
 #t_Header > #top_header > nav ul li:hover,
+#t_Header > #top_header > nav ul li.ACTIVE,
 #t_Header > #top_header > nav ul li.ACTIVE:hover {
-    background:             #222;
+    background          : #222;
+}
+#t_Header > #top_header > nav ul li.ACTIVE > a,
+#t_Header > #top_header > nav ul li.ACTIVE > span {
+    font-weight         : 600 !important;
 }
 
 /* ADJUST BADGES */
@@ -160,6 +161,9 @@
 #t_Header > #top_header > nav a > span.BADGE.DECENT,
 #t_Header > #top_header > nav a:hover > span.BADGE.DECENT {
     background          : transparent;
+}
+#t_Header > #top_header > nav ul li.ACTIVE span.BADGE {
+    font-weight         : 500 !important;
 }
 
 /* ADJUST LEVEL 3 ITEMS */
