@@ -135,7 +135,9 @@ SELECT
             APEX_PAGE.GET_URL (
                 p_application   => t.master_app_id,
                 p_page          => NVL(t.page_alias, t.page_id),
-                p_clear_cache   => CASE WHEN t.is_reset = 'Y' THEN t.page_id END
+                p_clear_cache   => CASE WHEN t.is_reset = 'Y' THEN t.page_id END,
+                p_items         => CASE WHEN t.page_id = 980 THEN 'P980_APP_ID,P980_PAGE_ID' END,
+                p_values        => CASE WHEN t.page_id = 980 THEN t.curr_app_id || ',' || t.curr_page_id END
             ) ||
             '" class="' || ' NAV_L' || t.depth || ' NAV_P' || t.page_id || '">' ||
             CASE WHEN t.depth > 2
