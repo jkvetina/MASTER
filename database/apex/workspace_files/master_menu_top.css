@@ -157,8 +157,9 @@
     background          : red;
     color               : #fff;
 }
-span.BADGE.DECENT {
-    background          : #888;
+#t_Header > #top_header > nav a > span.BADGE.DECENT,
+#t_Header > #top_header > nav a:hover > span.BADGE.DECENT {
+    background          : transparent;
 }
 
 /* ADJUST LEVEL 3 ITEMS */

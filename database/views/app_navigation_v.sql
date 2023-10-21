@@ -111,7 +111,8 @@ badges AS (
     SELECT /*+ MATERIALIZE */
         a.n001      AS app_id,
         a.n002      AS page_id,
-        a.c001      AS badge
+        a.c001      AS badge,
+        a.c002      AS badge_class
     FROM apex_collections a
     WHERE a.collection_name = 'APP_NAVIGATION_BADGES'   -- check app_nav package
 )
@@ -142,7 +143,7 @@ SELECT
                 END ||
             '<span>' || t.page_label || '</span>' ||
             CASE WHEN b.badge IS NOT NULL
-                THEN '<span class="BADGE">' || b.badge || '</span>'
+                THEN '<span class="BADGE ' || b.badge_class || '">' || b.badge || '</span>'
                 END ||
             '</a>'
         END AS attribute01,
