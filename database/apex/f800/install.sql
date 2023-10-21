@@ -68,7 +68,6 @@ prompt --install
 @@application/pages/page_groups.sql
 @@application/comments.sql
 @@application/shared_components/navigation/breadcrumbentry.sql
-@@application/shared_components/user_interface/templates/page/standard_q.sql
 @@application/shared_components/user_interface/templates/page/standard_q_nav.sql
 @@application/shared_components/user_interface/templates/page/drawer.sql
 @@application/shared_components/user_interface/templates/page/left_side_column.sql
@@ -104,7 +103,7 @@ prompt --install
 @@application/shared_components/user_interface/templates/region/hero.sql
 @@application/shared_components/user_interface/templates/region/login.sql
 @@application/shared_components/user_interface/templates/region/wizard_container.sql
-@@application/shared_components/user_interface/templates/list/navigation_bar_q.sql
+@@application/shared_components/user_interface/templates/list/navigation_q23.sql
 @@application/shared_components/user_interface/templates/list/badge_list.sql
 @@application/shared_components/user_interface/templates/list/cards.sql
 @@application/shared_components/user_interface/templates/list/media_list.sql

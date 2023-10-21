@@ -1,13 +1,8 @@
 ---
-- # ====== Page Template: Standard Q ===========================
-  id: 44179807029369333
-  identification: 
-    name: Standard Q
-
-- # ====== Page Template: Standard Q-NAV =======================
+- # ====== Page Template: Standard Q23 =========================
   id: 63188215361701831
   identification: 
-    name: Standard Q-NAV
+    name: Standard Q23
 
 - # ====== Page Template: Drawer ===============================
   id: 63289183138439042

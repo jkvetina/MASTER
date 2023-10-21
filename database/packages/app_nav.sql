@@ -195,6 +195,7 @@ CREATE OR REPLACE PACKAGE BODY app_nav AS
     WHEN core.app_exception THEN
         RAISE;
     WHEN OTHERS THEN
+        -- @TODO: ignore uniq constraint violated
         core.raise_error();
     END;
 

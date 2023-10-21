@@ -14,7 +14,7 @@ wwv_flow_imp.component_begin (
 wwv_flow_imp_shared.create_template(
  p_id=>wwv_flow_imp.id(63188215361701831)
 ,p_theme_id=>42
-,p_name=>'Standard Q-NAV'
+,p_name=>'Standard Q23'
 ,p_internal_name=>'STANDARD_Q-NAV'
 ,p_is_popup=>false
 ,p_javascript_code_onload=>'apex.theme42.initializePage.noSideCol();'

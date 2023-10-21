@@ -107,7 +107,7 @@ navigation-menu:
 navigation-bar: 
   implementation: List
   list: NAVIGATION # 14517547161424323
-  list-template: Navigation Bar Q # 60837470868358458
+  list-template: Navigation Q23 # 28883453409606801
   template-options: 
   - '#DEFAULT#'
 

@@ -39,6 +39,7 @@ wwv_flow_imp_page.create_page(
 '.a-CardView-mainContent {',
 '}',
 ''))
+,p_page_css_classes=>'RIGHT'
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(43462402185717150)  -- IS_USER
 ,p_protection_level=>'C'

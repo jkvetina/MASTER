@@ -30,7 +30,7 @@ wwv_flow_imp_shared.create_user_interface(
 ,p_javascript_file_urls=>'#WORKSPACE_FILES#master_app#MIN#.js?version=#APP_VERSION#'
 ,p_nav_bar_type=>'LIST'
 ,p_nav_bar_list_id=>wwv_flow_imp.id(14517547161424323)
-,p_nav_bar_list_template_id=>wwv_flow_imp.id(60837470868358458)
+,p_nav_bar_list_template_id=>wwv_flow_imp.id(28883453409606801)
 ,p_nav_bar_template_options=>'#DEFAULT#'
 );
 wwv_flow_imp.component_end;
