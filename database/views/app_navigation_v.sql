@@ -81,6 +81,7 @@ t AS (
             CASE WHEN t.page_id = 0 THEN NVL(t.order#, 666) ELSE t.order# END || '.' || t.page_id,
             '/') AS order#,
         --
+        t.app_id,
         t.page_id,
         t.page_label,
         t.page_alias,
@@ -103,6 +104,16 @@ t AS (
     CONNECT BY t.app_id         = PRIOR t.app_id
         AND t.parent_id         = PRIOR t.page_id
     START WITH t.parent_id      IS NULL
+),
+badges AS (
+    -- find badges for specific pages
+    -- you can fill the collection from any app, but you have to remove things too
+    SELECT /*+ MATERIALIZE */
+        a.n001      AS app_id,
+        a.n002      AS page_id,
+        a.c001      AS badge
+    FROM apex_collections a
+    WHERE a.collection_name = 'APP_NAVIGATION_BADGES'   -- check app_nav package
 )
 SELECT
     t.lvl,
@@ -130,7 +141,9 @@ SELECT
                 THEN '<span>&mdash; &nbsp;</span>'
                 END ||
             '<span>' || t.page_label || '</span>' ||
-            --'<span class="BADGE"></span>' ||
+            CASE WHEN b.badge IS NOT NULL
+                THEN '<span class="BADGE">' || b.badge || '</span>'
+                END ||
             '</a>'
         END AS attribute01,
     --
@@ -159,6 +172,9 @@ SELECT
     --
 FROM t
 CROSS JOIN current_path p
+LEFT JOIN badges b
+    ON b.app_id         = t.app_id
+    AND b.page_id       = t.page_id
 --
 UNION ALL
 SELECT
