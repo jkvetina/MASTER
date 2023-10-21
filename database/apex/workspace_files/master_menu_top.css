@@ -50,6 +50,15 @@
     background          : #3f3d33;
     color               : #fff;
 }
+#t_Header > #top_header > nav ul li > span {
+    display             : block;
+    padding             : 1rem 1rem;
+    line-height         : 1rem;
+    font-size           : 1rem;
+    font-style          : normal;
+    font-weight         : 400;
+    white-space         : nowrap;
+}
 #t_Header > #top_header > nav a,
 #t_Header > #top_header > nav a:hover {
     display             : block;
@@ -134,7 +143,6 @@
 /**
  * ACTIVE ITEMS OVERWRITE
  */
-#t_Header > #top_header > nav ul li:hover,
 #t_Header > #top_header > nav ul li.ACTIVE,
 #t_Header > #top_header > nav ul li.ACTIVE:hover {
     background          : #222;
