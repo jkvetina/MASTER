@@ -118,6 +118,8 @@ badges AS (
 )
 SELECT
     t.lvl,
+    t.app_id,
+    t.page_id,
     --
     CASE
         WHEN t.page_id = 0
@@ -175,6 +177,8 @@ LEFT JOIN badges b
 UNION ALL
 SELECT
     n.lvl,
+    n.app_id,
+    n.page_id,
     n.attribute01,
     n.attribute02,
     n.attribute03,
