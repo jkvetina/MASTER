@@ -12,6 +12,12 @@
     font-size       : 2.4rem;
     margin          : 4rem 0 0.5rem !important;
 }
+#BANNER button.t-Button--hot {
+  background        : #333;
+}
+#BANNER button.t-Button--hot:hover {
+  background        : #222;
+}
 #BANNER ::selection {
   color             : #fff;
   background        : #333;

@@ -4,7 +4,7 @@ id: 800
 identification: 
   name: Master
   alias: MASTER
-  version: 2023-09-10
+  version: 2023-09-22
   application-group: MASTER # 14521455008554600
 
 row-search: 
