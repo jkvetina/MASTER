@@ -135,12 +135,18 @@ SELECT
                 p_values        => CASE WHEN t.page_id = 980 THEN t.curr_app_id || ',' || t.curr_page_id END
             ) ||
             '" class="' || ' NAV_L' || t.depth || ' NAV_P' || t.page_id || '">' ||
-            CASE WHEN t.depth > 2
-                THEN '<span>&mdash; &nbsp;</span>'
+            CASE
+                WHEN t.depth > 2
+                    THEN '<span>&mdash; &nbsp;</span>'
                 END ||
-            '<span>' || t.page_label || '</span>' ||
-            CASE WHEN b.badge IS NOT NULL
-                THEN '<span class="BADGE ' || b.badge_class || '">' || b.badge || '</span>'
+            '<span>' ||
+            CASE
+                WHEN t.page_id = 9999 THEN core.get_page_name(in_name => '#fa-coffee Logout')
+                ELSE t.page_label END ||
+            '</span>' ||
+            CASE
+                WHEN b.badge IS NOT NULL
+                    THEN '<span class="BADGE ' || b.badge_class || '">' || b.badge || '</span>'
                 END ||
             '</a>'
         END AS attribute01,
