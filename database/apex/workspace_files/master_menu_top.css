@@ -161,22 +161,3 @@
     line-height         : 0.85rem;
 }
 
-/* ADJUST BADGES */
-#t_Header > #top_header > nav a > span.BADGE,
-#t_Header > #top_header > nav a:hover > span.BADGE {
-    position            : relative;
-    top                 : -0.5rem;
-    margin              : 0 -0.5rem 0 0.25rem;
-    padding             : 0.2rem 0.4rem 0.1rem;
-    font-size           : 0.75rem;
-    border-radius       : 1rem 1rem;
-    font-family         : "Roboto", sans-serif;
-    font-weight         : 500;
-    background          : red;
-    color               : #fff;
-}
-#t_Header > #top_header > nav a > span.BADGE.DECENT,
-#t_Header > #top_header > nav a:hover > span.BADGE.DECENT {
-    background          : transparent;
-}
-
