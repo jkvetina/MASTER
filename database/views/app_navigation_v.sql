@@ -183,6 +183,17 @@ CROSS JOIN current_path p
 LEFT JOIN badges b
     ON b.app_id         = t.app_id
     AND b.page_id       = t.page_id
+WHERE 1 = 1
+    AND (
+        -- process just one page zero, priority for the non master app
+        t.page_id != 0 OR t.app_id = (
+            SELECT t.app_id
+            FROM t
+            WHERE t.page_id = 0
+            ORDER BY CASE WHEN t.app_id = t.master_app_id THEN 2 ELSE 1 END
+            FETCH FIRST 1 ROWS ONLY
+        )
+    )
 --
 UNION ALL
 SELECT
