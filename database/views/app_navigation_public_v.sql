@@ -39,7 +39,9 @@ public_pages AS (
         --
         '<a href="' || APEX_PAGE.GET_URL (
             p_application   => x.master_app_id,
-            p_page          => 980
+            p_page          => 980,
+            p_items         => 'P980_APP_ID,P980_PAGE_ID',
+            p_values        => '800,9999'
         ) || '">' || core.get_page_name(in_app_id => x.master_app_id, in_page_id => 980) || '</a>' AS attribute01,
         --
         '/0.980/' AS order#
