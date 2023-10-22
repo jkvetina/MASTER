@@ -33,7 +33,7 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   07:19 Neděle Říjen 22, 2023
+--   Date and Time:   07:27 Neděle Říjen 22, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -33120,7 +33120,7 @@ prompt --application/pages/page_00900
 begin
 wwv_flow_imp_page.create_page(
  p_id=>900
-,p_name=>'&APP_USER.'
+,p_name=>'#USER_NAME#'
 ,p_alias=>'USER'
 ,p_step_title=>'User Profile'
 ,p_autocomplete_on_off=>'OFF'

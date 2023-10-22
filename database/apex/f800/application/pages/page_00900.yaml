@@ -1,8 +1,8 @@
 ---
-# ====== Page: &APP_USER. ====================================
+# ====== Page: #USER_NAME# ===================================
 id: 900
 identification: 
-  name: '&APP_USER.'
+  name: '#USER_NAME#'
   alias: USER
   title: User Profile
   page-group: USER_PROFILE # 18317012587086665

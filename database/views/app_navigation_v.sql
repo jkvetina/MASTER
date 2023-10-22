@@ -143,7 +143,9 @@ SELECT
             '<span>' ||
             CASE
                 WHEN t.page_id = 9999 THEN core.get_page_name(in_name => '#fa-coffee Logout')
-                ELSE t.page_label END ||
+                ELSE REPLACE(t.page_label,
+                    '#USER_NAME#', t.curr_user_name
+                    ) END ||
             '</span>' ||
             CASE
                 WHEN b.badge IS NOT NULL
