@@ -33,7 +33,7 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   07:58 Neděle Říjen 22, 2023
+--   Date and Time:   17:23 Neděle Říjen 22, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -9640,8 +9640,8 @@ prompt --application/shared_components/user_interface/templates/list/navigation_
 begin
 wwv_flow_imp_shared.create_list_template(
  p_id=>wwv_flow_imp.id(28883453409606801)
-,p_list_template_current=>'<li #A10#>#A01##A02##A03##A04##A05##A06##A07##A08#</li>#A09#'
-,p_list_template_noncurrent=>'<li #A10#>#A01##A02##A03##A04##A05##A06##A07##A08#</li>#A09#'
+,p_list_template_current=>'#A08#<li #A10#>#A01##A02##A03##A04##A05##A06##A07#</li>#A09#'
+,p_list_template_noncurrent=>'#A08#<li #A10#>#A01##A02##A03##A04##A05##A06##A07#</li>#A09#'
 ,p_list_template_name=>'Navigation Q23'
 ,p_internal_name=>'NAVIGATION_Q23'
 ,p_theme_id=>42
@@ -9650,16 +9650,16 @@ wwv_flow_imp_shared.create_list_template(
 ,p_list_template_after_rows=>'</ul>'
 ,p_before_sub_list=>'<div class="WRAPPER"><div class="COLUMNS"><ul>'
 ,p_after_sub_list=>'</ul></div></div></li>'
-,p_sub_list_item_current=>'<li #A10#>#A01##A02##A03##A04##A05##A06##A07##A08#</li>#A09#'
-,p_sub_list_item_noncurrent=>'<li #A10#>#A01##A02##A03##A04##A05##A06##A07##A08#</li>#A09#'
-,p_item_templ_curr_w_child=>'<li #A10#>#A01##A02##A03##A04##A05##A06##A07##A08#'
-,p_item_templ_noncurr_w_child=>'<li #A10#>#A01##A02##A03##A04##A05##A06##A07##A08#'
-,p_sub_templ_curr_w_child=>'<li #A10#>#A01##A02##A03##A04##A05##A06##A07##A08#'
-,p_sub_templ_noncurr_w_child=>'<li #A10#>#A01##A02##A03##A04##A05##A06##A07##A08#'
-,p_a01_label=>'Badge Value'
-,p_a02_label=>'List  Item CSS Classes'
-,p_a04_label=>'Title Attribute'
-,p_a06_label=>'Link Target'
+,p_sub_list_item_current=>'#A08#<li #A10#>#A01##A02##A03##A04##A05##A06##A07#</li>#A09#'
+,p_sub_list_item_noncurrent=>'#A08#<li #A10#>#A01##A02##A03##A04##A05##A06##A07#</li>#A09#'
+,p_item_templ_curr_w_child=>'#A08#<li #A10#>#A01##A02##A03##A04##A05##A06##A07#'
+,p_item_templ_noncurr_w_child=>'#A08#<li #A10#>#A01##A02##A03##A04##A05##A06##A07#'
+,p_sub_templ_curr_w_child=>'#A08#<li #A10#>#A01##A02##A03##A04##A05##A06##A07#'
+,p_sub_templ_noncurr_w_child=>'#A08#<li #A10#>#A01##A02##A03##A04##A05##A06##A07#'
+,p_a01_label=>'CONTENT INSIDE <li>'
+,p_a08_label=>'BEFORE <li>'
+,p_a09_label=>'AFTER <li>'
+,p_a10_label=>'PARAMETERS IN <li>  // class="", style=""...'
 );
 end;
 /

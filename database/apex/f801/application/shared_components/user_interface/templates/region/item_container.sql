@@ -30,7 +30,7 @@ wwv_flow_imp_shared.create_plug_template(
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(33407791280645360)
+ p_id=>wwv_flow_imp.id(37167466881126887)
 ,p_plug_template_id=>wwv_flow_imp.id(14061409795277001)
 ,p_name=>'Item'
 ,p_placeholder=>'BODY'
@@ -41,7 +41,7 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(33408239525645360)
+ p_id=>wwv_flow_imp.id(37167934446126887)
 ,p_plug_template_id=>wwv_flow_imp.id(14061409795277001)
 ,p_name=>'Button End'
 ,p_placeholder=>'BUTTON_END'
@@ -52,7 +52,7 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(33408787963645360)
+ p_id=>wwv_flow_imp.id(37168438195126887)
 ,p_plug_template_id=>wwv_flow_imp.id(14061409795277001)
 ,p_name=>'Button Start'
 ,p_placeholder=>'BUTTON_START'

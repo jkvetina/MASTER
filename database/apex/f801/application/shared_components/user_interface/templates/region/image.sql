@@ -26,7 +26,7 @@ wwv_flow_imp_shared.create_plug_template(
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(33350924331645322)
+ p_id=>wwv_flow_imp.id(37110738401126844)
 ,p_plug_template_id=>wwv_flow_imp.id(14039350763276989)
 ,p_name=>'Region Body'
 ,p_placeholder=>'BODY'
@@ -37,7 +37,7 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>false
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(33351450971645322)
+ p_id=>wwv_flow_imp.id(37111204245126845)
 ,p_plug_template_id=>wwv_flow_imp.id(14039350763276989)
 ,p_name=>'Sub Regions'
 ,p_placeholder=>'SUB_REGIONS'
