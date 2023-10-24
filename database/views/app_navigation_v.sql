@@ -200,16 +200,16 @@ SELECT
     n.lvl,
     n.app_id,
     n.page_id,
-    n.attribute01,
+    n.attribute01,      -- content <li>...</li>
     n.attribute02,
     n.attribute03,
     n.attribute04,
     n.attribute05,
     n.attribute06,
     n.attribute07,
-    n.attribute08,
-    n.attribute09,
-    n.attribute10,
+    n.attribute08,      -- before ...<li>
+    n.attribute09,      -- after </li>...
+    n.attribute10,      -- inside <li ...>
     n.order#
     --
 FROM app_navigation_public_v n;
