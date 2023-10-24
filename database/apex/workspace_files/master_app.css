@@ -130,12 +130,14 @@ button.ui-button:hover {
 
 /* HOT BUTTONS */
 button.t-Button--hot,
-button.ui-button--hot {
-    background          : #444;
+button.ui-button--hot,
+button.a-Button.a-Toolbar-item.a-Button--hot {
+    background          : #5f5c58;
 }
 button.t-Button--hot:hover,
-button.ui-button--hot:hover {
-    background          : #222;
+button.ui-button--hot:hover,
+button.a-Button.a-Toolbar-item.a-Button--hot:hover {
+    background          : #333;
 }
 
 
@@ -227,12 +229,12 @@ ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
 }
 ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
     color               : #000;
-    border-bottom       : 8px solid #555 !important;
+    border-bottom       : 8px solid #5f5c58 !important;
 }
 ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover,
 ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link:hover {
     color               : #000;
-    border-bottom       : 8px solid #222 !important;
+    border-bottom       : 8px solid #333 !important;
 }
 
 .t-TabsRegion-items > div {
@@ -323,11 +325,11 @@ th.a-GV-header {
 
 
 
-/* LINK COLOR IN GRID */
+/* LINKS COLOR IN GRID */
 td.a-GV-cell a {
-    color               : #5498a9;
-    color               : #a26924;
     color               : #738830;
+    color               : #5d9700;
+    color               : #648e00;
     font-weight         : 600;
     text-decoration     : none;
 }
