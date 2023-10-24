@@ -99,6 +99,18 @@ const init_page = function() {
     //
     fix_grid_toolbars();
     fix_grid_save_button();
+
+    //
+    // INIT ACTION MENUS
+    //
+    $('body').on('click', 'button.ACTION_MENU', show_action_menu);
+    $('html').click(function() {
+        $('div.ACTION_MENU').hide();
+    });
+    $('div.ACTION_MENU a').click(function(e) {
+        var f = $(this);
+        console.log('MENU CLICK', f, e);
+    });
 };
 
 // fix badges on buttons
@@ -565,5 +577,29 @@ const process_grid_selected_rows = function (static_id, fake_column_name, action
     });
     //grid.interactiveGrid('getActions').invoke('save');
     apex.submit(action_name);
+};
+
+
+
+//
+// RENDER ACTION MENU BELOW CURRENT BUTTON
+//
+const show_action_menu = function(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    //
+    var $id = $(this).attr('id');  // e.target.id, this.triggeringElement.id;
+    var pos = $('button#' + $id).offset();
+    //
+    $('div.ACTION_MENU').css({
+        display   : 'none'
+    });
+    $('div.ACTION_MENU[data-id="' + $id + '"]').css({
+        display   : 'block',
+        position  : 'fixed',
+        top       : pos.top,
+        left      : pos.left
+    });
+    //$('div.ACTION_MENU[data-id="' + $id + '"] a:first').focus();
 };
 
