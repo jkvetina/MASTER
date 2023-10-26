@@ -341,6 +341,13 @@ td.a-GV-cell a:hover {
     text-decoration     : none;
 }
 
+/* KEEP WHITE BACKGROUND FOR READONLY CELLS */
+.a-GV--editMode .a-GV-cell.is-readonly,
+.a-GV--editMode .a-GV-row.is-readonly .a-GV-cell {
+    background          : #fff;
+    color               : #000;
+}
+
 
 
 /* LIGHTER CHECKED CHECKBOXES IN GRID */
