@@ -131,12 +131,14 @@ button.ui-button:hover {
 /* HOT BUTTONS */
 button.t-Button--hot,
 button.ui-button--hot,
+button.js-confirmBtn.ui-button--danger,
 button.a-Button.a-Toolbar-item.a-Button--hot {
     background          : #5f5c58;
 }
 button.t-Button--hot:hover,
 button.ui-button--hot:hover,
-button.a-Button.a-Toolbar-item.a-Button--hot:hover {
+button.a-Button.a-Toolbar-item.a-Button--hot:hover,
+button.js-confirmBtn.ui-button--danger:hover {
     background          : #333;
 }
 
