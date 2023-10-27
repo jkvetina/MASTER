@@ -9,9 +9,11 @@ database/data/app_roles.csv
 database/data/app_settings.csv
 database/data/app_tables.csv
 database/indexes/app_navigation_map_mv_p1.sql
+database/indexes/app_navigation_map_tree_mv_p1.sql
 database/jobs/app_mv_refresh.sql
 database/jobs/app_navigaton_map_refresh.sql
 database/mviews/app_navigation_map_mv.sql
+database/mviews/app_navigation_map_tree_mv.sql
 database/mviews/app_tracking_src_mv.sql
 database/packages/app.spec.sql
 database/packages/app.sql
