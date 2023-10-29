@@ -14,6 +14,7 @@ appearance:
   - '#DEFAULT#'
   css-classes: 
   - RIGHT_FIXED
+  - MULTICOLUMN
 
 navigation-menu: 
   override-user-interface-level: false
