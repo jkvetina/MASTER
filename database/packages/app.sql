@@ -191,7 +191,7 @@ CREATE OR REPLACE PACKAGE BODY app AS
             FETCH FIRST 1 ROWS ONLY
         ) LOOP
             APEX_JSON.WRITE('message',  c.message_payload);
-            APEX_JSON.WRITE('status',   c.message_type);        -- 'SUCCESS', ERROR, WARNING
+            APEX_JSON.WRITE('status',   c.message_type);        -- SUCCESS, ERROR, WARNING
             --
             UPDATE app_user_messages m
             SET m.delivered_at          = SYSDATE

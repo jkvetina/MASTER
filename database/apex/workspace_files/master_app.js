@@ -6,11 +6,13 @@ var ping_loop;
 var last_scheduler;
 //
 const init_page = function() {
+    const autohide_after = 2300;
+
     // autohide success messages
     // this actually dont work together with the following setThemeHooks
     apex.theme42.util.configAPEXMsgs({
         autoDismiss : true,
-        duration    : 2300
+        duration    : autohide_after
     });
 
     // catch message event
@@ -18,20 +20,24 @@ const init_page = function() {
         beforeShow: function(pMsgType, pElement$) {
             console.log('MESSAGE:', pMsgType, pElement$);
 
+            // error messages
             if (pMsgType === apex.message.TYPE.ERROR) {
-                var message = pElement$.find('ul.a-Notification-list li').text();
-                console.log('MESSAGE.ERROR:', message);
-                message = extract_message(message);
+                var msg = get_message(pElement$.find('ul.a-Notification-list li').text());
+                console.log('MESSAGE.ERROR:', msg);
 
                 // switch error to warning
-                if (message.includes('WARNING!')) {
-                    message = message.replace('WARNING!', '').trim();
+                if (msg.status == 'WARNING') {
                     pElement$.find('.t-Alert--warning').addClass('t-Alert--yellow');
-                    pElement$.find('.a-Notification-item').first().html(message);
                 }
 
+                // change message
+                pElement$.find('.a-Notification-item').first().html(msg.message);
+                //
+                // @TODO: need fix for multiple messages
+                //
+
                 // stop pinging on session timeout error
-                if (message.toUpperCase().includes('YOUR SESSION HAS ENDED')) {
+                if (msg.message.toUpperCase().includes('YOUR SESSION HAS ENDED')) {
                     ping_active = false;
                     for (var i = 0 ; i <= ping_loop; i++) {
                         clearTimeout(i); 
@@ -41,16 +47,26 @@ const init_page = function() {
                 }
             }
 
-            // autohide success messages
-            // this message can be from AJAX call (AJAX_PING process) and then it wont be autoclosed
+            // success messages
             if (pMsgType === apex.message.TYPE.SUCCESS) {
-                var message = extract_message($('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').text());
-                console.log('MESSAGE.SUCCESS:', message);
-                $('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').text(message);
+                var msg = get_message($('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').text())
+                console.log('MESSAGE.SUCCESS:', msg);
+
+                // change message
+                $('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').text(msg.message);
+
+                // auto hide success message
+                // this message can be from AJAX call (AJAX_PING process) and then it wont be autoclosed
                 clearTimeout(last_scheduler);
                 last_scheduler = setTimeout(() => {
                     apex.message.hidePageSuccess();
-                }, 2300);
+                }, autohide_after);
+            }
+
+            // execute action if requested
+            if (!!msg.action) {
+                console.log('TRIGGER_ACTION', msg.action);
+                $.event.trigger(msg.action);    // @TODO: pass more arguments
             }
         },
         beforeHide: function(pMsgType, pElement$) {
@@ -79,9 +95,11 @@ const init_page = function() {
             {
                 async       : true,
                 dataType    : 'json',
-                success     : function(data) {
-                    //console.log('PING RECEIVED', ping_loop, data);
-                    show_message(data);
+                success     : function(payload) {
+                    if (Object.keys(payload).length > 0) {
+                        console.log('PING RECEIVED', payload);
+                        show_message(payload);
+                    }
                 }
             }
         );
@@ -132,62 +150,75 @@ apex.jQuery(window).on('theme42ready', function() {
 //
 // HANDLE AJAX PROCESS MESSAGES
 //
-const show_success = function(message) {
-    apex.message.showPageSuccess(extract_message(message));
+const show_success = function(message) {        // expecting plain message
+    apex.message.showPageSuccess('{"status":"SUCCESS","message":"' + message + '"}');
 };
 //
-const show_warning = function(message) {
+const show_warning = function(message) {        // expecting plain message
     apex.message.clearErrors();
     apex.message.showErrors([{
         type:       apex.message.TYPE.ERROR,    // sadly no warning supported
         location:   ['page'],
-        message:    'WARNING! ' + message,      // so we will fake it
+        message:    '{"status":"WARNING","message":"' + message + '"}',
         unsafe:     false
     }]);
 };
 //
-const show_error = function(message) {
+const show_error = function(message) {          // expecting plain message
     apex.message.clearErrors();
     apex.message.showErrors([{
         type:       apex.message.TYPE.ERROR,
         location:   ['page'],
-        message:    message,
+        message:    '{"status":"ERROR","message":"' + message + '"}',
         unsafe:     false
     }]);
 };
 //
-const show_message = function(data) {           // expecting JSON objects, ideally from core.set_json_message
-    if (data.message) {
-        if (data.status == 'SUCCESS') {
-            apex.message.showPageSuccess(data.message);
+const show_message = function(msg) {           // expecting JSON objects, ideally from core.set_json_message
+    if (!!msg.message) {
+        if (msg.status == 'SUCCESS') {
+            apex.message.showPageSuccess(JSON.stringify(msg));
+        }
+        else if (msg.status == 'WARNING') {
+            apex.message.clearErrors();
+            apex.message.showErrors([{
+                type:       apex.message.TYPE.ERROR,    // sadly no warning supported
+                location:   ['page'],
+                message:    JSON.stringify(msg),
+                unsafe:     false
+            }]);
         }
         else {
+            apex.message.clearErrors();
             apex.message.showErrors([{
-                type:       data.status,
+                type:       apex.message.TYPE.ERROR,
                 location:   ['page'],
-                message:    data.message,
+                message:    JSON.stringify(msg),
                 unsafe:     false
             }]);
         }
     }
 };
 //
-const extract_message = function(message) {
-    if (message.substring(0, 1) === '{' && message.trim().slice(-1) === '}') {
+const get_message = function(payload) {
+    var msg = {
+        'message'   : payload,
+        'status'    : '',
+        'action'    : ''
+    };
+    if (payload.substring(0, 1) === '{' && payload.trim().slice(-1) === '}') {
         try {
-            const obj = JSON.parse(message);
+            const obj = JSON.parse(payload);
             //
-            message = (!!obj.message ? obj.message : '');
-            //
-            if (!!obj.action) {
-                console.log('TRIGGER_ACTION', obj.action);
-                $.event.trigger(obj.action);
-            }
+            msg.message = (!!obj.message ? obj.message : msg.message);
+            msg.status  = (!!obj.status  ? obj.status  : msg.status);
+            msg.action  = (!!obj.action  ? obj.action  : msg.action);
         }
         catch(err) {
+            console.error('JSON_PARSE_FAILED', payload, err);
         }
     }
-    return message;
+    return msg;
 };
 
 
@@ -590,6 +621,7 @@ const show_action_menu = function(e) {
     //
     var $id = $(this).attr('id');  // e.target.id, this.triggeringElement.id;
     var pos = $('button#' + $id).offset();
+    console.log('BUTTON', $id, pos, 'MENU', $('div.ACTION_MENU').offset());
     //
     $('div.ACTION_MENU').css({
         display   : 'none'
