@@ -43,7 +43,9 @@ const init_page = function() {
                         clearTimeout(i); 
                     }
                     // also redirect to login page
-                    window.location.href = apex.item('P0_SESSION_TIMEOUT_URL').getValue();
+                    if (!!apex.item('P0_SESSION_TIMEOUT_URL').getValue()) {
+                        window.location.href = apex.item('P0_SESSION_TIMEOUT_URL').getValue();
+                    }
                 }
             }
 
