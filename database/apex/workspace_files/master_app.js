@@ -18,8 +18,6 @@ const init_page = function() {
     // catch message event
     apex.message.setThemeHooks({
         beforeShow: function(pMsgType, pElement$) {
-            console.log('MESSAGE:', pMsgType, pElement$);
-
             // error messages
             if (pMsgType === apex.message.TYPE.ERROR) {
                 var msg = get_message(pElement$.find('ul.a-Notification-list li').text());
@@ -96,11 +94,18 @@ const init_page = function() {
             },  // params
             {
                 async       : true,
-                dataType    : 'json',
+                dataType    : 'text',
                 success     : function(payload) {
-                    if (Object.keys(payload).length > 0) {
-                        console.log('PING RECEIVED', payload);
-                        show_message(payload);
+                    if (payload.trim().length > 0) {
+                        try {
+                            const obj = JSON.parse(payload);
+                            console.log('PING RECEIVED, JSON', obj);
+                            show_message(obj);
+                        }
+                        catch(err) {
+                            console.log('PING RECEIVED, TEXT', payload, err);
+                            show_message(payload);
+                        }
                     }
                 }
             }
@@ -152,26 +157,26 @@ apex.jQuery(window).on('theme42ready', function() {
 //
 // HANDLE AJAX PROCESS MESSAGES
 //
-const show_success = function(message) {        // expecting plain message
-    apex.message.showPageSuccess('{"status":"SUCCESS","message":"' + message + '"}');
+const show_success = function(msg) {
+    apex.message.showPageSuccess(JSON.stringify(get_message(msg, 'SUCCESS')));
 };
 //
-const show_warning = function(message) {        // expecting plain message
+const show_warning = function(msg) {
     apex.message.clearErrors();
     apex.message.showErrors([{
         type:       apex.message.TYPE.ERROR,    // sadly no warning supported
         location:   ['page'],
-        message:    '{"status":"WARNING","message":"' + message + '"}',
+        message:    JSON.stringify(get_message(msg, 'WARNING')),
         unsafe:     false
     }]);
 };
 //
-const show_error = function(message) {          // expecting plain message
+const show_error = function(msg) {
     apex.message.clearErrors();
     apex.message.showErrors([{
         type:       apex.message.TYPE.ERROR,
         location:   ['page'],
-        message:    '{"status":"ERROR","message":"' + message + '"}',
+        message:    JSON.stringify(get_message(msg, 'ERROR')),
         unsafe:     false
     }]);
 };
@@ -179,36 +184,29 @@ const show_error = function(message) {          // expecting plain message
 const show_message = function(msg) {           // expecting JSON objects, ideally from core.set_json_message
     if (!!msg.message) {
         if (msg.status == 'SUCCESS') {
-            apex.message.showPageSuccess(JSON.stringify(msg));
+            show_success(msg);
         }
         else if (msg.status == 'WARNING') {
-            apex.message.clearErrors();
-            apex.message.showErrors([{
-                type:       apex.message.TYPE.ERROR,    // sadly no warning supported
-                location:   ['page'],
-                message:    JSON.stringify(msg),
-                unsafe:     false
-            }]);
+            show_warning(msg);
         }
         else {
-            apex.message.clearErrors();
-            apex.message.showErrors([{
-                type:       apex.message.TYPE.ERROR,
-                location:   ['page'],
-                message:    JSON.stringify(msg),
-                unsafe:     false
-            }]);
+            show_error(msg);
         }
     }
 };
 //
-const get_message = function(payload) {
+const get_message = function(payload, status, action) {
     var msg = {
         'message'   : payload,
-        'status'    : '',
-        'action'    : ''
+        'status'    : status,
+        'action'    : action
     };
-    if (payload.substring(0, 1) === '{' && payload.trim().slice(-1) === '}') {
+    if (typeof payload == 'object') {
+        msg.message = (!!payload.message ? payload.message : msg.message);
+        msg.status  = (!!payload.status  ? payload.status  : msg.status);
+        msg.action  = (!!payload.action  ? payload.action  : msg.action);
+    }
+    else if (typeof payload == 'string' && payload.substring(0, 1) === '{' && payload.trim().slice(-1) === '}') {
         try {
             const obj = JSON.parse(payload);
             //

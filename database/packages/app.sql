@@ -171,7 +171,6 @@ CREATE OR REPLACE PACKAGE BODY app AS
     PROCEDURE ajax_ping
     AS
     BEGIN
-        APEX_JSON.OPEN_OBJECT();
         --
         -- APEX_APPLICATION.G_X01, APEX_APPLICATION.G_X02, APEX_APPLICATION.G_X03
         --
@@ -190,8 +189,19 @@ CREATE OR REPLACE PACKAGE BODY app AS
             ORDER BY m.created_at DESC
             FETCH FIRST 1 ROWS ONLY
         ) LOOP
-            APEX_JSON.WRITE('message',  c.message_payload);
-            APEX_JSON.WRITE('status',   c.message_type);        -- SUCCESS, ERROR, WARNING
+            IF c.message_payload LIKE '{"%":"%"}' THEN
+                APEX_JSON.INITIALIZE_CLOB_OUTPUT(p_indent => 0);
+                HTP.PRN(c.message_payload);
+                --
+                -- @TODO: parse payload, change/add status=c.type
+                --
+                APEX_JSON.FREE_OUTPUT;
+            ELSE
+                APEX_JSON.OPEN_OBJECT();
+                APEX_JSON.WRITE('message',  c.message_payload);
+                APEX_JSON.WRITE('status',   c.message_type);        -- SUCCESS, ERROR, WARNING
+                APEX_JSON.CLOSE_OBJECT();
+            END IF;
             --
             UPDATE app_user_messages m
             SET m.delivered_at          = SYSDATE
@@ -200,7 +210,6 @@ CREATE OR REPLACE PACKAGE BODY app AS
                 AND m.message_id        = c.message_id;
         END LOOP;
         --
-        APEX_JSON.CLOSE_OBJECT();
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
