@@ -249,6 +249,22 @@ CREATE OR REPLACE PACKAGE BODY app AS
 
 
 
+    PROCEDURE set_success_message (
+        in_message          VARCHAR2
+    )
+    AS
+    BEGIN
+        core.set_item('P0_SUCCESS_MESSAGE', in_message);
+        --APEX_APPLICATION.G_PRINT_SUCCESS_MESSAGE := in_message;
+    EXCEPTION
+    WHEN core.app_exception THEN
+        RAISE;
+    WHEN OTHERS THEN
+        core.raise_error();
+    END;
+
+
+
     PROCEDURE refresh_mv_job (
         in_name_like        VARCHAR2,
         in_ping_success     BOOLEAN := TRUE

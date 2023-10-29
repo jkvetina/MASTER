@@ -69,6 +69,12 @@ CREATE OR REPLACE PACKAGE app AS
 
 
 
+    PROCEDURE set_success_message (
+        in_message          VARCHAR2
+    );
+
+
+
     PROCEDURE refresh_mv_job (
         in_name_like        VARCHAR2,
         in_ping_success     BOOLEAN := TRUE
