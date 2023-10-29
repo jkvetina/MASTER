@@ -38,26 +38,41 @@ SELECT
     --
     SYS_CONNECT_BY_PATH(t.page_id, '/') || '/' AS active_pages,
     --
-    SYS_CONNECT_BY_PATH (
-        NVL(n.col_id, 0) || '.' ||
-        CASE WHEN n.page_id = 0 THEN NVL(n.order#, 666) ELSE n.order# END || '.' || n.page_id,
-        '/') AS order#
+    SYS_CONNECT_BY_PATH(NVL(n.col_id, 0) || '.' || n.order# || '.' || n.page_id, '/') AS order#
     --
 FROM app_navigation_map_mv t
 JOIN (
-    SELECT *
+    SELECT
+        n.app_id,
+        n.page_id,
+        n.parent_id,
+        n.is_hidden,
+        n.is_reset,
+        n.order#,
+        n.col_id
     FROM app_navigation n
-/*
-    AND (
-        -- process just one page zero, priority for the non master app
-        t.page_id != 0 OR t.app_id = (
-            SELECT t.app_id
-            FROM t
-            WHERE t.page_id = 0
-            ORDER BY CASE WHEN t.app_id = t.master_app_id THEN 2 ELSE 1 END
-            FETCH FIRST 1 ROWS ONLY
-        )
-    )*/
+    WHERE n.page_id > 0
+    UNION ALL
+    --
+    -- process just one page zero, priority for the non master app
+    SELECT
+        a.app_id,
+        n.page_id,
+        n.parent_id,
+        n.is_hidden,
+        n.is_reset,
+        COALESCE(a.order#, n.order#, 666) AS order#,
+        n.col_id
+    FROM (
+        SELECT
+            a.app_id,
+            MAX(CASE WHEN a.page_id = 0 THEN a.order# END) AS order#
+        FROM app_navigation a
+        GROUP BY a.app_id
+    ) a
+    JOIN app_navigation n
+        ON n.app_id         = 800
+        AND n.page_id       = 0
 ) n
     ON n.app_id             = t.app_id
     AND n.page_id           = t.page_id
