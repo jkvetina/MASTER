@@ -148,6 +148,48 @@ CREATE OR REPLACE PACKAGE BODY app AS
 
 
 
+    FUNCTION get_user_name (
+        in_user_id              VARCHAR2    := NULL
+    )
+    RETURN VARCHAR2
+    AS
+        out_name                VARCHAR2(256);
+    BEGIN
+        SELECT
+            COALESCE(u.user_name, u.user_mail)
+        INTO out_name
+        FROM app_users u
+        WHERE u.user_id = COALESCE(in_user_id, core.get_user_id());
+        --
+        RETURN out_name;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+    END;
+
+
+
+    FUNCTION get_user_first_name (
+        in_user_id              VARCHAR2    := NULL
+    )
+    RETURN VARCHAR2
+    AS
+        out_name                VARCHAR2(256);
+    BEGIN
+        SELECT
+            COALESCE(u.user_nickname, SUBSTR(u.user_name, 1, INSTR(u.user_name, ' ') - 1))
+        INTO out_name
+        FROM app_users u
+        WHERE u.user_id = COALESCE(in_user_id, core.get_user_id());
+        --
+        RETURN out_name;
+    EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+        RETURN NULL;
+    END;
+
+
+
     FUNCTION get_user_views_text (
         in_view_name            user_views.view_name%TYPE
     )

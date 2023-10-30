@@ -61,17 +61,8 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
         --
         core.set_item(app.global_env,               SUBSTR(SYS_CONTEXT('USERENV', 'DB_NAME'), INSTR(SYS_CONTEXT('USERENV', 'DB_NAME'), '_') + 1));
         core.set_item(app.global_workspace,         core.get_app_workspace());
-        --
-        FOR c IN (
-            SELECT
-                COALESCE(u.user_name, u.user_mail) AS user_name,
-                COALESCE(u.user_nickname, SUBSTR(u.user_name, 1, INSTR(u.user_name, ' ') - 1)) AS first_name
-            FROM app_users u
-            WHERE u.user_id = core.get_user_id()
-        ) LOOP
-            core.set_item(app.global_user_name,         c.user_name);
-            core.set_item(app.global_user_first_name,   c.first_name);
-        END LOOP;
+        core.set_item(app.global_user_name,         app.get_user_name(rec.user_id));
+        core.set_item(app.global_user_first_name,   app.get_user_first_name(rec.user_id));
         --
     EXCEPTION
     WHEN core.app_exception THEN

@@ -47,6 +47,20 @@ CREATE OR REPLACE PACKAGE app AS
 
 
 
+    FUNCTION get_user_name (
+        in_user_id              VARCHAR2    := NULL
+    )
+    RETURN VARCHAR2;
+
+
+
+    FUNCTION get_user_first_name (
+        in_user_id              VARCHAR2    := NULL
+    )
+    RETURN VARCHAR2;
+
+
+
     FUNCTION get_user_views_text (
         in_view_name            user_views.view_name%TYPE
     )
