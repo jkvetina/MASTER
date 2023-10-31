@@ -37,8 +37,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_AJAX_PING_INTERVAL'
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(14690651926436120)
-,p_source=>'6'
-,p_source_type=>'STATIC'
+,p_item_default=>'0'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -49,16 +48,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_SESSION_TIMEOUT_URL'
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(14690651926436120)
-,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'APEX_PAGE.GET_URL (',
-'    p_application   => 800,',
-'    p_page          => 9999,',
-'    p_session       => 0,',
-'    p_items         => ''P9999_ERROR'',',
-'    p_values        => ''SESSION_TIMEOUT''',
-')'))
-,p_source_type=>'EXPRESSION'
-,p_source_language=>'PLSQL'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -92,6 +81,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'console.log(''MODAL_CLOSED'', this.data.dialogPageId);',
 'if (this.data && this.data.successMessage && this.data.successMessage.text) {',
 '    show_success(this.data.successMessage.text);',
 '}'))

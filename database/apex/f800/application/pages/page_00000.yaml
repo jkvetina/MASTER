@@ -69,9 +69,12 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Static Value
-    static-value: 6
+    type: Null
     used: Only when current value in session state is null
+
+  default: 
+    type: Static
+    static-value: 0
 
   session-state: 
     data-type: VARCHAR2
@@ -103,16 +106,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    type: Expression
-    language: PL/SQL
-    pl/sql-expression: |
-      APEX_PAGE.GET_URL (
-          p_application   => 800,
-          p_page          => 9999,
-          p_session       => 0,
-          p_items         => 'P9999_ERROR',
-          p_values        => 'SESSION_TIMEOUT'
-      )
+    type: Null
     used: Only when current value in session state is null
 
   session-state: 
@@ -183,6 +177,7 @@ dynamic-actions:
 
     settings: 
       code: |
+        console.log('MODAL_CLOSED', this.data.dialogPageId);
         if (this.data && this.data.successMessage && this.data.successMessage.text) {
             show_success(this.data.successMessage.text);
         }

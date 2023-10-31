@@ -1,0 +1,42 @@
+---
+- # ====== Application Computation: P0_SESSION_TIMEOUT_URL =====
+  id: 38791950107768630
+  identification: 
+    item-name: P0_SESSION_TIMEOUT_URL
+
+  execution: 
+    sequence: 10
+    point: AFTER_LOGIN
+
+  computation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: |
+      APEX_PAGE.GET_URL (
+          p_application   => 800,
+          p_page          => 9999,
+          p_session       => 0,
+          p_items         => 'P9999_ERROR',
+          p_values        => 'SESSION_TIMEOUT'
+      )
+
+- # ====== Application Computation: P0_AJAX_PING_INTERVAL ======
+  id: 38792105756773316
+  identification: 
+    item-name: P0_AJAX_PING_INTERVAL
+
+  execution: 
+    sequence: 10
+    point: After Header
+
+  computation: 
+    type: Expression
+    language: PL/SQL
+    pl/sql-expression: |
+      CASE WHEN core.get_page_is_modal(:APP_ID, :PAGE_ID) = 'Y'
+          THEN 0
+          ELSE 6 END
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+

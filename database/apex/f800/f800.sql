@@ -33,7 +33,7 @@ prompt APPLICATION 800 - Master
 -- Application Export:
 --   Application:     800
 --   Name:            Master
---   Date and Time:   17:23 Neděle Říjen 22, 2023
+--   Date and Time:   21:00 Úterý Říjen 31, 2023
 --   Exported By:     APPS
 --   Flashback:       0
 --   Export Type:     Application Export
@@ -48,6 +48,7 @@ prompt APPLICATION 800 - Master
 --       Logic:
 --         Items:                 17
 --         Processes:              3
+--         Computations:           2
 --         Build Options:          1
 --       Navigation:
 --         Lists:                  1
@@ -101,7 +102,7 @@ wwv_imp_workspace.create_flow(
 ,p_on_max_session_timeout_url=>'/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_TIMEOUT'
 ,p_max_session_idle_sec=>5400
 ,p_on_max_idle_timeout_url=>'/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_TIMEOUT'
-,p_session_timeout_warning_sec=>0
+,p_session_timeout_warning_sec=>90
 ,p_compatibility_mode=>'21.2'
 ,p_session_state_commits=>'IMMEDIATE'
 ,p_flow_language=>'en'
@@ -121,7 +122,7 @@ wwv_imp_workspace.create_flow(
 ,p_public_user=>'APEX_PUBLIC_USER'
 ,p_proxy_server=>nvl(wwv_flow_application_install.get_proxy,'')
 ,p_no_proxy_domains=>nvl(wwv_flow_application_install.get_no_proxy_domains,'')
-,p_flow_version=>'2023-10-22'
+,p_flow_version=>'2023-10-31'
 ,p_flow_status=>'AVAILABLE_W_EDIT_LINK'
 ,p_flow_unavailable_text=>'This application is currently unavailable at this time.'
 ,p_exact_substitutions_only=>'Y'
@@ -4199,6 +4200,45 @@ wwv_flow_imp_shared.create_flow_item(
 ,p_name=>'G_WORKSPACE'
 ,p_scope=>'GLOBAL'
 ,p_protection_level=>'I'
+);
+end;
+/
+prompt --application/shared_components/logic/application_computations/p0_ajax_ping_interval
+begin
+wwv_flow_imp_shared.create_flow_computation(
+ p_id=>wwv_flow_imp.id(38792105756773316)
+,p_computation_sequence=>10
+,p_computation_item=>'P0_AJAX_PING_INTERVAL'
+,p_computation_point=>'AFTER_HEADER'
+,p_computation_type=>'EXPRESSION'
+,p_computation_language=>'PLSQL'
+,p_computation_processed=>'REPLACE_EXISTING'
+,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'CASE WHEN core.get_page_is_modal(:APP_ID, :PAGE_ID) = ''Y''',
+'    THEN 0',
+'    ELSE 6 END'))
+,p_security_scheme=>'MUST_NOT_BE_PUBLIC_USER'
+);
+end;
+/
+prompt --application/shared_components/logic/application_computations/p0_session_timeout_url
+begin
+wwv_flow_imp_shared.create_flow_computation(
+ p_id=>wwv_flow_imp.id(38791950107768630)
+,p_computation_sequence=>10
+,p_computation_item=>'P0_SESSION_TIMEOUT_URL'
+,p_computation_point=>'AFTER_LOGIN'
+,p_computation_type=>'EXPRESSION'
+,p_computation_language=>'PLSQL'
+,p_computation_processed=>'REPLACE_EXISTING'
+,p_computation=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'APEX_PAGE.GET_URL (',
+'    p_application   => 800,',
+'    p_page          => 9999,',
+'    p_session       => 0,',
+'    p_items         => ''P9999_ERROR'',',
+'    p_values        => ''SESSION_TIMEOUT''',
+')'))
 );
 end;
 /
@@ -21983,8 +22023,7 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_AJAX_PING_INTERVAL'
 ,p_item_sequence=>30
 ,p_item_plug_id=>wwv_flow_imp.id(14690651926436120)
-,p_source=>'6'
-,p_source_type=>'STATIC'
+,p_item_default=>'0'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -21995,16 +22034,6 @@ wwv_flow_imp_page.create_page_item(
 ,p_name=>'P0_SESSION_TIMEOUT_URL'
 ,p_item_sequence=>20
 ,p_item_plug_id=>wwv_flow_imp.id(14690651926436120)
-,p_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'APEX_PAGE.GET_URL (',
-'    p_application   => 800,',
-'    p_page          => 9999,',
-'    p_session       => 0,',
-'    p_items         => ''P9999_ERROR'',',
-'    p_values        => ''SESSION_TIMEOUT''',
-')'))
-,p_source_type=>'EXPRESSION'
-,p_source_language=>'PLSQL'
 ,p_display_as=>'NATIVE_HIDDEN'
 ,p_encrypt_session_state_yn=>'N'
 ,p_attribute_01=>'Y'
@@ -22038,6 +22067,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'console.log(''MODAL_CLOSED'', this.data.dialogPageId);',
 'if (this.data && this.data.successMessage && this.data.successMessage.text) {',
 '    show_success(this.data.successMessage.text);',
 '}'))
@@ -23329,7 +23359,7 @@ wwv_flow_imp_page.create_page(
 ,p_step_title=>'Administration'
 ,p_autocomplete_on_off=>'OFF'
 ,p_group_id=>wwv_flow_imp.id(24261994233103408)  -- ADMIN - DASHBOARD
-,p_page_css_classes=>'RIGHT_FIXED'
+,p_page_css_classes=>'RIGHT_FIXED MULTICOLUMN'
 ,p_page_template_options=>'#DEFAULT#'
 ,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- IS_ADMIN
 ,p_protection_level=>'C'
