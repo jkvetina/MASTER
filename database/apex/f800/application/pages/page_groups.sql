@@ -32,6 +32,10 @@ wwv_flow_imp_page.create_page_group(
 ,p_group_name=>'ADMIN - USERS & ROLES'
 );
 wwv_flow_imp_page.create_page_group(
+ p_id=>wwv_flow_imp.id(39010006515674313)  -- COOKBOOK
+,p_group_name=>'COOKBOOK'
+);
+wwv_flow_imp_page.create_page_group(
  p_id=>wwv_flow_imp.id(23033093447426599)  -- QA
 ,p_group_name=>'QA'
 );
