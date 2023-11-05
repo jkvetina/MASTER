@@ -16,14 +16,6 @@ live_pages AS (
     FROM x
     JOIN apex_application_pages p
         ON p.application_id     = x.app_id
-),
-z AS (
-    SELECT /*+ MATERIALIZE */
-        z.app_id,
-        z.page_id,
-        z.label__,
-        z.order#
-    FROM app_navigation_v z
 )
 -- existing pages
 SELECT
@@ -83,9 +75,8 @@ SELECT
     --
     m.page_css_classes AS css_classes,
     --
-    NVL(z.label__, REPLACE(RPAD(' ', 4, ' '), ' ', '&' || 'nbsp; ') || m.page_name) AS label,
-    --
-    NVL(z.order#, p.order# || '/' || NVL(n.order#, 0) || '.' || n.page_id) AS sort_order#
+    m.page_name AS label,
+    n.order#    AS sort_order#
     --
 FROM app_navigation n
 JOIN x
@@ -93,12 +84,6 @@ JOIN x
 JOIN app_navigation_map_mv m
     ON m.app_id         = n.app_id
     AND m.page_id       = n.page_id
-LEFT JOIN z
-    ON z.app_id         = n.app_id
-    AND z.page_id       = n.page_id
-LEFT JOIN z p
-    ON p.app_id         = n.app_id
-    AND p.page_id       = n.parent_id
 --
 -- remove pages
 UNION ALL
