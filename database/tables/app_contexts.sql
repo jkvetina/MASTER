@@ -14,6 +14,7 @@ CREATE TABLE app_contexts (
     CONSTRAINT fk_app_contexts_app_id
         FOREIGN KEY (app_id)
         REFERENCES app_applications (app_id)
+        DEFERRABLE INITIALLY DEFERRED
 );
 --
 COMMENT ON TABLE app_contexts IS '';
