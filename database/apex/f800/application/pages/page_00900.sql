@@ -58,7 +58,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_name=>'APPLICATION_ROLES'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63325094538439079)
-,p_plug_display_sequence=>30
+,p_plug_display_sequence=>20
 ,p_plug_new_grid_row=>false
 ,p_plug_grid_column_span=>4
 ,p_attribute_01=>'N'
@@ -113,7 +113,7 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_name=>'USER_PROFILE'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63325094538439079)
-,p_plug_display_sequence=>20
+,p_plug_display_sequence=>10
 ,p_plug_grid_column_span=>4
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
@@ -190,8 +190,9 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_name=>'ACHIEVEMENTS'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63325094538439079)
-,p_plug_display_sequence=>40
+,p_plug_display_sequence=>30
 ,p_plug_new_grid_row=>false
+,p_plug_display_condition_type=>'NEVER'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
@@ -217,19 +218,16 @@ wwv_flow_imp_page.create_jet_chart(
 ,p_region_id=>wwv_flow_imp.id(25063922276730019)
 ,p_chart_type=>'dial'
 ,p_title=>'Street Credit'
-,p_width=>'90'
-,p_height=>'100'
+,p_width=>'250'
 ,p_animation_on_display=>'none'
 ,p_animation_on_data_change=>'none'
 ,p_value_text_type=>'percent'
+,p_value_position=>'auto'
 ,p_value_format_scaling=>'none'
 ,p_tooltip_rendered=>'N'
-,p_gauge_orientation=>'circular'
+,p_gauge_orientation=>'horizontal'
 ,p_gauge_indicator_size=>1
-,p_gauge_inner_radius=>.7
 ,p_gauge_plot_area=>'on'
-,p_gauge_start_angle=>90
-,p_gauge_angle_extent=>360
 ,p_show_gauge_value=>true
 );
 wwv_flow_imp_page.create_jet_chart_series(
@@ -255,21 +253,6 @@ wwv_flow_imp_page.create_page_plug(
 ,p_plug_template=>wwv_flow_imp.id(63402598617439121)
 ,p_plug_display_sequence=>10
 ,p_plug_display_point=>'SUB_REGIONS'
-,p_attribute_01=>'N'
-,p_attribute_02=>'HTML'
-);
-wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(72401475894285964)
-,p_plug_name=>'BANNER'
-,p_region_name=>'BANNER'
-,p_region_template_options=>'#DEFAULT#'
-,p_plug_template=>wwv_flow_imp.id(63325094538439079)
-,p_plug_display_sequence=>10
-,p_plug_item_display_point=>'BELOW'
-,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'<h1>Opportunities don''t happen, you create them.</h1>',
-'<!-- &G_USER_FIRST_NAME. -->',
-''))
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
@@ -348,16 +331,6 @@ wwv_flow_imp_page.create_page_da_event(
 ,p_bind_event_type=>'apexafterclosedialog'
 );
 wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(24729319809693501)
-,p_event_id=>wwv_flow_imp.id(24858692681145930)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_REFRESH'
-,p_affected_elements_type=>'REGION'
-,p_affected_region_id=>wwv_flow_imp.id(24621546834821118)
-);
-wwv_flow_imp_page.create_page_da_action(
  p_id=>wwv_flow_imp.id(24858366234145927)
 ,p_event_id=>wwv_flow_imp.id(24858692681145930)
 ,p_event_result=>'TRUE'
@@ -370,6 +343,16 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_attribute_09=>'N'
 ,p_attribute_10=>'P902_SUCCESS'
 ,p_wait_for_result=>'Y'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(24729319809693501)
+,p_event_id=>wwv_flow_imp.id(24858692681145930)
+,p_event_result=>'TRUE'
+,p_action_sequence=>20
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_REFRESH'
+,p_affected_elements_type=>'REGION'
+,p_affected_region_id=>wwv_flow_imp.id(24621546834821118)
 );
 wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(24858944222145933)

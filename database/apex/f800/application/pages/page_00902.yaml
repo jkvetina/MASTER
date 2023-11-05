@@ -140,34 +140,15 @@ page-items:
   id: 24622858410821131
   identification: 
     name: P902_USER_ID
-    type: Display Only
-
-  label: 
-    label: New
-    alignment: Left
+    type: Hidden
 
   settings: 
-    format: Plain Text
-    based-on: Item Value
-    show-line-breaks: true
-    send-on-page-submit: true
+    value-protected: true
 
   layout: 
     sequence: 10
     region: '[FORM]' # 24622632967821129
     position: BODY
-    alignment: Left
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    label-column-span: Page Template Default
-
-  appearance: 
-    template: Optional - Floating # 63461560868439163
-    template-options: 
-    - '#DEFAULT#'
 
   advanced: 
     warn-on-unsaved-changes: Page Default

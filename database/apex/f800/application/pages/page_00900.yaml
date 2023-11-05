@@ -79,7 +79,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 30
+    sequence: 20
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -290,7 +290,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 20
+    sequence: 10
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -331,7 +331,7 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 40
+    sequence: 30
     parent-region: No Parent
     position: BODY
     start-new-layout: false
@@ -353,6 +353,9 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
+
+  server-side-condition: 
+    type: Never
 
   server-cache: 
     caching: Disabled
@@ -426,20 +429,17 @@ regions:
       title: Street Credit
 
     layout: 
-      maximum-width: 90
-      height: 100
+      maximum-width: 250
 
     gauge: 
-      orientation: Circular
+      orientation: Horizontal
       show-plot-area: true
       indicator-size: 1
-      inner-radius: 0.7
-      start-angle: 90
-      angle-extent: 360
 
     value: 
       show: true
       value-type: Percent
+      position: Automatic
       format-scaling: None
 
     animation: 
@@ -505,54 +505,6 @@ regions:
     landmark-type: Template Default
 
   advanced: 
-    region-display-selector: false
-    exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
-
-  customization: 
-    customizable: Not Customizable By End Users
-
-  attributes: 
-    settings: 
-      output-as: HTML
-      expand-shortcuts: false
-
-- # ====== Region: BANNER ======================================
-  id: 72401475894285964
-  identification: 
-    title: BANNER
-    type: Static Content
-
-  source: 
-    html-code: |
-      <h1>Opportunities don't happen, you create them.</h1>
-      <!-- &G_USER_FIRST_NAME. -->
-      
-
-  layout: 
-    sequence: 10
-    parent-region: No Parent
-    position: BODY
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-
-  appearance: 
-    template: Blank with Attributes # 63325094538439079
-    template-options: 
-    - '#DEFAULT#'
-    render-components: Below Content
-
-  accessibility: 
-    use-landmark: true
-    landmark-type: Template Default
-
-  advanced: 
-    static-id: BANNER
     region-display-selector: false
     exclude-title-from-translation: false
 
@@ -874,7 +826,7 @@ dynamic-actions:
       region: User Profile [CARD] # 24621546834821118
 
     execution: 
-      sequence: 10
+      sequence: 20
       event: ON_CLOSE_IMAGE # 24858692681145930
       fire-when-event-result-is: True
       fire-on-initialization: false
