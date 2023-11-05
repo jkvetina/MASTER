@@ -212,6 +212,7 @@ CREATE OR REPLACE PACKAGE BODY app AS
 
     PROCEDURE ajax_ping
     AS
+        PRAGMA AUTONOMOUS_TRANSACTION;
     BEGIN
         --
         -- APEX_APPLICATION.G_X01, APEX_APPLICATION.G_X02, APEX_APPLICATION.G_X03
@@ -252,10 +253,14 @@ CREATE OR REPLACE PACKAGE BODY app AS
                 AND m.message_id        = c.message_id;
         END LOOP;
         --
+        COMMIT;
+        --
     EXCEPTION
     WHEN core.app_exception THEN
+        ROLLBACK;
         RAISE;
     WHEN OTHERS THEN
+        ROLLBACK;
         core.raise_error();
     END;
 
