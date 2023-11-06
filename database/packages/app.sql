@@ -363,6 +363,8 @@ CREATE OR REPLACE PACKAGE BODY app AS
                 in_session_id       => NULL
             );
         END IF;
+        --
+        APEX_APPLICATION.G_PRINT_SUCCESS_MESSAGE := 'Refreshing...';
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
