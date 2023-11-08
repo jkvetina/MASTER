@@ -49,15 +49,15 @@ CREATE OR REPLACE PACKAGE BODY app_auth AS
         END;
 
         -- setup format strings for APEX
-        core.set_item('G_FORMAT_DATE',              core.c_format_date);
-        core.set_item('G_FORMAT_DATE_TIME',         core.c_format_date_time);
-        core.set_item('G_FORMAT_DATE_SHORT',        core.c_format_date_short);
-        core.set_item('G_FORMAT_TIME',              core.c_format_time);
-        core.set_item('G_FORMAT_TIME_SHORT',        core.c_format_time_short);
-        core.set_item('G_FORMAT_NUMBER',            core.c_format_number);
-        core.set_item('G_FORMAT_NUMBER_CURRENCY',   core.c_format_number_currency);
-        core.set_item('G_FORMAT_INTEGER',           core.c_format_integer);
-        core.set_item('G_FORMAT_INTEGER_CURRENCY',  core.c_format_integer_currency);
+        core.set_item('FORMAT_DATE',                core.c_format_date);
+        core.set_item('FORMAT_DATE_TIME',           core.c_format_date_time);
+        core.set_item('FORMAT_DATE_SHORT',          core.c_format_date_short);
+        core.set_item('FORMAT_TIME',                core.c_format_time);
+        core.set_item('FORMAT_TIME_SHORT',          core.c_format_time_short);
+        core.set_item('FORMAT_NUMBER',              core.c_format_number);
+        core.set_item('FORMAT_NUMBER_CURRENCY',     core.c_format_number_currency);
+        core.set_item('FORMAT_INTEGER',             core.c_format_integer);
+        core.set_item('FORMAT_INTEGER_CURRENCY',    core.c_format_integer_currency);
         --
         core.set_item(app.global_env,               SUBSTR(SYS_CONTEXT('USERENV', 'DB_NAME'), INSTR(SYS_CONTEXT('USERENV', 'DB_NAME'), '_') + 1));
         core.set_item(app.global_workspace,         core.get_app_workspace());
