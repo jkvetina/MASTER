@@ -666,11 +666,11 @@ const renumber_grid_rows = function (static_id, column_name) {
 const grid_one_checkbox_only = function (static_id, column_name) {
     var grid        = apex.region(static_id).widget();
     var model       = grid.interactiveGrid('getViews', 'grid').model;
-    var current     = grid.interactiveGrid('getViews').grid.getSelectedRecords()[0];
+    var selected    = grid.interactiveGrid('getViews').grid.getSelectedRecords();
     //
     model.forEach(function(r) {
         try {
-            if (r !== current) {
+            if (r !== selected[0]) {
                 if (model.getValue(r, column_name) === 'Y') {
                     model.setValue(r, column_name, '');
                 }
