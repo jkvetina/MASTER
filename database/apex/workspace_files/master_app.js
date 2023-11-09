@@ -1,7 +1,7 @@
 //
 // WHEN PAGE LOADS
 //
-var ping_active = true;
+var ping_active = !$('body').hasClass('t-Dialog-page');     // not on modals
 var ping_loop;
 var last_scheduler;
 //
