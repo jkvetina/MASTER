@@ -660,6 +660,30 @@ const renumber_grid_rows = function (static_id, column_name) {
 
 
 //
+// MAKE SURE WE CAN SELECT ONLY ONE CHECKBOX IN A COLUMN THROUGH ALL ROWS
+// GRID MUST BE IN EDIT MODE TO MAKE THIS WORK
+//
+const grid_one_checkbox_only = function (static_id, column_name) {
+    var grid        = apex.region(static_id).widget();
+    var model       = grid.interactiveGrid('getViews', 'grid').model;
+    var current     = grid.interactiveGrid('getViews').grid.getSelectedRecords()[0];
+    //
+    model.forEach(function(r) {
+        try {
+            if (r !== current) {
+                if (model.getValue(r, column_name) === 'Y') {
+                    model.setValue(r, column_name, '');
+                }
+            }
+        }
+        catch(err) {
+        }
+    });
+};
+
+
+
+//
 // RENDER ACTION MENU BELOW CURRENT BUTTON
 //
 const show_action_menu = function(e) {
