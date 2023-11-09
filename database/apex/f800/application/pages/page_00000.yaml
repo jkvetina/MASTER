@@ -237,6 +237,40 @@ dynamic-actions:
       type: JavaScript expression
       javascript-expression: apex.page.isChanged()
 
+- # ====== Dynamic Action: REFRESH_REGION ======================
+  id: 39015150019935413
+  identification: 
+    name: REFRESH_REGION
+
+  execution: 
+    sequence: 20
+
+  when: 
+    event: EVENT.EVENT.CUSTOM.CUSTOM
+    custom-event: REFRESH_REGION
+    selection-type: JavaScript Expression
+    javascript-expression: document
+
+  execution: 
+    event-scope: Static
+    type: Immediate
+
+  actions: 
+  - # ====== Action: Alert =======================================
+    id: 39015206005935414
+    identification: 
+      action: Alert
+
+    settings: 
+      message: REFRESH_REGION
+      style: Default
+
+    execution: 
+      sequence: 10
+      event: REFRESH_REGION # 39015150019935413
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
 - # ====== Dynamic Action: CHECK_SESSION =======================
   id: 40024972725814919
   identification: 

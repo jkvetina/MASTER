@@ -118,6 +118,26 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_DIALOG_CLOSE'
 );
 wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(39015150019935413)
+,p_name=>'REFRESH_REGION'
+,p_event_sequence=>20
+,p_triggering_element_type=>'JAVASCRIPT_EXPRESSION'
+,p_triggering_element=>'document'
+,p_bind_type=>'bind'
+,p_execution_type=>'IMMEDIATE'
+,p_bind_event_type=>'custom'
+,p_bind_event_type_custom=>'REFRESH_REGION'
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(39015206005935414)
+,p_event_id=>wwv_flow_imp.id(39015150019935413)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_ALERT'
+,p_attribute_01=>'REFRESH_REGION'
+);
+wwv_flow_imp_page.create_page_da_event(
  p_id=>wwv_flow_imp.id(40024972725814919)
 ,p_name=>'CHECK_SESSION'
 ,p_event_sequence=>40
