@@ -486,6 +486,14 @@ button.a-Button.a-Button--notification.js-showDetails {
     align-items         : end;
 }
 
+/* SESSION DIALOGS */
+div#apex_session_alert_dlg {
+    padding-top         : 1rem;
+    font-size           : 1rem;
+    line-height         : 1.5rem;
+    color               : #000;
+}
+
 
 
 /* ADJUST FONTS ON BUTTONS AND MENUS */
