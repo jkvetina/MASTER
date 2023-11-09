@@ -40,10 +40,7 @@ const init_page_asap = function() {
                     for (var i = 0 ; i <= ping_loop; i++) {
                         clearTimeout(i); 
                     }
-                    // also redirect to login page
-                    if (!!apex.item('P0_SESSION_TIMEOUT_URL').getValue()) {
-                        window.location.href = apex.item('P0_SESSION_TIMEOUT_URL').getValue();
-                    }
+                    redirect_to_login();
                 }
             }
 
@@ -154,6 +151,33 @@ $(function() {
 apex.jQuery(window).on('theme42ready', function() {
     init_page();
 });
+
+
+
+//
+// CHECK SESSION - redirect to login page when session expire
+//
+const redirect_to_login = function() {
+    if (!!apex.item('P0_SESSION_TIMEOUT_URL').getValue()) {
+        window.location.href = apex.item('P0_SESSION_TIMEOUT_URL').getValue();
+    }
+    else {
+        //apex.navigation.redirect("&LOGOUT_URL.");     // not available here
+        apex.navigation.redirect('/ords/f?p=800:9999:0::::P9999_ERROR:SESSION_TIMEOUT');
+    }
+};
+//
+const check_session = function () {
+    $(document).on('dialogopen', function(event) {  
+        if ($('button:contains("Sign In Again")').length > 0) {
+            event.preventDefault();
+            event.stopPropagation();
+            //
+            redirect_to_login();
+            return false;
+        }
+    });
+};
 
 
 
