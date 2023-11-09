@@ -556,6 +556,23 @@ const fix_grid_save_button = function () {
 
 
 //
+// FIX GRID CHECKBOX CLICK
+// ACTIVATE EDIT MODE, SELECT CURRENT ROW, PROCEED WITH GRID_ONE FUNCTION
+//
+const fix_grid_checkbox = function(grid_id, grid_one_column) {
+    $('#' + grid_id + ' div.a-IG div.a-IG-body div.a-IG-contentContainer div.a-GV div.a-GV-bdy table.a-GV-table.a-GV-table--checkbox tbody td span.u-checkbox').on('click', function() {
+        apex.region(grid_id).call('getActions').set('edit', true);
+        $(this).closest('th.a-GV-cell.a-GV-selHeader').click();
+        //
+        if (grid_one_column) {
+            grid_one_checkbox_only(grid_id, grid_one_column);
+        }
+    });
+};
+
+
+
+//
 // FIX GRID FOLDING - fold (hide) requested group (Control Break)
 //
 const fold_grid_group = function(grid_id, group_name, group_value) {
