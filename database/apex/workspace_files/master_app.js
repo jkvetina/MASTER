@@ -159,6 +159,12 @@ apex.jQuery(window).on('theme42ready', function() {
 // CHECK SESSION - redirect to login page when session expire
 //
 const redirect_to_login = function() {
+    if (window.location.pathname == '/ords/f' && window.location.search.startsWith('?p=800:9999:0:')) {
+        return;  // already on login page
+    }
+    if (window.location.pathname == '/ords/r/apps/master/login' && window.location.search.startsWith('?session=0')) {
+        return;  // already on login page
+    }
     if (!!apex.item('P0_SESSION_TIMEOUT_URL').getValue()) {
         window.location.href = apex.item('P0_SESSION_TIMEOUT_URL').getValue();
     }
@@ -174,7 +180,7 @@ const check_session = function () {
             event.preventDefault();
             event.stopPropagation();
             //
-            redirect_to_login();
+            //redirect_to_login();
             return false;
         }
     });
