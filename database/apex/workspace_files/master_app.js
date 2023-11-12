@@ -159,10 +159,10 @@ apex.jQuery(window).on('theme42ready', function() {
 // CHECK SESSION - redirect to login page when session expire
 //
 const redirect_to_login = function() {
-    if (window.location.pathname == '/ords/f' && window.location.search.startsWith('?p=800:9999:0:')) {
-        return;  // already on login page
-    }
-    if (window.location.pathname == '/ords/r/apps/master/login' && window.location.search.startsWith('?session=0')) {
+    if (apex.env.APP_ID == 800 && apex.env.APP_PAGE_ID == 9999 && (
+        apex.env.APP_SESSION == 0   // dont work for 0
+        || window.location.search.startsWith('?p=800:9999:0:')
+        || window.location.search.startsWith('?session=0'))) {
         return;  // already on login page
     }
     if (!!apex.item('P0_SESSION_TIMEOUT_URL').getValue()) {
