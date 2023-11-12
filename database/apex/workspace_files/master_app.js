@@ -145,6 +145,7 @@ $('button > .t-Button-label').each(function(k, id) {
 // when page is loaded
 $(function() {
     init_page_asap();
+    reset_tabs();
 });
 
 // when all APEX components are loaded
@@ -721,5 +722,23 @@ const show_action_menu = function(e) {
         left      : pos.left
     });
     //$('div.ACTION_MENU[data-id="' + $id + '"] a:first').focus();
+};
+
+
+
+//
+// RESET TABS ON PAGE RESET EVEN IF THEY HAVE MEMORY
+//
+const reset_tabs = function() {
+    // check if page reset was requested
+    if (window.location.search.includes('&clear=')) {
+        $('div.t-TabsRegion.js-useLocalStorage').each(function() {
+            var region_id   = $(this).attr('id');
+            var key         = 'ORA_WWV_apex.apexTabs.' + apex.env.APP_ID + '.' + apex.env.APP_PAGE_ID + '.' + region_id + '.activeTab';
+            var value       = sessionStorage.getItem(key);
+            console.log('RESET_TABS', region_id, key, value);
+            sessionStorage.setItem(key, '');
+        });
+    }
 };
 
