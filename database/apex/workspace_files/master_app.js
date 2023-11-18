@@ -781,7 +781,7 @@ const show_action_menu = function(e) {
 //
 const reset_tabs = function() {
     // check if page reset was requested
-    if (window.location.search.includes('&clear=')) {
+    if (window.location.search.includes('&clear=') || window.location.search.includes('?clear=')) {
         $('div.t-TabsRegion.js-useLocalStorage').each(function() {
             var region_id   = $(this).attr('id');
             var key         = 'ORA_WWV_apex.apexTabs.' + apex.env.APP_ID + '.' + apex.env.APP_PAGE_ID + '.' + region_id + '.activeTab';
