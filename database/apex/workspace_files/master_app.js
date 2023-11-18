@@ -607,6 +607,16 @@ const fix_grid_default = function() {
             if (!!gridview.modelColumns['IS_DEFAULT']) {
                 fix_grid_checkbox(static_id, 'IS_DEFAULT');
             }
+
+            // find current row selector
+            current_id = apex.item('P#_CURRENT_'.replace('#', apex.env.APP_PAGE_ID) + static_id).getValue();
+            current_id = current_id.replaceAll('&quot;', '').replace('[', '').replace(']', '')
+            $('#' + static_id + ' .a-GV-bdy tr').each(function () {
+                if ('' + $(this).data('id') === current_id) {
+                    current_row = $(this).find('.a-GV-cell.u-tS.has-button > button > span');
+                    current_row.removeClass('a-Icon').addClass('fa fa-arrow-circle-right');
+                }
+            });
         }
     });
 };
