@@ -117,12 +117,18 @@ const init_page_asap = function() {
     }
 };
 //
+const init_page_delayed = function() {
+    fix_grid_default();
+};
+//
 const init_page = function() {
     //
     // ADJUST GRIDS
     //
     fix_grid_toolbars();
     fix_grid_save_button();
+    //
+    delay(250).then(() => init_page_delayed());
 
     //
     // INIT ACTION MENUS
@@ -283,7 +289,7 @@ const wait_for_element = function(search, start, fn, disconnect) {
 //
 const delay = function (time) {
     return new Promise(resolve => setTimeout(resolve, time));
-}
+};
 
 
 
@@ -297,7 +303,7 @@ const copy_to_clipboard = function (text) {
     dummy.select();
     document.execCommand('copy');
     document.body.removeChild(dummy);
-}
+};
 
 
 
@@ -334,7 +340,7 @@ const color_cell = function (options, value, title, color_bg, color_text) {
         };
     }
     return options;
-}
+};
 
 
 
@@ -573,6 +579,34 @@ const fix_grid_checkbox = function(grid_id, grid_one_column) {
         //
         if (grid_one_column) {
             grid_one_checkbox_only(grid_id, grid_one_column);
+        }
+    });
+};
+
+
+
+//
+// MARK CURRENT ROW WITH ARROW,
+// FIX IS_DEFAULT COLUMNS (ONE CHECKBOX ONLY FOR ALL ROWS)
+//
+const fix_grid_default = function() {
+    $('.a-IG').each(function() {
+        var $parent     = $(this).parent();
+        var static_id   = $parent.attr('id');
+        var current_id;
+        var current_row;
+        //
+        if (!$parent.hasClass('ORIGINAL')) {
+            console.log('GRID MODIFIED', static_id);
+            //
+            var grid        = apex.region(static_id).widget();
+            //var model       = grid.interactiveGrid('getViews', 'grid').model;
+            var gridview    = grid.interactiveGrid('getViews').grid;
+
+            // find IS_DEFAULT column
+            if (!!gridview.modelColumns['IS_DEFAULT']) {
+                fix_grid_checkbox(static_id, 'IS_DEFAULT');
+            }
         }
     });
 };
