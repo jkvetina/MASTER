@@ -5,7 +5,8 @@ WITH x AS (
         core.get_page_id()      AS page_id,
         800                     AS master_app_id
     FROM DUAL
-    WHERE UPPER(core.get_user_id()) IN ('NOBODY', USER)
+    WHERE UPPER(core.get_user_id())     IN ('NOBODY', USER)
+        AND core.get_page_is_modal()    IS NULL             -- not for modals
 ),
 public_pages AS (
     SELECT

@@ -13,8 +13,9 @@ WITH x AS (
         --
     FROM DUAL
     LEFT JOIN app_users u
-        ON u.user_id            = core.get_user_id()
-    WHERE core.get_page_id()    NOT IN (9999)       -- ignore navigation on login page
+        ON u.user_id                    = core.get_user_id()
+    WHERE core.get_page_id()            NOT IN (9999)       -- ignore navigation on login page
+        AND core.get_page_is_modal()    IS NULL             -- not for modals
 ),
 available_pages AS (
     -- available pages for current user
