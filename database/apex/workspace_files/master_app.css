@@ -377,12 +377,16 @@ td.a-GV-cell a:hover {
 }
 
 /* CHANGE EDITED CELL TRIANGLE */
-.a-GV-cell.is-changed:not(.is-active):before, .a-GV-row.is-updated .a-GV-selHeader:before {
+.a-GV-cell.is-changed:not(.is-active):before,
+.a-GV-row.is-inserted .a-GV-selHeader:before,
+.a-GV-row.is-updated .a-GV-selHeader:before {
     color               : #648e00;
 }
 
 /* ADJUST BACKGROUND COLORS FOR UPDATED/SELECTED ROWS */
 /* tr.is-selected, tr.is-updated, tr.is-hover, td.is-readonly */
+tr.a-GV-row.is-inserted td,
+tr.a-GV-row.is-inserted th,
 tr.a-GV-row.is-updated td,
 tr.a-GV-row.is-updated th {
     background          : white !important;
