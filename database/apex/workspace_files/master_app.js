@@ -128,7 +128,7 @@ const init_page = function() {
     fix_grid_toolbars();
     fix_grid_save_button();
     //
-    delay(250).then(() => init_page_delayed());
+    delay(300).then(() => init_page_delayed());
 
     //
     // INIT ACTION MENUS
@@ -347,14 +347,13 @@ const color_cell = function (options, value, title, color_bg, color_text) {
 //
 // COMMON TOOLBAR FOR ALL GRIDS
 //
-const fix_grid_toolbars = function () {
+const fix_grid_toolbars = function (grid_id) {
     $('.a-IG').each(function() {
-        var $parent = $(this).parent();
-        var id      = $parent.attr('id');
+        var $parent     = $(this).parent();
+        var static_id   = $parent.attr('id');
         //
-        if (!$parent.hasClass('ORIGINAL')) {
-            //console.log('GRID MODIFIED', id);
-            fix_grid_toolbar(id);
+        if ((grid_id === undefined || grid_id === static_id) && !$parent.hasClass('ORIGINAL')) {
+            fix_grid_toolbar(static_id);
         }
     })
 };
@@ -589,18 +588,16 @@ const fix_grid_checkbox = function(grid_id, grid_one_column) {
 // MARK CURRENT ROW WITH ARROW,
 // FIX IS_DEFAULT COLUMNS (ONE CHECKBOX ONLY FOR ALL ROWS)
 //
-const fix_grid_default = function() {
+const fix_grid_default = function(grid_id) {
     $('.a-IG').each(function() {
         var $parent     = $(this).parent();
         var static_id   = $parent.attr('id');
-        var current_id;
-        var current_row;
         //
-        if (!$parent.hasClass('ORIGINAL')) {
-            console.log('GRID MODIFIED', static_id);
+        if ((grid_id === undefined || grid_id === static_id) && !$parent.hasClass('ORIGINAL')) {
+            console.group('GRID_MODIFIED', static_id);
             //
             var grid        = apex.region(static_id).widget();
-            //var model       = grid.interactiveGrid('getViews', 'grid').model;
+            var model       = grid.interactiveGrid('getViews', 'grid').model;
             var gridview    = grid.interactiveGrid('getViews').grid;
 
             // find IS_DEFAULT column
