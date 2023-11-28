@@ -177,7 +177,7 @@ dynamic-actions:
 
     settings: 
       code: |
-        console.log('MODAL_CLOSED', this.data.dialogPageId);
+        console.log('MODAL_CLOSED', this.data.dialogPageId, this.data.closeAction);
         if (this.data && this.data.successMessage && this.data.successMessage.text) {
             show_success(this.data.successMessage.text);
         }

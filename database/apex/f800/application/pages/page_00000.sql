@@ -81,7 +81,7 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_execute_on_page_init=>'N'
 ,p_action=>'NATIVE_JAVASCRIPT_CODE'
 ,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'console.log(''MODAL_CLOSED'', this.data.dialogPageId);',
+'console.log(''MODAL_CLOSED'', this.data.dialogPageId, this.data.closeAction);',
 'if (this.data && this.data.successMessage && this.data.successMessage.text) {',
 '    show_success(this.data.successMessage.text);',
 '}'))
