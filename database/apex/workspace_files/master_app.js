@@ -116,19 +116,29 @@ const init_page_asap = function() {
         ping_loop = ping_fn();
     }
 };
-//
-const init_page_delayed = function() {
-    fix_grid_default();
-};
-//
+
 const init_page = function() {
     //
     // ADJUST GRIDS
     //
-    fix_grid_toolbars();
-    fix_grid_save_button();
+    $('.a-IG').each(function() {
+        var $parent     = $(this).parent();
+        var static_id   = $parent.attr('id');
+        //
+        if (!$parent.hasClass('ORIGINAL')) {
+            $('#' + static_id).on('interactivegridviewchange', function(event, data) {
+            });
+            //
+            fix_grid_toolbar(static_id);
+        }
+    });
     //
-    delay(300).then(() => init_page_delayed());
+    //fix_grid_save_button();
+
+    // fix badges on buttons
+    $('button > .t-Button-label').each(function(k, id) {
+        $(id).html($(id).html().replace(/\[([^\]]+)\]/, '<div class="BADGE">$1</div>'));
+    });
 
     //
     // INIT ACTION MENUS
@@ -141,12 +151,40 @@ const init_page = function() {
         var f = $(this);
         console.log('MENU CLICK', f, e);
     });
+
+    // catch IG refresh, thanks to @KarelEkema
+    $(document).on('ajaxComplete', function(jQueryEvent, data, settings) {
+        var region_id, static_id;
+        try {
+            region_id = data.responseJSON.regions[0].id;
+            static_id = $('.t-IRR-region.lto' + region_id + '_0').attr('id');
+        }
+        catch(err) {
+        }
+        if (data.status == 200 && static_id !== undefined) {
+            delay(100).then(() => fix_grid_default(static_id));
+        }
+    });
+
+    // delayed init
+    delay(300).then(() => init_page_delayed());
+};
+//
+const init_page_delayed = function() {
+    //
+    // ADJUST GRIDS
+    //
+    $('.a-IG').each(function() {
+        var $parent     = $(this).parent();
+        var static_id   = $parent.attr('id');
+        //
+        if (!$parent.hasClass('ORIGINAL')) {
+            fix_grid_default(static_id);
+        }
+    });
 };
 
-// fix badges on buttons
-$('button > .t-Button-label').each(function(k, id) {
-    $(id).html($(id).html().replace(/\[([^\]]+)\]/, '<div class="BADGE">$1</div>'));
-});
+
 
 // when page is loaded
 $(function() {
@@ -341,22 +379,18 @@ const color_cell = function (options, value, title, color_bg, color_text) {
     }
     return options;
 };
+//
+const cell_class = function (options, value, title) {
+    options.defaultGridColumnOptions = {
+        cellCssClassesColumn: 'CSS_CLASS'
+    };
+    return options;
+};
 
 
 
 //
 // COMMON TOOLBAR FOR ALL GRIDS
-//
-const fix_grid_toolbars = function (grid_id) {
-    $('.a-IG').each(function() {
-        var $parent     = $(this).parent();
-        var static_id   = $parent.attr('id');
-        //
-        if ((grid_id === undefined || grid_id === static_id) && !$parent.hasClass('ORIGINAL')) {
-            fix_grid_toolbar(static_id);
-        }
-    })
-};
 //
 const fix_grid_toolbar = function (region_id) {
     console.group('FIX_GRID_TOOLBAR', region_id);
@@ -571,13 +605,14 @@ const fix_grid_save_button = function () {
 // FIX GRID CHECKBOX CLICK
 // ACTIVATE EDIT MODE, SELECT CURRENT ROW, PROCEED WITH GRID_ONE FUNCTION
 //
-const fix_grid_checkbox = function(grid_id, grid_one_column) {
+const fix_grid_checkbox = function(grid_id) {
+    console.log('FIXING CHECKBOX', grid_id);
+    //    
     $('#' + grid_id + ' div.a-IG div.a-IG-body div.a-IG-contentContainer div.a-GV div.a-GV-bdy table.a-GV-table.a-GV-table--checkbox tbody td span.u-checkbox').on('click', function() {
-        apex.region(grid_id).call('getActions').set('edit', true);
-        $(this).closest('th.a-GV-cell.a-GV-selHeader').click();
-        //
-        if (grid_one_column) {
-            grid_one_checkbox_only(grid_id, grid_one_column);
+        var grid = apex.region(grid_id);
+        if (!grid.call('getActions').get('edit')) {
+            grid.call('getActions').set('edit', true);
+            $(this).closest('th.a-GV-cell.a-GV-selHeader').click();
         }
     });
 };
@@ -585,37 +620,63 @@ const fix_grid_checkbox = function(grid_id, grid_one_column) {
 
 
 //
-// MARK CURRENT ROW WITH ARROW,
-// FIX IS_DEFAULT COLUMNS (ONE CHECKBOX ONLY FOR ALL ROWS)
+// FIX GRID AFTER REFRESH (ON THE SCREEN, NOT JUST THE MODEL REFRESH)
+// MARK CURRENT ROW WITH ARROW, FIX IS_DEFAULT COLUMNS (ONE CHECKBOX ONLY FOR ALL ROWS)...
 //
-const fix_grid_default = function(grid_id) {
-    $('.a-IG').each(function() {
-        var $parent     = $(this).parent();
-        var static_id   = $parent.attr('id');
-        //
-        if ((grid_id === undefined || grid_id === static_id) && !$parent.hasClass('ORIGINAL')) {
-            console.group('GRID_MODIFIED', static_id);
-            //
+const fix_grid_default = function(static_id) {
+    console.group('GRID_MODIFIED + DELAYED', static_id, grid, model);
+    //
+    var grid        = apex.region(static_id).widget();
+    var model       = grid.interactiveGrid('getViews', 'grid').model;
+    var gridview    = grid.interactiveGrid('getViews').grid;
+    //
+    console.log('GRID', grid);
+    console.log('MODEL', model);
+    console.log('VIEW', gridview);
+
+    // find current row selector
+    var current_id = apex.item('P#_CURRENT_'.replace('#', apex.env.APP_PAGE_ID) + static_id).getValue();
+    if (current_id) {
+        current_id = current_id.replaceAll('&quot;', '').replace('[', '').replace(']', '');  // for composite keys
+        $('#' + static_id + ' .a-GV-bdy tr').each(function () {
+            if ('' + $(this).data('id') === current_id) {
+                var current_row = $(this).find('.a-GV-cell.u-tS.has-button > button > span');
+                current_row.removeClass('a-Icon').addClass('fa fa-arrow-circle-right');
+                console.log('CURRENT ROW FIXED', current_row);
+            }
+        });
+    }
+
+    //
+    // CATCH GRID COLUMN CHANGE
+    //
+    var viewId = model.subscribe({
+        onChange: function(changeType, change) {
             var grid        = apex.region(static_id).widget();
             var model       = grid.interactiveGrid('getViews', 'grid').model;
             var gridview    = grid.interactiveGrid('getViews').grid;
-
-            // find IS_DEFAULT column
-            if (!!gridview.modelColumns['IS_DEFAULT']) {
-                fix_grid_checkbox(static_id, 'IS_DEFAULT');
-            }
-
-            // find current row selector
-            current_id = apex.item('P#_CURRENT_'.replace('#', apex.env.APP_PAGE_ID) + static_id).getValue();
-            current_id = current_id.replaceAll('&quot;', '').replace('[', '').replace(']', '')
-            $('#' + static_id + ' .a-GV-bdy tr').each(function () {
-                if ('' + $(this).data('id') === current_id) {
-                    current_row = $(this).find('.a-GV-cell.u-tS.has-button > button > span');
-                    current_row.removeClass('a-Icon').addClass('fa fa-arrow-circle-right');
-                }
+            var columns     = {};
+            //
+            gridview.getColumns().forEach(function(row) {
+                columns[row.property] = row.index;
             });
+            //
+            console.group('GRID_CHANGED', static_id, 'TYPE:', changeType, change);
+            //console.log('CHANGE', changeType, change);
+            //console.log('MODEL', model);
+            //console.log('VIEW', gridview);
+            //console.log('COLUMNS:', columns, gridview.getColumns());
+
+            // on any change make Save button hot
+            $('#' + static_id).find('button.a-Toolbar-item[data-action="save"]').addClass('is-active a-Button--hot');
+
+                }
         }
     });
+    //
+    fix_grid_checkbox(static_id);
+    //
+    console.groupEnd();
 };
 
 
@@ -731,14 +792,17 @@ const renumber_grid_rows = function (static_id, column_name) {
 const grid_one_checkbox_only = function (static_id, column_name) {
     var grid        = apex.region(static_id).widget();
     var model       = grid.interactiveGrid('getViews', 'grid').model;
+    var gridview    = grid.interactiveGrid('getViews').grid;
     var selected    = grid.interactiveGrid('getViews').grid.getSelectedRecords();
+    var selected_id;
+    if (selected && selected.length > 0) {
+        selected_id = gridview.model.getRecordId(selected[0]);
+    }
     //
-    model.forEach(function(r) {
+    model.forEach(function(r, idx, id) {
         try {
-            if (r !== selected[0]) {
-                if (model.getValue(r, column_name) === 'Y') {
-                    model.setValue(r, column_name, '');
-                }
+            if (id !== selected_id && model.getValue(r, column_name) === 'Y') {
+                model.setValue(r, column_name, '');
             }
         }
         catch(err) {
