@@ -1,5 +1,5 @@
 DECLARE
-    in_job_name             CONSTANT VARCHAR2(30)   := 'APP_MV_REFRESH';
+    in_job_name             CONSTANT VARCHAR2(128)  := 'APP_MV_REFRESH';
     in_run_immediatelly     CONSTANT BOOLEAN        := FALSE;
 BEGIN
     DBMS_OUTPUT.PUT_LINE('--');
