@@ -39,6 +39,131 @@ server-cache:
   caching: Disabled
 
 regions: 
+- # ====== Region: TABS ========================================
+  id: 39654881779838340
+  identification: 
+    title: TABS
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Tabs Container # 63372587703439106
+    template-options: 
+    - '#DEFAULT#'
+    - js-useLocalStorage
+    - t-TabsRegion-mod--simple
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Sessions ====================================
+  id: 39654920999838341
+  identification: 
+    title: Sessions
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: TABS # 39654881779838340
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Tracking Activity ===========================
+  id: 39655193604838343
+  identification: 
+    title: Tracking Activity
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: TABS # 39654881779838340
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
 - # ====== Region: NAMES - HEADERS =============================
   id: 40114297173943324
   identification: 
@@ -115,8 +240,8 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: No Parent
-    position: BODY
+    parent-region: Tracking Activity # 39655193604838343
+    position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -135,7 +260,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
-    region-display-selector: true
+    region-display-selector: false
     exclude-title-from-translation: false
 
   server-cache: 
@@ -168,9 +293,9 @@ regions:
     - P890_USER_ID
 
   layout: 
-    sequence: 20
-    parent-region: No Parent
-    position: BODY
+    sequence: 10
+    parent-region: Tracking Activity # 39655193604838343
+    position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -188,7 +313,7 @@ regions:
     landmark-type: Template Default
 
   advanced: 
-    region-display-selector: true
+    region-display-selector: false
     exclude-title-from-translation: false
 
   server-cache: 

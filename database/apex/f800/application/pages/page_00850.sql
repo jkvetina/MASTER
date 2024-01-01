@@ -728,10 +728,13 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(18378556597452340)
 ,p_is_visible=>false
 ,p_is_frozen=>false
+,p_sort_order=>1
 ,p_break_order=>5
 ,p_break_is_enabled=>true
 ,p_break_sort_direction=>'ASC'
 ,p_break_sort_nulls=>'LAST'
+,p_sort_direction=>'ASC'
+,p_sort_nulls=>'FIRST'
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(18447433153590955)
@@ -775,9 +778,9 @@ wwv_flow_imp_page.create_ig_report_column(
 ,p_column_id=>wwv_flow_imp.id(18379057414452345)
 ,p_is_visible=>false
 ,p_is_frozen=>false
-,p_sort_order=>1
+,p_sort_order=>2
 ,p_sort_direction=>'ASC'
-,p_sort_nulls=>'FIRST'
+,p_sort_nulls=>'LAST'
 );
 wwv_flow_imp_page.create_ig_report_column(
  p_id=>wwv_flow_imp.id(18457064605619041)

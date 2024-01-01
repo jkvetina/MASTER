@@ -127,6 +127,8 @@ const init_page = function() {
         //
         if (!$parent.hasClass('ORIGINAL')) {
             $('#' + static_id).on('interactivegridviewchange', function(event, data) {
+                //delay(100).then(() => );
+                alert('GRID CREATED ' + static_id);
             });
             //
             fix_grid_toolbar(static_id);
@@ -190,6 +192,15 @@ const init_page_delayed = function() {
 $(function() {
     init_page_asap();
     reset_tabs();
+
+    /*
+    $.widget('apex.interactiveGrid', $.apex.interactiveGrid, {
+        refresh: function () {
+            alert('Hello, I should refresh now...');
+            this._super();
+        }
+    });
+    */
 });
 
 // when all APEX components are loaded
@@ -561,8 +572,19 @@ const fix_grid_toolbar = function (region_id) {
 
     // keep selected rows
     config.defaultGridViewOptions = {
-        persistSelection: true
+        persistSelection: true,
+        rowHeader: "sequence",      // not working
+        singleRowView: false
     };
+
+    // turn off single row view - NOT WORKING
+    //var features = apex.util.getNestedObject( config, 'views.grid.features');
+    //features.singleRowView = false;
+    //config.views.grid.features.rowHeader = 'sequence';
+    //config.views.grid.features.singleRowView = false;
+    //config.defaultGridViewOptions.rowHeader = "sequence";
+    //config.defaultGridViewOptions.singleRowView = false;
+    
 
     //actions.set('edit', true);    // not working
     //config.editable = true;
@@ -577,6 +599,7 @@ const fix_grid_toolbar = function (region_id) {
 
 //
 // FIX GRID SAVE BUTTON - look for css change on Edit button and apply it to Save button
+// UNUSED, CATCH IT VIA MODEL.SUBSCRIBE
 //
 const fix_grid_save_button = function () {
     var observer = new MutationObserver(function(mutations) {
@@ -670,7 +693,36 @@ const fix_grid_default = function(static_id) {
             // on any change make Save button hot
             $('#' + static_id).find('button.a-Toolbar-item[data-action="save"]').addClass('is-active a-Button--hot');
 
+            //
+            // MAKE SURE WE CAN SELECT ONLY ONE CHECKBOX IN A COLUMN THROUGH ALL ROWS
+            // GRID MUST BE IN EDIT MODE TO MAKE THIS WORK
+            //
+            if ((changeType == 'set' || changeType == 'insert') && !!gridview.modelColumns['IS_DEFAULT']) {
+                console.log('CHANGED COLUMN', 'ID=' + change.recordId, 'COL=' + change.field, 'OLD=' + change.oldValue, 'NEW=' + change.record[columns[change.field]], 'DATA:', change.record);
+                //
+                var new_default = (change.field == 'IS_DEFAULT' && change.oldValue === '' && change.record[columns[change.field]] == 'Y');
+                if (new_default) {
+                    model.forEach(function(r, idx, id) {
+                        // new default selected, remove old values
+                        if (id !== change.recordId) {
+                            if (model.getValue(r, 'IS_DEFAULT') == 'Y') {
+                                model.setValue(r, 'IS_DEFAULT', '');
+                            }
+                        }
+                    });
+
+                    console.warn('CHANGE MODEL', model);
+                    // refresh grid after model change
+                    //grid.interactiveGrid('getActions').invoke('save');
+                    //grid.interactiveGrid('getViews', 'grid').model.clearChanges();
+                    //grid.interactiveGrid('getActions').invoke('refresh');
+                    //grid.interactiveGrid('getCurrentView').model.fetch();
+                    //model.fetchRecords(model._data);
+                    //gridview.view$.grid('refresh');
+                    //alert('REFRESHED');
                 }
+            }
+            console.groupEnd();
         }
     });
     //

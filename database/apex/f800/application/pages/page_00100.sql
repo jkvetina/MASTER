@@ -67,28 +67,63 @@ wwv_flow_imp_page.create_page(
 ,p_last_upd_yyyymmddhh24miss=>'20220101000000'
 );
 wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(23519630376581627)
+,p_plug_name=>'BANNER'
+,p_region_name=>'BANNER'
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(63325094538439079)
+,p_plug_display_sequence=>10
+,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'<h1>Welcome, &G_USER_FIRST_NAME.</h1>',
+'<p>Current workspace: &G_WORKSPACE. | &G_ENV.<p>',
+''))
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(39760548169325803)
+,p_plug_name=>'TABS'
+,p_region_template_options=>'#DEFAULT#:js-useLocalStorage:t-TabsRegion-mod--simple'
+,p_plug_template=>wwv_flow_imp.id(63372587703439106)
+,p_plug_display_sequence=>20
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(39760699932325804)
+,p_plug_name=>'Available Apps'
+,p_parent_plug_id=>wwv_flow_imp.id(39760548169325803)
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(63325094538439079)
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'SUB_REGIONS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(7475275434048504)
 ,p_plug_name=>'Available Apps'
+,p_parent_plug_id=>wwv_flow_imp.id(39760699932325804)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63402598617439121)
-,p_plug_display_sequence=>30
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'SUB_REGIONS'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(7475317403048505)
 ,p_plug_name=>'Applications [CARDS]'
+,p_parent_plug_id=>wwv_flow_imp.id(39760699932325804)
+,p_region_css_classes=>'CARDS6'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63327898435439081)
-,p_plug_display_sequence=>40
-,p_plug_new_grid_row=>false
-,p_plug_new_grid_column=>false
+,p_plug_display_sequence=>20
+,p_plug_display_point=>'SUB_REGIONS'
 ,p_query_type=>'TABLE'
 ,p_query_table=>'APP_LAUNCHPAD_V'
-,p_query_where=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'workspace = :G_WORKSPACE',
-'AND is_favorite IS NULL'))
+,p_query_where=>'workspace = :G_WORKSPACE'
 ,p_include_rowid_column=>false
 ,p_lazy_loading=>false
 ,p_plug_source_type=>'NATIVE_CARDS'
@@ -99,7 +134,7 @@ wwv_flow_imp_page.create_card(
  p_id=>wwv_flow_imp.id(7475420236048506)
 ,p_region_id=>wwv_flow_imp.id(7475317403048505)
 ,p_layout_type=>'GRID'
-,p_grid_column_count=>3
+,p_grid_column_count=>5
 ,p_title_adv_formatting=>true
 ,p_title_html_expr=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<div style="float: right; align-items: flex-start; margin-top: 0.2rem;"><button type="button" onclick="favorite_switch(this);" data-app-id="&APP_ID." class="a-CardView-button " onclick="console.log(''FAVORITE_SWITCH'')" style="background: transparent; '
@@ -124,28 +159,26 @@ wwv_flow_imp_page.create_card_action(
 ,p_link_target=>'&APP_LINK.'
 );
 wwv_flow_imp_page.create_page_plug(
- p_id=>wwv_flow_imp.id(23519630376581627)
-,p_plug_name=>'BANNER'
-,p_region_name=>'BANNER'
+ p_id=>wwv_flow_imp.id(39760709030325805)
+,p_plug_name=>'Favorite Apps'
+,p_parent_plug_id=>wwv_flow_imp.id(39760548169325803)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63325094538439079)
-,p_plug_display_sequence=>10
-,p_plug_source=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'<h1>Welcome, &G_USER_FIRST_NAME.</h1>',
-'<p>Current workspace: &G_WORKSPACE. | &G_ENV.<p>',
-''))
+,p_plug_display_sequence=>20
+,p_plug_display_point=>'SUB_REGIONS'
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(24621155643821114)
-,p_plug_name=>'Applications [CARDS]'
+,p_plug_name=>'Favorite Apps [CARDS]'
+,p_parent_plug_id=>wwv_flow_imp.id(39760709030325805)
+,p_region_css_classes=>'CARDS6'
 ,p_region_template_options=>'#DEFAULT#'
 ,p_component_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63327898435439081)
-,p_plug_display_sequence=>60
-,p_plug_new_grid_row=>false
-,p_plug_new_grid_column=>false
+,p_plug_display_sequence=>20
+,p_plug_display_point=>'SUB_REGIONS'
 ,p_query_type=>'TABLE'
 ,p_query_table=>'APP_LAUNCHPAD_V'
 ,p_query_where=>wwv_flow_string.join(wwv_flow_t_varchar2(
@@ -161,7 +194,7 @@ wwv_flow_imp_page.create_card(
  p_id=>wwv_flow_imp.id(24621229550821115)
 ,p_region_id=>wwv_flow_imp.id(24621155643821114)
 ,p_layout_type=>'GRID'
-,p_grid_column_count=>3
+,p_grid_column_count=>5
 ,p_title_adv_formatting=>true
 ,p_title_html_expr=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '<div style="float: right; align-items: flex-start; margin-top: 0.2rem;"><button type="button" onclick="favorite_switch(this);" data-app-id="&APP_ID." class="a-CardView-button " onclick="console.log(''FAVORITE_SWITCH'')" style="background: transparent; '
@@ -188,10 +221,23 @@ wwv_flow_imp_page.create_card_action(
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(24621440329821117)
 ,p_plug_name=>'Favorite Apps'
+,p_parent_plug_id=>wwv_flow_imp.id(39760709030325805)
 ,p_region_template_options=>'#DEFAULT#'
 ,p_plug_template=>wwv_flow_imp.id(63402598617439121)
-,p_plug_display_sequence=>50
-,p_plug_new_grid_row=>false
+,p_plug_display_sequence=>10
+,p_plug_display_point=>'SUB_REGIONS'
+,p_attribute_01=>'N'
+,p_attribute_02=>'HTML'
+);
+wwv_flow_imp_page.create_page_plug(
+ p_id=>wwv_flow_imp.id(39760908983325807)
+,p_plug_name=>'Missing Apps'
+,p_parent_plug_id=>wwv_flow_imp.id(39760548169325803)
+,p_region_template_options=>'#DEFAULT#'
+,p_plug_template=>wwv_flow_imp.id(63325094538439079)
+,p_plug_display_sequence=>30
+,p_plug_display_point=>'SUB_REGIONS'
+,p_plug_required_role=>wwv_flow_imp.id(60089834032939902)  -- IS_DEVELOPER
 ,p_attribute_01=>'N'
 ,p_attribute_02=>'HTML'
 );

@@ -91,9 +91,9 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 30
-    parent-region: No Parent
-    position: BODY
+    sequence: 10
+    parent-region: Available Apps # 39760699932325804
+    position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -137,27 +137,27 @@ regions:
     table-owner: Parsing Schema
     table-name: APP_LAUNCHPAD_V
     include-rowid-column: false
-    where-clause: |
-      workspace = :G_WORKSPACE
-      AND is_favorite IS NULL
+    where-clause: 'workspace = :G_WORKSPACE'
 
   order-by: 
     type: None
 
   layout: 
-    sequence: 40
-    parent-region: No Parent
-    position: BODY
+    sequence: 20
+    parent-region: Available Apps # 39760699932325804
+    position: SUB_REGIONS
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
-    new-column: false
+    new-column: true
     column-span: Automatic
 
   appearance: 
     template: Cards Container # 63327898435439081
     template-options: 
     - '#DEFAULT#'
+    css-classes: 
+    - CARDS6
     render-components: Above Content
 
   accessibility: 
@@ -178,7 +178,7 @@ regions:
     id: 7475420236048506
     appearance: 
       layout: Grid
-      grid-columns: 3 Columns
+      grid-columns: 5 Columns
 
     card: 
       primary-key-column-1: APP_ID
@@ -277,10 +277,10 @@ regions:
       output-as: HTML
       expand-shortcuts: false
 
-- # ====== Region: Applications [CARDS] ========================
+- # ====== Region: Favorite Apps [CARDS] =======================
   id: 24621155643821114
   identification: 
-    title: Applications [CARDS]
+    title: Favorite Apps [CARDS]
     type: Cards
 
   source: 
@@ -297,19 +297,21 @@ regions:
     type: None
 
   layout: 
-    sequence: 60
-    parent-region: No Parent
-    position: BODY
+    sequence: 20
+    parent-region: Favorite Apps # 39760709030325805
+    position: SUB_REGIONS
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
-    new-column: false
+    new-column: true
     column-span: Automatic
 
   appearance: 
     template: Cards Container # 63327898435439081
     template-options: 
     - '#DEFAULT#'
+    css-classes: 
+    - CARDS6
     render-components: Above Content
 
   accessibility: 
@@ -330,7 +332,7 @@ regions:
     id: 24621229550821115
     appearance: 
       layout: Grid
-      grid-columns: 3 Columns
+      grid-columns: 5 Columns
 
     card: 
       primary-key-column-1: APP_ID
@@ -388,11 +390,11 @@ regions:
     type: Static Content
 
   layout: 
-    sequence: 50
-    parent-region: No Parent
-    position: BODY
+    sequence: 10
+    parent-region: Favorite Apps # 39760709030325805
+    position: SUB_REGIONS
     start-new-layout: false
-    start-new-row: false
+    start-new-row: true
     column: Automatic
     new-column: true
     column-span: Automatic
@@ -410,6 +412,175 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: TABS ========================================
+  id: 39760548169325803
+  identification: 
+    title: TABS
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Tabs Container # 63372587703439106
+    template-options: 
+    - '#DEFAULT#'
+    - js-useLocalStorage
+    - t-TabsRegion-mod--simple
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Available Apps ==============================
+  id: 39760699932325804
+  identification: 
+    title: Available Apps
+    type: Static Content
+
+  layout: 
+    sequence: 10
+    parent-region: TABS # 39760548169325803
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Favorite Apps ===============================
+  id: 39760709030325805
+  identification: 
+    title: Favorite Apps
+    type: Static Content
+
+  layout: 
+    sequence: 20
+    parent-region: TABS # 39760548169325803
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: Missing Apps ================================
+  id: 39760908983325807
+  identification: 
+    title: Missing Apps
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: TABS # 39760548169325803
+    position: SUB_REGIONS
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 63325094538439079
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: false
+    exclude-title-from-translation: false
+
+  security: 
+    authorization-scheme: IS_DEVELOPER # 60089834032939902
 
   server-cache: 
     caching: Disabled
