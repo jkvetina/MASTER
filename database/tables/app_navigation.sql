@@ -16,8 +16,7 @@ CREATE TABLE app_navigation (
         CHECK (is_reset = 'Y' OR is_reset IS NULL),
     --
     CONSTRAINT pk_app_navigation
-        PRIMARY KEY (app_id, page_id)
-) ,
+        PRIMARY KEY (app_id, page_id),
     --
     CONSTRAINT fk_app_navigation_parent
         FOREIGN KEY (app_id, parent_id)

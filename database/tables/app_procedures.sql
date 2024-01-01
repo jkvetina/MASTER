@@ -12,8 +12,7 @@ CREATE TABLE app_procedures (
         CHECK (is_active = 'Y' OR is_active IS NULL),
     --
     CONSTRAINT uq_app_procedures
-        UNIQUE (app_id, object_name, procedure_name, role_id)
-) ,
+        UNIQUE (app_id, object_name, procedure_name, role_id),
     --
     CONSTRAINT fk_app_procedures_role
         FOREIGN KEY (app_id, role_id)

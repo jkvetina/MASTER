@@ -10,8 +10,7 @@ CREATE TABLE app_pages (
         CHECK (is_active = 'Y' OR is_active IS NULL),
     --
     CONSTRAINT pk_app_pages
-        PRIMARY KEY (app_id, page_id, role_id)
-) ,
+        PRIMARY KEY (app_id, page_id, role_id),
     --
     CONSTRAINT fk_app_pages_role
         FOREIGN KEY (app_id, role_id)

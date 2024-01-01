@@ -22,8 +22,7 @@ CREATE TABLE app_tables (
         CHECK (is_allowed_delete = 'Y' OR is_allowed_delete IS NULL),
     --
     CONSTRAINT pk_app_tables
-        PRIMARY KEY (app_id, table_name, role_id)
-) ,
+        PRIMARY KEY (app_id, table_name, role_id),
     --
     CONSTRAINT nn_app_tables_role
         CHECK (role_id IS NOT NULL    ),

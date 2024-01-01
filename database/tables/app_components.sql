@@ -13,8 +13,7 @@ CREATE TABLE app_components (
         CHECK (is_active = 'Y' OR is_active IS NULL),
     --
     CONSTRAINT uq_app_components
-        UNIQUE (app_id, component_id, role_id)
-) ,
+        UNIQUE (app_id, component_id, role_id),
     --
     CONSTRAINT fk_app_components_role
         FOREIGN KEY (app_id, role_id)
