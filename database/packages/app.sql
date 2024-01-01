@@ -12,21 +12,19 @@ CREATE OR REPLACE PACKAGE BODY app AS
             RETURN;
         END IF;
 
-        -- if requested page is a homepage then setup G_APP_ID item
-        IF core.get_page_id() = core.get_app_homepage() THEN
-            FOR c IN (
-                SELECT
-                    a.application_id,
-                    a.application_name
-                FROM apex_applications a
-                WHERE a.application_id = core.get_app_id(in_dont_override => 'Y')
-            ) LOOP
-                core.log_debug('SWITCH_APP_CONTEXT', c.application_id);
-                --
-                core.set_item(global_app_id,    c.application_id);
-                core.set_item(global_app_name,  c.application_name);
-            END LOOP;
         END IF;
+
+        -- setup G_APP_ID item
+        FOR c IN (
+            SELECT
+                a.application_id,
+                a.application_name
+            FROM apex_applications a
+            WHERE a.application_id = core.get_app_id(in_dont_override => 'Y')
+        ) LOOP
+            core.set_item(global_app_id,    c.application_id);
+            core.set_item(global_app_name,  c.application_name);
+        END LOOP;
 
         -- find init block for specific/current page
         app.call_init_defaults();
@@ -302,7 +300,8 @@ CREATE OR REPLACE PACKAGE BODY app AS
     AS
     BEGIN
         core.set_item('P0_SUCCESS_MESSAGE', in_message);
-        --APEX_APPLICATION.G_PRINT_SUCCESS_MESSAGE := in_message;
+        APEX_APPLICATION.G_PRINT_SUCCESS_MESSAGE := in_message;
+        --
     EXCEPTION
     WHEN core.app_exception THEN
         RAISE;
