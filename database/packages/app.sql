@@ -12,6 +12,25 @@ CREATE OR REPLACE PACKAGE BODY app AS
             RETURN;
         END IF;
 
+        -- set some global items
+        core.set_item (
+            'P0_AJAX_PING_INTERVAL',
+            CASE WHEN core.get_page_is_modal(core.get_app_id(), core.get_page_id()) = 'Y'
+                THEN 0
+                ELSE 6 END
+        );
+        --
+        IF core.get_item('P0_SESSION_TIMEOUT_URL') IS NULL THEN
+            core.set_item (
+                'P0_SESSION_TIMEOUT_URL',
+                APEX_PAGE.GET_URL (
+                    p_application   => 800,
+                    p_page          => 9999,
+                    p_session       => 0,
+                    p_items         => 'P9999_ERROR',
+                    p_values        => 'SESSION_TIMEOUT'
+                )
+            );
         END IF;
 
         -- setup G_APP_ID item
