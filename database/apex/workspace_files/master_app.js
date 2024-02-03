@@ -1,7 +1,14 @@
+const is_modal = function() {
+    return apex.env.APP_PAGE_ID !== apex.util.getTopApex().env.APP_PAGE_ID;
+    // or we could check the classes: !$('body').hasClass('t-Dialog-page')
+};
+
+
+
 //
 // WHEN PAGE LOADS
 //
-var ping_active = !$('body').hasClass('t-Dialog-page');     // not on modals
+var ping_active = !is_modal();
 var ping_loop;
 var last_scheduler;
 //

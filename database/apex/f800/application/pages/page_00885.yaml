@@ -2614,6 +2614,8 @@ dynamic-actions:
 
   execution: 
     sequence: 10
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
@@ -2623,10 +2625,6 @@ dynamic-actions:
     - P885_USER_ID
     - P885_SESSION_ID
     - P885_PAGE_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Submit Page =================================

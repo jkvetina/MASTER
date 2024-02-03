@@ -14,6 +14,9 @@
     sequence: -10
     point: Before Header
 
+  subscription: 
+    version-number: 1
+
 - # ====== Application Process: AJAX_PING ======================
   id: 15475958849750657
   identification: 
@@ -32,6 +35,9 @@
   security: 
     authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
 
+  subscription: 
+    version-number: 1
+
 - # ====== Application Process: GET_AVATAR =====================
   id: 24674842651897136
   identification: 
@@ -49,4 +55,7 @@
 
   security: 
     authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
+  subscription: 
+    version-number: 1
 

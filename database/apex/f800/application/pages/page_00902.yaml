@@ -173,15 +173,18 @@ page-items:
   id: 24729756495693505
   identification: 
     name: P902_AVATAR_BLOB
-    type: File Browse...
+    type: File Upload
 
   label: 
     label: Upload new profile image
     alignment: Left
 
-  settings: 
+  display: 
     display-as: Inline Dropzone
-    storage-type: Table APEX_APPLICATION_TEMP_FILES
+    capture-using: NONE
+
+  storage:: 
+    type: Table APEX_APPLICATION_TEMP_FILES
     purge-file-at: End of Session
     allow-multiple-files: false
     maximum-file-size: 512000
@@ -412,6 +415,7 @@ processes:
   settings: 
     items-to-return-: 
     - P902_SUCCESS
+    show-success-messages: false
 
   execution: 
     sequence: 20

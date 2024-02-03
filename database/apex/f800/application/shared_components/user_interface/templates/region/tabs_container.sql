@@ -4,8 +4,8 @@ begin
 --     REGION TEMPLATE: TABS_CONTAINER
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
+ p_version_yyyy_mm_dd=>'2023.10.31'
+,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>800
 ,p_default_id_offset=>13870473903421503
@@ -32,7 +32,7 @@ wwv_flow_imp_shared.create_plug_template(
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(26014263923131941)
+ p_id=>wwv_flow_imp.id(11827296123238792)
 ,p_plug_template_id=>wwv_flow_imp.id(63372587703439106)
 ,p_name=>'Region Body'
 ,p_placeholder=>'BODY'
@@ -43,7 +43,7 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(26014733879131941)
+ p_id=>wwv_flow_imp.id(11827741436238792)
 ,p_plug_template_id=>wwv_flow_imp.id(63372587703439106)
 ,p_name=>'Tabs'
 ,p_placeholder=>'SUB_REGIONS'

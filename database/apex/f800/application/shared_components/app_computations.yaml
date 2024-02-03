@@ -20,6 +20,9 @@
           p_values        => 'SESSION_TIMEOUT'
       )
 
+  subscription: 
+    version-number: 1
+
 - # ====== Application Computation: P0_AJAX_PING_INTERVAL ======
   id: 38792105756773316
   identification: 
@@ -39,4 +42,7 @@
 
   security: 
     authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
+  subscription: 
+    version-number: 1
 

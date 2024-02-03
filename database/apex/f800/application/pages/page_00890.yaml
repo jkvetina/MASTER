@@ -6983,6 +6983,10 @@ dynamic-actions:
 
   execution: 
     sequence: 10
+    event-scope: Static
+    type: Debounce
+    time: 200
+    immediate: false
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
@@ -6993,12 +6997,6 @@ dynamic-actions:
     - P890_SOURCE
     - P890_USER_ID
     - P890_SESSION_ID
-
-  execution: 
-    event-scope: Static
-    type: Debounce
-    time: 200
-    immediate: false
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
@@ -7046,16 +7044,14 @@ dynamic-actions:
 
   execution: 
     sequence: 20
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXBEFOREREFRESH
     selection-type: Item(s)
     item(s): 
     - P890_PAGE_ID
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Set Value ===================================
@@ -7088,6 +7084,8 @@ dynamic-actions:
 
   execution: 
     sequence: 30
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERREFRESH
@@ -7098,10 +7096,6 @@ dynamic-actions:
   client-side-condition: 
     type: Item is not null
     item: P890_PAGE_ID_OLD
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Set Value ===================================

@@ -217,7 +217,7 @@ regions:
       show-total-count: false
 
     actions: 
-    - # ====== Action: FULL_CARD ===================================
+    - # ====== Action: Full Card ===================================
       id: 7475571562048507
       identification: 
         type: Full Card
@@ -371,7 +371,7 @@ regions:
       show-total-count: false
 
     actions: 
-    - # ====== Action: FULL_CARD ===================================
+    - # ====== Action: Full Card ===================================
       id: 24621315336821116
       identification: 
         type: Full Card
@@ -626,6 +626,37 @@ buttons:
   security: 
     authorization-scheme: IS_DEVELOPER # 60089834032939902
 
+- # ====== Button: TEST_MESSAGE ================================
+  id: 8593901229358104
+  identification: 
+    button-name: TEST_MESSAGE
+    label: Test Message
+
+  layout: 
+    sequence: 10
+    region: BANNER # 23519630376581627
+    position: BODY
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+    alignment: Left center
+
+  appearance: 
+    button-template: Text # 63463978601439167
+    hot: false
+    template-options: 
+    - '#DEFAULT#'
+
+  behavior: 
+    action: Submit Page
+    execute-validations: true
+    warn-on-unsaved-changes: Do Not Check
+
+  server-side-condition: 
+    type: Never
+
 dynamic-actions: 
 - # ====== Dynamic Action: FILTERS_CHANGED =====================
   id: 7475819384048510
@@ -634,16 +665,14 @@ dynamic-actions:
 
   execution: 
     sequence: 10
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
     selection-type: Item(s)
     item(s): 
     - P100_WORKSPACE
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Submit Page =================================
@@ -657,6 +686,39 @@ dynamic-actions:
     execution: 
       sequence: 10
       event: FILTERS_CHANGED # 7475819384048510
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: TEST_MESSAGE_ON_LOAD ================
+  id: 8593744466358102
+  identification: 
+    name: TEST_MESSAGE_ON_LOAD
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  configuration: 
+    build-option: NEVER # 14512796942362028
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 8593810058358103
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        show_success('Success Message');
+        //show_warning('Warning Message');
+        //show_error('Error Message');
+
+    execution: 
+      sequence: 10
+      event: TEST_MESSAGE_ON_LOAD # 8593744466358102
       fire-when-event-result-is: True
       fire-on-initialization: false
 
@@ -686,6 +748,38 @@ processes:
 
   security: 
     authorization-scheme: IS_DEVELOPER # 60089834032939902
+
+- # ====== Process: TEST_MESSAGE ===============================
+  id: 8594111923358106
+  identification: 
+    name: TEST_MESSAGE
+    type: Execute Code
+    execution-chain: None
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      --core.send_
+                      APEX_JSON.OPEN_OBJECT();
+                      APEX_JSON.WRITE('message',  SYSDATE);
+                      APEX_JSON.WRITE('status',   'WARNING');        -- SUCCESS, ERROR, WARNING
+                      APEX_JSON.CLOSE_OBJECT();
+      
+
+  execution: 
+    sequence: 20
+    point: Processing
+    run-process: Once Per Page Visit (default)
+
+  success-message: 
+    success-message: '{"message":"PUSHING REFRESH_JSON","status":"WARNING"}'
+
+  error: 
+    display-location: Inline in Notification
+
+  server-side-condition: 
+    when-button-pressed: TEST_MESSAGE # 8593901229358104
 
 - # ====== Process: FAVORITE_SWITCH ============================
   id: 22778700306601017

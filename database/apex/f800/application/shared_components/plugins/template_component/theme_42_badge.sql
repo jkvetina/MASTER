@@ -4,8 +4,8 @@ begin
 --     PLUGIN: THEME_42$BADGE
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
+ p_version_yyyy_mm_dd=>'2023.10.31'
+,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>800
 ,p_default_id_offset=>13870473903421503
@@ -23,11 +23,12 @@ wwv_flow_imp_shared.create_plugin(
 '{if APEX$IS_LAZY_LOADING/}',
 '  <span class="t-Badge is-placeholder{if ?SIZE/} #SIZE!ATTR#{endif/}{if ?SHAPE/} #SHAPE!ATTR#{endif/}"></span>',
 '{else/}',
-'  <span class="t-Badge {if ?STATE/}t-Badge--#STATE!ATTR#{endif/} {if ?STYLE/}#STYLE!ATTR#{endif/} {if ?SIZE/}#SIZE!ATTR#{endif/} {if ?SHAPE/}#SHAPE!ATTR#{endif/}" role="status" aria-label="#LABEL!ATTR# #VALUE!ATTR#" title="#LABEL!ATTR# #VALUE!ATTR#">',
+'  {if ?LINK/}<a href="#LINK!ATTR#" #LINK_ATTR!RAW#{else/}<span{endif/} class="t-Badge {if ?STATE/}t-Badge--#STATE!ATTR#{endif/} {if ?STYLE/}#STYLE!ATTR#{endif/} {if ?SIZE/}#SIZE!ATTR#{endif/} {if ?SHAPE/}#SHAPE!ATTR#{endif/}" role="status" aria-label'
+||'="#LABEL!ATTR# #VALUE!ATTR#" title="#LABEL!ATTR# #VALUE!ATTR#">',
 '    {if ?ICON/}<span class="t-Badge-icon #ICON!ATTR#" aria-hidden="true"></span>{endif/}',
 '    {if LABEL_DISPLAY/}<span class="t-Badge-label">#LABEL!RAW#</span>{endif/}',
 '    <span class="t-Badge-value">#VALUE!RAW#</span>',
-'  </span>',
+'  {if ?LINK/}</a>{else/}</span>{endif/}',
 '{endif/}',
 ''))
 ,p_default_escape_mode=>'HTML'
@@ -48,7 +49,7 @@ wwv_flow_imp_shared.create_plugin(
 ,p_version_identifier=>'1.0'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(26175742631132128)
+ p_id=>wwv_flow_imp.id(11989269725239050)
 ,p_plugin_id=>wwv_flow_imp.id(26175184990132128)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>1
@@ -62,7 +63,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Enter a value for the badge label or select a source column from the quick pick options.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(26176237689132129)
+ p_id=>wwv_flow_imp.id(11989777106239052)
 ,p_plugin_id=>wwv_flow_imp.id(26175184990132128)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>2
@@ -77,7 +78,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Select a source column for the badge value.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(26176678414132129)
+ p_id=>wwv_flow_imp.id(11990262921239053)
 ,p_plugin_id=>wwv_flow_imp.id(26175184990132128)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>3
@@ -92,7 +93,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Select the source column for the state of the badge. Substitute column value with "danger", "warning", "success" or "info" for default styling.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(26177213746132129)
+ p_id=>wwv_flow_imp.id(11990733608239054)
 ,p_plugin_id=>wwv_flow_imp.id(26175184990132128)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>4
@@ -106,7 +107,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Enter an icon class or use the Pick Icon dialog to select the icon you want to add to display in the badge.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(26177689229132130)
+ p_id=>wwv_flow_imp.id(11991275970239055)
 ,p_plugin_id=>wwv_flow_imp.id(26175184990132128)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>5
@@ -121,7 +122,7 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Specify whether to display or hide the badge label. When set to Yes, the badge label will be displayed in addition to the badge value. When set to No, only the badge value will be displayed.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(26178181252132130)
+ p_id=>wwv_flow_imp.id(11991755612239056)
 ,p_plugin_id=>wwv_flow_imp.id(26175184990132128)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>6
@@ -137,21 +138,21 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Select the badge style. Default inherits the style set by the containing template.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(26178717142132130)
-,p_plugin_attribute_id=>wwv_flow_imp.id(26178181252132130)
+ p_id=>wwv_flow_imp.id(11992293724239057)
+,p_plugin_attribute_id=>wwv_flow_imp.id(11991755612239056)
 ,p_display_sequence=>10
 ,p_display_value=>'Subtle'
 ,p_return_value=>'t-Badge--subtle'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(26179332469132130)
-,p_plugin_attribute_id=>wwv_flow_imp.id(26178181252132130)
+ p_id=>wwv_flow_imp.id(11992864257239058)
+,p_plugin_attribute_id=>wwv_flow_imp.id(11991755612239056)
 ,p_display_sequence=>20
 ,p_display_value=>'Outline'
 ,p_return_value=>'t-Badge--outline'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(26179928605132131)
+ p_id=>wwv_flow_imp.id(11993426193239059)
 ,p_plugin_id=>wwv_flow_imp.id(26175184990132128)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>7
@@ -167,31 +168,31 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Select the shape of the badge. Default inherits the shape set by the containing template.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(26180418857132131)
-,p_plugin_attribute_id=>wwv_flow_imp.id(26179928605132131)
+ p_id=>wwv_flow_imp.id(11993973987239060)
+,p_plugin_attribute_id=>wwv_flow_imp.id(11993426193239059)
 ,p_display_sequence=>10
 ,p_display_value=>'Rounded'
 ,p_return_value=>'t-Badge--rounded'
 ,p_help_text=>'Displayed with rounded corners.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(26181020670132131)
-,p_plugin_attribute_id=>wwv_flow_imp.id(26179928605132131)
+ p_id=>wwv_flow_imp.id(11994410627239061)
+,p_plugin_attribute_id=>wwv_flow_imp.id(11993426193239059)
 ,p_display_sequence=>20
 ,p_display_value=>'Circular'
 ,p_return_value=>'t-Badge--circle'
 ,p_help_text=>'Displayed with circular edges.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(26181660077132132)
-,p_plugin_attribute_id=>wwv_flow_imp.id(26179928605132131)
+ p_id=>wwv_flow_imp.id(11995005706239062)
+,p_plugin_attribute_id=>wwv_flow_imp.id(11993426193239059)
 ,p_display_sequence=>30
 ,p_display_value=>'Square'
 ,p_return_value=>'t-Badge--square'
 ,p_help_text=>'Displayed with squared edges.'
 );
 wwv_flow_imp_shared.create_plugin_attribute(
- p_id=>wwv_flow_imp.id(26182186401132132)
+ p_id=>wwv_flow_imp.id(11995628144239063)
 ,p_plugin_id=>wwv_flow_imp.id(26175184990132128)
 ,p_attribute_scope=>'COMPONENT'
 ,p_attribute_sequence=>8
@@ -207,25 +208,33 @@ wwv_flow_imp_shared.create_plugin_attribute(
 ,p_help_text=>'Set the size of the badge. The default inherits the sizing set by the containing template.'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(26182721681132133)
-,p_plugin_attribute_id=>wwv_flow_imp.id(26182186401132132)
+ p_id=>wwv_flow_imp.id(11996126818239064)
+,p_plugin_attribute_id=>wwv_flow_imp.id(11995628144239063)
 ,p_display_sequence=>10
 ,p_display_value=>'Small'
 ,p_return_value=>'t-Badge--sm'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(26183289452132133)
-,p_plugin_attribute_id=>wwv_flow_imp.id(26182186401132132)
+ p_id=>wwv_flow_imp.id(11996734748239066)
+,p_plugin_attribute_id=>wwv_flow_imp.id(11995628144239063)
 ,p_display_sequence=>20
 ,p_display_value=>'Medium'
 ,p_return_value=>'t-Badge--md'
 );
 wwv_flow_imp_shared.create_plugin_attr_value(
- p_id=>wwv_flow_imp.id(26183908844132133)
-,p_plugin_attribute_id=>wwv_flow_imp.id(26182186401132132)
+ p_id=>wwv_flow_imp.id(11997322424239067)
+,p_plugin_attribute_id=>wwv_flow_imp.id(11995628144239063)
 ,p_display_sequence=>30
 ,p_display_value=>'Large'
 ,p_return_value=>'t-Badge--lg'
+);
+wwv_flow_imp_shared.create_plugin_act_position(
+ p_id=>wwv_flow_imp.id(1523471207580341239)
+,p_plugin_id=>wwv_flow_imp.id(26175184990132128)
+,p_name=>'Link'
+,p_static_id=>'LINK'
+,p_display_sequence=>10
+,p_type=>'LINK'
 );
 wwv_flow_imp.component_end;
 end;

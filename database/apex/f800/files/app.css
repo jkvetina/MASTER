@@ -4,10 +4,10 @@
     color           : #fff;
     padding         : 1.2rem 2.5rem 1.5rem;
     min-height      : 18rem;
-    margin          : -4rem -1rem 1rem;
+    margin          : -4.5rem -1.5rem 1.5rem;
 }
 #BANNER h1 {
-    font-family     : var(--ut-hero-region-title-font-family), sans-serif;
+    font-family     : 'Mate', serif;
     font-weight     : 300;
     font-size       : 2.4rem;
     margin          : 4rem 0 0.5rem !important;

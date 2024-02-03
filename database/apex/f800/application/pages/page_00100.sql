@@ -4,8 +4,8 @@ begin
 --     PAGE: 00100
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
+ p_version_yyyy_mm_dd=>'2023.10.31'
+,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>800
 ,p_default_id_offset=>13870473903421503
@@ -242,6 +242,18 @@ wwv_flow_imp_page.create_page_plug(
 ,p_attribute_02=>'HTML'
 );
 wwv_flow_imp_page.create_page_button(
+ p_id=>wwv_flow_imp.id(8593901229358104)
+,p_button_sequence=>10
+,p_button_plug_id=>wwv_flow_imp.id(23519630376581627)
+,p_button_name=>'TEST_MESSAGE'
+,p_button_action=>'SUBMIT'
+,p_button_template_options=>'#DEFAULT#'
+,p_button_template_id=>wwv_flow_imp.id(63463978601439167)
+,p_button_image_alt=>'Test Message'
+,p_button_condition_type=>'NEVER'
+,p_grid_new_row=>'Y'
+);
+wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(7476159161048513)
 ,p_button_sequence=>10
 ,p_button_plug_id=>wwv_flow_imp.id(7475275434048504)
@@ -273,6 +285,26 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_SUBMIT_PAGE'
 ,p_attribute_02=>'Y'
 );
+wwv_flow_imp_page.create_page_da_event(
+ p_id=>wwv_flow_imp.id(8593744466358102)
+,p_name=>'TEST_MESSAGE_ON_LOAD'
+,p_event_sequence=>20
+,p_bind_type=>'bind'
+,p_bind_event_type=>'ready'
+,p_required_patch=>wwv_flow_imp.id(14512796942362028)
+);
+wwv_flow_imp_page.create_page_da_action(
+ p_id=>wwv_flow_imp.id(8593810058358103)
+,p_event_id=>wwv_flow_imp.id(8593744466358102)
+,p_event_result=>'TRUE'
+,p_action_sequence=>10
+,p_execute_on_page_init=>'N'
+,p_action=>'NATIVE_JAVASCRIPT_CODE'
+,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'show_success(''Success Message'');',
+'//show_warning(''Warning Message'');',
+'//show_error(''Error Message'');'))
+);
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(7476211481048514)
 ,p_process_sequence=>10
@@ -285,6 +317,25 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_when_button_id=>wwv_flow_imp.id(7476159161048513)
 ,p_security_scheme=>wwv_flow_imp.id(60089834032939902)  -- IS_DEVELOPER
 ,p_internal_uid=>7476211481048514
+);
+wwv_flow_imp_page.create_page_process(
+ p_id=>wwv_flow_imp.id(8594111923358106)
+,p_process_sequence=>20
+,p_process_point=>'AFTER_SUBMIT'
+,p_process_type=>'NATIVE_PLSQL'
+,p_process_name=>'TEST_MESSAGE'
+,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
+'--core.send_',
+'                APEX_JSON.OPEN_OBJECT();',
+'                APEX_JSON.WRITE(''message'',  SYSDATE);',
+'                APEX_JSON.WRITE(''status'',   ''WARNING'');        -- SUCCESS, ERROR, WARNING',
+'                APEX_JSON.CLOSE_OBJECT();',
+''))
+,p_process_clob_language=>'PLSQL'
+,p_error_display_location=>'INLINE_IN_NOTIFICATION'
+,p_process_when_button_id=>wwv_flow_imp.id(8593901229358104)
+,p_process_success_message=>'{"message":"PUSHING REFRESH_JSON","status":"WARNING"}'
+,p_internal_uid=>8594111923358106
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(22778700306601017)

@@ -27,6 +27,7 @@ advanced:
   logging: true
   debugging: true
   compatibility-mode: 21.2 / 22.1 / 22.2
+  pass-ecid: N
 
 authentication: 
   public-user: APEX_PUBLIC_USER
@@ -52,9 +53,6 @@ security:
   embed-in-frames: Deny
   referrer-policy: strict-origin
   html-escaping-mode: Extended
-
-advanced: 
-  pass-ecid: N
 
 database-session: 
   parsing-schema: APPS
@@ -150,6 +148,136 @@ substitutions:
 
   value: 
     static-value: APP_
+
+component-settings: 
+- # ====== Component Setting: NATIVE_ADFBC =====================
+  id: 1387993850820069
+  identification: 
+    name: NATIVE_ADFBC
+    type: REST Data Source
+
+  subscription: 
+    version-number: 39913487784079
+
+- # ====== Component Setting: NATIVE_DISPLAY_SELECTOR ==========
+  id: 63284844761439023
+  identification: 
+    name: NATIVE_DISPLAY_SELECTOR
+    type: Region
+
+  settings: 
+    attribute-1: Y
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_STAR_RATING ===============
+  id: 63285138369439025
+  identification: 
+    name: NATIVE_STAR_RATING
+    type: Item
+
+  settings: 
+    attribute-1: fa-star
+    attribute-4: '#VALUE#'
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_SINGLE_CHECKBOX ===========
+  id: 63285423152439025
+  identification: 
+    name: NATIVE_SINGLE_CHECKBOX
+    type: Item
+
+  settings: 
+    attribute-1: Y
+    attribute-2: N
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_MAP_REGION ================
+  id: 63286061121439025
+  identification: 
+    name: NATIVE_MAP_REGION
+    type: Region
+
+  settings: 
+    attribute-1: Y
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_YES_NO ====================
+  id: 63286297686439025
+  identification: 
+    name: NATIVE_YES_NO
+    type: Item
+
+  settings: 
+    attribute-1: Y
+    attribute-3: N
+    attribute-5: SWITCH_CB
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_COLOR_PICKER ==============
+  id: 63286642756439026
+  identification: 
+    name: NATIVE_COLOR_PICKER
+    type: Item
+
+  settings: 
+    attribute-1: FULL
+    attribute-2: POPUP
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_IR ========================
+  id: 63286963426439026
+  identification: 
+    name: NATIVE_IR
+    type: Region
+
+  settings: 
+    attribute-1: IG
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_DATE_PICKER_APEX ==========
+  id: 63287223156439026
+  identification: 
+    name: NATIVE_DATE_PICKER_APEX
+    type: Item
+
+  settings: 
+    attribute-1: 'MONTH-PICKER:YEAR-PICKER'
+    attribute-2: VISIBLE
+    attribute-3: 15
+    attribute-4: FOCUS
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_GEOCODED_ADDRESS ==========
+  id: 63287489717439026
+  identification: 
+    name: NATIVE_GEOCODED_ADDRESS
+    type: Item
+
+  settings: 
+    attribute-1: RELAX_HOUSE_NUMBER
+    attribute-2: N
+    attribute-3: 'POPUP:ITEM'
+    attribute-4: default
+    attribute-6: LIST
+
+  subscription: 
+    version-number: 1
 
 pwa-screenshots: 
 - # ====== PWA Screenshot: Launchpad ===========================

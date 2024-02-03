@@ -1,4 +1,13 @@
 ---
+- # ====== Static Application File: app.min.css ================
+  id: 13894207680755441
+  identification: 
+    file-name: app.min.css
+
+  attributes: 
+    mime-type: text/css
+    file-character-set: Unicode UTF-8
+
 - # ====== Static Application File: icons/app-icon-144-rounded.p
   id: 13901725731457667
   identification: 
@@ -33,15 +42,6 @@
 
   attributes: 
     mime-type: image/png
-    file-character-set: Unicode UTF-8
-
-- # ====== Static Application File: app.min.css ================
-  id: 33772067947528538
-  identification: 
-    file-name: app.min.css
-
-  attributes: 
-    mime-type: text/css
     file-character-set: Unicode UTF-8
 
 - # ====== Static Application File: icons/app-icon-32.png ======

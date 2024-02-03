@@ -1,7 +1,7 @@
-prompt --application/shared_components/logic/application_items/format_date_short
+prompt --application/shared_components/navigation/listentry
 begin
 --   Manifest
---     APPLICATION ITEM: FORMAT_DATE_SHORT
+--     LIST ENTRY: 
 --   Manifest End
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.10.31'
@@ -11,13 +11,7 @@ wwv_flow_imp.component_begin (
 ,p_default_id_offset=>13870473903421503
 ,p_default_owner=>'APPS'
 );
-wwv_flow_imp_shared.create_flow_item(
- p_id=>wwv_flow_imp.id(14514281501389786)
-,p_name=>'FORMAT_DATE_SHORT'
-,p_scope=>'GLOBAL'
-,p_protection_level=>'I'
-,p_version_scn=>1
-);
+null;
 wwv_flow_imp.component_end;
 end;
 /

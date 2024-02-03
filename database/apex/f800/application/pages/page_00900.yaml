@@ -206,7 +206,7 @@ regions:
       show-total-count: false
 
     actions: 
-    - # ====== Action: MEDIA =======================================
+    - # ====== Action: Media =======================================
       id: 24622444162821127
       identification: 
         type: Media
@@ -224,7 +224,7 @@ regions:
       configuration: 
         build-option: NEVER # 14512796942362028
 
-    - # ====== Action: FULL_CARD ===================================
+    - # ====== Action: Full Card ===================================
       id: 24622587883821128
       identification: 
         type: Full Card
@@ -805,15 +805,13 @@ dynamic-actions:
 
   execution: 
     sequence: 60
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: Button
     button: EDIT_IMAGE # 24858567336145929
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Refresh =====================================
@@ -861,15 +859,13 @@ dynamic-actions:
 
   execution: 
     sequence: 70
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: Button
     button: EDIT_PROFILE # 24730493665693512
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   actions: 
   - # ====== Action: Set Value ===================================

@@ -1395,12 +1395,10 @@ dynamic-actions:
 
   execution: 
     sequence: 10
+    event-scope: Static
 
   when: 
     event: EVENT.EVENT.BROWSER.READY
-
-  execution: 
-    event-scope: Static
 
   server-side-condition: 
     type: Never

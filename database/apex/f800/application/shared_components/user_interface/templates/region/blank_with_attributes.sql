@@ -4,8 +4,8 @@ begin
 --     REGION TEMPLATE: BLANK_WITH_ATTRIBUTES
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
+ p_version_yyyy_mm_dd=>'2023.10.31'
+,p_release=>'23.2.3'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>800
 ,p_default_id_offset=>13870473903421503
@@ -25,7 +25,7 @@ wwv_flow_imp_shared.create_plug_template(
 ,p_translate_this_template=>'N'
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(25817689056131807)
+ p_id=>wwv_flow_imp.id(11629854360238630)
 ,p_plug_template_id=>wwv_flow_imp.id(63325094538439079)
 ,p_name=>'Region Body'
 ,p_placeholder=>'BODY'
@@ -36,7 +36,7 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(25818175829131807)
+ p_id=>wwv_flow_imp.id(11630391362238630)
 ,p_plug_template_id=>wwv_flow_imp.id(63325094538439079)
 ,p_name=>'Next'
 ,p_placeholder=>'NEXT'
@@ -47,7 +47,7 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(25818678827131807)
+ p_id=>wwv_flow_imp.id(11630816913238630)
 ,p_plug_template_id=>wwv_flow_imp.id(63325094538439079)
 ,p_name=>'Previous'
 ,p_placeholder=>'PREVIOUS'
@@ -58,7 +58,7 @@ wwv_flow_imp_shared.create_plug_tmpl_display_point(
 ,p_glv_new_row=>true
 );
 wwv_flow_imp_shared.create_plug_tmpl_display_point(
- p_id=>wwv_flow_imp.id(25819235362131808)
+ p_id=>wwv_flow_imp.id(11631373905238631)
 ,p_plug_template_id=>wwv_flow_imp.id(63325094538439079)
 ,p_name=>'Sub Regions'
 ,p_placeholder=>'SUB_REGIONS'

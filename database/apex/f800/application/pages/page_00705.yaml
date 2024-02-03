@@ -1361,16 +1361,14 @@ dynamic-actions:
 
   execution: 
     sequence: 10
+    event-scope: Static
+    type: Immediate
 
   when: 
     event: EVENT.EVENT.BROWSER.CHANGE
     selection-type: Item(s)
     item(s): 
     - P705_PAGE_GROUP
-
-  execution: 
-    event-scope: Static
-    type: Immediate
 
   security: 
     authorization-scheme: IS_USER # 43462402185717150
