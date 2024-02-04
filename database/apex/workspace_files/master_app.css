@@ -320,6 +320,11 @@ ul.a-CardView-items {
     grid-template-columns: repeat(6, minmax(0,1fr));
 }
 
+/* SHADOWS */
+.a-CardView {
+    box-shadow          : rgba(149, 157, 165, 0.15) 0 0 0.5rem;
+}
+
 
     
 /* FIX READ ONLY LABELS ON FORM TEXTAREA */
