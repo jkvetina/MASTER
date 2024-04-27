@@ -1,0 +1,170 @@
+---
+- # ====== Application Item: G_TODAY ===========================
+  id: 2925063021912
+  identification: 
+    name: G_TODAY
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: G_CONTEXT_ID ======================
+  id: 3115223022759
+  identification: 
+    name: G_CONTEXT_ID
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: G_APP_ID ==========================
+  id: 3585736030262
+  identification: 
+    name: G_APP_ID
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: FORMAT_NUMBER_CURRENCY ============
+  id: 4147152059841
+  identification: 
+    name: FORMAT_NUMBER_CURRENCY
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: FORMAT_INTEGER_CURRENCY ===========
+  id: 4430582060797
+  identification: 
+    name: FORMAT_INTEGER_CURRENCY
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: FORMAT_NUMBER =====================
+  id: 4589054062194
+  identification: 
+    name: FORMAT_NUMBER
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: FORMAT_INTEGER ====================
+  id: 4787069065105
+  identification: 
+    name: FORMAT_INTEGER
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: FORMAT_TIME =======================
+  id: 5028228066848
+  identification: 
+    name: FORMAT_TIME
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: FORMAT_TIME_SHORT =================
+  id: 5164442067819
+  identification: 
+    name: FORMAT_TIME_SHORT
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: FORMAT_DATE =======================
+  id: 5400863069076
+  identification: 
+    name: FORMAT_DATE
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: FORMAT_DATE_SHORT =================
+  id: 5565721069689
+  identification: 
+    name: FORMAT_DATE_SHORT
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: FORMAT_DATE_TIME ==================
+  id: 5831086071881
+  identification: 
+    name: FORMAT_DATE_TIME
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Item: G_APP_NAME ========================
+  id: 9388562002375669
+  identification: 
+    name: G_APP_NAME
+    scope: Global
+
+  security: 
+    session-state-protection: Restricted - May not be set from browser
+    escape-special-characters: true
+
+  subscription: 
+    version-number: 1
+

@@ -1,6 +1,6 @@
 ---
 - # ====== Substitution: APP_NAME ==============================
-  id: 1
+  id: 13873167262449265
   identification: 
     name: APP_NAME
 
@@ -8,7 +8,7 @@
     prompt-substitution: false
 
 - # ====== Substitution: APP_DESC ==============================
-  id: 2
+  id: 13873167262449264
   identification: 
     name: APP_DESC
 
@@ -16,7 +16,7 @@
     prompt-substitution: false
 
 - # ====== Substitution: APP_PREFIX ============================
-  id: 3
+  id: 13873167262449263
   identification: 
     name: APP_PREFIX
 

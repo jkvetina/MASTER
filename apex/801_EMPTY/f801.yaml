@@ -1,6 +1,6 @@
 ---
 # ====== Application: App Template ===========================
-id: 801
+id: 707
 identification: 
   name: App Template
   alias: EMPTY
@@ -27,10 +27,11 @@ advanced:
   logging: true
   debugging: true
   compatibility-mode: 21.2 / 22.1 / 22.2
+  pass-ecid: Y
 
 authentication: 
   public-user: APEX_PUBLIC_USER
-  authentication-scheme: MASTER - OPEN_DOOR (TESTING ONLY) # 50432601105828086
+  authentication-scheme: MASTER - OPEN_DOOR (TESTING ONLY) # 36559433843378820
 
 authorization: 
   source-for-role-or-group-schemes: Custom Code
@@ -51,9 +52,6 @@ security:
   embed-in-frames: Deny
   referrer-policy: strict-origin
   html-escaping-mode: Extended
-
-advanced: 
-  pass-ecid: Y
 
 database-session: 
   parsing-schema: APPS
@@ -96,7 +94,7 @@ navigation:
     page: LOGIN
 
 navigation-menu: 
-  list-template: Top Navigation Menu # 14135937982277048
+  list-template: Top Navigation Menu # 262770719827782
   template-options: 
   - '#DEFAULT#'
   - js-tabLike
@@ -104,8 +102,8 @@ navigation-menu:
 
 navigation-bar: 
   implementation: List
-  list: NAVIGATION # 13912259202248569
-  list-template: Navigation Q23 # 33535392271645455
+  list: NAVIGATION # 39091939799303
+  list-template: Navigation Q23 # 19662225009196189
   template-options: 
   - '#DEFAULT#'
 
@@ -128,7 +126,7 @@ attributes:
 
 substitutions: 
 - # ====== Substitution: APP_NAME ==============================
-  id: 1
+  id: 13873167262449265
   identification: 
     name: APP_NAME
 
@@ -136,7 +134,7 @@ substitutions:
     static-value: Empty App
 
 - # ====== Substitution: APP_DESC ==============================
-  id: 2
+  id: 13873167262449264
   identification: 
     name: APP_DESC
 
@@ -144,10 +142,140 @@ substitutions:
     static-value: Application description visible in Launchpad
 
 - # ====== Substitution: APP_PREFIX ============================
-  id: 3
+  id: 13873167262449263
   identification: 
     name: APP_PREFIX
 
   value: 
     static-value: APP_
+
+component-settings: 
+- # ====== Component Setting: NATIVE_ADFBC =====================
+  id: 12484197572629196
+  identification: 
+    name: NATIVE_ADFBC
+    type: REST Data Source
+
+  subscription: 
+    version-number: 39913487784112
+
+- # ====== Component Setting: NATIVE_DISPLAY_SELECTOR ==========
+  id: 64077543679595711
+  identification: 
+    name: NATIVE_DISPLAY_SELECTOR
+    type: Region
+
+  settings: 
+    attribute-1: Y
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_STAR_RATING ===============
+  id: 64077837287595713
+  identification: 
+    name: NATIVE_STAR_RATING
+    type: Item
+
+  settings: 
+    attribute-1: fa-star
+    attribute-4: '#VALUE#'
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_SINGLE_CHECKBOX ===========
+  id: 64078122070595713
+  identification: 
+    name: NATIVE_SINGLE_CHECKBOX
+    type: Item
+
+  settings: 
+    attribute-1: Y
+    attribute-2: N
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_MAP_REGION ================
+  id: 64078760039595713
+  identification: 
+    name: NATIVE_MAP_REGION
+    type: Region
+
+  settings: 
+    attribute-1: Y
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_YES_NO ====================
+  id: 64078996604595713
+  identification: 
+    name: NATIVE_YES_NO
+    type: Item
+
+  settings: 
+    attribute-1: Y
+    attribute-3: N
+    attribute-5: SWITCH_CB
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_COLOR_PICKER ==============
+  id: 64079341674595714
+  identification: 
+    name: NATIVE_COLOR_PICKER
+    type: Item
+
+  settings: 
+    attribute-1: FULL
+    attribute-2: POPUP
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_IR ========================
+  id: 64079662344595714
+  identification: 
+    name: NATIVE_IR
+    type: Region
+
+  settings: 
+    attribute-1: IG
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_DATE_PICKER_APEX ==========
+  id: 64079922074595714
+  identification: 
+    name: NATIVE_DATE_PICKER_APEX
+    type: Item
+
+  settings: 
+    attribute-1: 'MONTH-PICKER:YEAR-PICKER'
+    attribute-2: VISIBLE
+    attribute-3: 15
+    attribute-4: FOCUS
+
+  subscription: 
+    version-number: 1
+
+- # ====== Component Setting: NATIVE_GEOCODED_ADDRESS ==========
+  id: 64080188635595714
+  identification: 
+    name: NATIVE_GEOCODED_ADDRESS
+    type: Item
+
+  settings: 
+    attribute-1: RELAX_HOUSE_NUMBER
+    attribute-2: N
+    attribute-3: 'POPUP:ITEM'
+    attribute-4: default
+    attribute-6: LIST
+
+  subscription: 
+    version-number: 1
 

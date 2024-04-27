@@ -1,0 +1,342 @@
+---
+# ====== Page: Global Page ===================================
+id: 0
+identification: 
+  name: Global Page
+  page-group: __ INTERNAL # 674590285877100
+
+regions: 
+- # ====== Region: ITEMS =======================================
+  id: 817540139986855
+  identification: 
+    title: ITEMS
+    type: Static Content
+
+  layout: 
+    sequence: 30
+    parent-region: No Parent
+    position: BEFORE_FOOTER
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 129413206827702
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: JS ==========================================
+  id: 50242057179033025
+  identification: 
+    title: JS
+    type: Static Content
+
+  source: 
+    html-code: |
+      <script>
+      </script>
+
+  layout: 
+    sequence: 20
+    parent-region: No Parent
+    position: BEFORE_FOOTER
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 129413206827702
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+- # ====== Region: CSS =========================================
+  id: 64642307492191297
+  identification: 
+    title: CSS
+    type: Static Content
+
+  source: 
+    html-code: |
+      <style>
+      </style>
+
+  layout: 
+    sequence: 10
+    parent-region: No Parent
+    position: BEFORE_FOOTER
+    start-new-layout: false
+    start-new-row: true
+    column: Automatic
+    new-column: true
+    column-span: Automatic
+
+  appearance: 
+    template: Blank with Attributes # 129413206827702
+    template-options: 
+    - '#DEFAULT#'
+    render-components: Above Content
+
+  accessibility: 
+    use-landmark: true
+    landmark-type: Template Default
+
+  advanced: 
+    region-display-selector: true
+    exclude-title-from-translation: false
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
+  server-cache: 
+    caching: Disabled
+
+  customization: 
+    customizable: Not Customizable By End Users
+
+  attributes: 
+    settings: 
+      output-as: HTML
+      expand-shortcuts: false
+
+page-items: 
+- # ====== Page Item: P0_AJAX_PING_INTERVAL ====================
+  id: 817380314986853
+  identification: 
+    name: P0_AJAX_PING_INTERVAL
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 20
+    region: ITEMS # 817540139986855
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Static Value
+    static-value: 10
+    used: Only when current value in session state is null
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+  comments: 
+    comments: Interval in seconds to fire AJAX_PING process
+
+- # ====== Page Item: P0_SUCCESS_MESSAGE =======================
+  id: 13545331135809336
+  identification: 
+    name: P0_SUCCESS_MESSAGE
+    type: Hidden
+
+  settings: 
+    value-protected: true
+
+  layout: 
+    sequence: 10
+    region: ITEMS # 817540139986855
+    position: BODY
+
+  advanced: 
+    warn-on-unsaved-changes: Page Default
+
+  source: 
+    type: Null
+    used: Always, replacing any existing value in session state
+
+  session-state: 
+    data-type: VARCHAR2
+    storage: Per Session (Persistent)
+
+  security: 
+    session-state-protection: Unrestricted
+    store-value-encrypted-in-session-state: false
+    restricted-characters: All characters can be saved.
+
+  comments: 
+    comments: For passing messages from modal dialogs
+
+dynamic-actions: 
+- # ====== Dynamic Action: DIALOG_CLOSED =======================
+  id: 13545468944809338
+  identification: 
+    name: DIALOG_CLOSED
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    selection-type: JavaScript Expression
+    javascript-expression: window
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 13545584714809339
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: |
+        console.log('MODAL_CLOSED', this.data.dialogPageId, this.data.closeAction);
+        if (this.data && this.data.successMessage && this.data.successMessage.text) {
+            show_success(this.data.successMessage.text);
+        }
+
+    execution: 
+      sequence: 10
+      event: DIALOG_CLOSED # 13545468944809338
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: CLOSE_DIALOG ========================
+  id: 13549606898809379
+  identification: 
+    name: CLOSE_DIALOG
+
+  execution: 
+    sequence: 10
+    event-scope: Static
+    type: Immediate
+
+  when: 
+    event: EVENT.EVENT.BROWSER.CLICK
+    selection-type: jQuery Selector
+    jquery-selector: '#CLOSE_DIALOG'
+
+  actions: 
+  - # ====== Action: Close Dialog ================================
+    id: 13549646044809380
+    identification: 
+      action: Close Dialog
+
+    execution: 
+      sequence: 40
+      event: CLOSE_DIALOG # 13549606898809379
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+  - # ====== Action: Confirm =====================================
+    id: 13897970636864346
+    identification: 
+      action: Confirm
+
+    settings: 
+      message: There are unsaved changes on the page, do you want to continue?
+      style: Danger
+      icon: ' '
+
+    execution: 
+      sequence: 20
+      event: CLOSE_DIALOG # 13549606898809379
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+    client-side-condition: 
+      type: JavaScript expression
+      javascript-expression: apex.page.isChanged()
+
+  - # ====== Action: Alert =======================================
+    id: 26976959295553771
+    identification: 
+      action: Alert
+
+    settings: 
+      message: XX2
+      style: Default
+
+    execution: 
+      sequence: 10
+      event: CLOSE_DIALOG # 13549606898809379
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+
+- # ====== Dynamic Action: CHECK_SESSION =======================
+  id: 26152142884365657
+  identification: 
+    name: CHECK_SESSION
+
+  execution: 
+    sequence: 20
+    event-scope: Static
+
+  when: 
+    event: EVENT.EVENT.BROWSER.READY
+
+  actions: 
+  - # ====== Action: Execute JavaScript Code =====================
+    id: 26152232930365658
+    identification: 
+      action: Execute JavaScript Code
+
+    settings: 
+      code: check_session();
+
+    execution: 
+      sequence: 10
+      event: CHECK_SESSION # 26152142884365657
+      fire-when-event-result-is: True
+      fire-on-initialization: false
+

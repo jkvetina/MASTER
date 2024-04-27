@@ -1,0 +1,43 @@
+---
+- # ====== Application Process: INIT_DEFAULTS ==================
+  id: 775085193254130
+  identification: 
+    name: INIT_DEFAULTS
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: app.init_defaults();
+
+  execution: 
+    sequence: -10
+    point: Before Header
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
+  subscription: 
+    version-number: 1
+
+- # ====== Application Process: AJAX_PING ======================
+  id: 1609994652400282
+  identification: 
+    name: AJAX_PING
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: app.ajax_ping();
+
+  execution: 
+    sequence: 0
+    point: Ajax Callback
+
+  security: 
+    authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
+
+  subscription: 
+    version-number: 1
+
