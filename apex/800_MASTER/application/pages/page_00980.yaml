@@ -5,11 +5,11 @@ identification:
   name: '#fa-question-circle'
   alias: HELP
   title: '#fa-question-circle'
-  page-group: __ INTERNAL # 14547468167324179
+  page-group: __ INTERNAL # 676994263902676
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Drawer # 63289183138439042
+  dialog-template: Drawer # 49418709235017539
   template-options: 
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
@@ -68,7 +68,7 @@ server-cache:
 
 regions: 
 - # ====== Region: [CONTENT] ===================================
-  id: 23520192747581632
+  id: 9649718844160129
   identification: 
     title: '[CONTENT]'
     type: Dynamic Content
@@ -101,7 +101,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -127,7 +127,7 @@ regions:
       lazy-loading: false
 
 - # ====== Region: &P980_PAGE_NAME. ============================
-  id: 38168018527510827
+  id: 24297544624089324
   identification: 
     title: '&P980_PAGE_NAME.'
     type: Static Content
@@ -143,7 +143,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -169,7 +169,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P980_PAGE_NAME ===========================
-  id: 23520543569581636
+  id: 9650069666160133
   identification: 
     name: P980_PAGE_NAME
     type: Hidden
@@ -179,7 +179,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: '&P980_PAGE_NAME.' # 38168018527510827
+    region: '&P980_PAGE_NAME.' # 24297544624089324
     position: BODY
 
   advanced: 
@@ -199,7 +199,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P980_PAGE_ID =============================
-  id: 23520666102581637
+  id: 9650192199160134
   identification: 
     name: P980_PAGE_ID
     type: Hidden
@@ -209,7 +209,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: '&P980_PAGE_NAME.' # 38168018527510827
+    region: '&P980_PAGE_NAME.' # 24297544624089324
     position: BODY
 
   advanced: 
@@ -229,7 +229,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P980_APP_ID ==============================
-  id: 25477710036860906
+  id: 11607236133439403
   identification: 
     name: P980_APP_ID
     type: Hidden
@@ -239,7 +239,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: '&P980_PAGE_NAME.' # 38168018527510827
+    region: '&P980_PAGE_NAME.' # 24297544624089324
     position: BODY
 
   advanced: 
@@ -260,14 +260,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CLOSE_DIALOG ================================
-  id: 23520285924581633
+  id: 9649812021160130
   identification: 
     button-name: CLOSE_DIALOG
     label: Close Dialog
 
   layout: 
     sequence: 10
-    region: '&P980_PAGE_NAME.' # 38168018527510827
+    region: '&P980_PAGE_NAME.' # 24297544624089324
     position: UP
     start-new-layout: false
     start-new-row: true
@@ -276,7 +276,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 63463317880439166
+    button-template: Icon # 49592843977017663
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -291,7 +291,7 @@ buttons:
 
 computations: 
 - # ====== Computation: P980_PAGE_NAME =========================
-  id: 23520739686581638
+  id: 9650265783160135
   identification: 
     item-name: P980_PAGE_NAME
 

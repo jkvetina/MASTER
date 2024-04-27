@@ -5,7 +5,7 @@ identification:
   name: '#fa-anchor Contexts'
   alias: CONTEXTS
   title: Contexts
-  page-group: ADMIN - SETTINGS # 24262084363106217
+  page-group: ADMIN - SETTINGS # 10391610459684714
 
 appearance: 
   page-mode: Normal
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 63924538900170215
+  authorization-scheme: IS_ADMIN # 50054064996748712
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -40,7 +40,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Contexts for &G_APP_NAME. ===================
-  id: 39538821146849321
+  id: 25668347243427818
   identification: 
     title: Contexts for &G_APP_NAME.
     type: Static Content
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -81,7 +81,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Contexts [GRID] =============================
-  id: 39538893940849322
+  id: 25668420037427819
   identification: 
     title: Contexts [GRID]
     type: Interactive Grid
@@ -105,7 +105,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report # 49485051460017594
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -125,7 +125,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 39539046116849323
+    id: 25668572213427820
     edit: 
       enabled: true
       allowed-operations: 
@@ -179,14 +179,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 39556107754898299
+      id: 25685633851476796
       identification: 
         name: Primary Report
         alias: 197741
 
   columns: 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 19757817242896023
+    id: 5887343339474520
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -195,7 +195,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 19757905229896024
+    id: 5887431326474521
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -209,7 +209,7 @@ regions:
       sequence: 10
 
   - # ====== Column: APP_ID ======================================
-    id: 39539181383849324
+    id: 25668707480427821
     identification: 
       column-name: APP_ID
       type: Hidden
@@ -246,7 +246,7 @@ regions:
       sort: false
 
   - # ====== Column: CONTEXT_ID ==================================
-    id: 39539224014849325
+    id: 25668750111427822
     identification: 
       column-name: CONTEXT_ID
       type: Text Field
@@ -300,7 +300,7 @@ regions:
       hide: true
 
   - # ====== Column: CONTEXT_NAME ================================
-    id: 39539313610849326
+    id: 25668839707427823
     identification: 
       column-name: CONTEXT_NAME
       type: Text Field
@@ -355,7 +355,7 @@ regions:
       hide: true
 
   - # ====== Column: CONTEXT_GROUP ===============================
-    id: 39539463432849327
+    id: 25668989529427824
     identification: 
       column-name: CONTEXT_GROUP
       type: Text Field
@@ -410,7 +410,7 @@ regions:
       hide: true
 
   - # ====== Column: CONTEXT_DESC ================================
-    id: 39539559268849328
+    id: 25669085365427825
     identification: 
       column-name: CONTEXT_DESC
       type: Text Field
@@ -464,7 +464,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER# ======================================
-    id: 39539686967849329
+    id: 25669213064427826
     identification: 
       column-name: ORDER#
       type: Number Field
@@ -511,7 +511,7 @@ regions:
       hide: true
 
   - # ====== Column: UPDATED_BY ==================================
-    id: 39539717814849330
+    id: 25669243911427827
     identification: 
       column-name: UPDATED_BY
       type: Hidden
@@ -545,7 +545,7 @@ regions:
       sort: false
 
   - # ====== Column: UPDATED_AT ==================================
-    id: 39539861033849331
+    id: 25669387130427828
     identification: 
       column-name: UPDATED_AT
       type: Hidden
@@ -619,12 +619,12 @@ regions:
 
 processes: 
 - # ====== Process: SAVE_CONTEXTS ==============================
-  id: 19758077544896025
+  id: 5887603641474522
   identification: 
     name: SAVE_CONTEXTS
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
-    editable-region: Contexts [GRID] # 39538893940849322
+    editable-region: Contexts [GRID] # 25668420037427819
 
   settings: 
     target-type: Region Source

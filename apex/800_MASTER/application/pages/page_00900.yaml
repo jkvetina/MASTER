@@ -5,7 +5,7 @@ identification:
   name: '#USER_NAME#'
   alias: USER
   title: User Profile
-  page-group: USER_PROFILE # 18317012587086665
+  page-group: USER_PROFILE # 4446538683665162
 
 appearance: 
   page-mode: Normal
@@ -46,7 +46,7 @@ css:
     
 
 security: 
-  authorization-scheme: IS_USER # 43462402185717150
+  authorization-scheme: IS_USER # 29591928282295647
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -73,7 +73,7 @@ help:
 
 regions: 
 - # ====== Region: APPLICATION_ROLES ===========================
-  id: 24620825912821111
+  id: 10750352009399608
   identification: 
     title: APPLICATION_ROLES
     type: Static Content
@@ -89,7 +89,7 @@ regions:
     column-span: 4
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -114,7 +114,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: User Profile [CARD] =========================
-  id: 24621546834821118
+  id: 10751072931399615
   identification: 
     title: User Profile [CARD]
     type: Cards
@@ -132,7 +132,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: USER_PROFILE # 24622294394821125
+    parent-region: USER_PROFILE # 10751820491399622
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -141,7 +141,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Cards Container # 63327898435439081
+    template: Cards Container # 49457424532017578
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -161,7 +161,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 24621670954821119
+    id: 10751197051399616
     appearance: 
       layout: Horizontal (Row)
 
@@ -207,7 +207,7 @@ regions:
 
     actions: 
     - # ====== Action: Media =======================================
-      id: 24622444162821127
+      id: 10751970259399624
       identification: 
         type: Media
 
@@ -222,10 +222,10 @@ regions:
           clear-cache: 902
 
       configuration: 
-        build-option: NEVER # 14512796942362028
+        build-option: NEVER # 642323038940525
 
     - # ====== Action: Full Card ===================================
-      id: 24622587883821128
+      id: 10752113980399625
       identification: 
         type: Full Card
 
@@ -240,17 +240,17 @@ regions:
           clear-cache: 901
 
       configuration: 
-        build-option: NEVER # 14512796942362028
+        build-option: NEVER # 642323038940525
 
 - # ====== Region: User Profile ================================
-  id: 24621758124821120
+  id: 10751284221399617
   identification: 
     title: User Profile
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: USER_PROFILE # 24622294394821125
+    parent-region: USER_PROFILE # 10751820491399622
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -259,7 +259,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -284,7 +284,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: USER_PROFILE ================================
-  id: 24622294394821125
+  id: 10751820491399622
   identification: 
     title: USER_PROFILE
     type: Static Content
@@ -300,7 +300,7 @@ regions:
     column-span: 4
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -325,7 +325,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: ACHIEVEMENTS ================================
-  id: 25063859291730018
+  id: 11193385388308515
   identification: 
     title: ACHIEVEMENTS
     type: Static Content
@@ -341,7 +341,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -369,7 +369,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Street Credit [CHART] =======================
-  id: 25063922276730019
+  id: 11193448373308516
   identification: 
     title: Street Credit [CHART]
     type: Chart
@@ -386,7 +386,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: ACHIEVEMENTS # 25063859291730018
+    parent-region: ACHIEVEMENTS # 11193385388308515
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -395,7 +395,7 @@ regions:
     column-span: 6
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -421,7 +421,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 25064029507730020
+    id: 11193555604308517
     chart: 
       type: Status Meter Gauge
 
@@ -451,7 +451,7 @@ regions:
 
     series: 
     - # ====== Series: Gauge =======================================
-      id: 25064191824730021
+      id: 11193717921308518
       identification: 
         name: Gauge
 
@@ -479,14 +479,14 @@ regions:
         position: Below Marker
 
 - # ====== Region: Street Credit ===============================
-  id: 25064471611730024
+  id: 11193997708308521
   identification: 
     title: Street Credit
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: ACHIEVEMENTS # 25063859291730018
+    parent-region: ACHIEVEMENTS # 11193385388308515
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -495,7 +495,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -520,14 +520,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: App Roles ===================================
-  id: 75653747485463881
+  id: 61783273582042378
   identification: 
     title: App Roles
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: APPLICATION_ROLES # 24620825912821111
+    parent-region: APPLICATION_ROLES # 10750352009399608
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -536,7 +536,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -561,7 +561,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: App Roles [CARDS] ===========================
-  id: 75654026921463884
+  id: 61783553018042381
   identification: 
     title: App Roles [CARDS]
     type: Cards
@@ -578,7 +578,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: APPLICATION_ROLES # 24620825912821111
+    parent-region: APPLICATION_ROLES # 10750352009399608
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -587,7 +587,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Cards Container # 63327898435439081
+    template: Cards Container # 49457424532017578
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -607,7 +607,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 14562200093376435
+    id: 691726189954932
     appearance: 
       layout: Grid
       grid-columns: 2 Columns
@@ -647,7 +647,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P900_EDIT_PROFILE_HOT ====================
-  id: 24859995898145943
+  id: 10989521994724440
   identification: 
     name: P900_EDIT_PROFILE_HOT
     type: Hidden
@@ -657,7 +657,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: USER_PROFILE # 24622294394821125
+    region: USER_PROFILE # 10751820491399622
     position: BODY
 
   advanced: 
@@ -690,7 +690,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P900_EDIT_IMAGE_HOT ======================
-  id: 24860035774145944
+  id: 10989561870724441
   identification: 
     name: P900_EDIT_IMAGE_HOT
     type: Hidden
@@ -700,7 +700,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: USER_PROFILE # 24622294394821125
+    region: USER_PROFILE # 10751820491399622
     position: BODY
 
   advanced: 
@@ -730,14 +730,14 @@ page-items:
 
 buttons: 
 - # ====== Button: EDIT_PROFILE ================================
-  id: 24730493665693512
+  id: 10860019762272009
   identification: 
     button-name: EDIT_PROFILE
     label: Edit Profile
 
   layout: 
     sequence: 20
-    region: User Profile # 24621758124821120
+    region: User Profile # 10751284221399617
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -746,7 +746,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 63463317880439166
+    button-template: Icon # 49592843977017663
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -764,14 +764,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: EDIT_IMAGE ==================================
-  id: 24858567336145929
+  id: 10988093432724426
   identification: 
     button-name: EDIT_IMAGE
     label: Edit Profile Image
 
   layout: 
     sequence: 10
-    region: User Profile # 24621758124821120
+    region: User Profile # 10751284221399617
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -780,7 +780,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 63463317880439166
+    button-template: Icon # 49592843977017663
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -799,7 +799,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: ON_CLOSE_IMAGE ======================
-  id: 24858692681145930
+  id: 10988218777724427
   identification: 
     name: ON_CLOSE_IMAGE
 
@@ -811,26 +811,26 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: Button
-    button: EDIT_IMAGE # 24858567336145929
+    button: EDIT_IMAGE # 10988093432724426
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 24729319809693501
+    id: 10858845906271998
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: User Profile [CARD] # 24621546834821118
+      region: User Profile [CARD] # 10751072931399615
 
     execution: 
       sequence: 20
-      event: ON_CLOSE_IMAGE # 24858692681145930
+      event: ON_CLOSE_IMAGE # 10988218777724427
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Set Value ===================================
-    id: 24858366234145927
+    id: 10987892330724424
     identification: 
       action: Set Value
 
@@ -846,14 +846,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: ON_CLOSE_IMAGE # 24858692681145930
+      event: ON_CLOSE_IMAGE # 10988218777724427
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
 - # ====== Dynamic Action: ON_CLOSE_PROFILE ====================
-  id: 24858944222145933
+  id: 10988470318724430
   identification: 
     name: ON_CLOSE_PROFILE
 
@@ -865,11 +865,11 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
     selection-type: Button
-    button: EDIT_PROFILE # 24730493665693512
+    button: EDIT_PROFILE # 10860019762272009
 
   actions: 
   - # ====== Action: Set Value ===================================
-    id: 24859052395145934
+    id: 10988578491724431
     identification: 
       action: Set Value
 
@@ -885,24 +885,24 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: ON_CLOSE_PROFILE # 24858944222145933
+      event: ON_CLOSE_PROFILE # 10988470318724430
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Refresh =====================================
-    id: 24859242130145936
+    id: 10988768226724433
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: User Profile [CARD] # 24621546834821118
+      region: User Profile [CARD] # 10751072931399615
 
     execution: 
       sequence: 10
-      event: ON_CLOSE_PROFILE # 24858944222145933
+      event: ON_CLOSE_PROFILE # 10988470318724430
       fire-when-event-result-is: True
       fire-on-initialization: false
 

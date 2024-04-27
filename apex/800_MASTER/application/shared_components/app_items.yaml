@@ -1,6 +1,6 @@
 ---
 - # ====== Application Item: FORMAT_DATE =======================
-  id: 14514018383388693
+  id: 643544479967190
   identification: 
     name: FORMAT_DATE
     scope: Global
@@ -13,7 +13,7 @@
     version-number: 1
 
 - # ====== Application Item: FORMAT_DATE_SHORT =================
-  id: 14514281501389786
+  id: 643807597968283
   identification: 
     name: FORMAT_DATE_SHORT
     scope: Global
@@ -26,7 +26,7 @@
     version-number: 1
 
 - # ====== Application Item: FORMAT_DATE_TIME ==================
-  id: 14514422456390727
+  id: 643948552969224
   identification: 
     name: FORMAT_DATE_TIME
     scope: Global
@@ -39,7 +39,7 @@
     version-number: 1
 
 - # ====== Application Item: FORMAT_INTEGER ====================
-  id: 14514681233391894
+  id: 644207329970391
   identification: 
     name: FORMAT_INTEGER
     scope: Global
@@ -52,7 +52,7 @@
     version-number: 1
 
 - # ====== Application Item: FORMAT_INTEGER_CURRENCY ===========
-  id: 14514881000392802
+  id: 644407096971299
   identification: 
     name: FORMAT_INTEGER_CURRENCY
     scope: Global
@@ -65,7 +65,7 @@
     version-number: 1
 
 - # ====== Application Item: FORMAT_NUMBER =====================
-  id: 14515090266393695
+  id: 644616362972192
   identification: 
     name: FORMAT_NUMBER
     scope: Global
@@ -78,7 +78,7 @@
     version-number: 1
 
 - # ====== Application Item: FORMAT_NUMBER_CURRENCY ============
-  id: 14515228786394685
+  id: 644754882973182
   identification: 
     name: FORMAT_NUMBER_CURRENCY
     scope: Global
@@ -91,7 +91,7 @@
     version-number: 1
 
 - # ====== Application Item: FORMAT_TIME =======================
-  id: 14515413288395583
+  id: 644939384974080
   identification: 
     name: FORMAT_TIME
     scope: Global
@@ -104,7 +104,7 @@
     version-number: 1
 
 - # ====== Application Item: FORMAT_TIME_SHORT =================
-  id: 14515609264396578
+  id: 645135360975075
   identification: 
     name: FORMAT_TIME_SHORT
     scope: Global
@@ -117,7 +117,7 @@
     version-number: 1
 
 - # ====== Application Item: G_APP_ID ==========================
-  id: 14515828783397565
+  id: 645354879976062
   identification: 
     name: G_APP_ID
     scope: Global
@@ -130,7 +130,7 @@
     version-number: 1
 
 - # ====== Application Item: G_CONTEXT_ID ======================
-  id: 14516038395398443
+  id: 645564491976940
   identification: 
     name: G_CONTEXT_ID
     scope: Global
@@ -143,7 +143,7 @@
     version-number: 1
 
 - # ====== Application Item: G_TODAY ===========================
-  id: 14516421474400265
+  id: 645947570978762
   identification: 
     name: G_TODAY
     scope: Global
@@ -156,7 +156,7 @@
     version-number: 1
 
 - # ====== Application Item: G_APP_NAME ========================
-  id: 14609668094338970
+  id: 739194190917467
   identification: 
     name: G_APP_NAME
     scope: Global
@@ -169,7 +169,7 @@
     version-number: 1
 
 - # ====== Application Item: G_USER_NAME =======================
-  id: 24817650784743569
+  id: 10947176881322066
   identification: 
     name: G_USER_NAME
     scope: Global
@@ -182,7 +182,7 @@
     version-number: 1
 
 - # ====== Application Item: G_WORKSPACE =======================
-  id: 24819818717749027
+  id: 10949344814327524
   identification: 
     name: G_WORKSPACE
     scope: Global
@@ -195,7 +195,7 @@
     version-number: 1
 
 - # ====== Application Item: G_USER_FIRST_NAME =================
-  id: 24820854089759135
+  id: 10950380186337632
   identification: 
     name: G_USER_FIRST_NAME
     scope: Global
@@ -208,7 +208,7 @@
     version-number: 1
 
 - # ====== Application Item: G_ENV =============================
-  id: 24821339739768286
+  id: 10950865836346783
   identification: 
     name: G_ENV
     scope: Global

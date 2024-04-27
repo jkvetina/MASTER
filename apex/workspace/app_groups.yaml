@@ -1,9 +1,6 @@
 ---
-- # ====== Application Group: LAUNCHPAD ========================
-  id: 14521045818542929
+- # ====== Application Group: MASTER ===========================
+  id: 650981105133097
   identification: 
-    name: LAUNCHPAD
-
-  comments: 
-    comments: Apps visible in Launchpad
+    name: MASTER
 

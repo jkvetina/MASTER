@@ -5,7 +5,7 @@ identification:
   name: '#fa-dial-gauge-chart Dashboard'
   alias: DASHBOARD
   title: Dashboard
-  page-group: ADMIN - DASHBOARD # 24261994233103408
+  page-group: ADMIN - DASHBOARD # 10391520329681905
 
 appearance: 
   page-mode: Normal
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 63924538900170215
+  authorization-scheme: IS_ADMIN # 50054064996748712
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -40,7 +40,7 @@ server-cache:
 
 regions: 
 - # ====== Region: INVALID_OBJECTS [GRID] ======================
-  id: 39017898516935440
+  id: 25147424613513937
   identification: 
     title: INVALID_OBJECTS [GRID]
     type: Interactive Grid
@@ -54,7 +54,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Invalid Objects # 39623408803128535
+    parent-region: Invalid Objects # 25752934899707032
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -63,7 +63,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report # 49485051460017594
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -83,7 +83,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 39624243618128543
+    id: 25753769714707040
     edit: 
       enabled: false
 
@@ -132,14 +132,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 39656839246864025
+      id: 25786365343442522
       identification: 
         name: Primary Report
         alias: 396569
 
   columns: 
   - # ====== Column: OWNER =======================================
-    id: 39624359247128544
+    id: 25753885343707041
     identification: 
       column-name: OWNER
       type: Text Field
@@ -194,7 +194,7 @@ regions:
       hide: true
 
   - # ====== Column: OBJECT_NAME =================================
-    id: 39624481646128545
+    id: 25754007742707042
     identification: 
       column-name: OBJECT_NAME
       type: Text Field
@@ -249,7 +249,7 @@ regions:
       hide: true
 
   - # ====== Column: OBJECT_TYPE =================================
-    id: 39624882798128549
+    id: 25754408894707046
     identification: 
       column-name: OBJECT_TYPE
       type: Text Field
@@ -304,7 +304,7 @@ regions:
       hide: true
 
   - # ====== Column: LAST_DDL_TIME ===============================
-    id: 39650911467838301
+    id: 25780437564416798
     identification: 
       column-name: LAST_DDL_TIME
       type: Date Picker
@@ -359,7 +359,7 @@ regions:
       hide: true
 
   - # ====== Column: STATUS ======================================
-    id: 39651131890838303
+    id: 25780657987416800
     identification: 
       column-name: STATUS
       type: Text Field
@@ -414,7 +414,7 @@ regions:
       hide: true
 
   - # ====== Column: ACTION_RECOMPILE ============================
-    id: 39653421347838326
+    id: 25782947444416823
     identification: 
       column-name: ACTION_RECOMPILE
       type: Link
@@ -473,7 +473,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: DEPENDENCIES ================================
-    id: 39654124499838333
+    id: 25783650596416830
     identification: 
       column-name: DEPENDENCIES
       type: Text Field
@@ -566,7 +566,7 @@ regions:
       alignment: center
 
 - # ====== Region: MVW_OVERVIEW [GRID] =========================
-  id: 39017987082935441
+  id: 25147513179513938
   identification: 
     title: MVW_OVERVIEW [GRID]
     type: Interactive Grid
@@ -580,7 +580,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Materialized Views # 39623637698128537
+    parent-region: Materialized Views # 25753163794707034
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -589,7 +589,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report # 49485051460017594
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -609,7 +609,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 39018061862935442
+    id: 25147587959513939
     edit: 
       enabled: false
 
@@ -658,14 +658,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 39625928207149677
+      id: 25755454303728174
       identification: 
         name: Primary Report
         alias: 396260
 
   columns: 
   - # ====== Column: MVIEW_NAME ==================================
-    id: 39018279509935444
+    id: 25147805606513941
     identification: 
       column-name: MVIEW_NAME
       type: Text Field
@@ -720,7 +720,7 @@ regions:
       hide: true
 
   - # ====== Column: STALENESS ===================================
-    id: 39621004682128511
+    id: 25750530778707008
     identification: 
       column-name: STALENESS
       type: Text Field
@@ -775,7 +775,7 @@ regions:
       hide: true
 
   - # ====== Column: COMPILE_STATE ===============================
-    id: 39621851155128519
+    id: 25751377251707016
     identification: 
       column-name: COMPILE_STATE
       type: Text Field
@@ -830,7 +830,7 @@ regions:
       hide: true
 
   - # ====== Column: LAST_REFRESHED_AT ===========================
-    id: 39623012805128531
+    id: 25752538901707028
     identification: 
       column-name: LAST_REFRESHED_AT
       type: Text Field
@@ -885,7 +885,7 @@ regions:
       hide: true
 
   - # ====== Column: LAST_REFRESHED_TIMER ========================
-    id: 39623138379128532
+    id: 25752664475707029
     identification: 
       column-name: LAST_REFRESHED_TIMER
       type: Number Field
@@ -932,7 +932,7 @@ regions:
       hide: true
 
   - # ====== Column: ACTION_REFRESH ==============================
-    id: 39623288317128533
+    id: 25752814413707030
     identification: 
       column-name: ACTION_REFRESH
       type: Link
@@ -991,7 +991,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: NUM_ROWS ====================================
-    id: 39653062574838322
+    id: 25782588671416819
     identification: 
       column-name: NUM_ROWS
       type: Number Field
@@ -1038,7 +1038,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_CACHED ===================================
-    id: 39653227819838324
+    id: 25782753916416821
     identification: 
       column-name: IS_CACHED
       type: Checkbox
@@ -1092,7 +1092,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_PARTITIONED ==============================
-    id: 39653357025838325
+    id: 25782883122416822
     identification: 
       column-name: IS_PARTITIONED
       type: Checkbox
@@ -1146,7 +1146,7 @@ regions:
       hide: true
 
   - # ====== Column: OWNER =======================================
-    id: 39653950031838331
+    id: 25783476128416828
     identification: 
       column-name: OWNER
       type: Text Field
@@ -1201,7 +1201,7 @@ regions:
       hide: true
 
   - # ====== Column: COUNT_INDEXES ===============================
-    id: 39654097437838332
+    id: 25783623534416829
     identification: 
       column-name: COUNT_INDEXES
       type: Number Field
@@ -1287,7 +1287,7 @@ regions:
       alignment: center
 
 - # ====== Region: TABS ========================================
-  id: 39623336493128534
+  id: 25752862589707031
   identification: 
     title: TABS
     type: Static Content
@@ -1303,7 +1303,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Tabs Container # 63372587703439106
+    template: Tabs Container # 49502113800017603
     template-options: 
     - '#DEFAULT#'
     - js-useLocalStorage
@@ -1330,14 +1330,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Invalid Objects =============================
-  id: 39623408803128535
+  id: 25752934899707032
   identification: 
     title: Invalid Objects
     type: Static Content
 
   layout: 
     sequence: 20
-    parent-region: TABS # 39623336493128534
+    parent-region: TABS # 25752862589707031
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1346,7 +1346,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1371,14 +1371,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Invalid Objects =============================
-  id: 39623529537128536
+  id: 25753055633707033
   identification: 
     title: Invalid Objects
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Invalid Objects # 39623408803128535
+    parent-region: Invalid Objects # 25752934899707032
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1387,7 +1387,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1412,14 +1412,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Materialized Views ==========================
-  id: 39623637698128537
+  id: 25753163794707034
   identification: 
     title: Materialized Views
     type: Static Content
 
   layout: 
     sequence: 30
-    parent-region: TABS # 39623336493128534
+    parent-region: TABS # 25752862589707031
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1428,7 +1428,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1453,14 +1453,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Materialized Views ==========================
-  id: 39623765045128538
+  id: 25753291141707035
   identification: 
     title: Materialized Views
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Materialized Views # 39623637698128537
+    parent-region: Materialized Views # 25753163794707034
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1469,7 +1469,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1494,14 +1494,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Dashboard ===================================
-  id: 39653750748838329
+  id: 25783276845416826
   identification: 
     title: Dashboard
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: TABS # 39623336493128534
+    parent-region: TABS # 25752862589707031
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1510,7 +1510,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1536,7 +1536,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P880_REFRESH_MV_HOT ======================
-  id: 39623803834128539
+  id: 25753329930707036
   identification: 
     name: P880_REFRESH_MV_HOT
     type: Hidden
@@ -1546,7 +1546,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Materialized Views # 39623765045128538
+    region: Materialized Views # 25753291141707035
     position: BODY
 
   advanced: 
@@ -1566,7 +1566,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P880_REFRESH_MV_BADGE ====================
-  id: 39623969947128540
+  id: 25753496043707037
   identification: 
     name: P880_REFRESH_MV_BADGE
     type: Hidden
@@ -1576,7 +1576,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Materialized Views # 39623765045128538
+    region: Materialized Views # 25753291141707035
     position: BODY
 
   advanced: 
@@ -1596,7 +1596,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P880_REFRESH =============================
-  id: 39624072778128541
+  id: 25753598874707038
   identification: 
     name: P880_REFRESH
     type: Hidden
@@ -1606,7 +1606,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Materialized Views # 39623765045128538
+    region: Materialized Views # 25753291141707035
     position: BODY
 
   advanced: 
@@ -1626,7 +1626,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P880_RECOMPILE ===========================
-  id: 39653529629838327
+  id: 25783055726416824
   identification: 
     name: P880_RECOMPILE
     type: Hidden
@@ -1636,7 +1636,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Invalid Objects # 39623529537128536
+    region: Invalid Objects # 25753055633707033
     position: BODY
 
   advanced: 
@@ -1657,14 +1657,14 @@ page-items:
 
 buttons: 
 - # ====== Button: RECOMPILE ===================================
-  id: 39624150027128542
+  id: 25753676123707039
   identification: 
     button-name: RECOMPILE
     label: Recompile
 
   layout: 
     sequence: 10
-    region: Invalid Objects # 39623529537128536
+    region: Invalid Objects # 25753055633707033
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -1673,7 +1673,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text # 49593504698017664
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1684,14 +1684,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: REFRESH_ALL_MV ==============================
-  id: 39636651372742630
+  id: 25766177469321127
   identification: 
     button-name: REFRESH_ALL_MV
     label: Refresh All MV &P880_REFRESH_MV_BADGE.
 
   layout: 
     sequence: 10
-    region: Materialized Views # 39623765045128538
+    region: Materialized Views # 25753291141707035
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -1700,7 +1700,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text # 49593504698017664
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1714,7 +1714,7 @@ buttons:
 
 processes: 
 - # ====== Process: REFRESH_ALL_MV =============================
-  id: 39636846995743820
+  id: 25766373092322317
   identification: 
     name: REFRESH_ALL_MV
     type: Execute Code
@@ -1734,10 +1734,10 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: REFRESH_ALL_MV # 39636651372742630
+    when-button-pressed: REFRESH_ALL_MV # 25766177469321127
 
 - # ====== Process: REFRESH_MV =================================
-  id: 39652955573838321
+  id: 25782481670416818
   identification: 
     name: REFRESH_MV
     type: Execute Code
@@ -1758,7 +1758,7 @@ processes:
     item: P880_REFRESH
 
 - # ====== Process: RECOMPILE ==================================
-  id: 39653606871838328
+  id: 25783132968416825
   identification: 
     name: RECOMPILE
     type: Execute Code
@@ -1781,5 +1781,5 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: RECOMPILE # 39624150027128542
+    when-button-pressed: RECOMPILE # 25753676123707039
 

@@ -5,7 +5,7 @@ identification:
   name: Map Pages
   alias: MAP-PAGES
   title: Map Pages
-  page-group: ADMIN - USERS & ROLES # 43461648604712360
+  page-group: ADMIN - USERS & ROLES # 29591174701290857
 
 appearance: 
   page-mode: Normal
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 63924538900170215
+  authorization-scheme: IS_ADMIN # 50054064996748712
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum

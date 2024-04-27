@@ -4,15 +4,15 @@ begin
 --     CREDENTIAL: SSO_GOOGLE
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.04.28'
-,p_release=>'23.1.5'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>801
-,p_default_id_offset=>13873167262449266
+ p_version_yyyy_mm_dd=>'2023.10.31'
+,p_release=>'23.2.3'
+,p_default_workspace_id=>8506563800894011
+,p_default_application_id=>705
+,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_imp_workspace.create_credential(
- p_id=>wwv_flow_imp.id(62013508289982337)
+ p_id=>wwv_flow_imp.id(48143034386560834)
 ,p_name=>'SSO_GOOGLE'
 ,p_static_id=>'SSO_GOOGLE'
 ,p_authentication_type=>'OAUTH2_CLIENT_CREDENTIALS'

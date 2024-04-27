@@ -5,11 +5,11 @@ identification:
   name: User Profile
   alias: USER-PROFILE-FORM
   title: User Profile
-  page-group: USER_PROFILE # 18317012587086665
+  page-group: USER_PROFILE # 4446538683665162
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Drawer # 63289183138439042
+  dialog-template: Drawer # 49418709235017539
   template-options: 
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
@@ -26,7 +26,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_USER # 43462402185717150
+  authorization-scheme: IS_USER # 29591928282295647
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -45,7 +45,7 @@ server-cache:
 
 regions: 
 - # ====== Region: [FORM] ======================================
-  id: 49342505516467531
+  id: 35472031613046028
   identification: 
     title: '[FORM]'
     type: Form
@@ -68,7 +68,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -95,7 +95,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: User Profile ================================
-  id: 111573241941187656
+  id: 97702768037766153
   identification: 
     title: User Profile
     type: Static Content
@@ -111,7 +111,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -137,7 +137,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P901_USER_ID =============================
-  id: 49344479290467537
+  id: 35474005387046034
   identification: 
     name: P901_USER_ID
     type: Hidden
@@ -147,14 +147,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: '[FORM]' # 49342505516467531
+    region: '[FORM]' # 35472031613046028
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 49342505516467531
+    form-region: '[FORM]' # 35472031613046028
     column: USER_ID
     data-type: VARCHAR2
     query-only: false
@@ -170,7 +170,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P901_USER_NAME ===========================
-  id: 49344580922467538
+  id: 35474107019046035
   identification: 
     name: P901_USER_NAME
     type: Text Field
@@ -188,7 +188,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: '[FORM]' # 49342505516467531
+    region: '[FORM]' # 35472031613046028
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -199,7 +199,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating # 49591086965017660
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -212,7 +212,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 49342505516467531
+    form-region: '[FORM]' # 35472031613046028
     column: USER_NAME
     data-type: VARCHAR2
     query-only: false
@@ -230,7 +230,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P901_USER_MAIL ===========================
-  id: 49344633214467539
+  id: 35474159311046036
   identification: 
     name: P901_USER_MAIL
     type: Text Field
@@ -248,7 +248,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: '[FORM]' # 49342505516467531
+    region: '[FORM]' # 35472031613046028
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -259,7 +259,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating # 49591086965017660
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -272,7 +272,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 49342505516467531
+    form-region: '[FORM]' # 35472031613046028
     column: USER_MAIL
     data-type: VARCHAR2
     query-only: false
@@ -290,7 +290,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P901_USER_NICKNAME =======================
-  id: 49344772456467540
+  id: 35474298553046037
   identification: 
     name: P901_USER_NICKNAME
     type: Text Field
@@ -308,7 +308,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: '[FORM]' # 49342505516467531
+    region: '[FORM]' # 35472031613046028
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -319,7 +319,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating # 49591086965017660
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -332,7 +332,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 49342505516467531
+    form-region: '[FORM]' # 35472031613046028
     column: USER_NICKNAME
     data-type: VARCHAR2
     query-only: false
@@ -350,7 +350,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P901_USER_TITLE ==========================
-  id: 49344916926467541
+  id: 35474443023046038
   identification: 
     name: P901_USER_TITLE
     type: Text Field
@@ -368,7 +368,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: '[FORM]' # 49342505516467531
+    region: '[FORM]' # 35472031613046028
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -379,7 +379,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating # 49591086965017660
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -392,7 +392,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 49342505516467531
+    form-region: '[FORM]' # 35472031613046028
     column: USER_TITLE
     data-type: VARCHAR2
     query-only: false
@@ -410,7 +410,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P901_USER_ABOUT ==========================
-  id: 49345019484467542
+  id: 35474545581046039
   identification: 
     name: P901_USER_ABOUT
     type: Textarea
@@ -427,7 +427,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: '[FORM]' # 49342505516467531
+    region: '[FORM]' # 35472031613046028
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -438,7 +438,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating # 49591086965017660
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -452,7 +452,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 49342505516467531
+    form-region: '[FORM]' # 35472031613046028
     column: USER_ABOUT
     data-type: VARCHAR2
     query-only: false
@@ -472,14 +472,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CLOSE_DIALOG ================================
-  id: 24720494234646404
+  id: 10850020331224901
   identification: 
     button-name: CLOSE_DIALOG
     label: Close Dialog
 
   layout: 
     sequence: 10
-    region: User Profile # 111573241941187656
+    region: User Profile # 97702768037766153
     position: UP
     start-new-layout: false
     start-new-row: true
@@ -488,7 +488,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 63463317880439166
+    button-template: Icon # 49592843977017663
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -502,14 +502,14 @@ buttons:
     static-id: CLOSE_DIALOG
 
 - # ====== Button: UPDATE_PROFILE ==============================
-  id: 24721256679646406
+  id: 10850782776224903
   identification: 
     button-name: UPDATE_PROFILE
     label: Update Profile
 
   layout: 
     sequence: 70
-    region: '[FORM]' # 49342505516467531
+    region: '[FORM]' # 35472031613046028
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -518,7 +518,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text # 49593504698017664
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -533,7 +533,7 @@ buttons:
 
 computations: 
 - # ====== Computation: P901_USER_ID ===========================
-  id: 24726304257646415
+  id: 10855830354224912
   identification: 
     item-name: P901_USER_ID
 
@@ -548,7 +548,7 @@ computations:
 
 processes: 
 - # ====== Process: CLOSE_DIALOG ===============================
-  id: 24624655801821149
+  id: 10754181898399646
   identification: 
     name: CLOSE_DIALOG
     type: Close Dialog
@@ -569,12 +569,12 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: INIT_FORM ==================================
-  id: 24725307464646413
+  id: 10854833561224910
   identification: 
     name: INIT_FORM
     type: Form - Initialization
     execution-chain: None
-    form-region: '[FORM]' # 49342505516467531
+    form-region: '[FORM]' # 35472031613046028
 
   execution: 
     sequence: 10
@@ -582,7 +582,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: SAVE_PROFILE ===============================
-  id: 24725700892646414
+  id: 10855226989224911
   identification: 
     name: SAVE_PROFILE
     type: Invoke API
@@ -604,7 +604,7 @@ processes:
 
   parameters: 
   - # ====== Parameter: in_user_id ===============================
-    id: 24859395793145937
+    id: 10988921889724434
     identification: 
       name: in_user_id
 
@@ -621,7 +621,7 @@ processes:
       display-sequence: 10
 
   - # ====== Parameter: in_user_name =============================
-    id: 24859431554145938
+    id: 10988957650724435
     identification: 
       name: in_user_name
 
@@ -638,7 +638,7 @@ processes:
       display-sequence: 20
 
   - # ====== Parameter: in_user_mail =============================
-    id: 24859544935145939
+    id: 10989071031724436
     identification: 
       name: in_user_mail
 
@@ -655,7 +655,7 @@ processes:
       display-sequence: 30
 
   - # ====== Parameter: in_user_nickname =========================
-    id: 24859689786145940
+    id: 10989215882724437
     identification: 
       name: in_user_nickname
 
@@ -672,7 +672,7 @@ processes:
       display-sequence: 40
 
   - # ====== Parameter: in_user_title ============================
-    id: 24859789742145941
+    id: 10989315838724438
     identification: 
       name: in_user_title
 
@@ -689,7 +689,7 @@ processes:
       display-sequence: 50
 
   - # ====== Parameter: in_user_about ============================
-    id: 24859863739145942
+    id: 10989389835724439
     identification: 
       name: in_user_about
 

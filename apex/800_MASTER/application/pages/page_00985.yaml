@@ -5,11 +5,11 @@ identification:
   name: Feedback
   alias: FEEDBACK
   title: Feedback
-  page-group: __ INTERNAL # 14547468167324179
+  page-group: __ INTERNAL # 676994263902676
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Drawer # 63289183138439042
+  dialog-template: Drawer # 49418709235017539
   template-options: 
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
@@ -26,7 +26,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_USER # 43462402185717150
+  authorization-scheme: IS_USER # 29591928282295647
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -45,7 +45,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Feedback ====================================
-  id: 62139353824927103
+  id: 48268879921505600
   identification: 
     title: Feedback
     type: Static Content
@@ -61,7 +61,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -87,14 +87,14 @@ regions:
 
 buttons: 
 - # ====== Button: CLOSE_DIALOG ================================
-  id: 23972316258416277
+  id: 10101842354994774
   identification: 
     button-name: CLOSE_DIALOG
     label: Close Dialog
 
   layout: 
     sequence: 10
-    region: Feedback # 62139353824927103
+    region: Feedback # 48268879921505600
     position: UP
     start-new-layout: false
     start-new-row: true
@@ -103,7 +103,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 63463317880439166
+    button-template: Icon # 49592843977017663
     hot: false
     template-options: 
     - '#DEFAULT#'

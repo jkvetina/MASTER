@@ -5,7 +5,7 @@ identification:
   name: '#fa-navicon'
   alias: LAUNCHPAD
   title: '&APP_NAME.'
-  page-group: ' MAIN' # 43461472849711906
+  page-group: ' MAIN' # 29590998946290403
 
 appearance: 
   page-mode: Normal
@@ -56,7 +56,7 @@ javascript:
     
 
 security: 
-  authorization-scheme: IS_USER # 43462402185717150
+  authorization-scheme: IS_USER # 29591928282295647
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -85,14 +85,14 @@ help:
 
 regions: 
 - # ====== Region: Available Apps ==============================
-  id: 7475275434048504
+  id: 6395198469372999
   identification: 
     title: Available Apps
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Available Apps # 39760699932325804
+    parent-region: Available Apps # 25890226028904301
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -101,7 +101,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -126,7 +126,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Applications [CARDS] ========================
-  id: 7475317403048505
+  id: 6395156500372998
   identification: 
     title: Applications [CARDS]
     type: Cards
@@ -144,7 +144,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Available Apps # 39760699932325804
+    parent-region: Available Apps # 25890226028904301
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -153,7 +153,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Cards Container # 63327898435439081
+    template: Cards Container # 49457424532017578
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -175,7 +175,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 7475420236048506
+    id: 6395053667372997
     appearance: 
       layout: Grid
       grid-columns: 5 Columns
@@ -218,7 +218,7 @@ regions:
 
     actions: 
     - # ====== Action: Full Card ===================================
-      id: 7475571562048507
+      id: 6394902341372996
       identification: 
         type: Full Card
 
@@ -230,7 +230,7 @@ regions:
         target: '&APP_LINK.'
 
 - # ====== Region: BANNER ======================================
-  id: 23519630376581627
+  id: 9649156473160124
   identification: 
     title: BANNER
     type: Static Content
@@ -252,7 +252,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -278,7 +278,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Favorite Apps [CARDS] =======================
-  id: 24621155643821114
+  id: 10750681740399611
   identification: 
     title: Favorite Apps [CARDS]
     type: Cards
@@ -298,7 +298,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Favorite Apps # 39760709030325805
+    parent-region: Favorite Apps # 25890235126904302
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -307,7 +307,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Cards Container # 63327898435439081
+    template: Cards Container # 49457424532017578
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -329,7 +329,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 24621229550821115
+    id: 10750755647399612
     appearance: 
       layout: Grid
       grid-columns: 5 Columns
@@ -372,7 +372,7 @@ regions:
 
     actions: 
     - # ====== Action: Full Card ===================================
-      id: 24621315336821116
+      id: 10750841433399613
       identification: 
         type: Full Card
 
@@ -384,14 +384,14 @@ regions:
         target: '&APP_LINK.'
 
 - # ====== Region: Favorite Apps ===============================
-  id: 24621440329821117
+  id: 10750966426399614
   identification: 
     title: Favorite Apps
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Favorite Apps # 39760709030325805
+    parent-region: Favorite Apps # 25890235126904302
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -400,7 +400,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -425,7 +425,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: TABS ========================================
-  id: 39760548169325803
+  id: 25890074265904300
   identification: 
     title: TABS
     type: Static Content
@@ -441,7 +441,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Tabs Container # 63372587703439106
+    template: Tabs Container # 49502113800017603
     template-options: 
     - '#DEFAULT#'
     - js-useLocalStorage
@@ -468,14 +468,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Available Apps ==============================
-  id: 39760699932325804
+  id: 25890226028904301
   identification: 
     title: Available Apps
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: TABS # 39760548169325803
+    parent-region: TABS # 25890074265904300
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -484,7 +484,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -509,14 +509,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Favorite Apps ===============================
-  id: 39760709030325805
+  id: 25890235126904302
   identification: 
     title: Favorite Apps
     type: Static Content
 
   layout: 
     sequence: 20
-    parent-region: TABS # 39760548169325803
+    parent-region: TABS # 25890074265904300
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -525,7 +525,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -550,14 +550,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Missing Apps ================================
-  id: 39760908983325807
+  id: 25890435079904304
   identification: 
     title: Missing Apps
     type: Static Content
 
   layout: 
     sequence: 30
-    parent-region: TABS # 39760548169325803
+    parent-region: TABS # 25890074265904300
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -566,7 +566,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -580,7 +580,7 @@ regions:
     exclude-title-from-translation: false
 
   security: 
-    authorization-scheme: IS_DEVELOPER # 60089834032939902
+    authorization-scheme: IS_DEVELOPER # 46219360129518399
 
   server-cache: 
     caching: Disabled
@@ -595,14 +595,14 @@ regions:
 
 buttons: 
 - # ====== Button: REFRESH_MV ==================================
-  id: 7476159161048513
+  id: 6394314742372990
   identification: 
     button-name: REFRESH_MV
     label: Refresh MV
 
   layout: 
     sequence: 10
-    region: Available Apps # 7475275434048504
+    region: Available Apps # 6395198469372999
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -611,7 +611,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 63464158031439167
+    button-template: Text with Icon # 49593684128017664
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -624,17 +624,17 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
   security: 
-    authorization-scheme: IS_DEVELOPER # 60089834032939902
+    authorization-scheme: IS_DEVELOPER # 46219360129518399
 
 - # ====== Button: TEST_MESSAGE ================================
-  id: 8593901229358104
+  id: 5276572674063399
   identification: 
     button-name: TEST_MESSAGE
     label: Test Message
 
   layout: 
     sequence: 10
-    region: BANNER # 23519630376581627
+    region: BANNER # 9649156473160124
     position: BODY
     start-new-layout: false
     start-new-row: true
@@ -644,7 +644,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text # 49593504698017664
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -654,12 +654,9 @@ buttons:
     execute-validations: true
     warn-on-unsaved-changes: Do Not Check
 
-  server-side-condition: 
-    type: Never
-
 dynamic-actions: 
 - # ====== Dynamic Action: FILTERS_CHANGED =====================
-  id: 7475819384048510
+  id: 6394654519372993
   identification: 
     name: FILTERS_CHANGED
 
@@ -676,7 +673,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Submit Page =================================
-    id: 7475954697048511
+    id: 6394519206372992
     identification: 
       action: Submit Page
 
@@ -685,12 +682,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: FILTERS_CHANGED # 7475819384048510
+      event: FILTERS_CHANGED # 6394654519372993
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: TEST_MESSAGE_ON_LOAD ================
-  id: 8593744466358102
+  id: 5276729437063401
   identification: 
     name: TEST_MESSAGE_ON_LOAD
 
@@ -701,12 +698,9 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.READY
 
-  configuration: 
-    build-option: NEVER # 14512796942362028
-
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 8593810058358103
+    id: 5276663845063400
     identification: 
       action: Execute JavaScript Code
 
@@ -718,13 +712,13 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: TEST_MESSAGE_ON_LOAD # 8593744466358102
+      event: TEST_MESSAGE_ON_LOAD # 5276729437063401
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: REFRESH_MV =================================
-  id: 7476211481048514
+  id: 6394262422372989
   identification: 
     name: REFRESH_MV
     type: Execute Code
@@ -744,13 +738,13 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: REFRESH_MV # 7476159161048513
+    when-button-pressed: REFRESH_MV # 6394314742372990
 
   security: 
-    authorization-scheme: IS_DEVELOPER # 60089834032939902
+    authorization-scheme: IS_DEVELOPER # 46219360129518399
 
 - # ====== Process: TEST_MESSAGE ===============================
-  id: 8594111923358106
+  id: 5276361980063397
   identification: 
     name: TEST_MESSAGE
     type: Execute Code
@@ -761,10 +755,10 @@ processes:
     language: PL/SQL
     pl/sql-code: |
       --core.send_
-                      APEX_JSON.OPEN_OBJECT();
-                      APEX_JSON.WRITE('message',  SYSDATE);
-                      APEX_JSON.WRITE('status',   'WARNING');        -- SUCCESS, ERROR, WARNING
-                      APEX_JSON.CLOSE_OBJECT();
+      APEX_JSON.OPEN_OBJECT();
+      APEX_JSON.WRITE('message',  SYSDATE);
+      APEX_JSON.WRITE('status',   'ERROR');        -- SUCCESS, ERROR, WARNING
+      APEX_JSON.CLOSE_OBJECT();
       
 
   execution: 
@@ -772,17 +766,15 @@ processes:
     point: Processing
     run-process: Once Per Page Visit (default)
 
-  success-message: 
-    success-message: '{"message":"PUSHING REFRESH_JSON","status":"WARNING"}'
-
   error: 
+    error-message: '{"message":"Error warning","status":"WARNING"}'
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: TEST_MESSAGE # 8593901229358104
+    when-button-pressed: TEST_MESSAGE # 5276572674063399
 
 - # ====== Process: FAVORITE_SWITCH ============================
-  id: 22778700306601017
+  id: 8908226403179514
   identification: 
     name: FAVORITE_SWITCH
     type: Execute Code

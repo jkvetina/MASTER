@@ -5,7 +5,7 @@ identification:
   name: '#fa-wrench Settings'
   alias: SETTINGS
   title: Settings
-  page-group: ADMIN - SETTINGS # 24262084363106217
+  page-group: ADMIN - SETTINGS # 10391610459684714
 
 appearance: 
   page-mode: Normal
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 63924538900170215
+  authorization-scheme: IS_ADMIN # 50054064996748712
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -40,7 +40,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Settings for &G_APP_NAME. ===================
-  id: 18484513951274448
+  id: 4614040047852945
   identification: 
     title: Settings for &G_APP_NAME.
     type: Static Content
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -81,7 +81,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Settings [GRID] =============================
-  id: 18484624451274449
+  id: 4614150547852946
   identification: 
     title: Settings [GRID]
     type: Interactive Grid
@@ -105,7 +105,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report # 49485051460017594
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -125,7 +125,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 18484725497274450
+    id: 4614251593852947
     edit: 
       enabled: true
       allowed-operations: 
@@ -179,25 +179,25 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 19761875883899748
+      id: 5891401980478245
       identification: 
         name: Primary Report
         alias: 197619
 
   column-groups: 
   - # ====== Column Group: Setting Info ==========================
-    id: 19758449436896029
+    id: 5887975533474526
     heading: 
       heading: Setting Info
 
   - # ====== Column Group: Flags =================================
-    id: 19758539279896030
+    id: 5888065376474527
     heading: 
       heading: Flags
 
   columns: 
   - # ====== Column: APP_ID ======================================
-    id: 19755694904896001
+    id: 5885221001474498
     identification: 
       column-name: APP_ID
       type: Hidden
@@ -234,7 +234,7 @@ regions:
       sort: false
 
   - # ====== Column: CONTEXT_ID ==================================
-    id: 19755752395896002
+    id: 5885278492474499
     identification: 
       column-name: CONTEXT_ID
       type: Select List
@@ -256,7 +256,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: APP_CONTEXTS # 19826581500100372
+      list-of-values: APP_CONTEXTS # 5956107596678869
       display-extra-values: true
       display-null-value: false
 
@@ -292,7 +292,7 @@ regions:
       hide: true
 
   - # ====== Column: SETTING_NAME ================================
-    id: 19755833495896003
+    id: 5885359592474500
     identification: 
       column-name: SETTING_NAME
       type: Text Field
@@ -308,7 +308,7 @@ regions:
     layout: 
       sequence: 50
       column-alignment: start
-      group: Setting Info # 19758449436896029
+      group: Setting Info # 5887975533474526
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -349,7 +349,7 @@ regions:
       hide: true
 
   - # ====== Column: SETTING_VALUE ===============================
-    id: 19755928159896004
+    id: 5885454256474501
     identification: 
       column-name: SETTING_VALUE
       type: Text Field
@@ -365,7 +365,7 @@ regions:
     layout: 
       sequence: 60
       column-alignment: start
-      group: Setting Info # 19758449436896029
+      group: Setting Info # 5887975533474526
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -405,7 +405,7 @@ regions:
       hide: true
 
   - # ====== Column: SETTING_GROUP ===============================
-    id: 19756030418896005
+    id: 5885556515474502
     identification: 
       column-name: SETTING_GROUP
       type: Text Field
@@ -421,7 +421,7 @@ regions:
     layout: 
       sequence: 70
       column-alignment: start
-      group: Setting Info # 19758449436896029
+      group: Setting Info # 5887975533474526
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -462,7 +462,7 @@ regions:
       hide: true
 
   - # ====== Column: SETTING_DESC ================================
-    id: 19756183829896006
+    id: 5885709926474503
     identification: 
       column-name: SETTING_DESC
       type: Text Field
@@ -478,7 +478,7 @@ regions:
     layout: 
       sequence: 80
       column-alignment: start
-      group: Setting Info # 19758449436896029
+      group: Setting Info # 5887975533474526
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -518,7 +518,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_NUMERIC ==================================
-    id: 19756290019896007
+    id: 5885816116474504
     identification: 
       column-name: IS_NUMERIC
       type: Checkbox
@@ -534,7 +534,7 @@ regions:
     layout: 
       sequence: 90
       column-alignment: center
-      group: Flags # 19758539279896030
+      group: Flags # 5888065376474527
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -574,7 +574,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_DATE =====================================
-    id: 19756364763896008
+    id: 5885890860474505
     identification: 
       column-name: IS_DATE
       type: Checkbox
@@ -590,7 +590,7 @@ regions:
     layout: 
       sequence: 100
       column-alignment: center
-      group: Flags # 19758539279896030
+      group: Flags # 5888065376474527
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -630,7 +630,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_PRIVATE ==================================
-    id: 19756467769896009
+    id: 5885993866474506
     identification: 
       column-name: IS_PRIVATE
       type: Checkbox
@@ -646,7 +646,7 @@ regions:
     layout: 
       sequence: 110
       column-alignment: center
-      group: Flags # 19758539279896030
+      group: Flags # 5888065376474527
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -686,10 +686,10 @@ regions:
       hide: true
 
     security: 
-      authorization-scheme: IS_DEVELOPER # 60089834032939902
+      authorization-scheme: IS_DEVELOPER # 46219360129518399
 
   - # ====== Column: UPDATED_BY ==================================
-    id: 19756535028896010
+    id: 5886061125474507
     identification: 
       column-name: UPDATED_BY
       type: Hidden
@@ -723,7 +723,7 @@ regions:
       sort: false
 
   - # ====== Column: UPDATED_AT ==================================
-    id: 19756602062896011
+    id: 5886128159474508
     identification: 
       column-name: UPDATED_AT
       type: Hidden
@@ -757,7 +757,7 @@ regions:
       sort: false
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 19758192798896026
+    id: 5887718895474523
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -766,7 +766,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 19758287741896027
+    id: 5887813838474524
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -820,12 +820,12 @@ regions:
 
 processes: 
 - # ====== Process: SAVE_SETTINGS ==============================
-  id: 19758373050896028
+  id: 5887899147474525
   identification: 
     name: SAVE_SETTINGS
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
-    editable-region: Settings [GRID] # 18484624451274449
+    editable-region: Settings [GRID] # 4614150547852946
 
   settings: 
     target-type: Region Source

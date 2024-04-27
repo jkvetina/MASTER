@@ -1,6 +1,6 @@
 ---
 - # ====== Application Process: INIT_DEFAULTS ==================
-  id: 14610248066357632
+  id: 739774162936129
   identification: 
     name: INIT_DEFAULTS
     type: NATIVE_PLSQL
@@ -15,10 +15,10 @@
     point: Before Header
 
   subscription: 
-    version-number: 1
+    version-number: 41112155962801
 
 - # ====== Application Process: AJAX_PING ======================
-  id: 15475958849750657
+  id: 1605484946329154
   identification: 
     name: AJAX_PING
     type: NATIVE_PLSQL
@@ -39,7 +39,7 @@
     version-number: 1
 
 - # ====== Application Process: GET_AVATAR =====================
-  id: 24674842651897136
+  id: 10804368748475633
   identification: 
     name: GET_AVATAR
     type: NATIVE_PLSQL
@@ -58,4 +58,32 @@
 
   subscription: 
     version-number: 1
+
+- # ====== Application Process: FIX_FIRST_MESSAGE ==============
+  id: 22800528879850651
+  identification: 
+    name: FIX_FIRST_MESSAGE
+    type: NATIVE_PLSQL
+
+  source: 
+    location: Local Database
+    language: PL/SQL
+    pl/sql-code: |
+      -- intercept message injected on page (typically after page submit)
+      APEX_JAVASCRIPT.ADD_INLINE_CODE (
+          p_code => '
+      var message = $("#APEX_SUCCESS_MESSAGE .t-Alert-content h2.t-Alert-title").text();
+      console.log("MESSAGE INTERCEPTED", message);
+      $("#APEX_SUCCESS_MESSAGE").html("");
+      apex.jQuery(window).on("theme42ready", function() {
+          show_message(message);
+      });'
+      );
+
+  execution: 
+    sequence: -11
+    point: Before Header
+
+  subscription: 
+    version-number: 41112155995571
 

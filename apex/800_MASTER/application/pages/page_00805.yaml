@@ -5,7 +5,7 @@ identification:
   name: '#fa-users Users'
   alias: USERS
   title: Users
-  page-group: ADMIN - USERS & ROLES # 43461648604712360
+  page-group: ADMIN - USERS & ROLES # 29591174701290857
 
 appearance: 
   page-mode: Normal
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 63924538900170215
+  authorization-scheme: IS_ADMIN # 50054064996748712
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -40,7 +40,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Users for &G_APP_NAME. ======================
-  id: 170183251856532779
+  id: 156312777953111276
   identification: 
     title: Users for &G_APP_NAME.
     type: Static Content
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -81,7 +81,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Users [GRID] ================================
-  id: 238877430823480028
+  id: 225006956920058525
   identification: 
     title: Users [GRID]
     type: Interactive Grid
@@ -104,7 +104,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report # 49485051460017594
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -124,7 +124,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 238877567638480029
+    id: 225007093735058526
     edit: 
       enabled: true
       allowed-operations: 
@@ -178,30 +178,30 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 239770307375495824
+      id: 225899833472074321
       identification: 
         name: Primary Report
         alias: 347276
 
   column-groups: 
   - # ====== Column Group: Flags =================================
-    id: 100830497312882932
+    id: 86960023409461429
     heading: 
       heading: Flags
 
   - # ====== Column Group: Counters ==============================
-    id: 100830635308882933
+    id: 86960161405461430
     heading: 
       heading: Counters
 
   - # ====== Column Group: User Info =============================
-    id: 100830646602882934
+    id: 86960172699461431
     heading: 
       heading: User Info
 
   columns: 
   - # ====== Column: COUNT_APPS ==================================
-    id: 32260123614663858
+    id: 18389649711242355
     identification: 
       column-name: COUNT_APPS
       type: Link
@@ -213,7 +213,7 @@ regions:
     layout: 
       sequence: 70
       column-alignment: end
-      group: Counters # 100830635308882933
+      group: Counters # 86960161405461430
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -253,7 +253,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: USER_ID =====================================
-    id: 99517560093958668
+    id: 85647086190537165
     identification: 
       column-name: USER_ID
       type: Text Field
@@ -269,7 +269,7 @@ regions:
     layout: 
       sequence: 30
       column-alignment: start
-      group: User Info # 100830646602882934
+      group: User Info # 86960172699461431
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -310,7 +310,7 @@ regions:
       hide: true
 
   - # ====== Column: USER_NAME ===================================
-    id: 99517709381958669
+    id: 85647235478537166
     identification: 
       column-name: USER_NAME
       type: Text Field
@@ -326,7 +326,7 @@ regions:
     layout: 
       sequence: 40
       column-alignment: start
-      group: User Info # 100830646602882934
+      group: User Info # 86960172699461431
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -367,7 +367,7 @@ regions:
       hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 99656376500579848
+    id: 85785902597158345
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -376,7 +376,7 @@ regions:
       sequence: 20
 
   - # ====== Column: USER_MAIL ===================================
-    id: 99657919782579863
+    id: 85787445879158360
     identification: 
       column-name: USER_MAIL
       type: Text Field
@@ -392,7 +392,7 @@ regions:
     layout: 
       sequence: 50
       column-alignment: start
-      group: User Info # 100830646602882934
+      group: User Info # 86960172699461431
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -433,7 +433,7 @@ regions:
       hide: true
 
   - # ====== Column: COUNT_ROLES =================================
-    id: 100830947501882937
+    id: 86960473598461434
     identification: 
       column-name: COUNT_ROLES
       type: Display Only
@@ -449,7 +449,7 @@ regions:
     layout: 
       sequence: 80
       column-alignment: end
-      group: Counters # 100830635308882933
+      group: Counters # 86960161405461430
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -479,7 +479,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_ACTIVE ===================================
-    id: 145909812434881766
+    id: 132039338531460263
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -495,7 +495,7 @@ regions:
     layout: 
       sequence: 60
       column-alignment: center
-      group: Flags # 100830497312882932
+      group: Flags # 86960023409461429
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -577,14 +577,14 @@ regions:
 
 buttons: 
 - # ====== Button: ADD_USER_WIZARD =============================
-  id: 24782755541615350
+  id: 10912281638193847
   identification: 
     button-name: ADD_USER_WIZARD
     label: Add User Wizard
 
   layout: 
     sequence: 10
-    region: Users for &G_APP_NAME. # 170183251856532779
+    region: Users for &G_APP_NAME. # 156312777953111276
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -593,7 +593,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text # 49593504698017664
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -605,12 +605,12 @@ buttons:
 
 processes: 
 - # ====== Process: SAVE_USERS =================================
-  id: 24788266324615373
+  id: 10917792421193870
   identification: 
     name: SAVE_USERS
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
-    editable-region: Users [GRID] # 238877430823480028
+    editable-region: Users [GRID] # 225006956920058525
 
   settings: 
     target-type: Table / View

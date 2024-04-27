@@ -1,6 +1,6 @@
 ---
 - # ====== Application Computation: P0_SESSION_TIMEOUT_URL =====
-  id: 38791950107768630
+  id: 24921476204347127
   identification: 
     item-name: P0_SESSION_TIMEOUT_URL
 
@@ -24,7 +24,7 @@
     version-number: 1
 
 - # ====== Application Computation: P0_AJAX_PING_INTERVAL ======
-  id: 38792105756773316
+  id: 24921631853351813
   identification: 
     item-name: P0_AJAX_PING_INTERVAL
 

@@ -5,7 +5,7 @@ identification:
   name: LOVs
   alias: LOVS
   title: LOVs
-  page-group: ADMIN - SETTINGS # 24262084363106217
+  page-group: ADMIN - SETTINGS # 10391610459684714
 
 appearance: 
   page-mode: Normal
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 63924538900170215
+  authorization-scheme: IS_ADMIN # 50054064996748712
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -40,7 +40,7 @@ server-cache:
 
 regions: 
 - # ====== Region: LOVs for &G_APP_NAME. =======================
-  id: 18481884807274421
+  id: 4611410903852918
   identification: 
     title: LOVs for &G_APP_NAME.
     type: Static Content
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero # 49532124714017618
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -81,7 +81,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: LOVs [GRID] =================================
-  id: 18481908014274422
+  id: 4611434110852919
   identification: 
     title: LOVs [GRID]
     type: Interactive Grid
@@ -112,7 +112,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report # 49485051460017594
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -132,7 +132,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 18482033795274423
+    id: 4611559891852920
     edit: 
       enabled: true
       allowed-operations: 
@@ -186,30 +186,30 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 19709291047019583
+      id: 5838817143598080
       identification: 
         name: Primary Report
         alias: 197093
 
   column-groups: 
   - # ====== Column Group: Status ================================
-    id: 18483195623274434
+    id: 4612721719852931
     heading: 
       heading: Status
 
   - # ====== Column Group: LOV Info ==============================
-    id: 18483299614274435
+    id: 4612825710852932
     heading: 
       heading: LOV Info
 
   - # ====== Column Group: Colors ================================
-    id: 18483306282274436
+    id: 4612832378852933
     heading: 
       heading: Colors
 
   columns: 
   - # ====== Column: APP_ID ======================================
-    id: 18482198714274424
+    id: 4611724810852921
     identification: 
       column-name: APP_ID
       type: Hidden
@@ -246,7 +246,7 @@ regions:
       sort: false
 
   - # ====== Column: LOV_ID ======================================
-    id: 18482289366274425
+    id: 4611815462852922
     identification: 
       column-name: LOV_ID
       type: Text Field
@@ -262,7 +262,7 @@ regions:
     layout: 
       sequence: 50
       column-alignment: start
-      group: LOV Info # 18483299614274435
+      group: LOV Info # 4612825710852932
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -303,7 +303,7 @@ regions:
       hide: true
 
   - # ====== Column: LOV_GROUP ===================================
-    id: 18482331245274426
+    id: 4611857341852923
     identification: 
       column-name: LOV_GROUP
       type: Text Field
@@ -319,7 +319,7 @@ regions:
     layout: 
       sequence: 40
       column-alignment: start
-      group: LOV Info # 18483299614274435
+      group: LOV Info # 4612825710852932
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -360,7 +360,7 @@ regions:
       hide: true
 
   - # ====== Column: LOV_NAME ====================================
-    id: 18482499436274427
+    id: 4612025532852924
     identification: 
       column-name: LOV_NAME
       type: Text Field
@@ -376,7 +376,7 @@ regions:
     layout: 
       sequence: 70
       column-alignment: start
-      group: LOV Info # 18483299614274435
+      group: LOV Info # 4612825710852932
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -417,7 +417,7 @@ regions:
       hide: true
 
   - # ====== Column: STATUS_ID ===================================
-    id: 18482549312274428
+    id: 4612075408852925
     identification: 
       column-name: STATUS_ID
       type: Text Field
@@ -433,7 +433,7 @@ regions:
     layout: 
       sequence: 80
       column-alignment: start
-      group: Status # 18483195623274434
+      group: Status # 4612721719852931
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -474,7 +474,7 @@ regions:
       hide: true
 
   - # ====== Column: STATUS_NAME =================================
-    id: 18482603507274429
+    id: 4612129603852926
     identification: 
       column-name: STATUS_NAME
       type: Text Field
@@ -490,7 +490,7 @@ regions:
     layout: 
       sequence: 90
       column-alignment: start
-      group: Status # 18483195623274434
+      group: Status # 4612721719852931
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -531,7 +531,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER# ======================================
-    id: 18482725560274430
+    id: 4612251656852927
     identification: 
       column-name: ORDER#
       type: Number Field
@@ -547,7 +547,7 @@ regions:
     layout: 
       sequence: 110
       column-alignment: end
-      group: Status # 18483195623274434
+      group: Status # 4612721719852931
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -580,7 +580,7 @@ regions:
       hide: true
 
   - # ====== Column: TRESHOLD ====================================
-    id: 18482804373274431
+    id: 4612330469852928
     identification: 
       column-name: TRESHOLD
       type: Number Field
@@ -596,7 +596,7 @@ regions:
     layout: 
       sequence: 120
       column-alignment: end
-      group: Colors # 18483306282274436
+      group: Colors # 4612832378852933
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -629,7 +629,7 @@ regions:
       hide: true
 
   - # ====== Column: COLOR_BG ====================================
-    id: 18482997491274432
+    id: 4612523587852929
     identification: 
       column-name: COLOR_BG
       type: Color Picker
@@ -644,7 +644,7 @@ regions:
     layout: 
       sequence: 130
       column-alignment: start
-      group: Colors # 18483306282274436
+      group: Colors # 4612832378852933
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -685,7 +685,7 @@ regions:
       hide: true
 
   - # ====== Column: COLOR_TEXT ==================================
-    id: 18483038864274433
+    id: 4612564960852930
     identification: 
       column-name: COLOR_TEXT
       type: Color Picker
@@ -700,7 +700,7 @@ regions:
     layout: 
       sequence: 140
       column-alignment: start
-      group: Colors # 18483306282274436
+      group: Colors # 4612832378852933
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -741,7 +741,7 @@ regions:
       hide: true
 
   - # ====== Column: ROWID =======================================
-    id: 18483444037274437
+    id: 4612970133852934
     identification: 
       column-name: ROWID
       type: Hidden
@@ -768,7 +768,7 @@ regions:
       include-in-export-/-print: false
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 18483550994274438
+    id: 4613077090852935
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -777,7 +777,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 18483653942274439
+    id: 4613180038852936
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -791,7 +791,7 @@ regions:
       sequence: 10
 
   - # ====== Column: UPDATED_BY ==================================
-    id: 19759643705896041
+    id: 5889169802474538
     identification: 
       column-name: UPDATED_BY
       type: Hidden
@@ -825,7 +825,7 @@ regions:
       sort: false
 
   - # ====== Column: UPDATED_AT ==================================
-    id: 19759766101896042
+    id: 5889292198474539
     identification: 
       column-name: UPDATED_AT
       type: Hidden
@@ -859,7 +859,7 @@ regions:
       sort: false
 
   - # ====== Column: STATUS_VALUE ================================
-    id: 19759803294896043
+    id: 5889329391474540
     identification: 
       column-name: STATUS_VALUE
       type: Text Field
@@ -875,7 +875,7 @@ regions:
     layout: 
       sequence: 100
       column-alignment: start
-      group: Status # 18483195623274434
+      group: Status # 4612721719852931
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -956,7 +956,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P862_LOV_GROUP ===========================
-  id: 18483867793274441
+  id: 4613393889852938
   identification: 
     name: P862_LOV_GROUP
     type: Select List
@@ -971,7 +971,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: LOVs for &G_APP_NAME. # 18481884807274421
+    region: LOVs for &G_APP_NAME. # 4611410903852918
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -982,7 +982,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating # 49591086965017660
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -992,7 +992,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: APP_LOV_GROUPS # 19745575075395325
+    list-of-values: APP_LOV_GROUPS # 5875101171973822
     display-extra-values: true
     display-null-value: true
 
@@ -1015,7 +1015,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P862_LOV_ID ==============================
-  id: 18483941391274442
+  id: 4613467487852939
   identification: 
     name: P862_LOV_ID
     type: Select List
@@ -1030,7 +1030,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: LOVs for &G_APP_NAME. # 18481884807274421
+    region: LOVs for &G_APP_NAME. # 4611410903852918
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -1041,7 +1041,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating # 49591086965017660
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -1051,7 +1051,7 @@ page-items:
 
   list-of-values: 
     type: Shared Component
-    list-of-values: APP_LOVS # 19745855586402324
+    list-of-values: APP_LOVS # 5875381682980821
     display-extra-values: true
     display-null-value: true
 
@@ -1082,7 +1082,7 @@ page-items:
 
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGED_LOV =========================
-  id: 18484026051274443
+  id: 4613552147852940
   identification: 
     name: CHANGED_LOV
 
@@ -1099,22 +1099,22 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 18484133601274444
+    id: 4613659697852941
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: LOVs [GRID] # 18481908014274422
+      region: LOVs [GRID] # 4611434110852919
 
     execution: 
       sequence: 10
-      event: CHANGED_LOV # 18484026051274443
+      event: CHANGED_LOV # 4613552147852940
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: CHANGED_GROUP =======================
-  id: 18484266580274445
+  id: 4613792676852942
   identification: 
     name: CHANGED_GROUP
 
@@ -1131,7 +1131,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 18484360520274446
+    id: 4613886616852943
     identification: 
       action: Refresh
 
@@ -1142,12 +1142,12 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: CHANGED_GROUP # 18484266580274445
+      event: CHANGED_GROUP # 4613792676852942
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Execute Server-side Code ====================
-    id: 18484441046274447
+    id: 4613967142852944
     identification: 
       action: Execute Server-side Code
 
@@ -1159,7 +1159,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CHANGED_GROUP # 18484266580274445
+      event: CHANGED_GROUP # 4613792676852942
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
@@ -1167,12 +1167,12 @@ dynamic-actions:
 
 processes: 
 - # ====== Process: SAVE_LOVS ==================================
-  id: 18483719084274440
+  id: 4613245180852937
   identification: 
     name: SAVE_LOVS
     type: Interactive Grid - Automatic Row Processing (DML)
     execution-chain: None
-    editable-region: LOVs [GRID] # 18481908014274422
+    editable-region: LOVs [GRID] # 4611434110852919
 
   settings: 
     target-type: Region Source

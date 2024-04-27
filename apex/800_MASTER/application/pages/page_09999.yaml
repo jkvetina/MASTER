@@ -5,7 +5,7 @@ identification:
   name: Login Page
   alias: LOGIN
   title: Log In
-  page-group: __ INTERNAL # 14547468167324179
+  page-group: __ INTERNAL # 676994263902676
 
 appearance: 
   page-mode: Normal
@@ -60,7 +60,7 @@ help:
 
 regions: 
 - # ====== Region: DISCLAIMER ==================================
-  id: 37391842310003147
+  id: 23521368406581644
   identification: 
     title: DISCLAIMER
     type: Static Content
@@ -81,7 +81,7 @@ regions:
     column-span: 6
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -106,7 +106,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: BANNER ======================================
-  id: 61456057030994449
+  id: 47585583127572946
   identification: 
     title: BANNER
     type: Static Content
@@ -127,7 +127,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes # 49454620635017576
     template-options: 
     - '#DEFAULT#'
     render-components: Below Content
@@ -154,7 +154,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P9999_ERROR ==============================
-  id: 37392168786003150
+  id: 23521694882581647
   identification: 
     name: P9999_ERROR
     type: Hidden
@@ -164,7 +164,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: BANNER # 61456057030994449
+    region: BANNER # 47585583127572946
     position: BODY
 
   advanced: 
@@ -184,7 +184,7 @@ page-items:
     restricted-characters: Blocklist &<>"/;,*|=% or -- and new line
 
 - # ====== Page Item: P9999_USERNAME ===========================
-  id: 37881813169290244
+  id: 24011339265868741
   identification: 
     name: P9999_USERNAME
     type: Text Field
@@ -202,7 +202,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: BANNER # 61456057030994449
+    region: BANNER # 47585583127572946
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -213,7 +213,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating # 49591086965017660
     template-options: 
     - '#DEFAULT#'
 
@@ -237,13 +237,13 @@ page-items:
     show-quick-picks: false
 
   security: 
-    authorization-scheme: IS_DEVELOPER # 60089834032939902
+    authorization-scheme: IS_DEVELOPER # 46219360129518399
     session-state-protection: Unrestricted
     store-value-encrypted-in-session-state: false
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9999_ERROR_MESSAGE ======================
-  id: 38726642039567408
+  id: 24856168136145905
   identification: 
     name: P9999_ERROR_MESSAGE
     type: Hidden
@@ -253,7 +253,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: BANNER # 61456057030994449
+    region: BANNER # 47585583127572946
     position: BODY
 
   advanced: 
@@ -273,7 +273,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P9999_SUCCESS ============================
-  id: 38727160103567413
+  id: 24856686200145910
   identification: 
     name: P9999_SUCCESS
     type: Hidden
@@ -283,7 +283,7 @@ page-items:
 
   layout: 
     sequence: 60
-    region: BANNER # 61456057030994449
+    region: BANNER # 47585583127572946
     position: BODY
 
   advanced: 
@@ -303,7 +303,7 @@ page-items:
     restricted-characters: Blocklist &<>"/;,*|=% or -- and new line
 
 - # ====== Page Item: P9999_SUCCESS_MESSAGE ====================
-  id: 38727607189567418
+  id: 24857133286145915
   identification: 
     name: P9999_SUCCESS_MESSAGE
     type: Hidden
@@ -313,7 +313,7 @@ page-items:
 
   layout: 
     sequence: 70
-    region: BANNER # 61456057030994449
+    region: BANNER # 47585583127572946
     position: BODY
 
   advanced: 
@@ -334,14 +334,14 @@ page-items:
 
 buttons: 
 - # ====== Button: LOGIN_GOOGLE ================================
-  id: 37391938651003148
+  id: 23521464747581645
   identification: 
     button-name: LOGIN_GOOGLE
     label: Sign with Google
 
   layout: 
     sequence: 30
-    region: BANNER # 61456057030994449
+    region: BANNER # 47585583127572946
     position: BODY
     start-new-layout: false
     start-new-row: false
@@ -351,7 +351,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text with Icon # 63464158031439167
+    button-template: Text with Icon # 49593684128017664
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -371,14 +371,14 @@ buttons:
     static-id: LOGIN_GOOGLE
 
 - # ====== Button: LOGIN =======================================
-  id: 37883028314290247
+  id: 24012554410868744
   identification: 
     button-name: LOGIN
     label: Sign In
 
   layout: 
     sequence: 20
-    region: BANNER # 61456057030994449
+    region: BANNER # 47585583127572946
     position: BODY
     start-new-layout: false
     start-new-row: false
@@ -388,7 +388,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text # 49593504698017664
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -402,11 +402,11 @@ buttons:
     static-id: LOGIN
 
   security: 
-    authorization-scheme: IS_DEVELOPER # 60089834032939902
+    authorization-scheme: IS_DEVELOPER # 46219360129518399
 
 dynamic-actions: 
 - # ====== Dynamic Action: SHOW_ERROR ==========================
-  id: 37392261247003151
+  id: 23521787343581648
   identification: 
     name: SHOW_ERROR
 
@@ -423,7 +423,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 37392349096003152
+    id: 23521875192581649
     identification: 
       action: Execute JavaScript Code
 
@@ -445,12 +445,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: SHOW_ERROR # 37392261247003151
+      event: SHOW_ERROR # 23521787343581648
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Clear =======================================
-    id: 38726871581567410
+    id: 24856397678145907
     identification: 
       action: Clear
 
@@ -462,12 +462,12 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: SHOW_ERROR # 37392261247003151
+      event: SHOW_ERROR # 23521787343581648
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: SHOW_SUCCESS ========================
-  id: 38727272572567414
+  id: 24856798669145911
   identification: 
     name: SHOW_SUCCESS
 
@@ -484,7 +484,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 38727335968567415
+    id: 24856862065145912
     identification: 
       action: Execute JavaScript Code
 
@@ -502,12 +502,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: SHOW_SUCCESS # 38727272572567414
+      event: SHOW_SUCCESS # 24856798669145911
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Clear =======================================
-    id: 38727380756567416
+    id: 24856906853145913
     identification: 
       action: Clear
 
@@ -518,13 +518,13 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: SHOW_SUCCESS # 38727272572567414
+      event: SHOW_SUCCESS # 24856798669145911
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 computations: 
 - # ====== Computation: P9999_ERROR_MESSAGE ====================
-  id: 38726726479567409
+  id: 24856252576145906
   identification: 
     item-name: P9999_ERROR_MESSAGE
 
@@ -542,7 +542,7 @@ computations:
     item: P9999_ERROR
 
 - # ====== Computation: P9999_SUCCESS_MESSAGE ==================
-  id: 38727683392567419
+  id: 24857209489145916
   identification: 
     item-name: P9999_SUCCESS_MESSAGE
 
@@ -561,7 +561,7 @@ computations:
 
 processes: 
 - # ====== Process: LOGOUT =====================================
-  id: 28428595267964214
+  id: 14558121364542711
   identification: 
     name: LOGOUT
     type: Execute Code
@@ -601,7 +601,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: LOGIN ======================================
-  id: 37883346776290247
+  id: 24012872872868744
   identification: 
     name: LOGIN
     type: Invoke API
@@ -622,11 +622,11 @@ processes:
     display-location: Inline in Notification
 
   security: 
-    authorization-scheme: IS_DEVELOPER # 60089834032939902
+    authorization-scheme: IS_DEVELOPER # 46219360129518399
 
   parameters: 
   - # ====== Parameter: p_username ===============================
-    id: 37883847612290250
+    id: 24013373708868747
     identification: 
       name: p_username
 
@@ -643,7 +643,7 @@ processes:
       display-sequence: 1
 
   - # ====== Parameter: p_password ===============================
-    id: 37884352312290251
+    id: 24013878408868748
     identification: 
       name: p_password
 
@@ -659,7 +659,7 @@ processes:
       display-sequence: 2
 
   - # ====== Parameter: p_set_persistent_auth ====================
-    id: 37884781947290251
+    id: 24014308043868748
     identification: 
       name: p_set_persistent_auth
 
@@ -675,7 +675,7 @@ processes:
       display-sequence: 3
 
 - # ====== Process: CLEAR_CACHE ================================
-  id: 37887122646290253
+  id: 24016648742868750
   identification: 
     name: CLEAR_CACHE
     type: Clear Session State
