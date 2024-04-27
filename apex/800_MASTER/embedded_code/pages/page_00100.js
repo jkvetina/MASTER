@@ -34,10 +34,3 @@ const favorite_switch = function(el) {
 };
 
 
-// ----------------------------------------
-// Page: 100 - #fa-navicon > Dynamic Action: TEST_MESSAGE_ON_LOAD > Action: Execute JavaScript Code > Settings > Code
-
-show_success('Success Message');
-//show_warning('Warning Message');
-//show_error('Error Message');
-

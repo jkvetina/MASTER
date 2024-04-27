@@ -39,10 +39,10 @@ prompt APPLICATION 705 - Master
 --     Pages:                     35
 --       Items:                  102
 --       Computations:             6
---       Processes:               35
+--       Processes:               34
 --       Regions:                 88
---       Buttons:                 28
---       Dynamic Actions:         26
+--       Buttons:                 27
+--       Dynamic Actions:         25
 --     Shared Components:
 --       Logic:
 --         Items:                 17
@@ -138,7 +138,7 @@ wwv_imp_workspace.create_flow(
 ,p_substitution_string_03=>'APP_PREFIX'
 ,p_substitution_value_03=>'APP_'
 ,p_last_updated_by=>'JAN.KVETINA@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20240427190604'
+,p_last_upd_yyyymmddhh24miss=>'20240427200705'
 ,p_file_prefix => nvl(wwv_flow_application_install.get_static_app_file_prefix,'')
 ,p_files_version=>98
 ,p_print_server_type=>'NATIVE'
@@ -22452,7 +22452,7 @@ wwv_flow_imp_page.create_page(
 ''))
 ,p_page_component_map=>'23'
 ,p_last_updated_by=>'JAN.KVETINA@GMAIL.COM'
-,p_last_upd_yyyymmddhh24miss=>'20240427185417'
+,p_last_upd_yyyymmddhh24miss=>'20240427200705'
 );
 wwv_flow_imp_page.create_page_plug(
  p_id=>wwv_flow_imp.id(9649156473160124)
@@ -22630,17 +22630,6 @@ wwv_flow_imp_page.create_page_plug(
 ,p_attribute_02=>'HTML'
 );
 wwv_flow_imp_page.create_page_button(
- p_id=>wwv_flow_imp.id(5276572674063399)
-,p_button_sequence=>10
-,p_button_plug_id=>wwv_flow_imp.id(9649156473160124)
-,p_button_name=>'TEST_MESSAGE'
-,p_button_action=>'SUBMIT'
-,p_button_template_options=>'#DEFAULT#'
-,p_button_template_id=>wwv_flow_imp.id(49593504698017664)
-,p_button_image_alt=>'Test Message'
-,p_grid_new_row=>'Y'
-);
-wwv_flow_imp_page.create_page_button(
  p_id=>wwv_flow_imp.id(6394314742372990)
 ,p_button_sequence=>10
 ,p_button_plug_id=>wwv_flow_imp.id(6395198469372999)
@@ -22672,25 +22661,6 @@ wwv_flow_imp_page.create_page_da_action(
 ,p_action=>'NATIVE_SUBMIT_PAGE'
 ,p_attribute_02=>'Y'
 );
-wwv_flow_imp_page.create_page_da_event(
- p_id=>wwv_flow_imp.id(5276729437063401)
-,p_name=>'TEST_MESSAGE_ON_LOAD'
-,p_event_sequence=>20
-,p_bind_type=>'bind'
-,p_bind_event_type=>'ready'
-);
-wwv_flow_imp_page.create_page_da_action(
- p_id=>wwv_flow_imp.id(5276663845063400)
-,p_event_id=>wwv_flow_imp.id(5276729437063401)
-,p_event_result=>'TRUE'
-,p_action_sequence=>10
-,p_execute_on_page_init=>'N'
-,p_action=>'NATIVE_JAVASCRIPT_CODE'
-,p_attribute_01=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'show_success(''Success Message'');',
-'//show_warning(''Warning Message'');',
-'//show_error(''Error Message'');'))
-);
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(6394262422372989)
 ,p_process_sequence=>10
@@ -22703,25 +22673,6 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_when_button_id=>wwv_flow_imp.id(6394314742372990)
 ,p_security_scheme=>wwv_flow_imp.id(46219360129518399)  -- AUTHORIZATION: IS_DEVELOPER
 ,p_internal_uid=>7476211481048514
-);
-wwv_flow_imp_page.create_page_process(
- p_id=>wwv_flow_imp.id(5276361980063397)
-,p_process_sequence=>20
-,p_process_point=>'AFTER_SUBMIT'
-,p_process_type=>'NATIVE_PLSQL'
-,p_process_name=>'TEST_MESSAGE'
-,p_process_sql_clob=>wwv_flow_string.join(wwv_flow_t_varchar2(
-'--core.send_',
-'APEX_JSON.OPEN_OBJECT();',
-'APEX_JSON.WRITE(''message'',  SYSDATE);',
-'APEX_JSON.WRITE(''status'',   ''ERROR'');        -- SUCCESS, ERROR, WARNING',
-'APEX_JSON.CLOSE_OBJECT();',
-''))
-,p_process_clob_language=>'PLSQL'
-,p_process_error_message=>'{"message":"Error warning","status":"WARNING"}'
-,p_error_display_location=>'INLINE_IN_NOTIFICATION'
-,p_process_when_button_id=>wwv_flow_imp.id(5276572674063399)
-,p_internal_uid=>8594111923358106
 );
 wwv_flow_imp_page.create_page_process(
  p_id=>wwv_flow_imp.id(8908226403179514)

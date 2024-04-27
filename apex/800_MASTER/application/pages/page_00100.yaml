@@ -626,34 +626,6 @@ buttons:
   security: 
     authorization-scheme: IS_DEVELOPER # 46219360129518399
 
-- # ====== Button: TEST_MESSAGE ================================
-  id: 5276572674063399
-  identification: 
-    button-name: TEST_MESSAGE
-    label: Test Message
-
-  layout: 
-    sequence: 10
-    region: BANNER # 9649156473160124
-    position: BODY
-    start-new-layout: false
-    start-new-row: true
-    column: Automatic
-    new-column: true
-    column-span: Automatic
-    alignment: Left center
-
-  appearance: 
-    button-template: Text # 49593504698017664
-    hot: false
-    template-options: 
-    - '#DEFAULT#'
-
-  behavior: 
-    action: Submit Page
-    execute-validations: true
-    warn-on-unsaved-changes: Do Not Check
-
 dynamic-actions: 
 - # ====== Dynamic Action: FILTERS_CHANGED =====================
   id: 6394654519372993
@@ -686,36 +658,6 @@ dynamic-actions:
       fire-when-event-result-is: True
       fire-on-initialization: false
 
-- # ====== Dynamic Action: TEST_MESSAGE_ON_LOAD ================
-  id: 5276729437063401
-  identification: 
-    name: TEST_MESSAGE_ON_LOAD
-
-  execution: 
-    sequence: 20
-    event-scope: Static
-
-  when: 
-    event: EVENT.EVENT.BROWSER.READY
-
-  actions: 
-  - # ====== Action: Execute JavaScript Code =====================
-    id: 5276663845063400
-    identification: 
-      action: Execute JavaScript Code
-
-    settings: 
-      code: |
-        show_success('Success Message');
-        //show_warning('Warning Message');
-        //show_error('Error Message');
-
-    execution: 
-      sequence: 10
-      event: TEST_MESSAGE_ON_LOAD # 5276729437063401
-      fire-when-event-result-is: True
-      fire-on-initialization: false
-
 processes: 
 - # ====== Process: REFRESH_MV =================================
   id: 6394262422372989
@@ -742,36 +684,6 @@ processes:
 
   security: 
     authorization-scheme: IS_DEVELOPER # 46219360129518399
-
-- # ====== Process: TEST_MESSAGE ===============================
-  id: 5276361980063397
-  identification: 
-    name: TEST_MESSAGE
-    type: Execute Code
-    execution-chain: None
-
-  source: 
-    location: Local Database
-    language: PL/SQL
-    pl/sql-code: |
-      --core.send_
-      APEX_JSON.OPEN_OBJECT();
-      APEX_JSON.WRITE('message',  SYSDATE);
-      APEX_JSON.WRITE('status',   'ERROR');        -- SUCCESS, ERROR, WARNING
-      APEX_JSON.CLOSE_OBJECT();
-      
-
-  execution: 
-    sequence: 20
-    point: Processing
-    run-process: Once Per Page Visit (default)
-
-  error: 
-    error-message: '{"message":"Error warning","status":"WARNING"}'
-    display-location: Inline in Notification
-
-  server-side-condition: 
-    when-button-pressed: TEST_MESSAGE # 5276572674063399
 
 - # ====== Process: FAVORITE_SWITCH ============================
   id: 8908226403179514

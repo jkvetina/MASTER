@@ -11,13 +11,3 @@ app.favorite_switch (
     in_user_id  => core.get_user_id()
 );
 
--- ----------------------------------------
--- Page: 100 - #fa-navicon > Process: TEST_MESSAGE > Source > PL/SQL Code
-
---core.send_
-APEX_JSON.OPEN_OBJECT();
-APEX_JSON.WRITE('message',  SYSDATE);
-APEX_JSON.WRITE('status',   'ERROR');        -- SUCCESS, ERROR, WARNING
-APEX_JSON.CLOSE_OBJECT();
-
-
