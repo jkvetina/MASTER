@@ -25,9 +25,16 @@ const init_page_asap = function() {
     // catch message event
     apex.message.setThemeHooks({
         beforeShow: function(pMsgType, pElement$) {
+            // add visibility (removed in page template to avoid flickering for first message on page)
+            $("#t_Alert_Success").attr('style',       'display: block !important');
+            $("#t_Alert_Notification").attr('style',  'display: block !important');
+
             // error messages
             if (pMsgType === apex.message.TYPE.ERROR) {
                 var msg = get_message(pElement$.find('ul.a-Notification-list li').html());
+                if (msg.message.trim().length == 0) {
+                    return;
+                }
                 console.log('MESSAGE.ERROR:', msg);
 
                 // switch error to warning
@@ -54,6 +61,9 @@ const init_page_asap = function() {
             // success messages
             if (pMsgType === apex.message.TYPE.SUCCESS) {
                 var msg = get_message($('#APEX_SUCCESS_MESSAGE h2.t-Alert-title').html());
+                if (msg.message.trim().length == 0) {
+                    return;
+                }
                 console.log('MESSAGE.SUCCESS:', msg);
 
                 // change message
@@ -277,7 +287,8 @@ const show_error = function(msg) {
     }]);
 };
 //
-const show_message = function(msg) {           // expecting JSON objects, ideally from core.set_json_message
+const show_message = function(msg) {        // expecting JSON objects, ideally from core.set_json_message
+    msg = get_message(msg);                 // also work with strings
     if (!!msg.message) {
         if (msg.status == 'SUCCESS') {
             show_success(msg);
