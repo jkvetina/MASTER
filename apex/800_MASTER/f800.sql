@@ -73,7 +73,7 @@ prompt APPLICATION 705 - Master
 --         Messages:               8
 --       Reports:
 --       E-Mail:
---     Supporting Objects:  Included
+--     Supporting Objects:  Excluded
 --   Version:         23.2.3
 --   Instance ID:     7462307610850096
 --
@@ -4670,11 +4670,6 @@ wwv_flow_imp_page.create_page_group(
  p_id=>wwv_flow_imp.id(676994263902676)  -- PAGE GROUP: __ INTERNAL
 ,p_group_name=>'__ INTERNAL'
 );
-end;
-/
-prompt --application/comments
-begin
-null;
 end;
 /
 prompt --application/shared_components/navigation/breadcrumbentry
@@ -18844,11 +18839,6 @@ wwv_flow_imp_shared.create_template_option(
 end;
 /
 prompt --application/shared_components/globalization/language
-begin
-null;
-end;
-/
-prompt --application/shared_components/globalization/translations
 begin
 null;
 end;
@@ -38300,21 +38290,6 @@ wwv_flow_imp_page.create_page_process(
 ,p_process_clob_language=>'PLSQL'
 ,p_internal_uid=>28428595267964214
 );
-end;
-/
-prompt --application/deployment/definition
-begin
-null;
-end;
-/
-prompt --application/deployment/checks
-begin
-null;
-end;
-/
-prompt --application/deployment/buildoptions
-begin
-null;
 end;
 /
 prompt --application/end_environment

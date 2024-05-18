@@ -4,14 +4,14 @@
 apex.theme42.initializePage.modalDialog();
 
 // ----------------------------------------
-// Theme: Universal Theme > Page Template: Left and Right Side Columns > JavaScript > Execute when Page Loads
-
-apex.theme42.initializePage.bothSideCols();
-
-// ----------------------------------------
 // Theme: Universal Theme > Page Template: Left Side Column > JavaScript > Execute when Page Loads
 
 apex.theme42.initializePage.leftSideCol();
+
+// ----------------------------------------
+// Theme: Universal Theme > Page Template: Left and Right Side Columns > JavaScript > Execute when Page Loads
+
+apex.theme42.initializePage.bothSideCols();
 
 // ----------------------------------------
 // Theme: Universal Theme > Page Template: Login > JavaScript > Execute when Page Loads
