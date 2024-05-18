@@ -6,13 +6,13 @@ begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.10.31'
 ,p_release=>'23.2.3'
-,p_default_workspace_id=>8506563800894011
-,p_default_application_id=>705
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>800
 ,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_of_values(
- p_id=>wwv_flow_imp.id(4399973140195749)  -- LOV: APP_USERS_ALL #ID-NAME
+ p_id=>wwv_flow_imp.id(18270447043617252)  -- LOV: APP_USERS_ALL #ID-NAME
 ,p_lov_name=>'APP_USERS_ALL #ID-NAME'
 ,p_source_type=>'TABLE'
 ,p_location=>'LOCAL'

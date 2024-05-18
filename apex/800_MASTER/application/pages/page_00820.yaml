@@ -5,7 +5,7 @@ identification:
   name: '#fa-lock-user Roles'
   alias: ROLES
   title: Roles
-  page-group: ADMIN - USERS & ROLES # 29591174701290857
+  page-group: ADMIN - USERS & ROLES # 43461648604712360
 
 appearance: 
   page-mode: Normal
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 50054064996748712
+  authorization-scheme: IS_ADMIN # 63924538900170215
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -40,7 +40,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Roles =======================================
-  id: 107605127406754649
+  id: 121475601310176152
   identification: 
     title: Roles
     type: Static Content
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 49454620635017576
+    template: Blank with Attributes # 63325094538439079
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -81,14 +81,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Roles for &G_APP_NAME. ======================
-  id: 107605205578754650
+  id: 121475679482176153
   identification: 
     title: Roles for &G_APP_NAME.
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Roles # 107605127406754649
+    parent-region: Roles # 121475601310176152
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -97,7 +97,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 49532124714017618
+    template: Hero # 63402598617439121
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -122,7 +122,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Roles [GRID] ================================
-  id: 107605304591754651
+  id: 121475778495176154
   identification: 
     title: Roles [GRID]
     type: Interactive Grid
@@ -136,7 +136,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Roles # 107605127406754649
+    parent-region: Roles # 121475601310176152
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -145,7 +145,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 49485051460017594
+    template: Interactive Report # 63355525363439097
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -159,7 +159,7 @@ regions:
     exclude-title-from-translation: false
 
   security: 
-    authorization-scheme: IS_USER # 29591928282295647
+    authorization-scheme: IS_USER # 43462402185717150
 
   server-cache: 
     caching: Disabled
@@ -168,7 +168,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 107605738687754655
+    id: 121476212591176158
     edit: 
       enabled: true
       allowed-operations: 
@@ -222,30 +222,30 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 107632141306947806
+      id: 121502615210369309
       identification: 
         name: Primary Report
         alias: 464267
 
   column-groups: 
   - # ====== Column Group: Counters ==============================
-    id: 62236326471121298
+    id: 76106800374542801
     heading: 
       heading: Counters
 
   - # ====== Column Group: Flags =================================
-    id: 62236449562121299
+    id: 76106923465542802
     heading: 
       heading: Flags
 
   - # ====== Column Group: Role Info =============================
-    id: 62236531819121300
+    id: 76107005722542803
     heading: 
       heading: Role Info
 
   columns: 
   - # ====== Column: ROLE_GROUP ==================================
-    id: 61660695605023690
+    id: 75531169508445193
     identification: 
       column-name: ROLE_GROUP
       type: Text Field
@@ -261,7 +261,7 @@ regions:
     layout: 
       sequence: 60
       column-alignment: start
-      group: Role Info # 62236531819121300
+      group: Role Info # 76107005722542803
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -302,7 +302,7 @@ regions:
       hide: true
 
   - # ====== Column: ROLE_DESC ===================================
-    id: 61660859215023691
+    id: 75531333118445194
     identification: 
       column-name: ROLE_DESC
       type: Text Field
@@ -318,7 +318,7 @@ regions:
     layout: 
       sequence: 70
       column-alignment: start
-      group: Role Info # 62236531819121300
+      group: Role Info # 76107005722542803
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -358,7 +358,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER# ======================================
-    id: 61660943851023692
+    id: 75531417754445195
     identification: 
       column-name: ORDER#
       type: Number Field
@@ -374,7 +374,7 @@ regions:
     layout: 
       sequence: 90
       column-alignment: end
-      group: Role Info # 62236531819121300
+      group: Role Info # 76107005722542803
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -407,7 +407,7 @@ regions:
       hide: true
 
   - # ====== Column: COUNT_PAGES =================================
-    id: 62235974993121295
+    id: 76106448896542798
     identification: 
       column-name: COUNT_PAGES
       type: Display Only
@@ -423,7 +423,7 @@ regions:
     layout: 
       sequence: 100
       column-alignment: end
-      group: Counters # 62236326471121298
+      group: Counters # 76106800374542801
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -453,7 +453,7 @@ regions:
       hide: true
 
   - # ====== Column: COUNT_TABLES ================================
-    id: 62236094761121296
+    id: 76106568664542799
     identification: 
       column-name: COUNT_TABLES
       type: Display Only
@@ -469,7 +469,7 @@ regions:
     layout: 
       sequence: 110
       column-alignment: end
-      group: Counters # 62236326471121298
+      group: Counters # 76106800374542801
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -499,7 +499,7 @@ regions:
       hide: true
 
   - # ====== Column: COUNT_USERS =================================
-    id: 62236202900121297
+    id: 76106676803542800
     identification: 
       column-name: COUNT_USERS
       type: Display Only
@@ -515,7 +515,7 @@ regions:
     layout: 
       sequence: 120
       column-alignment: end
-      group: Counters # 62236326471121298
+      group: Counters # 76106800374542801
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -545,7 +545,7 @@ regions:
       hide: true
 
   - # ====== Column: OLD_ROLE_ID =================================
-    id: 63403963108037223
+    id: 77274437011458726
     identification: 
       column-name: OLD_ROLE_ID
       type: Hidden
@@ -579,7 +579,7 @@ regions:
       sort: false
 
   - # ====== Column: ROLE_ID =====================================
-    id: 107605800523754656
+    id: 121476274427176159
     identification: 
       column-name: ROLE_ID
       type: Text Field
@@ -595,7 +595,7 @@ regions:
     layout: 
       sequence: 40
       column-alignment: start
-      group: Role Info # 62236531819121300
+      group: Role Info # 76107005722542803
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -636,7 +636,7 @@ regions:
       hide: true
 
   - # ====== Column: ROLE_NAME ===================================
-    id: 107605903541754657
+    id: 121476377445176160
     identification: 
       column-name: ROLE_NAME
       type: Text Field
@@ -652,7 +652,7 @@ regions:
     layout: 
       sequence: 50
       column-alignment: start
-      group: Role Info # 62236531819121300
+      group: Role Info # 76107005722542803
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -693,7 +693,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_ACTIVE ===================================
-    id: 107606017075754658
+    id: 121476490979176161
     identification: 
       column-name: IS_ACTIVE
       type: Checkbox
@@ -709,7 +709,7 @@ regions:
     layout: 
       sequence: 80
       column-alignment: center
-      group: Flags # 62236449562121299
+      group: Flags # 76106923465542802
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -751,7 +751,7 @@ regions:
       hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 107608617308754684
+    id: 121479091212176187
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -800,14 +800,14 @@ regions:
 
 buttons: 
 - # ====== Button: REORDER_ROLES ===============================
-  id: 780394754752648
+  id: 14650868658174151
   identification: 
     button-name: REORDER_ROLES
     label: Reorder Roles
 
   layout: 
     sequence: 10
-    region: Roles for &G_APP_NAME. # 107605205578754650
+    region: Roles for &G_APP_NAME. # 121475679482176153
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -816,7 +816,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 49592843977017663
+    button-template: Icon # 63463317880439166
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -828,17 +828,17 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
   security: 
-    authorization-scheme: IS_USER # 29591928282295647
+    authorization-scheme: IS_USER # 43462402185717150
 
 - # ====== Button: ADD_ROLE_WIZARD =============================
-  id: 780742289752648
+  id: 14651216193174151
   identification: 
     button-name: ADD_ROLE_WIZARD
     label: Add Role Wizard
 
   layout: 
     sequence: 20
-    region: Roles for &G_APP_NAME. # 107605205578754650
+    region: Roles for &G_APP_NAME. # 121475679482176153
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -847,7 +847,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 49593504698017664
+    button-template: Text # 63463978601439167
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -858,11 +858,11 @@ buttons:
     execute-validations: true
 
   security: 
-    authorization-scheme: IS_USER # 29591928282295647
+    authorization-scheme: IS_USER # 43462402185717150
 
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGE_FILTERS ======================
-  id: 788803603752665
+  id: 14659277507174168
   identification: 
     name: CHANGE_FILTERS
 
@@ -880,7 +880,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Submit Page =================================
-    id: 789317482752666
+    id: 14659791386174169
     identification: 
       action: Submit Page
 
@@ -889,18 +889,18 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CHANGE_FILTERS # 788803603752665
+      event: CHANGE_FILTERS # 14659277507174168
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: SAVE_ROLES =================================
-  id: 788000649752663
+  id: 14658474553174166
   identification: 
     name: SAVE_ROLES
     type: Invoke API
     execution-chain: None
-    editable-region: Roles [GRID] # 107605304591754651
+    editable-region: Roles [GRID] # 121475778495176154
 
   settings: 
     type: PL/SQL Package
@@ -920,10 +920,10 @@ processes:
     execution-scope: For Created and Modified Rows
 
   security: 
-    authorization-scheme: IS_USER # 29591928282295647
+    authorization-scheme: IS_USER # 43462402185717150
 
 - # ====== Process: REORDER_ROLES ==============================
-  id: 788390472752665
+  id: 14658864376174168
   identification: 
     name: REORDER_ROLES
     type: Invoke API
@@ -944,8 +944,8 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: REORDER_ROLES # 780394754752648
+    when-button-pressed: REORDER_ROLES # 14650868658174151
 
   security: 
-    authorization-scheme: IS_USER # 29591928282295647
+    authorization-scheme: IS_USER # 43462402185717150
 

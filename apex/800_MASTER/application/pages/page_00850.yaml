@@ -5,7 +5,7 @@ identification:
   name: '#fa-map-signs Navigation'
   alias: NAVIGATION
   title: Navigation
-  page-group: ADMIN - OTHERS # 10394053266694708
+  page-group: ADMIN - OTHERS # 24264527170116211
 
 appearance: 
   page-mode: Normal
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 50054064996748712
+  authorization-scheme: IS_ADMIN # 63924538900170215
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Unrestricted
@@ -43,7 +43,7 @@ comments:
 
 regions: 
 - # ====== Region: Navigation [GRID] ===========================
-  id: 823185900014647
+  id: 14693659803436150
   identification: 
     title: Navigation [GRID]
     type: Interactive Grid
@@ -66,7 +66,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 49485051460017594
+    template: Interactive Report # 63355525363439097
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -87,7 +87,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 4504166025030798
+    id: 18374639928452301
     edit: 
       enabled: true
       allowed-operations: 
@@ -139,40 +139,40 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 4510945752032795
+      id: 18381419655454298
       identification: 
         name: Primary Report
         alias: 183815
 
   column-groups: 
   - # ====== Column Group: Page Info =============================
-    id: 4609860528852903
+    id: 18480334432274406
     heading: 
       heading: Page Info
 
   - # ====== Column Group: Flags =================================
-    id: 4610001529852904
+    id: 18480475433274407
     heading: 
       heading: Flags
 
   - # ====== Column Group: Hierarchy =============================
-    id: 4610063004852905
+    id: 18480536908274408
     heading: 
       heading: Hierarchy
 
   - # ====== Column Group: Security ==============================
-    id: 4610203664852906
+    id: 18480677568274409
     heading: 
       heading: Security
 
   - # ====== Column Group: Theme =================================
-    id: 4610238052852907
+    id: 18480711956274410
     heading: 
       heading: Theme
 
   columns: 
   - # ====== Column: PAGE_ID =====================================
-    id: 4507251650030829
+    id: 18377725553452332
     identification: 
       column-name: PAGE_ID
       type: Number Field
@@ -188,7 +188,7 @@ regions:
     layout: 
       sequence: 50
       column-alignment: end
-      group: Hierarchy # 4610063004852905
+      group: Hierarchy # 18480536908274408
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -221,7 +221,7 @@ regions:
       hide: true
 
   - # ====== Column: PARENT_ID ===================================
-    id: 4507381043030830
+    id: 18377854946452333
     identification: 
       column-name: PARENT_ID
       type: Select List
@@ -233,7 +233,7 @@ regions:
     layout: 
       sequence: 60
       column-alignment: end
-      group: Hierarchy # 4610063004852905
+      group: Hierarchy # 18480536908274408
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -245,7 +245,7 @@ regions:
 
     list-of-values: 
       type: Shared Component
-      list-of-values: 'APP_PAGES #ID-ID' # 5637275056221000
+      list-of-values: 'APP_PAGES #ID-ID' # 19507748959642503
       display-extra-values: true
       display-null-value: true
 
@@ -279,7 +279,7 @@ regions:
       hide: true
 
   - # ====== Column: ORDER# ======================================
-    id: 4507493987030831
+    id: 18377967890452334
     identification: 
       column-name: ORDER#
       type: Number Field
@@ -295,7 +295,7 @@ regions:
     layout: 
       sequence: 70
       column-alignment: end
-      group: Hierarchy # 4610063004852905
+      group: Hierarchy # 18480536908274408
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -328,7 +328,7 @@ regions:
       hide: true
 
   - # ====== Column: COL_ID ======================================
-    id: 4507598192030832
+    id: 18378072095452335
     identification: 
       column-name: COL_ID
       type: Number Field
@@ -344,7 +344,7 @@ regions:
     layout: 
       sequence: 190
       column-alignment: end
-      group: Theme # 4610238052852907
+      group: Theme # 18480711956274410
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -377,7 +377,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_HIDDEN ===================================
-    id: 4507692976030833
+    id: 18378166879452336
     identification: 
       column-name: IS_HIDDEN
       type: Checkbox
@@ -393,7 +393,7 @@ regions:
     layout: 
       sequence: 110
       column-alignment: center
-      group: Flags # 4610001529852904
+      group: Flags # 18480475433274407
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -433,7 +433,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_RESET ====================================
-    id: 4507768645030834
+    id: 18378242548452337
     identification: 
       column-name: IS_RESET
       type: Checkbox
@@ -449,7 +449,7 @@ regions:
     layout: 
       sequence: 120
       column-alignment: center
-      group: Flags # 4610001529852904
+      group: Flags # 18480475433274407
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -489,7 +489,7 @@ regions:
       hide: true
 
   - # ====== Column: PAGE_ALIAS ==================================
-    id: 4507857297030835
+    id: 18378331200452338
     identification: 
       column-name: PAGE_ALIAS
       type: Link
@@ -501,7 +501,7 @@ regions:
     layout: 
       sequence: 140
       column-alignment: start
-      group: Page Info # 4609860528852903
+      group: Page Info # 18480334432274406
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -542,7 +542,7 @@ regions:
       escape-special-characters: true
 
   - # ====== Column: PAGE_NAME ===================================
-    id: 4507994151030836
+    id: 18378468054452339
     identification: 
       column-name: PAGE_NAME
       type: HTML Expression
@@ -557,7 +557,7 @@ regions:
     layout: 
       sequence: 150
       column-alignment: start
-      group: Page Info # 4609860528852903
+      group: Page Info # 18480334432274406
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -580,7 +580,7 @@ regions:
       hide: true
 
   - # ====== Column: PAGE_GROUP ==================================
-    id: 4508082694030837
+    id: 18378556597452340
     identification: 
       column-name: PAGE_GROUP
       type: Display Only
@@ -596,7 +596,7 @@ regions:
     layout: 
       sequence: 160
       column-alignment: start
-      group: Page Info # 4609860528852903
+      group: Page Info # 18480334432274406
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -633,7 +633,7 @@ regions:
       hide: true
 
   - # ====== Column: AUTH_SCHEME =================================
-    id: 4508151648030838
+    id: 18378625551452341
     identification: 
       column-name: AUTH_SCHEME
       type: Display Only
@@ -649,7 +649,7 @@ regions:
     layout: 
       sequence: 180
       column-alignment: start
-      group: Security # 4610203664852906
+      group: Security # 18480677568274409
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -685,7 +685,7 @@ regions:
       hide: true
 
   - # ====== Column: IS_MODAL ====================================
-    id: 4508325049030839
+    id: 18378798952452342
     identification: 
       column-name: IS_MODAL
       type: Checkbox
@@ -701,7 +701,7 @@ regions:
     layout: 
       sequence: 130
       column-alignment: center
-      group: Flags # 4610001529852904
+      group: Flags # 18480475433274407
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -742,7 +742,7 @@ regions:
       execute: Once
 
   - # ====== Column: CSS_CLASSES =================================
-    id: 4508348092030840
+    id: 18378821995452343
     identification: 
       column-name: CSS_CLASSES
       type: Display Only
@@ -758,7 +758,7 @@ regions:
     layout: 
       sequence: 200
       column-alignment: start
-      group: Theme # 4610238052852907
+      group: Theme # 18480711956274410
       use-group-for: Both
       stretch: Use Report Setting
 
@@ -795,7 +795,7 @@ regions:
       hide: true
 
   - # ====== Column: LABEL =======================================
-    id: 4508435954030841
+    id: 18378909857452344
     identification: 
       column-name: LABEL
       type: Hidden
@@ -826,7 +826,7 @@ regions:
       sort: false
 
   - # ====== Column: SORT_ORDER# =================================
-    id: 4508583511030842
+    id: 18379057414452345
     identification: 
       column-name: SORT_ORDER#
       type: Display Only
@@ -876,7 +876,7 @@ regions:
       hide: true
 
   - # ====== Column: APEX$ROW_ACTION =============================
-    id: 4508700952030843
+    id: 18379174855452346
     identification: 
       column-name: APEX$ROW_ACTION
       type: Actions Menu
@@ -885,7 +885,7 @@ regions:
       sequence: 20
 
   - # ====== Column: APEX$ROW_SELECTOR ===========================
-    id: 4508792521030844
+    id: 18379266424452347
     identification: 
       column-name: APEX$ROW_SELECTOR
       type: Row Selector
@@ -899,7 +899,7 @@ regions:
       sequence: 10
 
   - # ====== Column: APP_ID ======================================
-    id: 4509061401030847
+    id: 18379535304452350
     identification: 
       column-name: APP_ID
       type: Hidden
@@ -936,7 +936,7 @@ regions:
       sort: false
 
   - # ====== Column: ACTION_NAME =================================
-    id: 4609350404852898
+    id: 18479824308274401
     identification: 
       column-name: ACTION_NAME
       type: HTML Expression
@@ -972,7 +972,7 @@ regions:
       hide: true
 
   - # ====== Column: ACTION_LINK =================================
-    id: 4609432263852899
+    id: 18479906167274402
     identification: 
       column-name: ACTION_LINK
       type: Hidden
@@ -1003,7 +1003,7 @@ regions:
       sort: false
 
   - # ====== Column: ACTION_DML ==================================
-    id: 4609728332852902
+    id: 18480202236274405
     identification: 
       column-name: ACTION_DML
       type: Hidden
@@ -1034,7 +1034,7 @@ regions:
       sort: false
 
   - # ====== Column: PAGE_LINK ===================================
-    id: 4610367515852908
+    id: 18480841419274411
     identification: 
       column-name: PAGE_LINK
       type: Hidden
@@ -1065,7 +1065,7 @@ regions:
       sort: false
 
   - # ====== Column: PK ==========================================
-    id: 11193287272308514
+    id: 25063761175730017
     identification: 
       column-name: PK
       type: Hidden
@@ -1138,7 +1138,7 @@ regions:
       alignment: center
 
 - # ====== Region: Navigation for &G_APP_NAME. =================
-  id: 25881195750583871
+  id: 39751669654005374
   identification: 
     title: Navigation for &G_APP_NAME.
     type: Static Content
@@ -1154,7 +1154,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 49532124714017618
+    template: Hero # 63402598617439121
     template-options: 
     - '#DEFAULT#'
     icon: fa-map-signs
@@ -1181,7 +1181,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P850_AUTO_UPDATE_HOT =====================
-  id: 4610816154852912
+  id: 18481290058274415
   identification: 
     name: P850_AUTO_UPDATE_HOT
     type: Hidden
@@ -1191,7 +1191,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: Navigation for &G_APP_NAME. # 25881195750583871
+    region: Navigation for &G_APP_NAME. # 39751669654005374
     position: BODY
 
   advanced: 
@@ -1211,7 +1211,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P850_AUTO_UPDATE_BADGE ===================
-  id: 8908829489179520
+  id: 22779303392601023
   identification: 
     name: P850_AUTO_UPDATE_BADGE
     type: Hidden
@@ -1221,7 +1221,7 @@ page-items:
 
   layout: 
     sequence: 50
-    region: Navigation for &G_APP_NAME. # 25881195750583871
+    region: Navigation for &G_APP_NAME. # 39751669654005374
     position: BODY
 
   advanced: 
@@ -1241,7 +1241,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P850_ADD_PAGE ============================
-  id: 25952783767344249
+  id: 39823257670765752
   identification: 
     name: P850_ADD_PAGE
     type: Hidden
@@ -1251,7 +1251,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: Navigation for &G_APP_NAME. # 25881195750583871
+    region: Navigation for &G_APP_NAME. # 39751669654005374
     position: BODY
 
   advanced: 
@@ -1271,7 +1271,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P850_AUTH_SCHEME =========================
-  id: 26656247644717282
+  id: 40526721548138785
   identification: 
     name: P850_AUTH_SCHEME
     type: Hidden
@@ -1281,7 +1281,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Navigation for &G_APP_NAME. # 25881195750583871
+    region: Navigation for &G_APP_NAME. # 39751669654005374
     position: BODY
 
   advanced: 
@@ -1301,7 +1301,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P850_REMOVE_PAGE =========================
-  id: 27925528811258875
+  id: 41796002714680378
   identification: 
     name: P850_REMOVE_PAGE
     type: Hidden
@@ -1311,7 +1311,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: Navigation for &G_APP_NAME. # 25881195750583871
+    region: Navigation for &G_APP_NAME. # 39751669654005374
     position: BODY
 
   advanced: 
@@ -1332,14 +1332,14 @@ page-items:
 
 buttons: 
 - # ====== Button: REFRESH_MV ==================================
-  id: 4597274903372566
+  id: 18467748806794069
   identification: 
     button-name: REFRESH_MV
     label: Refresh MV
 
   layout: 
     sequence: 20
-    region: Navigation for &G_APP_NAME. # 25881195750583871
+    region: Navigation for &G_APP_NAME. # 39751669654005374
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -1348,7 +1348,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 49593504698017664
+    button-template: Text # 63463978601439167
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1359,14 +1359,14 @@ buttons:
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: AUTO_UPDATE =================================
-  id: 4610632471852911
+  id: 18481106375274414
   identification: 
     button-name: AUTO_UPDATE
     label: Auto Update &P850_AUTO_UPDATE_BADGE!RAW.
 
   layout: 
     sequence: 10
-    region: Navigation for &G_APP_NAME. # 25881195750583871
+    region: Navigation for &G_APP_NAME. # 39751669654005374
     position: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
@@ -1375,7 +1375,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 49593504698017664
+    button-template: Text # 63463978601439167
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1389,7 +1389,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: HIDE_INTERNAL_GROUPS ================
-  id: 1992230098139187
+  id: 15862704001560690
   identification: 
     name: HIDE_INTERNAL_GROUPS
 
@@ -1405,7 +1405,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 1992770951139187
+    id: 15863244854560690
     identification: 
       action: Execute JavaScript Code
 
@@ -1416,18 +1416,18 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: HIDE_INTERNAL_GROUPS # 1992230098139187
+      event: HIDE_INTERNAL_GROUPS # 15862704001560690
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 processes: 
 - # ====== Process: SAVE_NAVIGATION ============================
-  id: 4508853990030845
+  id: 18379327893452348
   identification: 
     name: SAVE_NAVIGATION
     type: Invoke API
     execution-chain: None
-    editable-region: Navigation [GRID] # 823185900014647
+    editable-region: Navigation [GRID] # 14693659803436150
 
   settings: 
     type: PL/SQL Package
@@ -1447,7 +1447,7 @@ processes:
     execution-scope: For Created and Modified Rows
 
 - # ====== Process: REFRESH_MV =================================
-  id: 4599606886383481
+  id: 18470080789804984
   identification: 
     name: REFRESH_MV
     type: Execute Code
@@ -1470,10 +1470,10 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: REFRESH_MV # 4597274903372566
+    when-button-pressed: REFRESH_MV # 18467748806794069
 
 - # ====== Process: REMOVE_PAGE ================================
-  id: 4609550836852900
+  id: 18480024740274403
   identification: 
     name: REMOVE_PAGE
     type: Execute Code
@@ -1498,7 +1498,7 @@ processes:
     item: P850_REMOVE_PAGE
 
 - # ====== Process: ADD_PAGE ===================================
-  id: 4609641645852901
+  id: 18480115549274404
   identification: 
     name: ADD_PAGE
     type: Execute Code
@@ -1523,7 +1523,7 @@ processes:
     item: P850_ADD_PAGE
 
 - # ====== Process: AUTO_UPDATE ================================
-  id: 4611288888852917
+  id: 18481762792274420
   identification: 
     name: AUTO_UPDATE
     type: Execute Code
@@ -1548,10 +1548,10 @@ processes:
     display-location: Inline in Notification
 
   server-side-condition: 
-    when-button-pressed: AUTO_UPDATE # 4610632471852911
+    when-button-pressed: AUTO_UPDATE # 18481106375274414
 
 - # ====== Process: INIT_DEFAULTS ==============================
-  id: 8909174890179523
+  id: 22779648793601026
   identification: 
     name: INIT_DEFAULTS
     type: Invoke API

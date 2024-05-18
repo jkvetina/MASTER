@@ -5,7 +5,7 @@ identification:
   name: Logs
   alias: LOGS
   title: Logs
-  page-group: ADMIN - DASHBOARD # 10391520329681905
+  page-group: ADMIN - DASHBOARD # 24261994233103408
 
 appearance: 
   page-mode: Normal
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 50054064996748712
+  authorization-scheme: IS_ADMIN # 63924538900170215
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -40,7 +40,7 @@ server-cache:
 
 regions: 
 - # ====== Region: TABS ========================================
-  id: 25783817959416831
+  id: 39654291862838334
   identification: 
     title: TABS
     type: Static Content
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Tabs Container # 49502113800017603
+    template: Tabs Container # 63372587703439106
     template-options: 
     - '#DEFAULT#'
     - js-useLocalStorage
@@ -83,14 +83,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Debug Log ===================================
-  id: 25783873738416832
+  id: 39654347641838335
   identification: 
     title: Debug Log
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: TABS # 25783817959416831
+    parent-region: TABS # 39654291862838334
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -99,7 +99,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 49454620635017576
+    template: Blank with Attributes # 63325094538439079
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -124,14 +124,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Access Log ==================================
-  id: 25783989938416833
+  id: 39654463841838336
   identification: 
     title: Access Log
     type: Static Content
 
   layout: 
     sequence: 20
-    parent-region: TABS # 25783817959416831
+    parent-region: TABS # 39654291862838334
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -140,7 +140,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 49454620635017576
+    template: Blank with Attributes # 63325094538439079
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -165,14 +165,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Web Services ================================
-  id: 25784118201416834
+  id: 39654592104838337
   identification: 
     title: Web Services
     type: Static Content
 
   layout: 
     sequence: 40
-    parent-region: TABS # 25783817959416831
+    parent-region: TABS # 39654291862838334
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -181,7 +181,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 49454620635017576
+    template: Blank with Attributes # 63325094538439079
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -206,14 +206,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: REST Sync ===================================
-  id: 25784218211416835
+  id: 39654692114838338
   identification: 
     title: REST Sync
     type: Static Content
 
   layout: 
     sequence: 50
-    parent-region: TABS # 25783817959416831
+    parent-region: TABS # 39654291862838334
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -222,7 +222,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 49454620635017576
+    template: Blank with Attributes # 63325094538439079
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -247,14 +247,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Activity Log ================================
-  id: 25784320514416836
+  id: 39654794417838339
   identification: 
     title: Activity Log
     type: Static Content
 
   layout: 
     sequence: 30
-    parent-region: TABS # 25783817959416831
+    parent-region: TABS # 39654291862838334
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -263,7 +263,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 49454620635017576
+    template: Blank with Attributes # 63325094538439079
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -288,14 +288,14 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Access Log ==================================
-  id: 25784750520416841
+  id: 39655224423838344
   identification: 
     title: Access Log
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Access Log # 25783989938416833
+    parent-region: Access Log # 39654463841838336
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -304,7 +304,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 49532124714017618
+    template: Hero # 63402598617439121
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -329,7 +329,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Access Log [GRID] ===========================
-  id: 25784844818416842
+  id: 39655318721838345
   identification: 
     title: Access Log [GRID]
     type: Interactive Grid
@@ -343,7 +343,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Access Log # 25783989938416833
+    parent-region: Access Log # 39654463841838336
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -352,7 +352,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 49485051460017594
+    template: Interactive Report # 63355525363439097
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -372,7 +372,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 25785000646416843
+    id: 39655474549838346
     edit: 
       enabled: false
 
@@ -421,14 +421,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 25896026835905683
+      id: 39766500739327186
       identification: 
         name: Primary Report
         alias: 397666
 
   columns: 
   - # ====== Column: USER_NAME ===================================
-    id: 25785036924416844
+    id: 39655510827838347
     identification: 
       column-name: USER_NAME
       type: Text Field
@@ -483,7 +483,7 @@ regions:
       hide: true
 
   - # ====== Column: ACCESS_DATE =================================
-    id: 25785189130416845
+    id: 39655663033838348
     identification: 
       column-name: ACCESS_DATE
       type: Date Picker
@@ -538,7 +538,7 @@ regions:
       hide: true
 
   - # ====== Column: IP_ADDRESS ==================================
-    id: 25785280922416846
+    id: 39655754825838349
     identification: 
       column-name: IP_ADDRESS
       type: Text Field
@@ -593,7 +593,7 @@ regions:
       hide: true
 
   - # ====== Column: AUTHENTICATION_METHOD =======================
-    id: 25785389933416847
+    id: 39655863836838350
     identification: 
       column-name: AUTHENTICATION_METHOD
       type: Text Field
@@ -648,7 +648,7 @@ regions:
       hide: true
 
   - # ====== Column: AUTHENTICATION_RESULT =======================
-    id: 25889864058904298
+    id: 39760337962325801
     identification: 
       column-name: AUTHENTICATION_RESULT
       type: Text Field
@@ -703,7 +703,7 @@ regions:
       hide: true
 
   - # ====== Column: CUSTOM_STATUS_TEXT ==========================
-    id: 25890024708904299
+    id: 39760498612325802
     identification: 
       column-name: CUSTOM_STATUS_TEXT
       type: Textarea
@@ -802,14 +802,14 @@ regions:
       alignment: center
 
 - # ====== Region: Debug Log ===================================
-  id: 25890602722904305
+  id: 39761076626325808
   identification: 
     title: Debug Log
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Debug Log # 25783873738416832
+    parent-region: Debug Log # 39654347641838335
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -818,7 +818,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 49532124714017618
+    template: Hero # 63402598617439121
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -843,7 +843,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Debug Log [GRID] ============================
-  id: 25890703343904306
+  id: 39761177247325809
   identification: 
     title: Debug Log [GRID]
     type: Interactive Grid
@@ -857,7 +857,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Debug Log # 25783873738416832
+    parent-region: Debug Log # 39654347641838335
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -866,7 +866,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 49485051460017594
+    template: Interactive Report # 63355525363439097
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -886,7 +886,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 25890820201904307
+    id: 39761294105325810
     edit: 
       enabled: false
 
@@ -935,14 +935,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 25913396026137031
+      id: 39783869929558534
       identification: 
         name: Primary Report
         alias: 397839
 
   columns: 
   - # ====== Column: ID ==========================================
-    id: 25890850828904308
+    id: 39761324732325811
     identification: 
       column-name: ID
       type: Number Field
@@ -989,7 +989,7 @@ regions:
       hide: true
 
   - # ====== Column: PAGE_VIEW_ID ================================
-    id: 25890966348904309
+    id: 39761440252325812
     identification: 
       column-name: PAGE_VIEW_ID
       type: Number Field
@@ -1036,7 +1036,7 @@ regions:
       hide: true
 
   - # ====== Column: PAGE_ID =====================================
-    id: 25891066952904310
+    id: 39761540856325813
     identification: 
       column-name: PAGE_ID
       type: Number Field
@@ -1083,7 +1083,7 @@ regions:
       hide: true
 
   - # ====== Column: ELAPSED_TIME ================================
-    id: 25891188170904311
+    id: 39761662074325814
     identification: 
       column-name: ELAPSED_TIME
       type: Number Field
@@ -1130,7 +1130,7 @@ regions:
       hide: true
 
   - # ====== Column: EXECUTION_TIME ==============================
-    id: 25891289161904312
+    id: 39761763065325815
     identification: 
       column-name: EXECUTION_TIME
       type: Number Field
@@ -1177,7 +1177,7 @@ regions:
       hide: true
 
   - # ====== Column: MESSAGE_LEVEL ===============================
-    id: 25891367949904313
+    id: 39761841853325816
     identification: 
       column-name: MESSAGE_LEVEL
       type: Number Field
@@ -1224,7 +1224,7 @@ regions:
       hide: true
 
   - # ====== Column: MESSAGE =====================================
-    id: 25891503727904314
+    id: 39761977631325817
     identification: 
       column-name: MESSAGE
       type: Textarea
@@ -1284,7 +1284,7 @@ regions:
       hide: true
 
   - # ====== Column: CALL_STACK ==================================
-    id: 25891576198904315
+    id: 39762050102325818
     identification: 
       column-name: CALL_STACK
       type: Textarea
@@ -1344,7 +1344,7 @@ regions:
       hide: true
 
   - # ====== Column: USER_ID =====================================
-    id: 25891674643904316
+    id: 39762148547325819
     identification: 
       column-name: USER_ID
       type: Text Field
@@ -1399,7 +1399,7 @@ regions:
       hide: true
 
   - # ====== Column: SESSION_ID ==================================
-    id: 25891803162904317
+    id: 39762277066325820
     identification: 
       column-name: SESSION_ID
       type: Number Field
@@ -1446,7 +1446,7 @@ regions:
       hide: true
 
   - # ====== Column: CREATED_AT ==================================
-    id: 25891919157904318
+    id: 39762393061325821
     identification: 
       column-name: CREATED_AT
       type: Text Field
@@ -1533,14 +1533,14 @@ regions:
       alignment: center
 
 - # ====== Region: Activity Log ================================
-  id: 25891970093904319
+  id: 39762443997325822
   identification: 
     title: Activity Log
     type: Static Content
 
   layout: 
     sequence: 10
-    parent-region: Activity Log # 25784320514416836
+    parent-region: Activity Log # 39654794417838339
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1549,7 +1549,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 49532124714017618
+    template: Hero # 63402598617439121
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1574,7 +1574,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Activity Log [GRID] =========================
-  id: 25892092947904320
+  id: 39762566851325823
   identification: 
     title: Activity Log [GRID]
     type: Interactive Grid
@@ -1588,7 +1588,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: Activity Log # 25784320514416836
+    parent-region: Activity Log # 39654794417838339
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -1597,7 +1597,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 49485051460017594
+    template: Interactive Report # 63355525363439097
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1617,7 +1617,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 25892162220904321
+    id: 39762636124325824
     edit: 
       enabled: false
 
@@ -1666,14 +1666,14 @@ regions:
 
     saved-reports: 
     - # ====== Saved Report: Primary Report ========================
-      id: 25929941542259488
+      id: 39800415445680991
       identification: 
         name: Primary Report
         alias: 398005
 
   columns: 
   - # ====== Column: ID ==========================================
-    id: 25892242586904322
+    id: 39762716490325825
     identification: 
       column-name: ID
       type: Number Field
@@ -1720,7 +1720,7 @@ regions:
       hide: true
 
   - # ====== Column: PAGE_VIEW_ID ================================
-    id: 25892348052904323
+    id: 39762821956325826
     identification: 
       column-name: PAGE_VIEW_ID
       type: Number Field
@@ -1767,7 +1767,7 @@ regions:
       hide: true
 
   - # ====== Column: PAGE_ID =====================================
-    id: 25892476459904324
+    id: 39762950363325827
     identification: 
       column-name: PAGE_ID
       type: Number Field
@@ -1814,7 +1814,7 @@ regions:
       hide: true
 
   - # ====== Column: PAGE_NAME ===================================
-    id: 25892546691904325
+    id: 39763020595325828
     identification: 
       column-name: PAGE_NAME
       type: Text Field
@@ -1869,7 +1869,7 @@ regions:
       hide: true
 
   - # ====== Column: PAGE_VIEW_TYPE ==============================
-    id: 25892675694904326
+    id: 39763149598325829
     identification: 
       column-name: PAGE_VIEW_TYPE
       type: Text Field
@@ -1924,7 +1924,7 @@ regions:
       hide: true
 
   - # ====== Column: REQUEST_VALUE ===============================
-    id: 25892741057904327
+    id: 39763214961325830
     identification: 
       column-name: REQUEST_VALUE
       type: Textarea
@@ -1984,7 +1984,7 @@ regions:
       hide: true
 
   - # ====== Column: ELAPSED_TIME ================================
-    id: 25892863614904328
+    id: 39763337518325831
     identification: 
       column-name: ELAPSED_TIME
       type: Number Field
@@ -2031,7 +2031,7 @@ regions:
       hide: true
 
   - # ====== Column: IP_ADDRESS ==================================
-    id: 25892947009904329
+    id: 39763420913325832
     identification: 
       column-name: IP_ADDRESS
       type: Textarea
@@ -2091,7 +2091,7 @@ regions:
       hide: true
 
   - # ====== Column: AGENT =======================================
-    id: 25893033348904330
+    id: 39763507252325833
     identification: 
       column-name: AGENT
       type: Textarea
@@ -2151,7 +2151,7 @@ regions:
       hide: true
 
   - # ====== Column: USER_ID =====================================
-    id: 25893160059904331
+    id: 39763633963325834
     identification: 
       column-name: USER_ID
       type: Text Field
@@ -2206,7 +2206,7 @@ regions:
       hide: true
 
   - # ====== Column: SESSION_ID ==================================
-    id: 25893322911904332
+    id: 39763796815325835
     identification: 
       column-name: SESSION_ID
       type: Number Field
@@ -2253,7 +2253,7 @@ regions:
       hide: true
 
   - # ====== Column: CREATED_AT ==================================
-    id: 25893341856904333
+    id: 39763815760325836
     identification: 
       column-name: CREATED_AT
       type: Text Field
@@ -2340,7 +2340,7 @@ regions:
       alignment: center
 
 - # ====== Region: FILTERS =====================================
-  id: 26156160327393433
+  id: 40026634230814936
   identification: 
     title: FILTERS
     type: Static Content
@@ -2356,7 +2356,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 49454620635017576
+    template: Blank with Attributes # 63325094538439079
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -2382,7 +2382,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P885_DATE ================================
-  id: 26156267806393434
+  id: 40026741709814937
   identification: 
     name: P885_DATE
     type: Date Picker
@@ -2401,7 +2401,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: FILTERS # 26156160327393433
+    region: FILTERS # 40026634230814936
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -2412,7 +2412,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 49591086965017660
+    template: Optional - Floating # 63461560868439163
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -2439,7 +2439,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P885_USER_ID =============================
-  id: 26156402818393435
+  id: 40026876721814938
   identification: 
     name: P885_USER_ID
     type: Text Field
@@ -2457,7 +2457,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: FILTERS # 26156160327393433
+    region: FILTERS # 40026634230814936
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -2468,7 +2468,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 49591086965017660
+    template: Optional - Floating # 63461560868439163
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -2495,7 +2495,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P885_SESSION_ID ==========================
-  id: 26156440076393436
+  id: 40026913979814939
   identification: 
     name: P885_SESSION_ID
     type: Text Field
@@ -2513,7 +2513,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: FILTERS # 26156160327393433
+    region: FILTERS # 40026634230814936
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -2524,7 +2524,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 49591086965017660
+    template: Optional - Floating # 63461560868439163
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -2551,7 +2551,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P885_PAGE_ID =============================
-  id: 26156618757393437
+  id: 40027092660814940
   identification: 
     name: P885_PAGE_ID
     type: Text Field
@@ -2569,7 +2569,7 @@ page-items:
 
   layout: 
     sequence: 40
-    region: FILTERS # 26156160327393433
+    region: FILTERS # 40026634230814936
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -2580,7 +2580,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 49591086965017660
+    template: Optional - Floating # 63461560868439163
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -2608,7 +2608,7 @@ page-items:
 
 dynamic-actions: 
 - # ====== Dynamic Action: CHANGED_FILTERS =====================
-  id: 26156706038393438
+  id: 40027179941814941
   identification: 
     name: CHANGED_FILTERS
 
@@ -2628,7 +2628,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Submit Page =================================
-    id: 26156809129393439
+    id: 40027283032814942
     identification: 
       action: Submit Page
 
@@ -2637,7 +2637,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CHANGED_FILTERS # 26156706038393438
+      event: CHANGED_FILTERS # 40027179941814941
       fire-when-event-result-is: True
       fire-on-initialization: false
 

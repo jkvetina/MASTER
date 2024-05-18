@@ -5,7 +5,7 @@ identification:
   name: Events
   alias: EVENTS
   title: Events
-  page-group: ADMIN - DASHBOARD # 10391520329681905
+  page-group: ADMIN - DASHBOARD # 24261994233103408
 
 appearance: 
   page-mode: Normal
@@ -21,7 +21,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_ADMIN # 50054064996748712
+  authorization-scheme: IS_ADMIN # 63924538900170215
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum

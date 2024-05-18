@@ -6,13 +6,13 @@ begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.10.31'
 ,p_release=>'23.2.3'
-,p_default_workspace_id=>8506563800894011
-,p_default_application_id=>705
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>800
 ,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_row_template(
- p_id=>wwv_flow_imp.id(49544572425017627)
+ p_id=>wwv_flow_imp.id(63415046328439130)
 ,p_row_template_name=>'Cards'
 ,p_internal_name=>'CARDS'
 ,p_row_template1=>wwv_flow_string.join(wwv_flow_t_varchar2(

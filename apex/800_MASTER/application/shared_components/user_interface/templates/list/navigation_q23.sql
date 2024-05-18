@@ -6,13 +6,13 @@ begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.10.31'
 ,p_release=>'23.2.3'
-,p_default_workspace_id=>8506563800894011
-,p_default_application_id=>705
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>800
 ,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_list_template(
- p_id=>wwv_flow_imp.id(15012979506185298)
+ p_id=>wwv_flow_imp.id(28883453409606801)
 ,p_list_template_current=>'#A08#<li #A10#>#A01##A02##A03##A04##A05##A06##A07#</li>#A09#'
 ,p_list_template_noncurrent=>'#A08#<li #A10#>#A01##A02##A03##A04##A05##A06##A07#</li>#A09#'
 ,p_list_template_name=>'Navigation Q23'

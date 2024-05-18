@@ -1,6 +1,6 @@
 ---
 - # ====== Authorization: IS_USER_COMPONENT ====================
-  id: 764963641926699
+  id: 14635437545348202
   identification: 
     name: IS_USER_COMPONENT
 
@@ -23,7 +23,7 @@
     error-message: ACCESS_DENIED|IS_USER_COMPONENT
 
 - # ====== Authorization: IS_USER_C ============================
-  id: 765178736929428
+  id: 14635652640350931
   identification: 
     name: IS_USER_C
 
@@ -46,7 +46,7 @@
     error-message: ACCESS_DENIED|IS_USER_C
 
 - # ====== Authorization: IS_USER_D ============================
-  id: 765842063937096
+  id: 14636315967358599
   identification: 
     name: IS_USER_D
 
@@ -69,7 +69,7 @@
     error-message: ACCESS_DENIED|IS_USER_D
 
 - # ====== Authorization: IS_USER_U ============================
-  id: 766068142937583
+  id: 14636542046359086
   identification: 
     name: IS_USER_U
 
@@ -92,7 +92,7 @@
     error-message: ACCESS_DENIED|IS_USER_U
 
 - # ====== Authorization: IS_USER ==============================
-  id: 29591928282295647
+  id: 43462402185717150
   identification: 
     name: IS_USER
 
@@ -112,7 +112,7 @@
     comments: This needs to be relevant to active application
 
 - # ====== Authorization: NOBODY ===============================
-  id: 41251932313346766
+  id: 55122406216768269
   identification: 
     name: NOBODY
 
@@ -129,7 +129,7 @@
     comments: This is an alternative to build option Never and/or server side condition Never so you can keep values there
 
 - # ====== Authorization: IS_DEVELOPER =========================
-  id: 46219360129518399
+  id: 60089834032939902
   identification: 
     name: IS_DEVELOPER
 
@@ -146,7 +146,7 @@
     error-message: ACCESS_DENIED|IS_DEVELOPER
 
 - # ====== Authorization: IS_ADMIN =============================
-  id: 50054064996748712
+  id: 63924538900170215
   identification: 
     name: IS_ADMIN
 

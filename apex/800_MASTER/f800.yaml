@@ -1,6 +1,6 @@
 ---
 # ====== Application: Master =================================
-id: 705
+id: 800
 identification: 
   name: Master
   alias: MASTER
@@ -31,7 +31,7 @@ advanced:
 
 authentication: 
   public-user: APEX_PUBLIC_USER
-  authentication-scheme: OPEN_DOOR (TESTING ONLY) # 49631967719019976
+  authentication-scheme: OPEN_DOOR (TESTING ONLY) # 63502441622441479
 
 authorization: 
   source-for-role-or-group-schemes: Access Control User Role Assignments
@@ -96,7 +96,7 @@ navigation:
     page: LOGIN
 
 navigation-menu: 
-  list-template: Top Navigation Menu # 49589714481017658
+  list-template: Top Navigation Menu # 63460188384439161
   template-options: 
   - '#DEFAULT#'
   - js-tabLike
@@ -104,8 +104,8 @@ navigation-menu:
 
 navigation-bar: 
   implementation: List
-  list: NAVIGATION # 647073258002820
-  list-template: Navigation Q23 # 15012979506185298
+  list: NAVIGATION # 14517547161424323
+  list-template: Navigation Q23 # 28883453409606801
   template-options: 
   - '#DEFAULT#'
 
@@ -129,7 +129,7 @@ attributes:
 
 substitutions: 
 - # ====== Substitution: APP_NAME ==============================
-  id: 13870473903421502
+  id: 1
   identification: 
     name: APP_NAME
 
@@ -137,12 +137,12 @@ substitutions:
     static-value: Master
 
 - # ====== Substitution: APP_DESC ==============================
-  id: 13870473903421501
+  id: 2
   identification: 
     name: APP_DESC
 
 - # ====== Substitution: APP_PREFIX ============================
-  id: 13870473903421500
+  id: 3
   identification: 
     name: APP_PREFIX
 
@@ -151,7 +151,7 @@ substitutions:
 
 component-settings: 
 - # ====== Component Setting: NATIVE_ADFBC =====================
-  id: 12482480052601434
+  id: 1387993850820069
   identification: 
     name: NATIVE_ADFBC
     type: REST Data Source
@@ -160,7 +160,7 @@ component-settings:
     version-number: 39913487784079
 
 - # ====== Component Setting: NATIVE_DISPLAY_SELECTOR ==========
-  id: 49414370858017520
+  id: 63284844761439023
   identification: 
     name: NATIVE_DISPLAY_SELECTOR
     type: Region
@@ -172,7 +172,7 @@ component-settings:
     version-number: 1
 
 - # ====== Component Setting: NATIVE_STAR_RATING ===============
-  id: 49414664466017522
+  id: 63285138369439025
   identification: 
     name: NATIVE_STAR_RATING
     type: Item
@@ -185,7 +185,7 @@ component-settings:
     version-number: 1
 
 - # ====== Component Setting: NATIVE_SINGLE_CHECKBOX ===========
-  id: 49414949249017522
+  id: 63285423152439025
   identification: 
     name: NATIVE_SINGLE_CHECKBOX
     type: Item
@@ -198,7 +198,7 @@ component-settings:
     version-number: 1
 
 - # ====== Component Setting: NATIVE_MAP_REGION ================
-  id: 49415587218017522
+  id: 63286061121439025
   identification: 
     name: NATIVE_MAP_REGION
     type: Region
@@ -210,7 +210,7 @@ component-settings:
     version-number: 1
 
 - # ====== Component Setting: NATIVE_YES_NO ====================
-  id: 49415823783017522
+  id: 63286297686439025
   identification: 
     name: NATIVE_YES_NO
     type: Item
@@ -224,7 +224,7 @@ component-settings:
     version-number: 1
 
 - # ====== Component Setting: NATIVE_COLOR_PICKER ==============
-  id: 49416168853017523
+  id: 63286642756439026
   identification: 
     name: NATIVE_COLOR_PICKER
     type: Item
@@ -237,7 +237,7 @@ component-settings:
     version-number: 1
 
 - # ====== Component Setting: NATIVE_IR ========================
-  id: 49416489523017523
+  id: 63286963426439026
   identification: 
     name: NATIVE_IR
     type: Region
@@ -249,7 +249,7 @@ component-settings:
     version-number: 1
 
 - # ====== Component Setting: NATIVE_DATE_PICKER_APEX ==========
-  id: 49416749253017523
+  id: 63287223156439026
   identification: 
     name: NATIVE_DATE_PICKER_APEX
     type: Item
@@ -264,7 +264,7 @@ component-settings:
     version-number: 1
 
 - # ====== Component Setting: NATIVE_GEOCODED_ADDRESS ==========
-  id: 49417015814017523
+  id: 63287489717439026
   identification: 
     name: NATIVE_GEOCODED_ADDRESS
     type: Item
@@ -281,7 +281,7 @@ component-settings:
 
 pwa-screenshots: 
 - # ====== PWA Screenshot: Launchpad ===========================
-  id: 10748746213387889
+  id: 24619220116809392
   label: 
     label: Launchpad
 

@@ -5,11 +5,11 @@ identification:
   name: '#fa-bell-o Push Notifications'
   alias: PUSH-NOTIFICATIONS
   title: Push Notifications
-  page-group: USER_PROFILE # 4446538683665162
+  page-group: USER_PROFILE # 18317012587086665
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Drawer # 49418709235017539
+  dialog-template: Drawer # 63289183138439042
   template-options: 
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
@@ -39,7 +39,7 @@ css:
     
 
 security: 
-  authorization-scheme: IS_USER # 29591928282295647
+  authorization-scheme: IS_USER # 43462402185717150
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -58,7 +58,7 @@ server-cache:
 
 regions: 
 - # ====== Region: Subscribed Devices ==========================
-  id: 11068294552047827
+  id: 24938768455469330
   identification: 
     title: Subscribed Devices
     type: Static Content
@@ -74,7 +74,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 49532124714017618
+    template: Hero # 63402598617439121
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -105,7 +105,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Subscribed Devices [DATA] ===================
-  id: 11068413299047828
+  id: 24938887202469331
   identification: 
     title: Subscribed Devices [DATA]
     type: Cards
@@ -131,7 +131,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Cards Container # 49457424532017578
+    template: Cards Container # 63327898435439081
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -156,7 +156,7 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    id: 11069712765047841
+    id: 24940186668469344
     appearance: 
       layout: Grid
       grid-columns: 2 Columns
@@ -194,7 +194,7 @@ regions:
       show-total-count: false
 
 - # ====== Region: PUSH_NOTIFICATIONS ==========================
-  id: 35756684016472815
+  id: 49627157919894318
   identification: 
     title: PUSH_NOTIFICATIONS
     type: Static Content
@@ -210,7 +210,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 49454620635017576
+    template: Blank with Attributes # 63325094538439079
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -236,7 +236,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Push Notifications ==========================
-  id: 59682010883699456
+  id: 73552484787120959
   identification: 
     title: Push Notifications
     type: Static Content
@@ -246,7 +246,7 @@ regions:
 
   layout: 
     sequence: 20
-    parent-region: PUSH_NOTIFICATIONS # 35756684016472815
+    parent-region: PUSH_NOTIFICATIONS # 49627157919894318
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -255,7 +255,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Standard # 49492387248017598
+    template: Standard # 63362861151439101
     template-options: 
     - '#DEFAULT#'
     - t-Region--removeHeader js-removeLandmark
@@ -286,7 +286,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Push Notifications Not Supported ============
-  id: 59740636681038853
+  id: 73611110584460356
   identification: 
     title: Push Notifications Not Supported
     type: Static Content
@@ -296,7 +296,7 @@ regions:
 
   layout: 
     sequence: 10
-    parent-region: PUSH_NOTIFICATIONS # 35756684016472815
+    parent-region: PUSH_NOTIFICATIONS # 49627157919894318
     position: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
@@ -305,7 +305,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Standard # 49492387248017598
+    template: Standard # 63362861151439101
     template-options: 
     - '#DEFAULT#'
     - t-Region--removeHeader js-removeLandmark
@@ -338,7 +338,7 @@ regions:
       expand-shortcuts: false
 
 - # ====== Region: Push Notifications ==========================
-  id: 73271763654511855
+  id: 87142237557933358
   identification: 
     title: Push Notifications
     type: Static Content
@@ -354,7 +354,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 49532124714017618
+    template: Hero # 63402598617439121
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -380,7 +380,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P905_SUBSCRIBED ==========================
-  id: 11192974015308511
+  id: 25063447918730014
   identification: 
     name: P905_SUBSCRIBED
     type: Hidden
@@ -390,7 +390,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Push Notifications # 73271763654511855
+    region: Push Notifications # 87142237557933358
     position: BODY
 
   advanced: 
@@ -410,7 +410,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P905_ENABLE_PUSH =========================
-  id: 59684627735699466
+  id: 73555101639120969
   identification: 
     name: P905_ENABLE_PUSH
     type: Checkbox
@@ -425,7 +425,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: Push Notifications # 59682010883699456
+    region: Push Notifications # 73552484787120959
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -436,7 +436,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 49591086965017660
+    template: Optional - Floating # 63461560868439163
     template-options: 
     - '#DEFAULT#'
     - margin-top-sm
@@ -461,14 +461,14 @@ page-items:
 
 buttons: 
 - # ====== Button: CLOSE_DIALOG ================================
-  id: 11132990060584777
+  id: 25003463964006280
   identification: 
     button-name: CLOSE_DIALOG
     label: Close Dialog
 
   layout: 
     sequence: 10
-    region: Push Notifications # 73271763654511855
+    region: Push Notifications # 87142237557933358
     position: UP
     start-new-layout: false
     start-new-row: true
@@ -477,7 +477,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 49592843977017663
+    button-template: Icon # 63463317880439166
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -491,14 +491,14 @@ buttons:
     static-id: CLOSE_DIALOG
 
 - # ====== Button: INSTALL_PWA =================================
-  id: 11135839110651698
+  id: 25006313014073201
   identification: 
     button-name: INSTALL_PWA
     label: Install
 
   layout: 
     sequence: 10
-    region: Push Notifications # 59682010883699456
+    region: Push Notifications # 73552484787120959
     position: CREATE
     start-new-layout: false
     start-new-row: true
@@ -507,7 +507,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 49593684128017664
+    button-template: Text with Icon # 63464158031439167
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -525,14 +525,14 @@ buttons:
     - none;"
 
 - # ====== Button: SEND_TEST ===================================
-  id: 11136304028651699
+  id: 25006777932073202
   identification: 
     button-name: SEND_TEST
     label: Send Test
 
   layout: 
     sequence: 30
-    region: Push Notifications # 59682010883699456
+    region: Push Notifications # 73552484787120959
     position: CREATE
     start-new-layout: false
     start-new-row: true
@@ -541,7 +541,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 49593504698017664
+    button-template: Text # 63463978601439167
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -559,7 +559,7 @@ buttons:
 
 dynamic-actions: 
 - # ====== Dynamic Action: SEND_TEST_NOTIFICATION ==============
-  id: 11069795075047842
+  id: 24940268978469345
   identification: 
     name: SEND_TEST_NOTIFICATION
 
@@ -571,11 +571,11 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
-    button: SEND_TEST # 11136304028651699
+    button: SEND_TEST # 25006777932073202
 
   actions: 
   - # ====== Action: Execute Server-side Code ====================
-    id: 11069846321047843
+    id: 24940320224469346
     identification: 
       action: Execute Server-side Code
 
@@ -591,14 +591,14 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: SEND_TEST_NOTIFICATION # 11069795075047842
+      event: SEND_TEST_NOTIFICATION # 24940268978469345
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 11069930601047844
+    id: 24940404504469347
     identification: 
       action: Execute JavaScript Code
 
@@ -610,12 +610,12 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: SEND_TEST_NOTIFICATION # 11069795075047842
+      event: SEND_TEST_NOTIFICATION # 24940268978469345
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: INSTALL_PWA =========================
-  id: 11070098389047845
+  id: 24940572292469348
   identification: 
     name: INSTALL_PWA
 
@@ -627,11 +627,11 @@ dynamic-actions:
   when: 
     event: EVENT.EVENT.BROWSER.CLICK
     selection-type: Button
-    button: INSTALL_PWA # 11135839110651698
+    button: INSTALL_PWA # 25006313014073201
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 11070207644047846
+    id: 24940681547469349
     identification: 
       action: Execute JavaScript Code
 
@@ -640,12 +640,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: INSTALL_PWA # 11070098389047845
+      event: INSTALL_PWA # 24940572292469348
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: SWITCH_PUSH_NOTIFICATIONS ===========
-  id: 11189076811295419
+  id: 25059550714716922
   identification: 
     name: SWITCH_PUSH_NOTIFICATIONS
 
@@ -667,17 +667,17 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Refresh =====================================
-    id: 11070321579047847
+    id: 24940795482469350
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: Subscribed Devices [DATA] # 11068413299047828
+      region: Subscribed Devices [DATA] # 24938887202469331
 
     execution: 
       sequence: 30
-      event: SWITCH_PUSH_NOTIFICATIONS # 11189076811295419
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
       fire-when-event-result-is: True
       fire-on-initialization: false
 
@@ -686,7 +686,7 @@ dynamic-actions:
       item: P905_SUBSCRIBED
 
   - # ====== Action: Subscribe to push notifications =============
-    id: 11189465737295426
+    id: 25059939640716929
     identification: 
       name: Subscribe to push notifications
       action: Execute JavaScript Code
@@ -696,12 +696,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: SWITCH_PUSH_NOTIFICATIONS # 11189076811295419
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Unsubscribe from push notifications =========
-    id: 11190016517295427
+    id: 25060490420716930
     identification: 
       name: Unsubscribe from push notifications
       action: Execute JavaScript Code
@@ -711,27 +711,27 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: SWITCH_PUSH_NOTIFICATIONS # 11189076811295419
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
       fire-when-event-result-is: False
       fire-on-initialization: false
 
   - # ====== Action: Refresh =====================================
-    id: 11191710835308498
+    id: 25062184738730001
     identification: 
       action: Refresh
 
     affected-elements: 
       selection-type: Region
-      region: Subscribed Devices [DATA] # 11068413299047828
+      region: Subscribed Devices [DATA] # 24938887202469331
 
     execution: 
       sequence: 30
-      event: SWITCH_PUSH_NOTIFICATIONS # 11189076811295419
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
       fire-when-event-result-is: False
       fire-on-initialization: false
 
   - # ====== Action: Execute Server-side Code ====================
-    id: 11191782628308499
+    id: 25062256531730002
     identification: 
       action: Execute Server-side Code
 
@@ -743,14 +743,14 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: SWITCH_PUSH_NOTIFICATIONS # 11189076811295419
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
       fire-when-event-result-is: True
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Execute Server-side Code ====================
-    id: 11191879657308500
+    id: 25062353560730003
     identification: 
       action: Execute Server-side Code
 
@@ -762,14 +762,14 @@ dynamic-actions:
 
     execution: 
       sequence: 20
-      event: SWITCH_PUSH_NOTIFICATIONS # 11189076811295419
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
       fire-when-event-result-is: False
       fire-on-initialization: false
       stop-execution-on-error: true
       wait-for-result: true
 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 11192880002308510
+    id: 25063353905730013
     identification: 
       action: Execute JavaScript Code
 
@@ -786,7 +786,7 @@ dynamic-actions:
 
     execution: 
       sequence: 40
-      event: SWITCH_PUSH_NOTIFICATIONS # 11189076811295419
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
       fire-when-event-result-is: True
       fire-on-initialization: false
 
@@ -795,7 +795,7 @@ dynamic-actions:
       item: P905_SUBSCRIBED
 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 11193186670308513
+    id: 25063660573730016
     identification: 
       action: Execute JavaScript Code
 
@@ -804,7 +804,7 @@ dynamic-actions:
 
     execution: 
       sequence: 50
-      event: SWITCH_PUSH_NOTIFICATIONS # 11189076811295419
+      event: SWITCH_PUSH_NOTIFICATIONS # 25059550714716922
       fire-when-event-result-is: True
       fire-on-initialization: false
 
@@ -813,7 +813,7 @@ dynamic-actions:
       item: P905_SUBSCRIBED
 
 - # ====== Dynamic Action: SHOW_INSTALL_PWA ====================
-  id: 11192353659308505
+  id: 25062827562730008
   identification: 
     name: SHOW_INSTALL_PWA
 
@@ -826,7 +826,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 11192524747308506
+    id: 25062998650730009
     identification: 
       action: Execute JavaScript Code
 
@@ -846,12 +846,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: SHOW_INSTALL_PWA # 11192353659308505
+      event: SHOW_INSTALL_PWA # 25062827562730008
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: SHOW_PUSH_STATUS ====================
-  id: 11192622237308507
+  id: 25063096140730010
   identification: 
     name: SHOW_PUSH_STATUS
 
@@ -864,7 +864,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 11192721959308508
+    id: 25063195862730011
     identification: 
       action: Execute JavaScript Code
 
@@ -903,13 +903,13 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: SHOW_PUSH_STATUS # 11192622237308507
+      event: SHOW_PUSH_STATUS # 25063096140730010
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 computations: 
 - # ====== Computation: P905_SUBSCRIBED ========================
-  id: 11193055698308512
+  id: 25063529601730015
   identification: 
     item-name: P905_SUBSCRIBED
 
@@ -926,7 +926,7 @@ computations:
 
 processes: 
 - # ====== Process: SET_CURRENT_DEVICE =========================
-  id: 11192752082308509
+  id: 25063225985730012
   identification: 
     name: SET_CURRENT_DEVICE
     type: Execute Code

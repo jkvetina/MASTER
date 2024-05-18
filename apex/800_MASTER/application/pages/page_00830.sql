@@ -6,8 +6,8 @@ begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.10.31'
 ,p_release=>'23.2.3'
-,p_default_workspace_id=>8506563800894011
-,p_default_application_id=>705
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>800
 ,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
@@ -17,14 +17,14 @@ wwv_flow_imp_page.create_page(
 ,p_alias=>'MAP-COMPONENTS'
 ,p_step_title=>'Map Components'
 ,p_autocomplete_on_off=>'OFF'
-,p_group_id=>wwv_flow_imp.id(29591174701290857)  -- PAGE GROUP: ADMIN - USERS & ROLES
+,p_group_id=>wwv_flow_imp.id(43461648604712360)  -- PAGE GROUP: ADMIN - USERS & ROLES
 ,p_inline_css=>wwv_flow_string.join(wwv_flow_t_varchar2(
 '.is-readonly span.u-checkbox {',
 '    display: none !important;',
 '}',
 ''))
 ,p_page_template_options=>'#DEFAULT#'
-,p_required_role=>wwv_flow_imp.id(50054064996748712)  -- AUTHORIZATION: IS_ADMIN
+,p_required_role=>wwv_flow_imp.id(63924538900170215)  -- AUTHORIZATION: IS_ADMIN
 ,p_protection_level=>'C'
 ,p_page_component_map=>'11'
 ,p_last_updated_by=>'DEV'

@@ -20,37 +20,37 @@ css:
   - '#THEME_FILES#css/Core#MIN#.css?v=#APEX_VERSION#'
 
 component-defaults: 
-  page: Standard Q23 # 49317741458280328
-  navigation-bar-list: Navigation Q23 # 15012979506185298
+  page: Standard Q23 # 63188215361701831
+  navigation-bar-list: Navigation Q23 # 28883453409606801
   navigation-menu-list-position: Top
-  navigation-menu-list-(top): Navigation Q23 # 15012979506185298
-  navigation-menu-list-(side): Navigation Q23 # 15012979506185298
-  login-page: Login # 49443889691017565
-  error-page: Login # 49443889691017565
-  printer-friendly-page: Standard # 49429067566017558
-  breadcrumb: 49595140485017666
-  button: Text # 49593504698017664
-  legacy-calendar: Calendar # 49595241819017667
-  default-label: Optional - Floating # 49591086965017660
-  optional-label: Optional - Floating # 49591086965017660
-  required-label: Required - Floating # 49592351575017662
-  list: Links List # 49580968062017651
-  region: Blank with Attributes # 49454620635017576
-  classic-report: Standard # 49556128670017634
+  navigation-menu-list-(top): Navigation Q23 # 28883453409606801
+  navigation-menu-list-(side): Navigation Q23 # 28883453409606801
+  login-page: Login # 63314363594439068
+  error-page: Login # 63314363594439068
+  printer-friendly-page: Standard # 63299541469439061
+  breadcrumb: 63465614388439169
+  button: Text # 63463978601439167
+  legacy-calendar: Calendar # 63465715722439170
+  default-label: Optional - Floating # 63461560868439163
+  optional-label: Optional - Floating # 63461560868439163
+  required-label: Required - Floating # 63462825478439165
+  list: Links List # 63451441965439154
+  region: Blank with Attributes # 63325094538439079
+  classic-report: Standard # 63426602573439137
 
 region-defaults: 
-  breadcrumbs: Title Bar # 49504718239017604
-  charts: Standard # 49492387248017598
-  forms: Standard # 49492387248017598
-  lists: Standard # 49492387248017598
-  reports: Standard # 49492387248017598
-  wizards: Standard # 49492387248017598
-  interactive-reports: Interactive Report # 49485051460017594
+  breadcrumbs: Title Bar # 63375192142439107
+  charts: Standard # 63362861151439101
+  forms: Standard # 63362861151439101
+  lists: Standard # 63362861151439101
+  reports: Standard # 63362861151439101
+  wizards: Standard # 63362861151439101
+  interactive-reports: Interactive Report # 63355525363439097
 
 dialog-defaults: 
-  dialog-content-region: Blank with Attributes # 49454620635017576
-  dialog-button-region: Buttons Container # 49509954386017607
-  dialog-page: Modal Dialog # 49446432243017567
+  dialog-content-region: Blank with Attributes # 63325094538439079
+  dialog-button-region: Buttons Container # 63380428289439110
+  dialog-page: Modal Dialog # 63316906146439070
 
 icons: 
   library: Font APEX
@@ -60,7 +60,7 @@ files:
 
 styles: 
 - # ====== Style: Redwood Light ================================
-  id: 2628623406183179
+  id: 11241850497238324
   identification: 
     name: Redwood Light
 
@@ -80,7 +80,7 @@ styles:
     output-css-file-url: '#THEME_FILES#css/Redwood-Theme#MIN#.css?v=#APEX_VERSION#'
 
 - # ====== Style: Vita =========================================
-  id: 2628196462183179
+  id: 11242277441238324
   identification: 
     name: Vita
 
@@ -95,7 +95,7 @@ styles:
     output-css-file-url: '#THEME_FILES#css/Vita#MIN#.css?v=#APEX_VERSION#'
 
 - # ====== Style: Vita - Dark ==================================
-  id: 2627823142183178
+  id: 11242650761238325
   identification: 
     name: Vita - Dark
 
@@ -110,7 +110,7 @@ styles:
     output-css-file-url: '#THEME_FILES#css/Vita-Dark#MIN#.css?v=#APEX_VERSION#'
 
 - # ====== Style: Vita - Red ===================================
-  id: 2627472842183178
+  id: 11243001061238325
   identification: 
     name: Vita - Red
 
@@ -125,7 +125,7 @@ styles:
     output-css-file-url: '#THEME_FILES#css/Vita-Red#MIN#.css?v=#APEX_VERSION#'
 
 - # ====== Style: Vita - Slate =================================
-  id: 2626988005183178
+  id: 11243485898238325
   identification: 
     name: Vita - Slate
 

@@ -6,13 +6,13 @@ begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.10.31'
 ,p_release=>'23.2.3'
-,p_default_workspace_id=>8506563800894011
-,p_default_application_id=>705
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>800
 ,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_popup_lov_template(
- p_id=>wwv_flow_imp.id(49595357524017670)
+ p_id=>wwv_flow_imp.id(63465831427439173)
 ,p_page_name=>'winlov'
 ,p_page_title=>'Search Dialog'
 ,p_page_html_head=>wwv_flow_string.join(wwv_flow_t_varchar2(

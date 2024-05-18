@@ -1,6 +1,6 @@
 ---
 - # ====== Region Template: Alert ==============================
-  id: 49449455712017569
+  id: 63319929615439072
   identification: 
     name: Alert
     identifier: ALERT
@@ -41,7 +41,7 @@
 
   template-options: 
   - # ====== Template Option: Highlight Background ===============
-    id: 49451525847017574
+    id: 63321999750439077
     identification: 
       name: Highlight Background
       identifier: COLOREDBACKGROUND
@@ -58,11 +58,11 @@
       help-text: Set alert background color to that of the alert type (warning, success, etc.)
 
   - # ====== Template Option: Danger =============================
-    id: 49451898198017575
+    id: 63322372101439078
     identification: 
       name: Danger
       identifier: DANGER
-      group: Alert Type # 2447119309183045
+      group: Alert Type # 11423354594238458
       sequence: 20
 
     settings: 
@@ -76,11 +76,11 @@
       help-text: Show an error or danger alert.
 
   - # ====== Template Option: Hidden but Accessible ==============
-    id: 49452320246017575
+    id: 63322794149439078
     identification: 
       name: Hidden but Accessible
       identifier: HIDDENHEADER
-      group: Alert Title # 2447495881183046
+      group: Alert Title # 11422978022238457
       sequence: 20
 
     settings: 
@@ -94,11 +94,11 @@
       help-text: Visually hides the alert title, but assistive technologies can still read it.
 
   - # ====== Template Option: Hidden =============================
-    id: 49452505228017575
+    id: 63322979131439078
     identification: 
       name: Hidden
       identifier: HIDDENHEADERNOAT
-      group: Alert Title # 2447495881183046
+      group: Alert Title # 11422978022238457
       sequence: 10
 
     settings: 
@@ -113,11 +113,11 @@
       help-text: Hides the Alert Title from being displayed.
 
   - # ====== Template Option: Hide Icons =========================
-    id: 49452937221017575
+    id: 63323411124439078
     identification: 
       name: Hide Icons
       identifier: HIDE_ICONS
-      group: Alert Icons # 2443491373183043
+      group: Alert Icons # 11426982530238460
       sequence: 10
 
     settings: 
@@ -131,11 +131,11 @@
       help-text: Hides alert icons
 
   - # ====== Template Option: Horizontal =========================
-    id: 49453389456017575
+    id: 63323863359439078
     identification: 
       name: Horizontal
       identifier: HORIZONTAL
-      group: Alert Display # 2447904582183046
+      group: Alert Display # 11422569321238457
       sequence: 10
 
     settings: 
@@ -149,11 +149,11 @@
       help-text: Show horizontal alert with buttons to the right.
 
   - # ====== Template Option: Information ========================
-    id: 49453547005017576
+    id: 63324020908439079
     identification: 
       name: Information
       identifier: INFORMATION
-      group: Alert Type # 2447119309183045
+      group: Alert Type # 11423354594238458
       sequence: 30
 
     settings: 
@@ -167,11 +167,11 @@
       help-text: Show informational alert.
 
   - # ====== Template Option: Show Custom Icons ==================
-    id: 49453768555017576
+    id: 63324242458439079
     identification: 
       name: Show Custom Icons
       identifier: SHOW_CUSTOM_ICONS
-      group: Alert Icons # 2443491373183043
+      group: Alert Icons # 11426982530238460
       sequence: 30
 
     settings: 
@@ -185,11 +185,11 @@
       help-text: Set custom icons by modifying the Alert Region's Icon CSS Classes property.
 
   - # ====== Template Option: Success ============================
-    id: 49453908149017576
+    id: 63324382052439079
     identification: 
       name: Success
       identifier: SUCCESS
-      group: Alert Type # 2447119309183045
+      group: Alert Type # 11423354594238458
       sequence: 40
 
     settings: 
@@ -203,11 +203,11 @@
       help-text: Show success alert.
 
   - # ====== Template Option: Show Default Icons =================
-    id: 49454165278017576
+    id: 63324639181439079
     identification: 
       name: Show Default Icons
       identifier: USEDEFAULTICONS
-      group: Alert Icons # 2443491373183043
+      group: Alert Icons # 11426982530238460
       sequence: 20
 
     settings: 
@@ -221,11 +221,11 @@
       help-text: Uses default icons for alert types.
 
   - # ====== Template Option: Warning ============================
-    id: 49454396742017576
+    id: 63324870645439079
     identification: 
       name: Warning
       identifier: WARNING
-      group: Alert Type # 2447119309183045
+      group: Alert Type # 11423354594238458
       sequence: 10
 
     settings: 
@@ -239,11 +239,11 @@
       help-text: Show a warning alert.
 
   - # ====== Template Option: Wizard =============================
-    id: 49454543467017576
+    id: 63325017370439079
     identification: 
       name: Wizard
       identifier: WIZARD
-      group: Alert Display # 2447904582183046
+      group: Alert Display # 11422569321238457
       sequence: 20
 
     settings: 
@@ -257,7 +257,7 @@
       help-text: Show the alert in a wizard style region.
 
 - # ====== Region Template: Blank with Attributes ==============
-  id: 49454620635017576
+  id: 63325094538439079
   identification: 
     name: Blank with Attributes
     identifier: BLANK_WITH_ATTRIBUTES
@@ -274,7 +274,7 @@
     template: '<div id="#REGION_STATIC_ID#" class="#REGION_CSS_CLASSES#" #REGION_LANDMARK_ATTRIBUTES# #REGION_ATTRIBUTES#>#PREVIOUS##BODY##SUB_REGIONS##NEXT#</div>'
 
 - # ====== Region Template: Blank with Attributes (No Grid) ====
-  id: 49456092247017577
+  id: 63326566150439080
   identification: 
     name: Blank with Attributes (No Grid)
     identifier: BLANK_WITH_ATTRIBUTES_NO_GRID
@@ -291,7 +291,7 @@
     template: '<div id="#REGION_STATIC_ID#" class="#REGION_CSS_CLASSES#" #REGION_LANDMARK_ATTRIBUTES# #REGION_ATTRIBUTES#>#PREVIOUS##BODY##SUB_REGIONS##NEXT#</div>'
 
 - # ====== Region Template: Cards Container ====================
-  id: 49457424532017578
+  id: 63327898435439081
   identification: 
     name: Cards Container
     identifier: CARDS_CONTAINER
@@ -321,7 +321,7 @@
 
   template-options: 
   - # ====== Template Option: Apply Theme Colors =================
-    id: 49458634358017578
+    id: 63329108261439081
     identification: 
       name: Apply Theme Colors
       identifier: APPLY_THEME_COLORS
@@ -338,11 +338,11 @@
       help-text: Applies the colors from the theme's color palette to the icons or initials within cards.
 
   - # ====== Template Option: Style A ============================
-    id: 49459015016017579
+    id: 63329488919439082
     identification: 
       name: Style A
       identifier: STYLE_A
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 10
 
     settings: 
@@ -353,11 +353,11 @@
       - t-CardsRegion--styleA
 
   - # ====== Template Option: Style B ============================
-    id: 49459273544017579
+    id: 63329747447439082
     identification: 
       name: Style B
       identifier: STYLE_B
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 20
 
     settings: 
@@ -368,11 +368,11 @@
       - t-CardsRegion--styleB
 
   - # ====== Template Option: Style C ============================
-    id: 49459423494017579
+    id: 63329897397439082
     identification: 
       name: Style C
       identifier: STYLE_C
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 30
 
     settings: 
@@ -383,7 +383,7 @@
       - t-CardsRegion--styleC
 
 - # ====== Region Template: Carousel Container =================
-  id: 49459549094017579
+  id: 63330022997439082
   identification: 
     name: Carousel Container
     identifier: CAROUSEL_CONTAINER
@@ -444,11 +444,11 @@
 
   template-options: 
   - # ====== Template Option: 10 Seconds =========================
-    id: 49463391104017581
+    id: 63333865007439084
     identification: 
       name: 10 Seconds
       identifier: 10_SECONDS
-      group: Timer # 2428821796183035
+      group: Timer # 11441652107238468
       sequence: 20
 
     settings: 
@@ -459,11 +459,11 @@
       - js-cycle10s
 
   - # ====== Template Option: 15 Seconds =========================
-    id: 49463548122017581
+    id: 63334022025439084
     identification: 
       name: 15 Seconds
       identifier: 15_SECONDS
-      group: Timer # 2428821796183035
+      group: Timer # 11441652107238468
       sequence: 30
 
     settings: 
@@ -474,11 +474,11 @@
       - js-cycle15s
 
   - # ====== Template Option: 20 Seconds =========================
-    id: 49463772910017581
+    id: 63334246813439084
     identification: 
       name: 20 Seconds
       identifier: 20_SECONDS
-      group: Timer # 2428821796183035
+      group: Timer # 11441652107238468
       sequence: 40
 
     settings: 
@@ -489,11 +489,11 @@
       - js-cycle20s
 
   - # ====== Template Option: 240px ==============================
-    id: 49464117028017582
+    id: 63334590931439085
     identification: 
       name: 240px
       identifier: 240PX
-      group: Body Height # 2445905303183045
+      group: Body Height # 11424568600238458
       sequence: 10
 
     settings: 
@@ -507,11 +507,11 @@
       help-text: Sets region body height to 240px.
 
   - # ====== Template Option: 320px ==============================
-    id: 49464317468017582
+    id: 63334791371439085
     identification: 
       name: 320px
       identifier: 320PX
-      group: Body Height # 2445905303183045
+      group: Body Height # 11424568600238458
       sequence: 20
 
     settings: 
@@ -525,11 +525,11 @@
       help-text: Sets region body height to 320px.
 
   - # ====== Template Option: 480px ==============================
-    id: 49464505301017582
+    id: 63334979204439085
     identification: 
       name: 480px
       identifier: 480PX
-      group: Body Height # 2445905303183045
+      group: Body Height # 11424568600238458
       sequence: 30
 
     settings: 
@@ -540,11 +540,11 @@
       - i-h480
 
   - # ====== Template Option: 5 Seconds ==========================
-    id: 49464765477017582
+    id: 63335239380439085
     identification: 
       name: 5 Seconds
       identifier: 5_SECONDS
-      group: Timer # 2428821796183035
+      group: Timer # 11441652107238468
       sequence: 10
 
     settings: 
@@ -555,11 +555,11 @@
       - js-cycle5s
 
   - # ====== Template Option: 640px ==============================
-    id: 49464963243017582
+    id: 63335437146439085
     identification: 
       name: 640px
       identifier: 640PX
-      group: Body Height # 2445905303183045
+      group: Body Height # 11424568600238458
       sequence: 40
 
     settings: 
@@ -570,11 +570,11 @@
       - i-h640
 
   - # ====== Template Option: Accent 1 ===========================
-    id: 49465391045017582
+    id: 63335864948439085
     identification: 
       name: Accent 1
       identifier: ACCENT_1
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 10
 
     settings: 
@@ -585,11 +585,11 @@
       - t-Region--accent1
 
   - # ====== Template Option: Accent 2 ===========================
-    id: 49465594853017582
+    id: 63336068756439085
     identification: 
       name: Accent 2
       identifier: ACCENT_2
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 20
 
     settings: 
@@ -600,11 +600,11 @@
       - t-Region--accent2
 
   - # ====== Template Option: Accent 3 ===========================
-    id: 49465732710017582
+    id: 63336206613439085
     identification: 
       name: Accent 3
       identifier: ACCENT_3
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 30
 
     settings: 
@@ -615,11 +615,11 @@
       - t-Region--accent3
 
   - # ====== Template Option: Accent 4 ===========================
-    id: 49465950260017583
+    id: 63336424163439086
     identification: 
       name: Accent 4
       identifier: ACCENT_4
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 40
 
     settings: 
@@ -630,11 +630,11 @@
       - t-Region--accent4
 
   - # ====== Template Option: Accent 5 ===========================
-    id: 49466174606017583
+    id: 63336648509439086
     identification: 
       name: Accent 5
       identifier: ACCENT_5
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 50
 
     settings: 
@@ -645,11 +645,11 @@
       - t-Region--accent5
 
   - # ====== Template Option: Hidden =============================
-    id: 49466569218017583
+    id: 63337043121439086
     identification: 
       name: Hidden
       identifier: HIDDENHEADERNOAT
-      group: Header # 2440463840183041
+      group: Header # 11430010063238462
       sequence: 10
 
     settings: 
@@ -660,11 +660,11 @@
       - t-Region--removeHeader
 
   - # ====== Template Option: Hide ===============================
-    id: 49466984395017583
+    id: 63337458298439086
     identification: 
       name: Hide
       identifier: HIDEOVERFLOW
-      group: Body Overflow # 2445542404183045
+      group: Body Overflow # 11424931499238458
       sequence: 10
 
     settings: 
@@ -675,11 +675,11 @@
       - t-Region--hiddenOverflow
 
   - # ====== Template Option: Hidden but accessible ==============
-    id: 49467099129017583
+    id: 63337573032439086
     identification: 
       name: Hidden but accessible
       identifier: HIDEREGIONHEADER
-      group: Header # 2440463840183041
+      group: Header # 11430010063238462
       sequence: 20
 
     settings: 
@@ -693,7 +693,7 @@
       help-text: This option will hide the region header.  Note that the region title will still be audible for Screen Readers. Buttons placed in the region header will be hidden and inaccessible.
 
   - # ====== Template Option: Remove Body Padding ================
-    id: 49467339589017584
+    id: 63337813492439087
     identification: 
       name: Remove Body Padding
       identifier: NOBODYPADDING
@@ -710,11 +710,11 @@
       help-text: Removes padding from region body.
 
   - # ====== Template Option: Remove Borders =====================
-    id: 49467506847017584
+    id: 63337980750439087
     identification: 
       name: Remove Borders
       identifier: NOBORDER
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 10
 
     settings: 
@@ -728,7 +728,7 @@
       help-text: Removes borders from the region.
 
   - # ====== Template Option: Remember Carousel Slide ============
-    id: 49467753932017584
+    id: 63338227835439087
     identification: 
       name: Remember Carousel Slide
       identifier: REMEMBER_CAROUSEL_SLIDE
@@ -742,11 +742,11 @@
       - js-useLocalStorage
 
   - # ====== Template Option: Scroll =============================
-    id: 49467937676017584
+    id: 63338411579439087
     identification: 
       name: Scroll
       identifier: SCROLLBODY
-      group: Body Overflow # 2445542404183045
+      group: Body Overflow # 11424931499238458
       sequence: 20
 
     settings: 
@@ -757,7 +757,7 @@
       - t-Region--scrollBody
 
   - # ====== Template Option: Show Maximize Button ===============
-    id: 49468187841017584
+    id: 63338661744439087
     identification: 
       name: Show Maximize Button
       identifier: SHOW_MAXIMIZE_BUTTON
@@ -774,7 +774,7 @@
       help-text: Displays a button in the Region Header to maximize the region. Clicking this button will toggle the maximize state and stretch the region to fill the screen.
 
   - # ====== Template Option: Show Next and Previous Buttons =====
-    id: 49468310726017584
+    id: 63338784629439087
     identification: 
       name: Show Next and Previous Buttons
       identifier: SHOW_NEXT_AND_PREVIOUS_BUTTONS
@@ -788,7 +788,7 @@
       - t-Region--showCarouselControls
 
   - # ====== Template Option: Show Region Icon ===================
-    id: 49468521706017584
+    id: 63338995609439087
     identification: 
       name: Show Region Icon
       identifier: SHOW_REGION_ICON
@@ -805,11 +805,11 @@
       help-text: Displays the region icon in the region header beside the region title
 
   - # ====== Template Option: Slide ==============================
-    id: 49468972582017584
+    id: 63339446485439087
     identification: 
       name: Slide
       identifier: SLIDE
-      group: Animation # 2446303115183045
+      group: Animation # 11424170788238458
       sequence: 10
 
     settings: 
@@ -820,11 +820,11 @@
       - t-Region--carouselSlide
 
   - # ====== Template Option: Spin ===============================
-    id: 49469142594017584
+    id: 63339616497439087
     identification: 
       name: Spin
       identifier: SPIN
-      group: Animation # 2446303115183045
+      group: Animation # 11424170788238458
       sequence: 20
 
     settings: 
@@ -835,11 +835,11 @@
       - t-Region--carouselSpin
 
   - # ====== Template Option: Stack Region =======================
-    id: 49469390853017584
+    id: 63339864756439087
     identification: 
       name: Stack Region
       identifier: STACKED
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 20
 
     settings: 
@@ -853,7 +853,7 @@
       help-text: Removes side borders and shadows, and can be useful for accordions and regions that need to be grouped together vertically.
 
 - # ====== Region Template: Image ==============================
-  id: 49469468352017584
+  id: 63339942255439087
   identification: 
     name: Image
     identifier: IMAGE
@@ -878,11 +878,11 @@
 
   template-options: 
   - # ====== Template Option: Blur ===============================
-    id: 49470535656017585
+    id: 63341009559439088
     identification: 
       name: Blur
       identifier: FILTER_BLUR
-      group: Filter # 2438012165183040
+      group: Filter # 11432461738238463
       sequence: 430
 
     settings: 
@@ -893,11 +893,11 @@
       - t-ImageRegion--blur
 
   - # ====== Template Option: Grayscale ==========================
-    id: 49470743397017585
+    id: 63341217300439088
     identification: 
       name: Grayscale
       identifier: FILTER_GRAYSCALE
-      group: Filter # 2438012165183040
+      group: Filter # 11432461738238463
       sequence: 410
 
     settings: 
@@ -908,11 +908,11 @@
       - t-ImageRegion--grayscale
 
   - # ====== Template Option: Invert =============================
-    id: 49470987194017585
+    id: 63341461097439088
     identification: 
       name: Invert
       identifier: FILTER_INVERT
-      group: Filter # 2438012165183040
+      group: Filter # 11432461738238463
       sequence: 440
 
     settings: 
@@ -923,11 +923,11 @@
       - t-ImageRegion--invert
 
   - # ====== Template Option: None ===============================
-    id: 49471103619017585
+    id: 63341577522439088
     identification: 
       name: None
       identifier: FILTER_NONE
-      group: Filter # 2438012165183040
+      group: Filter # 11432461738238463
       sequence: 400
 
     settings: 
@@ -938,11 +938,11 @@
       - t-ImageRegion--noFilter
 
   - # ====== Template Option: Saturate ===========================
-    id: 49471330747017585
+    id: 63341804650439088
     identification: 
       name: Saturate
       identifier: FILTER_SATURATE
-      group: Filter # 2438012165183040
+      group: Filter # 11432461738238463
       sequence: 450
 
     settings: 
@@ -953,11 +953,11 @@
       - t-ImageRegion--saturate
 
   - # ====== Template Option: Sepia ==============================
-    id: 49471519515017586
+    id: 63341993418439089
     identification: 
       name: Sepia
       identifier: FILTER_SEPIA
-      group: Filter # 2438012165183040
+      group: Filter # 11432461738238463
       sequence: 420
 
     settings: 
@@ -968,7 +968,7 @@
       - t-ImageRegion--sepia
 
   - # ====== Template Option: Image Stretch ======================
-    id: 49471712490017586
+    id: 63342186393439089
     identification: 
       name: Image Stretch
       identifier: IMAGE_STRETCH
@@ -982,11 +982,11 @@
       - t-ImageRegion--stretch
 
   - # ====== Template Option: 16:9 (Widescreen) ==================
-    id: 49472166374017586
+    id: 63342640277439089
     identification: 
       name: '16:9 (Widescreen)'
       identifier: RATIO_16_9
-      group: Ratio # 2437586080183040
+      group: Ratio # 11432887823238463
       sequence: 120
 
     settings: 
@@ -997,11 +997,11 @@
       - t-ImageRegion--16x9
 
   - # ====== Template Option: 1:1 (Square) =======================
-    id: 49472302229017587
+    id: 63342776132439090
     identification: 
       name: '1:1 (Square)'
       identifier: RATIO_1_1
-      group: Ratio # 2437586080183040
+      group: Ratio # 11432887823238463
       sequence: 110
 
     settings: 
@@ -1012,11 +1012,11 @@
       - t-ImageRegion--1x1
 
   - # ====== Template Option: 2:1 (Univisium) ====================
-    id: 49472527072017588
+    id: 63343000975439091
     identification: 
       name: '2:1 (Univisium)'
       identifier: RATIO_2_1
-      group: Ratio # 2437586080183040
+      group: Ratio # 11432887823238463
       sequence: 140
 
     settings: 
@@ -1027,11 +1027,11 @@
       - t-ImageRegion--2x1
 
   - # ====== Template Option: 4:3 (Standard) =====================
-    id: 49472768335017588
+    id: 63343242238439091
     identification: 
       name: '4:3 (Standard)'
       identifier: RATIO_4_3
-      group: Ratio # 2437586080183040
+      group: Ratio # 11432887823238463
       sequence: 130
 
     settings: 
@@ -1042,11 +1042,11 @@
       - t-ImageRegion--4x3
 
   - # ====== Template Option: Auto ===============================
-    id: 49472912501017588
+    id: 63343386404439091
     identification: 
       name: Auto
       identifier: RATIO_AUTO
-      group: Ratio # 2437586080183040
+      group: Ratio # 11432887823238463
       sequence: 100
 
     settings: 
@@ -1057,11 +1057,11 @@
       - t-ImageRegion--auto
 
   - # ====== Template Option: Contain ============================
-    id: 49473307802017588
+    id: 63343781705439091
     identification: 
       name: Contain
       identifier: SCALE_CONTAIN
-      group: Scale # 2437203835183040
+      group: Scale # 11433270068238463
       sequence: 200
 
     settings: 
@@ -1072,11 +1072,11 @@
       - t-ImageRegion--contain
 
   - # ====== Template Option: Cover ==============================
-    id: 49473570220017588
+    id: 63344044123439091
     identification: 
       name: Cover
       identifier: SCALE_COVER
-      group: Scale # 2437203835183040
+      group: Scale # 11433270068238463
       sequence: 210
 
     settings: 
@@ -1087,11 +1087,11 @@
       - t-ImageRegion--cover
 
   - # ====== Template Option: Scale Down =========================
-    id: 49473790294017588
+    id: 63344264197439091
     identification: 
       name: Scale Down
       identifier: SCALE_DOWN
-      group: Scale # 2437203835183040
+      group: Scale # 11433270068238463
       sequence: 230
 
     settings: 
@@ -1102,11 +1102,11 @@
       - t-ImageRegion--scale-down
 
   - # ====== Template Option: Fill ===============================
-    id: 49473990268017588
+    id: 63344464171439091
     identification: 
       name: Fill
       identifier: SCALE_FILL
-      group: Scale # 2437203835183040
+      group: Scale # 11433270068238463
       sequence: 220
 
     settings: 
@@ -1117,11 +1117,11 @@
       - t-ImageRegion--fill
 
   - # ====== Template Option: Circle =============================
-    id: 49474316610017589
+    id: 63344790513439092
     identification: 
       name: Circle
       identifier: SHAPE_CIRCLE
-      group: Shape # 2436808086183040
+      group: Shape # 11433665817238463
       sequence: 320
 
     settings: 
@@ -1132,11 +1132,11 @@
       - t-ImageRegion--circle
 
   - # ====== Template Option: Rounded ============================
-    id: 49474562460017589
+    id: 63345036363439092
     identification: 
       name: Rounded
       identifier: SHAPE_ROUNDED
-      group: Shape # 2436808086183040
+      group: Shape # 11433665817238463
       sequence: 310
 
     settings: 
@@ -1147,11 +1147,11 @@
       - t-ImageRegion--rounded
 
   - # ====== Template Option: Square =============================
-    id: 49474763839017589
+    id: 63345237742439092
     identification: 
       name: Square
       identifier: SHAPE_SQUARE
-      group: Shape # 2436808086183040
+      group: Shape # 11433665817238463
       sequence: 300
 
     settings: 
@@ -1162,7 +1162,7 @@
       - t-ImageRegion--square
 
 - # ====== Region Template: Inline Drawer ======================
-  id: 49474850891017589
+  id: 63345324794439092
   identification: 
     name: Inline Drawer
     identifier: INLINE_DRAWER
@@ -1209,11 +1209,11 @@
 
   template-options: 
   - # ====== Template Option: Extra Large ========================
-    id: 49477738757017590
+    id: 63348212660439093
     identification: 
       name: Extra Large
       identifier: DRAWER_SIZE_EXTRA_LARGE
-      group: Size # 2441625144183042
+      group: Size # 11428848759238461
       sequence: 40
 
     settings: 
@@ -1224,11 +1224,11 @@
       - js-dialog-class-t-Drawer--xl
 
   - # ====== Template Option: Large ==============================
-    id: 49477977117017591
+    id: 63348451020439094
     identification: 
       name: Large
       identifier: DRAWER_SIZE_LARGE
-      group: Size # 2441625144183042
+      group: Size # 11428848759238461
       sequence: 30
 
     settings: 
@@ -1239,11 +1239,11 @@
       - js-dialog-class-t-Drawer--lg
 
   - # ====== Template Option: Medium =============================
-    id: 49478169360017591
+    id: 63348643263439094
     identification: 
       name: Medium
       identifier: DRAWER_SIZE_MEDIUM
-      group: Size # 2441625144183042
+      group: Size # 11428848759238461
       sequence: 20
 
     settings: 
@@ -1254,11 +1254,11 @@
       - js-dialog-class-t-Drawer--md
 
   - # ====== Template Option: Small ==============================
-    id: 49478378996017591
+    id: 63348852899439094
     identification: 
       name: Small
       identifier: DRAWER_SIZE_SMALL
-      group: Size # 2441625144183042
+      group: Size # 11428848759238461
       sequence: 10
 
     settings: 
@@ -1269,7 +1269,7 @@
       - js-dialog-class-t-Drawer--sm
 
   - # ====== Template Option: Modal ==============================
-    id: 49478583833017591
+    id: 63349057736439094
     identification: 
       name: Modal
       identifier: MODAL
@@ -1283,11 +1283,11 @@
       - js-modal
 
   - # ====== Template Option: None (Auto) ========================
-    id: 49478779779017591
+    id: 63349253682439094
     identification: 
       name: None (Auto)
       identifier: NONE
-      group: Size # 2441625144183042
+      group: Size # 11428848759238461
       sequence: 5
 
     settings: 
@@ -1298,11 +1298,11 @@
       - js-dialog-nosize
 
   - # ====== Template Option: End ================================
-    id: 49479121572017591
+    id: 63349595475439094
     identification: 
       name: End
       identifier: POSITION_END
-      group: Position # 2432842151183037
+      group: Position # 11437631752238466
       sequence: 20
 
     settings: 
@@ -1313,11 +1313,11 @@
       - js-dialog-class-t-Drawer--pullOutEnd
 
   - # ====== Template Option: Start ==============================
-    id: 49479371201017591
+    id: 63349845104439094
     identification: 
       name: Start
       identifier: POSITION_START
-      group: Position # 2432842151183037
+      group: Position # 11437631752238466
       sequence: 10
 
     settings: 
@@ -1328,7 +1328,7 @@
       - js-dialog-class-t-Drawer--pullOutStart
 
   - # ====== Template Option: Remove Body Padding ================
-    id: 49479535860017591
+    id: 63350009763439094
     identification: 
       name: Remove Body Padding
       identifier: REMOVE_BODY_PADDING
@@ -1345,7 +1345,7 @@
       help-text: Removes the padding around the region body.
 
 - # ====== Region Template: Inline Popup =======================
-  id: 49479679106017591
+  id: 63350153009439094
   identification: 
     name: Inline Popup
     identifier: INLINE_POPUP
@@ -1382,11 +1382,11 @@
 
   template-options: 
   - # ====== Template Option: Above ==============================
-    id: 49482527132017593
+    id: 63353001035439096
     identification: 
       name: Above
       identifier: ABOVE
-      group: Callout Position # 2443247594183043
+      group: Callout Position # 11427226309238460
       sequence: 30
 
     settings: 
@@ -1400,11 +1400,11 @@
       help-text: Positions the callout above or typically on top of the parent.
 
   - # ====== Template Option: After ==============================
-    id: 49482703134017593
+    id: 63353177037439096
     identification: 
       name: After
       identifier: AFTER
-      group: Callout Position # 2443247594183043
+      group: Callout Position # 11427226309238460
       sequence: 20
 
     settings: 
@@ -1418,7 +1418,7 @@
       help-text: Positions the callout after or typically to the right of the parent.
 
   - # ====== Template Option: Auto Height ========================
-    id: 49482943594017593
+    id: 63353417497439096
     identification: 
       name: Auto Height
       identifier: AUTO_HEIGHT_INLINE_DIALOG
@@ -1435,11 +1435,11 @@
       help-text: This option will set the height of the dialog to fit its contents.
 
   - # ====== Template Option: Before =============================
-    id: 49483156768017593
+    id: 63353630671439096
     identification: 
       name: Before
       identifier: BEFORE
-      group: Callout Position # 2443247594183043
+      group: Callout Position # 11427226309238460
       sequence: 10
 
     settings: 
@@ -1453,11 +1453,11 @@
       help-text: Positions the callout before or typically to the left of the parent.
 
   - # ====== Template Option: Below ==============================
-    id: 49483391357017593
+    id: 63353865260439096
     identification: 
       name: Below
       identifier: BELOW
-      group: Callout Position # 2443247594183043
+      group: Callout Position # 11427226309238460
       sequence: 40
 
     settings: 
@@ -1471,7 +1471,7 @@
       help-text: Positions the callout below or typically to the bottom of the parent.
 
   - # ====== Template Option: Display Popup Callout ==============
-    id: 49483551757017594
+    id: 63354025660439097
     identification: 
       name: Display Popup Callout
       identifier: DISPLAY_POPUP_CALLOUT
@@ -1488,11 +1488,11 @@
       help-text: Use this option to add display a callout for the popup. Note that callout will only be displayed if the data-parent-element custom attribute is defined.
 
   - # ====== Template Option: Inside =============================
-    id: 49483729360017594
+    id: 63354203263439097
     identification: 
       name: Inside
       identifier: INSIDE
-      group: Callout Position # 2443247594183043
+      group: Callout Position # 11427226309238460
       sequence: 50
 
     settings: 
@@ -1506,11 +1506,11 @@
       help-text: Positions the callout inside of the parent. This is useful when the parent is sufficiently large, such as a report or large region.
 
   - # ====== Template Option: Large (720x480) ====================
-    id: 49483906356017594
+    id: 63354380259439097
     identification: 
       name: Large (720x480)
       identifier: LARGE_720X480
-      group: Size # 2441625144183042
+      group: Size # 11428848759238461
       sequence: 30
 
     settings: 
@@ -1521,11 +1521,11 @@
       - js-dialog-size720x480
 
   - # ====== Template Option: Medium (600x400) ===================
-    id: 49484098421017594
+    id: 63354572324439097
     identification: 
       name: Medium (600x400)
       identifier: MEDIUM_600X400
-      group: Size # 2441625144183042
+      group: Size # 11428848759238461
       sequence: 20
 
     settings: 
@@ -1536,11 +1536,11 @@
       - js-dialog-size600x400
 
   - # ====== Template Option: None ===============================
-    id: 49484318176017594
+    id: 63354792079439097
     identification: 
       name: None
       identifier: NONE
-      group: Size # 2441625144183042
+      group: Size # 11428848759238461
       sequence: 1
 
     settings: 
@@ -1551,7 +1551,7 @@
       - js-dialog-nosize
 
   - # ====== Template Option: Remove Body Padding ================
-    id: 49484593231017594
+    id: 63355067134439097
     identification: 
       name: Remove Body Padding
       identifier: REMOVE_BODY_PADDING
@@ -1568,7 +1568,7 @@
       help-text: Removes the padding around the region body.
 
   - # ====== Template Option: Remove Page Overlay ================
-    id: 49484708918017594
+    id: 63355182821439097
     identification: 
       name: Remove Page Overlay
       identifier: REMOVE_PAGE_OVERLAY
@@ -1585,11 +1585,11 @@
       help-text: This option will display the inline dialog without an overlay on the background.
 
   - # ====== Template Option: Small (480x320) ====================
-    id: 49484908436017594
+    id: 63355382339439097
     identification: 
       name: Small (480x320)
       identifier: SMALL_480X320
-      group: Size # 2441625144183042
+      group: Size # 11428848759238461
       sequence: 10
 
     settings: 
@@ -1600,7 +1600,7 @@
       - js-dialog-size480x320
 
 - # ====== Region Template: Interactive Report =================
-  id: 49485051460017594
+  id: 63355525363439097
   identification: 
     name: Interactive Report
     identifier: INTERACTIVE_REPORT
@@ -1629,7 +1629,7 @@
 
   template-options: 
   - # ====== Template Option: Remove Borders =====================
-    id: 49486859917017595
+    id: 63357333820439098
     identification: 
       name: Remove Borders
       identifier: REMOVEBORDERS
@@ -1646,7 +1646,7 @@
       help-text: Removes borders around the Interactive Report
 
   - # ====== Template Option: Show Maximize Button ===============
-    id: 49487070052017595
+    id: 63357543955439098
     identification: 
       name: Show Maximize Button
       identifier: SHOW_MAXIMIZE_BUTTON
@@ -1663,7 +1663,7 @@
       help-text: Displays a button in the Interactive Reports toolbar to maximize the report. Clicking this button will toggle the maximize state and stretch the report to fill the screen.
 
 - # ====== Region Template: Item Container =====================
-  id: 49487117892017596
+  id: 63357591795439099
   identification: 
     name: Item Container
     identifier: ITEM_CONTAINER
@@ -1686,11 +1686,11 @@
 
   template-options: 
   - # ====== Template Option: Center =============================
-    id: 49488582028017596
+    id: 63359055931439099
     identification: 
       name: Center
       identifier: ALIGNMENT_CENTER
-      group: Alignment # 2446740756183045
+      group: Alignment # 11423733147238458
       sequence: 11
 
     settings: 
@@ -1701,11 +1701,11 @@
       - t-ItemContainer--alignCenter
 
   - # ====== Template Option: End ================================
-    id: 49488722133017596
+    id: 63359196036439099
     identification: 
       name: End
       identifier: ALIGNMENT_END
-      group: Alignment # 2446740756183045
+      group: Alignment # 11423733147238458
       sequence: 12
 
     settings: 
@@ -1716,11 +1716,11 @@
       - t-ItemContainer--alignEnd
 
   - # ====== Template Option: Start ==============================
-    id: 49488997852017596
+    id: 63359471755439099
     identification: 
       name: Start
       identifier: ALIGNMENT_START
-      group: Alignment # 2446740756183045
+      group: Alignment # 11423733147238458
       sequence: 10
 
     settings: 
@@ -1731,11 +1731,11 @@
       - t-ItemContainer--alignStart
 
   - # ====== Template Option: Stretch ============================
-    id: 49489193585017597
+    id: 63359667488439100
     identification: 
       name: Stretch
       identifier: ALIGNMENT_STRETCH
-      group: Alignment # 2446740756183045
+      group: Alignment # 11423733147238458
       sequence: 13
 
     settings: 
@@ -1746,7 +1746,7 @@
       - t-ItemContainer--alignStretch
 
   - # ====== Template Option: Stack on Mobile ====================
-    id: 49489303760017597
+    id: 63359777663439100
     identification: 
       name: Stack on Mobile
       identifier: STACK_MOBILE
@@ -1760,7 +1760,7 @@
       - t-ItemContainer--stackMobile
 
   - # ====== Template Option: Wrap Items =========================
-    id: 49489530625017597
+    id: 63360004528439100
     identification: 
       name: Wrap Items
       identifier: WRAP_ITEMS
@@ -1774,7 +1774,7 @@
       - t-ItemContainer--wrap
 
 - # ====== Region Template: Search Results Container ===========
-  id: 49489655991017597
+  id: 63360129894439100
   identification: 
     name: Search Results Container
     identifier: SEARCH_RESULTS_CONTAINER
@@ -1805,7 +1805,7 @@
 
   template-options: 
   - # ====== Template Option: Apply Theme Colors =================
-    id: 49490887427017597
+    id: 63361361330439100
     identification: 
       name: Apply Theme Colors
       identifier: APPLY_THEME_COLORS
@@ -1822,11 +1822,11 @@
       help-text: Applies the colors from the theme's color palette to the icons or initials within search results.
 
   - # ====== Template Option: Large ==============================
-    id: 49491267699017598
+    id: 63361741602439101
     identification: 
       name: Large
       identifier: ICON_SIZE_LARGE
-      group: Icon Size # 2438377674183040
+      group: Icon Size # 11432096229238463
       sequence: 3
 
     settings: 
@@ -1840,11 +1840,11 @@
       help-text: Sets the icon size to large (64px).
 
   - # ====== Template Option: Medium =============================
-    id: 49491466950017598
+    id: 63361940853439101
     identification: 
       name: Medium
       identifier: ICON_SIZE_MEDIUM
-      group: Icon Size # 2438377674183040
+      group: Icon Size # 11432096229238463
       sequence: 2
 
     settings: 
@@ -1858,11 +1858,11 @@
       help-text: Sets the icon size to medium (32px).
 
   - # ====== Template Option: Small ==============================
-    id: 49491604546017598
+    id: 63362078449439101
     identification: 
       name: Small
       identifier: ICON_SIZE_SMALL
-      group: Icon Size # 2438377674183040
+      group: Icon Size # 11432096229238463
       sequence: 1
 
     settings: 
@@ -1876,11 +1876,11 @@
       help-text: Sets the icon size to small (16px).
 
   - # ====== Template Option: Boxed ==============================
-    id: 49492097377017598
+    id: 63362571280439101
     identification: 
       name: Boxed
       identifier: RESULT_APPEARANCE_BOXED
-      group: Result Appearance # 2431203612183036
+      group: Result Appearance # 11439270291238467
       sequence: 1
 
     settings: 
@@ -1891,11 +1891,11 @@
       - t-ResultsRegion--boxed
 
   - # ====== Template Option: Flat ===============================
-    id: 49492204803017598
+    id: 63362678706439101
     identification: 
       name: Flat
       identifier: RESULT_APPEARANCE_FLAT
-      group: Result Appearance # 2431203612183036
+      group: Result Appearance # 11439270291238467
       sequence: 2
 
     settings: 
@@ -1906,7 +1906,7 @@
       - t-ResultsRegion--flat
 
 - # ====== Region Template: Standard ===========================
-  id: 49492387248017598
+  id: 63362861151439101
   identification: 
     name: Standard
     identifier: STANDARD
@@ -1956,11 +1956,11 @@
 
   template-options: 
   - # ====== Template Option: 240px ==============================
-    id: 49496290016017600
+    id: 63366763919439103
     identification: 
       name: 240px
       identifier: 240PX
-      group: Body Height # 2445905303183045
+      group: Body Height # 11424568600238458
       sequence: 10
 
     settings: 
@@ -1974,11 +1974,11 @@
       help-text: Sets region body height to 240px.
 
   - # ====== Template Option: 320px ==============================
-    id: 49496472378017600
+    id: 63366946281439103
     identification: 
       name: 320px
       identifier: 320PX
-      group: Body Height # 2445905303183045
+      group: Body Height # 11424568600238458
       sequence: 20
 
     settings: 
@@ -1992,11 +1992,11 @@
       help-text: Sets region body height to 320px.
 
   - # ====== Template Option: 480px ==============================
-    id: 49496678709017600
+    id: 63367152612439103
     identification: 
       name: 480px
       identifier: 480PX
-      group: Body Height # 2445905303183045
+      group: Body Height # 11424568600238458
       sequence: 30
 
     settings: 
@@ -2007,11 +2007,11 @@
       - i-h480
 
   - # ====== Template Option: 640px ==============================
-    id: 49496809809017600
+    id: 63367283712439103
     identification: 
       name: 640px
       identifier: 640PX
-      group: Body Height # 2445905303183045
+      group: Body Height # 11424568600238458
       sequence: 40
 
     settings: 
@@ -2022,11 +2022,11 @@
       - i-h640
 
   - # ====== Template Option: Accent 1 ===========================
-    id: 49497038216017600
+    id: 63367512119439103
     identification: 
       name: Accent 1
       identifier: ACCENT_1
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 10
 
     settings: 
@@ -2037,11 +2037,11 @@
       - t-Region--accent1
 
   - # ====== Template Option: Accent 10 ==========================
-    id: 49497207391017601
+    id: 63367681294439104
     identification: 
       name: Accent 10
       identifier: ACCENT_10
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 100
 
     settings: 
@@ -2052,11 +2052,11 @@
       - t-Region--accent10
 
   - # ====== Template Option: Accent 11 ==========================
-    id: 49497473861017601
+    id: 63367947764439104
     identification: 
       name: Accent 11
       identifier: ACCENT_11
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 110
 
     settings: 
@@ -2067,11 +2067,11 @@
       - t-Region--accent11
 
   - # ====== Template Option: Accent 12 ==========================
-    id: 49497625108017601
+    id: 63368099011439104
     identification: 
       name: Accent 12
       identifier: ACCENT_12
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 120
 
     settings: 
@@ -2082,11 +2082,11 @@
       - t-Region--accent12
 
   - # ====== Template Option: Accent 13 ==========================
-    id: 49497894109017601
+    id: 63368368012439104
     identification: 
       name: Accent 13
       identifier: ACCENT_13
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 130
 
     settings: 
@@ -2097,11 +2097,11 @@
       - t-Region--accent13
 
   - # ====== Template Option: Accent 14 ==========================
-    id: 49498050215017601
+    id: 63368524118439104
     identification: 
       name: Accent 14
       identifier: ACCENT_14
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 140
 
     settings: 
@@ -2112,11 +2112,11 @@
       - t-Region--accent14
 
   - # ====== Template Option: Accent 15 ==========================
-    id: 49498267350017601
+    id: 63368741253439104
     identification: 
       name: Accent 15
       identifier: ACCENT_15
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 150
 
     settings: 
@@ -2127,11 +2127,11 @@
       - t-Region--accent15
 
   - # ====== Template Option: Accent 2 ===========================
-    id: 49498427658017601
+    id: 63368901561439104
     identification: 
       name: Accent 2
       identifier: ACCENT_2
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 20
 
     settings: 
@@ -2142,11 +2142,11 @@
       - t-Region--accent2
 
   - # ====== Template Option: Accent 3 ===========================
-    id: 49498665792017601
+    id: 63369139695439104
     identification: 
       name: Accent 3
       identifier: ACCENT_3
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 30
 
     settings: 
@@ -2157,11 +2157,11 @@
       - t-Region--accent3
 
   - # ====== Template Option: Accent 4 ===========================
-    id: 49498869445017601
+    id: 63369343348439104
     identification: 
       name: Accent 4
       identifier: ACCENT_4
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 40
 
     settings: 
@@ -2172,11 +2172,11 @@
       - t-Region--accent4
 
   - # ====== Template Option: Accent 5 ===========================
-    id: 49499076229017601
+    id: 63369550132439104
     identification: 
       name: Accent 5
       identifier: ACCENT_5
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 50
 
     settings: 
@@ -2187,11 +2187,11 @@
       - t-Region--accent5
 
   - # ====== Template Option: Accent 6 ===========================
-    id: 49499225334017602
+    id: 63369699237439105
     identification: 
       name: Accent 6
       identifier: ACCENT_6
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 60
 
     settings: 
@@ -2202,11 +2202,11 @@
       - t-Region--accent6
 
   - # ====== Template Option: Accent 7 ===========================
-    id: 49499416727017602
+    id: 63369890630439105
     identification: 
       name: Accent 7
       identifier: ACCENT_7
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 70
 
     settings: 
@@ -2217,11 +2217,11 @@
       - t-Region--accent7
 
   - # ====== Template Option: Accent 8 ===========================
-    id: 49499602248017602
+    id: 63370076151439105
     identification: 
       name: Accent 8
       identifier: ACCENT_8
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 80
 
     settings: 
@@ -2232,11 +2232,11 @@
       - t-Region--accent8
 
   - # ====== Template Option: Accent 9 ===========================
-    id: 49499867282017602
+    id: 63370341185439105
     identification: 
       name: Accent 9
       identifier: ACCENT_9
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 90
 
     settings: 
@@ -2247,11 +2247,11 @@
       - t-Region--accent9
 
   - # ====== Template Option: Hidden =============================
-    id: 49500076656017602
+    id: 63370550559439105
     identification: 
       name: Hidden
       identifier: HIDDENHEADERNOAT
-      group: Header # 2440463840183041
+      group: Header # 11430010063238462
       sequence: 10
 
     settings: 
@@ -2263,11 +2263,11 @@
       - js-removeLandmark
 
   - # ====== Template Option: Hide ===============================
-    id: 49500251044017602
+    id: 63370724947439105
     identification: 
       name: Hide
       identifier: HIDEOVERFLOW
-      group: Body Overflow # 2445542404183045
+      group: Body Overflow # 11424931499238458
       sequence: 20
 
     settings: 
@@ -2278,11 +2278,11 @@
       - t-Region--hiddenOverflow
 
   - # ====== Template Option: Hidden but accessible ==============
-    id: 49500412222017602
+    id: 63370886125439105
     identification: 
       name: Hidden but accessible
       identifier: HIDEREGIONHEADER
-      group: Header # 2440463840183041
+      group: Header # 11430010063238462
       sequence: 20
 
     settings: 
@@ -2296,7 +2296,7 @@
       help-text: This option will hide the region header.  Note that the region title will still be audible for Screen Readers. Buttons placed in the region header will be hidden and inaccessible.
 
   - # ====== Template Option: Remove Body Padding ================
-    id: 49500623097017602
+    id: 63371097000439105
     identification: 
       name: Remove Body Padding
       identifier: NOBODYPADDING
@@ -2313,11 +2313,11 @@
       help-text: Removes padding from region body.
 
   - # ====== Template Option: Remove Borders =====================
-    id: 49500798753017602
+    id: 63371272656439105
     identification: 
       name: Remove Borders
       identifier: NOBORDER
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 10
 
     settings: 
@@ -2331,11 +2331,11 @@
       help-text: Removes borders from the region.
 
   - # ====== Template Option: Remove UI Decoration ===============
-    id: 49501051048017603
+    id: 63371524951439106
     identification: 
       name: Remove UI Decoration
       identifier: REMOVE_UI_DECORATION
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 30
 
     settings: 
@@ -2349,11 +2349,11 @@
       help-text: Removes UI decoration (borders, backgrounds, shadows, etc) from the region.
 
   - # ====== Template Option: Scroll - Default ===================
-    id: 49501244652017603
+    id: 63371718555439106
     identification: 
       name: Scroll - Default
       identifier: SCROLLBODY
-      group: Body Overflow # 2445542404183045
+      group: Body Overflow # 11424931499238458
       sequence: 10
 
     settings: 
@@ -2364,7 +2364,7 @@
       - t-Region--scrollBody
 
   - # ====== Template Option: Show Maximize Button ===============
-    id: 49501461573017603
+    id: 63371935476439106
     identification: 
       name: Show Maximize Button
       identifier: SHOW_MAXIMIZE_BUTTON
@@ -2381,7 +2381,7 @@
       help-text: Displays a button in the Region Header to maximize the region. Clicking this button will toggle the maximize state and stretch the region to fill the screen.
 
   - # ====== Template Option: Show Region Icon ===================
-    id: 49501643492017603
+    id: 63372117395439106
     identification: 
       name: Show Region Icon
       identifier: SHOW_REGION_ICON
@@ -2398,11 +2398,11 @@
       help-text: Displays the region icon in the region header beside the region title
 
   - # ====== Template Option: Stack Region =======================
-    id: 49501814562017603
+    id: 63372288465439106
     identification: 
       name: Stack Region
       identifier: STACKED
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 20
 
     settings: 
@@ -2416,11 +2416,11 @@
       help-text: Removes side borders and shadows, and can be useful for accordions and regions that need to be grouped together vertically.
 
   - # ====== Template Option: Text Content =======================
-    id: 49502057734017603
+    id: 63372531637439106
     identification: 
       name: Text Content
       identifier: TEXT_CONTENT
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 40
 
     settings: 
@@ -2434,7 +2434,7 @@
       help-text: Useful for displaying primarily text-based content, such as FAQs and more.
 
 - # ====== Region Template: Tabs Container =====================
-  id: 49502113800017603
+  id: 63372587703439106
   identification: 
     name: Tabs Container
     identifier: TABS_CONTAINER
@@ -2467,11 +2467,11 @@
 
   template-options: 
   - # ====== Template Option: Fill Tab Labels ====================
-    id: 49503219661017604
+    id: 63373693564439107
     identification: 
       name: Fill Tab Labels
       identifier: FILL_TAB_LABELS
-      group: Layout # 2434416664183038
+      group: Layout # 11436057239238465
       sequence: 10
 
     settings: 
@@ -2482,11 +2482,11 @@
       - t-TabsRegion-mod--fillLabels
 
   - # ====== Template Option: Pill ===============================
-    id: 49503623910017604
+    id: 63374097813439107
     identification: 
       name: Pill
       identifier: PILL
-      group: Tab Style # 2429186847183035
+      group: Tab Style # 11441287056238468
       sequence: 20
 
     settings: 
@@ -2497,7 +2497,7 @@
       - t-TabsRegion-mod--pill
 
   - # ====== Template Option: Remember Active Tab ================
-    id: 49503815617017604
+    id: 63374289520439107
     identification: 
       name: Remember Active Tab
       identifier: REMEMBER_ACTIVE_TAB
@@ -2511,11 +2511,11 @@
       - js-useLocalStorage
 
   - # ====== Template Option: Simple =============================
-    id: 49504019765017604
+    id: 63374493668439107
     identification: 
       name: Simple
       identifier: SIMPLE
-      group: Tab Style # 2429186847183035
+      group: Tab Style # 11441287056238468
       sequence: 10
 
     settings: 
@@ -2526,11 +2526,11 @@
       - t-TabsRegion-mod--simple
 
   - # ====== Template Option: Large ==============================
-    id: 49504472342017604
+    id: 63374946245439107
     identification: 
       name: Large
       identifier: TABSLARGE
-      group: Tabs Size # 2429613363183035
+      group: Tabs Size # 11440860540238468
       sequence: 20
 
     settings: 
@@ -2541,11 +2541,11 @@
       - t-TabsRegion-mod--large
 
   - # ====== Template Option: Small ==============================
-    id: 49504687065017604
+    id: 63375160968439107
     identification: 
       name: Small
       identifier: TABS_SMALL
-      group: Tabs Size # 2429613363183035
+      group: Tabs Size # 11440860540238468
       sequence: 10
 
     settings: 
@@ -2556,7 +2556,7 @@
       - t-TabsRegion-mod--small
 
 - # ====== Region Template: Title Bar ==========================
-  id: 49504718239017604
+  id: 63375192142439107
   identification: 
     name: Title Bar
     identifier: TITLE_BAR
@@ -2597,11 +2597,11 @@
 
   template-options: 
   - # ====== Template Option: Use Current Breadcrumb Entry =======
-    id: 49508873684017606
+    id: 63379347587439109
     identification: 
       name: Use Current Breadcrumb Entry
       identifier: GET_TITLE_FROM_BREADCRUMB
-      group: Region Title # 2431974699183037
+      group: Region Title # 11438499204238466
       sequence: 1
 
     settings: 
@@ -2612,11 +2612,11 @@
       - t-BreadcrumbRegion--useBreadcrumbTitle
 
   - # ====== Template Option: Alternative ========================
-    id: 49509253440017607
+    id: 63379727343439110
     identification: 
       name: Alternative
       identifier: HEADING_FONT_ALTERNATIVE
-      group: Heading Font # 2440007832183041
+      group: Heading Font # 11430466071238462
       sequence: 1
 
     settings: 
@@ -2627,7 +2627,7 @@
       - t-BreadcrumbRegion--headingFontAlt
 
   - # ====== Template Option: Show Breadcrumbs ===================
-    id: 49509483711017607
+    id: 63379957614439110
     identification: 
       name: Show Breadcrumbs
       identifier: HIDE_BREADCRUMB
@@ -2641,11 +2641,11 @@
       - t-BreadcrumbRegion--showBreadcrumb
 
   - # ====== Template Option: Use Region Title ===================
-    id: 49509605806017607
+    id: 63380079709439110
     identification: 
       name: Use Region Title
       identifier: REGION_HEADER_VISIBLE
-      group: Region Title # 2431974699183037
+      group: Region Title # 11438499204238466
       sequence: 1
 
     settings: 
@@ -2656,7 +2656,7 @@
       - t-BreadcrumbRegion--useRegionTitle
 
   - # ====== Template Option: Use Compact Style ==================
-    id: 49509844087017607
+    id: 63380317990439110
     identification: 
       name: Use Compact Style
       identifier: USE_COMPACT_STYLE
@@ -2673,7 +2673,7 @@
       help-text: Uses a compact style for the breadcrumbs.
 
 - # ====== Region Template: Buttons Container ==================
-  id: 49509954386017607
+  id: 63380428289439110
   identification: 
     name: Buttons Container
     identifier: BUTTONS_CONTAINER
@@ -2705,11 +2705,11 @@
 
   template-options: 
   - # ====== Template Option: Borderless =========================
-    id: 49512974626017608
+    id: 63383448529439111
     identification: 
       name: Borderless
       identifier: BORDERLESS
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 1
 
     settings: 
@@ -2720,11 +2720,11 @@
       - t-ButtonRegion--noBorder
 
   - # ====== Template Option: No Padding =========================
-    id: 49513309542017609
+    id: 63383783445439112
     identification: 
       name: No Padding
       identifier: NOPADDING
-      group: Body Padding # 2445172808183044
+      group: Body Padding # 11425301095238459
       sequence: 3
 
     settings: 
@@ -2735,11 +2735,11 @@
       - t-ButtonRegion--noPadding
 
   - # ====== Template Option: Remove UI Decoration ===============
-    id: 49513516099017609
+    id: 63383990002439112
     identification: 
       name: Remove UI Decoration
       identifier: REMOVEUIDECORATION
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 4
 
     settings: 
@@ -2750,11 +2750,11 @@
       - t-ButtonRegion--noUI
 
   - # ====== Template Option: Slim Padding =======================
-    id: 49513738159017609
+    id: 63384212062439112
     identification: 
       name: Slim Padding
       identifier: SLIMPADDING
-      group: Body Padding # 2445172808183044
+      group: Body Padding # 11425301095238459
       sequence: 5
 
     settings: 
@@ -2765,7 +2765,7 @@
       - t-ButtonRegion--slimPadding
 
   - # ====== Template Option: Stick to Bottom for Mobile =========
-    id: 49513911766017609
+    id: 63384385669439112
     identification: 
       name: Stick to Bottom for Mobile
       identifier: STICK_TO_BOTTOM
@@ -2782,7 +2782,7 @@
       help-text: This will position the button container region to the bottom of the screen for small screens.
 
 - # ====== Region Template: Collapsible ========================
-  id: 49514028461017609
+  id: 63384502364439112
   identification: 
     name: Collapsible
     identifier: COLLAPSIBLE
@@ -2842,11 +2842,11 @@
 
   template-options: 
   - # ====== Template Option: 240px ==============================
-    id: 49517000192017611
+    id: 63387474095439114
     identification: 
       name: 240px
       identifier: 240PX
-      group: Body Height # 2445905303183045
+      group: Body Height # 11424568600238458
       sequence: 10
 
     settings: 
@@ -2860,11 +2860,11 @@
       help-text: Sets region body height to 240px.
 
   - # ====== Template Option: 320px ==============================
-    id: 49517206992017611
+    id: 63387680895439114
     identification: 
       name: 320px
       identifier: 320PX
-      group: Body Height # 2445905303183045
+      group: Body Height # 11424568600238458
       sequence: 20
 
     settings: 
@@ -2878,11 +2878,11 @@
       help-text: Sets region body height to 320px.
 
   - # ====== Template Option: 480px ==============================
-    id: 49517468292017611
+    id: 63387942195439114
     identification: 
       name: 480px
       identifier: 480PX
-      group: Body Height # 2445905303183045
+      group: Body Height # 11424568600238458
       sequence: 30
 
     settings: 
@@ -2896,11 +2896,11 @@
       help-text: Sets body height to 480px.
 
   - # ====== Template Option: 640px ==============================
-    id: 49517637742017611
+    id: 63388111645439114
     identification: 
       name: 640px
       identifier: 640PX
-      group: Body Height # 2445905303183045
+      group: Body Height # 11424568600238458
       sequence: 40
 
     settings: 
@@ -2914,11 +2914,11 @@
       help-text: Sets body height to 640px.
 
   - # ====== Template Option: Accent 1 ===========================
-    id: 49517857884017611
+    id: 63388331787439114
     identification: 
       name: Accent 1
       identifier: ACCENT_1
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 10
 
     settings: 
@@ -2929,11 +2929,11 @@
       - t-Region--accent1
 
   - # ====== Template Option: Accent 10 ==========================
-    id: 49518067837017611
+    id: 63388541740439114
     identification: 
       name: Accent 10
       identifier: ACCENT_10
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 100
 
     settings: 
@@ -2944,11 +2944,11 @@
       - t-Region--accent10
 
   - # ====== Template Option: Accent 11 ==========================
-    id: 49518250363017611
+    id: 63388724266439114
     identification: 
       name: Accent 11
       identifier: ACCENT_11
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 110
 
     settings: 
@@ -2959,11 +2959,11 @@
       - t-Region--accent11
 
   - # ====== Template Option: Accent 12 ==========================
-    id: 49518477648017611
+    id: 63388951551439114
     identification: 
       name: Accent 12
       identifier: ACCENT_12
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 120
 
     settings: 
@@ -2974,11 +2974,11 @@
       - t-Region--accent12
 
   - # ====== Template Option: Accent 13 ==========================
-    id: 49518642202017611
+    id: 63389116105439114
     identification: 
       name: Accent 13
       identifier: ACCENT_13
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 130
 
     settings: 
@@ -2989,11 +2989,11 @@
       - t-Region--accent13
 
   - # ====== Template Option: Accent 14 ==========================
-    id: 49518832255017612
+    id: 63389306158439115
     identification: 
       name: Accent 14
       identifier: ACCENT_14
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 140
 
     settings: 
@@ -3004,11 +3004,11 @@
       - t-Region--accent14
 
   - # ====== Template Option: Accent 15 ==========================
-    id: 49519076872017612
+    id: 63389550775439115
     identification: 
       name: Accent 15
       identifier: ACCENT_15
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 150
 
     settings: 
@@ -3019,11 +3019,11 @@
       - t-Region--accent15
 
   - # ====== Template Option: Accent 2 ===========================
-    id: 49519214140017612
+    id: 63389688043439115
     identification: 
       name: Accent 2
       identifier: ACCENT_2
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 20
 
     settings: 
@@ -3034,11 +3034,11 @@
       - t-Region--accent2
 
   - # ====== Template Option: Accent 3 ===========================
-    id: 49519449595017612
+    id: 63389923498439115
     identification: 
       name: Accent 3
       identifier: ACCENT_3
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 30
 
     settings: 
@@ -3049,11 +3049,11 @@
       - t-Region--accent3
 
   - # ====== Template Option: Accent 4 ===========================
-    id: 49519690252017612
+    id: 63390164155439115
     identification: 
       name: Accent 4
       identifier: ACCENT_4
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 40
 
     settings: 
@@ -3064,11 +3064,11 @@
       - t-Region--accent4
 
   - # ====== Template Option: Accent 5 ===========================
-    id: 49519859950017612
+    id: 63390333853439115
     identification: 
       name: Accent 5
       identifier: ACCENT_5
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 50
 
     settings: 
@@ -3079,11 +3079,11 @@
       - t-Region--accent5
 
   - # ====== Template Option: Accent 6 ===========================
-    id: 49520085235017612
+    id: 63390559138439115
     identification: 
       name: Accent 6
       identifier: ACCENT_6
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 60
 
     settings: 
@@ -3094,11 +3094,11 @@
       - t-Region--accent6
 
   - # ====== Template Option: Accent 7 ===========================
-    id: 49520263866017612
+    id: 63390737769439115
     identification: 
       name: Accent 7
       identifier: ACCENT_7
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 70
 
     settings: 
@@ -3109,11 +3109,11 @@
       - t-Region--accent7
 
   - # ====== Template Option: Accent 8 ===========================
-    id: 49520461069017612
+    id: 63390934972439115
     identification: 
       name: Accent 8
       identifier: ACCENT_8
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 80
 
     settings: 
@@ -3124,11 +3124,11 @@
       - t-Region--accent8
 
   - # ====== Template Option: Accent 9 ===========================
-    id: 49520682522017613
+    id: 63391156425439116
     identification: 
       name: Accent 9
       identifier: ACCENT_9
-      group: Accent # 2448291978183046
+      group: Accent # 11422181925238457
       sequence: 90
 
     settings: 
@@ -3139,11 +3139,11 @@
       - t-Region--accent9
 
   - # ====== Template Option: Collapsed ==========================
-    id: 49521091461017613
+    id: 63391565364439116
     identification: 
       name: Collapsed
       identifier: COLLAPSED
-      group: Default State # 2442044498183042
+      group: Default State # 11428429405238461
       sequence: 20
 
     settings: 
@@ -3154,11 +3154,11 @@
       - is-collapsed
 
   - # ====== Template Option: End ================================
-    id: 49521414253017613
+    id: 63391888156439116
     identification: 
       name: End
       identifier: CONRTOLS_POSITION_END
-      group: Collapsible Icon Position # 2442446189183043
+      group: Collapsible Icon Position # 11428027714238460
       sequence: 1
 
     settings: 
@@ -3172,11 +3172,11 @@
       help-text: Position the expand / collapse button to the end of the region header.
 
   - # ====== Template Option: Expanded ===========================
-    id: 49521670888017613
+    id: 63392144791439116
     identification: 
       name: Expanded
       identifier: EXPANDED
-      group: Default State # 2442044498183042
+      group: Default State # 11428429405238461
       sequence: 10
 
     settings: 
@@ -3187,11 +3187,11 @@
       - is-expanded
 
   - # ====== Template Option: Hide ===============================
-    id: 49521805983017613
+    id: 63392279886439116
     identification: 
       name: Hide
       identifier: HIDEOVERFLOW
-      group: Body Overflow # 2445542404183045
+      group: Body Overflow # 11424931499238458
       sequence: 20
 
     settings: 
@@ -3202,11 +3202,11 @@
       - t-Region--hiddenOverflow
 
   - # ====== Template Option: Plus or Minus ======================
-    id: 49522264834017613
+    id: 63392738737439116
     identification: 
       name: Plus or Minus
       identifier: ICONS_PLUS_OR_MINUS
-      group: Collapsible Button Icons # 2442815465183043
+      group: Collapsible Button Icons # 11427658438238460
       sequence: 1
 
     settings: 
@@ -3220,7 +3220,7 @@
       help-text: Use the plus and minus icons for the expand and collapse button.
 
   - # ====== Template Option: Remove Body Padding ================
-    id: 49522432925017614
+    id: 63392906828439117
     identification: 
       name: Remove Body Padding
       identifier: NOBODYPADDING
@@ -3237,11 +3237,11 @@
       help-text: Removes padding from region body.
 
   - # ====== Template Option: Remove Borders =====================
-    id: 49522669651017614
+    id: 63393143554439117
     identification: 
       name: Remove Borders
       identifier: NOBORDER
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 10
 
     settings: 
@@ -3255,7 +3255,7 @@
       help-text: Removes borders from the region.
 
   - # ====== Template Option: Remember Collapsible State =========
-    id: 49522826855017614
+    id: 63393300758439117
     identification: 
       name: Remember Collapsible State
       identifier: REMEMBER_COLLAPSIBLE_STATE
@@ -3272,11 +3272,11 @@
       help-text: This option saves the current state of the collapsible region for the duration of the session.
 
   - # ====== Template Option: Remove UI Decoration ===============
-    id: 49523097515017614
+    id: 63393571418439117
     identification: 
       name: Remove UI Decoration
       identifier: REMOVE_UI_DECORATION
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 30
 
     settings: 
@@ -3290,11 +3290,11 @@
       help-text: Removes UI decoration (borders, backgrounds, shadows, etc) from the region.
 
   - # ====== Template Option: Scroll - Default ===================
-    id: 49523206403017614
+    id: 63393680306439117
     identification: 
       name: Scroll - Default
       identifier: SCROLLBODY
-      group: Body Overflow # 2445542404183045
+      group: Body Overflow # 11424931499238458
       sequence: 10
 
     settings: 
@@ -3305,11 +3305,11 @@
       - t-Region--scrollBody
 
   - # ====== Template Option: Stack Region =======================
-    id: 49523416805017614
+    id: 63393890708439117
     identification: 
       name: Stack Region
       identifier: STACKED
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 20
 
     settings: 
@@ -3323,7 +3323,7 @@
       help-text: Removes side borders and shadows, and can be useful for accordions and regions that need to be grouped together vertically.
 
 - # ====== Region Template: Content Block ======================
-  id: 49523587744017614
+  id: 63394061647439117
   identification: 
     name: Content Block
     identifier: CONTENT_BLOCK
@@ -3362,7 +3362,7 @@
 
   template-options: 
   - # ====== Template Option: Add Body Padding ===================
-    id: 49525667314017615
+    id: 63396141217439118
     identification: 
       name: Add Body Padding
       identifier: ADD_BODY_PADDING
@@ -3379,11 +3379,11 @@
       help-text: Adds padding to the region's body container.
 
   - # ====== Template Option: Large ==============================
-    id: 49525799087017615
+    id: 63396272990439118
     identification: 
       name: Large
       identifier: CONTENT_TITLE_H1
-      group: Region Title # 2431974699183037
+      group: Region Title # 11438499204238466
       sequence: 10
 
     settings: 
@@ -3394,11 +3394,11 @@
       - t-ContentBlock--h1
 
   - # ====== Template Option: Medium =============================
-    id: 49526005114017615
+    id: 63396479017439118
     identification: 
       name: Medium
       identifier: CONTENT_TITLE_H2
-      group: Region Title # 2431974699183037
+      group: Region Title # 11438499204238466
       sequence: 20
 
     settings: 
@@ -3409,11 +3409,11 @@
       - t-ContentBlock--h2
 
   - # ====== Template Option: Small ==============================
-    id: 49526277514017615
+    id: 63396751417439118
     identification: 
       name: Small
       identifier: CONTENT_TITLE_H3
-      group: Region Title # 2431974699183037
+      group: Region Title # 11438499204238466
       sequence: 30
 
     settings: 
@@ -3424,11 +3424,11 @@
       - t-ContentBlock--h3
 
   - # ====== Template Option: Alternative ========================
-    id: 49526419105017615
+    id: 63396893008439118
     identification: 
       name: Alternative
       identifier: HEADING_FONT_ALTERNATIVE
-      group: Heading Font # 2440007832183041
+      group: Heading Font # 11430466071238462
       sequence: 1
 
     settings: 
@@ -3439,11 +3439,11 @@
       - t-ContentBlock--headingFontAlt
 
   - # ====== Template Option: Hidden =============================
-    id: 49526648311017616
+    id: 63397122214439119
     identification: 
       name: Hidden
       identifier: HIDDENHEADERNOAT
-      group: Header # 2440463840183041
+      group: Header # 11430010063238462
       sequence: 10
 
     settings: 
@@ -3455,11 +3455,11 @@
       - js-removeLandmark
 
   - # ====== Template Option: Hidden but accessible ==============
-    id: 49526868653017616
+    id: 63397342556439119
     identification: 
       name: Hidden but accessible
       identifier: HIDEREGIONHEADER
-      group: Header # 2440463840183041
+      group: Header # 11430010063238462
       sequence: 20
 
     settings: 
@@ -3473,11 +3473,11 @@
       help-text: This option will hide the region header.  Note that the region title will still be audible for Screen Readers. Buttons placed in the region header will be hidden and inaccessible.
 
   - # ====== Template Option: Light Background ===================
-    id: 49527243506017616
+    id: 63397717409439119
     identification: 
       name: Light Background
       identifier: LIGHT_BACKGROUND
-      group: Body Style # 2444716215183044
+      group: Body Style # 11425757688238459
       sequence: 20
 
     settings: 
@@ -3491,11 +3491,11 @@
       help-text: Gives the region body a slightly lighter background.
 
   - # ====== Template Option: Shadow Background ==================
-    id: 49527424414017616
+    id: 63397898317439119
     identification: 
       name: Shadow Background
       identifier: SHADOW_BACKGROUND
-      group: Body Style # 2444716215183044
+      group: Body Style # 11425757688238459
       sequence: 10
 
     settings: 
@@ -3509,7 +3509,7 @@
       help-text: Gives the region body a slightly darker background.
 
   - # ====== Template Option: Show Region Icon ===================
-    id: 49527668847017616
+    id: 63398142750439119
     identification: 
       name: Show Region Icon
       identifier: SHOW_REGION_ICON
@@ -3526,7 +3526,7 @@
       help-text: Displays the region icon in the region header beside the region title
 
 - # ====== Region Template: Inline Dialog ======================
-  id: 49527785573017616
+  id: 63398259476439119
   identification: 
     name: Inline Dialog
     identifier: INLINE_DIALOG
@@ -3567,7 +3567,7 @@
 
   template-options: 
   - # ====== Template Option: Auto Height ========================
-    id: 49530416259017617
+    id: 63400890162439120
     identification: 
       name: Auto Height
       identifier: AUTO_HEIGHT_INLINE_DIALOG
@@ -3584,7 +3584,7 @@
       help-text: This option will set the height of the dialog to fit its contents.
 
   - # ====== Template Option: Draggable ==========================
-    id: 49530688729017617
+    id: 63401162632439120
     identification: 
       name: Draggable
       identifier: DRAGGABLE
@@ -3598,11 +3598,11 @@
       - js-draggable
 
   - # ====== Template Option: Large (720x480) ====================
-    id: 49530831767017618
+    id: 63401305670439121
     identification: 
       name: Large (720x480)
       identifier: LARGE_720X480
-      group: Size # 2441625144183042
+      group: Size # 11428848759238461
       sequence: 30
 
     settings: 
@@ -3613,11 +3613,11 @@
       - js-dialog-size720x480
 
   - # ====== Template Option: Medium (600x400) ===================
-    id: 49531062308017618
+    id: 63401536211439121
     identification: 
       name: Medium (600x400)
       identifier: MEDIUM_600X400
-      group: Size # 2441625144183042
+      group: Size # 11428848759238461
       sequence: 20
 
     settings: 
@@ -3628,7 +3628,7 @@
       - js-dialog-size600x400
 
   - # ====== Template Option: Modal ==============================
-    id: 49531280733017618
+    id: 63401754636439121
     identification: 
       name: Modal
       identifier: MODAL
@@ -3642,11 +3642,11 @@
       - js-modal
 
   - # ====== Template Option: None ===============================
-    id: 49531438383017618
+    id: 63401912286439121
     identification: 
       name: None
       identifier: NONE
-      group: Size # 2441625144183042
+      group: Size # 11428848759238461
       sequence: 5
 
     settings: 
@@ -3657,7 +3657,7 @@
       - js-dialog-nosize
 
   - # ====== Template Option: Remove Body Padding ================
-    id: 49531642284017618
+    id: 63402116187439121
     identification: 
       name: Remove Body Padding
       identifier: REMOVE_BODY_PADDING
@@ -3674,7 +3674,7 @@
       help-text: Removes the padding around the region body.
 
   - # ====== Template Option: Resizable ==========================
-    id: 49531844233017618
+    id: 63402318136439121
     identification: 
       name: Resizable
       identifier: RESIZABLE
@@ -3688,11 +3688,11 @@
       - js-resizable
 
   - # ====== Template Option: Small (480x320) ====================
-    id: 49532004547017618
+    id: 63402478450439121
     identification: 
       name: Small (480x320)
       identifier: SMALL_480X320
-      group: Size # 2441625144183042
+      group: Size # 11428848759238461
       sequence: 10
 
     settings: 
@@ -3703,7 +3703,7 @@
       - js-dialog-size480x320
 
 - # ====== Region Template: Hero ===============================
-  id: 49532124714017618
+  id: 63402598617439121
   identification: 
     name: Hero
     identifier: HERO
@@ -3743,11 +3743,11 @@
 
   template-options: 
   - # ====== Template Option: No =================================
-    id: 49533828874017620
+    id: 63404302777439123
     identification: 
       name: No
       identifier: DISPLAY_ICON_NO
-      group: Display Icon # 2441273327183042
+      group: Display Icon # 11429200576238461
       sequence: 10
 
     settings: 
@@ -3761,11 +3761,11 @@
       help-text: Hide the Hero Region icon.
 
   - # ====== Template Option: Featured ===========================
-    id: 49534048562017620
+    id: 63404522465439123
     identification: 
       name: Featured
       identifier: FEATURED
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 10
 
     settings: 
@@ -3776,11 +3776,11 @@
       - t-HeroRegion--featured
 
   - # ====== Template Option: Alternative ========================
-    id: 49534257688017620
+    id: 63404731591439123
     identification: 
       name: Alternative
       identifier: HEADING_FONT_ALTERNATIVE
-      group: Heading Font # 2440007832183041
+      group: Heading Font # 11430466071238462
       sequence: 1
 
     settings: 
@@ -3791,11 +3791,11 @@
       - t-HeroRegion--headingFontAlt
 
   - # ====== Template Option: Circle =============================
-    id: 49534631140017620
+    id: 63405105043439123
     identification: 
       name: Circle
       identifier: ICONS_CIRCULAR
-      group: Icon Shape # 2438821916183041
+      group: Icon Shape # 11431651987238462
       sequence: 10
 
     settings: 
@@ -3809,11 +3809,11 @@
       help-text: The icons are displayed within a circle.
 
   - # ====== Template Option: Square =============================
-    id: 49534880753017620
+    id: 63405354656439123
     identification: 
       name: Square
       identifier: ICONS_SQUARE
-      group: Icon Shape # 2438821916183041
+      group: Icon Shape # 11431651987238462
       sequence: 20
 
     settings: 
@@ -3827,7 +3827,7 @@
       help-text: The icons are displayed within a square.
 
   - # ====== Template Option: Remove Body Padding ================
-    id: 49535033361017620
+    id: 63405507264439123
     identification: 
       name: Remove Body Padding
       identifier: REMOVE_BODY_PADDING
@@ -3844,11 +3844,11 @@
       help-text: Removes the padding around the hero region.
 
   - # ====== Template Option: Stacked Featured ===================
-    id: 49535255580017621
+    id: 63405729483439124
     identification: 
       name: Stacked Featured
       identifier: STACKED_FEATURED
-      group: Style # 2429989751183036
+      group: Style # 11440484152238467
       sequence: 20
 
     settings: 
@@ -3860,7 +3860,7 @@
       - t-HeroRegion--centered
 
 - # ====== Region Template: Login ==============================
-  id: 49535370495017621
+  id: 63405844398439124
   identification: 
     name: Login
     identifier: LOGIN
@@ -3896,11 +3896,11 @@
 
   template-options: 
   - # ====== Template Option: Icon ===============================
-    id: 49537327075017622
+    id: 63407800978439125
     identification: 
       name: Icon
       identifier: LOGIN_HEADER_ICON
-      group: Login Header # 2434037599183038
+      group: Login Header # 11436436304238465
       sequence: 10
 
     settings: 
@@ -3914,11 +3914,11 @@
       help-text: Displays only the Region Icon in the Login region.
 
   - # ====== Template Option: Title ==============================
-    id: 49537581320017622
+    id: 63408055223439125
     identification: 
       name: Title
       identifier: LOGIN_HEADER_TITLE
-      group: Login Header # 2434037599183038
+      group: Login Header # 11436436304238465
       sequence: 20
 
     settings: 
@@ -3933,11 +3933,11 @@
       help-text: Displays only the Region Title in the Login region.
 
   - # ====== Template Option: Hidden =============================
-    id: 49537712412017622
+    id: 63408186315439125
     identification: 
       name: Hidden
       identifier: LOGO_HEADER_HIDDEN
-      group: Login Header # 2434037599183038
+      group: Login Header # 11436436304238465
       sequence: 30
 
     settings: 
@@ -3952,7 +3952,7 @@
       help-text: Hides both the Region Icon and Title from the Login region.
 
 - # ====== Region Template: Wizard Container ===================
-  id: 49537848675017622
+  id: 63408322578439125
   identification: 
     name: Wizard Container
     identifier: WIZARD_CONTAINER
@@ -3989,11 +3989,11 @@
 
   template-options: 
   - # ====== Template Option: Small Screens (Tablet) =============
-    id: 49539832777017623
+    id: 63410306680439126
     identification: 
       name: Small Screens (Tablet)
       identifier: HIDESMALLSCREENS
-      group: Hide Steps For # 2439200850183041
+      group: Hide Steps For # 11431273053238462
       sequence: 20
 
     settings: 
@@ -4007,11 +4007,11 @@
       help-text: Hides the wizard progress steps for screens that are smaller than 768px wide.
 
   - # ====== Template Option: X Small Screens (Mobile) ===========
-    id: 49540037999017623
+    id: 63410511902439126
     identification: 
       name: X Small Screens (Mobile)
       identifier: HIDEXSMALLSCREENS
-      group: Hide Steps For # 2439200850183041
+      group: Hide Steps For # 11431273053238462
       sequence: 10
 
     settings: 
@@ -4025,7 +4025,7 @@
       help-text: Hides the wizard progress steps for screens that are smaller than 768px wide.
 
   - # ====== Template Option: Show Title =========================
-    id: 49540276549017623
+    id: 63410750452439126
     identification: 
       name: Show Title
       identifier: SHOW_TITLE

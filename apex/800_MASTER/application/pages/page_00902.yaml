@@ -5,11 +5,11 @@ identification:
   name: User Avatar
   alias: USER-AVATAR
   title: User Avatar
-  page-group: USER_PROFILE # 4446538683665162
+  page-group: USER_PROFILE # 18317012587086665
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Drawer # 49418709235017539
+  dialog-template: Drawer # 63289183138439042
   template-options: 
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
@@ -26,7 +26,7 @@ navigation:
   warn-on-unsaved-changes: true
 
 security: 
-  authorization-scheme: IS_USER # 29591928282295647
+  authorization-scheme: IS_USER # 43462402185717150
   authentication: Page Requires Authentication
   deep-linking: Application Default
   page-access-protection: Arguments Must Have Checksum
@@ -45,7 +45,7 @@ server-cache:
 
 regions: 
 - # ====== Region: [FORM] ======================================
-  id: 10752159064399626
+  id: 24622632967821129
   identification: 
     title: '[FORM]'
     type: Form
@@ -68,7 +68,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 49454620635017576
+    template: Blank with Attributes # 63325094538439079
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -95,7 +95,7 @@ regions:
       lost-update-type: Row Values
 
 - # ====== Region: User Image ==================================
-  id: 72982895489119751
+  id: 86853369392541254
   identification: 
     title: User Image
     type: Static Content
@@ -111,7 +111,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 49532124714017618
+    template: Hero # 63402598617439121
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -137,7 +137,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P902_USER_ID =============================
-  id: 10752384507399628
+  id: 24622858410821131
   identification: 
     name: P902_USER_ID
     type: Hidden
@@ -147,14 +147,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: '[FORM]' # 10752159064399626
+    region: '[FORM]' # 24622632967821129
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 10752159064399626
+    form-region: '[FORM]' # 24622632967821129
     column: USER_ID
     data-type: VARCHAR2
     query-only: false
@@ -170,7 +170,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P902_AVATAR_BLOB =========================
-  id: 10859282592272002
+  id: 24729756495693505
   identification: 
     name: P902_AVATAR_BLOB
     type: File Upload
@@ -191,7 +191,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: '[FORM]' # 10752159064399626
+    region: '[FORM]' # 24622632967821129
     position: BODY
     alignment: Left
     start-new-layout: false
@@ -202,7 +202,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 49591086965017660
+    template: Optional - Floating # 63461560868439163
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -214,7 +214,7 @@ page-items:
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 10752159064399626
+    form-region: '[FORM]' # 24622632967821129
     column: AVATAR_BLOB
     data-type: BLOB
     query-only: false
@@ -228,7 +228,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P902_AVATAR_MIME =========================
-  id: 10859506450272004
+  id: 24729980353693507
   identification: 
     name: P902_AVATAR_MIME
     type: Hidden
@@ -238,14 +238,14 @@ page-items:
 
   layout: 
     sequence: 30
-    region: '[FORM]' # 10752159064399626
+    region: '[FORM]' # 24622632967821129
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 10752159064399626
+    form-region: '[FORM]' # 24622632967821129
     column: AVATAR_MIME
     data-type: VARCHAR2
     query-only: false
@@ -261,7 +261,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P902_SUCCESS =============================
-  id: 10987949430724425
+  id: 24858423334145928
   identification: 
     name: P902_SUCCESS
     type: Hidden
@@ -271,14 +271,14 @@ page-items:
 
   layout: 
     sequence: 10
-    region: User Image # 72982895489119751
+    region: User Image # 86853369392541254
     position: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
 
   source: 
-    form-region: '[FORM]' # 10752159064399626
+    form-region: '[FORM]' # 24622632967821129
     column: AVATAR_MIME
     data-type: VARCHAR2
     query-only: false
@@ -295,14 +295,14 @@ page-items:
 
 buttons: 
 - # ====== Button: UPDATE_IMAGE ================================
-  id: 10753956844399644
+  id: 24624430747821147
   identification: 
     button-name: UPDATE_IMAGE
     label: Update Image
 
   layout: 
     sequence: 70
-    region: '[FORM]' # 10752159064399626
+    region: '[FORM]' # 24622632967821129
     position: NEXT
     start-new-layout: false
     start-new-row: true
@@ -311,7 +311,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 49593504698017664
+    button-template: Text # 63463978601439167
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -325,14 +325,14 @@ buttons:
     database-action: SQL UPDATE action
 
 - # ====== Button: CLOSE_DIALOG ================================
-  id: 10844156466192650
+  id: 24714630369614153
   identification: 
     button-name: CLOSE_DIALOG
     label: Close Dialog
 
   layout: 
     sequence: 10
-    region: User Image # 72982895489119751
+    region: User Image # 86853369392541254
     position: UP
     start-new-layout: false
     start-new-row: true
@@ -341,7 +341,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 49592843977017663
+    button-template: Icon # 63463317880439166
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -356,7 +356,7 @@ buttons:
 
 computations: 
 - # ====== Computation: P902_USER_ID ===========================
-  id: 10753881028399643
+  id: 24624354931821146
   identification: 
     item-name: P902_USER_ID
 
@@ -371,12 +371,12 @@ computations:
 
 processes: 
 - # ====== Process: INIT_FORM ==================================
-  id: 10752255396399627
+  id: 24622729299821130
   identification: 
     name: INIT_FORM
     type: Form - Initialization
     execution-chain: None
-    form-region: '[FORM]' # 10752159064399626
+    form-region: '[FORM]' # 24622632967821129
 
   execution: 
     sequence: 10
@@ -384,7 +384,7 @@ processes:
     run-process: Once Per Page Visit (default)
 
 - # ====== Process: SAVE_PROFILE_IMAGE =========================
-  id: 10754073656399645
+  id: 24624547559821148
   identification: 
     name: SAVE_PROFILE_IMAGE
     type: Execute Code
@@ -406,7 +406,7 @@ processes:
     display-location: Inline in Notification
 
 - # ====== Process: CLOSE_DIALOG ===============================
-  id: 10987662545724422
+  id: 24858136449145925
   identification: 
     name: CLOSE_DIALOG
     type: Close Dialog

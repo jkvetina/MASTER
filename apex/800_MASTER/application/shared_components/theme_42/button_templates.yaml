@@ -1,6 +1,6 @@
 ---
 - # ====== Button Template: Icon ===============================
-  id: 49592843977017663
+  id: 63463317880439166
   identification: 
     name: Icon
     identifier: ICON
@@ -19,11 +19,11 @@
 
   template-options: 
   - # ====== Template Option: Push ===============================
-    id: 49593240957017664
+    id: 63463714860439167
     identification: 
       name: Push
       identifier: PUSH
-      group: Icon Hover Animation # 2464286762183055
+      group: Icon Hover Animation # 11406187141238448
       sequence: 20
 
     settings: 
@@ -37,11 +37,11 @@
       help-text: The icon will animate to the right or left on button hover or focus.
 
   - # ====== Template Option: Spin ===============================
-    id: 49593477228017664
+    id: 63463951131439167
     identification: 
       name: Spin
       identifier: SPIN
-      group: Icon Hover Animation # 2464286762183055
+      group: Icon Hover Animation # 11406187141238448
       sequence: 10
 
     settings: 
@@ -55,7 +55,7 @@
       help-text: The icon will spin on button hover or focus.
 
 - # ====== Button Template: Text ===============================
-  id: 49593504698017664
+  id: 63463978601439167
   identification: 
     name: Text
     identifier: TEXT
@@ -73,7 +73,7 @@
     hot: '<button onclick="#JAVASCRIPT#" class="t-Button t-Button--hot #BUTTON_CSS_CLASSES#" type="button" #BUTTON_ATTRIBUTES# id="#BUTTON_ID#"><span class="t-Button-label">#LABEL#</span></button>'
 
 - # ====== Button Template: Text with Icon =====================
-  id: 49593684128017664
+  id: 63464158031439167
   identification: 
     name: Text with Icon
     identifier: TEXT_WITH_ICON
@@ -96,7 +96,7 @@
 
   template-options: 
   - # ====== Template Option: Hide Icon on Desktop ===============
-    id: 49593803142017665
+    id: 63464277045439168
     identification: 
       name: Hide Icon on Desktop
       identifier: HIDE_ICON_ON_DESKTOP
@@ -113,7 +113,7 @@
       help-text: This template options hides the button icon on large screens.
 
   - # ====== Template Option: Hide Label on Mobile ===============
-    id: 49594085780017665
+    id: 63464559683439168
     identification: 
       name: Hide Label on Mobile
       identifier: HIDE_LABEL_ON_MOBILE
@@ -130,11 +130,11 @@
       help-text: This template options hides the button label on small screens.
 
   - # ====== Template Option: Left ===============================
-    id: 49594429078017665
+    id: 63464902981439168
     identification: 
       name: Left
       identifier: LEFTICON
-      group: Icon Position # 2463972568183055
+      group: Icon Position # 11406501335238448
       sequence: 10
 
     settings: 
@@ -145,11 +145,11 @@
       - t-Button--iconLeft
 
   - # ====== Template Option: Push ===============================
-    id: 49594694127017665
+    id: 63465168030439168
     identification: 
       name: Push
       identifier: PUSH
-      group: Icon Hover Animation # 2464286762183055
+      group: Icon Hover Animation # 11406187141238448
       sequence: 20
 
     settings: 
@@ -163,11 +163,11 @@
       help-text: The icon will animate to the right or left on button hover or focus.
 
   - # ====== Template Option: Right ==============================
-    id: 49594884010017665
+    id: 63465357913439168
     identification: 
       name: Right
       identifier: RIGHTICON
-      group: Icon Position # 2463972568183055
+      group: Icon Position # 11406501335238448
       sequence: 20
 
     settings: 
@@ -178,11 +178,11 @@
       - t-Button--iconRight
 
   - # ====== Template Option: Spin ===============================
-    id: 49595014268017665
+    id: 63465488171439168
     identification: 
       name: Spin
       identifier: SPIN
-      group: Icon Hover Animation # 2464286762183055
+      group: Icon Hover Animation # 11406187141238448
       sequence: 10
 
     settings: 

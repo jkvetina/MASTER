@@ -6,16 +6,16 @@ begin
 wwv_flow_imp.component_begin (
  p_version_yyyy_mm_dd=>'2023.10.31'
 ,p_release=>'23.2.3'
-,p_default_workspace_id=>8506563800894011
-,p_default_application_id=>705
+,p_default_workspace_id=>13869170895410902
+,p_default_application_id=>800
 ,p_default_id_offset=>0
 ,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_authentication(
- p_id=>wwv_flow_imp.id(10228797944919748)
+ p_id=>wwv_flow_imp.id(24099271848341251)
 ,p_name=>'GOOGLE'
 ,p_scheme_type=>'NATIVE_SOCIAL'
-,p_attribute_01=>wwv_flow_imp.id(48143034386560834)
+,p_attribute_01=>wwv_flow_imp.id(62013508289982337)
 ,p_attribute_02=>'GOOGLE'
 ,p_attribute_07=>'profile,email'
 ,p_attribute_09=>'#email#'

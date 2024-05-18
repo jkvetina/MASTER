@@ -3,11 +3,11 @@
 id: 0
 identification: 
   name: Global Page
-  page-group: __ INTERNAL # 676994263902676
+  page-group: __ INTERNAL # 14547468167324179
 
 regions: 
 - # ====== Region: ITEMS =======================================
-  id: 820178023014617
+  id: 14690651926436120
   identification: 
     title: ITEMS
     type: Static Content
@@ -23,7 +23,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 49454620635017576
+    template: Blank with Attributes # 63325094538439079
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -52,7 +52,7 @@ regions:
 
 page-items: 
 - # ====== Page Item: P0_AJAX_PING_INTERVAL ====================
-  id: 819929052014615
+  id: 14690402955436118
   identification: 
     name: P0_AJAX_PING_INTERVAL
     type: Hidden
@@ -62,7 +62,7 @@ page-items:
 
   layout: 
     sequence: 30
-    region: ITEMS # 820178023014617
+    region: ITEMS # 14690651926436120
     position: BODY
 
   advanced: 
@@ -89,7 +89,7 @@ page-items:
     comments: Interval in seconds to fire AJAX_PING process
 
 - # ====== Page Item: P0_SESSION_TIMEOUT_URL ===================
-  id: 10278396896225998
+  id: 24148870799647501
   identification: 
     name: P0_SESSION_TIMEOUT_URL
     type: Hidden
@@ -99,7 +99,7 @@ page-items:
 
   layout: 
     sequence: 20
-    region: ITEMS # 820178023014617
+    region: ITEMS # 14690651926436120
     position: BODY
 
   advanced: 
@@ -119,7 +119,7 @@ page-items:
     restricted-characters: All characters can be saved.
 
 - # ====== Page Item: P0_SUCCESS_MESSAGE =======================
-  id: 13365686140304046
+  id: 27236160043725549
   identification: 
     name: P0_SUCCESS_MESSAGE
     type: Hidden
@@ -129,7 +129,7 @@ page-items:
 
   layout: 
     sequence: 10
-    region: ITEMS # 820178023014617
+    region: ITEMS # 14690651926436120
     position: BODY
 
   advanced: 
@@ -153,7 +153,7 @@ page-items:
 
 dynamic-actions: 
 - # ====== Dynamic Action: DIALOG_CLOSED =======================
-  id: 13365806286304047
+  id: 27236280189725550
   identification: 
     name: DIALOG_CLOSED
 
@@ -169,7 +169,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 13547907745837098
+    id: 27418381649258601
     identification: 
       action: Execute JavaScript Code
 
@@ -182,12 +182,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: DIALOG_CLOSED # 13365806286304047
+      event: DIALOG_CLOSED # 27236280189725550
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: CLOSE_DIALOG ========================
-  id: 13552483016837144
+  id: 27422956920258647
   identification: 
     name: CLOSE_DIALOG
 
@@ -203,18 +203,18 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Close Dialog ================================
-    id: 13552546145837145
+    id: 27423020049258648
     identification: 
       action: Close Dialog
 
     execution: 
       sequence: 20
-      event: CLOSE_DIALOG # 13552483016837144
+      event: CLOSE_DIALOG # 27422956920258647
       fire-when-event-result-is: True
       fire-on-initialization: false
 
   - # ====== Action: Confirm =====================================
-    id: 13900537154892108
+    id: 27771011058313611
     identification: 
       action: Confirm
 
@@ -225,7 +225,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CLOSE_DIALOG # 13552483016837144
+      event: CLOSE_DIALOG # 27422956920258647
       fire-when-event-result-is: True
       fire-on-initialization: false
 
@@ -234,7 +234,7 @@ dynamic-actions:
       javascript-expression: apex.page.isChanged()
 
 - # ====== Dynamic Action: REFRESH_REGION ======================
-  id: 25144676116513910
+  id: 39015150019935413
   identification: 
     name: REFRESH_REGION
 
@@ -251,7 +251,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Alert =======================================
-    id: 25144732102513911
+    id: 39015206005935414
     identification: 
       action: Alert
 
@@ -261,12 +261,12 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: REFRESH_REGION # 25144676116513910
+      event: REFRESH_REGION # 39015150019935413
       fire-when-event-result-is: True
       fire-on-initialization: false
 
 - # ====== Dynamic Action: CHECK_SESSION =======================
-  id: 26154498822393416
+  id: 40024972725814919
   identification: 
     name: CHECK_SESSION
 
@@ -279,7 +279,7 @@ dynamic-actions:
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
-    id: 26154579736393417
+    id: 40025053639814920
     identification: 
       action: Execute JavaScript Code
 
@@ -288,7 +288,7 @@ dynamic-actions:
 
     execution: 
       sequence: 10
-      event: CHECK_SESSION # 26154498822393416
+      event: CHECK_SESSION # 40024972725814919
       fire-when-event-result-is: True
       fire-on-initialization: false
 

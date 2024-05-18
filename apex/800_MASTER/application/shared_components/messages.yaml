@@ -1,6 +1,6 @@
 ---
 - # ====== Text Message: ACCOUNT_REQUEST_INVALID ===============
-  id: 11009269350188386
+  id: 24879743253609889
   identification: 
     name: ACCOUNT_REQUEST_INVALID
 
@@ -15,7 +15,7 @@
     version-number: 1
 
 - # ====== Text Message: ACCOUNT_REQUEST_EXISTS ================
-  id: 11009622488201146
+  id: 24880096391622649
   identification: 
     name: ACCOUNT_REQUEST_EXISTS
 
@@ -30,7 +30,7 @@
     version-number: 1
 
 - # ====== Text Message: INVALID_EMAIL =========================
-  id: 11009818540202516
+  id: 24880292443624019
   identification: 
     name: INVALID_EMAIL
 
@@ -45,7 +45,7 @@
     version-number: 1
 
 - # ====== Text Message: ACCOUNT_REQUESTED =====================
-  id: 11009962966209690
+  id: 24880436869631193
   identification: 
     name: ACCOUNT_REQUESTED
 
@@ -60,7 +60,7 @@
     version-number: 1
 
 - # ====== Text Message: SESSION_TIMEOUT =======================
-  id: 11010249028218491
+  id: 24880722931639994
   identification: 
     name: SESSION_TIMEOUT
 
@@ -75,7 +75,7 @@
     version-number: 1
 
 - # ====== Text Message: INVALID_USER ==========================
-  id: 11010445035222657
+  id: 24880918938644160
   identification: 
     name: INVALID_USER
 
@@ -90,7 +90,7 @@
     version-number: 1
 
 - # ====== Text Message: ACCOUNT_DISABLED ======================
-  id: 11010629449224046
+  id: 24881103352645549
   identification: 
     name: ACCOUNT_DISABLED
 
@@ -105,7 +105,7 @@
     version-number: 1
 
 - # ====== Text Message: SESSION_INVALID =======================
-  id: 14809398022093802
+  id: 28679871925515305
   identification: 
     name: SESSION_INVALID
 
