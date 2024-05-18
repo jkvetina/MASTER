@@ -47,6 +47,5 @@ LEFT JOIN b
     ON b.role_id    = t.role_id
 LEFT JOIN r
     ON r.role_id    = t.role_id;
---
-COMMENT ON TABLE app_roles_v IS '';
+/
 

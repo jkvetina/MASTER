@@ -51,6 +51,5 @@ GROUP BY
 ORDER BY
     m.workspace,
     m.app_name;
---
-COMMENT ON TABLE app_launchpad_v IS '';
+/
 

@@ -12,6 +12,5 @@ JOIN x
     ON t.app_id             = x.app_id
 GROUP BY
     t.role_group;
---
-COMMENT ON TABLE app_lov_role_groups_v IS '';
+/
 

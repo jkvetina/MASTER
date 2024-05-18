@@ -15,6 +15,5 @@ FROM all_objects t
 WHERE t.owner           = core.get_app_owner()
     AND t.object_name   LIKE core.get_app_prefix() || '%'
     AND t.status        != 'VALID';
---
-COMMENT ON TABLE app_p880_invalid_objects_v IS '';
+/
 

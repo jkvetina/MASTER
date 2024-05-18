@@ -17,6 +17,5 @@ JOIN app_users_map m
     ON m.user_id    = t.user_id
     AND m.app_id    = x.app_id
 WHERE t.is_active   = 'Y';
---
-COMMENT ON TABLE app_lov_users_v IS '';
+/
 

@@ -1,6 +1,6 @@
 CREATE TABLE app_contexts (
-    app_id                          NUMBER(8,0)     CONSTRAINT nn_app_contexts_app NOT NULL,
-    context_id                      VARCHAR2(64)    CONSTRAINT nn_app_contexts_name NOT NULL,
+    app_id                          NUMBER(8,0)           CONSTRAINT nn_app_contexts_app NOT NULL,
+    context_id                      VARCHAR2(64)          CONSTRAINT nn_app_contexts_name NOT NULL,
     context_name                    VARCHAR2(64),
     context_group                   VARCHAR2(64),
     context_desc                    VARCHAR2(512),
@@ -9,7 +9,10 @@ CREATE TABLE app_contexts (
     updated_at                      DATE,
     --
     CONSTRAINT pk_app_contexts
-        PRIMARY KEY (app_id, context_id),
+        PRIMARY KEY (
+            app_id,
+            context_id
+        ),
     --
     CONSTRAINT fk_app_contexts_app_id
         FOREIGN KEY (app_id)

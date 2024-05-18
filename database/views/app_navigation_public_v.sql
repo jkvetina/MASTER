@@ -82,6 +82,5 @@ SELECT
     p.order#
     --
 FROM public_pages p;
---
-COMMENT ON TABLE app_navigation_public_v IS '';
+/
 

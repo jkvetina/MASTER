@@ -173,6 +173,5 @@ LEFT JOIN app_navigation n
     ON n.app_id         = p.app_id
     AND n.page_id       = p.page_id
 WHERE n.page_id         IS NULL;
---
-COMMENT ON TABLE app_navigation_grid_v IS '';
+/
 

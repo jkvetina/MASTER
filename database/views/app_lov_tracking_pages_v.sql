@@ -67,6 +67,5 @@ GROUP BY
     t.page_name,
     p.page_alias,
     p.page_group;
---
-COMMENT ON TABLE app_lov_tracking_pages_v IS '';
+/
 

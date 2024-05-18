@@ -1,8 +1,8 @@
 CREATE TABLE app_contexts_map (
-    app_id                          NUMBER(8,0)     CONSTRAINT nn_app_contexts_map_app NOT NULL,
-    user_id                         VARCHAR2(128)   CONSTRAINT nn_app_contexts_map_user NOT NULL,
-    page_id                         NUMBER(8,0)     CONSTRAINT nn_app_contexts_map_page NOT NULL,
-    context_id                      VARCHAR2(64)    CONSTRAINT nn_app_contexts_map_name NOT NULL,
+    app_id                          NUMBER(8,0)           CONSTRAINT nn_app_contexts_map_app NOT NULL,
+    user_id                         VARCHAR2(128)         CONSTRAINT nn_app_contexts_map_user NOT NULL,
+    page_id                         NUMBER(8,0)           CONSTRAINT nn_app_contexts_map_page NOT NULL,
+    context_id                      VARCHAR2(64)          CONSTRAINT nn_app_contexts_map_name NOT NULL,
     is_active                       CHAR(1),
     created_by                      VARCHAR2(128),
     created_at                      DATE,
@@ -10,19 +10,38 @@ CREATE TABLE app_contexts_map (
     updated_at                      DATE,
     --
     CONSTRAINT ch_app_contexts_map_active
-        CHECK (is_active = 'Y' OR is_active IS NULL),
+        CHECK (
+            is_active = 'Y' OR is_active IS NULL
+        ),
     --
     CONSTRAINT pk_app_contexts_map
-        PRIMARY KEY (app_id, user_id, page_id, context_id),
+        PRIMARY KEY (
+            app_id,
+            user_id,
+            page_id,
+            context_id
+        ),
     --
     CONSTRAINT fk_app_contexts_map_context
-        FOREIGN KEY (app_id, context_id)
-        REFERENCES app_contexts (app_id, context_id)
+        FOREIGN KEY (
+            app_id,
+            context_id
+        )
+        REFERENCES app_contexts (
+            app_id,
+            context_id
+        )
         DEFERRABLE INITIALLY DEFERRED,
     --
     CONSTRAINT fk_app_contexts_map_user
-        FOREIGN KEY (user_id, app_id)
-        REFERENCES app_users_map (user_id, app_id)
+        FOREIGN KEY (
+            user_id,
+            app_id
+        )
+        REFERENCES app_users_map (
+            user_id,
+            app_id
+        )
         DEFERRABLE INITIALLY DEFERRED
 );
 --

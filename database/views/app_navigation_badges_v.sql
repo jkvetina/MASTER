@@ -13,6 +13,5 @@ SELECT
 FROM app_user_requests t
 WHERE t.accepted_at     IS NULL
     AND t.rejected_at   IS NULL;
---
-COMMENT ON TABLE app_navigation_badges_v IS '';
+/
 

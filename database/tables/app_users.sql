@@ -1,5 +1,5 @@
 CREATE TABLE app_users (
-    user_id                         VARCHAR2(128)   CONSTRAINT nn_app_users_id NOT NULL,
+    user_id                         VARCHAR2(128)         CONSTRAINT nn_app_users_id NOT NULL,
     user_name                       VARCHAR2(64),
     user_mail                       VARCHAR2(128),
     user_nickname                   VARCHAR2(32),
@@ -16,13 +16,17 @@ CREATE TABLE app_users (
     updated_at                      DATE,
     --
     CONSTRAINT ch_app_users_active
-        CHECK (is_active = 'Y' OR is_active IS NULL),
+        CHECK (
+            is_active = 'Y' OR is_active IS NULL
+        ),
     --
     CONSTRAINT pk_app_users
         PRIMARY KEY (user_id),
     --
     CONSTRAINT ch_app_users_admin
-        CHECK (is_admin = 'Y' OR is_admin IS NULL)
+        CHECK (
+            is_admin = 'Y' OR is_admin IS NULL
+        )
 );
 --
 COMMENT ON TABLE app_users IS '';

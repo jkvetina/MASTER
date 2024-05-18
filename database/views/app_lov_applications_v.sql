@@ -26,6 +26,5 @@ GROUP BY
     a.app_id,
     a.app_name,
     a.app_group;
---
-COMMENT ON TABLE app_lov_applications_v IS '';
+/
 

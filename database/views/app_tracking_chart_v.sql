@@ -163,6 +163,5 @@ SELECT
     app.get_color(x.color_name, t.t36, in_app_id => x.master_id) AS t36_color,  app.get_color(x.color_name, t.t36, 'Y', in_app_id => x.master_id) AS t36_text
 FROM t
 CROSS JOIN x;
---
-COMMENT ON TABLE app_tracking_chart_v IS '';
+/
 

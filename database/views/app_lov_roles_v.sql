@@ -19,6 +19,5 @@ JOIN x
     ON t.app_id             = x.app_id
 WHERE 1 = 1
     AND (x.role_group       = t.role_group OR x.role_group IS NULL);
---
-COMMENT ON TABLE app_lov_roles_v IS '';
+/
 

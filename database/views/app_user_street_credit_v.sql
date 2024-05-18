@@ -26,6 +26,5 @@ FROM (
 ) t
 JOIN x
     ON x.user_id = t.user_id;
---
-COMMENT ON TABLE app_user_street_credit_v IS '';
+/
 

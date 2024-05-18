@@ -24,6 +24,5 @@ JOIN app_users_map c
 JOIN app_users u
     ON u.user_id        = c.user_id
     AND u.is_active     = 'Y';
---
-COMMENT ON TABLE app_auth_pages_v IS '';
+/
 

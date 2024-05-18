@@ -22,6 +22,5 @@ JOIN app_lov_page_groups_v g
     ON g.page_group         = t.page_group
 WHERE 1 = 1
     AND (x.page_group       = t.page_group OR x.page_group IS NULL);
---
-COMMENT ON TABLE app_lov_pages_v IS '';
+/
 

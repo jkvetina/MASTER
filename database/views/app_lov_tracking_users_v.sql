@@ -36,6 +36,5 @@ FROM (
     FROM a
 ) a
 WHERE a.r# <= 10;
---
-COMMENT ON TABLE app_lov_tracking_users_v IS '';
+/
 

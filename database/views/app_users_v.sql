@@ -52,6 +52,5 @@ LEFT JOIN a
     ON a.user_id        = u.user_id
 LEFT JOIN r
     ON r.user_id        = u.user_id;
---
-COMMENT ON TABLE app_users_v IS '';
+/
 

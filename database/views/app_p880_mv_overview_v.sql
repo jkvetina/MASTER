@@ -32,6 +32,5 @@ LEFT JOIN (
     ON i.table_name     = m.mview_name
 WHERE m.owner           = core.get_app_owner()
     AND m.mview_name    LIKE core.get_app_prefix() || '%';
---
-COMMENT ON TABLE app_p880_mv_overview_v IS '';
+/
 

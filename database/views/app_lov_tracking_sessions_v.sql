@@ -19,6 +19,5 @@ WHERE 1 = 1
 GROUP BY
     TRUNC(a.view_date),
     a.apex_session_id;
---
-COMMENT ON TABLE app_lov_tracking_sessions_v IS '';
+/
 

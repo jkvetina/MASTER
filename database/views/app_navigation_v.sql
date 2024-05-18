@@ -156,6 +156,5 @@ SELECT
     n.order#
     --
 FROM app_navigation_public_v n;
---
-COMMENT ON TABLE app_navigation_v IS '';
+/
 

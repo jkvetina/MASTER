@@ -21,6 +21,5 @@ WHERE t.page_id             NOT IN (0, 9999)
     AND t.page_group        NOT LIKE '\_\_%' ESCAPE '\'
 GROUP BY
     t.page_group;
---
-COMMENT ON TABLE app_lov_page_groups_v IS '';
+/
 

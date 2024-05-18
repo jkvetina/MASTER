@@ -1,6 +1,6 @@
 CREATE TABLE app_navigation (
-    app_id                          NUMBER(8,0)     CONSTRAINT nn_app_navigation_app NOT NULL,
-    page_id                         NUMBER(8,0)     CONSTRAINT nn_app_navigation_page NOT NULL,
+    app_id                          NUMBER(8,0)           CONSTRAINT nn_app_navigation_app NOT NULL,
+    page_id                         NUMBER(8,0)           CONSTRAINT nn_app_navigation_page NOT NULL,
     parent_id                       NUMBER(8,0),
     is_hidden                       CHAR(1),
     is_reset                        CHAR(1),
@@ -10,17 +10,31 @@ CREATE TABLE app_navigation (
     updated_at                      DATE,
     --
     CONSTRAINT ch_app_navigation_is_hidden
-        CHECK (is_hidden = 'Y' OR is_hidden IS NULL),
+        CHECK (
+            is_hidden = 'Y' OR is_hidden IS NULL
+        ),
     --
     CONSTRAINT ch_app_navigation_is_reset
-        CHECK (is_reset = 'Y' OR is_reset IS NULL),
+        CHECK (
+            is_reset = 'Y' OR is_reset IS NULL
+        ),
     --
     CONSTRAINT pk_app_navigation
-        PRIMARY KEY (app_id, page_id),
+        PRIMARY KEY (
+            app_id,
+            page_id
+        )
+  )  ENABLE,
     --
     CONSTRAINT fk_app_navigation_parent
-        FOREIGN KEY (app_id, parent_id)
-        REFERENCES app_navigation (app_id, page_id)
+        FOREIGN KEY (
+            app_id,
+            parent_id
+        )
+        REFERENCES app_navigation (
+            app_id,
+            page_id
+        )
         DEFERRABLE INITIALLY DEFERRED,
     --
     CONSTRAINT fk_app_navigation_app

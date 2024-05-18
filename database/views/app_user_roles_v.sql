@@ -72,6 +72,5 @@ SELECT
     --
 FROM DUAL
 WHERE core.is_developer_y() = 'Y';
---
-COMMENT ON TABLE app_user_roles_v IS '';
+/
 

@@ -73,6 +73,5 @@ JOIN app_lov_pages_v p
 WHERE 1 = 1
     AND (x.page_id          = p.page_id         OR x.page_id IS NULL)
     AND (x.page_group       = p.page_group_raw  OR x.page_group IS NULL);
---
-COMMENT ON TABLE app_qa_grids_v IS '';
+/
 

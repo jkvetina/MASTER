@@ -164,6 +164,5 @@ LEFT JOIN d
 LEFT JOIN i
     ON i.page_id            = t.page_id
     AND i.region_id         = t.region_id;
---
-COMMENT ON TABLE app_auth_grids_v IS '';
+/
 

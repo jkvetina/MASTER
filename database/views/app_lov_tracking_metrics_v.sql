@@ -8,6 +8,5 @@ SELECT
 FROM app_lovs t
 WHERE t.app_id      = core.get_app_id(in_dont_override => 'Y')
     AND t.lov_id    = 'METRIC';
---
-COMMENT ON TABLE app_lov_tracking_metrics_v IS '';
+/
 

@@ -45,6 +45,5 @@ WHERE 1 = 1
         (x.count_ajax       = 'Y' AND a.page_view_type = 'Ajax') OR
         (x.count_auth       = 'Y' AND a.page_view_type = 'Authentication Callback')
     );
---
-COMMENT ON TABLE app_tracking_base_v IS '';
+/
 

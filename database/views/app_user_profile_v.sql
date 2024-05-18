@@ -9,6 +9,5 @@ SELECT
     --
 FROM app_users t
 WHERE t.user_id = core.get_user_id();
---
-COMMENT ON TABLE app_user_profile_v IS '';
+/
 
