@@ -23,8 +23,7 @@ CREATE TABLE app_navigation (
         PRIMARY KEY (
             app_id,
             page_id
-        )
-  )  ENABLE,
+        ),
     --
     CONSTRAINT fk_app_navigation_parent
         FOREIGN KEY (

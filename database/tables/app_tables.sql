@@ -34,8 +34,7 @@ CREATE TABLE app_tables (
             app_id,
             table_name,
             role_id
-        )
-  )  ENABLE,
+        ),
     --
     CONSTRAINT nn_app_tables_role
         CHECK (

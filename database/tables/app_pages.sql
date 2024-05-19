@@ -16,8 +16,7 @@ CREATE TABLE app_pages (
             app_id,
             page_id,
             role_id
-        )
-  )  ENABLE,
+        ),
     --
     CONSTRAINT fk_app_pages_role
         FOREIGN KEY (

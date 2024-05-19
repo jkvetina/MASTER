@@ -19,8 +19,7 @@ CREATE TABLE app_procedures (
             object_name,
             procedure_name,
             role_id
-        )
-  )  ENABLE,
+        ),
     --
     CONSTRAINT fk_app_procedures_role
         FOREIGN KEY (

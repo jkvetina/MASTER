@@ -19,8 +19,7 @@ CREATE TABLE app_components (
             app_id,
             component_id,
             role_id
-        )
-  )  ENABLE,
+        ),
     --
     CONSTRAINT fk_app_components_role
         FOREIGN KEY (
