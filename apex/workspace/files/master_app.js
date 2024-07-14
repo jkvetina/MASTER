@@ -52,7 +52,7 @@ const init_page_asap = function() {
                 if (msg.message.toUpperCase().includes('YOUR SESSION HAS ENDED')) {
                     ping_active = false;
                     for (var i = 0 ; i <= ping_loop; i++) {
-                        clearTimeout(i); 
+                        clearTimeout(i);
                     }
                     redirect_to_login();
                 }
@@ -247,7 +247,7 @@ const redirect_to_login = function() {
 };
 //
 const check_session = function () {
-    $(document).on('dialogopen', function(event) {  
+    $(document).on('dialogopen', function(event) {
         if ($('button:contains("Sign In Again")').length > 0) {
             event.preventDefault();
             event.stopPropagation();
@@ -377,18 +377,27 @@ const copy_to_clipboard = function (text) {
 //
 // COPY GRID CELL - ATTACH ONLY TO GRIDS AND TO READ ONLY CELLS
 //
-/*
-const attach_copy_to_grid = function (el) {
-    console.log('ADDING...', el);
-    $(el).one('copy', (event) => {
-        console.log('ATTACHED');
-        event.clipboardData.setData('text/plain', $(document.activeElement)[0].innerText || window.getSelection());
-        event.preventDefault();
-    });
-};
-//
-wait_for_element('.a-GV-cell', 'main', attach_copy_to_grid);
-*/
+document.addEventListener('copy', (event) => {
+    const allowed   = 'a-GV-cell';
+    const active_el = document.activeElement;
+    const cell      = active_el.closest(`.${allowed.replace(/\s+/g, '.')}`);
+    //
+    if (cell && cell.tagName === 'TD') {
+        // get selected text
+        let selected = window.getSelection().toString().trim();
+        if (!selected) {
+            // if no text is selected, get only the text nodes directly inside this cell
+            selected = $(document.activeElement)[0].innerText;
+        }
+        if (selected) {
+            // copy selected text to the clipboard
+            // be aware that navigator works only on https
+            navigator.clipboard.writeText(selected);
+            console.log('COPIED', selected);
+            event.preventDefault();
+        }
+    }
+});
 
 
 
@@ -602,7 +611,7 @@ const fix_grid_toolbar = function (region_id) {
     //config.views.grid.features.singleRowView = false;
     //config.defaultGridViewOptions.rowHeader = "sequence";
     //config.defaultGridViewOptions.singleRowView = false;
-    
+
 
     //actions.set('edit', true);    // not working
     //config.editable = true;
@@ -648,7 +657,7 @@ const fix_grid_save_button = function () {
 //
 const fix_grid_checkbox = function(grid_id) {
     console.log('FIXING CHECKBOX', grid_id);
-    //    
+    //
     $('#' + grid_id + ' div.a-IG div.a-IG-body div.a-IG-contentContainer div.a-GV div.a-GV-bdy table.a-GV-table.a-GV-table--checkbox tbody td span.u-checkbox').on('click', function() {
         var grid = apex.region(grid_id);
         if (!grid.call('getActions').get('edit')) {
