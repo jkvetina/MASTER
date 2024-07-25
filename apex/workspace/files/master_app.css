@@ -59,13 +59,27 @@ body.t-Drawer-page .t-HeroRegion-col--beforeIcon button {
     /* background: gray; */
 }
 
+/* FIX HEADERS ON MODAL */
+.ui-dialog .ui-dialog-titlebar h1.t-HeroRegion-title,
+.t-Dialog .t-Dialog-header .t-HeroRegion .t-HeroRegion-top h1.t-HeroRegion-title {
+    line-height         : 1.8rem;
+    height              : 1.8rem;
+    margin-top          : 0.5rem;
+}
+
+/* FIX SPACING AROUND */
+.t-Dialog-body > .container:last-child > .row:last-child > .col > div > button {
+    margin-top          : 1rem !important;
+    margin-bottom       : -1rem !important;
+}
+
 
 
 /*
  * HERO REGION
  */
 .t-HeroRegion {
-    padding             : 0.75rem 0.5rem 1rem;
+    padding             : 1rem 0.5rem 0.5rem 0;
 }
 .t-HeroRegion.SECOND,
 body.t-Dialog-page .t-HeroRegion.SECOND,
@@ -76,7 +90,8 @@ h1.t-HeroRegion-title {
     font-family         : 'Mate', serif;
     font-weight         : 600;
     font-size           : 1.8rem;
-    line-height         : 150%;
+    line-height         : 1.8rem;
+    height              : 2.8rem;
 }
 .t-HeroRegion-wrap {    /* TO ALSO ALIGN RIGHT/UP BUTTON PROPERLY */
     align-items         : flex-start;
@@ -89,8 +104,6 @@ h1.t-HeroRegion-title {
     margin              : 1px 0 0;
     gap                 : 0.13rem;
 }
-
-
 
 /* HERO REGION - HIDE ICONS */
 .t-HeroRegion .t-HeroRegion-icon {
