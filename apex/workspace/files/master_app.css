@@ -369,10 +369,15 @@ ul.a-CardView-items {
     
 /* FIX READ ONLY LABELS ON FORM TEXTAREA */
 .apex-item-wrapper--display-only label {
-    background: transparent !important;
+    background          : transparent !important;
 }
 .apex-item-wrapper--display-only label::before {
-    background: transparent !important;
+    background          : transparent !important;
+}
+
+/* HIDE REQUIRED MESSAGE, KEEP THE RED TRIANGLE */
+.t-Form-itemRequired {
+    display             : none;
 }
 
 
@@ -391,6 +396,11 @@ div.a-Toolbar-group [data-action="edit"] {
 }
 .a-GV-controlBreak .a-GV-controlBreakLabel .a-GV-breakValue {
     font-weight         : bold;
+}
+
+/* GRID HEADERS */
+.a-GV-headerLabel {
+    color               : #333;
 }
 
 
@@ -460,6 +470,7 @@ tr.a-GV-row.is-selected.is-hover th {
 tr.a-GV-row.is-selected td.is-readonly,
 tr.a-GV-row.is-hover td.is-readonly {
     background          : #FBFAF8 !important;
+    background          : #F5F4F2 !important;
 }
 
 
@@ -681,5 +692,14 @@ span.CURRENT:hover {
 }
 .t-Comments-comment .GREY {
     color               : #888;
+}
+
+
+
+/* FIX NAV BUTTONS */
+.t-Header-navBar button,
+.t-Header-navBar button:hover {
+    background          : transparent;
+    outline             : none !important;
 }
 
