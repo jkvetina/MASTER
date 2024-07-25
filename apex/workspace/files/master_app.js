@@ -364,12 +364,27 @@ const delay = function (time) {
 // COPY TO CLIPBOARD
 //
 const copy_to_clipboard = function (text) {
-    var dummy = document.createElement('textarea');
-    document.body.appendChild(dummy);
-    dummy.value = text;
-    dummy.select();
-    document.execCommand('copy');
-    document.body.removeChild(dummy);
+    if (navigator.clipboard && navigator.clipboard.writeText) {
+        try {
+            navigator.clipboard.writeText(text);
+        }
+        catch(err) {
+            console.log('FAIL', err);
+        }
+    }
+    else {
+        const dummy = document.createElement('textarea');
+        document.body.appendChild(dummy);
+        dummy.value = text;
+        dummy.select();
+        try {
+            document.execCommand('copy');
+        }
+        catch(err) {
+            console.log('FAIL', err);
+        }
+        document.body.removeChild(dummy);
+    }
 };
 
 
@@ -392,7 +407,7 @@ document.addEventListener('copy', (event) => {
         if (selected) {
             // copy selected text to the clipboard
             // be aware that navigator works only on https
-            navigator.clipboard.writeText(selected);
+            copy_to_clipboard(selected);
             console.log('COPIED', selected);
             event.preventDefault();
         }
