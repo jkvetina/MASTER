@@ -239,45 +239,72 @@ span.BADGE.ICON > .fa {
 
 
 
+
+
+/* TO SHOW RADIO BUTTONS AS TABS */
+/*
+    CREATE RADIO BUTTON
+    SET MORE THEN 1 COLUMN
+    SET PAGE ACTION TO REDIRECT AND SAVE VALUE
+    SET HIDDEN ITEM LABEL
+    SET TEMPLATE OPTION - DISPLAY AS PILL
+    SET IGNORE CHANGES
+*/
+.TABS > .container > .row > .col > .apex-item-wrapper > .t-Form-labelContainer {
+    display             : none;
+}
+.TABS .apex-item-grid-row {
+    margin-top          : -1.3rem;  /* FOR PIXEL PERFECT ALIGNMENT */
+    display             : flex !important;
+}
+.TABS .apex-item-grid-row .apex-item-option {
+    margin              : 0.5rem 8px 0.75rem 0;
+}
+
 /* FIX TABS HEIGHT */
 .t-TabsRegion-items {
    min-height           : auto !important;
 }
 
-/* REMOVE OUTLINE FROM ACTIVE TABS */
-ul.t-Tabs li.t-Tabs-item a.t-Tabs-link {
-    outline             : none !important;
-}
-
 /* TABS COLOR BORDER AND SOME SPACING ADJUSTMENTS */
-ul.t-Tabs {
-    margin-bottom       : 0.5rem;
+.TABS ul.t-Tabs {
+    margin-bottom       : 1.2rem;
 }
-ul.t-Tabs::selection {
+.TABS ul.t-Tabs::selection {
     user-select         : none;
 }
-ul.t-Tabs .t-Tabs-link {
+.TABS ul.t-Tabs .t-Tabs-link {
     padding-bottom      : 0.5rem;
     background          : transparent;
     font-size           : 1rem;
 }
-ul.t-Tabs li.t-Tabs-item a.t-Tabs-link,
-ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
-    outline             : none;
-    box-shadow          : none;
+.TABS ul.t-Tabs li.t-Tabs-item a.t-Tabs-link,
+.TABS ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link,
+.TABS .apex-item-grid-row .apex-item-option label {
+    font-size           : 1rem;
     font-weight         : 600;
-    color               : #444;
-    background          : transparent;
-    padding-bottom      : 0.6rem;
+    color               : #444 !important;
+    background          : transparent !important;
+    padding             : 0.5rem 0.7rem;
+    border              : 0;
     border-bottom       : 8px solid #ededed;
+    border-radius       : 0 0 !important;
+    box-shadow          : none !important;
+    outline             : none !important;
 }
-ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link {
-    color               : #000;
+.TABS .apex-item-grid-row .apex-item-option label {
+    padding-bottom      : 0.3rem;  /* FOR PIXEL PERFECT ALIGNMENT */
+}
+.TABS ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link,
+.TABS .apex-item-grid-row .apex-item-option input:checked + label {
+    color               : #000 !important;
     border-bottom       : 8px solid #5f5c58 !important;
 }
-ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover,
-ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link:hover {
-    color               : #000;
+.TABS ul.t-Tabs li.t-Tabs-item a.t-Tabs-link:hover,
+.TABS ul.t-Tabs li.t-Tabs-item.is-active a.t-Tabs-link:hover,
+.TABS .apex-item-grid-row .apex-item-option label:hover,
+.TABS .apex-item-grid-row .apex-item-option input:checked + label:hover {
+    color               : #000 !important;
     border-bottom       : 8px solid #333 !important;
 }
 
