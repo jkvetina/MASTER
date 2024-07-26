@@ -366,7 +366,7 @@ ul.a-CardView-items {
 }
 
 
-    
+
 /* FIX READ ONLY LABELS ON FORM TEXTAREA */
 .apex-item-wrapper--display-only label {
     background          : transparent !important;
@@ -701,5 +701,20 @@ span.CURRENT:hover {
 .t-Header-navBar button:hover {
     background          : transparent;
     outline             : none !important;
+}
+
+
+
+/* FIX TOO SMALL TEXT ON CONFIRM DIALOGS */
+.a-AlertMessage-details {
+    font-size           : 1rem;
+    line-height         : 1.25rem;
+}
+
+/* FIX TOO SMALL VALIDATION ERROR TEXT */
+.t-Form-error {
+    color               : #222;
+    font-size           : 0.85rem;
+    line-height         : 1rem;
 }
 
