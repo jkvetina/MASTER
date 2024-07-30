@@ -423,7 +423,27 @@ div.a-Toolbar-group [data-action="edit"] {
     margin              : 0.125rem 0.2rem 0;
 }
 
+/* CHANGE GRID FILTERS ICON BACKGROUND */
+.a-IG-controls-cell:nth-child(2),
+.a-IRR-controls-cell:nth-child(2),
+/* CHANGE GRID FILTER COLLAPSED */
+.a-IG-reportSummary-icon,
+.a-IRR-reportSummary-icon,
+/* CHANGE GRID CHECKBOXES ON FILTERS AND ROW SELECTOR */
+.a-IG-controlsCheckbox:checked+.a-IG-controlsCheckboxLabel,
+.a-IRR-controlsCheckbox:checked+.a-IRR-controlsCheckboxLabel,
+.u-selector.is-selected {
+    background-color    : #8b8673;
+    color               : #fff;
+}
 
+/* CHANGE GRID CHECKBOXES INSIDE OF THE GRID */
+.apex-item-single-checkbox input:checked+.u-checkbox,
+.apex-item-single-checkbox input:checked+label,
+.u-checkbox.is-checked {
+    background-color    : #464237;
+    color               : #fff;
+}
 
 /* FIX MISSING BORDER ON GRID HEADER */
 th.a-GV-header {
