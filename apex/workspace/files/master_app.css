@@ -164,6 +164,13 @@ button.a-Button.a-Toolbar-item.a-Button--hot:hover,
 button.js-confirmBtn.ui-button--danger:hover {
     background          : #222;
 }
+.a-IG-controlsLabel:hover,
+.a-IRR-controlsLabel:hover,
+.a-IG-controlsLabel:active,
+.a-IRR-controlsLabel:active {
+    background          : #f1efed !important;
+    outline             : none !important;
+}
 
 /* BUTTON TO UPLOAD FILES */
 .apex-item-filedrop-action.a-Button.a-Button--hot {
@@ -462,21 +469,16 @@ tr.a-GV-row.is-updated th {
     background          : white !important;
 }
 tr.a-GV-row.is-selected td,
-tr.a-GV-row.is-selected th {
-    background          : #F5F4F2 !important;
-}
+tr.a-GV-row.is-selected th,
 tr.a-GV-row.is-hover td,
-tr.a-GV-row.is-hover th {
+tr.a-GV-row.is-hover th,
+tr.a-GV-row.is-selected td.is-readonly,
+tr.a-GV-row.is-hover td.is-readonly {
     background          : #F5F4F2 !important;
 }
 tr.a-GV-row.is-selected.is-hover td,
 tr.a-GV-row.is-selected.is-hover th {
-    background          : #E9E7E7 !important;
-}
-tr.a-GV-row.is-selected td.is-readonly,
-tr.a-GV-row.is-hover td.is-readonly {
-    background          : #FBFAF8 !important;
-    background          : #F5F4F2 !important;
+    background          : #f1efed !important;
 }
 
 
