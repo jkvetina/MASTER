@@ -72,6 +72,9 @@ body.t-Drawer-page .t-HeroRegion-col--beforeIcon button {
     margin-top          : 1rem !important;
     margin-bottom       : -1rem !important;
 }
+.t-Dialog-footer {
+    margin              : 0 1rem 1rem;
+}
 
 
 
