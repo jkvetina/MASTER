@@ -406,7 +406,10 @@ div.a-Toolbar-group [data-action="edit"] {
     color               : #333;
 }
 
-
+/* FIX BROKEN GRID PAGINATION */
+.a-GV-footer.js-stickyWidget-toggle {
+    width               : 100%;
+}
 
 /* FIX WRONG OFFSET FOR ICONS ON GRID */
 .a-GV-bdy span.fa {
