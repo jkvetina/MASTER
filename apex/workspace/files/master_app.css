@@ -146,9 +146,14 @@ button.ui-button,
 }
 button.t-Button:hover,
 button.ui-button:hover,
-.apex-item-filedrop-action.a-Button.a-Button--hot:hover {
-    background          : #DFDEDC;
-    background          : #d7d6d4;
+.apex-item-filedrop-action.a-Button.a-Button--hot:hover,
+/* BUTTON IN GRID */
+.a-Button:hover,
+.a-CardView-button:hover,
+.apex-button-group label:hover,
+.t-Form-fieldContainer--radioButtonGroup .apex-item-group--rc input+label:hover,
+.t-Form-helpButton:hover {
+    background          : #dbd8d4;
 }
 
 /* HOT BUTTONS */
@@ -163,13 +168,6 @@ button.ui-button--hot:hover,
 button.a-Button.a-Toolbar-item.a-Button--hot:hover,
 button.js-confirmBtn.ui-button--danger:hover {
     background          : #222;
-}
-.a-IG-controlsLabel:hover,
-.a-IRR-controlsLabel:hover,
-.a-IG-controlsLabel:active,
-.a-IRR-controlsLabel:active {
-    background          : #f1efed !important;
-    outline             : none !important;
 }
 
 /* BUTTON TO UPLOAD FILES */
@@ -400,6 +398,9 @@ div.a-Toolbar-group [data-action="edit"] {
 
 
 /* GRID CONTROL BREAK */
+.a-GV-table th.a-GV-controlBreakHeader {
+    background          : #f1efed;
+}
 .a-GV-controlBreak .a-GV-controlBreakLabel {
     font-size           : 120%;
     color               : #333;
@@ -435,6 +436,15 @@ div.a-Toolbar-group [data-action="edit"] {
 .u-selector.is-selected {
     background-color    : #8b8673;
     color               : #fff;
+}
+.a-IG-controlsLabel:hover,
+.a-IRR-controlsLabel:hover,
+.a-IG-controlsLabel:active,
+.a-IRR-controlsLabel:active,
+.a-IG-reportSummary-value:hover,
+.a-IRR-reportSummary-value:hover {
+    background          : #f1efed !important;
+    outline             : none !important;
 }
 
 /* CHANGE GRID CHECKBOXES INSIDE OF THE GRID */
