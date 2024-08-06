@@ -427,6 +427,19 @@ div.a-Toolbar-group [data-action="edit"] {
     border-right-width  : 0;
 }
 
+/* TRANSPARENT FOOTER */
+.a-IG {
+    border              : 0;
+    box-shadow          : 0;
+}
+.a-GV-footer {
+    background          : #FCF9F8 !important;
+    color               : #888;
+    border              : 0;
+    border-top          : 1px solid #eaeaea;
+    box-shadow          : 0;
+}
+
 /* REDESIGN GRID BORDERS */
 .a-IG-header {
     border              : 2px solid #eaeaea;
