@@ -414,6 +414,57 @@ div.a-Toolbar-group [data-action="edit"] {
     color               : #333;
 }
 
+/* FIX GRID BORDERS */
+.a-IG-controlsContainer,
+.a-IRR-controlsContainer,
+.a-IG-header,
+.a-GV-footer {
+    border              : 1px solid #eaeaea;
+}
+.a-GV-cell:last-child,
+.a-GV-table th.a-GV-header:last-child,
+.a-GV-table th.a-GV-headerGroup:last-child {
+    border-right-width  : 0;
+}
+
+/* REDESIGN GRID BORDERS */
+.a-IG-header {
+    border              : 2px solid #eaeaea;
+}
+.a-IG-body .a-MediaBlock,
+.a-IG-gridView.a-GV > .a-GV-hdr,
+.a-IG-gridView.a-GV > .a-GV-bdy {
+    border-left         : 1px solid #eaeaea;
+    border-right        : 2px solid #eaeaea;
+    box-shadow          : 0;
+}
+.a-IG-body .a-MediaBlock {
+    border-top          : 0;
+    border-left         : 2px solid #eaeaea;
+    border-right        : 2px solid #eaeaea;
+}
+.a-GV-hdr .a-GV-w-frozen .a-GV-table,
+.a-GV-hdr .a-GV-w-hdr .a-GV-table {
+    border              : 0 !important;
+}
+.a-GV-row th.a-GV-header {
+    border-bottom       : 2px solid #eaeaea;
+}
+.a-GV-row th.a-GV-header:first-child {
+    border-left         : 1px solid #eaeaea;
+}
+.a-GV-table th.a-GV-controlBreakHeader {
+    border-left         : 2px solid #eaeaea;
+    border-bottom       : 1px solid #eaeaea;
+}
+.a-GV-altMessage {
+    border              : 1px solid #eaeaea;
+    border-top          : 0;
+    border-right        : 0;
+}
+
+
+
 /* FIX BROKEN GRID PAGINATION */
 .a-GV-footer.js-stickyWidget-toggle {
     width               : 100%;
