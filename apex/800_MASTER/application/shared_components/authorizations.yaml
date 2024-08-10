@@ -4,6 +4,9 @@
   identification: 
     name: IS_USER_COMPONENT
 
+  subscription: 
+    version-number: 1
+
   authorization-scheme: 
     type: PL/SQL Function Returning Boolean
 
@@ -26,6 +29,9 @@
   id: 14635652640350931
   identification: 
     name: IS_USER_C
+
+  subscription: 
+    version-number: 1
 
   authorization-scheme: 
     type: PL/SQL Function Returning Boolean
@@ -50,6 +56,9 @@
   identification: 
     name: IS_USER_D
 
+  subscription: 
+    version-number: 1
+
   authorization-scheme: 
     type: PL/SQL Function Returning Boolean
 
@@ -72,6 +81,9 @@
   id: 14636542046359086
   identification: 
     name: IS_USER_U
+
+  subscription: 
+    version-number: 1
 
   authorization-scheme: 
     type: PL/SQL Function Returning Boolean
@@ -96,6 +108,9 @@
   identification: 
     name: IS_USER
 
+  subscription: 
+    version-number: 1
+
   authorization-scheme: 
     type: PL/SQL Function Returning Boolean
 
@@ -116,6 +131,9 @@
   identification: 
     name: NOBODY
 
+  subscription: 
+    version-number: 1
+
   authorization-scheme: 
     type: PL/SQL Function Returning Boolean
 
@@ -133,6 +151,9 @@
   identification: 
     name: IS_DEVELOPER
 
+  subscription: 
+    version-number: 1
+
   authorization-scheme: 
     type: PL/SQL Function Returning Boolean
 
@@ -149,6 +170,9 @@
   id: 63924538900170215
   identification: 
     name: IS_ADMIN
+
+  subscription: 
+    version-number: 1
 
   authorization-scheme: 
     type: PL/SQL Function Returning Boolean

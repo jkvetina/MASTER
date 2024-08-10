@@ -9,7 +9,7 @@ identification:
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Drawer # 63289183138439042
+  dialog-template: Drawer
   template-options: 
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
@@ -47,13 +47,13 @@ regions:
 - # ====== Region: Feedback ====================================
   id: 62139353824927103
   identification: 
-    title: Feedback
+    name: Feedback
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: REGION_POSITION_01
+    slot: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -61,7 +61,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -73,9 +73,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -95,7 +92,7 @@ buttons:
   layout: 
     sequence: 10
     region: Feedback # 62139353824927103
-    position: UP
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -103,7 +100,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 63463317880439166
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'

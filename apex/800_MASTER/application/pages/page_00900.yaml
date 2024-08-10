@@ -75,13 +75,13 @@ regions:
 - # ====== Region: APPLICATION_ROLES ===========================
   id: 24620825912821111
   identification: 
-    title: APPLICATION_ROLES
+    name: APPLICATION_ROLES
     type: Static Content
 
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: false
     column: Automatic
@@ -89,7 +89,7 @@ regions:
     column-span: 4
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -102,9 +102,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -116,7 +113,7 @@ regions:
 - # ====== Region: User Profile [CARD] =========================
   id: 24621546834821118
   identification: 
-    title: User Profile [CARD]
+    name: User Profile [CARD]
     type: Cards
 
   source: 
@@ -133,7 +130,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: USER_PROFILE # 24622294394821125
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -141,7 +138,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Cards Container # 63327898435439081
+    template: Cards Container
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -153,9 +150,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -245,13 +239,13 @@ regions:
 - # ====== Region: User Profile ================================
   id: 24621758124821120
   identification: 
-    title: User Profile
+    name: User Profile
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: USER_PROFILE # 24622294394821125
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -259,7 +253,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -271,9 +265,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -286,13 +277,13 @@ regions:
 - # ====== Region: USER_PROFILE ================================
   id: 24622294394821125
   identification: 
-    title: USER_PROFILE
+    name: USER_PROFILE
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -300,7 +291,7 @@ regions:
     column-span: 4
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -313,9 +304,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -327,13 +315,13 @@ regions:
 - # ====== Region: ACHIEVEMENTS ================================
   id: 25063859291730018
   identification: 
-    title: ACHIEVEMENTS
+    name: ACHIEVEMENTS
     type: Static Content
 
   layout: 
     sequence: 30
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: false
     column: Automatic
@@ -341,7 +329,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -357,9 +345,6 @@ regions:
   server-side-condition: 
     type: Never
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -371,7 +356,7 @@ regions:
 - # ====== Region: Street Credit [CHART] =======================
   id: 25063922276730019
   identification: 
-    title: Street Credit [CHART]
+    name: Street Credit [CHART]
     type: Chart
 
   source: 
@@ -387,7 +372,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: ACHIEVEMENTS # 25063859291730018
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -395,7 +380,7 @@ regions:
     column-span: 6
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -413,9 +398,6 @@ regions:
 
   security: 
     escape-special-characters: true
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -481,13 +463,13 @@ regions:
 - # ====== Region: Street Credit ===============================
   id: 25064471611730024
   identification: 
-    title: Street Credit
+    name: Street Credit
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: ACHIEVEMENTS # 25063859291730018
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -495,7 +477,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -507,9 +489,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -522,13 +501,13 @@ regions:
 - # ====== Region: App Roles ===================================
   id: 75653747485463881
   identification: 
-    title: App Roles
+    name: App Roles
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: APPLICATION_ROLES # 24620825912821111
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -536,7 +515,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -549,9 +528,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -563,7 +539,7 @@ regions:
 - # ====== Region: App Roles [CARDS] ===========================
   id: 75654026921463884
   identification: 
-    title: App Roles [CARDS]
+    name: App Roles [CARDS]
     type: Cards
 
   source: 
@@ -579,7 +555,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: APPLICATION_ROLES # 24620825912821111
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -587,7 +563,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Cards Container # 63327898435439081
+    template: Cards Container
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -599,9 +575,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -658,7 +631,7 @@ page-items:
   layout: 
     sequence: 20
     region: USER_PROFILE # 24622294394821125
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -668,8 +641,8 @@ page-items:
     used: Only when current value in session state is null
 
   default: 
-    type: SQL Query
-    sql-query: |
+    type: SQL Query (return single value)
+    sql-query-(return-single-value): |
       SELECT 't-Button--hot' AS css_class
       FROM app_users u
       WHERE u.user_id = core.get_user_id()
@@ -701,7 +674,7 @@ page-items:
   layout: 
     sequence: 10
     region: USER_PROFILE # 24622294394821125
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -711,8 +684,8 @@ page-items:
     used: Only when current value in session state is null
 
   default: 
-    type: SQL Query
-    sql-query: |
+    type: SQL Query (return single value)
+    sql-query-(return-single-value): |
       SELECT 't-Button--hot' AS css_class
       FROM app_users u
       WHERE u.user_id = core.get_user_id()
@@ -738,7 +711,7 @@ buttons:
   layout: 
     sequence: 20
     region: User Profile # 24621758124821120
-    position: RIGHT_OF_TITLE
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -746,7 +719,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 63463317880439166
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -772,7 +745,7 @@ buttons:
   layout: 
     sequence: 10
     region: User Profile # 24621758124821120
-    position: RIGHT_OF_TITLE
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -780,7 +753,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 63463317880439166
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -809,7 +782,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    event: Dialog Closed
     selection-type: Button
     button: EDIT_IMAGE # 24858567336145929
 
@@ -863,7 +836,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    event: Dialog Closed
     selection-type: Button
     button: EDIT_PROFILE # 24730493665693512
 

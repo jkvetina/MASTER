@@ -42,13 +42,13 @@ regions:
 - # ====== Region: Check Grids =================================
   id: 352294060701845117
   identification: 
-    title: Check Grids
+    name: Check Grids
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -68,9 +68,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -83,13 +80,13 @@ regions:
 - # ====== Region: Check Grids =================================
   id: 352295163456845128
   identification: 
-    title: Check Grids
+    name: Check Grids
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: Check Grids # 352294060701845117
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -97,7 +94,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -109,9 +106,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -124,7 +118,7 @@ regions:
 - # ====== Region: Check Grids [GRID] ==========================
   id: 352295321984845129
   identification: 
-    title: Check Grids [GRID]
+    name: Check Grids [GRID]
     type: Interactive Grid
 
   source: 
@@ -137,7 +131,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: Check Grids # 352294060701845117
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -145,7 +139,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -157,9 +151,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -1306,12 +1297,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 30
     region: Check Grids # 352295163456845128
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -1321,7 +1314,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -1365,7 +1358,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P705_PAGE_GROUP

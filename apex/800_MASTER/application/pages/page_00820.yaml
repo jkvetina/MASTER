@@ -42,13 +42,13 @@ regions:
 - # ====== Region: Roles =======================================
   id: 121475601310176152
   identification: 
-    title: Roles
+    name: Roles
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -68,9 +68,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -83,13 +80,13 @@ regions:
 - # ====== Region: Roles for &G_APP_NAME. ======================
   id: 121475679482176153
   identification: 
-    title: Roles for &G_APP_NAME.
+    name: Roles for &G_APP_NAME.
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: Roles # 121475601310176152
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -97,7 +94,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -110,9 +107,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -124,7 +118,7 @@ regions:
 - # ====== Region: Roles [GRID] ================================
   id: 121475778495176154
   identification: 
-    title: Roles [GRID]
+    name: Roles [GRID]
     type: Interactive Grid
 
   source: 
@@ -137,7 +131,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: Roles # 121475601310176152
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -145,7 +139,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -160,9 +154,6 @@ regions:
 
   security: 
     authorization-scheme: IS_USER # 43462402185717150
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -808,7 +799,7 @@ buttons:
   layout: 
     sequence: 10
     region: Roles for &G_APP_NAME. # 121475679482176153
-    position: RIGHT_OF_TITLE
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -816,7 +807,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 63463317880439166
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -825,6 +816,7 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
   security: 
@@ -839,7 +831,7 @@ buttons:
   layout: 
     sequence: 20
     region: Roles for &G_APP_NAME. # 121475679482176153
-    position: RIGHT_OF_TITLE
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -847,7 +839,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -872,7 +864,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P820_CLIENT_ID

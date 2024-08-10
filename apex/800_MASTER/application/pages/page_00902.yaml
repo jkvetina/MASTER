@@ -9,7 +9,7 @@ identification:
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Drawer # 63289183138439042
+  dialog-template: Drawer
   template-options: 
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
@@ -47,7 +47,7 @@ regions:
 - # ====== Region: [FORM] ======================================
   id: 24622632967821129
   identification: 
-    title: '[FORM]'
+    name: '[FORM]'
     type: Form
 
   source: 
@@ -60,7 +60,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -68,7 +68,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -80,9 +80,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -97,13 +94,13 @@ regions:
 - # ====== Region: User Image ==================================
   id: 86853369392541254
   identification: 
-    title: User Image
+    name: User Image
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: REGION_POSITION_01
+    slot: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -111,7 +108,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -123,9 +120,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -148,7 +142,7 @@ page-items:
   layout: 
     sequence: 10
     region: '[FORM]' # 24622632967821129
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -192,7 +186,7 @@ page-items:
   layout: 
     sequence: 20
     region: '[FORM]' # 24622632967821129
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -202,7 +196,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -239,7 +233,7 @@ page-items:
   layout: 
     sequence: 30
     region: '[FORM]' # 24622632967821129
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -272,7 +266,7 @@ page-items:
   layout: 
     sequence: 10
     region: User Image # 86853369392541254
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -303,7 +297,7 @@ buttons:
   layout: 
     sequence: 70
     region: '[FORM]' # 24622632967821129
-    position: NEXT
+    slot: NEXT
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -311,7 +305,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -321,6 +315,7 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
     database-action: SQL UPDATE action
 
@@ -333,7 +328,7 @@ buttons:
   layout: 
     sequence: 10
     region: User Image # 86853369392541254
-    position: UP
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -341,7 +336,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 63463317880439166
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'

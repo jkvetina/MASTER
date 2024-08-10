@@ -4,8 +4,8 @@ begin
 --     THEME OPTIONS: 800
 --   Manifest End
 wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.3'
+ p_version_yyyy_mm_dd=>'2024.05.31'
+,p_release=>'24.1.1'
 ,p_default_workspace_id=>13869170895410902
 ,p_default_application_id=>800
 ,p_default_id_offset=>0
@@ -1028,18 +1028,6 @@ wwv_flow_imp_shared.create_template_option(
 ,p_template_types=>'PAGE'
 ,p_help_text=>'This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.'
 );
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.3'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>800
-,p_default_id_offset=>0
-,p_default_owner=>'APPS'
-);
 wwv_flow_imp_shared.create_template_option(
  p_id=>wwv_flow_imp.id(63306847425439065)
 ,p_theme_id=>42
@@ -1993,18 +1981,6 @@ wwv_flow_imp_shared.create_template_option(
 ,p_template_types=>'REGION'
 ,p_help_text=>'This option will set the height of the dialog to fit its contents.'
 );
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.3'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>800
-,p_default_id_offset=>0
-,p_default_owner=>'APPS'
-);
 wwv_flow_imp_shared.create_template_option(
  p_id=>wwv_flow_imp.id(63353630671439096)
 ,p_theme_id=>42
@@ -2957,18 +2933,6 @@ wwv_flow_imp_shared.create_template_option(
 ,p_css_classes=>'t-Region--accent4'
 ,p_group_id=>wwv_flow_imp.id(11422181925238457)
 ,p_template_types=>'REGION'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.3'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>800
-,p_default_id_offset=>0
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_template_option(
  p_id=>wwv_flow_imp.id(63390333853439115)
@@ -3929,18 +3893,6 @@ wwv_flow_imp_shared.create_template_option(
 ,p_group_id=>wwv_flow_imp.id(11448459701238472)
 ,p_template_types=>'REPORT'
 ,p_help_text=>'The icons are displayed within a square shape.'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.3'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>800
-,p_default_id_offset=>0
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_template_option(
  p_id=>wwv_flow_imp.id(63420098925439133)
@@ -4908,18 +4860,6 @@ wwv_flow_imp_shared.create_template_option(
 ,p_group_id=>wwv_flow_imp.id(11416916866238454)
 ,p_template_types=>'LIST'
 );
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.3'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>800
-,p_default_id_offset=>0
-,p_default_owner=>'APPS'
-);
 wwv_flow_imp_shared.create_template_option(
  p_id=>wwv_flow_imp.id(63443279088439149)
 ,p_theme_id=>42
@@ -5851,18 +5791,6 @@ wwv_flow_imp_shared.create_template_option(
 ,p_css_classes=>'t-Button--desktopHideIcon'
 ,p_template_types=>'BUTTON'
 ,p_help_text=>'This template options hides the button icon on large screens.'
-);
-wwv_flow_imp.component_end;
-end;
-/
-begin
-wwv_flow_imp.component_begin (
- p_version_yyyy_mm_dd=>'2023.10.31'
-,p_release=>'23.2.3'
-,p_default_workspace_id=>13869170895410902
-,p_default_application_id=>800
-,p_default_id_offset=>0
-,p_default_owner=>'APPS'
 );
 wwv_flow_imp_shared.create_template_option(
  p_id=>wwv_flow_imp.id(63464559683439168)

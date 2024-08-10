@@ -1,7 +1,12 @@
 -- ----------------------------------------
--- Page: 905 - #fa-bell-o Push Notifications > Dynamic Action: SWITCH_PUSH_NOTIFICATIONS > Action: Execute Server-side Code > Settings > PL/SQL Code
+-- Page: 905 - #fa-bell-o Push Notifications > Dynamic Action: SEND_TEST_NOTIFICATION > Action: Execute Server-side Code > Settings > PL/SQL Code
 
-DBMS_SESSION.SLEEP(1);
+core.send_push_notification (
+    in_title    => 'Test Notification',
+    in_message  => 'Message created at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),
+    in_asap     => TRUE
+);
+
 
 -- ----------------------------------------
 -- Page: 905 - #fa-bell-o Push Notifications > Process: SET_CURRENT_DEVICE > Source > PL/SQL Code
@@ -28,12 +33,7 @@ WHERE ROWNUM = 1;
 DBMS_SESSION.SLEEP(0.5);
 
 -- ----------------------------------------
--- Page: 905 - #fa-bell-o Push Notifications > Dynamic Action: SEND_TEST_NOTIFICATION > Action: Execute Server-side Code > Settings > PL/SQL Code
+-- Page: 905 - #fa-bell-o Push Notifications > Dynamic Action: SWITCH_PUSH_NOTIFICATIONS > Action: Execute Server-side Code > Settings > PL/SQL Code
 
-core.send_push_notification (
-    in_title    => 'Test Notification',
-    in_message  => 'Message created at ' || TO_CHAR(SYSDATE, 'YYYY-MM-DD HH24:MI'),
-    in_asap     => TRUE
-);
-
+DBMS_SESSION.SLEEP(1);
 

@@ -45,7 +45,7 @@ regions:
 - # ====== Region: Navigation [GRID] ===========================
   id: 14693659803436150
   identification: 
-    title: Navigation [GRID]
+    name: Navigation [GRID]
     type: Interactive Grid
 
   source: 
@@ -58,7 +58,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -66,7 +66,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -79,9 +79,6 @@ regions:
     static-id: NAVIGATION
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -1140,13 +1137,13 @@ regions:
 - # ====== Region: Navigation for &G_APP_NAME. =================
   id: 39751669654005374
   identification: 
-    title: Navigation for &G_APP_NAME.
+    name: Navigation for &G_APP_NAME.
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1154,7 +1151,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     icon: fa-map-signs
@@ -1167,9 +1164,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -1192,7 +1186,7 @@ page-items:
   layout: 
     sequence: 40
     region: Navigation for &G_APP_NAME. # 39751669654005374
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1222,7 +1216,7 @@ page-items:
   layout: 
     sequence: 50
     region: Navigation for &G_APP_NAME. # 39751669654005374
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1252,7 +1246,7 @@ page-items:
   layout: 
     sequence: 20
     region: Navigation for &G_APP_NAME. # 39751669654005374
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1282,7 +1276,7 @@ page-items:
   layout: 
     sequence: 10
     region: Navigation for &G_APP_NAME. # 39751669654005374
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1312,7 +1306,7 @@ page-items:
   layout: 
     sequence: 30
     region: Navigation for &G_APP_NAME. # 39751669654005374
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1340,7 +1334,7 @@ buttons:
   layout: 
     sequence: 20
     region: Navigation for &G_APP_NAME. # 39751669654005374
-    position: RIGHT_OF_TITLE
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1348,7 +1342,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1356,6 +1350,7 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: AUTO_UPDATE =================================
@@ -1367,7 +1362,7 @@ buttons:
   layout: 
     sequence: 10
     region: Navigation for &G_APP_NAME. # 39751669654005374
-    position: RIGHT_OF_TITLE
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1375,7 +1370,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1385,6 +1380,7 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
@@ -1398,7 +1394,7 @@ dynamic-actions:
     event-scope: Static
 
   when: 
-    event: EVENT.EVENT.BROWSER.READY
+    event: Page Load
 
   server-side-condition: 
     type: Never

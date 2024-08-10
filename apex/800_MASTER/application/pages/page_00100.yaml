@@ -87,13 +87,13 @@ regions:
 - # ====== Region: Available Apps ==============================
   id: 7475275434048504
   identification: 
-    title: Available Apps
+    name: Available Apps
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: Available Apps # 39760699932325804
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -101,7 +101,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -114,9 +114,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -128,7 +125,7 @@ regions:
 - # ====== Region: Applications [CARDS] ========================
   id: 7475317403048505
   identification: 
-    title: Applications [CARDS]
+    name: Applications [CARDS]
     type: Cards
 
   source: 
@@ -145,7 +142,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: Available Apps # 39760699932325804
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -153,7 +150,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Cards Container # 63327898435439081
+    template: Cards Container
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -167,9 +164,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -232,7 +226,7 @@ regions:
 - # ====== Region: BANNER ======================================
   id: 23519630376581627
   identification: 
-    title: BANNER
+    name: BANNER
     type: Static Content
 
   source: 
@@ -244,7 +238,7 @@ regions:
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -252,7 +246,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -266,9 +260,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -280,7 +271,7 @@ regions:
 - # ====== Region: Favorite Apps [CARDS] =======================
   id: 24621155643821114
   identification: 
-    title: Favorite Apps [CARDS]
+    name: Favorite Apps [CARDS]
     type: Cards
 
   source: 
@@ -299,7 +290,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: Favorite Apps # 39760709030325805
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -307,7 +298,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Cards Container # 63327898435439081
+    template: Cards Container
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -321,9 +312,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -386,13 +374,13 @@ regions:
 - # ====== Region: Favorite Apps ===============================
   id: 24621440329821117
   identification: 
-    title: Favorite Apps
+    name: Favorite Apps
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: Favorite Apps # 39760709030325805
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -400,7 +388,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -413,9 +401,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -427,13 +412,13 @@ regions:
 - # ====== Region: TABS ========================================
   id: 39760548169325803
   identification: 
-    title: TABS
+    name: TABS
     type: Static Content
 
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -441,7 +426,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Tabs Container # 63372587703439106
+    template: Tabs Container
     template-options: 
     - '#DEFAULT#'
     - js-useLocalStorage
@@ -456,9 +441,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -470,13 +452,13 @@ regions:
 - # ====== Region: Available Apps ==============================
   id: 39760699932325804
   identification: 
-    title: Available Apps
+    name: Available Apps
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: TABS # 39760548169325803
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -484,7 +466,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -496,9 +478,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -511,13 +490,13 @@ regions:
 - # ====== Region: Favorite Apps ===============================
   id: 39760709030325805
   identification: 
-    title: Favorite Apps
+    name: Favorite Apps
     type: Static Content
 
   layout: 
     sequence: 20
     parent-region: TABS # 39760548169325803
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -525,7 +504,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -538,9 +517,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -552,13 +528,13 @@ regions:
 - # ====== Region: Missing Apps ================================
   id: 39760908983325807
   identification: 
-    title: Missing Apps
+    name: Missing Apps
     type: Static Content
 
   layout: 
     sequence: 30
     parent-region: TABS # 39760548169325803
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -566,7 +542,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -581,9 +557,6 @@ regions:
 
   security: 
     authorization-scheme: IS_DEVELOPER # 60089834032939902
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -603,7 +576,7 @@ buttons:
   layout: 
     sequence: 10
     region: Available Apps # 7475275434048504
-    position: RIGHT_OF_TITLE
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -611,7 +584,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 63464158031439167
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -621,6 +594,7 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
   security: 
@@ -638,7 +612,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P100_WORKSPACE

@@ -42,7 +42,7 @@ regions:
 - # ====== Region: INVALID_OBJECTS [GRID] ======================
   id: 39017898516935440
   identification: 
-    title: INVALID_OBJECTS [GRID]
+    name: INVALID_OBJECTS [GRID]
     type: Interactive Grid
 
   source: 
@@ -55,7 +55,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: Invalid Objects # 39623408803128535
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -63,7 +63,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -75,9 +75,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -568,7 +565,7 @@ regions:
 - # ====== Region: MVW_OVERVIEW [GRID] =========================
   id: 39017987082935441
   identification: 
-    title: MVW_OVERVIEW [GRID]
+    name: MVW_OVERVIEW [GRID]
     type: Interactive Grid
 
   source: 
@@ -581,7 +578,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: Materialized Views # 39623637698128537
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -589,7 +586,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -601,9 +598,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -1289,13 +1283,13 @@ regions:
 - # ====== Region: TABS ========================================
   id: 39623336493128534
   identification: 
-    title: TABS
+    name: TABS
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1303,7 +1297,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Tabs Container # 63372587703439106
+    template: Tabs Container
     template-options: 
     - '#DEFAULT#'
     - js-useLocalStorage
@@ -1318,9 +1312,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -1332,13 +1323,13 @@ regions:
 - # ====== Region: Invalid Objects =============================
   id: 39623408803128535
   identification: 
-    title: Invalid Objects
+    name: Invalid Objects
     type: Static Content
 
   layout: 
     sequence: 20
     parent-region: TABS # 39623336493128534
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1346,7 +1337,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1358,9 +1349,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -1373,13 +1361,13 @@ regions:
 - # ====== Region: Invalid Objects =============================
   id: 39623529537128536
   identification: 
-    title: Invalid Objects
+    name: Invalid Objects
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: Invalid Objects # 39623408803128535
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1387,7 +1375,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1399,9 +1387,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -1414,13 +1399,13 @@ regions:
 - # ====== Region: Materialized Views ==========================
   id: 39623637698128537
   identification: 
-    title: Materialized Views
+    name: Materialized Views
     type: Static Content
 
   layout: 
     sequence: 30
     parent-region: TABS # 39623336493128534
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1428,7 +1413,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1440,9 +1425,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -1455,13 +1437,13 @@ regions:
 - # ====== Region: Materialized Views ==========================
   id: 39623765045128538
   identification: 
-    title: Materialized Views
+    name: Materialized Views
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: Materialized Views # 39623637698128537
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1469,7 +1451,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1481,9 +1463,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -1496,13 +1475,13 @@ regions:
 - # ====== Region: Dashboard ===================================
   id: 39653750748838329
   identification: 
-    title: Dashboard
+    name: Dashboard
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: TABS # 39623336493128534
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1510,7 +1489,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1522,9 +1501,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -1547,7 +1523,7 @@ page-items:
   layout: 
     sequence: 10
     region: Materialized Views # 39623765045128538
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1577,7 +1553,7 @@ page-items:
   layout: 
     sequence: 20
     region: Materialized Views # 39623765045128538
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1607,7 +1583,7 @@ page-items:
   layout: 
     sequence: 30
     region: Materialized Views # 39623765045128538
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1637,7 +1613,7 @@ page-items:
   layout: 
     sequence: 10
     region: Invalid Objects # 39623529537128536
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -1665,7 +1641,7 @@ buttons:
   layout: 
     sequence: 10
     region: Invalid Objects # 39623529537128536
-    position: RIGHT_OF_TITLE
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1673,7 +1649,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1681,6 +1657,7 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
 - # ====== Button: REFRESH_ALL_MV ==============================
@@ -1692,7 +1669,7 @@ buttons:
   layout: 
     sequence: 10
     region: Materialized Views # 39623765045128538
-    position: RIGHT_OF_TITLE
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1700,7 +1677,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -1710,6 +1687,7 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
 processes: 

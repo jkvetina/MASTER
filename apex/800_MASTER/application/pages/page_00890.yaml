@@ -42,13 +42,13 @@ regions:
 - # ====== Region: TABS ========================================
   id: 39654881779838340
   identification: 
-    title: TABS
+    name: TABS
     type: Static Content
 
   layout: 
     sequence: 30
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Tabs Container # 63372587703439106
+    template: Tabs Container
     template-options: 
     - '#DEFAULT#'
     - js-useLocalStorage
@@ -71,9 +71,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -85,13 +82,13 @@ regions:
 - # ====== Region: Sessions ====================================
   id: 39654920999838341
   identification: 
-    title: Sessions
+    name: Sessions
     type: Static Content
 
   layout: 
     sequence: 20
     parent-region: TABS # 39654881779838340
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -99,7 +96,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -111,9 +108,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -126,13 +120,13 @@ regions:
 - # ====== Region: Tracking Activity ===========================
   id: 39655193604838343
   identification: 
-    title: Tracking Activity
+    name: Tracking Activity
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: TABS # 39654881779838340
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -140,7 +134,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -153,9 +147,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -167,13 +158,13 @@ regions:
 - # ====== Region: NAMES - HEADERS =============================
   id: 40114297173943324
   identification: 
-    title: NAMES - HEADERS
+    name: NAMES - HEADERS
     type: Static Content
 
   layout: 
     sequence: 20
     parent-region: Chart [GRID] # 142952384976720743
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -186,9 +177,6 @@ regions:
 
   advanced: 
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -201,13 +189,13 @@ regions:
 - # ====== Region: NAMES - WEEKS ===============================
   id: 40979664327784623
   identification: 
-    title: NAMES - WEEKS
+    name: NAMES - WEEKS
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: Chart [GRID] # 142952384976720743
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -221,9 +209,6 @@ regions:
   advanced: 
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -235,13 +220,13 @@ regions:
 - # ====== Region: Tracking Activity ===========================
   id: 142951642654720735
   identification: 
-    title: Tracking Activity
+    name: Tracking Activity
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: Tracking Activity # 39655193604838343
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -249,7 +234,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     - t-HeroRegion--hideIcon
@@ -263,9 +248,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -277,7 +259,7 @@ regions:
 - # ====== Region: Chart [GRID] ================================
   id: 142952384976720743
   identification: 
-    title: Chart [GRID]
+    name: Chart [GRID]
     type: Interactive Grid
 
   source: 
@@ -295,7 +277,7 @@ regions:
   layout: 
     sequence: 10
     parent-region: Tracking Activity # 39655193604838343
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -303,7 +285,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -315,9 +297,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -5340,7 +5319,7 @@ page-items:
   layout: 
     sequence: 10
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5370,7 +5349,7 @@ page-items:
   layout: 
     sequence: 60
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5400,7 +5379,7 @@ page-items:
   layout: 
     sequence: 50
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5430,7 +5409,7 @@ page-items:
   layout: 
     sequence: 20
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5460,7 +5439,7 @@ page-items:
   layout: 
     sequence: 40
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5490,7 +5469,7 @@ page-items:
   layout: 
     sequence: 90
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5520,7 +5499,7 @@ page-items:
   layout: 
     sequence: 100
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5550,7 +5529,7 @@ page-items:
   layout: 
     sequence: 110
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5580,7 +5559,7 @@ page-items:
   layout: 
     sequence: 70
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5610,7 +5589,7 @@ page-items:
   layout: 
     sequence: 80
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5640,7 +5619,7 @@ page-items:
   layout: 
     sequence: 120
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5670,7 +5649,7 @@ page-items:
   layout: 
     sequence: 130
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5700,7 +5679,7 @@ page-items:
   layout: 
     sequence: 140
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5730,7 +5709,7 @@ page-items:
   layout: 
     sequence: 150
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5760,7 +5739,7 @@ page-items:
   layout: 
     sequence: 160
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5790,7 +5769,7 @@ page-items:
   layout: 
     sequence: 170
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5820,7 +5799,7 @@ page-items:
   layout: 
     sequence: 180
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5850,7 +5829,7 @@ page-items:
   layout: 
     sequence: 190
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5880,7 +5859,7 @@ page-items:
   layout: 
     sequence: 200
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5910,7 +5889,7 @@ page-items:
   layout: 
     sequence: 210
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5940,7 +5919,7 @@ page-items:
   layout: 
     sequence: 220
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -5970,7 +5949,7 @@ page-items:
   layout: 
     sequence: 230
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6000,7 +5979,7 @@ page-items:
   layout: 
     sequence: 240
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6030,7 +6009,7 @@ page-items:
   layout: 
     sequence: 250
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6060,7 +6039,7 @@ page-items:
   layout: 
     sequence: 260
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6090,7 +6069,7 @@ page-items:
   layout: 
     sequence: 270
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6120,7 +6099,7 @@ page-items:
   layout: 
     sequence: 280
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6150,7 +6129,7 @@ page-items:
   layout: 
     sequence: 290
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6180,7 +6159,7 @@ page-items:
   layout: 
     sequence: 300
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6210,7 +6189,7 @@ page-items:
   layout: 
     sequence: 310
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6240,7 +6219,7 @@ page-items:
   layout: 
     sequence: 320
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6270,12 +6249,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 60
     region: Tracking Activity # 142951642654720735
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -6285,7 +6266,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -6329,7 +6310,7 @@ page-items:
   layout: 
     sequence: 330
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6359,7 +6340,7 @@ page-items:
   layout: 
     sequence: 340
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6389,7 +6370,7 @@ page-items:
   layout: 
     sequence: 350
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6419,7 +6400,7 @@ page-items:
   layout: 
     sequence: 360
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6449,7 +6430,7 @@ page-items:
   layout: 
     sequence: 370
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6479,7 +6460,7 @@ page-items:
   layout: 
     sequence: 380
     region: NAMES - HEADERS # 40114297173943324
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6509,7 +6490,7 @@ page-items:
   layout: 
     sequence: 390
     region: NAMES - WEEKS # 40979664327784623
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6539,7 +6520,7 @@ page-items:
   layout: 
     sequence: 420
     region: NAMES - WEEKS # 40979664327784623
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6569,7 +6550,7 @@ page-items:
   layout: 
     sequence: 400
     region: NAMES - WEEKS # 40979664327784623
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6599,7 +6580,7 @@ page-items:
   layout: 
     sequence: 430
     region: NAMES - WEEKS # 40979664327784623
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6629,7 +6610,7 @@ page-items:
   layout: 
     sequence: 410
     region: NAMES - WEEKS # 40979664327784623
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6659,7 +6640,7 @@ page-items:
   layout: 
     sequence: 440
     region: NAMES - WEEKS # 40979664327784623
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -6689,7 +6670,7 @@ page-items:
   layout: 
     sequence: 20
     region: Tracking Activity # 142951642654720735
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -6723,12 +6704,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 10
     region: Tracking Activity # 142951642654720735
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -6738,7 +6721,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -6782,12 +6765,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 30
     region: Tracking Activity # 142951642654720735
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -6797,7 +6782,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -6841,12 +6826,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 40
     region: Tracking Activity # 142951642654720735
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -6856,7 +6843,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -6900,12 +6887,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 50
     region: Tracking Activity # 142951642654720735
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -6915,7 +6904,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -6957,7 +6946,7 @@ buttons:
   layout: 
     sequence: 70
     region: Tracking Activity # 142951642654720735
-    position: RIGHT_OF_TITLE
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -6965,7 +6954,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -6973,6 +6962,7 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: false
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
 dynamic-actions: 
@@ -6989,7 +6979,7 @@ dynamic-actions:
     immediate: false
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P890_PAGE_ID
@@ -7048,7 +7038,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.FAMEWORK.APEXBEFOREREFRESH
+    event: Before Refresh
     selection-type: Item(s)
     item(s): 
     - P890_PAGE_ID
@@ -7088,7 +7078,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.FAMEWORK.APEXAFTERREFRESH
+    event: After Refresh
     selection-type: Item(s)
     item(s): 
     - P890_PAGE_ID

@@ -42,13 +42,13 @@ regions:
 - # ====== Region: TABS ========================================
   id: 39654291862838334
   identification: 
-    title: TABS
+    name: TABS
     type: Static Content
 
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Tabs Container # 63372587703439106
+    template: Tabs Container
     template-options: 
     - '#DEFAULT#'
     - js-useLocalStorage
@@ -71,9 +71,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -85,13 +82,13 @@ regions:
 - # ====== Region: Debug Log ===================================
   id: 39654347641838335
   identification: 
-    title: Debug Log
+    name: Debug Log
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: TABS # 39654291862838334
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -99,7 +96,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -111,9 +108,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -126,13 +120,13 @@ regions:
 - # ====== Region: Access Log ==================================
   id: 39654463841838336
   identification: 
-    title: Access Log
+    name: Access Log
     type: Static Content
 
   layout: 
     sequence: 20
     parent-region: TABS # 39654291862838334
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -140,7 +134,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -152,9 +146,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -167,13 +158,13 @@ regions:
 - # ====== Region: Web Services ================================
   id: 39654592104838337
   identification: 
-    title: Web Services
+    name: Web Services
     type: Static Content
 
   layout: 
     sequence: 40
     parent-region: TABS # 39654291862838334
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -181,7 +172,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -193,9 +184,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -208,13 +196,13 @@ regions:
 - # ====== Region: REST Sync ===================================
   id: 39654692114838338
   identification: 
-    title: REST Sync
+    name: REST Sync
     type: Static Content
 
   layout: 
     sequence: 50
     parent-region: TABS # 39654291862838334
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -222,7 +210,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -234,9 +222,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -249,13 +234,13 @@ regions:
 - # ====== Region: Activity Log ================================
   id: 39654794417838339
   identification: 
-    title: Activity Log
+    name: Activity Log
     type: Static Content
 
   layout: 
     sequence: 30
     parent-region: TABS # 39654291862838334
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -263,7 +248,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -275,9 +260,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -290,13 +272,13 @@ regions:
 - # ====== Region: Access Log ==================================
   id: 39655224423838344
   identification: 
-    title: Access Log
+    name: Access Log
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: Access Log # 39654463841838336
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -304,7 +286,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -316,9 +298,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -331,7 +310,7 @@ regions:
 - # ====== Region: Access Log [GRID] ===========================
   id: 39655318721838345
   identification: 
-    title: Access Log [GRID]
+    name: Access Log [GRID]
     type: Interactive Grid
 
   source: 
@@ -344,7 +323,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: Access Log # 39654463841838336
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -352,7 +331,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -364,9 +343,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -804,13 +780,13 @@ regions:
 - # ====== Region: Debug Log ===================================
   id: 39761076626325808
   identification: 
-    title: Debug Log
+    name: Debug Log
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: Debug Log # 39654347641838335
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -818,7 +794,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -830,9 +806,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -845,7 +818,7 @@ regions:
 - # ====== Region: Debug Log [GRID] ============================
   id: 39761177247325809
   identification: 
-    title: Debug Log [GRID]
+    name: Debug Log [GRID]
     type: Interactive Grid
 
   source: 
@@ -858,7 +831,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: Debug Log # 39654347641838335
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -866,7 +839,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -878,9 +851,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -1535,13 +1505,13 @@ regions:
 - # ====== Region: Activity Log ================================
   id: 39762443997325822
   identification: 
-    title: Activity Log
+    name: Activity Log
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: Activity Log # 39654794417838339
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1549,7 +1519,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1561,9 +1531,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -1576,7 +1543,7 @@ regions:
 - # ====== Region: Activity Log [GRID] =========================
   id: 39762566851325823
   identification: 
-    title: Activity Log [GRID]
+    name: Activity Log [GRID]
     type: Interactive Grid
 
   source: 
@@ -1589,7 +1556,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: Activity Log # 39654794417838339
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -1597,7 +1564,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -1609,9 +1576,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -2342,13 +2306,13 @@ regions:
 - # ====== Region: FILTERS =====================================
   id: 40026634230814936
   identification: 
-    title: FILTERS
+    name: FILTERS
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -2356,7 +2320,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -2368,9 +2332,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -2402,7 +2363,7 @@ page-items:
   layout: 
     sequence: 10
     region: FILTERS # 40026634230814936
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -2412,7 +2373,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -2458,7 +2419,7 @@ page-items:
   layout: 
     sequence: 20
     region: FILTERS # 40026634230814936
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -2468,7 +2429,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -2514,7 +2475,7 @@ page-items:
   layout: 
     sequence: 30
     region: FILTERS # 40026634230814936
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -2524,7 +2485,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -2570,7 +2531,7 @@ page-items:
   layout: 
     sequence: 40
     region: FILTERS # 40026634230814936
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -2580,7 +2541,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     width: 30
@@ -2618,7 +2579,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P885_DATE

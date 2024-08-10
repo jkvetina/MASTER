@@ -42,13 +42,13 @@ regions:
 - # ====== Region: Map Applications ============================
   id: 145401151368917453
   identification: 
-    title: Map Applications
+    name: Map Applications
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -69,9 +69,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -83,7 +80,7 @@ regions:
 - # ====== Region: Map Applications [GRID] =====================
   id: 214095330335864702
   identification: 
-    title: Map Applications [GRID]
+    name: Map Applications [GRID]
     type: Interactive Grid
 
   source: 
@@ -102,7 +99,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -110,7 +107,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -122,9 +119,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -598,11 +592,13 @@ regions:
       alignment: start
 
     settings: 
-      search: Contains & Ignore Case
       fetch-on-type: true
-      cache: true
+      use-cache: true
       maximum-values-in-list: 7
-      minimum-search: 1
+
+    search: 
+      match-type: Contains & Ignore Case
+      minimum-characters: 1
 
     layout: 
       sequence: 40
@@ -771,12 +767,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 10
     region: Map Applications # 145401151368917453
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -786,7 +784,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -830,12 +828,14 @@ page-items:
 
   settings: 
     page-action-on-selection: None
-    allow-multi-selection: false
+
+  multiple-values: 
+    type: No
 
   layout: 
     sequence: 20
     region: Map Applications # 145401151368917453
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: false
@@ -845,7 +845,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     height: 1
@@ -887,7 +887,7 @@ buttons:
   layout: 
     sequence: 10
     region: Map Applications # 145401151368917453
-    position: RIGHT_OF_TITLE
+    slot: RIGHT_OF_TITLE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -895,7 +895,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -917,7 +917,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P810_APP_ID

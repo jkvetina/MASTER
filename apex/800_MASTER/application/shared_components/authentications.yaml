@@ -4,6 +4,9 @@
   identification: 
     name: GOOGLE
 
+  subscription: 
+    version-number: 1
+
   settings: 
     type: Social Sign-In
     credential-store: 62013508289982337
@@ -33,6 +36,9 @@
   identification: 
     name: APEX_ACCOUNTS
 
+  subscription: 
+    version-number: 1
+
   settings: 
     type: Oracle APEX Accounts
 
@@ -54,6 +60,9 @@
   id: 63502441622441479
   identification: 
     name: OPEN_DOOR (TESTING ONLY)
+
+  subscription: 
+    version-number: 1
 
   settings: 
     type: Custom

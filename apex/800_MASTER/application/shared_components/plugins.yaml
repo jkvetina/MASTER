@@ -21,9 +21,9 @@
     - Single (Partial)
     partial: |
       {if APEX$IS_LAZY_LOADING/}
-        <span class="t-Avatar is-placeholder{if ?SHAPE/} #SHAPE!ATTR#{endif/}{if ?SIZE/} #SIZE!ATTR#{endif/}{if ?CSS_CLASSES/} #CSS_CLASSES!ATTR#{endif/}"></span>
+        <span class="t-Avatar is-placeholder{if ?SHAPE/} #SHAPE#{endif/}{if ?SIZE/} #SIZE#{endif/}{if ?CSS_CLASSES/} #CSS_CLASSES#{endif/}"></span>
       {else/}
-        {if ?LINK/}<a href="#LINK!ATTR#" #LINK_ATTR!RAW#{else/}<span{endif/} class="t-Avatar{if ?TYPE/} t-Avatar--{if ?IMAGE/}image{else/}{if ?INITIALS/}initials{else/}icon{endif/}{endif/}{endif/}{if ?SHAPE/} #SHAPE!ATTR#{endif/}{if ?SIZE/} #SIZE!ATTR#{endif/}{if ?ICON/} #ICON!ATTR#{else/} fa fa-user{endif/}{if ?CSS_CLASSES/} #CSS_CLASSES!ATTR#{endif/} u-color" {if !IMAGE/}{if DESCRIPTION/} role="img" aria-label="#DESCRIPTION!ATTR#" title="#DESCRIPTION!ATTR#"{else/} role="presentation"{endif/}{endif/}>{if IMAGE/}<img src="#IMAGE!ATTR#" alt="#DESCRIPTION!ATTR#"{if ?DESCRIPTION/} title="#DESCRIPTION!ATTR#"{endif/} loading="lazy" />{else/}{if ?INITIALS/}#INITIALS!RAW#{endif/}{endif/}{if ?LINK/}</a>{else/}</span>{endif/}
+        {if ?LINK/}<a href="#LINK#" #LINK_ATTR#{else/}<span{endif/} class="t-Avatar{if ?TYPE/} t-Avatar--{if ?IMAGE/}image{else/}{if ?INITIALS/}initials{else/}icon{endif/}{endif/}{endif/}{if ?SHAPE/} #SHAPE#{endif/}{if ?SIZE/} #SIZE#{endif/}{if ?ICON/} #ICON#{else/} fa fa-user{endif/}{if ?CSS_CLASSES/} #CSS_CLASSES#{endif/} u-color" {if !IMAGE/}{if DESCRIPTION/} role="img" aria-label="#DESCRIPTION#" title="#DESCRIPTION#"{else/} role="presentation"{endif/}{endif/}>{if IMAGE/}<img src="#IMAGE#" alt="#DESCRIPTION#"{if ?DESCRIPTION/} title="#DESCRIPTION#"{endif/} loading="lazy" />{else/}{if ?INITIALS/}#INITIALS#{endif/}{endif/}{if ?LINK/}</a>{else/}</span>{endif/}
       {endif/}
     translate-templates: false
     default-escape-mode: HTML
@@ -450,12 +450,12 @@
     - Multiple (Report)
     partial: |
       {if APEX$IS_LAZY_LOADING/}
-        <span class="t-Badge is-placeholder{if ?SIZE/} #SIZE!ATTR#{endif/}{if ?SHAPE/} #SHAPE!ATTR#{endif/}"></span>
+        <span class="t-Badge is-placeholder{if ?SIZE/} #SIZE#{endif/}{if ?SHAPE/} #SHAPE#{endif/}"></span>
       {else/}
-        {if ?LINK/}<a href="#LINK!ATTR#" #LINK_ATTR!RAW#{else/}<span{endif/} class="t-Badge {if ?STATE/}t-Badge--#STATE!ATTR#{endif/} {if ?STYLE/}#STYLE!ATTR#{endif/} {if ?SIZE/}#SIZE!ATTR#{endif/} {if ?SHAPE/}#SHAPE!ATTR#{endif/}" role="status" aria-label="#LABEL!ATTR# #VALUE!ATTR#" title="#LABEL!ATTR# #VALUE!ATTR#">
-          {if ?ICON/}<span class="t-Badge-icon #ICON!ATTR#" aria-hidden="true"></span>{endif/}
-          {if LABEL_DISPLAY/}<span class="t-Badge-label">#LABEL!RAW#</span>{endif/}
-          <span class="t-Badge-value">#VALUE!RAW#</span>
+        {if ?LINK/}<a href="#LINK#" #LINK_ATTR#{else/}<span{endif/} class="t-Badge{if ?STATE/} t-Badge--#STATE#{endif/}{if ?STYLE/} #STYLE#{endif/}{if ?SIZE/} #SIZE#{endif/}{if ?SHAPE/} #SHAPE#{endif/}" role="status" aria-label="#LABEL!STRIPHTML# #VALUE#" title="#LABEL!STRIPHTML# #VALUE#">
+          {if ?ICON/}<span class="t-Badge-icon #ICON#" aria-hidden="true"></span>{endif/}
+          {if LABEL_DISPLAY/}<span class="t-Badge-label">#LABEL#</span>{endif/}
+          <span class="t-Badge-value">#VALUE#</span>
         {if ?LINK/}</a>{else/}</span>{endif/}
       {endif/}
       
@@ -498,7 +498,7 @@
       show-in-wizard: true
       required: true
       translatable: true
-      escape-mode: Strip HTML
+      escape-mode: Raw
 
     help: 
       help-text: Enter a value for the badge label or select a source column from the quick pick options.
@@ -803,7 +803,7 @@
     - Multiple (Report)
     partial: |
       {if APEX$IS_LAZY_LOADING/}
-        <div class="t-Comments-item{if ?COMMENT_CLASS/} #COMMENT_CLASS!ATTR#{endif/}">
+        <div class="t-Comments-item{if ?COMMENT_CLASS/} #COMMENT_CLASS#{endif/}">
           {if DISPLAY_AVATAR%assigned/}
             <div class="t-Comments-icon">
               {with/}
@@ -820,7 +820,7 @@
           </div>
         </div>
       {else/}
-        <div class="t-Comments-item{if ?COMMENT_CLASS/} #COMMENT_CLASS!ATTR#{endif/}">
+        <div class="t-Comments-item{if ?COMMENT_CLASS/} #COMMENT_CLASS#{endif/}">
           {if DISPLAY_AVATAR/}
             <div class="t-Comments-icon">
               {with/}
@@ -833,25 +833,25 @@
                 SHAPE:=#AVATAR_SHAPE#
                 CSS_CLASSES:=u-color
                 LINK:=#AVATAR_LINK#
-                LINK_ATTR:=#AVATAR_LINK_ATTR!RAW#
+                LINK_ATTR:=#AVATAR_LINK_ATTR#
               {apply THEME$AVATAR/}
             </div>
           {endif/}
           <div class="t-Comments-body">
             <div class="t-Comments-info">
-              <span class="t-Comments-user">{if USER_NAME_LINK/}<a href="#USER_NAME_LINK!ATTR#" #USER_NAME_LINK_ATTR!RAW#>{endif/}#USER_NAME!RAW#{if USER_NAME_LINK/}</a>{endif/}</span>
-              {if COMMENT_DATE/}<span class="t-Comments-date">#COMMENT_DATE!RAW#</span>{endif/}
-              {if ACTIONS/}<span class="t-Comments-actions">#ACTIONS!RAW#</span>{endif/}
+              <span class="t-Comments-user">{if USER_NAME_LINK/}<a href="#USER_NAME_LINK#" #USER_NAME_LINK_ATTR#>{endif/}#USER_NAME#{if USER_NAME_LINK/}</a>{endif/}</span>
+              {if COMMENT_DATE/}<span class="t-Comments-date">#COMMENT_DATE#</span>{endif/}
+              {if ACTIONS/}<span class="t-Comments-actions">#ACTIONS#</span>{endif/}
             </div>
             <div class="t-Comments-comment">
-              #COMMENT_TEXT!RAW#
-              {if ATTRIBUTES/}<div class="t-Comments-attributes">#ATTRIBUTES!RAW#</div>{endif/}
+              #COMMENT_TEXT#
+              {if ATTRIBUTES/}<div class="t-Comments-attributes">#ATTRIBUTES#</div>{endif/}
             </div>
           </div>
         </div>
       {endif/}
     report-body: |
-      <ul class="t-Comments{if ?STYLE/} #STYLE!ATTR#{endif/} {if APPLY_THEME_COLORS/} u-colors{endif/} #APEX$COMPONENT_CSS_CLASSES#">#APEX$ROWS#</ul>
+      <ul class="t-Comments{if ?STYLE/} #STYLE#{endif/} {if APPLY_THEME_COLORS/} u-colors{endif/} #APEX$COMPONENT_CSS_CLASSES#">#APEX$ROWS#</ul>
       
     report-row: |
       <li class="t-Comments-item" #APEX$ROW_IDENTIFICATION#>#APEX$PARTIAL#</li>
@@ -971,12 +971,12 @@
       sequence: 40
 
     settings: 
-      type: Textarea
+      type: HTML
       common: true
       show-in-wizard: true
       required: false
       translatable: true
-      escape-mode: HTML
+      escape-mode: Raw
 
     help: 
       help-text: Enter some text and/or column substitution strings to be used as the comment attributes.
@@ -1440,7 +1440,7 @@
       type: Button
 
     template: 
-      action-template: '{if !IS_DISABLED/}<a {if CSS_CLASSES/}class="#CSS_CLASSES#"{endif/} href="#LINK_URL#" #LINK_ATTR!RAW#>#LABEL!RAW#</a>{endif/}'
+      action-template: '{if !IS_DISABLED/}<a {if CSS_CLASSES/}class="#CSS_CLASSES#"{endif/} href="#LINK_URL#" #LINK_ATTR#>#LABEL#</a>{endif/}'
 
     advanced: 
       translatable: false
@@ -1464,8 +1464,8 @@
 
   templates: 
     partial: |
-      {if MENU_ID/}<button type="button" data-menu="#MENU_ID!ATTR#"{else/}<a href="#LINK_URL!ATTR#" #LINK_ATTR!RAW#{endif/} class="t-Button{if IS_HOT/} t-Button--hot{endif/}{if IS_ICON_ONLY/} t-Button--noLabel t-Button--icon{else/}{if ICON_CLASSES/} t-Button--iconLeft{endif/}{endif/} #CSS_CLASSES!ATTR#" title="#LABEL!ATTR#" {if IS_DISABLED/} disabled{endif/}>
-        {if ?ICON_CLASSES/}<span class="t-Icon t-Icon--left #ICON_CLASSES!ATTR#" aria-hidden="true"></span>{endif/}<span class="t-Button-label">#LABEL!RAW#</span>
+      {if MENU_ID/}<button type="button" data-menu="#MENU_ID#"{else/}<a href="#LINK_URL#" #LINK_ATTR#{endif/} class="t-Button{if IS_HOT/} t-Button--hot{endif/}{if IS_ICON_ONLY/} t-Button--noLabel t-Button--icon{else/}{if ICON_CLASSES/} t-Button--iconLeft{endif/}{endif/} #CSS_CLASSES#" title="#LABEL!STRIPHTML#" {if IS_DISABLED/} disabled{endif/}>
+        {if ?ICON_CLASSES/}<span class="t-Icon t-Icon--left #ICON_CLASSES#" aria-hidden="true"></span>{endif/}<span class="t-Button-label">#LABEL#</span>
       {if MENU_ID/}</button>{else/}</a>{endif/}
       
     translate-templates: false
@@ -1494,7 +1494,7 @@
       common: true
       show-in-wizard: true
       required: false
-      translatable: false
+      translatable: true
       escape-mode: Raw
 
   - # ====== Custom Attribute: Link URL ==========================
@@ -1661,7 +1661,7 @@
     - Single (Partial)
     - Multiple (Report)
     partial: |
-      <div{if ?CSS_CLASSES/} class="#CSS_CLASSES#"{endif/}{if ?ATTRIBUTES/}#ATTRIBUTES!RAW#{endif/}>
+      <div{if ?CSS_CLASSES/} class="#CSS_CLASSES#"{endif/}>
         <div class="t-Timeline-wrap">
           <div class="t-Timeline-user">
             {if DISPLAY_AVATAR/}
@@ -1674,12 +1674,12 @@
                 SHAPE:=#AVATAR_SHAPE#
                 SIZE:=
                 LINK:=#AVATAR_LINK#
-                LINK_ATTR:=#AVATAR_LINK_ATTR!RAW#
+                LINK_ATTR:=#AVATAR_LINK_ATTR#
               {apply THEME$AVATAR/}
             {endif/}
             <div class="t-Timeline-userinfo">
-              <span class="t-Timeline-username">{if ?USER_NAME_LINK/}<a href="#USER_NAME_LINK!ATTR#" #USER_NAME_LINK_ATTR!RAW#>{endif/}#USER_NAME!RAW#{if ?USER_NAME_LINK/}</a>{endif/}</span>
-              <span class="t-Timeline-date">#DATE!RAW#</span>
+              <span class="t-Timeline-username">{if ?USER_NAME_LINK/}<a href="#USER_NAME_LINK#" #USER_NAME_LINK_ATTR#>{endif/}#USER_NAME#{if ?USER_NAME_LINK/}</a>{endif/}</span>
+              <span class="t-Timeline-date">#DATE#</span>
             </div>
           </div>
           <div class="t-Timeline-content">
@@ -1695,8 +1695,8 @@
               </div>
             {endif/}
             <div class="t-Timeline-body">
-              <h3 class="t-Timeline-title">{if ?TITLE_LINK/}<a href="#TITLE_LINK!ATTR#" #TITLE_LINK_ATTR!RAW#>{endif/}#TITLE!RAW#{if ?TITLE_LINK/}</a>{endif/}</h3>
-              {if ?DESCRIPTION/}<p class="t-Timeline-desc">#DESCRIPTION!RAW#</p>{endif/}
+              <h3 class="t-Timeline-title">{if ?TITLE_LINK/}<a href="#TITLE_LINK#" #TITLE_LINK_ATTR#>{endif/}#TITLE#{if ?TITLE_LINK/}</a>{endif/}</h3>
+              {if ?DESCRIPTION/}<p class="t-Timeline-desc">#DESCRIPTION#</p>{endif/}
             </div>
           </div>
         </div>
@@ -2201,7 +2201,7 @@
       show-in-wizard: true
       required: true
       translatable: true
-      escape-mode: HTML
+      escape-mode: Raw
 
     condition: 
       depending-on-custom-attribute: Display Badge # 12095227872239301
@@ -2236,7 +2236,7 @@
       - Date
       - Interval Year to Month
       - Interval Day to Second
-      escape-mode: HTML Attribute
+      escape-mode: Strip HTML
 
     condition: 
       depending-on-custom-attribute: Display Badge # 12095227872239301
@@ -2600,7 +2600,7 @@
         <div class="t-ContentRow-wrap" aria-hidden="true">
           {if ?SELECTION%assigned/}<div class="t-ContentRow-selection is-placeholder"></div>{endif/}
           {if DISPLAY_BADGE/}
-            <div class="t-ContentRow-badge #BADGE_COL_WIDTH!ATTR# #BADGE_POS!ATTR# #BADGE_ALIGNMENT!ATTR#">
+            <div class="t-ContentRow-badge #BADGE_COL_WIDTH# #BADGE_POS# #BADGE_ALIGNMENT#">
               {with/}
                 LABEL:=
                 VALUE:=
@@ -2628,11 +2628,11 @@
           </div>
         </div>
       {else/}
-        {if ?FULL_ROW_LINK/}<a class="t-ContentRow-fullLink" href="#FULL_ROW_LINK!ATTR#" #FULL_ROW_LINK_ATTR!RAW#></a>{endif/}
+        {if ?FULL_ROW_LINK/}<a class="t-ContentRow-fullLink" href="#FULL_ROW_LINK#" #FULL_ROW_LINK_ATTR#></a>{endif/}
         <div class="t-ContentRow-wrap">
           {if ?SELECTION%assigned/}<div class="t-ContentRow-selection">#SELECTION!RAW#</div>{endif/}
           {if DISPLAY_BADGE/}
-            <div class="t-ContentRow-badge #BADGE_COL_WIDTH!ATTR# #BADGE_POS!ATTR# #BADGE_ALIGNMENT!ATTR#">
+            <div class="t-ContentRow-badge #BADGE_COL_WIDTH# #BADGE_POS# #BADGE_ALIGNMENT#">
               {with/}
                 LABEL_DISPLAY:=#BADGE_LABEL_DISPLAY#
                 LABEL:=#BADGE_LABEL#
@@ -2643,7 +2643,7 @@
                 STYLE:=#BADGE_STYLE#
                 SHAPE:=#BADGE_SHAPE#
                 LINK:=#BADGE_LINK#
-                LINK_ATTR:=#BADGE_LINK_ATTR!RAW#
+                LINK_ATTR:=#BADGE_LINK_ATTR#
               {apply THEME$BADGE/}
             </div>
           {endif/}
@@ -2658,23 +2658,22 @@
                 SHAPE:=#AVATAR_SHAPE#
                 SIZE:=#AVATAR_SIZE#
                 LINK:=#AVATAR_LINK#
-                LINK_ATTR:=#AVATAR_LINK_ATTR!RAW#
+                LINK_ATTR:=#AVATAR_LINK_ATTR#
               {apply THEME$AVATAR/}
             </div>
           {endif/}
           <div class="t-ContentRow-body">
             <div class="t-ContentRow-content">
-              {if ?OVERLINE/}<div class="t-ContentRow-overline">#OVERLINE!RAW#</div>{endif/}
-              {if ?TITLE/}<h3 class="t-ContentRow-title">{if ?TITLE_LINK/}<a href="#TITLE_LINK!ATTR#" #TITLE_LINK_ATTR!RAW#>{endif/}#TITLE!RAW#{if ?TITLE_LINK/}</a>{endif/}</h3>{endif/}
-              {if ?DESCRIPTION/}<div class="t-ContentRow-description">#DESCRIPTION!RAW#</div>{endif/}
+              {if ?OVERLINE/}<div class="t-ContentRow-overline">#OVERLINE#</div>{endif/}
+              {if ?TITLE/}<h3 class="t-ContentRow-title">{if ?TITLE_LINK/}<a href="#TITLE_LINK#" #TITLE_LINK_ATTR#>{endif/}#TITLE#{if ?TITLE_LINK/}</a>{endif/}</h3>{endif/}
+              {if ?DESCRIPTION/}<div class="t-ContentRow-description">#DESCRIPTION#</div>{endif/}
             </div>
-            {if ?MISC%assigned/}<div class="t-ContentRow-misc">#MISC!RAW#</div>{endif/}
+            {if ?MISC%assigned/}<div class="t-ContentRow-misc">#MISC#</div>{endif/}
             {if ?PRIMARY_ACTIONS/}<div class="t-ContentRow-actions">#PRIMARY_ACTIONS#</div>{endif/}
           </div>
         </div>
       {endif/}
-      
-    report-body: '<ul class="t-ContentRow{if ?STYLE/} #STYLE!ATTR#{endif/}{if REMOVE_PADDING/} t-ContentRow--removePadding{endif/}{if HIDE_BORDERS/} t-ContentRow--hideBorders{endif/}{if APPLY_THEME_COLORS/} u-colors{endif/} #APEX$COMPONENT_CSS_CLASSES#">#APEX$ROWS#</ul>'
+    report-body: '<ul class="t-ContentRow{if ?STYLE/} #STYLE#{endif/}{if REMOVE_PADDING/} t-ContentRow--removePadding{endif/}{if HIDE_BORDERS/} t-ContentRow--hideBorders{endif/}{if APPLY_THEME_COLORS/} u-colors{endif/} #APEX$COMPONENT_CSS_CLASSES#">#APEX$ROWS#</ul>'
     report-row: '<li class="t-ContentRow-item{if ?ITEM_CLASSES/} #ITEM_CLASSES#{endif/}" #APEX$ROW_IDENTIFICATION#>#APEX$PARTIAL#</li>'
     translate-templates: false
     default-escape-mode: HTML
@@ -2751,7 +2750,7 @@
       show-in-wizard: true
       required: false
       translatable: true
-      escape-mode: HTML
+      escape-mode: Raw
 
     help: 
       help-text: Enter some text and/or column substitution strings to be used as the title in each row.
@@ -3157,7 +3156,7 @@
       show-in-wizard: true
       required: true
       translatable: true
-      escape-mode: HTML
+      escape-mode: Raw
 
     condition: 
       depending-on-custom-attribute: Display Badge # 12024097319239147
@@ -3192,7 +3191,7 @@
       - Date
       - Interval Year to Month
       - Interval Day to Second
-      escape-mode: HTML Attribute
+      escape-mode: Strip HTML
 
     condition: 
       depending-on-custom-attribute: Display Badge # 12024097319239147
@@ -3954,9 +3953,9 @@
     template: 
       action-template: |
         {with/}
-        LINK_URL:=#LINK_URL!RAW#
-        LINK_ATTR:=#LINK_ATTR!RAW#
-        LABEL:=#LABEL!RAW#
+        LINK_URL:=#LINK_URL#
+        LINK_ATTR:=#LINK_ATTR#
+        LABEL:=#LABEL#
         ICON_CLASSES:=#ICON_CLASSES#
         CSS_CLASSES:=#CSS_CLASSES#
         IS_HOT:=#IS_HOT#
@@ -3977,7 +3976,7 @@
       action-template: |
         {with/}
         MENU_ID:=#MENU_ID#
-        LABEL:=#LABEL!RAW#
+        LABEL:=#LABEL#
         ICON_CLASSES:=#ICON_CLASSES#
         CSS_CLASSES:=#CSS_CLASSES#
         IS_HOT:=#IS_HOT#
@@ -4035,7 +4034,7 @@
           {endif/}
         </div>
       {else/}
-        {if LINK/}<a href="#LINK!ATTR#" #LINK_ATTR!RAW#{else/}<div{endif/} class="t-MediaList-itemWrap{if ?DESCRIPTION/} t-MediaList-itemWrap--showDesc{endif/}">
+        {if LINK/}<a href="#LINK#" #LINK_ATTR#{else/}<div{endif/} class="t-MediaList-itemWrap{if ?DESCRIPTION/} t-MediaList-itemWrap--showDesc{endif/}">
           {if DISPLAY_AVATAR/}
             <div class="t-MediaList-iconWrap" aria-hidden="true">
               {with/}
@@ -4050,8 +4049,8 @@
             </div>
           {endif/}
           <div class="t-MediaList-body">
-            {if ?TITLE/}<h3 class="t-MediaList-title">#TITLE!RAW#</h3>{endif/}
-            {if ?DESCRIPTION/}<p class="t-MediaList-desc">#DESCRIPTION!RAW#</p>{endif/}
+            {if ?TITLE/}<h3 class="t-MediaList-title">#TITLE#</h3>{endif/}
+            {if ?DESCRIPTION/}<p class="t-MediaList-desc">#DESCRIPTION#</p>{endif/}
           </div>
           {if DISPLAY_BADGE/}
             {with/}
@@ -4501,7 +4500,7 @@
       show-in-wizard: true
       required: true
       translatable: true
-      escape-mode: HTML
+      escape-mode: Raw
 
     condition: 
       depending-on-custom-attribute: Display Badge # 12066790163239246
@@ -4536,7 +4535,7 @@
       - Date
       - Interval Year to Month
       - Interval Day to Second
-      escape-mode: HTML Attribute
+      escape-mode: Strip HTML
 
     condition: 
       depending-on-custom-attribute: Display Badge # 12066790163239246
@@ -4711,7 +4710,7 @@
       required: false
       translatable: false
       lov-null-text: Default
-      escape-mode: HTML
+      escape-mode: HTML Attribute
 
     condition: 
       depending-on-custom-attribute: Display Badge # 12066790163239246
@@ -4856,7 +4855,7 @@
       required: false
       translatable: false
       lov-null-text: Default
-      escape-mode: HTML
+      escape-mode: HTML Attribute
 
     help: 
       help-text: Set the size of media list items.

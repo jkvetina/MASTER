@@ -62,7 +62,7 @@ regions:
 - # ====== Region: DISCLAIMER ==================================
   id: 37391842310003147
   identification: 
-    title: DISCLAIMER
+    name: DISCLAIMER
     type: Static Content
 
   source: 
@@ -73,7 +73,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -81,7 +81,7 @@ regions:
     column-span: 6
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -94,9 +94,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -108,7 +105,7 @@ regions:
 - # ====== Region: BANNER ======================================
   id: 61456057030994449
   identification: 
-    title: BANNER
+    name: BANNER
     type: Static Content
 
   source: 
@@ -119,7 +116,7 @@ regions:
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -127,7 +124,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Below Content
@@ -140,9 +137,6 @@ regions:
     static-id: BANNER
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -165,7 +159,7 @@ page-items:
   layout: 
     sequence: 40
     region: BANNER # 61456057030994449
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -203,7 +197,7 @@ page-items:
   layout: 
     sequence: 10
     region: BANNER # 61456057030994449
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -213,7 +207,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
 
@@ -254,7 +248,7 @@ page-items:
   layout: 
     sequence: 50
     region: BANNER # 61456057030994449
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -284,7 +278,7 @@ page-items:
   layout: 
     sequence: 60
     region: BANNER # 61456057030994449
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -314,7 +308,7 @@ page-items:
   layout: 
     sequence: 70
     region: BANNER # 61456057030994449
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -342,7 +336,7 @@ buttons:
   layout: 
     sequence: 30
     region: BANNER # 61456057030994449
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: false
     column: Automatic
@@ -351,7 +345,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text with Icon # 63464158031439167
+    button-template: Text with Icon
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -379,7 +373,7 @@ buttons:
   layout: 
     sequence: 20
     region: BANNER # 61456057030994449
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: false
     column: Automatic
@@ -388,7 +382,7 @@ buttons:
     alignment: Left center
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text
     hot: true
     template-options: 
     - '#DEFAULT#'
@@ -396,6 +390,7 @@ buttons:
   behavior: 
     action: Submit Page
     execute-validations: true
+    show-processing: false
     warn-on-unsaved-changes: Do Not Check
 
   advanced: 
@@ -415,7 +410,7 @@ dynamic-actions:
     event-scope: Static
 
   when: 
-    event: EVENT.EVENT.BROWSER.READY
+    event: Page Load
 
   server-side-condition: 
     type: Item is NOT NULL
@@ -476,7 +471,7 @@ dynamic-actions:
     event-scope: Static
 
   when: 
-    event: EVENT.EVENT.BROWSER.READY
+    event: Page Load
 
   server-side-condition: 
     type: Item is NOT NULL

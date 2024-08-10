@@ -4,6 +4,9 @@
   identification: 
     name: NAVIGATION
 
+  subscription: 
+    version-number: 1
+
   source: 
     type: SQL Query
     sql-query: |

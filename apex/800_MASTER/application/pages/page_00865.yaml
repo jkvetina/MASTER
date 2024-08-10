@@ -42,13 +42,13 @@ regions:
 - # ====== Region: Contexts for &G_APP_NAME. ===================
   id: 39538821146849321
   identification: 
-    title: Contexts for &G_APP_NAME.
+    name: Contexts for &G_APP_NAME.
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -56,7 +56,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -69,9 +69,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -83,7 +80,7 @@ regions:
 - # ====== Region: Contexts [GRID] =============================
   id: 39538893940849322
   identification: 
-    title: Contexts [GRID]
+    name: Contexts [GRID]
     type: Interactive Grid
 
   source: 
@@ -97,7 +94,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -105,7 +102,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Interactive Report # 63355525363439097
+    template: Interactive Report
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -117,9 +114,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users

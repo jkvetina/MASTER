@@ -201,8 +201,8 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
+  slots: 
+  - # ====== Slot: After Logo ====================================
     id: 63188590875701832
     identification: 
       name: After Logo
@@ -218,7 +218,7 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
+  - # ====== Slot: After Navigation Bar ==========================
     id: 63189045661701833
     identification: 
       name: After Navigation Bar
@@ -234,7 +234,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
+  - # ====== Slot: Before Navigation Bar =========================
     id: 63189608698701833
     identification: 
       name: Before Navigation Bar
@@ -250,7 +250,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
+  - # ====== Slot: Body ==========================================
     id: 63190054384701833
     identification: 
       name: Body
@@ -266,7 +266,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
+  - # ====== Slot: Breadcrumb Bar ================================
     id: 63190539022701833
     identification: 
       name: Breadcrumb Bar
@@ -281,7 +281,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
     id: 63191069124701834
     identification: 
       name: Dialogs, Drawers and Popups
@@ -297,7 +297,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
+  - # ====== Slot: Footer ========================================
     id: 63191554861701834
     identification: 
       name: Footer
@@ -313,7 +313,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
+  - # ====== Slot: Top Navigation ================================
     id: 63192084950701834
     identification: 
       name: Top Navigation
@@ -328,7 +328,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
+  - # ====== Slot: Banner ========================================
     id: 63192584476701835
     identification: 
       name: Banner
@@ -343,7 +343,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
+  - # ====== Slot: Full Width Content ============================
     id: 63193121146701835
     identification: 
       name: Full Width Content
@@ -520,7 +520,7 @@
     identification: 
       name: Extra Large
       identifier: DRAWER_SIZE_EXTRA_LARGE
-      group: Size # 11420199319238456
+      group: Size
       sequence: 40
 
     settings: 
@@ -535,7 +535,7 @@
     identification: 
       name: Large
       identifier: DRAWER_SIZE_LARGE
-      group: Size # 11420199319238456
+      group: Size
       sequence: 30
 
     settings: 
@@ -550,7 +550,7 @@
     identification: 
       name: Medium
       identifier: DRAWER_SIZE_MEDIUM
-      group: Size # 11420199319238456
+      group: Size
       sequence: 20
 
     settings: 
@@ -565,7 +565,7 @@
     identification: 
       name: Small
       identifier: DRAWER_SIZE_SMALL
-      group: Size # 11420199319238456
+      group: Size
       sequence: 10
 
     settings: 
@@ -580,7 +580,7 @@
     identification: 
       name: End
       identifier: POSITION_END
-      group: Position # 11421730385238457
+      group: Position
       sequence: 20
 
     settings: 
@@ -595,7 +595,7 @@
     identification: 
       name: Start
       identifier: POSITION_START
-      group: Position # 11421730385238457
+      group: Position
       sequence: 10
 
     settings: 
@@ -619,8 +619,8 @@
       css-classes: 
       - t-Dialog--noPadding
 
-  display-points: 
-  - # ====== Display Point: Content Body =========================
+  slots: 
+  - # ====== Slot: Content Body ==================================
     id: 11533527457238545
     identification: 
       name: Content Body
@@ -636,7 +636,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Dialog Header ========================
+  - # ====== Slot: Dialog Header =================================
     id: 11534025761238545
     identification: 
       name: Dialog Header
@@ -651,7 +651,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Dialog Footer ========================
+  - # ====== Slot: Dialog Footer =================================
     id: 11534596565238546
     identification: 
       name: Dialog Footer
@@ -880,8 +880,8 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
+  slots: 
+  - # ====== Slot: After Logo ====================================
     id: 11543667976238559
     identification: 
       name: After Logo
@@ -897,7 +897,7 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
+  - # ====== Slot: After Navigation Bar ==========================
     id: 11544114426238559
     identification: 
       name: After Navigation Bar
@@ -913,7 +913,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
+  - # ====== Slot: Before Navigation Bar =========================
     id: 11544670566238560
     identification: 
       name: Before Navigation Bar
@@ -929,7 +929,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
+  - # ====== Slot: Body ==========================================
     id: 11545009044238560
     identification: 
       name: Body
@@ -945,7 +945,7 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
+  - # ====== Slot: Breadcrumb Bar ================================
     id: 11545531693238560
     identification: 
       name: Breadcrumb Bar
@@ -960,7 +960,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Left Column ==========================
+  - # ====== Slot: Left Column ===================================
     id: 11546044983238560
     identification: 
       name: Left Column
@@ -976,7 +976,7 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
     id: 11546505747238561
     identification: 
       name: Dialogs, Drawers and Popups
@@ -992,7 +992,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
+  - # ====== Slot: Footer ========================================
     id: 11547092558238561
     identification: 
       name: Footer
@@ -1008,7 +1008,7 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
+  - # ====== Slot: Top Navigation ================================
     id: 11547523384238561
     identification: 
       name: Top Navigation
@@ -1023,7 +1023,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
+  - # ====== Slot: Banner ========================================
     id: 11548009928238562
     identification: 
       name: Banner
@@ -1038,7 +1038,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
+  - # ====== Slot: Full Width Content ============================
     id: 11548574662238562
     identification: 
       name: Full Width Content
@@ -1272,8 +1272,8 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
+  slots: 
+  - # ====== Slot: After Logo ====================================
     id: 11596395731238598
     identification: 
       name: After Logo
@@ -1289,7 +1289,7 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
+  - # ====== Slot: After Navigation Bar ==========================
     id: 11596844042238598
     identification: 
       name: After Navigation Bar
@@ -1305,7 +1305,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
+  - # ====== Slot: Before Navigation Bar =========================
     id: 11597332489238598
     identification: 
       name: Before Navigation Bar
@@ -1321,7 +1321,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
+  - # ====== Slot: Body ==========================================
     id: 11597819171238598
     identification: 
       name: Body
@@ -1337,7 +1337,7 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
+  - # ====== Slot: Breadcrumb Bar ================================
     id: 11598391568238599
     identification: 
       name: Breadcrumb Bar
@@ -1352,7 +1352,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Right Column =========================
+  - # ====== Slot: Right Column ==================================
     id: 11598875477238599
     identification: 
       name: Right Column
@@ -1368,7 +1368,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
     id: 11599327474238600
     identification: 
       name: Dialogs, Drawers and Popups
@@ -1384,7 +1384,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
+  - # ====== Slot: Footer ========================================
     id: 11599839309238600
     identification: 
       name: Footer
@@ -1400,7 +1400,7 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
+  - # ====== Slot: Top Navigation ================================
     id: 11600348444238600
     identification: 
       name: Top Navigation
@@ -1415,7 +1415,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
+  - # ====== Slot: Banner ========================================
     id: 11600835403238600
     identification: 
       name: Banner
@@ -1430,7 +1430,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
+  - # ====== Slot: Full Width Content ============================
     id: 11601359644238601
     identification: 
       name: Full Width Content
@@ -1660,8 +1660,8 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
+  slots: 
+  - # ====== Slot: After Logo ====================================
     id: 11606455474238605
     identification: 
       name: After Logo
@@ -1677,7 +1677,7 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
+  - # ====== Slot: After Navigation Bar ==========================
     id: 11606958088238605
     identification: 
       name: After Navigation Bar
@@ -1693,7 +1693,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
+  - # ====== Slot: Before Navigation Bar =========================
     id: 11607448998238606
     identification: 
       name: Before Navigation Bar
@@ -1709,7 +1709,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
+  - # ====== Slot: Body ==========================================
     id: 11607905974238606
     identification: 
       name: Body
@@ -1725,7 +1725,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
+  - # ====== Slot: Breadcrumb Bar ================================
     id: 11608428238238606
     identification: 
       name: Breadcrumb Bar
@@ -1740,7 +1740,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
     id: 11608983881238607
     identification: 
       name: Dialogs, Drawers and Popups
@@ -1756,7 +1756,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
+  - # ====== Slot: Footer ========================================
     id: 11609481247238607
     identification: 
       name: Footer
@@ -1772,7 +1772,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
+  - # ====== Slot: Top Navigation ================================
     id: 11609923298238607
     identification: 
       name: Top Navigation
@@ -1787,7 +1787,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
+  - # ====== Slot: Banner ========================================
     id: 11610401556238607
     identification: 
       name: Banner
@@ -1802,7 +1802,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
+  - # ====== Slot: Full Width Content ============================
     id: 11610909321238608
     identification: 
       name: Full Width Content
@@ -2040,8 +2040,8 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
+  slots: 
+  - # ====== Slot: After Logo ====================================
     id: 11572175338238581
     identification: 
       name: After Logo
@@ -2057,7 +2057,7 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
+  - # ====== Slot: After Navigation Bar ==========================
     id: 11572658645238581
     identification: 
       name: After Navigation Bar
@@ -2073,7 +2073,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
+  - # ====== Slot: Before Navigation Bar =========================
     id: 11573124377238581
     identification: 
       name: Before Navigation Bar
@@ -2089,7 +2089,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
+  - # ====== Slot: Body ==========================================
     id: 11573616059238582
     identification: 
       name: Body
@@ -2105,7 +2105,7 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
+  - # ====== Slot: Breadcrumb Bar ================================
     id: 11574177992238582
     identification: 
       name: Breadcrumb Bar
@@ -2120,7 +2120,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Master Detail ========================
+  - # ====== Slot: Master Detail =================================
     id: 11574685342238582
     identification: 
       name: Master Detail
@@ -2136,7 +2136,7 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Right Side Column ====================
+  - # ====== Slot: Right Side Column =============================
     id: 11575154458238582
     identification: 
       name: Right Side Column
@@ -2152,7 +2152,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
     id: 11575651848238583
     identification: 
       name: Dialogs, Drawers and Popups
@@ -2168,7 +2168,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
+  - # ====== Slot: Footer ========================================
     id: 11576137407238583
     identification: 
       name: Footer
@@ -2184,7 +2184,7 @@
       maximum-fixed-columns: 8
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
+  - # ====== Slot: Top Navigation ================================
     id: 11576603717238583
     identification: 
       name: Top Navigation
@@ -2199,7 +2199,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
+  - # ====== Slot: Banner ========================================
     id: 11577118686238583
     identification: 
       name: Banner
@@ -2214,7 +2214,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
+  - # ====== Slot: Full Width Content ============================
     id: 11577636985238584
     identification: 
       name: Full Width Content
@@ -2450,8 +2450,8 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
+  slots: 
+  - # ====== Slot: After Logo ====================================
     id: 11554405684238567
     identification: 
       name: After Logo
@@ -2467,7 +2467,7 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
+  - # ====== Slot: After Navigation Bar ==========================
     id: 11554973105238568
     identification: 
       name: After Navigation Bar
@@ -2483,7 +2483,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
+  - # ====== Slot: Before Navigation Bar =========================
     id: 11555442881238568
     identification: 
       name: Before Navigation Bar
@@ -2499,7 +2499,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
+  - # ====== Slot: Body ==========================================
     id: 11555917749238568
     identification: 
       name: Body
@@ -2515,7 +2515,7 @@
       maximum-fixed-columns: 6
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
+  - # ====== Slot: Breadcrumb Bar ================================
     id: 11556405022238569
     identification: 
       name: Breadcrumb Bar
@@ -2530,7 +2530,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Left Column ==========================
+  - # ====== Slot: Left Column ===================================
     id: 11556908521238569
     identification: 
       name: Left Column
@@ -2546,7 +2546,7 @@
       maximum-fixed-columns: 3
       new-row: true
 
-  - # ====== Display Point: Right Column =========================
+  - # ====== Slot: Right Column ==================================
     id: 11557453423238569
     identification: 
       name: Right Column
@@ -2562,7 +2562,7 @@
       maximum-fixed-columns: 3
       new-row: false
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
     id: 11557948384238570
     identification: 
       name: Dialogs, Drawers and Popups
@@ -2578,7 +2578,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
+  - # ====== Slot: Footer ========================================
     id: 11558403799238570
     identification: 
       name: Footer
@@ -2594,7 +2594,7 @@
       maximum-fixed-columns: 6
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
+  - # ====== Slot: Top Navigation ================================
     id: 11558959355238570
     identification: 
       name: Top Navigation
@@ -2609,7 +2609,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
+  - # ====== Slot: Banner ========================================
     id: 11559494954238571
     identification: 
       name: Banner
@@ -2624,7 +2624,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
+  - # ====== Slot: Full Width Content ============================
     id: 11559988086238571
     identification: 
       name: Full Width Content
@@ -2852,8 +2852,8 @@
     help: 
       help-text: This will position the contents of the Breadcrumb Bar region position so it sticks to the top of the screen for small screens.
 
-  display-points: 
-  - # ====== Display Point: After Logo ===========================
+  slots: 
+  - # ====== Slot: After Logo ====================================
     id: 11582777058238588
     identification: 
       name: After Logo
@@ -2869,7 +2869,7 @@
       maximum-fixed-columns: 4
       new-row: true
 
-  - # ====== Display Point: After Navigation Bar =================
+  - # ====== Slot: After Navigation Bar ==========================
     id: 11583268006238588
     identification: 
       name: After Navigation Bar
@@ -2885,7 +2885,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Before Navigation Bar ================
+  - # ====== Slot: Before Navigation Bar =========================
     id: 11583718769238588
     identification: 
       name: Before Navigation Bar
@@ -2901,7 +2901,7 @@
       maximum-fixed-columns: 4
       new-row: false
 
-  - # ====== Display Point: Body =================================
+  - # ====== Slot: Body ==========================================
     id: 11584287767238589
     identification: 
       name: Body
@@ -2917,7 +2917,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Breadcrumb Bar =======================
+  - # ====== Slot: Breadcrumb Bar ================================
     id: 11584730671238589
     identification: 
       name: Breadcrumb Bar
@@ -2932,7 +2932,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Dialogs, Drawers and Popups ==========
+  - # ====== Slot: Dialogs, Drawers and Popups ===================
     id: 11585200399238589
     identification: 
       name: Dialogs, Drawers and Popups
@@ -2948,7 +2948,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Footer ===============================
+  - # ====== Slot: Footer ========================================
     id: 11585727287238589
     identification: 
       name: Footer
@@ -2964,7 +2964,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Top Navigation =======================
+  - # ====== Slot: Top Navigation ================================
     id: 11586276345238590
     identification: 
       name: Top Navigation
@@ -2979,7 +2979,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Banner ===============================
+  - # ====== Slot: Banner ========================================
     id: 11586710291238590
     identification: 
       name: Banner
@@ -2994,7 +2994,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Full Width Content ===================
+  - # ====== Slot: Full Width Content ============================
     id: 11587246176238590
     identification: 
       name: Full Width Content
@@ -3158,7 +3158,7 @@
     identification: 
       name: Background 1
       identifier: PAGE_BACKGROUND_1
-      group: Page Background # 11420993310238456
+      group: Page Background
       sequence: 10
 
     settings: 
@@ -3173,7 +3173,7 @@
     identification: 
       name: Background 2
       identifier: PAGE_BACKGROUND_2
-      group: Page Background # 11420993310238456
+      group: Page Background
       sequence: 20
 
     settings: 
@@ -3188,7 +3188,7 @@
     identification: 
       name: Background 3
       identifier: PAGE_BACKGROUND_3
-      group: Page Background # 11420993310238456
+      group: Page Background
       sequence: 30
 
     settings: 
@@ -3203,7 +3203,7 @@
     identification: 
       name: Split
       identifier: PAGE_LAYOUT_SPLIT
-      group: Page Layout # 11421309817238456
+      group: Page Layout
       sequence: 1
 
     settings: 
@@ -3213,8 +3213,8 @@
       css-classes: 
       - t-LoginPage--split
 
-  display-points: 
-  - # ====== Display Point: Background Image =====================
+  slots: 
+  - # ====== Slot: Background Image ==============================
     id: 11562698641238573
     identification: 
       name: Background Image
@@ -3230,7 +3230,7 @@
       maximum-fixed-columns: 12
       new-row: false
 
-  - # ====== Display Point: Content Body =========================
+  - # ====== Slot: Content Body ==================================
     id: 11563188668238573
     identification: 
       name: Content Body
@@ -3246,7 +3246,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Body Header ==========================
+  - # ====== Slot: Body Header ===================================
     id: 11563695207238573
     identification: 
       name: Body Header
@@ -3261,7 +3261,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Body Footer ==========================
+  - # ====== Slot: Body Footer ===================================
     id: 11564192310238574
     identification: 
       name: Body Footer
@@ -3459,8 +3459,8 @@
     help: 
       help-text: Stretch the dialog to fit the browser window.
 
-  display-points: 
-  - # ====== Display Point: Content Body =========================
+  slots: 
+  - # ====== Slot: Content Body ==================================
     id: 11589530087238592
     identification: 
       name: Content Body
@@ -3476,7 +3476,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Dialog Header ========================
+  - # ====== Slot: Dialog Header =================================
     id: 11590080549238592
     identification: 
       name: Dialog Header
@@ -3491,7 +3491,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Dialog Footer ========================
+  - # ====== Slot: Dialog Footer =================================
     id: 11590586899238593
     identification: 
       name: Dialog Footer
@@ -3686,8 +3686,8 @@
     help: 
       help-text: Stretch the dialog to fit the browser window.
 
-  display-points: 
-  - # ====== Display Point: Wizard Body ==========================
+  slots: 
+  - # ====== Slot: Wizard Body ===================================
     id: 11613238090238610
     identification: 
       name: Wizard Body
@@ -3703,7 +3703,7 @@
       maximum-fixed-columns: 12
       new-row: true
 
-  - # ====== Display Point: Wizard Progress Bar ==================
+  - # ====== Slot: Wizard Progress Bar ===========================
     id: 11613770990238610
     identification: 
       name: Wizard Progress Bar
@@ -3718,7 +3718,7 @@
       grid: false
       new-row: true
 
-  - # ====== Display Point: Wizard Buttons =======================
+  - # ====== Slot: Wizard Buttons ================================
     id: 11614209193238610
     identification: 
       name: Wizard Buttons

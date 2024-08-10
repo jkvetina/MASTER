@@ -1,7 +1,7 @@
 // ----------------------------------------
-// Page: 0 - Global Page > Dynamic Action: REFRESH_REGION > When > JavaScript Expression
+// Page: 0 - Global Page > Dynamic Action: DIALOG_CLOSED > When > JavaScript Expression
 
-document
+window
 
 // ----------------------------------------
 // Page: 0 - Global Page > Dynamic Action: CLOSE_DIALOG > Action: Confirm > Client-side Condition > JavaScript Expression
@@ -22,7 +22,7 @@ if (this.data && this.data.successMessage && this.data.successMessage.text) {
 check_session();
 
 // ----------------------------------------
-// Page: 0 - Global Page > Dynamic Action: DIALOG_CLOSED > When > JavaScript Expression
+// Page: 0 - Global Page > Dynamic Action: REFRESH_REGION > When > JavaScript Expression
 
-window
+document
 

@@ -4,6 +4,9 @@
   identification: 
     name: APP_WORKSPACES
 
+  subscription: 
+    version-number: 1
+
   source: 
     location: Local Database
     type: Table / View
@@ -20,6 +23,9 @@
   id: 15548432056414481
   identification: 
     name: APP_PAGES
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -40,6 +46,9 @@
   identification: 
     name: APP_PAGE_GROUPS
 
+  subscription: 
+    version-number: 1
+
   source: 
     location: Local Database
     type: Table / View
@@ -58,6 +67,9 @@
   id: 15550108150414491
   identification: 
     name: APP_ROLES
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -78,6 +90,9 @@
   identification: 
     name: APP_ROLE_GROUPS
 
+  subscription: 
+    version-number: 1
+
   source: 
     location: Local Database
     type: Table / View
@@ -93,6 +108,9 @@
   id: 18270447043617252
   identification: 
     name: 'APP_USERS_ALL #ID-NAME'
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -111,6 +129,9 @@
   identification: 
     name: APP_TRACKING_METRICS
 
+  subscription: 
+    version-number: 1
+
   source: 
     location: Local Database
     type: Table / View
@@ -127,6 +148,9 @@
   id: 18668168205813042
   identification: 
     name: APP_TRACKING_PAGES
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -147,6 +171,9 @@
   identification: 
     name: APP_TRACKING_SESSIONS
 
+  subscription: 
+    version-number: 1
+
   source: 
     location: Local Database
     type: Table / View
@@ -166,6 +193,9 @@
   identification: 
     name: APP_TRACKING_SOURCE
 
+  subscription: 
+    version-number: 1
+
   source: 
     location: Local Database
     type: Table / View
@@ -181,6 +211,9 @@
   id: 18669935827813045
   identification: 
     name: APP_TRACKING_USERS
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -201,6 +234,9 @@
   identification: 
     name: 'APP_PAGES #ID-ID'
 
+  subscription: 
+    version-number: 1
+
   source: 
     location: Local Database
     type: Table / View
@@ -217,6 +253,9 @@
   id: 19745575075395325
   identification: 
     name: APP_LOV_GROUPS
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -237,6 +276,9 @@
   id: 19745855586402324
   identification: 
     name: APP_LOVS
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database
@@ -262,6 +304,9 @@
   identification: 
     name: APP_CONTEXTS
 
+  subscription: 
+    version-number: 1
+
   source: 
     location: Local Database
     type: SQL Query
@@ -284,6 +329,9 @@
   identification: 
     name: APP_APPLICATIONS
 
+  subscription: 
+    version-number: 1
+
   source: 
     location: Local Database
     type: Table / View
@@ -302,6 +350,9 @@
   id: 44168724960002617
   identification: 
     name: 'APP_USERS #ID-NAME'
+
+  subscription: 
+    version-number: 1
 
   source: 
     location: Local Database

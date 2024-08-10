@@ -5,6 +5,7 @@ identification:
   theme-number: 42
   name: Universal Theme
   identifier: UNIVERSAL_THEME
+  version: 23.2
 
 navigation: 
   type: List
@@ -20,37 +21,37 @@ css:
   - '#THEME_FILES#css/Core#MIN#.css?v=#APEX_VERSION#'
 
 component-defaults: 
-  page: Standard Q23 # 63188215361701831
-  navigation-bar-list: Navigation Q23 # 28883453409606801
+  page: Standard Q23
+  navigation-bar-list: Navigation Q23
   navigation-menu-list-position: Top
-  navigation-menu-list-(top): Navigation Q23 # 28883453409606801
-  navigation-menu-list-(side): Navigation Q23 # 28883453409606801
-  login-page: Login # 63314363594439068
-  error-page: Login # 63314363594439068
-  printer-friendly-page: Standard # 63299541469439061
+  navigation-menu-list-(top): Navigation Q23
+  navigation-menu-list-(side): Navigation Q23
+  login-page: Login
+  error-page: Login
+  printer-friendly-page: Standard
   breadcrumb: 63465614388439169
-  button: Text # 63463978601439167
-  legacy-calendar: Calendar # 63465715722439170
-  default-label: Optional - Floating # 63461560868439163
-  optional-label: Optional - Floating # 63461560868439163
-  required-label: Required - Floating # 63462825478439165
-  list: Links List # 63451441965439154
-  region: Blank with Attributes # 63325094538439079
-  classic-report: Standard # 63426602573439137
+  button: Text
+  legacy-calendar: Calendar
+  default-label: Optional - Floating
+  optional-label: Optional - Floating
+  required-label: Required - Floating
+  list: Links List
+  region: Blank with Attributes
+  classic-report: Standard
 
 region-defaults: 
-  breadcrumbs: Title Bar # 63375192142439107
-  charts: Standard # 63362861151439101
-  forms: Standard # 63362861151439101
-  lists: Standard # 63362861151439101
-  reports: Standard # 63362861151439101
-  wizards: Standard # 63362861151439101
-  interactive-reports: Interactive Report # 63355525363439097
+  breadcrumbs: Title Bar
+  charts: Standard
+  forms: Standard
+  lists: Standard
+  reports: Standard
+  wizards: Standard
+  interactive-reports: Interactive Report
 
 dialog-defaults: 
-  dialog-content-region: Blank with Attributes # 63325094538439079
-  dialog-button-region: Buttons Container # 63380428289439110
-  dialog-page: Modal Dialog # 63316906146439070
+  dialog-content-region: Blank with Attributes
+  dialog-button-region: Buttons Container
+  dialog-page: Modal Dialog
 
 icons: 
   library: Font APEX

@@ -9,7 +9,7 @@ identification:
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Drawer # 63289183138439042
+  dialog-template: Drawer
   template-options: 
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
@@ -60,13 +60,13 @@ regions:
 - # ====== Region: Subscribed Devices ==========================
   id: 24938768455469330
   identification: 
-    title: Subscribed Devices
+    name: Subscribed Devices
     type: Static Content
 
   layout: 
     sequence: 30
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -74,7 +74,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -93,9 +93,6 @@ regions:
     type: Item is NOT NULL
     item: P905_SUBSCRIBED
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -107,7 +104,7 @@ regions:
 - # ====== Region: Subscribed Devices [DATA] ===================
   id: 24938887202469331
   identification: 
-    title: Subscribed Devices [DATA]
+    name: Subscribed Devices [DATA]
     type: Cards
 
   source: 
@@ -123,7 +120,7 @@ regions:
   layout: 
     sequence: 40
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -131,7 +128,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Cards Container # 63327898435439081
+    template: Cards Container
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -148,9 +145,6 @@ regions:
   server-side-condition: 
     type: Item is NOT NULL
     item: P905_SUBSCRIBED
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -196,13 +190,13 @@ regions:
 - # ====== Region: PUSH_NOTIFICATIONS ==========================
   id: 49627157919894318
   identification: 
-    title: PUSH_NOTIFICATIONS
+    name: PUSH_NOTIFICATIONS
     type: Static Content
 
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -210,7 +204,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -224,9 +218,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -238,7 +229,7 @@ regions:
 - # ====== Region: Push Notifications ==========================
   id: 73552484787120959
   identification: 
-    title: Push Notifications
+    name: Push Notifications
     type: Static Content
 
   source: 
@@ -247,7 +238,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: PUSH_NOTIFICATIONS # 49627157919894318
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -255,7 +246,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Standard # 63362861151439101
+    template: Standard
     template-options: 
     - '#DEFAULT#'
     - t-Region--removeHeader js-removeLandmark
@@ -274,9 +265,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -288,7 +276,7 @@ regions:
 - # ====== Region: Push Notifications Not Supported ============
   id: 73611110584460356
   identification: 
-    title: Push Notifications Not Supported
+    name: Push Notifications Not Supported
     type: Static Content
 
   source: 
@@ -297,7 +285,7 @@ regions:
   layout: 
     sequence: 10
     parent-region: PUSH_NOTIFICATIONS # 49627157919894318
-    position: SUB_REGIONS
+    slot: SUB_REGIONS
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -305,7 +293,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Standard # 63362861151439101
+    template: Standard
     template-options: 
     - '#DEFAULT#'
     - t-Region--removeHeader js-removeLandmark
@@ -326,9 +314,6 @@ regions:
     region-display-selector: false
     exclude-title-from-translation: false
 
-  server-cache: 
-    caching: Disabled
-
   customization: 
     customizable: Not Customizable By End Users
 
@@ -340,13 +325,13 @@ regions:
 - # ====== Region: Push Notifications ==========================
   id: 87142237557933358
   identification: 
-    title: Push Notifications
+    name: Push Notifications
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: REGION_POSITION_01
+    slot: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -354,7 +339,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -366,9 +351,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -391,7 +373,7 @@ page-items:
   layout: 
     sequence: 10
     region: Push Notifications # 87142237557933358
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -426,7 +408,7 @@ page-items:
   layout: 
     sequence: 10
     region: Push Notifications # 73552484787120959
-    position: BODY
+    slot: BODY
     alignment: Left
     start-new-layout: false
     start-new-row: true
@@ -436,7 +418,7 @@ page-items:
     label-column-span: Page Template Default
 
   appearance: 
-    template: Optional - Floating # 63461560868439163
+    template: Optional - Floating
     template-options: 
     - '#DEFAULT#'
     - margin-top-sm
@@ -469,7 +451,7 @@ buttons:
   layout: 
     sequence: 10
     region: Push Notifications # 87142237557933358
-    position: UP
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -477,7 +459,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 63463317880439166
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -499,7 +481,7 @@ buttons:
   layout: 
     sequence: 10
     region: Push Notifications # 73552484787120959
-    position: CREATE
+    slot: CREATE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -507,7 +489,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text with Icon # 63464158031439167
+    button-template: Text with Icon
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -533,7 +515,7 @@ buttons:
   layout: 
     sequence: 30
     region: Push Notifications # 73552484787120959
-    position: CREATE
+    slot: CREATE
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -541,7 +523,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Text # 63463978601439167
+    button-template: Text
     hot: false
     template-options: 
     - '#DEFAULT#'
@@ -569,7 +551,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: Button
     button: SEND_TEST # 25006777932073202
 
@@ -625,7 +607,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: Button
     button: INSTALL_PWA # 25006313014073201
 
@@ -655,7 +637,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CHANGE
+    event: Change
     selection-type: Item(s)
     item(s): 
     - P905_ENABLE_PUSH
@@ -822,7 +804,7 @@ dynamic-actions:
     event-scope: Static
 
   when: 
-    event: EVENT.EVENT.BROWSER.READY
+    event: Page Load
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
@@ -860,7 +842,7 @@ dynamic-actions:
     event-scope: Static
 
   when: 
-    event: EVENT.EVENT.BROWSER.READY
+    event: Page Load
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================

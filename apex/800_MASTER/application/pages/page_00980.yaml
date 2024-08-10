@@ -9,7 +9,7 @@ identification:
 
 appearance: 
   page-mode: Modal Dialog
-  dialog-template: Drawer # 63289183138439042
+  dialog-template: Drawer
   template-options: 
   - '#DEFAULT#'
   - js-dialog-class-t-Drawer--pullOutEnd
@@ -70,7 +70,7 @@ regions:
 - # ====== Region: [CONTENT] ===================================
   id: 23520192747581632
   identification: 
-    title: '[CONTENT]'
+    name: '[CONTENT]'
     type: Dynamic Content
 
   source: 
@@ -93,7 +93,7 @@ regions:
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: BODY
+    slot: BODY
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -101,7 +101,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     css-classes: 
@@ -123,19 +123,17 @@ regions:
     customizable: Not Customizable By End Users
 
   attributes: 
-    performance: 
-      lazy-loading: false
 
 - # ====== Region: &P980_PAGE_NAME. ============================
   id: 38168018527510827
   identification: 
-    title: '&P980_PAGE_NAME.'
+    name: '&P980_PAGE_NAME.'
     type: Static Content
 
   layout: 
     sequence: 10
     parent-region: No Parent
-    position: REGION_POSITION_01
+    slot: REGION_POSITION_01
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -143,7 +141,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Hero # 63402598617439121
+    template: Hero
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -155,9 +153,6 @@ regions:
   advanced: 
     region-display-selector: false
     exclude-title-from-translation: false
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -180,7 +175,7 @@ page-items:
   layout: 
     sequence: 40
     region: '&P980_PAGE_NAME.' # 38168018527510827
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -210,7 +205,7 @@ page-items:
   layout: 
     sequence: 20
     region: '&P980_PAGE_NAME.' # 38168018527510827
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -240,7 +235,7 @@ page-items:
   layout: 
     sequence: 10
     region: '&P980_PAGE_NAME.' # 38168018527510827
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Ignore
@@ -268,7 +263,7 @@ buttons:
   layout: 
     sequence: 10
     region: '&P980_PAGE_NAME.' # 38168018527510827
-    position: UP
+    slot: UP
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -276,7 +271,7 @@ buttons:
     column-span: Automatic
 
   appearance: 
-    button-template: Icon # 63463317880439166
+    button-template: Icon
     hot: false
     template-options: 
     - '#DEFAULT#'

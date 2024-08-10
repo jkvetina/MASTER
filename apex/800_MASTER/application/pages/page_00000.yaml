@@ -9,13 +9,13 @@ regions:
 - # ====== Region: ITEMS =======================================
   id: 14690651926436120
   identification: 
-    title: ITEMS
+    name: ITEMS
     type: Static Content
 
   layout: 
     sequence: 20
     parent-region: No Parent
-    position: REGION_POSITION_05
+    slot: REGION_POSITION_05
     start-new-layout: false
     start-new-row: true
     column: Automatic
@@ -23,7 +23,7 @@ regions:
     column-span: Automatic
 
   appearance: 
-    template: Blank with Attributes # 63325094538439079
+    template: Blank with Attributes
     template-options: 
     - '#DEFAULT#'
     render-components: Above Content
@@ -38,9 +38,6 @@ regions:
 
   security: 
     authorization-scheme: MODEL.LOV.MUST_NOT_BE_PUBLIC_USER
-
-  server-cache: 
-    caching: Disabled
 
   customization: 
     customizable: Not Customizable By End Users
@@ -63,7 +60,7 @@ page-items:
   layout: 
     sequence: 30
     region: ITEMS # 14690651926436120
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -100,7 +97,7 @@ page-items:
   layout: 
     sequence: 20
     region: ITEMS # 14690651926436120
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -130,7 +127,7 @@ page-items:
   layout: 
     sequence: 10
     region: ITEMS # 14690651926436120
-    position: BODY
+    slot: BODY
 
   advanced: 
     warn-on-unsaved-changes: Page Default
@@ -163,7 +160,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.FAMEWORK.APEXAFTERCLOSEDIALOG
+    event: Dialog Closed
     selection-type: JavaScript Expression
     javascript-expression: window
 
@@ -197,7 +194,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.BROWSER.CLICK
+    event: Click
     selection-type: jQuery Selector
     jquery-selector: '#CLOSE_DIALOG'
 
@@ -244,7 +241,7 @@ dynamic-actions:
     type: Immediate
 
   when: 
-    event: EVENT.EVENT.CUSTOM.CUSTOM
+    event: Custom
     custom-event: REFRESH_REGION
     selection-type: JavaScript Expression
     javascript-expression: document
@@ -275,7 +272,7 @@ dynamic-actions:
     event-scope: Static
 
   when: 
-    event: EVENT.EVENT.BROWSER.READY
+    event: Page Load
 
   actions: 
   - # ====== Action: Execute JavaScript Code =====================
