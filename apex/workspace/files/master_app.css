@@ -9,6 +9,18 @@ body {
 
 
 
+/* RESTYLE SWITCH BACKGROUND */
+.a-Switch input[type=checkbox]:checked+.a-Switch-toggle {
+    --a-switch-background-color         : #518D54;
+    --a-switch-toggle-background-color  : #fff;
+}
+.t-Form-fieldContainer--floatingLabel.apex-item-wrapper--yes-no:hover .a-Switch-toggle,
+.t-Form-fieldContainer--floatingLabel.apex-item-wrapper--yes-no:hover .t-Form-itemWrapper .t-Form-helpButton {
+    --a-switch-background-color         : #333 !important;
+}
+
+
+
 /*
  * ADJUST MODAL + DRAWER DIALOGS
  */
