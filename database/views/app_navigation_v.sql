@@ -1,17 +1,44 @@
 CREATE OR REPLACE FORCE VIEW app_navigation_v AS
-WITH x AS (
+WITH inputs AS (
     -- current context (app, page, user...)
     SELECT /*+ MATERIALIZE */
         core.get_app_id()                           AS curr_app_id,
         core.get_app_name()                         AS curr_app_name,
         core.get_page_id()                          AS curr_page_id,
-        COALESCE(u.user_id,   core.get_user_id())   AS curr_user_id,
-        COALESCE(u.user_name, core.get_user_id())   AS curr_user_name,
+        core.get_user_id()                          AS curr_user_id,
+        --
+        COALESCE (
+            core.get_item('G_USER_NAME'),
+            xxnbl_auth.get_user_id()
+        ) AS curr_user_name,
+        --
         core.get_app_id(in_dont_override => 'Y')    AS real_app_id,
         800                                         AS master_app_id,
         core.get_item('G_CONTEXT_ID')               AS context_id
         --
     FROM DUAL
+),
+x AS (
+    -- current context (app, page, user...)
+    SELECT /*+ MATERIALIZE */
+        x.curr_app_id,
+        x.curr_app_name,
+        x.curr_page_id,
+        x.curr_user_id,
+        --
+        NVL(u.user_name, x.curr_user_name) AS curr_user_name,
+        --
+        x.real_app_id,
+        x.master_app_id,
+        x.context_id,
+        --
+        APEX_UTIL.HOST_URL('APEX_PATH') ||
+            REPLACE (
+                core.get_app_login_url(NVL(x.context_id, x.master_app_id)),
+                '&' || 'APP_ID.', NVL(x.context_id, x.master_app_id)
+            ) AS login_url
+        --
+    FROM inputs x
     LEFT JOIN app_users u
         ON u.user_id                    = core.get_user_id()
     WHERE core.get_page_id()            NOT IN (9999)       -- ignore navigation on login page
@@ -42,7 +69,8 @@ available_pages AS (
         x.curr_user_name,
         x.real_app_id,
         x.master_app_id,
-        x.context_id
+        x.context_id,
+        x.login_url
         --
     FROM app_navigation_map_tree_mv n
     JOIN app_navigation_map_mv s
@@ -81,6 +109,14 @@ SELECT
         WHEN t.page_id = 0
             -- split navigation to left and right on page zero
             THEN '</li></ul><ul class="RIGHT"><li style="display: none;">'
+            --
+        WHEN t.page_id = 9999
+            THEN
+                '<a href="' || t.login_url ||
+                '" class="' || ' NAV_L' || t.depth || ' NAV_P' || t.page_id || '">' ||
+                '<span>' || core.get_page_name(in_name => '#fa-coffee') || '</span>' ||
+                '</a>'
+            --
         ELSE
             '<a href="' ||
             APEX_PAGE.GET_URL (
@@ -89,7 +125,7 @@ SELECT
                 p_session       => CASE WHEN t.page_id = 9999 THEN 0 ELSE core.get_session_id() END,
                 p_clear_cache   => CASE WHEN t.is_reset = 'Y' THEN t.page_id END,
                 p_items         => CASE WHEN t.page_id = 980 THEN 'P980_APP_ID,P980_PAGE_ID' END,
-                p_values        => CASE WHEN t.page_id = 980 THEN t.curr_app_id || ',' || t.curr_page_id END
+                p_values        => CASE WHEN t.page_id = 980 THEN NVL(t.context_id, t.curr_app_id) || ',' || t.curr_page_id END
             ) ||
             '" class="' || ' NAV_L' || t.depth || ' NAV_P' || t.page_id || '">' ||
             CASE
@@ -98,7 +134,7 @@ SELECT
                 END ||
             '<span>' ||
             CASE
-                WHEN t.page_id = 9999 THEN core.get_page_name(in_name => '#fa-coffee Logout')
+                WHEN t.page_id = 9999 THEN core.get_page_name(in_name => '#fa-coffee')
                 ELSE REPLACE(REPLACE(t.page_label,
                     '#APP_NAME#',   t.curr_app_name),
                     '#USER_NAME#',  t.curr_user_name)
@@ -120,7 +156,7 @@ SELECT
     '' AS attribute08,
     --
     -- use this attribute to break layout into the new column
-    CASE WHEN t.col_id > 0 AND t.col_id != LEAD(col_id) OVER (ORDER BY t.order#) THEN '</ul><ul>' END AS attribute09,
+    CASE WHEN t.col_id > 0 AND t.col_id != LEAD(t.col_id) OVER (ORDER BY t.order#) THEN '</ul><ul>' END AS attribute09,
     --
     -- use this to pass values to parent <li>
     ' class="' || t.page_group || ' ' || t.page_css_classes ||
