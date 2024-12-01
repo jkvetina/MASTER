@@ -8,26 +8,10 @@ COMPOUND TRIGGER
 
     BEFORE EACH ROW IS
     BEGIN
-        -- make sure application exists
-        IF INSERTING THEN
-            BEGIN
-                INSERT INTO app_applications (app_id, is_active)
-                VALUES (
-                    :NEW.app_id,
-                    'Y'
-                );
-            EXCEPTION
-            WHEN DUP_VAL_ON_INDEX THEN
-                NULL;
-            END;
-        END IF;
-
         -- populate audit columns
         IF NOT DELETING THEN
             :NEW.updated_by := core.get_user_id();
             :NEW.updated_at := SYSDATE;
-            --:NEW.created_by := COALESCE(:NEW.created_by, :NEW.updated_by);
-            --:NEW.created_at := COALESCE(:NEW.created_at, :NEW.updated_at);
         END IF;
         --
     EXCEPTION
@@ -41,10 +25,7 @@ COMPOUND TRIGGER
 
     AFTER STATEMENT IS
     BEGIN
-        core.create_job (
-            in_job_name     => 'APP_NAVIGATION_MV_?',   -- ? = generate unique postfix
-            in_statement    => 'BEGIN core.refresh_mviews(''APP_NAV%_MV''); END;'
-        );
+        NULL;
         --
     EXCEPTION
     WHEN core.app_exception THEN

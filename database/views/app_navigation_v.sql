@@ -1,105 +1,90 @@
 CREATE OR REPLACE FORCE VIEW app_navigation_v AS
-WITH inputs AS (
-    -- current context (app, page, user...)
+WITH x AS (
     SELECT /*+ MATERIALIZE */
-        core.get_app_id()                           AS curr_app_id,
-        core.get_app_name()                         AS curr_app_name,
-        core.get_page_id()                          AS curr_page_id,
-        core.get_user_id()                          AS curr_user_id,
+        x.*,
         --
         COALESCE (
+            u.user_name,
             core.get_item('G_USER_NAME'),
             xxnbl_auth.get_user_id()
         ) AS curr_user_name,
         --
-        core.get_app_id(in_dont_override => 'Y')    AS real_app_id,
-        800                                         AS master_app_id,
-        core.get_item('G_CONTEXT_ID')               AS context_id
-        --
-    FROM DUAL
-),
-x AS (
-    -- current context (app, page, user...)
-    SELECT /*+ MATERIALIZE */
-        x.curr_app_id,
-        x.curr_app_name,
-        x.curr_page_id,
-        x.curr_user_id,
-        --
-        NVL(u.user_name, x.curr_user_name) AS curr_user_name,
-        --
-        x.real_app_id,
-        x.master_app_id,
-        x.context_id,
-        --
-        APEX_UTIL.HOST_URL('APEX_PATH') ||
+        REPLACE(APEX_UTIL.HOST_URL('APEX_PATH'), 'http://:', '') ||
             REPLACE (
                 core.get_app_login_url(NVL(x.context_id, x.master_app_id)),
                 '&' || 'APP_ID.', NVL(x.context_id, x.master_app_id)
             ) AS login_url
         --
-    FROM inputs x
+    FROM (
+        SELECT /*+ MATERIALIZE */
+            core.get_app_id()           AS curr_app_id,     -- current/real app
+            core.get_page_id()          AS curr_page_id,    -- current page
+            core.get_user_id()          AS curr_user_id,
+            core.get_session_id()       AS curr_session_id,
+            core.get_page_is_modal()    AS is_modal,        -- is page a modal dialog?
+            --
+            core.get_app_name(core.get_context_id()) AS app_name,
+            --
+            core.get_context_id()       AS context_id,      -- context app (or current app when no context is set)
+            700                         AS master_app_id,
+            9999                        AS login_page_id
+            --
+        FROM DUAL
+    ) x
     LEFT JOIN app_users u
-        ON u.user_id                    = core.get_user_id()
-    WHERE core.get_page_id()            NOT IN (9999)       -- ignore navigation on login page
-        AND core.get_page_is_modal()    IS NULL             -- not for modals
+        ON u.user_id            = x.curr_user_id
+    WHERE 1 = 1
+        AND x.curr_page_id      != x.login_page_id          -- ignore navigation on login pages
+        AND x.is_modal          IS NULL                     -- ignore navigation on modal pages
 ),
 available_pages AS (
+    --
     -- available pages for current user
+    -- we dont need to calculate this on every page, actually once per app session should be enough
+    --
     SELECT /*+ MATERIALIZE */
-        n.app_id,
-        n.page_id,
-        n.page_alias,
-        n.page_group,
-        n.page_label,
+        n.target_app_id         AS app_id,
+        n.target_page_id        AS page_id,
         n.parent_id,
+        --
+        n.page_alias,
+        n.page_label,
+        n.page_group,
         n.page_css_classes,
+        n.auth_scheme,
+        n.pages_path,
+        --
         n.is_reset,
         n.order#,
         n.col_id,
         n.depth,
-        n.lvl,
+        n.lvl
         --
-        CASE WHEN n.app_id = x.curr_app_id AND n.page_id = x.curr_page_id THEN n.active_pages END AS active_pages,
-        --
-        x.curr_app_id,
-        x.curr_app_name,
-        x.curr_page_id,
-        x.curr_user_id,
-        x.curr_user_name,
-        x.real_app_id,
-        x.master_app_id,
-        x.context_id,
-        x.login_url
-        --
-    FROM app_navigation_map_tree_mv n
-    JOIN app_navigation_map_mv s
-        ON s.app_id             = n.app_id
-        AND s.page_id           = n.page_id
-    CROSS JOIN x
-    WHERE 1 = 1
-        AND n.app_id            IN (x.curr_app_id, x.master_app_id)
+    FROM x
+    JOIN app_navigation_map_v n
+        ON n.app_id             = x.context_id
         AND n.is_hidden         IS NULL
-        AND 'Y' = app_auth.is_page_available (
-            in_user_id          => x.curr_user_id,
-            in_app_id           => s.app_id,
-            in_page_id          => s.page_id,
-            in_context_id       => x.context_id,
-            in_auth_scheme      => s.auth_scheme,
-            in_procedure_name   => s.procedure_name
+    WHERE 1 = 1
+        AND (
+            n.target_page_id    IN (0, x.login_page_id)
+            OR 'Y'              = core.is_authorized(n.auth_scheme)
         )
 ),
 badges AS (
-    -- find badges for specific pages
-    -- you can fill the collection from any app, but you have to remove things too
+    --
+    -- find badges for specific pages in APEX collection
+    -- so if you want to show badge, create records in the collection
+    -- check app_nav.add_badge procedure
+    --
     SELECT /*+ MATERIALIZE */
         a.n001      AS app_id,
         a.n002      AS page_id,
         a.c001      AS badge,
         a.c002      AS badge_class
     FROM apex_collections a
-    WHERE a.collection_name = 'APP_NAVIGATION_BADGES'   -- check app_nav package
+    WHERE a.collection_name = 'APP_NAVIGATION_BADGES'
 )
+
 SELECT
     t.lvl,
     t.app_id,
@@ -110,36 +95,50 @@ SELECT
             -- split navigation to left and right on page zero
             THEN '</li></ul><ul class="RIGHT"><li style="display: none;">'
             --
-        WHEN t.page_id = 9999
+        WHEN t.page_id = x.login_page_id
             THEN
-                '<a href="' || t.login_url ||
-                '" class="' || ' NAV_L' || t.depth || ' NAV_P' || t.page_id || '">' ||
-                '<span>' || core.get_page_name(in_name => '#fa-coffee') || '</span>' ||
+                '<a href="' || x.login_url ||
+                '" class="' || ' NAV_L' || t.depth || ' NAV_P' || t.page_id || '" title="Sign out">' ||
+                '<span class="fa fa-coffee"></span>' ||
                 '</a>'
             --
         ELSE
             '<a href="' ||
-            APEX_PAGE.GET_URL (
-                p_application   => t.app_id,
-                p_page          => NVL(t.page_alias, t.page_id),
-                p_session       => CASE WHEN t.page_id = 9999 THEN 0 ELSE core.get_session_id() END,
-                p_clear_cache   => CASE WHEN t.is_reset = 'Y' THEN t.page_id END,
-                p_items         => CASE WHEN t.page_id = 980 THEN 'P980_APP_ID,P980_PAGE_ID' END,
-                p_values        => CASE WHEN t.page_id = 980 THEN NVL(t.context_id, t.curr_app_id) || ',' || t.curr_page_id END
-            ) ||
+            CASE
+                -- add G_CONTEXT_ID item
+                -- for Master/Launchpad app (when there is no context app)
+                -- or when context app does not match the current/real app
+                WHEN (t.app_id != x.context_id OR x.context_id = x.master_app_id) THEN
+                    APEX_PAGE.GET_URL (
+                        p_application   => t.app_id,
+                        p_page          => NVL(t.page_alias, t.page_id),
+                        p_session       => x.curr_session_id,
+                        p_clear_cache   => CASE WHEN t.is_reset = 'Y' THEN t.page_id END,
+                        p_items         => 'G_CONTEXT_ID',      -- pass current app_id to retain it
+                        p_values        => x.context_id         -- in between apps with multiple tabs
+                    )
+                ELSE
+                    APEX_PAGE.GET_URL (
+                        p_application   => t.app_id,
+                        p_page          => NVL(t.page_alias, t.page_id),
+                        p_session       => x.curr_session_id,
+                        p_clear_cache   => CASE WHEN t.is_reset = 'Y' THEN t.page_id END,
+                        p_items         => '',
+                        p_values        => ''
+                    )
+                END ||
             '" class="' || ' NAV_L' || t.depth || ' NAV_P' || t.page_id || '">' ||
             CASE
                 WHEN t.depth > 2
                     THEN '<span>&mdash; &nbsp;</span>'
                 END ||
             '<span>' ||
-            CASE
-                WHEN t.page_id = 9999 THEN core.get_page_name(in_name => '#fa-coffee')
-                ELSE REPLACE(REPLACE(t.page_label,
-                    '#APP_NAME#',   t.curr_app_name),
-                    '#USER_NAME#',  t.curr_user_name)
-                    END ||
+            --
+            REPLACE(REPLACE(t.page_label,
+                '#APP_NAME#',   x.app_name),
+                '#USER_NAME#',  x.curr_user_name) ||
             '</span>' ||
+            --
             CASE
                 WHEN b.badge IS NOT NULL
                     THEN '<span class="BADGE ' || b.badge_class || '">' || b.badge || '</span>'
@@ -161,36 +160,17 @@ SELECT
     -- use this to pass values to parent <li>
     ' class="' || t.page_group || ' ' || t.page_css_classes ||
         CASE WHEN (
-                t.page_id = t.curr_page_id
-                OR t.active_pages LIKE '/' || t.page_id || '/%'
-                OR t.active_pages LIKE '%/' || t.page_id || '/'
+                t.page_id = x.curr_page_id
+                OR t.pages_path LIKE '%/' || TO_CHAR(x.curr_page_id) || '/%'
             ) THEN ' ACTIVE' END ||
         '" data-app-id="' || t.app_id || '" data-page-id="' || t.page_id || '"' AS attribute10,
     --
     t.order#    -- to sort pages properly
     --
 FROM available_pages t
+CROSS JOIN x
 LEFT JOIN badges b
-    ON b.app_id         = t.app_id
-    AND b.page_id       = t.page_id
---
-UNION ALL
-SELECT
-    n.lvl,
-    n.app_id,
-    n.page_id,
-    n.attribute01,      -- content <li>...</li>
-    n.attribute02,
-    n.attribute03,
-    n.attribute04,
-    n.attribute05,
-    n.attribute06,
-    n.attribute07,
-    n.attribute08,      -- before ...<li>
-    n.attribute09,      -- after </li>...
-    n.attribute10,      -- inside <li ...>
-    n.order#
-    --
-FROM app_navigation_public_v n;
+    ON b.app_id     = t.app_id
+    AND b.page_id   = t.page_id;
 /
 

@@ -11,14 +11,16 @@ CREATE OR REPLACE PACKAGE app_nav AS
 
     PROCEDURE remove_page (
         in_app_id               app_navigation.app_id%TYPE,
-        in_page_id              app_navigation.page_id%TYPE
+        in_target_app_id        app_navigation.target_app_id%TYPE,
+        in_target_page_id       app_navigation.target_page_id%TYPE
     );
 
 
 
     PROCEDURE add_page (
         in_app_id               app_navigation.app_id%TYPE,
-        in_page_id              app_navigation.page_id%TYPE,
+        in_target_app_id        app_navigation.target_app_id%TYPE,
+        in_target_page_id       app_navigation.target_page_id%TYPE,
         in_parent_id            app_navigation.parent_id%TYPE   := NULL,
         in_is_hidden            app_navigation.is_hidden%TYPE   := NULL,
         in_is_reset             app_navigation.is_reset%TYPE    := NULL,
@@ -42,7 +44,8 @@ CREATE OR REPLACE PACKAGE app_nav AS
 
     PROCEDURE add_badge (
         in_app_id               app_navigation.app_id%TYPE,
-        in_page_id              app_navigation.page_id%TYPE,
+        in_target_app_id        app_navigation.target_app_id%TYPE,
+        in_target_page_id       app_navigation.target_page_id%TYPE,
         in_badge                VARCHAR2
     );
 
