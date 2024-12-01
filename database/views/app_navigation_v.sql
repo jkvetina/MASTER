@@ -10,10 +10,7 @@ WITH x AS (
         ) AS curr_user_name,
         --
         REPLACE(APEX_UTIL.HOST_URL('APEX_PATH'), 'http://:', '') ||
-            REPLACE (
-                core.get_app_login_url(NVL(x.context_id, x.master_app_id)),
-                '&' || 'APP_ID.', NVL(x.context_id, x.master_app_id)
-            ) AS login_url
+            core.get_app_login_url(x.context_id) AS login_url
         --
     FROM (
         SELECT /*+ MATERIALIZE */
@@ -26,7 +23,6 @@ WITH x AS (
             core.get_app_name(core.get_context_id()) AS app_name,
             --
             core.get_context_id()       AS context_id,      -- context app (or current app when no context is set)
-            700                         AS master_app_id,
             9999                        AS login_page_id
             --
         FROM DUAL
@@ -58,7 +54,8 @@ available_pages AS (
         n.order#,
         n.col_id,
         n.depth,
-        n.lvl
+        n.lvl,
+        n.app_alias
         --
     FROM x
     JOIN app_navigation_map_v n
@@ -108,7 +105,7 @@ SELECT
                 -- add G_CONTEXT_ID item
                 -- for Master/Launchpad app (when there is no context app)
                 -- or when context app does not match the current/real app
-                WHEN (t.app_id != x.context_id OR x.context_id = x.master_app_id) THEN
+                WHEN (t.app_id != x.context_id OR t.app_alias = 'MASTER') THEN
                     APEX_PAGE.GET_URL (
                         p_application   => t.app_id,
                         p_page          => NVL(t.page_alias, t.page_id),

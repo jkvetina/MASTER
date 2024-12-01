@@ -21,7 +21,7 @@ t AS (
         t.home_link
     FROM app_navigation_map_mv t
     WHERE 1 = 1
-        AND t.app_id != 700     -- ignore Master app
+        AND t.app_alias != 'MASTER'  -- ignore Master app
     GROUP BY
         t.workspace,
         t.app_id,

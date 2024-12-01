@@ -55,6 +55,7 @@ SELECT
     t.page_css_classes,
     t.auth_scheme,
     t.app_auth,
+    t.app_alias,
     --
     n.parent_id,
     n.is_hidden,
