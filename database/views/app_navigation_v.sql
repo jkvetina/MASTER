@@ -5,12 +5,11 @@ WITH x AS (
         --
         COALESCE (
             u.user_name,
-            core.get_item('G_USER_NAME'),
-            xxnbl_auth.get_user_id()
+            core.get_item('G_USER_NAME')
         ) AS curr_user_name,
         --
         REPLACE(APEX_UTIL.HOST_URL('APEX_PATH'), 'http://:', '') ||
-            core.get_app_login_url(x.context_id) AS login_url
+            core.get_app_login_url(x.context_app) AS login_url
         --
     FROM (
         SELECT /*+ MATERIALIZE */
@@ -19,10 +18,8 @@ WITH x AS (
             core.get_user_id()          AS curr_user_id,
             core.get_session_id()       AS curr_session_id,
             core.get_page_is_modal()    AS is_modal,        -- is page a modal dialog?
-            --
-            core.get_app_name(core.get_context_id()) AS app_name,
-            --
-            core.get_context_id()       AS context_id,      -- context app (or current app when no context is set)
+            core.get_context_app()      AS context_app,     -- context app (or current app when no context is set)
+            core.get_context_page()     AS context_page,
             9999                        AS login_page_id
             --
         FROM DUAL
@@ -59,7 +56,7 @@ available_pages AS (
         --
     FROM x
     JOIN app_navigation_map_v n
-        ON n.app_id             = x.context_id
+        ON n.app_id             = x.context_app
         AND n.is_hidden         IS NULL
     WHERE 1 = 1
         AND (
@@ -102,17 +99,17 @@ SELECT
         ELSE
             '<a href="' ||
             CASE
-                -- add G_CONTEXT_ID item
-                -- for Master/Launchpad app (when there is no context app)
+                -- add context items to all Master app links (when there is no context app)
                 -- or when context app does not match the current/real app
-                WHEN (t.app_id != x.context_id OR t.app_alias = 'MASTER') THEN
+                -- to retain proper app/page context in between apps with multiple tabs
+                WHEN (t.app_id != x.context_app OR t.app_alias = 'MASTER') THEN
                     APEX_PAGE.GET_URL (
                         p_application   => t.app_id,
                         p_page          => NVL(t.page_alias, t.page_id),
                         p_session       => x.curr_session_id,
                         p_clear_cache   => CASE WHEN t.is_reset = 'Y' THEN t.page_id END,
-                        p_items         => 'G_CONTEXT_ID',      -- pass current app_id to retain it
-                        p_values        => x.context_id         -- in between apps with multiple tabs
+                        p_items         => 'CONTEXT_APP,CONTEXT_PAGE',
+                        p_values        => TO_CHAR(x.context_app) || ',' || x.context_page
                     )
                 ELSE
                     APEX_PAGE.GET_URL (
@@ -132,7 +129,7 @@ SELECT
             '<span>' ||
             --
             REPLACE(REPLACE(t.page_label,
-                '#APP_NAME#',   x.app_name),
+                '#APP_NAME#',   core.get_app_name(t.app_id)),
                 '#USER_NAME#',  x.curr_user_name) ||
             '</span>' ||
             --
