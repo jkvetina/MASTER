@@ -137,20 +137,20 @@ h1.t-HeroRegion-title {
 }
 
 /* HERO REGION - ADJUST BUTTONS */
-h1.t-HeroRegion-title button.t-Button {
+h1.t-HeroRegion-title button {
     position            : relative;
     top                 : -0.2rem;      /* FIX BUTTON OFFSET */
     margin-left         : 0.4rem !important;
 }
-h1.t-HeroRegion-title button.t-Button:first-child {
+h1.t-HeroRegion-title button:first-child {
     margin-left         : 1.5rem !important;
 }
 
 /* BUTTONS FLOATING RIGHT */
-button.t-Button.u-pullRight {
-    margin              : 0.2rem 0 0 0.4rem !important;
+.t-Button.u-pullRight {
+    margin              : 0.2rem 0 0 0.25rem !important;
 }
-button.t-Button.u-pullRight:last-child {
+.t-Button.u-pullRight:last-child {
     margin-right        : 0 !important;
 }
 
@@ -166,10 +166,6 @@ button.t-Button,
 button.ui-button,
 .apex-item-filedrop-action.a-Button.a-Button--hot {
     background          : #E9E7E7;
-    padding             : 0.6rem 0.9rem;
-}
-button.t-Button.t-Button--noLabel.t-Button--icon {
-    padding             : 0.6rem 0.6rem;
 }
 button.t-Button:hover,
 button.ui-button:hover,
@@ -184,17 +180,21 @@ button.ui-button:hover,
 }
 
 /* HOT BUTTONS */
+button.HOT,
 button.t-Button--hot,
 button.ui-button--hot,
 button.js-confirmBtn.ui-button--danger,
 button.a-Button.a-Toolbar-item.a-Button--hot {
     background          : #464237;
+    color               : #fff;
 }
+button.HOT:hover,
 button.t-Button--hot:hover,
 button.ui-button--hot:hover,
 button.a-Button.a-Toolbar-item.a-Button--hot:hover,
 button.js-confirmBtn.ui-button--danger:hover {
     background          : #222;
+    color               : #fff;
 }
 
 /* BUTTON TO UPLOAD FILES */
