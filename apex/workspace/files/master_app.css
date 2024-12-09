@@ -867,3 +867,34 @@ span.CURRENT:hover {
     line-height         : 1rem;
 }
 
+
+
+/* HELP PAGE */
+.P980_HELP_CONTENT {
+    padding             : 1rem 0;
+}
+.P980_HELP_CONTENT p,
+.P980_HELP_CONTENT ul li,
+.P980_HELP_CONTENT ul li:before {
+    font-size           : 1rem;
+    line-height         : 1.5rem;
+}
+.P980_HELP_CONTENT ul {
+    list-style-type     : none;
+    margin              : 0.5rem 0 0.5rem 3rem;
+}
+.P980_HELP_CONTENT ul li:before {
+    content             : '\2014';  /* mdash */
+    content             : '\2013';  /* ndash */
+    position            : absolute;
+    margin              : 0 3rem 0 -1.5rem;
+}
+
+.P980_HELP_CONTENT h2 {
+    font-size           : 1.1rem;
+    margin-top          : 2rem;
+}
+.P980_HELP_CONTENT h3 {
+    font-size           : 1.05rem;
+}
+
