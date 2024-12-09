@@ -453,16 +453,14 @@ const fix_grid_toolbar = function (region_id) {
     var actions     = widget.interactiveGrid('getActions');
     var toolbar     = widget.interactiveGrid('getToolbar');
     var config      = $.apex.interactiveGrid.copyDefaultToolbar();
-    var action1     = config.toolbarFind('actions1');
-    var action2     = config.toolbarFind('actions2');
-    var action3     = config.toolbarFind('actions3');
-    var action4     = config.toolbarFind('actions4');
-    //
-    //console.log('TOOLBAR DATA - ORIGINAL', config_bak.data);
-    //console.log('ACTIONS', widget.interactiveGrid('getActions').list());
+    var action1     = config.toolbarFind('actions1');   // action menu
+    var action2     = config.toolbarFind('actions2');   // save button
+    var action3     = config.toolbarFind('actions3');   // best place for custom buttons
+    var action4     = config.toolbarFind('actions4');   // reset report
 
+    //
     // manipulate buttons
-    // https://docs.oracle.com/en/database/oracle/application-express/20.1/aexjs/interactiveGrid.html#actions-section
+    // https://docs.oracle.com/en/database/oracle/application-express/23.2/aexjs/interactiveGrid.html#actions-section
     //
     // grid actions
     // widget.interactiveGrid('getActions').list()
@@ -492,7 +490,7 @@ const fix_grid_toolbar = function (region_id) {
         if (button.action == 'selection-add-row') {
             button.icon         = 'fa fa-plus';
             button.iconOnly     = true;
-            button.label        = ' ';
+            button.label        = 'Add new row';
             break;
         }
     }
@@ -585,12 +583,39 @@ const fix_grid_toolbar = function (region_id) {
         });
     }
 
-    // return back the row selectors
-    /*
-    action2.controls.unshift({
-        type    : 'SELECT',
-        action  : 'change-rows-per-page'
-    });*/
+    // add action for auto alignment based on column names
+    if ($region.hasClass('AUTO_ALIGN') || $region.hasClass('AUTO_WIDTH')) {
+        actions.add({
+            name    : 'AUTO_ALIGN_WIDTH',
+            action  : function(event, element) {
+                var region_id   = event.delegateTarget.id.replace('_ig', '');
+                var view        = apex.region(region_id).call('getViews').grid.view$;
+                var columns     = view.grid('getColumns');
+                var padding     = 10;
+                //
+                console.log('CALL AUTO_ALIGN_WIDTH', region_id, columns);
+                //
+                for (let i = 0; i < columns.length - 1; i++) {
+                    if (columns[i].hidden) {
+                        continue;
+                    }
+                    //
+                    let dom_id  = columns[i].domId.replace('$', '\\$');
+                    let width   = Math.ceil($('#' + dom_id).outerWidth() + (2 * padding) + 1);
+                    //
+                    view.grid('setColumnWidth', columns[i].property, width);
+                }
+            }
+        });
+        //
+        action4.controls.push({
+            type        : 'BUTTON',
+            label       : 'Auto Align Columns',
+            id          : 'AUTO_ALIGN',
+            icon        : '',
+            action      : 'AUTO_ALIGN_WIDTH'
+        });
+    }
 
     // show refresh button before save button
     action4.controls.push({
@@ -600,6 +625,17 @@ const fix_grid_toolbar = function (region_id) {
         icon            : '',
         iconBeforeLabel : true
     });
+
+    // add pagination since it is missing
+    //if (model.config.paginationType === 'page') {
+    //if (config.features.pagination.type === 'page') {
+    if ($region.find('.a-GV-footer .a-GV-pagination button.a-GV-pageButton').length) {
+        action4.controls.push({
+            type            : 'SELECT',
+            action          : 'change-rows-per-page',
+            title           : 'Rows per page'
+        });
+    }
 
     // only for developers
     if ($('#apexDevToolbar.a-DevToolbar')) {
@@ -626,7 +662,6 @@ const fix_grid_toolbar = function (region_id) {
     //config.views.grid.features.singleRowView = false;
     //config.defaultGridViewOptions.rowHeader = "sequence";
     //config.defaultGridViewOptions.singleRowView = false;
-
 
     //actions.set('edit', true);    // not working
     //config.editable = true;
@@ -826,7 +861,7 @@ const process_grid_all_rows = function (static_id, fake_column_name, action_name
 //
 // PROCESS SELECTED ROWS FROM GRID
 //
-const process_grid_selected_rows = function (static_id, fake_column_name, action_name) {
+const process_grid_selected_rows = function (static_id, fake_column_name, action_name, is_ajax) {
     var grid        = apex.region(static_id).widget();
     var model       = grid.interactiveGrid('getViews', 'grid').model;
     var gridview    = grid.interactiveGrid('getViews').grid;
@@ -853,8 +888,28 @@ const process_grid_selected_rows = function (static_id, fake_column_name, action
         catch(err) {
         }
     });
-    //grid.interactiveGrid('getActions').invoke('save');
-    apex.submit(action_name);
+    //
+    if (is_ajax !== undefined) {
+        grid.interactiveGrid('getActions').invoke('save');
+    }
+    else {
+        apex.submit(action_name);
+    }
+};
+//
+const count_selected_rows = function (static_id) {
+    var grid        = apex.region(static_id).widget();
+    var model       = grid.interactiveGrid('getViews', 'grid').model;
+    var gridview    = grid.interactiveGrid('getViews').grid;
+    var selected    = grid.interactiveGrid('getViews').grid.getSelectedRecords();
+    var changed     = [];
+    //
+    for (var i = 0; i < selected.length; i++ ) {
+        var id = gridview.model.getRecordId(selected[i]);
+        changed.push(id);
+    };
+    //
+    return changed.length;
 };
 
 
@@ -944,6 +999,19 @@ const reset_tabs = function() {
             console.log('RESET_TABS', region_id, key, value);
             sessionStorage.setItem(key, '');
         });
+    }
+};
+
+const activate_tab = function(region_id, new_tab) {
+    $('div.t-TabsRegion.js-useLocalStorage').each(function() {
+        var key         = 'ORA_WWV_apex.apexTabs.' + apex.env.APP_ID + '.' + apex.env.APP_PAGE_ID + '.' + region_id + '.activeTab';
+        //var value       = sessionStorage.getItem();
+        sessionStorage.setItem(key, new_tab);
+    });
+    //
+    var widget = apex.region(region_id).widget();
+    if (widget) {
+        widget.aTabs('getTabs')[new_tab].makeActive();
     }
 };
 
