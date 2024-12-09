@@ -9,18 +9,6 @@ body {
 
 
 
-/* RESTYLE SWITCH BACKGROUND */
-.a-Switch input[type=checkbox]:checked+.a-Switch-toggle {
-    --a-switch-background-color         : #518D54;
-    --a-switch-toggle-background-color  : #fff;
-}
-.t-Form-fieldContainer--floatingLabel.apex-item-wrapper--yes-no:hover .a-Switch-toggle,
-.t-Form-fieldContainer--floatingLabel.apex-item-wrapper--yes-no:hover .t-Form-itemWrapper .t-Form-helpButton {
-    --a-switch-background-color         : #333 !important;
-}
-
-
-
 /*
  * ADJUST MODAL + DRAWER DIALOGS
  */
@@ -207,6 +195,10 @@ button.js-confirmBtn.ui-button--danger:hover {
 .FILTERS button {
     margin-top          : 0.9rem;
 }
+.FILTERS h1.t-HeroRegion-title {
+    height              : 3.5rem;
+    margin-top          : -1.5rem;
+}
 
 /* BUTTON BADGES */
 button .BADGE {
@@ -226,6 +218,9 @@ button .BADGE {
 }
 .RED {
     color               : red;
+}
+.GREY {
+    color               : #999;
 }
 
 /* OVERRIDE MENU BADGES WITH SAME STYLE */
@@ -295,6 +290,9 @@ span.BADGE.ICON > .fa {
 .TABS .apex-item-grid-row .apex-item-option {
     margin              : 0.5rem 8px 0.75rem 0;
 }
+.TABS .t-Form-labelContainer.col {
+    display             : none;
+}
 
 /* FIX TABS HEIGHT */
 .t-TabsRegion-items {
@@ -306,7 +304,7 @@ span.BADGE.ICON > .fa {
     margin-bottom       : 1.2rem;
 }
 .TABS ul.t-Tabs::selection {
-    user-select         : none;
+    user-select         : none !important;
 }
 .TABS ul.t-Tabs .t-Tabs-link {
     padding-bottom      : 0.5rem;
@@ -412,7 +410,15 @@ ul.a-CardView-items {
 
 /* HIDE REQUIRED MESSAGE, KEEP THE RED TRIANGLE */
 .t-Form-itemRequired {
-    display             : none;
+    display             : none !important;
+}
+
+/* HIDE LABEL ON ITEMS */
+.HIDDEN_LABEL > .t-Form-labelContainer {
+    display             : none !important;
+}
+.HIDDEN_LABEL.t-Form-fieldContainer--floatingLabel > .t-Form-inputContainer {
+    margin-top          : -1.7rem;
 }
 
 
@@ -648,9 +654,13 @@ ul.DASH_LIST li:before {
 
 
 /* SELECTED TEXT BACKGROUND */
+::-moz-selection {
+    color               : #fff !important;
+    background-color    : #555 !important;
+}
 ::selection {
-  color                 : #fff;
-  background            : #555;
+    color               : #fff !important;
+    background-color    : #555 !important;
 }
 
 
@@ -785,6 +795,16 @@ span.CURRENT {
 }
 span.CURRENT:hover {
     color           : #222;
+}
+
+/* RESTYLE SWITCH BACKGROUND */
+.a-Switch input[type=checkbox]:checked+.a-Switch-toggle {
+    --a-switch-background-color         : #518D54;
+    --a-switch-toggle-background-color  : #fff;
+}
+.t-Form-fieldContainer--floatingLabel.apex-item-wrapper--yes-no:hover .a-Switch-toggle,
+.t-Form-fieldContainer--floatingLabel.apex-item-wrapper--yes-no:hover .t-Form-itemWrapper .t-Form-helpButton {
+    --a-switch-background-color         : #333 !important;
 }
 
 
