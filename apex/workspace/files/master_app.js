@@ -648,6 +648,38 @@ const fix_grid_toolbar = function (region_id) {
         });
     }
 
+    // add buttons and actions specified in page items
+    var grid_buttons    = apex.item('P' + apex.env.APP_PAGE_ID + '_' + region_id + '_BUTTONS').getValue().split(',');
+    var grid_labels     = apex.item('P' + apex.env.APP_PAGE_ID + '_' + region_id + '_LABELS' ).getValue().split(',');
+    var grid_icons      = apex.item('P' + apex.env.APP_PAGE_ID + '_' + region_id + '_ICONS'  ).getValue().split(',');
+    var grid_actions    = apex.item('P' + apex.env.APP_PAGE_ID + '_' + region_id + '_ACTIONS').getValue().split(',');
+    //
+    if (grid_buttons.length > 0) {
+        for (var i = 0; i < grid_buttons.length; i++) {
+            if (grid_buttons[i].length > 0) {
+                actions.add({
+                    name    : grid_buttons[i],
+                    action  : function(event, element) {
+                        // recover position in array from vurrent button
+                        var button_id = $(event.currentTarget).attr('id').split('_ig_toolbar_')[1];
+                        var i = grid_buttons.indexOf(button_id);
+
+                        // treat action as a function
+                        console.log('CALLING', button_id, grid_actions[i]);
+                        window[grid_actions[i]](event, element);
+                    }
+                });
+                action2.controls.push({
+                    type        : 'BUTTON',
+                    label       : grid_labels[i],
+                    id          : grid_buttons[i],
+                    icon        : grid_icons[i],
+                    action      : grid_buttons[i],
+                });
+            }
+        }
+    }
+
     // keep selected rows
     config.defaultGridViewOptions = {
         persistSelection: true,
