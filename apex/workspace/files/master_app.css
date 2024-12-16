@@ -7,6 +7,14 @@ body {
     padding             : 1.5rem;
 }
 
+/* ENV BANNER */
+a.ENV_BANNER {
+    max-height          : 3rem;
+}
+a.ENV_BANNER.DEV        { border-left : 1rem solid #508223; }
+a.ENV_BANNER.UAT        { border-left : 1rem solid #227e9e; }
+a.ENV_BANNER.PROD       { border-left : 1rem solid #d63b25; }
+
 
 
 /*
