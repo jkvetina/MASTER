@@ -649,6 +649,10 @@ const fix_grid_toolbar = function (region_id) {
     }
 
     // add buttons and actions specified in page items
+    // which allow us to have different buttons on differrent grids without modifying init code every time
+    // this is not a universal solution
+    // you eather pass list of buttons and javascript functions
+    // or you can use simple select lists which maps changes to page item
     var grid_buttons    = apex.item('P' + apex.env.APP_PAGE_ID + '_' + region_id + '_BUTTONS').getValue().split(',');
     var grid_labels     = apex.item('P' + apex.env.APP_PAGE_ID + '_' + region_id + '_LABELS' ).getValue().split(',');
     var grid_icons      = apex.item('P' + apex.env.APP_PAGE_ID + '_' + region_id + '_ICONS'  ).getValue().split(',');
@@ -656,25 +660,73 @@ const fix_grid_toolbar = function (region_id) {
     //
     if (grid_buttons.length > 0) {
         for (var i = 0; i < grid_buttons.length; i++) {
-            if (grid_buttons[i].length > 0) {
+            var button_name = grid_buttons[i];
+            var action_name = grid_actions[i];
+            //
+            if (button_name.length == 0) {
+                continue;
+            }
+
+            // if button name exists as a page item and we have also the item with choices
+            if (apex.item(action_name).id && apex.item(action_name + '_CHOICES').id) {
+                // build select list with options from _CHOICES items
+                var item_name       = action_name;
+                var item_choices    = JSON.parse(apex.item(item_name + '_CHOICES').getValue());
+
+                // simple list, where changes are stored in page item
                 actions.add({
-                    name    : grid_buttons[i],
+                    name        : button_name,
+                    value       : apex.item(item_name).getValue(),
+                    choices     : item_choices,
+                    action      : function(event, element) {
+                        var value = $(event.currentTarget).val();
+                        apex.item(item_name).setValue(value);
+                        console.log('CHANGED ITEM VALUE:', item_name, value);
+                    },
+                    set: function(value) {
+                        this.value = value;
+                    },
+                    get: function() {
+                        return this.value;
+                    }
+                });
+                action2.controls.push({
+                    type        : 'SELECT',
+                    id          : button_name,
+                    action      : button_name,
+                });
+            }
+            else {
+                // regular button
+                actions.add({
+                    name    : button_name,
                     action  : function(event, element) {
-                        // recover position in array from vurrent button
-                        var button_id = $(event.currentTarget).attr('id').split('_ig_toolbar_')[1];
-                        var i = grid_buttons.indexOf(button_id);
+                        // recover position in array from current button
+                        var button_id   = $(event.currentTarget).attr('id').split('_ig_toolbar_')[1];
+                        var i           = grid_buttons.indexOf(button_id);
+                        //
+                        var action_name = grid_actions[i];
+                        if (grid_actions.length == 1 && grid_actions[0] == '') {
+                            action_name = 'action_' + grid_buttons[i].lowerCase();
+                        }
 
                         // treat action as a function
-                        console.log('CALLING', button_id, grid_actions[i]);
-                        window[grid_actions[i]](event, element);
+                        if (typeof myFunction === 'function') {
+                            console.log('CALLING FUNCTION', action_name, button_id);
+                            window[action_name](event, element);
+                        }
+                        else {
+                            console.log('CALLING DYNAMIC ACTION', action_name.upperCase(), button_id);
+                            apex.event.trigger(document, action_name.upperCase());
+                        }
                     }
                 });
                 action2.controls.push({
                     type        : 'BUTTON',
                     label       : grid_labels[i],
-                    id          : grid_buttons[i],
+                    id          : button_name,
                     icon        : grid_icons[i],
-                    action      : grid_buttons[i],
+                    action      : button_name,
                 });
             }
         }
