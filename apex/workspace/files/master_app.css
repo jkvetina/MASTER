@@ -9,11 +9,43 @@ body {
 
 /* ENV BANNER */
 a.ENV_BANNER {
+    float               : left;
+    outline             : none !important;
+    height              : 3rem;
     max-height          : 3rem;
+    padding             : 1rem 0.75rem !important;
 }
-a.ENV_BANNER.DEV        { border-left : 1rem solid #508223; }
-a.ENV_BANNER.UAT        { border-left : 1rem solid #227e9e; }
-a.ENV_BANNER.PROD       { border-left : 1rem solid #d63b25; }
+a.ENV_BANNER:hover {
+    background          : #222;
+}
+a.ENV_BANNER.DEV        { background : #508223; }
+a.ENV_BANNER.UAT        { background : #227e9e; }
+a.ENV_BANNER.PROD       { background : #d63b25; }
+
+
+
+/*
+ * CLIENT + APPLICATION LOGO IN NAVIGATION
+ */
+#CLIENT_LOGO {
+    float               : left;
+    outline             : none !important;
+}
+#CLIENT_LOGO > img {
+    height              : 2rem;
+    margin              : 0.5rem !important;
+}
+#APP_LOGO {
+    float               : left;
+    height              : 2rem;
+    margin              : 0.5rem 0 !important;
+}
+#APP_LOGO > img {
+    padding             : 0.5rem 0.25rem !important;
+}
+#APP_LOGO > span.apex-logo-text {
+    padding             : 0.5rem 0.75rem !important;
+}
 
 
 
