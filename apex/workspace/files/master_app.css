@@ -18,9 +18,14 @@ a.ENV_BANNER {
 a.ENV_BANNER:hover {
     background          : #222;
 }
+/*
 a.ENV_BANNER.DEV        { background : #508223; }
 a.ENV_BANNER.UAT        { background : #227e9e; }
 a.ENV_BANNER.PROD       { background : #d63b25; }
+*/
+html.app-MASTER a.ENV_BANNER > span.fa {
+    display: none;
+}
 
 
 
@@ -462,6 +467,13 @@ ul.a-CardView-items {
     margin-top          : -1.7rem;
 }
 
+.HIDDEN {
+    display             : none;
+}
+.STRIKED {
+  text-decoration       : line-through;
+}
+
 
 
 /* HIDE USELESS EDIT BUTTON ON IG */
@@ -473,7 +485,7 @@ div.a-Toolbar-group [data-action="edit"] {
 
 /* GRID CONTROL BREAK */
 .a-GV-table th.a-GV-controlBreakHeader {
-    background          : #f1efed;
+    background          : #f5f4f2;
 }
 .a-GV-controlBreak .a-GV-controlBreakLabel {
     font-size           : 120%;
@@ -593,6 +605,11 @@ div.a-Toolbar-group [data-action="edit"] {
     color               : #fff;
 }
 
+/* HIDE READONLY CHECKBOXES */
+td.a-GV-cell.is-readonly.HIDE_READONLY_CHECKBOXES > span.u-checkbox {
+  display               : none;
+}
+
 /* FIX MISSING BORDER ON GRID HEADER */
 th.a-GV-header {
     border-left         : 1px solid var(--a-gv-header-cell-border-color);
@@ -636,25 +653,38 @@ tr.a-GV-row.is-updated td,
 tr.a-GV-row.is-updated th {
     background          : white !important;
 }
-tr.a-GV-row.is-selected td,
-tr.a-GV-row.is-selected th,
 tr.a-GV-row.is-hover td,
 tr.a-GV-row.is-hover th,
 tr.a-GV-row.is-selected td.is-readonly,
 tr.a-GV-row.is-hover td.is-readonly {
     background          : #F5F4F2 !important;
 }
+tr.a-GV-row.is-selected td,
+tr.a-GV-row.is-selected th,
 tr.a-GV-row.is-selected.is-hover td,
 tr.a-GV-row.is-selected.is-hover th {
-    background          : #f1efed !important;
+    background          : #f7f5ed !important;
 }
 
-
+/* READ ONLY GRID CELLS + ROW SELECTORS */
+tr.a-GV-row.is-selected td.a-GV-cell.is-readonly,
+tr.a-GV-row.is-selected th.a-GV-cell.a-GV-selHeader,
+tr.a-GV-row.is-selected td.a-GV-cell.has-button.a-GV-frozen {
+    background          : white !important;
+}
 
 /* LIGHTER CHECKED CHECKBOXES IN GRID */
 .apex-item-single-checkbox input:checked+.u-checkbox,
 .apex-item-single-checkbox input:checked+label, .u-checkbox.is-checked {
     --a-checkbox-background-color: #555;
+}
+td.a-GV-cell.is-readonly > span.u-checkbox,
+td.a-GV-cell.is-readonly > span.u-checkbox:before,
+td.a-GV-cell.is-readonly > span.u-checkbox:after,
+td.a-GV-cell.is-readonly > span.u-radio,
+td.a-GV-cell.is-readonly > span.u-radio:before,
+td.a-GV-cell.is-readonly > span.u-radio:after {
+    outline             : none !important;
 }
 
 
