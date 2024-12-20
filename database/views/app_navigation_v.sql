@@ -5,7 +5,8 @@ WITH x AS (
         --
         COALESCE (
             u.user_name,
-            core.get_item('G_USER_NAME')
+            core.get_item('USER_NAME'),
+            core.get_user_id()
         ) AS curr_user_name,
         --
         REPLACE(APEX_UTIL.HOST_URL('APEX_PATH'), 'http://:', '') ||
@@ -78,7 +79,6 @@ badges AS (
     FROM apex_collections a
     WHERE a.collection_name = 'APP_NAVIGATION_BADGES'
 )
-
 SELECT
     t.lvl,
     t.app_id,
@@ -102,7 +102,7 @@ SELECT
                 -- add context items to all Master app links (when there is no context app)
                 -- or when context app does not match the current/real app
                 -- to retain proper app/page context in between apps with multiple tabs
-                WHEN (t.app_id != x.context_app OR t.app_alias = 'MASTER') THEN
+                WHEN (t.app_id != x.context_app OR t.app_alias LIKE 'MASTER%') THEN
                     APEX_PAGE.GET_URL (
                         p_application   => t.app_id,
                         p_page          => NVL(t.page_alias, t.page_id),

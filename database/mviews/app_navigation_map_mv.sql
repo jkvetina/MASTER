@@ -49,7 +49,7 @@ WHERE 1 = 1
     AND a.application_name      NOT LIKE '%BACKUP%'
     AND (
         a.application_group     NOT IN ('_ MASTER', '__ HIDDEN', 'Sample Apps')
-        OR a.alias              = 'MASTER'                      -- keep Master app for Navigation
+        OR a.alias              LIKE 'MASTER%'                  -- keep Master app for Navigation
     );
 /
 

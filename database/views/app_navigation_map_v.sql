@@ -74,7 +74,7 @@ FROM t
 JOIN n
     ON n.target_app_id      = t.app_id
     AND n.target_page_id    = t.page_id
-CONNECT BY n.app_id         = PRIOR n.app_id
+CONNECT BY n.app_id         = PRIOR n.target_app_id
     AND n.parent_id         = PRIOR n.target_page_id
 START WITH n.parent_id      IS NULL;
 /
