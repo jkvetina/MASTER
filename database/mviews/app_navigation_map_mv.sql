@@ -13,43 +13,74 @@ CREATE MATERIALIZED VIEW app_navigation_map_mv
 BUILD IMMEDIATE
 REFRESH FORCE ON DEMAND
 AS
+WITH n AS (
+    -- pull data from Navigation table, where tree structure is maintained
+    SELECT /*+ MATERIALIZE */
+        n.app_id,
+        n.target_app_id,
+        n.target_page_id,
+        n.parent_id,
+        n.is_hidden,
+        n.is_reset,
+        n.order#,
+        n.col_id
+    FROM app_navigation n
+)
 SELECT
-    a.workspace,
-    a.application_id            AS app_id,
-    a.alias                     AS app_alias,
-    a.owner                     AS app_owner,
-    a.application_group         AS app_group,
-    a.application_name          AS app_name,
-    a.version                   AS app_version,
-    a.authentication_scheme     AS app_auth,
     --
-    NVL(s.substitution_value, '-')      AS app_desc,            -- we cant have NULLs in MV
+    -- construct a tree structure for the navigation
+    -- the APEX dictionaries could be very slow
+    -- also since the CORE is running under AUTHID CURRENT_USER, we cant use it here
     --
-    p.page_id,
-    p.page_name,
-    NVL(p.page_alias, '-')              AS page_alias,
-    NVL(p.page_title, '-')              AS page_title,
-    NVL(p.page_group, '-')              AS page_group,
-    NVL(p.page_css_classes, '-')        AS page_css_classes,
+    n.app_id,
+    n.target_app_id,
+    n.target_page_id,
     --
-    p.page_mode,
-    p.page_template,
-    NVL(p.authorization_scheme, '-')    AS auth_scheme,
-    a.home_link
+    NVL(TO_NUMBER(REGEXP_SUBSTR(LTRIM(SYS_CONNECT_BY_PATH(n.parent_id, '/'), '/'), '\d+')), 0) AS page_root_id,
     --
-FROM apex_applications a
-JOIN apex_application_pages p
-    ON p.application_id         = a.application_id
-LEFT JOIN apex_application_substitutions s
-    ON s.application_id         = a.application_id
-    AND s.substitution_string   = 'APP_DESC'                    -- provide application description for Launchpad cards
-WHERE 1 = 1
-    AND a.workspace             NOT IN ('INTERNAL')
-    AND a.workspace             NOT LIKE 'COM.%'
-    AND a.application_name      NOT LIKE '%BACKUP%'
-    AND (
-        a.application_group     NOT IN ('_ MASTER', '__ HIDDEN', 'Sample Apps')
-        OR a.alias              LIKE 'MASTER%'                  -- keep Master app for Navigation
-    );
+    NVL(n.parent_id, 0)         AS parent_id,
+    NVL(n.is_hidden, '-')       AS is_hidden,
+    NVL(n.is_reset, '-')        AS is_reset,
+    --
+    t.workspace,
+    t.app_alias,
+    t.app_owner,
+    t.app_group,
+    t.app_name,
+    t.app_version,
+    t.app_auth,
+    t.app_desc,
+    t.app_prefix,
+    --
+    t.page_id,
+    t.page_name,
+    t.page_title,
+    t.page_alias,
+    t.page_group,
+    NVL(UPPER(REPLACE(APEX_STRING_UTIL.GET_SLUG(t.page_group), '-', '_')), '_') AS page_group_slug,
+    t.page_css_classes,
+    t.page_mode,
+    t.page_template,
+    t.auth_scheme,
+    --
+    LEVEL                       AS depth,
+    CONNECT_BY_ISLEAF           AS is_leaf,
+    LEAST(LEVEL, 2)             AS lvl,
+    LPAD(' ', 3 * (LEVEL - 1))  AS lvl_indent,
+    --
+    NVL(TO_NUMBER(REPLACE(SYS_CONNECT_BY_PATH(n.col_id, '/'), '/', '')), 0) AS col_id,
+    --
+    SYS_CONNECT_BY_PATH(n.target_app_id || '.' || n.target_page_id, '/') || '/' AS pages_path,
+    --
+    SYS_CONNECT_BY_PATH(NVL(n.col_id, 0) || '.' || n.order# || '.' || n.target_page_id, '/') AS order#
+    --
+FROM app_apex_pages_mv t
+JOIN n
+    ON n.target_app_id      = t.app_id
+    AND n.target_page_id    = t.page_id
+CONNECT BY NOCYCLE
+        n.app_id            = PRIOR n.app_id
+    AND n.parent_id         = PRIOR n.target_page_id
+START WITH n.parent_id      IS NULL;
 /
 
