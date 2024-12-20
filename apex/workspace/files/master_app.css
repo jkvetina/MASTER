@@ -653,24 +653,28 @@ tr.a-GV-row.is-updated td,
 tr.a-GV-row.is-updated th {
     background          : white !important;
 }
-tr.a-GV-row.is-hover td,
 tr.a-GV-row.is-hover th,
+tr.a-GV-row.is-hover td,
+/* READ ONLY GRID CELLS + ROW SELECTORS */
+tr.a-GV-row.is-hover td.is-readonly,
 tr.a-GV-row.is-selected td.is-readonly,
-tr.a-GV-row.is-hover td.is-readonly {
+tr.a-GV-row.is-selected td.a-GV-cell.is-readonly,
+tr.a-GV-row.is-selected th.a-GV-cell.a-GV-selHeader,
+tr.a-GV-row.is-selected td.a-GV-cell.has-button.a-GV-frozen {
     background          : #F5F4F2 !important;
 }
+/* SELECTED ROW + HOVER */
 tr.a-GV-row.is-selected td,
 tr.a-GV-row.is-selected th,
 tr.a-GV-row.is-selected.is-hover td,
 tr.a-GV-row.is-selected.is-hover th {
     background          : #f7f5ed !important;
-}
-
-/* READ ONLY GRID CELLS + ROW SELECTORS */
-tr.a-GV-row.is-selected td.a-GV-cell.is-readonly,
-tr.a-GV-row.is-selected th.a-GV-cell.a-GV-selHeader,
-tr.a-GV-row.is-selected td.a-GV-cell.has-button.a-GV-frozen {
-    background          : white !important;
+    background          : #e3e8eb !important;
+    background          : #dae0e4 !important;
+    background          : #bacbdb !important;
+    background          : #cead6d !important;
+    background          : #deb64d !important;
+    background          : #e7cd78 !important;
 }
 
 /* LIGHTER CHECKED CHECKBOXES IN GRID */
