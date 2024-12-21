@@ -704,6 +704,11 @@ tr.a-GV-row td button {
     outline             : none !important;
 }
 
+/* FIX MISSING SPACE FOR TOP BORDERS ON FIRST LINE IN GRID */
+.a-GV .a-GV-w-scroll {
+    padding-top         : 1px;
+}
+
 
 
 /* BORDERLESS COLORFUL CELL IN IG/IR */
