@@ -1,69 +1,56 @@
 CREATE OR REPLACE FORCE VIEW app_launchpad_v AS
 WITH x AS (
     SELECT /*+ MATERIALIZE */
-        core.get_session_id()   AS session_id
+        core.get_session_id()   AS session_id,
+        core.get_user_id()      AS user_id
     FROM DUAL
-),
-t AS (
-    -- deduplicate because we need just list of apps, not pages
-    SELECT
-        t.workspace,
-        t.app_id,
-        t.app_alias,
-        t.app_name,
-        --
-        NULLIF(t.app_desc, '-') AS app_desc,
-        --
-        t.app_version,
-        t.app_group,
-        t.app_auth,
-        t.home_link
-    FROM app_navigation_map_mv t
-    WHERE 1 = 1
-        AND t.app_alias NOT LIKE 'MASTER%'  -- ignore Master apps
-    GROUP BY
-        t.workspace,
-        t.app_id,
-        t.app_alias,
-        t.app_name,
-        t.app_desc,
-        t.app_version,
-        t.app_group,
-        t.app_auth,
-        t.home_link
 )
 SELECT
-    t.workspace,
-    t.app_id,
-    t.app_alias,
-    t.app_name,
-    t.app_desc,
-    t.app_version,
-    t.app_group,
-    t.app_auth,
+    a.workspace,
+    a.app_id,
+    a.app_alias,
+    a.app_name,
     --
-    LTRIM(REPLACE(t.app_group, ' ', ''), '_') AS app_group_id,
+    NULLIF(a.app_desc, '-')     AS app_desc,
+    NULLIF(a.app_prefix, '-')   AS app_prefix,
     --
-    REPLACE(REPLACE(REPLACE(REPLACE(t.home_link,
-        '&' || 'APP_ID.',       t.app_id),
-        '&' || 'APP_SESSION.',  x.session_id),
-        '&' || 'SESSION.',      x.session_id),
-        '&' || 'DEBUG.',        ''
-        ) AS app_link,
+    a.app_version,
+    a.app_group,
     --
-    /*
-    CASE WHEN t.is_favorite = 'Y'
+    a.app_auth,
+    a.app_owner,
+    --
+    REPLACE(
+        core.get_app_home_url(a.app_id, in_full => 'Y'),
+        '&' || 'APP_SESSION.', x.session_id
+    ) AS app_link,
+    --
+    RTRIM(REPLACE(
+        core.get_app_home_url(a.app_id, in_full => 'Y'),
+        '&' || 'APP_SESSION.', ''
+    ), ':') AS app_link_visible,
+    --
+    m.is_favorite,
+    --
+    CASE WHEN m.is_favorite = 'Y'
         THEN 'fa-heart RED'
-        ELSE 'fa-heart-o'
+        ELSE 'fa-heart-o GREY'
         END AS badge_icon,
-        */
     --
-    NULL AS badge_icon,
-    NULL AS is_favorite,
+    ROW_NUMBER() OVER (ORDER BY a.workspace, a.app_name) AS sort#,
     --
-    ROW_NUMBER() OVER (ORDER BY t.workspace, t.app_name) AS sort#
+    v.app_id                AS suggested_app,
+    v.suggested_version
     --
-FROM t
-CROSS JOIN x;
+FROM app_apex_apps_mv a
+CROSS JOIN x
+LEFT JOIN app_users_map m
+    ON m.app_id     = a.app_id
+    AND m.user_id   = x.user_id
+LEFT JOIN app_launchpad_versions_v v
+    ON v.app_id     = a.app_id
+WHERE 1 = 1
+    AND a.app_alias NOT LIKE 'MASTER%'  -- ignore Master apps
+;
 /
 
