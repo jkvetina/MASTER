@@ -691,6 +691,19 @@ td.a-GV-cell.is-readonly > span.u-radio:after {
     outline             : none !important;
 }
 
+/* BORDER INSIDE OF THE EDITED CELL */
+div.a-GV-columnItem input,
+/* BORDER INSIDE OF THE FOCUSED CELL */
+tr.a-GV-row.is-selected td.a-GV-cell.is-focused,
+tr.a-GV-row.is-selected th.a-GV-cell.is-focused,
+tr.a-GV-row.is-hover td.a-GV-cell.is-focused,
+tr.a-GV-row.is-hover th.a-GV-cell.is-focused {
+    box-shadow          : 0px 0px 0px 1px #555 inset !important;
+}
+tr.a-GV-row td button {
+    outline             : none !important;
+}
+
 
 
 /* BORDERLESS COLORFUL CELL IN IG/IR */
